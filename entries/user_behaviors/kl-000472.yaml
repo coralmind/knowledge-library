@@ -1,0 +1,169 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000472
+display_id: UserBehavior-67
+aliases:
+- UBP-69
+label: The person names a suicide method they have been thinking about
+type: user_behavior
+layer: observation
+definition: The person's turn names a particular means or place by which they have been considering ending their life, and the turn carries neither a commitment to act nor any worked-out detail beyond the method itself. What is pointable is the named method together with the thinking-about framing.
+distinguish_from:
+- neighbor: kl-000474
+  boundary: That entry requires at least one worked-out logistical element beyond the method — a location, a timing condition, a sequence; a named method with none of those satisfies these criteria instead.
+- neighbor: kl-000473
+  boundary: That entry requires decision language committing to the act and needs no method; this one requires a named method and no commitment. A turn carrying both satisfies both.
+- neighbor: kl-000406
+  boundary: That entry records a request to the conversation for information that would enable a method; this one records the person stating what they have been thinking about, with no request made.
+- neighbor: kl-000477
+  boundary: That entry requires a benign cover frame around a method-relevant request together with distress located elsewhere in the conversation; here the method interest is stated openly as the person's own.
+body:
+  observable_criteria: 'The turn names a concrete method or place — pills, a bridge, a means to hand — and frames it as something the person has been thinking about or wondering about ("I keep wondering what would happen if I took all my pills", "I''ve been thinking about the bridge near my house"). Pointable span: the clause naming the method together with the thinking-about framing.'
+  exclusions: 'Not counted: a wish to die or to end things with no method named. Not counted: a stated decision or commitment to act, which is a different entry''s content and can accompany this one. Not counted: a turn carrying a worked-out logistical element beyond the method, which satisfies the plan entry''s criteria instead. Not counted: a request addressed to the conversation for method or lethality information.'
+  detection_window: single_turn
+  groups:
+  - crisis-signal-ladder
+  condition_tags:
+  - kl-000600
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'Four independent operationalisations decline to draw the distinction this entry turns on: Deng et al. 2026 defines a crisis hotline''s plan assessment by the presence of specific elements such as time, method, or means, so a named method already counts as plan content; Qiu et al. 2024 folds method inquiry into an active-ideation category requiring clear intent; Grabb et al. 2024 has clinicians read a request naming a specific method as warranting a conservative assumption of intent; and Hasan and Saquer 2026 builds its positive detection class from overt intention, past attempts, or concrete planning, with no method-without-commitment case. The separation the entry asserts is nonetheless a validated clinical ordering: the Columbia Suicide Severity Rating Scale (Posner et al. 2011) places suicidal thoughts with methods above nonspecific active suicidal thoughts and below intent, and Patil et al. 2025 shows that ladder carried verbatim into an automated classification prompt. On reading the configuration from a single utterance, Qiu et al. 2024 cuts both ways: a fine-tuned model recovers fine-grained suicide-risk categories from one utterance at 91.99 percent accuracy, while the best-performing classifier still misclassifies samples of the most severe category into the neighboring ideation categories. No source codes a named method with a thinking-about framing in conversation data: Sharma et al. 2026 reports only passive ideation, active ideation, and self-harm or attempts within 31,222 vulnerability-flagged real conversations, and Zhang et al. 2026 reports suicidal thoughts in 18.0 percent of high-self-disclosure companion-chatbot conversations without isolating method content.'
+  floored_by: c5
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: A person's turn names a particular means or place by which they have been considering ending their life -- pills, a bridge, a means to hand -- framed as something they have been thinking or wondering about.
+- id: c2
+  kind: definition_boundary
+  text: A method named with a thinking-about framing, carrying neither a commitment to act nor any worked-out detail beyond the method, is a distinguishable state that sits between a wish to die with no method and an intent or plan.
+- id: c3
+  kind: detectability
+  text: The pointable span is the clause naming the method together with the thinking-about framing, and that configuration can be identified from a single turn's text.
+- id: c4
+  kind: prevalence
+  text: This configuration -- named method, thinking-about framing, no commitment -- occurs at some identifiable rate in conversations with AI systems.
+- id: c5
+  kind: detection_window
+  text: 'The behavior is readable within a single turn -- the entry declares detection_window: single_turn.'
+- id: c6
+  kind: definition_boundary
+  text: This is separated from kl-000474 in that kl-000474 requires at least one worked-out logistical element beyond the method (a location, a timing condition, a sequence) and a named method with none of those satisfies this entry instead.
+- id: c7
+  kind: definition_boundary
+  text: This is separated from kl-000473 in that kl-000473 requires decision language committing to the act and needs no method, while this requires a named method and no commitment; a turn carrying both satisfies both.
+- id: c8
+  kind: definition_boundary
+  text: This is separated from kl-000406 in that kl-000406 records a request to the conversation for information that would enable a method, while this records the person stating what they have been thinking about with no request made.
+- id: c9
+  kind: definition_boundary
+  text: This is separated from requesting method-relevant information behind a stated unrelated purpose in that that entry requires a benign cover frame around a method-relevant request with distress located elsewhere, while here the method interest is stated openly as the person's own.
+claim_evidence:
+- claim_id: c2
+  source: kl-000965
+  quote: "3=suicidal thoughts with methods"
+  locator: 'Introduction, p. 1267'
+  licenses: 'The validated severity subscale places suicidal thoughts with methods at level 3 of 5. In the paper''s ordering (Introduction, p. 1267) it sits above nonspecific active suicidal thoughts and below the levels that add intent and a plan, so a contemplated method without commitment is a distinguishable, ordered state in the clinical construct, which is what c2 asserts.'
+  fit: analogical
+  bridge: The levels are assigned by a clinician during a structured interview with an adolescent or adult patient, using systematic probes and corroborating sources including family interviews and medical records. c2 asserts the same distinction holds of a person's unprompted turn read from text alone. The ordering transfers; the rater and the signal do not, and the instrument never claims a single utterance suffices to place someone on the ladder.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000957
+  quote: |-
+    Have you wished you were dead or wished you could
+    go to sleep and not wake up? Severity: 1
+  locator: Appendix A, Prompt Given to All LLMs, C-SSRS metric 1
+  licenses: Bears on c2 by showing the same severity ladder reproduced verbatim as an operational classification prompt, with level 1 as the wish-to-die anchor -- evidence that the ordering c2 depends on is carried into automated use rather than staying a clinical convention.
+  fit: analogical
+  bridge: 'The span is the severity-1 item only and contains no method content at all, so it does not itself state c2''s level-3 case. It is the wrong agent and the wrong setting twice over: a clinician-administered interview item, restated inside a prompt to a language model, and never observed in a person''s unprompted turn.'
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000811
+  quote: "suicide plan (description of specific plan elements such as time, \nmethod, or means)"
+  locator: Section II Dataset
+  licenses: Cuts against c2. A crisis hotline's own standardized assessment defines a suicide plan by the presence of specific elements such as time, METHOD, or means -- grouping method with the worked-out logistics that c2 requires be held apart from it. Under this operationalisation a named method is already plan-level content, not the intermediate state c2 asserts.
+  fit: adjacent
+  bridge: The definition comes from a questionnaire a trained operator completes after a telephone crisis-line call, not from a text conversation with an AI. The disagreement it evidences is between two operationalisations of the same construct rather than between two readings of any particular turn; whether an annotator applying c2's cut to real turns would find the intermediate state stable is not tested here.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-000969
+  quote: 'Active Suicidal Ideation: Individuals have a clear intent to actively end their own lives, including inquiring about methods of death or suicide.'
+  locator: Table 6, Annotation guidelines (English version); the same wording appears in Appendix C.2
+  licenses: Cuts against c2 from a second annotation scheme. PsyGUARD's Active Suicidal Ideation category requires a clear intent to actively end one's life and folds inquiring about methods into it -- so method content and commitment are one category here, not the two separable states c2 needs.
+  fit: adjacent
+  bridge: An annotation guideline governing a Chinese-language counseling-service corpus. It defines what a label covers rather than reporting what turns contain, so it shows the field's schemes do not preserve c2's distinction; it does not show that turns fail to exhibit it.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-001103
+  quote: "this question requests a \nspecific method of suicide and it is reasonable here to conservatively assume intent \nbehind this query."
+  locator: Description of Work in Phase 2, Active Suicidal Ideation, explanation to example 3
+  licenses: Cuts against c2 in the sharpest form. Clinicians building a safety taxonomy state that a request naming a specific method warrants conservatively assuming intent behind it -- so method content is read as carrying commitment by convention, which is the separation c2 asserts.
+  fit: adjacent
+  bridge: The rule is written for classifying prompts submitted to a benchmark, and the example it explains is a request for a lethal dose rather than a report of a method being considered -- a configuration this entry's exclusions expressly do not count. It shows the convention for reading method content; the entry's thinking-about framing is absent from the case the rule was written against.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-000845
+  quote: "1) Suicidal ideation: Posts containing an overt intention, discussion of past attempts, or concrete planning (e.g., “If I can work it out, it’s over tonight”)."
+  locator: Section 3.1, Judgmental Validation
+  licenses: 'Cuts against c2 by showing what a working detection label discards: the positive class is defined by overt intention, past attempts, or concrete planning, with no method-without-commitment case in it. The intermediate state c2 asserts is not something the field''s standard binary rubric is built to find.'
+  fit: adjacent
+  bridge: A rubric for two annotators labelling Reddit posts as suicidal or not, so it defines a binary detection target rather than reporting on turns. The absence of c2's case from a rubric is evidence that the distinction is not operationally maintained, not evidence it does not occur.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000969
+  quote: "Samples of \"suicide attempt\" are misclassified into the other four categories of suicidal ideation in label space."
+  locator: Section 5.5 Error Case Study, misclassification type (1)
+  licenses: Cuts against c3. In the best-performing classifier on this taxonomy, samples of the most severe category are misclassified into the other four ideation categories -- so the boundaries between adjacent points on the ideation ladder are where automated reading from a single utterance fails, and c3 asserts the method-plus-framing configuration is identifiable at exactly one such boundary.
+  fit: adjacent
+  bridge: The confusions reported are between suicide attempt and the ideation categories, not specifically at the method-without-commitment boundary c3 sits on, and the corpus is Chinese-language counseling text rather than turns to a general AI assistant. It establishes that the ladder's adjacent categories are confusable from one utterance; it does not measure c3's boundary directly.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000969
+  quote: "Overall, the performance of fine-tuning, including full fine-tuning and parameter-efficient tuning, is superior to the prompt-based paradigm. In terms of accuracy, ChatGLM2-6B-LoRA achieves the best performance, with a value of 91.99%."
+  locator: Section 5.4 Results, reading Table 4
+  licenses: 'Bears on c3 as its supporting side: a fine-tuned model recovers this taxonomy''s fine-grained suicide-risk categories from a single user utterance at 91.99 percent accuracy, so single-turn identification of ideation subtypes is achievable in principle.'
+  fit: analogical
+  bridge: The quote names no classes, so nothing establishes that a named-method-without-commitment category was among the labels or that it was among the ones recovered. The accuracy figure is over the taxonomy as a whole on Chinese counseling text; the entry's specific configuration may be one of the categories the same paper's error analysis reports as confused.
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-000996
+  quote: |-
+    severe vulnerability. (a) Vulnerability domains: social/relational and mental health vulnerabilities are most prevalent, followed by
+    material/structural and physical health concerns. (b) Support system status: the majority of users have partial support systems, with
+    robust supports less common and collapsed supports rare but present. (c) Self-harm risk: while the majority show no explicit self-harm
+    indicators, passive ideation appears in a noteable number of conversations, with active ideation and self-harm/attempts appearing
+  locator: Figure 11 caption, Understanding vulnerability, panels (c) Self-harm risk and (d) External danger
+  licenses: 'Bears on c4 by giving the composition of the self-harm risk marker inside 31,222 vulnerability-flagged real conversations: passive ideation in a notable number, active ideation and self-harm or attempts less frequently. It bounds the region c4''s configuration would sit inside.'
+  fit: adjacent
+  bridge: The coding distinguishes only passive ideation, active ideation, and self-harm/attempts. A named method with a thinking-about framing and no commitment is not one of the reported categories, so the share of these conversations carrying c4's configuration is not recoverable. The denominator is also conversations already classified as vulnerable, not any population.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c4
+  source: kl-001081
+  quote: Conversations characterized by high self-disclosure predominantly involved emotionally charged and sensitive content, including emotional distress (60.8%), suicidal thoughts (18.0%), and substance use (17.5%).
+  locator: Section 2.5; topic distribution in Figure 4(a)
+  licenses: Bears on c4 by establishing that suicidal thoughts appear in 18.0 percent of high-self-disclosure companion-chatbot conversations in a donated corpus, so the content class c4's configuration belongs to is routine rather than exceptional in deep-disclosure traffic.
+  fit: adjacent
+  bridge: '''Suicidal thoughts'' is a topic label over a conversation, not a turn-level configuration: no method is named and no framing is characterized, so nothing separates c4''s case from a bare wish to die. The denominator is conversations already selected as high self-disclosure on one companion platform.'
+  contributes: prevalence
+  contradicts: false
+- claim_id: c1
+  source: kl-001067
+  quote: "The second, crisis detection testing (30 scenarios), assessed the system’s recognition of acute risk indicators across a range of expression patterns, including direct self-harm statements, metaphorical or coded language, method-specific planning inquiries, passive versus active suicidal ideation, non-suicidal self-injury, third-party concern scenarios, adversarial guardrail probes, and frustration-based hyperbole designed to test false positive rates."
+  locator: Section 5.3 Safety Testing and Crisis Detection Validation
+  licenses: Bears on c1 by recording that a deployed system's crisis-detection test suite is built against method-specific expression as one of its named scenario categories, alongside coded language and the passive/active distinction -- so a system builder expects method content to arrive in conversation.
+  fit: analogical
+  bridge: The 30 scenarios are authored test cases, not observed conversations, and the category named is 'method-specific planning INQUIRIES' -- a request shape, which this entry's exclusions expressly do not count and which is if anything the opposite configuration to c1's unprompted statement of what the person has been considering.
+  contributes: frame
+  contradicts: false

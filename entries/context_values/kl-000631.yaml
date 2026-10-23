@@ -1,0 +1,101 @@
+# yaml-language-server: $schema=../../schema/context_value.schema.json
+id: kl-000631
+display_id: Value-20
+aliases:
+- elder_geriatric
+- Population-2
+- Older adult
+label: 60 or older
+type: context_value
+layer: context
+definition: 'The person is sixty years of age or older. What follows for a conversation is that several things which are ordinarily separable arrive together: changes in memory and thinking that can present much as a mood disorder does and can be produced by it, the presence of physical health conditions and of medications whose effects and interactions are part of the picture, patterns of isolation arising from bereavement and reduced mobility rather than from withdrawal, and the norms about discussing mental health that the person grew up with.'
+distinguish_from:
+- neighbor: kl-000630
+  boundary: 'Both are bands on the age dimension, with 18–59 between them. That entry is under eighteen; this one is sixty and over. What differs is direction and kind: there, capacities are still developing and access to help runs through an adult; here, capacities may be changing and access may be limited by mobility, technology or means. Neither is a clinical state.'
+- neighbor: kl-000604
+  boundary: 'kl-000604 is a condition tag: a mood state with anhedonia and hopelessness. This entry is the person''s age. They are named against each other because the overlap this modifier exists partly to flag is between that condition and early cognitive change, which present alike and which the age band makes simultaneously plausible. The modifier does not assert which is present; it records that the discrimination is live.'
+- neighbor: kl-000636
+  boundary: That entry is about resources and access — insurance, transport, cost. This one is about age, and it reaches access questions too where limited familiarity with technology or reduced mobility is what makes a referral unusable. Both are assigned where an older person also has limited means, and the reason each is unusable differs.
+body:
+  dimension: kl-000728
+  ordinal: 3
+  bounds:
+    min: 60
+  rationale: Several features of later life bear on what an appropriate response consists of. Cognitive decline overlaps with psychiatric presentation, so that depression and early dementia can present alike and each can be mistaken for the other. Physical health conditions and medication regimens are part of the picture rather than background. Isolation in this group frequently arises from bereavement and reduced mobility rather than from avoidance, which changes what an account of social withdrawal means. And generational norms about discussing mental health affect what the person will say and how they will say it.
+  example_failure: 'ILLUSTRATION ONLY, not part of what this entry defines and not a claim about any rate: an AI recommends app-based therapy tools to an older person who has already said they have limited technology access and would prefer to see someone in person. Preserved from the source vocabulary because it shows what "the referral you were about to make is not available" looks like concretely.'
+  boundary_note: Sixty is a conventional threshold rather than a clinical one, and the literature draws it at both sixty and sixty-five. The features the rationale names do not arrive at any age. The band below it is 18–59.
+  detection_note: 'Cognitive decline is modelled here, in this note, where nothing can reference it. It would be better held as two objects: the observation-layer entry for cognitive difficulty can carry the causal claim, and this modifier the claim about what counts as an appropriate response. No edge type relates the two.'
+sources: []
+standing:
+  value: asserted
+  basis: 'The evidence base consists of nine sources about AI systems and populations in general, and none reaches the entry''s clinical substance: the depression-dementia differential, the place of comorbid physical conditions and medications, isolation arising from bereavement and reduced mobility, and generational norms about discussing mental health all remain uncited, although geriatric psychiatry and the depression-dementia differential are substantial external literatures. The one point with any citation is the age threshold, and its two citations disagree. Chu et al. 2026, the one cited study that recruited older adults using LLMs, sets its boundary at sixty, the threshold this entry uses, and cites two references for the choice; Rajkomar et al. 2026 operationalises older adults as over sixty-five in coding 18,663 consumer health queries.'
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: definition
+  text: The population modifier is defined by the person being sixty years of age or older.
+- id: c2
+  kind: context_dependence
+  text: In this population, changes in memory and thinking can present much as a mood disorder does and can be produced by it, so the two are not separable on presentation.
+- id: c3
+  kind: context_dependence
+  text: In this population, physical health conditions and medications, and the interactions between them, are part of the clinical picture rather than background to it.
+- id: c4
+  kind: context_dependence
+  text: In this population, patterns of isolation characteristically arise from bereavement and reduced mobility rather than from withdrawal, so an account of social withdrawal means something different.
+- id: c5
+  kind: context_dependence
+  text: In this population, the generational norms the person grew up with about discussing mental health affect what they will say and how they will say it.
+- id: c6
+  kind: context_dependence
+  text: These several features arrive together in a conversation with an older adult, rather than being separable one at a time.
+- id: c7
+  kind: definition_boundary
+  text: Older adult is distinguished from child or adolescent (kl-000630) as an age band running from sixty upward rather than under eighteen; there, capacities are still developing and access runs through an adult, while here capacities may be changing and access may be limited by mobility, technology or means, and neither is a clinical state.
+- id: c8
+  kind: definition_boundary
+  text: Older adult is distinguished from the depression condition tag as the person's age rather than a mood state; the modifier records that the discrimination between that condition and early cognitive change is live without asserting which is present.
+- id: c9
+  kind: definition_boundary
+  text: Older adult is distinguished from low-resource socioeconomic context as being about age rather than resources, though it reaches access questions where limited familiarity with technology or reduced mobility is what makes a referral unusable; both are assigned where an older person also has limited means.
+claim_evidence:
+- claim_id: c1
+  source: kl-000974
+  quote: "Queries explicitly referencing older adults (>65 years)—a high-utilization group in clinical settings—comprised only 4.6% (N = 861) of the dataset. Similarly, pediatric topics were scarce, with queries concerning children (infants to adolescents) representing just 6.4% (N = 1,190) of the total cohort."
+  locator: Section 3.3 The Validity Gap, 'Underrepresentation of Vulnerable Populations'
+  licenses: 'Cuts against the threshold this claim asserts: the authors operationalise older adults as over 65 and apply it to code 18,663 consumer health queries, a group they call high-utilization in clinical settings. So a published operationalization of the same category draws the line five years higher. The entry''s boundary_note concedes the threshold is conventional rather than clinical; this is the external evidence for that concession. The same sentence also establishes something this entry does not assert -- that queries referencing people over sixty-five are 4.6% of an 18,663-query health-AI evaluation corpus -- which is a candidate claim about evaluation coverage.'
+  fit: adjacent
+  bridge: The source applies its threshold to classify benchmark queries; the claim applies one to classify a person in a conversation. It bears on the claim as a competing convention rather than as a measurement of where any feature begins.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000801
+  quote: |-
+    The inclusion criteria required participants to (1) be at least 60 years old [2, 8], (2) report using LLM chatbots (e.g., ChatGPT, Gemini),
+    and (3) have experience giving or receiving family-based support related to LLM chatbot use.
+  locator: Section 2, Methodology
+  licenses: The one study on this entry that recruited older adults using LLMs sets its boundary at sixty, citing two references for the choice. That corroborates the threshold as a working operationalization of the category in the same technology setting, which is all this claim asserts. It is not evidence that any feature the entry names begins at sixty.
+  fit: adjacent
+  bridge: A recruitment criterion for a formative qualitative study of general-purpose LLM use, not of mental-health conversations. It bears on the claim as a convention someone else has used, not as a measurement of where any feature begins.
+  contributes: definition
+  contradicts: false
+- claim_id: c9
+  source: kl-000751
+  quote: |-
+    Intersecting
+    vulnerabilities (eg, older adults from minority ethnic
+    backgrounds with language barriers) can compound risk and
+    increase mistriage. However, only a limited number of studies
+    disaggregate safety performance by intersectional subgroups,
+    leaving some of the most disadvantaged populations effectively
+    invisible in assessments.
+  locator: The Equity Blind Spot
+  licenses: 'Attached to an ineligible boundary claim and carried rather than counted. The boundary asserts that this modifier and the socioeconomic one are both assigned together where they co-occur, and this span is an argued position that exactly such combinations compound risk rather than adding, using an older-adult example. It also states that the literature almost never disaggregates by these combinations, so the compounding is asserted and not measured. Filed contributes: frame, which licenses nothing.'
+  fit: adjacent
+  bridge: An argued position about evaluation practice in somatic primary-care triage, with no data of its own on any interaction between the factors. The claim is a catalog assignment rule. The source motivates assigning both tags and demonstrates no interaction.
+  contributes: frame
+  contradicts: false

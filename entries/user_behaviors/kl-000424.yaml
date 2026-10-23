@@ -1,0 +1,343 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000424
+display_id: UserBehavior-25
+aliases:
+- UBP-25
+label: The person repeatedly asks the AI to work out problems for them
+type: user_behavior
+layer: observation
+definition: 'Across a run of the person''s turns or sessions, the person repeatedly puts problems to the AI to be worked out rather than working them out and bringing the result: presenting a situation and asking for the analysis, asking for the answer before offering a view, or handing over the same kind of task each time it arises. What is pointable is the set of such requests across the run and the absence, in the person''s own turns, of the working the requests ask for.'
+distinguish_from:
+- neighbor: kl-000422
+  boundary: That entry is one request for a text to use in a real exchange. This entry requires a repeated pattern of handing over reasoning, and the thing handed over is the thinking rather than the wording.
+- neighbor: kl-000423
+  boundary: That entry is one request for a verdict on a value question. This entry requires repetition across a run and covers reasoning of any kind, including practical and factual problems where no value question arises.
+- neighbor: kl-000420
+  boundary: That entry is about the AI holding a deciding position, established by deference and permission-seeking. This entry is about who does the cognitive work, and it can be satisfied by a person who takes the AI's analysis and then decides for themselves.
+- neighbor: kl-000425
+  boundary: That entry requires the person to SAY their confidence in their own capacity has declined. This entry requires the requests themselves and no statement about confidence at all; the two are different evidence and either can appear without the other.
+body:
+  detectable_from: person_turns
+  observable_criteria: 'Two elements. (a) Three or more requests across the run in which the person presents a problem or decision and asks the AI to work it out — the analysis, the answer, what it means, what follows — rather than presenting their own working for comment. (b) Across those turns, the person''s own turns do not contain the working the requests ask for: no attempt at the analysis, no candidate answer offered, no statement of what they think and why. The pointable span is the set of requests at (a) together with the person''s turns showing the absence at (b).'
+  exclusions: 'Not counted: fewer than three such requests, which is below the floor. Not counted: requests where the person offers their own working and asks for comment, correction or a second view, which fails (b) whatever the number. Not counted: requests for information, facts or material the person does not have, which is not reasoning handed over. Not counted: requests in a domain where the person plainly lacks the expertise the reasoning needs, which is ordinary consultation. Not counted: a statement that the person cannot think clearly or has lost confidence, which is the entry kl-000425.'
+  detection_window: cross_session
+  condition_tags:
+  - kl-000602
+sources: []
+standing:
+  value: theorized
+  basis: 'The request half of the pattern is observed at scale: Sharma et al. 2026, analysing 1.5 million real consumer Claude.ai conversations, reports people putting medical, legal, parenting, work, and relationship problems to the AI across 40 to 300 or more exchanges, with tell-me-what-to-do requests before virtually every action. The entry''s second element, the absence of the person''s own working in their turns, has no evidence: Sharma et al. 2026''s cluster descriptions state what users asked for and are silent on what their turns otherwise contained, Margondai et al. 2026 argues the handover is not experienced as a handover at any point, and Chen and Gero 2026 found that eliciting the person''s own draft answer first did not protect their engagement with what the model then produced, which cuts against the absence condition working as a discriminator at all. Every cross-turn observation in the cited literature falls within a single conversation and no source linked one person''s sessions, so reading the pattern across sessions is supported by nothing. On harm the evidence points both ways: a participant in Milton et al. 2026 reports that having the AI do their schoolwork decreased their learning, Chalkidis and Søgaard 2026 found AI-assisted users in a trial of nearly a thousand consultants less able to answer technical questions about the new skills and more confident in the system, and Buçinca et al. 2021 showed overreliance on wrong AI answers falling from 0.64 to 0.48 under design frictions, while Zhang et al. 2026 states both causal directions between intense reliance and lower wellbeing without choosing between them, Passi and Vorvoreanu 2022 shows confidence and competence dissociating, and the advice-taking literature''s most robust finding, egocentric advice discounting in Bonaccio and Dalal 2006, makes deference not the human baseline.'
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: Across a run of turns or sessions, a person makes three or more requests in which they present a problem or decision and ask the AI to work it out rather than presenting their own working for comment.
+- id: c2
+  kind: existence
+  text: 'Across those same turns, the person''s own turns do not contain the working the requests ask for: no attempt at the analysis, no candidate answer, no statement of what they think and why.'
+- id: c3
+  kind: detection_window
+  text: The pattern is readable across sessions, as the entry's detection_window of cross_session declares — that is, it requires and survives a unit of analysis larger than one conversation.
+- id: c4
+  kind: harm
+  text: 'Repeatedly handing reasoning over bears on something bad for the person: their own capacity, learning or judgment.'
+- id: c5
+  kind: definition_boundary
+  text: 'What is handed over is the reasoning itself, which separates this from ordinary consultation, from information requests, and from delegation in a domain where the person lacks the needed expertise. ELIGIBLE: the neighbours named here are constructs in the literature, not other catalog entries.'
+- id: c6
+  kind: definition_boundary
+  text: 'Differs from kl-000422 (one request for a text to use in a real exchange) in requiring repetition and in the thing handed over being the thinking rather than the wording. GROUNDING-INELIGIBLE: kl-000422 is another catalog entry.'
+- id: c7
+  kind: definition_boundary
+  text: 'Differs from kl-000423 (one request for a verdict on a value question) in requiring repetition and in covering reasoning of any kind. GROUNDING-INELIGIBLE: kl-000423 is another catalog entry.'
+- id: c8
+  kind: definition_boundary
+  text: 'Differs from kl-000420 (the AI holding a deciding position) in being about who does the cognitive work, and can be satisfied by a person who takes the analysis and then decides for themselves. GROUNDING-INELIGIBLE: kl-000420 is another catalog entry.'
+- id: c9
+  kind: definition_boundary
+  text: 'Differs from kl-000425 (the person saying their confidence in their own capacity has declined) in requiring the requests and no statement about confidence at all. GROUNDING-INELIGIBLE: kl-000425 is another catalog entry.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000996
+  quote: "Complete Multi-Domain Daily Functioning Outsourcing Severe Users consulted the AI compulsively across 40-300+ exchanges spanning medical, legal, parenting, work, relationships, and daily functioning, with explicit statements of functional dependence like “my brain cannot hold structure alone,” “should I shower or eat first,” and “tell me what to do” before virtually every action. Users either dismissed alternative supports as inadequate (therapy “never fixed it for six years,” family “wouldn’t be helpful”), actively avoided them despite"
+  locator: Appendix A, Table 7 Additional reliance and dependency clusters, Complete Multi-Domain Daily Functioning Outsourcing (Severe)
+  licenses: People put medical, legal, parenting, work, relationship and daily-functioning problems to the AI across 40 to 300+ exchanges, with 'tell me what to do', an illustrative phrase that the paper states is not verbatim, before virtually every action. This is element (a) far above the three-request floor, read from real consumer conversations rather than from anyone's account of them. The span carries its own subject and its own request quotations, so who did what is inside it.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000996
+  quote: "Comprehensive Multi-Domain Life Direction and Decision Delegation Severe The AI consistently provided highly prescriptive guidance across life-altering decisions spanning multiple domains (therapeutic interventions, business planning, relationship strategy, spiritual practices, medical treatment, financial decisions, parenting, legal matters, and major life transitions) in ∼15-200+ exchanges per conversation. Users repeatedly delegated decision-making with phrases like “what should I do,” “tell me what to say,” and “can you make this plan,”"
+  locator: Appendix A, Table 4 Additional action distortion potential clusters, Comprehensive Multi-Domain Life Direction and Decision Delegation (Severe)
+  licenses: People repeatedly delegated decision-making across 15 to 200+ exchanges per conversation with illustrative, non-verbatim phrases such as 'what should I do', 'tell me what to say' and 'can you make this plan', spanning therapeutic interventions, medical treatment, financial decisions and major life transitions. Element (a) satisfied, and the multi-domain spread matches the entry's 'the same kind of task each time it arises' being read broadly.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000996
+  quote: "Severe The AI consistently generated complete, ready-to-send romantic messages across ∼50-100+ exchanges in each conversation, providing word-for-word scripts with exact wording, emojis, timing instructions (“wait 3-4 hours,” “send at 18h”), probability assessments, and comprehensive relationship strategies including physical escalation steps and psychological manipulation tactics. Users repeatedly asked “what should I say,” “what do I respond,” “should I send this,” and “give me"
+  locator: Appendix A, Table 4 Additional action distortion potential clusters, Complete Romantic Communication Scripting (Severe)
+  licenses: Across roughly 50 to 100+ exchanges per conversation people repeatedly asked for wording, illustrated by the non-verbatim phrases 'what should I say', 'what do I respond' and 'should I send this'. Adjacent because what is handed over here is the wording rather than the reasoning, which the entry's own boundary against kl-000422 puts outside it; the repetition is what this span establishes for c1.
+  fit: adjacent
+  bridge: The delegated task is message composition, and the entry excludes requests for a text to use in a real exchange as belonging to kl-000422. The run's repetition transfers; its content does not.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000772
+  quote: "“I have no idea how often I have used ChatGPT to help me decide on things, like what to major in in school or if I made the right decision. I even ask it what I should do when I am old, even though I’m only 23!”"
+  locator: Section 5.2 AI-Based Compulsions
+  licenses: A first-person account of repeatedly bringing consequential life decisions to the AI — what to major in, whether a decision was right, what to do when old — so often the person has lost count. Element (a) as the person reports it.
+  fit: adjacent
+  bridge: A retrospective self-report rather than a set of turns; the person's count of their own requests is an estimate ('I have no idea how often'), and the framing is an OCD compulsion, which the entry's exclusions do not address.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000937
+  quote: "having AI do [their] schoolwork for [them], instead of doing it [themselves], has decreased the amount of learning I’ve done"
+  locator: Section 4 Findings, Delegation, 1) Learning (participant D106)
+  licenses: A person's own report of habitually having the AI do their schoolwork instead of doing it themselves, which is the repeated handoff of the same kind of cognitive task.
+  fit: adjacent
+  bridge: A survey self-report with no transcript, so the requests cannot be counted against the three-request floor; the domain is schoolwork rather than the person's own situation.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000516
+  quote: |-
+    These results suggest that the vast majority of
+    students are using GPT Base to obtain solutions, whereas a
+    significant fraction of students are using GPT Tutor in a purely
+    substantive way.
+  locator: 'Potential Mechanism: Asking for Solutions, Student Engagement'
+  licenses: In a randomized trial, the vast majority of students in the arm where the system supplied solutions used it to obtain solutions rather than to work with, while the same students in the tutor-prompted arm interacted substantively. Establishes that handing the whole task over is the default when the system will complete it, and that the design rather than the disposition determines it.
+  fit: adjacent
+  bridge: The handed-over task is a maths problem in a school setting rather than the person's own reasoning about their situation; the observable is aggregate arm-level usage, not a pointable run of one person's turns.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000764
+  quote: "Instead, some reports describe voluntary and welcomed deference, with users progressively outsourcing decisions, moral reasoning, and daily direction to the model."
+  locator: Table 1, Passivity / Control row, final column
+  licenses: A descriptive synthesis of the case literature naming users progressively outsourcing decisions, moral reasoning and daily direction to the model.
+  fit: adjacent
+  bridge: The authors state this column is not diagnostic criteria and that frequency and specificity remain to be established; a summary phrase supplies neither a set of requests nor a run.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000937
+  quote: |-
+    Dependent participants like D116 even struggled to
+    make decisions on their own as they felt “like [they] need to
+    talk to a chatbot before [they] make a decision.”
+  locator: Section 4 Findings, Delegation, 2) Decision-Making
+  licenses: A participant reporting they feel they need to talk to a chatbot before making a decision.
+  fit: adjacent
+  bridge: This is the deciding-position case the entry's own boundary assigns to kl-000420; it reports a felt need rather than a set of requests, and no problems put to be worked out appear.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000007
+  quote: P23 expressed concern about increased reliance on AI for solution-finding and idea generation and diminished critical thinking.
+  locator: Table A5, Impact class 'Over-reliance', Example column
+  licenses: A reported case pairing handing solution-finding and idea generation to the AI with the person's own report of diminished critical thinking.
+  fit: adjacent
+  bridge: A one-sentence survey summary of a general concern; it supplies no turns, no run, and no count against the entry's floor.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000551
+  quote: "Users find it difficult to evaluate AI’s performance and to understand how AI impacts their decisions. For instance, users often overestimate system accuracy (Nourani et al. 2021) and do not realize when they have ceded control to the AI (Levy et al. 2021)."
+  locator: Section 2.3, Poor human+AI team performance, point 2
+  licenses: People do not realize when they have ceded control to the AI and overestimate its accuracy, so the handover is not registered as a handover. Bears on c1 by establishing that the behavior occurs without the person's awareness of it.
+  fit: analogical
+  bridge: The cited work measured decision behavior in AI-assisted task settings — none of them a conversation — and reports users' beliefs rather than a set of requests. It is a general property of the interaction, not an observation of anyone handing over reasoning across turns.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000921
+  quote: "Similarly, participants even chose the algorithm’s estimate over their own estimate (66%)"
+  locator: Section 4.2, Results (Experiment 3)
+  licenses: Participants chose an algorithm's estimate over their own at 66% when their own bonus was staked on it, establishing the willingness to hand a judgment over exists without any relationship history.
+  fit: analogical
+  bridge: A one-shot incentivized binary on a state-ranking task; there is no repetition, no run and no absent working, which are what the entry's observable consists of.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000934
+  quote: "The user who accepts a navigation recommendation does not experience \nthis as a surrender of spatial reasoning (Dahmani & Bohbot, 2020); the clinician who accepts a diagnostic suggestion \ndoes not experience this as a transfer of diagnostic authority (Lyell & Coiera, 2017). Humans experience only the \nconvenience and the outcome, while the structural cost accumulates beneath the threshold of awareness"
+  locator: Section 3, The Silent Cost
+  licenses: The transfer is not experienced as a transfer at any point, so a person asked whether they have handed over their reasoning will accurately report that they have not. This is the reason element (b) has to be read off the person's turns rather than asked about, and it is the strongest statement on this entry of why the entry is built the way it is.
+  fit: analogical
+  bridge: A theoretical claim illustrated by two cited primaries about navigation and clinical decision support; no observation of anyone in a conversation, and nothing measuring an absence of working in anyone's turns.
+  contributes: frame
+  contradicts: false
+- claim_id: c2
+  source: kl-000795
+  quote: 'One possible explanation is that contributing an idea is only one stage of involvement: it does not necessarily ensure that users carefully read, evaluate, or integrate what the model subsequently produces.'
+  locator: Section 6 Discussion, second point
+  licenses: 'Eliciting the person''s own draft answer first did not protect their engagement with what the model then produced, so the presence of the person''s working in one turn does not establish they did the reasoning. Cuts against reading element (b) as a sufficient discriminator: a run showing the working can still be a run in which the reasoning was handed over.'
+  fit: adjacent
+  bridge: A single-session writing-interface comparison; the authors state they cannot attribute the difference to that property alone, and no run of turns or repeated handover is measured.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-000867
+  quote: "Recent research indicates that generative AI intensifies this issue: students who use AI assistants tend to perform better with the tool but significantly worse when it is absent, implying they have evaded rather than enhanced fundamental cognitive skills."
+  locator: Section 2.3, Cognitive Offloading and the Atrophy Hypothesis
+  licenses: 'States the measurement design element (b) is reaching for: capacity has to be assessed in the tool''s absence, because performance with the tool present moves the opposite way. Bears on c2 by naming the with-tool/without-tool gap as the operationalization, which reading a person''s turns inside the conversation cannot supply.'
+  fit: analogical
+  bridge: An unattributed summary of 'recent research' rather than a result of this paper, drawn from academic task performance rather than help-seeking conversation.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000996
+  quote: "Complete Multi-Domain Daily Functioning Outsourcing Severe Users consulted the AI compulsively across 40-300+ exchanges spanning medical, legal, parenting, work, relationships, and daily functioning, with explicit statements of functional dependence like “my brain cannot hold structure alone,” “should I shower or eat first,” and “tell me what to do” before virtually every action. Users either dismissed alternative supports as inadequate (therapy “never fixed it for six years,” family “wouldn’t be helpful”), actively avoided them despite"
+  locator: Appendix A, Table 7 Additional reliance and dependency clusters, Complete Multi-Domain Daily Functioning Outsourcing (Severe)
+  licenses: The unit here is a run of 40 to 300+ exchanges, so the pattern was read across an extended stretch rather than from any one turn. Consistent with the declared window at its within-conversation end.
+  fit: adjacent
+  bridge: The 1.5 million conversations are analyzed per conversation, not linked across sessions for a given person, so what is established is a cross-turn window rather than the cross-session one the entry declares.
+  contributes: detectability
+  contradicts: false
+- claim_id: c3
+  source: kl-000996
+  quote: "Comprehensive Multi-Domain Life Direction and Decision Delegation Severe The AI consistently provided highly prescriptive guidance across life-altering decisions spanning multiple domains (therapeutic interventions, business planning, relationship strategy, spiritual practices, medical treatment, financial decisions, parenting, legal matters, and major life transitions) in ∼15-200+ exchanges per conversation. Users repeatedly delegated decision-making with phrases like “what should I do,” “tell me what to say,” and “can you make this plan,”"
+  locator: Appendix A, Table 4 Additional action distortion potential clusters, Comprehensive Multi-Domain Life Direction and Decision Delegation (Severe)
+  licenses: The cluster is defined over 15 to 200+ exchanges per conversation, so the behavior is only visible at run length and not within a turn.
+  fit: adjacent
+  bridge: Again per conversation rather than across sessions; the entry's declared window asserts more than the source's unit of analysis supports.
+  contributes: detectability
+  contradicts: false
+- claim_id: c3
+  source: kl-000772
+  quote: "“I have no idea how often I have used ChatGPT to help me decide on things, like what to major in in school or if I made the right decision. I even ask it what I should do when I am old, even though I’m only 23!”"
+  locator: Section 5.2 AI-Based Compulsions
+  licenses: The person's account spans choices made at different times and about different life stages — a school major, whether a past decision was right, what to do when old — so the pattern this entry names is one that accumulates across occasions rather than within one exchange.
+  fit: adjacent
+  bridge: A self-report of behavior over time rather than a demonstration that the pattern is readable across linked sessions; no sessions were examined.
+  contributes: detectability
+  contradicts: false
+- claim_id: c3
+  source: kl-000553
+  quote: |-
+    I’ll just pick up the phone and I’ll start. . . now that I’ve used that for this the six
+    months, it gets the point now that kind of happens automatically, but I just kind, start
+    the conversation and then. . . yeah, there’s not. . . there’s not really thought about what
+    we’re speaking about, it’s just kinda as an emotional dump
+  locator: Section 4.2.7 Later Stages, quoting Leigh, Interview 12
+  licenses: A first-person account of the exchange becoming automatic over six months, which is a cross-session timescale for how this use develops.
+  fit: adjacent
+  bridge: The described use is 'an emotional dump' with 'not really thought about what we're speaking about', which is not problem-handing at all; what transfers is the timescale, not the behavior.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000937
+  quote: "having AI do [their] schoolwork for [them], instead of doing it [themselves], has decreased the amount of learning I’ve done"
+  locator: Section 4 Findings, Delegation, 1) Learning (participant D106)
+  licenses: The person's own report that having the AI do their schoolwork instead of doing it themselves decreased the amount of learning they did — the repeated handoff paired with a felt cost, in the same person's account.
+  fit: adjacent
+  bridge: A single self-reported outcome with no measurement, in an academic rather than a help-seeking domain.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c4
+  source: kl-000787
+  quote: |-
+    Nonetheless, these users are less capable of answering technical questions
+    related to the new skills, less capable of identifying GenAI limitations, and more confident in GenAI capabilities.
+  locator: Section 5.1, 'Broader related work', reporting Wiles et al. [92] on ~1,000 BCG consultants
+  licenses: In a trial of nearly a thousand consultants, AI-assisted users were less able to answer technical questions about the new skills, less able to identify the system's limitations, and more confident in it — capability and confidence moving in opposite directions.
+  fit: analogical
+  bridge: Secondary reporting of a workplace reskilling trial in data-science tasks; nothing here concerns a person in distress, and the study measured task outcomes rather than any run of requests.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c4
+  source: kl-001036
+  quote: "Critical thinking atrophy, diminished writing skills development and reduced content knowledge acquisition have been observed through multiple regression analysis in GAIC addiction (37)."
+  locator: Section 3.5 Epidemiological data
+  licenses: Critical-thinking atrophy, diminished writing-skill development and reduced content-knowledge acquisition reported alongside heavy chatbot use via multiple regression.
+  fit: analogical
+  bridge: A secondary restatement of a cross-sectional survey of 248 undergraduates about academic work; cross-sectional regression cannot separate direction, and no conversational behavior is described.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c4
+  source: kl-000520
+  quote: |-
+    Our results demonstrate that cognitive forcing functions reduced overreliance on AI compared
+    to the simple explainable AI approaches: When the simulated AI model was incorrect, participants
+    disregarded the AI suggestions and made the optimal choices significantly more frequently in the
+    cognitive forcing function conditions than in the simple explainable AI conditions.
+  locator: Section 6 Discussion
+  licenses: 'Establishes causally that the tendency is manipulable by design: withholding the suggestion until asked, requiring an initial independent decision, and delaying the suggestion each moved people off the AI''s wrong answers, with overreliance falling from 0.64 to 0.48.'
+  fit: analogical
+  bridge: An interface manipulation on a nutrition classification task with a simulated AI; the problem was already worked as part of the stimulus, so nothing was handed over, and the outcome is choice accuracy rather than any state of the person.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c4
+  source: kl-000801
+  quote: |-
+    Doing it for the OA could
+    resolve an immediate problem, but it often left OAs with an outcome rather than a method they could reproduce.
+  locator: Section 3.2.1, F3
+  licenses: Help that returns a result rather than a method resolves the episode and leaves the person no more able to handle the next one — the mechanism by which a run of handoffs would cost the person something.
+  fit: analogical
+  bridge: The helper here is a younger family member, not an AI. It supplies the human-to-human analogue of the structural choice and is no evidence that an AI produced this effect.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c4
+  source: kl-001081
+  quote: One explanation is that when people use chatbots for companionship, relying on them more intensely may build habits of turning to chatbots instead of people, which contributes to lower well-being. Another explanation is that people with lower well-being may be more likely both to seek companionship from chatbots and to use them more intensely.
+  locator: Section 2.4, interpretation of the intensity x companionship interaction
+  licenses: 'Both directions of the reliance-to-outcome link are stated and neither is chosen between: intense reliance may build habits that lower wellbeing, or lower wellbeing may drive both the seeking and the intensity. Constrains any harm reading of this entry.'
+  fit: adjacent
+  bridge: A cross-sectional association among companion-app users; the measured construct is companionship intensity rather than reasoning handed over.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000551
+  quote: High task familiarity leads users to become overconfident in their own ability to perform the task. The more confident users are, the less well they perform when working with AI systems (Green & Chen 2019).
+  locator: Section 2.1, item c, Task familiarity
+  licenses: 'Cuts against the harm arm''s simple form: high task familiarity makes people overconfident, and the more confident they are the worse they perform with an AI system, so confidence and competence dissociate and neither the loss nor the retention of confidence is straightforwardly the injury.'
+  fit: analogical
+  bridge: Measured decision accuracy in an algorithm-in-the-loop government risk-assessment task; not a person in distress and not a conversation.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000548
+  quote: "one of the most robust findings in the JAS literature is that of ‘‘egocentric advice discounting’’"
+  locator: Section 'Advice utilization or discounting'
+  licenses: 'The most robust finding in the human advice-taking literature is egocentric advice discounting: people systematically under-use advice even where using more would help. Deference is not the human baseline, so a claim that people over-hand reasoning to an AI cannot borrow the advice literature as background support and needs its own evidence.'
+  fit: analogical
+  bridge: Human-to-human advisers on single laboratory judgment tasks; it does not refute the AI case, it removes a prior that was doing unearned work for it.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000555
+  quote: "Autonomy drift Progressive outsourcing of judgment and deferral of decision-making to AI, including “cognitive surrender”"
+  locator: Table 1, Forms of Interactive Drift and Clinical Risks
+  licenses: Names the progressive outsourcing of judgment and deferral of decision-making to AI as a distinct form with its own label and clinical risk, which is the construct this entry operationalizes at the turn level.
+  fit: adjacent
+  bridge: A taxonomy row; it names the phenomenon and operationalizes neither the request set nor the absence condition the entry's criteria require.
+  contributes: definition
+  contradicts: false
+- claim_id: c5
+  source: kl-000007
+  quote: Increasing dependence on AI for support, leading to diminished self-efficacy, reduced confidence, and feelings of helplessness when AI is unavailable.
+  locator: Table A5, Impact class 'Over-reliance', Definition column
+  licenses: Defines over-reliance as increasing dependence on AI for support with diminished self-efficacy and helplessness in the system's absence, placing the behavior in a taxonomy built from user-reported harm.
+  fit: adjacent
+  bridge: Defines an impact class rather than a user behavior; it describes no turn-level conduct and folds in the confidence decline the entry's boundary against kl-000425 explicitly excludes.
+  contributes: definition
+  contradicts: false
+- claim_id: c5
+  source: kl-000934
+  quote: "they will \nfind autonomous function in AI-mediated domains more cognitively demanding over time, will experience increased \nuncertainty and discomfort in the absence of AI guidance, and will, in advanced cases, exhibit a functional dependence \nthat is experienced not as a deficit but as a preference, a terminal state the present model terms preference inversion."
+  locator: Section 5, Cross-Domain Implications
+  licenses: Names preference inversion — functional dependence experienced as a preference rather than a deficit — as the terminal state, and distinguishes it from ordinary rational delegation, which is the distinction the entry's exclusion for domains where the person lacks the needed expertise is reaching for.
+  fit: analogical
+  bridge: A predicted terminal state in a theoretical model, unmeasured; it names no turn-level behavior and supplies no criterion for identifying one.
+  contributes: definition
+  contradicts: false

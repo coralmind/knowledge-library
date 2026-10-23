@@ -1,0 +1,133 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000196
+display_id: Pathway-98
+aliases:
+- SBP-HP-OCD-V1-02
+label: The AI changes the subject from an obsessive fear, and the avoidance continues
+type: pathway
+layer: judgment
+definition: 'An obsessional question or fear is voiced and the response neither answers it nor declines with framing, but changes the subject, redirects, or offers a distraction. Nothing is asserted and the move is still an answer: the question is treated as one to get away from, which is the appraisal the treatment is trying to change.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000277
+    role: originator
+  composition_type: direct
+  mechanisms: []
+  impacts:
+  - impact: kl-000015
+    onset_mode: sustained
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  - impact: kl-000029
+    onset_mode: foregone
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  experience_cluster_candidate: kl-000703
+sources: []
+standing:
+  value: theorized
+  basis: 'The causal link is argued rather than shown: it rests on a reviewed behavioral specification treating subject-change as compulsion accommodation, and that specification offers no measurement of it. No recorded study tests the link, and no comparison condition is declared, so nothing specifies what response the subject change is being measured against.'
+  as_of: '2026-08-28'
+lifecycle:
+  status: draft
+  since: '2026-08-28'
+distinguish_from:
+- neighbor: kl-000053
+  boundary: Both respond to an obsessional question in a way that runs against the treatment and they are opposite moves. kl-000053 SETTLES the uncertainty. This entry AVOIDS it. Between them sits the response the treatment actually calls for, which does neither — naming the question as one it will not settle while staying with the distress.
+claims:
+- id: c1
+  kind: existence
+  text: People voice obsessional questions or fears in conversation with an AI system.
+- id: c2
+  kind: pathway_link
+  text: A response can neither answer the question nor decline it with framing, but change the subject, redirect, or offer a distraction.
+- id: c3
+  kind: pathway_link
+  text: Changing the subject treats the question as one to get away from, which is the appraisal the treatment is trying to change, sustaining the symptom-maintaining cycle.
+- id: c4
+  kind: harm
+  text: Carrying out the avoidance on the person's behalf also foregoes the protection that naming the question as one it will not settle would have provided.
+- id: c5
+  kind: detectability
+  text: Nothing is asserted and the move is still an answer, so identifying it requires reading the redirection as a response to the question rather than as a change of topic.
+- id: c6
+  kind: definition_boundary
+  text: 'This pathway differs from kl-000053 in direction: there the uncertainty is settled, here it is avoided, and between them sits the response the treatment calls for, which does neither.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000772
+  quote: "With over 25 posts mentioning AI-based compulsions, posts can be classified into three types: reassurance-seeking, confession, and decision-making."
+  locator: Section 5.2, AI-Based Compulsions
+  licenses: 'People with OCD do voice obsessional questions to a general-purpose AI system, and do so often enough that 31 of 100 posts in the sample were categorized as describing AI-based compulsions, which the quoted sentence restates as ''over 25 posts''; posts could fall in multiple categories. This supports c1''s existence claim about the person-side antecedent. Limits: the evidence is self-report on a public forum with self-identified (not clinically confirmed) OCD, a single annotator, and a non-random relevance-sorted sample — the author says so. It establishes that the antecedent occurs; it supports no rate in any population.'
+  fit: direct
+  contributes: existence
+- claim_id: c1
+  source: kl-000996
+  quote: Users engaged in compulsive reassurance-seeking patterns across 10–200+ exchanges, cycling through repetitive
+  locator: Appendix, behavioral pattern table, row "Compulsive Reassurance-Seeking Loops"
+  licenses: 'This is the strongest existence support available for c1: obsessional question-asking to an AI is observed in a privacy-preserving analysis of 1.5M real consumer Claude.ai conversations, not in a simulation or a forum. It establishes that the antecedent occurs in deployed traffic at a scale worth modelling. Limits: the span is one row of a cluster-summary table and reports no denominator, so it supports existence and not prevalence. The corpus is Claude.ai production traffic only, which the paper flags as limiting generalization.'
+  fit: direct
+  contributes: existence
+- claim_id: c2
+  source: kl-000874
+  quote: "We assign redirection when Replika deliberately shifts, reframes, or moves away from the user’s prior topic. This includes attempts to steer the conversation toward neutral, positive, or safer content."
+  locator: Appendix A.4, Replika response strategy codebook, "Redirection"
+  licenses: 'This is an independently-authored operational definition of precisely the AI move c2 names — a response that neither answers nor declines but moves away from the user''s prior topic — and it comes with worked examples ("Anyway, what did you do today?") that match this entry''s "changes the subject, redirects, or offers a distraction" almost clause for clause. It licenses c2''s claim that such a response type exists and is codeable as a distinct category, and it gives the catalog a vocabulary anchor that is not our own. Limits: the coded system is Replika, a companion app, and the scenarios are AI-persona-driven high-risk conditions rather than obsessional questioning; the code is defined over the AI turn alone and does not require an obsessional antecedent.'
+  fit: adjacent
+  contributes: definition
+  bridge: Assumes a redirection away from *any* user topic is the same conversational act as a redirection away from an obsessional question specifically. The move's form transfers; the claim that it functions as compulsion accommodation does not come from this span and is not supported by it.
+- claim_id: c2
+  source: kl-000874
+  quote: "Replika responses were predominantly labeled as supportive/reflective/mirroring (90.9%), indicating that Replika largely affirms and echoes user statements. Substantially fewer responses involved neutral replies (4.4%), redirection (3.3%), or rejection or boundary-keeping (1.4%)"
+  locator: Section 6.1, Label Distributions of Utterance Pairs
+  licenses: 'A measured rate — redirection is 3.3% of responses — for the AI move c2 names, in a deployed companion system under high-risk scenarios. This is a real measurement, not an illustration, and it is the only rate for this move anywhere in the corpus. Limits: it is a rate for *one* system (Replika) against *AI-persona-generated* user turns, not human users, and the denominator is high-risk scenario responses rather than obsessional questions. It establishes that the move occurs at a low but non-trivial rate in one deployment; it establishes nothing about how often a model redirects away from an obsessional question.'
+  fit: adjacent
+  contributes: prevalence
+  bridge: Assumes a topic-shift rate measured on a companion app under scripted high-risk personas is informative about whether the move occurs at all in obsessional contexts. The rate itself should not be carried across.
+- claim_id: c3
+  source: kl-001109
+  quote: In this sense, general-purpose chatbots can function as a stand-in for accommodative responses by providing soothing replies that offer short-term relief while sustaining the underlying avoidance cycle.
+  locator: Section "AI chatbots and transdiagnostic avoidance"
+  licenses: 'This is the position this entry c3 asserts, stated in the peer-reviewed literature by two Stanford psychiatry authors: that a chatbot response can occupy the structural role of an accommodative response and thereby sustain the avoidance cycle. Limits — and these are decisive: the paper is an npj Digital Medicine **Perspective**, it generated and analysed no data ("No datasets were generated or analysed during the current study"), and it says of its own recommendations that "the following points should be interpreted as guidance … rather than as established requirements". It also does not name subject-change or topic-redirection as one of the accommodative moves — its list is reassurance-seeking, checking, confessing, figuring things out, perfecting, decision-seeking. So this states c3''s mechanism as a framework and measures nothing.'
+  fit: direct
+  contributes: frame
+- claim_id: c3
+  source: kl-001109
+  quote: Although these patterns reduce discomfort in the moment, they ultimately maintain maladaptive threat appraisals, reinforce distorted negative beliefs about oneself or the world, and prolong emotional distress. This can prevent corrective learning, a process by which individuals experience negative emotions without resorting to avoidance behaviors
+  locator: Section "AI chatbots and transdiagnostic avoidance"
+  licenses: 'Supplies the specific content of c3''s phrase "the appraisal the treatment is trying to change": the paper names maintained maladaptive *threat appraisals* and prevented corrective learning as what avoidance-facilitating responses produce, and grounds that in emotional-processing and inhibitory-learning accounts. This is the clearest statement in the corpus of what c3 means by the treatment''s target. Limits: it is a CBT framework claim about avoidance behaviors generally, not a measurement, and it is not about topic-change by an AI. The paper draws on established clinical literature for the mechanism, not on any study of chatbot transcripts.'
+  fit: adjacent
+  contributes: frame
+  bridge: Assumes the corrective-learning account established for a person's own avoidance behaviors applies when the avoidance is executed by an interlocutor on the person's behalf. The paper itself makes exactly this extension (cited above), but does not test it.
+- claim_id: c3
+  source: kl-000527
+  quote: concerning behavior scores were highest in psychosis and mania, intermediate for depression and insecure attachment, and lowest in OCD
+  locator: Results, "Concerning AI chatbot behavior varies as a function of simulated user phenotype"; main effect of vulnerability F(4,810) = 158.58, p < 0.001
+  licenses: 'This cuts against c3''s direction. Across 810 multi-turn simulated conversations and 90,000+ turn-level ratings, OCD was the vulnerability that elicited the **least** concerning chatbot behavior of the five tested, and the paper separately reports that concerning behavior was "lowest when users primarily sought reassurance or short-term relief from distress." The paper''s own Box 1 narrates the OCD reassurance loop in the direction c3 asserts, but that Box is captioned "Vulnerability-Amplifying Interaction Loops (VAILs) – illustrative examples" and reports no measurement. **Read the margins, not the box**: the measured result says frontier models handle the OCD/reassurance cell comparatively well. Limits on the counterexample itself: the users are LLM-simulated, not real; "concerning behavior" is a judge-scored composite and not a measure of subject-changing specifically; and the paper does report a vulnerability × intent interaction showing OCD does elicit concerning behavior when paired with dependence or risky-action intents. So it bounds c3''s generality rather than refuting it.'
+  fit: adjacent
+  contributes: counterexample
+  contradicts: true
+  bridge: 'Assumes a simulated-user audit with LLM judges is informative about real interactions. What it licenses is a caution: any claim that redirection-as-accommodation is a frequent or severe failure mode in OCD contexts must reckon with the one large multi-model measurement in this corpus reporting the opposite ordering.'
+- claim_id: c4
+  source: kl-000874
+  quote: "Although relatively rare, Replika responses that involve redirection or boundary-keeping in high-risk situations exhibit minimal harm."
+  locator: Section 6.2.1, and Figure 3
+  licenses: 'The only measured harm rate for redirection in the corpus, and it runs against c4. In this annotated corpus redirection responses were harmful in 1.8% of 57 occurrences, against 16.6% for supportive/mirroring responses — redirection was among the *least* harmful strategies, and the paper reads its rarity as a deficiency ("suggesting limited use of strategies that actively constrain or redirect the conversation"). c4 claims the redirect forgoes protection; this source treats redirection as protective. Limits: "harm" here is a binary human/LLM-assigned label on companion-app responses to AI-generated personas, the risk conditions are self-harm and risky sexual role-play rather than obsessional questioning, and n=57 is the redirection COLUMN TOTAL across all six persona-utterance types, not a single cell. It does not establish that redirection is protective in an OCD context.'
+  fit: adjacent
+  contributes: counterexample
+  contradicts: true
+  bridge: Assumes harm labels assigned in a companion-app safety audit transfer to obsessional questioning. They likely do not transfer cleanly — the very point of this entry is that a move that is protective in a self-harm context is accommodating in an OCD context, which is a coherent position. But the catalog currently asserts the harm direction with no measurement at all, and the one measurement that exists points the other way, so c4 should be recorded as contested.
+- claim_id: c4
+  source: kl-001109
+  quote: Unlike human interlocutors, chatbots lack implicit corrective social cues such as fatigue, topic shifts, or gentle disagreement, which might otherwise disrupt avoidance cycles.
+  locator: Section "AI chatbots and transdiagnostic avoidance"
+  licenses: This paper names *topic shifts* not as the accommodating move but as one of the **corrective** social cues whose absence in chatbots is the problem. On this account a chatbot that changed the subject would be supplying a corrective cue human interlocutors supply, not accommodating. That is the opposite reading of the same conversational act. It does not refute c4 — this entry's move is a topic shift *executed for the person* rather than a friction signal arising from the interlocutor's own fatigue, and that distinction is real — but it means c4's harm direction is contested in the literature, not settled, and the entry should not be written as though changing the subject is self-evidently accommodation.
+  fit: direct
+  contributes: counterexample
+  contradicts: true
+  bridge: Assumes the paper's "topic shifts" means the same act this entry defines. It plausibly does not — the paper's list (fatigue, topic shifts, gentle disagreement) reads as involuntary conversational friction, whereas this entry requires a deliberate redirect offered as the response. If the catalog keeps c4, it should say which of the two it means, because the same three words carry opposite signs in this source.

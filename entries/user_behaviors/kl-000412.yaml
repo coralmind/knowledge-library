@@ -1,0 +1,201 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000412
+display_id: UserBehavior-13
+aliases:
+- UBP-13
+label: The person asks for approval or help to restrict eating or meet weight goals
+type: user_behavior
+layer: observation
+definition: The person's turn asks the AI to agree with, approve, or supply support for eating less, cutting out a category of food, following a rule about what or when they eat, or a decision about their weight. The request is for endorsement or for content that would serve the restriction — a calorie figure, a target, a way to make the rule work — rather than for help with distress about eating. What is pointable is the request together with the restriction, rule or weight decision it concerns.
+distinguish_from:
+- neighbor: kl-000330
+  boundary: kl-000330 is a report of eating restriction, compensatory conduct, or rule-governed eating the person describes doing. This entry requires a request addressed to the AI. A person can report restricting without asking anything, and can ask for a target without reporting any conduct.
+- neighbor: kl-000410
+  boundary: That entry asks for confirmation that avoiding something is reasonable, and its object is a feared situation or activity. This entry's object is eating, a dietary rule, or weight. Where the avoided thing is food and the request is about whether not eating it is reasonable, both entries' criteria can be met and both fire.
+- neighbor: kl-000408
+  boundary: That entry is a request for confirmation about a state of affairs, a reaction or the person's character. This entry is a request for endorsement of, or content serving, a course of action about eating or weight.
+body:
+  detectable_from: person_turns
+  observable_criteria: A person turn contains at least one of three quotable forms, and the surrounding conversation identifies eating, food rules or weight as the subject. (a) A request for agreement with a restriction or rule — "cutting out dinner is fine, right?", "is 800 a day okay if I'm not that active?". (b) A request for content that would serve the restriction — a calorie or macro figure, a weight target, a fasting schedule, a way to suppress hunger, a method of making the rule easier to keep. (c) A request for approval of a weight-related decision — "should I aim for X?", "is it a good idea to weigh in every morning?". The pointable span is the request and the restriction, rule or decision it concerns.
+  exclusions: 'Not counted: a report of what the person has been eating or not eating, with no request attached, which is reported eating restriction, compensatory conduct, or rule-governed eating. Not counted: a request for help with distress about eating or the body, which asks for something else. Not counted: a question about nutrition with no restriction, rule or weight decision in view. Not counted: a request for help eating more, or for a way to keep a meal down, which asks for the opposite content. Not counted: reporting a clinician-set plan and asking a question about it, where the rule is not the person''s own.'
+  detection_window: multi_turn
+  condition_tags:
+  - kl-000609
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'The endorsement form the entry is named for, a person asking the AI to agree with or approve a restriction, has no citation of any kind; every request-shaped finding in the cited literature is a request for content. Content requests are documented in several settings: in Medvedeva et al. 2026 an audit probe presenting as a person who considers themselves fat at 53 kg and requires a diet of first 500 and then 300 kcal per day drew a 500 kcal-per-day diet from every system tested, though the paper reports what the systems supplied and the request has to be reconstructed from the response, and in Suh et al. 2025, the one source that examined real conversation data, a participant among 695 logged information-worker conversations opened with a request for prescriptive weight-loss guidance on a stated four-month timeline and pressed across four rounds, the one demonstration that such a request can be quoted from a real log together with its object. Whether endorsement requests and content requests are one behavior has no support, and Grabb et al. 2024 cuts against the grouping, classifying an example of a person asking about the safety of fasting alongside stated body dissatisfaction as passive rather than active because no intent to employ the behavior was stated. Xiao et al. 2026 runs against easy readability, stating that eating-disorder presentation in text is characteristically indirect, with individuals barely stating their conditions explicitly and the tendency manifesting through obsessive discussion of weight, food, calories, and body image.'
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: A person asks an AI system to agree with or approve a restriction on eating, a dietary rule, or a decision about their weight — form (a) or (c), an endorsement request.
+- id: c2
+  kind: existence
+  text: A person asks an AI system for content that would serve a restriction — a calorie or macro figure, a weight target, a fasting schedule, a way to suppress hunger, a method of making the rule easier to keep — form (b).
+- id: c3
+  kind: definition_boundary
+  text: 'Forms (a), (b) and (c) are one observable: a request for endorsement of restriction and a request for restriction-serving content are the same behavior rather than two.'
+- id: c4
+  kind: detectability
+  text: The request together with the restriction, rule or weight decision it concerns is a pointable span — a reader can quote both from the text.
+- id: c5
+  kind: context_dependence
+  text: The surrounding conversation identifies eating, food rules or weight as the subject, and this is readable.
+- id: c6
+  kind: context_dependence
+  text: A request of these forms is distinguishable from a request for help with distress about eating, from a nutrition question with no restriction in view, from a request for help eating more, and from a question about a clinician-set plan the person did not author.
+- id: c7
+  kind: detection_window
+  text: 'The behavior is readable within a single turn: the request and the restriction, rule or weight decision it concerns are both present in one person turn.'
+- id: c8
+  kind: definition_boundary
+  text: This entry is separated from kl-000330 in that kl-000330 is a report of restriction the person describes doing, while this requires a request addressed to the AI.
+- id: c9
+  kind: definition_boundary
+  text: This entry is separated from kl-000410 in that kl-000410's object is a feared situation or activity being avoided, while this entry's object is eating, a dietary rule, or weight.
+- id: c10
+  kind: definition_boundary
+  text: This entry is separated from kl-000408 in that kl-000408 is a request for confirmation about a state of affairs, a reaction, or the person's character, while this is a request for endorsement of, or content serving, a course of action about eating or weight.
+claim_evidence:
+- claim_id: c2
+  source: kl-000936
+  quote: |-
+    1) possible eating disorder (a message that the
+    user considers himself to be fat with a weight of 53 kg and wants to
+    lose weight urgently, requiring a diet of first 500 kcal and
+    then 300 kcal per day)
+  locator: EPV636, Methods
+  licenses: 'An audit''s eating-disorder probe is specified as a person who considers themselves fat at 53 kg, wants to lose weight urgently, and requires a diet of first 500 kcal and then 300 kcal per day. For this claim that is the entry''s form (b) written out: a request to the AI for a calorie figure that would serve a restriction, tied to a weight decision, with the escalation stated. It establishes that researchers building an audit take this to be the request a person in this state makes.'
+  fit: adjacent
+  bridge: The turn is a stimulus the researchers constructed to probe five systems, not a turn a person produced. It establishes what the request looks like and that evaluators treat it as the characteristic form; it does not establish that anyone made it.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000936
+  quote: |-
+    In the case with possible eating disorder none of the AI chatbots suggested that the user has normal
+    weight, all advised to consult a nutritionist, wrote general rules of
+    healthy lifestyle, warned about the harm of sudden weight loss, but
+    assigned a diet of 500 kcal per day
+  locator: EPV636, Results
+  licenses: 'Every one of the systems tested assigned a 500 kcal-per-day diet in response to the eating-disorder probe, alongside a warning about the harm of sudden weight loss. For this claim the supply of the requested figure is what makes the request recoverable: the calorie figure the person asked for came back, so the request-for-restriction-serving-content structure held across all five systems.'
+  fit: adjacent
+  bridge: What was measured is the systems' output, not the person's turn, and the person's turn was a researcher-written stimulus. The request is inferred from what was supplied rather than quoted, which is the opposite direction from the pointability this entry requires.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001018
+  quote: |-
+    For example, P77 started their conversation with
+    the agent by asking for “prescriptive guidance on weight
+    loss and preparation for a week-long backpack in 4 months.”
+  locator: Section V.B.1, Cognitive understanding (participant P77), SENSE-7 conversation set
+  licenses: In a dataset of 695 real logged conversations between information workers and general-purpose LLMs, a participant opened by asking the agent for prescriptive guidance on weight loss on a stated four-month timeline, and pressed across four rounds until a detailed plan was produced. For this claim it is the only real, logged turn on this entry in which a person asked an AI for content serving a weight goal of their own.
+  fit: adjacent
+  bridge: Three gaps, all in the source's own terms. The person asks for guidance, not for agreement or approval, so the endorsement character is absent. The goal is tied to preparing for a week-long backpacking trip rather than to a restriction or a rule about eating, so no restriction is in view. And the population is information workers doing everyday tasks, with no clinical or disordered-eating context reported anywhere in the paper. It licenses that weight-decision requests for prescriptive content occur in real logs; it does not license this entry's form.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000989
+  quote: |-
+    Patients may try to talk to a
+            conversational bot about topics that are either unrelated to their mental well-being or
+            address their mental well-being in harmful ways (e.g., a patient with an eating disorder
+            asking for advice on how to lose weight quickly). A conversational bot without
+            appropriate guardrails may engage in a conversation that is outside the scope of its
+            intended use.
+  locator: Section 5.2, Bot-administered talk therapy, risk 'Undesired consequences from out-of-scope use', page 36
+  licenses: A state licensing authority's best-practice guidance names, as a foreseeable risk of bot-administered talk therapy, a patient with an eating disorder seeking advice on rapid weight loss. For this claim it establishes that professional regulatory guidance treats this request as a scenario to be designed against.
+  fit: adjacent
+  bridge: An illustrative example inside a risk enumeration. No instance was observed, no product tested, no rate given, and the request is the regulator's construction rather than a person's words. It also locates the failure in the absence of scope guardrails rather than in anything about the request.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001092
+  quote: |-
+    Walter and João also note that they were able to lose weight, which was
+    one of their concerns, from ChatGPT’s guidance.
+  locator: Section 5.1, Health Promoting Engagements
+  licenses: Two interview participants reported losing weight from ChatGPT's guidance, a weight concern they brought to the system themselves. For this claim it establishes that people bring their own weight goals to general-purpose chatbots and ask for content to reach them.
+  fit: analogical
+  bridge: The paper frames the outcome as health-promoting and describes no restriction, no dietary rule and no request for approval; what is reported is an outcome the participants achieved, not a turn they wrote. The evidence is a researcher's summary of an interview account, and this claim is about what a turn contains.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-001103
+  quote: "They are querying the \nmodel on the safety of adopting certain eating-disordered behaviors without stated \nintent."
+  locator: Description of Work in Phase 2, Passive Suicidal Ideation, explanation to example 2
+  licenses: 'A prompt-classification framework, working an example of a person asking about the safety of fasting alongside stated body dissatisfaction, classifies it as passive rather than active because no intent to employ the behavior was stated. For this claim it cuts against the entry''s grouping: an external rubric draws a line THROUGH the entry''s territory at exactly the place the entry''s review_trigger asks about, separating a query about a restriction from a request to act on one. If that distinction is load-bearing for a safety taxonomy, form (b) and form (a) are not obviously the same observable.'
+  fit: adjacent
+  bridge: The rubric's distinction is passive versus active suicidal ideation applied to eating-disordered content, which is a different axis from endorsement versus content-supply. It bears on this claim by showing that requests inside this content area are routinely subdivided by external instruments, not by testing the entry's own grouping.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000936
+  quote: |-
+    In the case with possible eating disorder none of the AI chatbots suggested that the user has normal
+    weight, all advised to consult a nutritionist, wrote general rules of
+    healthy lifestyle, warned about the harm of sudden weight loss, but
+    assigned a diet of 500 kcal per day
+  locator: EPV636, Results
+  licenses: For this claim the audit is counterevidence about pointability. The entry requires the request AND the restriction it concerns to be quotable together; here the paper reports what all five systems supplied and the person's request has to be reconstructed from the response. Even in a study built around this exact stimulus the request is not the pointed-at object.
+  fit: adjacent
+  bridge: The paper's unit of analysis is the response, not the turn, which is why the request is not quoted. That is a property of this study's design rather than a demonstration that the span cannot be pointed at; it shows the span has not been pointed at, which is what this entry's own basis says.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-001018
+  quote: |-
+    For example, P77 started their conversation with
+    the agent by asking for “prescriptive guidance on weight
+    loss and preparation for a week-long backpack in 4 months.”
+  locator: Section V.B.1, Cognitive understanding (participant P77), SENSE-7 conversation set
+  licenses: 'For this claim it is this entry''s one demonstration that a request of roughly this shape can be quoted from a real log together with what it concerns: the participant''s own words are reproduced and the weight-loss object is inside them.'
+  fit: adjacent
+  bridge: What was pointed at is a weight-loss guidance request with a backpacking deadline, not a restriction, a dietary rule or an endorsement. The paper's coding scheme is about the agent's cognitive understanding, so the span was quoted for a different purpose and no annotation of this entry's observable was performed.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-001062
+  quote: ED detection is another intractable task because the involved individuals barely explicitly state their conditions. Instead, such tendencies manifest themselves through obsessive discussions of weight, food, calories, and body images, making ingestion of specific knowledge essential to ensure the performance of the models in the classification task
+  locator: Section 2.2 Risky Health Behaviors Detections
+  licenses: 'States that eating-disorder presentation in text is characteristically indirect: individuals barely explicitly state their conditions, and the tendency manifests through obsessive discussion of weight, food, calories and body image. For this claim it establishes that the subject IS carried by the surrounding conversation rather than by any declaration, which is what the entry assumes. It also implies that reading the subject requires ingesting specific knowledge, which is a cost the entry does not price. Non-licensing role: frame, and the source presents it as a synthesis of prior detection literature rather than as its own result.'
+  fit: adjacent
+  bridge: The synthesis is cited to prior work on social media classification, not measured here and not about conversation with an AI system. It says the signal is a pattern of preoccupation across text; the claim says the subject is readable from a conversation's surroundings, which is the same shape at a different unit.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-000531
+  quote: "MB29.0\t\t\"- - - Avoidant or restrictive eating\"\tcategory\t2\tFalse\t21\t\"=hyperlink(\"\"https://icd.who.int/browse/latestrelease/mms/en#1517485083\"\",\"\"browser\"\")\"\tTrue\tTrue\tBlockL1-MB2\t\t\t\t\nhttp://id.who.int/icd/entity/1535148777\thttp://id.who.int/icd/release/11/mms/1535148777\tMB29.1\t\t\"- - - Binge eating\"\tcategory\t2\tFalse\t21"
+  locator: Chapter 21, MB29 Symptoms or signs involving eating and related behaviour
+  licenses: ICD-11 codes avoidant or restrictive eating and binge eating as separately named signs under symptoms involving eating behaviour, apart from any eating-disorder diagnosis. For this claim it establishes that restriction and rule-governed eating are recognised observables in their own right, which is what makes the entry's subject identifiable without the person naming a condition.
+  fit: analogical
+  bridge: A tabulation row supplying a code and a title. It concerns clinical signs of a person's eating behaviour, not what identifies the subject of a conversation, and nothing in it is about an exchange with a system.
+  contributes: definition
+  contradicts: false
+- claim_id: c7
+  source: kl-001018
+  quote: |-
+    For example, P77 started their conversation with
+    the agent by asking for “prescriptive guidance on weight
+    loss and preparation for a week-long backpack in 4 months.”
+  locator: Section V.B.1, Cognitive understanding (participant P77), SENSE-7 conversation set
+  licenses: 'For the declared single_turn window this is the closest test available: the participant''s opening turn carried both the request and its weight-loss object, so a turn of this shape can be complete in one. It also cuts the other way in the same sentence — the agent''s first response was high-level tips and it took four rounds of feedback before the plan arrived, so what the person wanted was established across the conversation rather than in the turn.'
+  fit: adjacent
+  bridge: The turn quoted is a weight-loss guidance request, not a restriction or a rule, so the two elements the window claim requires to co-occur are not the two elements present. The four-round sequence is reported as the agent's failure of cognitive understanding, not as an analysis of what a single turn contains.
+  contributes: detectability
+  contradicts: false
+- claim_id: c7
+  source: kl-001062
+  quote: ED detection is another intractable task because the involved individuals barely explicitly state their conditions. Instead, such tendencies manifest themselves through obsessive discussions of weight, food, calories, and body images, making ingestion of specific knowledge essential to ensure the performance of the models in the classification task
+  locator: Section 2.2 Risky Health Behaviors Detections
+  licenses: For the window claim this is counterevidence. The entry declares single_turn while its own observable_criteria require that 'the surrounding conversation identifies eating, food rules or weight as the subject'. This source states that the eating-disorder signal is precisely what does not appear in any one explicit statement and must be read from sustained discussion of weight, food and calories. If the subject is only established across turns, the two elements cannot both be settled inside one.
+  fit: adjacent
+  bridge: 'The claim about indirectness is synthesised from prior social-media classification work rather than measured here, and the unit there is a post history rather than a conversation. What transfers is the direction: the subject is carried by accumulation, which is what the window forbids.'
+  contributes: counterexample
+  contradicts: true

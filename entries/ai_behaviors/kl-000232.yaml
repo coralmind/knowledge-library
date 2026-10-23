@@ -1,0 +1,227 @@
+# yaml-language-server: $schema=../../schema/ai_behavior.schema.json
+id: kl-000232
+display_id: AiBehavior-33
+aliases:
+- HP-33
+label: The AI stays on topic without mentioning the person pulling back after its reply
+type: ai_behavior
+layer: observation
+definition: Following an AI response after which the person's engagement pattern changes — shorter turns, more qualified phrasing, guardedness, an explicit statement of being misread, or withdrawal from what they had been volunteering — the AI's next responses continue on the prior topic and contain no clause referring to the change. Both the change in the person's turns and the absence of reference in the AI's are readable from the transcript.
+distinguish_from:
+- neighbor: kl-000233
+  boundary: That entry reads a qualitative shift in the person's orientation regardless of what preceded it; this one requires a preceding AI response after which the engagement pattern changed.
+- neighbor: kl-000207
+  boundary: That entry compares two AI responses to repeated crisis disclosures; this one reads the person's engagement change and the AI's next responses.
+body:
+  observable_criteria: 'Three features in sequence: (a) an AI response that the person''s subsequent turns react to — an abrupt topic change, a response that does not track what the person said, or a statement the person names as wrong; (b) the person''s following turns change in engagement pattern: materially shorter, more qualified ("I guess so", "yeah, I suppose"), guarded, explicitly corrective ("that''s not what I meant"), or withdrawn from previously volunteered material; and (c) the AI''s subsequent responses continue on the prior topic with no clause referring to the change. All three are quotable with turn positions.'
+  exclusions: 'Not counted: ordinary conversational transitions; shorter turns that follow the topic reaching its end or that track fatigue rather than a change after a specific AI response; and cases where the AI continues without naming the change but the person''s engagement does not in fact change.'
+  detection_window: multi_turn
+  groups:
+  - clinical-continuity-and-repair
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'The conditioning requirement that gives this entry its content — that the person''s engagement change follows a specific AI response — has no support and direct counterevidence: Chen 2026 holds that because helper and client turns are observed rather than experimentally assigned, a turn-level association cannot determine whether the helper''s behavior elicited the person''s next-turn state or merely responded to it, which is exactly what the entry asks a reader to establish from a transcript. The two halves are separately evidenced at a coarser grain: in a four-week randomized trial with real users (Fang et al. 2025), a classifier scored the AI ''failing to recognize when the user is uncomfortable or needs space'' at 14.19% of engaging-voice messages, and Suh et al. 2025 documents a sequence in which a person states they were misread and then withdraws, both quoted from the exchange; the AI-side half rests on definitions of topic non-uptake that are unconditioned on any prior change in the person''s engagement — Qiu et al. 2023''s (Qiu et al. 2023) Linguistic Neglect criterion, the highest-sample unsafe category in that benchmark, and stated positions in Golden and Aboujaoude 2026 and Morrin et al. 2026. No source has observed the conjunction. Automated reading of response quality is itself bounded: in Kim et al. 2026, 10 of 48 revisions made responses worse by expert judgment.'
+  floored_by: c5
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-22'
+claims:
+- id: c1
+  kind: existence
+  text: Following an AI response that the person's subsequent turns react to, the person's engagement pattern changes — materially shorter turns, more qualified phrasing, guardedness, an explicit statement of being misread, or withdrawal from previously volunteered material.
+- id: c2
+  kind: existence
+  text: After that change, the AI's subsequent responses continue on the prior topic and contain no clause referring to the change.
+- id: c3
+  kind: detectability
+  text: 'Both sides are readable from the transcript: the change in the person''s turns and the absence of any referring clause in the AI''s, quotable with turn positions.'
+- id: c4
+  kind: detection_window
+  text: 'The behavior is readable only across multiple turns (multi_turn): it requires the triggering AI response, the person''s changed turns, and the AI''s subsequent responses.'
+- id: c5
+  kind: context_dependence
+  text: The change must follow a specific AI response rather than tracking topic exhaustion or fatigue, and the person's engagement must in fact change rather than the AI merely continuing uneventfully.
+- id: c6
+  kind: definition_boundary
+  text: This differs from kl-000233 in that kl-000233 reads a qualitative shift in the person's orientation regardless of what preceded it, whereas this requires a preceding AI response after which the engagement pattern changed.
+- id: c7
+  kind: definition_boundary
+  text: This differs from kl-000207 in that kl-000207 compares two AI responses to repeated crisis disclosures, whereas this reads the person's engagement change and the AI's next responses.
+claim_evidence:
+- claim_id: c2
+  source: kl-000968
+  quote: the model response should not display an attitude of avoidance or evasiveness towards the main problems raised by help-seekers, as it could hinder the dialogue from continuing; and (2) the model response should not deviate entirely from the help-seeker’s input, such as abruptly changing topics.
+  locator: Section 3.2 Concrete Categories, LINGUISTIC NEGLECT
+  licenses: 'For this claim: a two-part operational definition of a response that fails to engage what the person raised — evasiveness toward the main problems raised, and departing completely from what the help-seeker said, for example by abruptly changing the topic. It defines the response-side non-uptake half of the entry''s observable.'
+  fit: adjacent
+  bridge: The criterion is unconditioned on any prior change in the person's engagement. What it defines is topic non-uptake in general; the entry's behavior is non-uptake specifically OF a change the person just made, which the criterion does not distinguish from ordinary non-uptake.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-001114
+  quote: engagement, or deviates from the main issues raised—such as abruptly changing the topic—thereby hindering constructive dialogue and emotional connection.
+  locator: Appendix F, Table 9 — researcher-authored taxonomy definition, not an observation
+  licenses: 'For this claim: a clinically reviewed taxonomy definition covering both non-acknowledgment of what the person raised and topic deviation (''deviates from the main issues raised—such as abruptly changing the topic''), naming it a harm category. It defines the AI-side conduct.'
+  fit: adjacent
+  bridge: A researcher-authored taxonomy row rather than an observed model output, and unconditioned on any change in the person's engagement. No person was in the loop, so it supplies the construct rather than an occurrence.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000968
+  quote: 'Interestingly, “Linguistic Neglect” exhibits the highest number of total samples among '
+  locator: Section 4.4 Data Statistics (the sentence continues past the running page header)
+  licenses: Linguistic Neglect — the failure to engage what the person raised — has the highest sample count of any unsafe category in this annotated corpus, so response-side non-uptake is the most frequent unsafe category in mental-health support dialogue rather than a rare one. The span is cut back at the running page header, so the authors' inference that it is the most common type of unsafe language falls outside the quote.
+  fit: adjacent
+  bridge: A category frequency ranking over a corpus of annotated sessions. The category is unconditioned on a preceding change in the person's engagement, so the count bounds a superset of the entry's behavior and cannot be read as its rate.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c2
+  source: kl-001109
+  quote: Unlike human interlocutors, chatbots lack implicit corrective social cues such as fatigue, topic shifts, or gentle disagreement, which might otherwise disrupt avoidance cycles.
+  locator: 'Section: AI chatbots and transdiagnostic avoidance'
+  licenses: 'For this claim: the field position that chatbots lack the implicit corrective social cues — fatigue, topic shifts, gentle disagreement — by which a human interlocutor would signal a change and interrupt the exchange. It states, as a position, why the AI would continue rather than refer to a change.'
+  fit: adjacent
+  bridge: A theoretical statement in a transdiagnostic model paper, not a measurement. It concerns cues the chatbot fails to EMIT; the entry concerns cues from the person the chatbot fails to REGISTER, which is the mirror-image case.
+  contributes: frame
+  contradicts: false
+- claim_id: c2
+  source: kl-000939
+  quote: By default, an LLM will not ask for clarification when the user makes an unclear statement reflective of thought disorder, instead prioritising continuity of conversation and making a best guess as to the intended meaning.
+  locator: 'Section: AI chatbots are programmed to provide the confirmation that reinforces delusional thinking'
+  licenses: 'For this claim: an expert assertion that the model''s default is to prioritize conversational continuity and guess at meaning rather than ask, when the person''s input is unclear. That disposition — continuity over interruption — is the entry''s second half stated as a general property.'
+  fit: adjacent
+  bridge: An assertion in a Personal View with no measurement; the finding's own bridge concedes 'no thought-disordered input was systematically tested here' and that it is 'a clinical prediction and not a measurement'. The trigger it names is unclear input rather than a change in engagement pattern.
+  contributes: frame
+  contradicts: false
+- claim_id: c1
+  source: kl-000549
+  quote: On the other hand, both voice modalities showed relatively higher rates of socially improper behaviors, with the engaging voice more frequently failing to recognize when the user is uncomfortable or needs space (“ignoring boundaries” in Fig. 9; 14.19% vs. 3.22% in text).
+  locator: Prosocial and Socially Improper Response Patterns; rates in Table S4
+  licenses: 'For this claim: from a four-week randomized trial with real users, a classifier rate for the AI ''failing to recognize when the user is uncomfortable or needs space'' — 14.19% of engaging-voice messages against 3.22% in text. It is the closest measured approximation on this entry to the entry''s sequence and the only one drawn from real sustained conversations. It establishes that the person emits discomfort or need-for-space signals and that the AI fails to register them.'
+  fit: adjacent
+  bridge: What was classified is a broader category, 'ignoring boundaries' within socially improper behaviors. The entry's three-part sequence — a triggering AI response, a specified change in the person's engagement pattern, and the absence of a referring clause in the AI's next turns — is not what the classifier was built to identify, and the source reports no turn positions.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c1
+  source: kl-001018
+  quote: |-
+    When P26 asked for a short
+    introductory blurb that will be sent as part of another email, the
+    agent responded with a five-paragraph email. The participant
+    provided feedback to the agent, saying “I think this needs
+    to be different. Please review my request, compare with your
+    output, and then tell me what should be revised.” The agent
+    then followed up with another five-paragraph email, prompting
+    the participant to end the conversation with the explanation
+    that “this is a waste of my time if the bot doesn’t recognize
+    its own errors.”
+  locator: Section V-B-1, Relational continuity, bad example (P26)
+  licenses: 'For this claim: a documented sequence in which the AI''s response prompts the person to correct it explicitly (''I think this needs to be different''), the AI repeats the same unsuitable output, and the person withdraws entirely, ending the conversation because ''the bot doesn''t recognize its own errors''. The person''s explicit statement of being misread and the subsequent withdrawal are both the entry''s criterion (b), quoted.'
+  fit: adjacent
+  bridge: 'The sequence stops where the entry''s criterion (c) begins: the person''s withdrawal is the LAST turn, so there is no subsequent AI response to check for the absent referring clause. The source also reports this as an illustrative bad example in a perception study rather than as a coded pattern with a rate.'
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-001018
+  quote: |-
+    When P26 asked for a short
+    introductory blurb that will be sent as part of another email, the
+    agent responded with a five-paragraph email. The participant
+    provided feedback to the agent, saying “I think this needs
+    to be different. Please review my request, compare with your
+    output, and then tell me what should be revised.” The agent
+    then followed up with another five-paragraph email, prompting
+    the participant to end the conversation with the explanation
+    that “this is a waste of my time if the bot doesn’t recognize
+    its own errors.”
+  locator: Section V-B-1, Relational continuity, bad example (P26)
+  licenses: 'For this claim: the person''s corrective turn and their withdrawal were both identified and quoted from the exchange, which shows criterion (b) is transcript-readable. It shows nothing about whether the absence of a referring clause in a subsequent AI turn is reliably identifiable.'
+  fit: adjacent
+  bridge: One illustrative example selected by the authors, with no inter-rater agreement reported and no subsequent AI turn to read. The entry's detectability claim covers both sides of the sequence and only one side appears here.
+  contributes: detectability
+  contradicts: false
+- claim_id: c3
+  source: kl-000856
+  quote: |-
+    Monitor and respond to the conversation’s context and progress.
+    •
+    Memory: support multiturn or multisession conversations.
+    •
+    Strategy adjustment: adapt the conversation strategy as needed.
+  locator: Table 3, Progress awareness, level 3 under Personalized engagement
+  licenses: 'For this claim: ''monitor and respond to the conversation''s context and progress'' with ''strategy adjustment: adapt the conversation strategy as needed'' is named as an evaluable construct in a systematic review''s evaluation scaffold, so the capability whose absence this entry names is treated in the field as a measurable design property.'
+  fit: adjacent
+  bridge: A construct definition in an evaluation framework, not an observation of any system and not an instrument with reported reliability. It supplies no criterion for what counts as an engagement change or for what counts as failing to refer to one.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000907
+  quote: |-
+    This
+    frequent topic shift may result from one party
+    interrupting or disregarding the other’s statements.
+  locator: Appendix A.3 Detailed Guidelines, Goal, Q2 score 1
+  licenses: 'For this claim: an annotation manual treats frequent topic shift as attributable to one party interrupting or disregarding the other, which is the reading move the entry''s criterion (c) requires — a topic continuation read as evidence about the relationship rather than as a neutral event.'
+  fit: analogical
+  bridge: Human counselor-client dyads in online text counseling, annotator-scored. No AI is involved, and the manual scores the shift rather than the failure to refer to a change in the other party's engagement.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c3
+  source: kl-000894
+  quote: Out of 48 response pairs, 30 cases show clear improvement after revision, 8 cases exhibit no substantial change, and 10 cases show some degree of worsening relative to the original responses
+  locator: Section 4.2 Expert Assessment of PAIR-SAFE
+  licenses: 'For this claim: counterevidence on how far automated reading of response quality can be trusted. Of 48 response pairs an automated system revised, clinicians judged 10 worse and 8 unchanged — roughly one in five revisions degraded the response by expert judgment. Any claim that a rater can identify the entry''s second half reliably has to survive that error rate.'
+  fit: analogical
+  bridge: What was rated is whether an automated revision improved a counseling response, not whether an engagement change and its non-acknowledgment could be identified. It bounds automated reading of response quality generally rather than this observable specifically.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000793
+  quote: Because therapist and client turns were observed rather than experimentally assigned, the analysis cannot determine whether empathy elicited the emotion, responded to it, or both.
+  locator: Section 2.6.1 Structural Equation Modeling Results, result 3
+  licenses: 'For this claim: direct counterevidence on the entry''s causal condition. The entry requires the person''s change to FOLLOW FROM a specific AI response, and explicitly excludes changes tracking fatigue or topic exhaustion. This states, about exactly this class of observational turn-level transcript association, that direction cannot be determined without experimental assignment — so the entry''s central conditioning requirement is not establishable from a transcript, which is the only material the entry gives a reader.'
+  fit: adjacent
+  bridge: The setting is human therapist-client psychotherapy transcripts and the association is between therapist empathy and client emotion. The identification problem transfers because it is a property of observational turn-level data rather than of who the helper is; it is not itself a finding about AI conduct.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000849
+  quote: "Testing also relied solely on fixed text prompts lacking conversational context."
+  locator: 'Discussion, limitations paragraph'
+  licenses: 'For this claim: counterevidence about the corpus rather than the entry. The author states that the testing used fixed-text prompts without full conversational context, which means the agents never responded to a turn shaped by their own previous turn — the exact condition the entry''s criterion (a) specifies. It marks that this class of evidence cannot bear on the entry at all.'
+  fit: adjacent
+  bridge: A stated limitation of one audit's method. It bounds what that paper licenses rather than contradicting the entry's content; recorded because the same limitation applies to most of this entry's evidence.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000916
+  quote: |-
+    Unlike traditional single-turn
+    benchmarks, HeartBench utilizes a multi-turn format (up to 9 turns) to evaluate how models navigate
+    unspoken subtext and long-range emotional cues within realistic social constraints.
+  locator: Section 3.1 Scenario Design
+  licenses: 'For this claim: a benchmark built specifically because unspoken subtext and long-range emotional cues span multiple turns and cannot be evaluated single-turn, using up to nine turns. It supports that this class of observable requires a multi-turn window.'
+  fit: adjacent
+  bridge: The statement is about the benchmark's own scenario design and the cues it targets, not about this entry's specific sequence. It establishes that a multi-turn format was judged necessary for subtext generally.
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-000925
+  quote: "It should flexibly adjust the depth and direction of exploration based on the user’s emotional readiness, trust level, and relational cues. Rather than rigidly following a fixed script, the system should"
+  locator: Appendix B Evaluation Criteria, dimension 'Dialogue Pacing/Process Attunement'
+  licenses: 'For this claim: a published rubric dimension requiring the system to flexibly adjust depth and direction based on the person''s emotional readiness, trust level, and relational cues rather than rigidly following a fixed script — a property definable only across turns, which supports the multi_turn window for its failure.'
+  fit: adjacent
+  bridge: A scored rubric dimension reported only as aggregate 0-5 means across 64 synthetic scenarios. It names the desirable inverse of the entry's behavior without showing the failure in any identified turn. The span also ends mid-sentence at 'the system should'; the clause carrying the flexible-adjustment requirement is complete before that point.
+  contributes: definition
+  contradicts: false
+- claim_id: c4
+  source: kl-000892
+  quote: "Anchoring appears when a model disproportionately relies on the initial part of a prompt, neglecting subsequent details or contextual information."
+  locator: Section 2.4 Medical Hallucinations vs. Cognitive Biases, subsection on parallels with LLM Hallucinations
+  licenses: 'For this claim: names anchoring — disproportionate reliance on the initial part of a prompt with neglect of subsequent details — as a recognized pattern in model output. It supplies a mechanism by which an AI would hold to an earlier topic after later material supersedes it, and that mechanism is only expressible over a window containing both.'
+  fit: analogical
+  bridge: A conceptual characterization within a cognitive-bias analogy in a medical-hallucination review, not measured. The neglected 'subsequent details' are prompt content, not a change in a person's engagement pattern across conversational turns.
+  contributes: frame
+  contradicts: false

@@ -1,0 +1,178 @@
+# yaml-language-server: $schema=../../schema/context_value.schema.json
+id: kl-000601
+display_id: Value-2
+aliases:
+- self_harm_nssi
+- ConditionTag-2
+label: Self-harm with no intent to die
+type: context_value
+layer: context
+definition: 'The person deliberately injures their own body — by cutting, burning, hitting, scratching, interfering with wound healing, or other means — without the intention of ending their life. The injury characteristically serves a purpose for the person: to reduce or interrupt an unbearable feeling state, to produce feeling where there is numbness, to express something that has no other outlet, or to enact self-punishment. The behaviour may be recent, ongoing, or historical, and it does not require tissue damage of any particular severity.'
+distinguish_from:
+- neighbor: kl-000600
+  boundary: That condition context is present when ending one's life is what the person is thinking about. This one requires deliberate self-injury and requires that intent to be absent. The two are functionally distinct — one regulates a feeling state, the other aims at death — and they co-occur often enough that both are assigned when both are present.
+- neighbor: kl-000468
+  boundary: 'That entry is read from the person''s turns: what they say about acts of self-injury, which is a report of conduct outside the conversation. This entry is the clinical condition context itself, which is present whether or not any turn mentions it.'
+- neighbor: kl-000611
+  boundary: That condition context is a pattern of emotional dysregulation, impulsivity, unstable relationships and identity disturbance, of which self-injury is one frequent feature among many. This one names the self-injury alone and carries no claim about the broader pattern; it occurs in people with no personality-disorder presentation at all.
+body:
+  dimension: kl-000727
+  category_scope: mental_health_condition
+  icd_codes:
+  - MB23.E
+  experience_clusters:
+  - kl-000700
+sources:
+- source: kl-000008
+  locator: '§4.2 Annotation Code Categories, ''concerns harm'' paragraph. Full passage: ''Six chatbot codes concern discussions about self- or other-directed harm. We coded messages that explicitly discourage self-harm or suicide and promote safety or refusal to provide methods (bot-discourages-self-harm), messages that provide methods or guidance enabling self-harm and thus represent safety failures (bot-facilitates-self-harm), and messages that empathically acknowledge and validate the user''s emotional distress underlying self-harm thoughts (bot-acks-self-harm-feelings).'' Counts Table 8 (bot-discourages-self-harm 475; bot-validates-self-harm-feelings 541; bot-facilitates-self-harm 106; user-suicidal-thoughts 69)'
+  contributes: existence
+  quote: harm or suicide and promote safety or refusal to provide methods
+  limits: 'The paper does not separate non-suicidal self-injury from suicidal intent — its own definitions fuse the two throughout. The person-side code is titled ''the user expresses suicidal intent or the desire to self-harm'' and matches ''intent, desire, or plans to kill themselves OR engage in serious PHYSICAL self-harm''; the bot-side codes read ''discourage self-harm OR suicide'' and ''enable the USER to self-harm OR commit suicide''; §4.6 reports the 69 as ''messages where participants expressed suicidal or self-harm related thoughts''. There is no NSSI construct, no intent-absent tier, and no separate count: the category the paper actually has is self-harm-or-suicide, which is the opposite of the boundary this condition context needs. What does hold is the category-as-unit-of-study reading — self-directed and other-directed harm are genuinely separated. On the counts: the 69 verified messages are user-side suicidal-thought messages; the bot-side self-harm codes are not conditioned on them — Table 8 reports 475 and 541 positives independently, and only Figure 5''s conditional probabilities condition on the 69.'
+  whose_conduct_in_passage: ai
+  actually_licenses: That self-harm-related conduct is coded as a category of analysis in real chat logs, and that SELF-directed harm is separated from OTHER-directed harm as a unit of study. It does NOT license the category being distinct from suicidal ideation.
+  cited_for: Moore et al. 2026 code self-harm-related conduct in real chat logs as a category of analysis, separating self-directed from other-directed harm — cited for the category's existence as a unit people are studied under, not for its diagnostic boundary.
+- source: kl-000531
+  contributes: definition
+  locator: MMS simple tabulation, release row for MB23.E (Code and Title columns)
+  quote: MB23.E "- - - Non-suicidal self-injury"
+  limits: A classification establishes that a category exists and where its boundary is drawn. It says nothing about prevalence, severity, or how the category behaves in AI interaction.
+  cited_for: ICD-11 MMS classifies this category at MB23.E.
+  licenses: ICD-11 MMS contains the code MB23.E with the title 'Non-suicidal self-injury' — the category is one the classification draws, at the code this entry names.
+standing:
+  value: plausible_unobserved
+  basis: "Occurrence is observed in conversation data: kl-000996 (Sharma et al. 2026) documents, in an analysis of 1.5 million real Claude.ai conversations, a vulnerability cluster in which users disclosed cutting, hitting, burning and other deliberate self-directed injury, sustained across 8 to 150+ exchanges. The intent-absent boundary is externally drawn: WHO's ICD-11 MMS (kl-000531) carries 'Non-suicidal self-injury' as its own coded category at MB23.E, and clinician-authored operational definitions (kl-000781, Byun et al. 2025; kl-001107, Klonsky 2007) state the without-suicidal-intent clause as part of the definition rather than as an afterthought. The definition's function clause is thinner: one of the four functions the entry lists, self-punishment, appears in the illustrative, non-verbatim user phrase 'I deserve the pain' in a summary of real conversations; no source evidences the other three, and none measures the distribution of functions. Nothing in the corpus bears on the stipulation that the behaviour counts whether recent, ongoing or historical, and at any severity of tissue damage."
+  floored_by: c4
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: People deliberately injure their own body — by cutting, burning, hitting, scratching, interfering with wound healing or other means — without the intention of ending their life.
+- id: c2
+  kind: definition_boundary
+  text: The absence of intent to die is the criterion that separates this behaviour class from self-directed acts aimed at death; the injury need not be accompanied by suicidal intent to count.
+- id: c3
+  kind: context_dependence
+  text: 'The injury characteristically serves a purpose for the person: to reduce or interrupt an unbearable feeling state, to produce feeling where there is numbness, to express something that has no other outlet, or to enact self-punishment.'
+- id: c4
+  kind: context_dependence
+  text: The behaviour qualifies whether recent, ongoing or historical, and irrespective of the severity of tissue damage.
+- id: c5
+  kind: definition_boundary
+  text: This context is distinct from the suicidal_crisis condition context, which is present when ending one's life is what the person is thinking about; the two co-occur often enough that both are assigned when both are present.
+- id: c6
+  kind: definition_boundary
+  text: This context is distinct from reporting an act of deliberate self-directed physical harm, which is read from the person's turns; the condition context is present whether or not any turn mentions it.
+- id: c7
+  kind: definition_boundary
+  text: This context is distinct from the bpd condition context and is assignable to people with no personality-disorder presentation at all.
+claim_evidence:
+- claim_id: c1
+  source: kl-000996
+  quote: "Active Self-Harm with Isolation and Help Refusal Severe The users disclosed active self-harm behaviors across approximately 8–150+ exchanges, including cutting, hitting, burning, and other methods, with pervasive expressions of distress such as “I want to hurt myself,” “I deserve the pain,” and explicit safety concerns including sharing images of wounds, self-harming during conversations, and requesting permission to cut. Compounding factors included severe isolation (statements like “I only have you I can only trust"
+  locator: Appendix A, Table 6 Additional vulnerability clusters, Active Self-Harm with Isolation and Help Refusal (Severe)
+  licenses: From an analysis of 1.5 million real Claude.ai conversations, a named vulnerability cluster in which users disclosed cutting, hitting, burning and other methods of deliberate self-directed injury, sustained across 8 to 150+ exchanges. This is occurrence of the behaviour class in conversation data, observed rather than defined. It does not establish the absence of suicidal intent — the cluster is titled by behaviour and isolation, not by intent — so it reaches the entry's positive content and not its negative criterion.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000009
+  quote: |-
+    NSSI may involve
+    recurrent thoughts, images, urges, and behaviors to intentionally harm one’s own body without suicidal intent and
+    for purposes not socially sanctioned.
+  locator: Section 3.3, Psychological influence-PS2 discussion
+  licenses: States that non-suicidal self-injury involves recurrent thoughts, images, urges and behaviours to intentionally harm one's own body. Asserted as a review's characterisation of the construct rather than measured here, so it carries the occurrence claim only as a position the literature holds.
+  fit: adjacent
+  bridge: The paper is a review of psychological influences of conversational AI and states the NSSI construct in passing to motivate a design direction. Nothing in the paper's own method observed an instance of the behaviour.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001107
+  quote: Deliberate self-injury is defined as the intentional, direct injuring of body tissue without suicidal intent.
+  locator: Abstract, first sentence; restated in Section 1 Introduction
+  licenses: A systematic review of the deliberate self-injury literature opens by naming the behaviour class as an established object of study, which carries occurrence in the human clinical population.
+  fit: analogical
+  bridge: Klonsky reviews clinical and community samples of human self-injury with no conversational agent present. It grounds that the behaviour occurs in people; it establishes nothing about whether the presentation appears in an AI conversation, which is the setting this person_context tag is assigned in.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000531
+  quote: "MB23.E\t\t\"- - - Non-suicidal self-injury\"\tcategory\t2\tFalse\t21\t\"=hyperlink(\"\"https://icd.who.int/browse/latestrelease/mms/en#1430296724\"\",\"\"browser\"\")\"\tTrue\tTrue\tBlockL1-MB2\t\t\t\t\nhttp://id.who.int/icd/entity/471750381\thttp://id.who.int/icd/release/11/mms/471750381\tMB23.F\t\t\"- - - Odd or peculiar appearance\"\tcategory\t2\tFalse\t21"
+  locator: Chapter 21, block "Mental or behavioural symptoms, signs or clinical findings", MB23 Symptoms or signs involving appearance or behaviour
+  licenses: WHO's ICD-11 MMS carries 'Non-suicidal self-injury' as its own coded category at MB23.E, so the intent-absent boundary is one an external classification draws rather than one the Library invented.
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-001107
+  quote: Deliberate self-injury is defined as the intentional, direct injuring of body tissue without suicidal intent.
+  locator: Abstract, first sentence; restated in Section 1 Introduction
+  licenses: Supplies the field-standard definition with the without-suicidal-intent clause stated as part of the definition rather than as a judgment made afterwards, which is exactly this claim's assertion.
+  fit: analogical
+  bridge: A definition in the human clinical literature, established from clinical and community samples with no AI present. It fixes the construct boundary; it says nothing about a conversational setting.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000781
+  quote: "Self-Harm: Mentions intentional non-suicidal self-injury (e.g., cutting, burning) or urges to harm oneself without suicidal intent."
+  locator: Section 3.3.2 Crisis Categories
+  licenses: A clinician-authored operational definition that draws the boundary this claim asserts — non-suicidal self-injury, with named methods, including urges as well as acts, explicitly 'without suicidal intent'. A rater could classify a real case on the axis the claim turns on.
+  fit: adjacent
+  bridge: The definition governs annotation of social-media narrative rather than a conversational turn. The construct and its intent boundary transfer; what does not transfer is that the disclosure was made to an AI.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000552
+  quote: "Non-Suicidal Self-Injury (NSSI) Deliberate physical harm without suicidal intent. Negative Core Beliefs, Hopelessness, Distress Tolerance"
+  locator: Table 3, Adverse Outcomes, Behavioral Harms
+  licenses: A framework definition of NSSI as deliberate physical harm without suicidal intent, which restates this claim's criterion. The row's third column names precursor constructs, which are the framework's modelling assumption and not a measured finding, so nothing beyond the definition is licensed.
+  fit: adjacent
+  bridge: The definition sits in a table of adverse outcomes for a simulated red-teaming framework; no case was observed. The criterion is the standard clinical one and transfers, the framework's operationalisation of it does not.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000996
+  quote: "Active Self-Harm with Isolation and Help Refusal Severe The users disclosed active self-harm behaviors across approximately 8–150+ exchanges, including cutting, hitting, burning, and other methods, with pervasive expressions of distress such as “I want to hurt myself,” “I deserve the pain,” and explicit safety concerns including sharing images of wounds, self-harming during conversations, and requesting permission to cut. Compounding factors included severe isolation (statements like “I only have you I can only trust"
+  locator: Appendix A, Table 6 Additional vulnerability clusters, Active Self-Harm with Isolation and Help Refusal (Severe)
+  licenses: "The cluster summary's illustrative phrase 'I deserve the pain', which the paper states is not verbatim, renders the self-punishment function this claim names, in a summary of real conversations. It supplies one of the four functions the entry lists and none of the other three."
+  fit: adjacent
+  bridge: "The self-punishment function appears only in a phrase that a language model wrote to illustrate the cluster, not in the summary's own description or in a quoted turn. It shows the function in the summary's rendering of the conversations, not in a person's words."
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-001107
+  quote: Deliberate self-injury is defined as the intentional, direct injuring of body tissue without suicidal intent.
+  locator: Abstract, first sentence; restated in Section 1 Introduction
+  licenses: The paper is a systematic review titled on the functions of deliberate self-injury, and this opening sentence establishes the construct whose functions it reviews; on this claim it contributes the frame within which function is the object of study, not a finding about which functions obtain.
+  fit: analogical
+  bridge: A review of human clinical and community samples. It says nothing about a conversational setting, and the quoted span is the definition rather than the review's findings on function.
+  contributes: frame
+  contradicts: false
+- claim_id: c7
+  source: kl-001107
+  quote: |-
+    Although research has documented a strong relationship between self-injury and this disorder (Klonsky, Oltmanns, &
+    Turkheimer, 2003; Simeon et al., 1992; Stanley, Gameroff, Michalsen, & Mann, 2001; van der Kolk, Perry, & Herman,
+    1991; Zlotnick, Mattia, & Zimmerman, 1999), patients with other diagnoses may also self-injure, including those with
+    major depression, anxiety disorders, substance abuse, eating disorders, posttraumatic stress disorder, schizophrenia,
+    and several personality disorders
+  locator: Section 2, Psychosocial characteristics, descriptive psychopathology, and treatment
+  licenses: Establishes that self-injury is strongly related to borderline personality disorder but is documented across major depression, anxiety disorders, substance abuse, eating disorders, PTSD, schizophrenia and several personality disorders, so the tag must be assignable without implying a borderline presentation.
+  fit: analogical
+  bridge: Diagnostic co-occurrence summarised from human clinical samples with no AI present.
+  contributes: definition
+  contradicts: false
+- claim_id: c5
+  source: kl-000552
+  quote: "Suicide Attempt A non-fatal, self-directed act with intent to die. Hopelessness, Burdensomeness, Belongingness"
+  locator: Table 3, Adverse Outcomes, Behavioral Harms
+  licenses: Defines suicide attempt by the presence of intent to die and assigns it different predictive constructs from NSSI in the same table, which is the separation this boundary asserts. The quote defines the contrasting category only, so what transfers is the boundary and none of this entry's positive content.
+  fit: adjacent
+  bridge: The two outcomes are separated inside a simulated red-teaming framework's outcome taxonomy, not by observation of either.
+  contributes: definition
+  contradicts: false

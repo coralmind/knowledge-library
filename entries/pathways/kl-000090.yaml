@@ -1,0 +1,195 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000090
+display_id: Pathway-52
+aliases:
+- PS-25
+label: The AI keeps probing what the person already shared, offering nothing back, and they get very upset
+type: pathway
+layer: judgment
+definition: The response asks the person to elaborate content they have already disclosed, twice or more, with nothing offered back. The extraction is the observable.
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000230
+    role: amplifier
+  - kind: user_behavior
+    id: kl-000438
+    role: initiator
+  composition_type: trajectory
+  composition_instruction: The requests ask for more of what the person's account has already disclosed, and nothing is offered back across the run.
+  mechanisms: []
+  impacts:
+  - impact: kl-000031
+    onset_mode: new
+    horizon: immediate
+    sign: harmful
+    level_of_analysis: population
+    basis_kind: ASSERTED
+  - impact: kl-000030
+    onset_mode: new
+    horizon: immediate
+    sign: harmful
+    level_of_analysis: population
+    basis_kind: ASSERTED
+  - impact: kl-000035
+    onset_mode: new
+    horizon: immediate
+    sign: protective
+    level_of_analysis: population
+    basis_kind: VOCAB
+  experience_cluster_candidate: kl-000703
+sources: []
+standing:
+  value: theorized
+  basis: 'The nothing-offered-back half of the pattern has direct-fit counterevidence and no direct-fit support: Qi 2026 finds the modal LLM counsellor template is empathy followed by a question — something offered — and Liu et al. 2023 records that the field''s instrument scores questioning as a competency with no line drawn at repetition; three further findings describe the inverse behavior. The asking itself has been classified rather than observed in deployment: Baldo et al. 2026 fits directly, but its AI turns are model continuations generated on a rolling prefix of human transcripts, with the label assigned by an ontology-based judge. No source counts a repeated pair about the same disclosed content: Baldo et al. 2026''s descriptions of relentless, repetitive inquiry are aggregate characterisations over a move distribution, its three-times-human inquiry rate covers the inquiry move generally, and Volpato et al. 2026''s count of 42 of 75 transcripts concerns an opening question, which by position is not this pattern. No source examined deployed conversation data in a way that reaches these claims.'
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+distinguish_from:
+- neighbor: kl-000053
+  boundary: Both reach kl-000035. Here the response is kl-000230; there it is kl-000200. Here the person's turn is kl-000438; there it is kl-000408. A coder deciding between them reads what the response did, not the outcome.
+claims:
+- id: c1
+  kind: existence
+  text: An AI response asks the person to elaborate content the person has already disclosed.
+- id: c2
+  kind: existence
+  text: Such requests occur twice or more within one conversation -- the pattern is repetition, not a single request.
+- id: c3
+  kind: pathway_link
+  text: 'Nothing is offered back across those requests: the turns contain no reflection, interpretation, psychoeducation, skill, plan or other contribution from the AI alongside the request.'
+- id: c4
+  kind: detectability
+  text: The extraction is the observable -- the pattern can be identified from the conversation itself rather than from the person's report or from an outcome.
+- id: c5
+  kind: prevalence
+  text: The pattern occurs at some rate in some population of AI support conversations.
+- id: c6
+  kind: definition_boundary
+  text: 'This pathway is separable from kl-000053 by the participant pair that produces the impact: a coder deciding between them looks at what the response did, not at the outcome.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000770
+  quote: "we find models are relentlessly probe users during therapy sessions. We find many instances where, even if the patient has shared sufficient details to move the conversation forward, models continue pushing on the same topic whereas humans move to actionable content"
+  locator: Section 5.1 General Analysis of Move Distribution, 'Inquiry is the dominant LLM move'
+  licenses: The single best citation on this entry. Models 'continue pushing on the same topic' even after 'the patient has shared sufficient details to move the conversation forward' -- which is exactly asking the person to elaborate already-disclosed content, and the 'sufficient details' clause is what makes it already-disclosed rather than merely on-topic. Scored against a licensed-clinician baseline on the same conversational position, on real counseling transcripts, with the ontology validated by five licensed psychologists.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001069
+  quote: "Large language models often struggle to interpret the full meaning of patient responses when they encapsulate diverse information aspects, consequently leading to redundant symptom inquiries."
+  locator: Conclusion and Future Work, limitations
+  licenses: 'Names the same behaviour from the mechanism side and in the authors'' own limitations: models under-parse a reply that carries several aspects at once and consequently issue ''redundant symptom inquiries'' -- re-asking for what the person already gave. Independent confirmation from a different research group and a different task that the behaviour is real enough to state as a known limitation.'
+  fit: adjacent
+  bridge: A simulated psychiatrist agent questioning a simulated patient, with no rate reported and no person involved. The statement is a general limitation offered in the conclusion, not a measurement, and the redundancy concerns symptom items in a structured interview rather than disclosed content in a support conversation.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000874
+  quote: "In contrast, Replika’s responses were dominated by a few emotions, particularly curiosity (39.8%) and caring (20.7%), while expressions of anger, annoyance, disgust, nervousness, and remorse were nearly absent (each occurring in fewer than 1% of responses). Curiosity, the most frequent emotion, appears to function as a conversational strategy that elicits user elaboration and sustains engagement."
+  locator: Section 5 Emotion Analysis; Figure 2
+  licenses: Curiosity is the modal affective stance of a deployed companion app at 39.8% of responses, and the authors read it as a device that 'elicits user elaboration and sustains engagement' rather than as inquiry serving the person -- which is the entry's 'nothing offered back' character stated as the function of the behaviour. Adjacent because an emotion classifier's label is not a request to elaborate already-disclosed content.
+  fit: adjacent
+  bridge: GoEmotions primary-emotion proportions over 1,674 dialogue pairs generated by clinically validated simulated personas against the real Replika app. The classifier assigns an emotion to a response; it does not identify what the response asked about or whether that content had been disclosed. The authors' reading of curiosity as an engagement device is their interpretation, not a coded variable.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000770
+  quote: "we find models are relentlessly probe users during therapy sessions. We find many instances where, even if the patient has shared sufficient details to move the conversation forward, models continue pushing on the same topic whereas humans move to actionable content"
+  locator: Section 5.1 General Analysis of Move Distribution, 'Inquiry is the dominant LLM move'
+  licenses: '''Relentlessly probe'' and ''continue pushing on the same topic'' both denote a sustained pattern rather than a single turn, and the paper elsewhere names Sonnet as ''prone to the repetitive Inquiry pattern even when exposed to the ontology''. Adjacent because the span characterises the pattern in aggregate across many instances and never exhibits or counts a pair of consecutive requests, which is the entry''s actual criterion.'
+  fit: adjacent
+  bridge: The paper's unit is the move distribution over turns -- a share of moves per model, up to three times the human inquiry rate. A high marginal rate of inquiry is not the same variable as two or more requests to elaborate the SAME already-disclosed content in one conversation. Nothing in the paper counts the latter.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001069
+  quote: "DupDetect detects these duplicated topics in dialogue history t and deletes them from the dynamic diagnosis tree to prevent repetitive conversation."
+  locator: Methodology, DupDetect operation
+  licenses: The DupDetect component exists to delete already-covered topics from the diagnosis tree specifically to 'prevent repetitive conversation', which establishes that repetition over already-covered content is a recognised failure requiring dedicated machinery over the dialogue history -- and that engineers building multi-turn clinical questioning expected it to recur rather than occur once.
+  fit: adjacent
+  bridge: Evidence that the authors built a suppressor, not a measurement of how often the behaviour occurred. The setting is a simulated psychiatrist re-asking a topic in a synthetic interview. What transfers is that the failure is real enough to engineer against and that it is detectable only from the conversation history.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000770
+  quote: 'LLM candidates (14 of 16 labeled inquiry only):'
+  locator: Appendix Figure 15, Example 1 — client discloses a recently ended marriage and feeling extremely down and highly anxious
+  licenses: On one disclosure of depression following a marital breakup, 14 of 16 model continuations were coded INQUIRY ONLY -- the coding scheme's ten moves include shared understanding, interpretation, psychoeducation, skill building and goal setting, so 'inquiry only' is precisely the entry's 'nothing offered back', operationalised. The human clinician's turn at the same position was coded goal setting. This is the closest the corpus comes to the entry's third criterion. Adjacent because the sixteen are parallel samples of one next turn, not a sequence.
+  fit: adjacent
+  bridge: Sixteen alternative continuations were sampled to the same single disclosure and coded independently. That establishes the composition of a typical next turn (inquiry with nothing else in it) and cannot establish that two such turns followed each other in one conversation, which is what the entry asserts.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000967
+  quote: |-
+    we observe that counselor utterances
+    in some LLM-generated counseling datasets often
+    follow fixed, information-dense patterns, such as
+    expressing empathy followed by a question
+  locator: Section 1 Introduction
+  licenses: Cuts against the 'nothing offered back' criterion. The characteristic shape of counsellor utterances in LLM-generated counselling data is 'expressing empathy followed by a question' -- something IS offered before the question, and the authors describe the pattern as information-dense rather than extractive. Where the entry says the AI asks with nothing offered, the modal template in these corpora has an offering attached.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000915
+  quote: "Use appropriate questions to clarify feelings or explore the situation without limiting responses to yes/no or one-word answers."
+  locator: Appendix Table 1, Obtain Relevant Information row
+  licenses: Bounds c3 from the clinical side. The counselling competency 'Obtain Relevant Information' instructs the counsellor to use questions to clarify feelings or explore the situation, and models are scored HIGHER for doing so, with no line drawn at repetition or at content already given. The technique the entry treats as extractive when repeated is, in the instrument, a competency. That does not make the entry wrong, but it means the discriminating criterion is one the field's own instruments cannot express -- and no source on this entry draws it.
+  fit: analogical
+  bridge: 'A benchmark rubric describing what a human counsellor does, scoring model outputs against it. The agent is a human counsellor in the definition and a model in the scoring; neither is observed performing the entry''s pattern. The bridge is the finding''s own: ''the distinction our entries turn on is one this instrument cannot express.'''
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000770
+  quote: "we find models are relentlessly probe users during therapy sessions. We find many instances where, even if the patient has shared sufficient details to move the conversation forward, models continue pushing on the same topic whereas humans move to actionable content"
+  locator: Section 5.1 General Analysis of Move Distribution, 'Inquiry is the dominant LLM move'
+  licenses: The pattern was identified from the transcripts themselves by an annotation scheme with five licensed psychologists and a judge that matches expert agreement, and the 'sufficient details already shared' condition was read off the conversation rather than from any outcome or report. That is the entry's detectability claim demonstrated. Adjacent because what was made detectable is the inquiry move and its rate, not the entry's three-part conjunction.
+  fit: adjacent
+  bridge: The ontology codes ten therapeutic moves at turn level. It has no code for 'asks about content already disclosed' and none for 'twice or more'; the already-disclosed judgement enters only through the authors' prose. So the coding scheme establishes that turn-level move detection works, not that this pattern is detectable.
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-001077
+  quote: Evaluators also noted that some conversations relied too heavily on questions, repeated the client’s name or generic validation phrases, and occasionally moved toward solutions before sufficiently reflecting the client’s emotional experience.
+  locator: Section 'Analysis of Expert Evaluation'
+  licenses: Six clinicians reading 18 generated transcripts independently identified over-reliance on questions as a recurring weakness, which establishes that question-heaviness is something expert readers detect from a transcript without being prompted for it. Adjacent because 'relied too heavily on questions' is an impressionistic aggregate, with no count, no identification of the target content as already-disclosed, and no 'nothing offered back' condition.
+  fit: adjacent
+  bridge: An evaluators' note in an expert-evaluation section. Question-heaviness is a different variable from repeated requests to elaborate the same already-disclosed content, and the same sentence records the opposite failure alongside it (moving toward solutions before sufficiently reflecting).
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-001079
+  quote: "Upon evaluation, we find that GLM-4 scores the highest in Comprehensiveness, largely because its single-turn dialogues encompass vast information. A manual investigation reveals that GLM-4 prioritizes summarizing previous dialogues in each turn, accounting for its high scores in Comprehensiveness."
+  locator: Section 4.3
+  licenses: 'Bears on detectability by showing how a related turn-level property escapes automated scoring: GLM-4 scored highest on Comprehensiveness because it summarised prior dialogue every turn, and the authors found this only by manual investigation, not from the score. A caution that a metric can reward the very repetition-over-covered-content behaviour a reader would flag. Analogical: restating prior content is the opposite move from asking the person to restate it.'
+  fit: analogical
+  bridge: The behaviour measured is the model summarising, not the model asking. What transfers is the methodological point that per-turn repetition over already-covered material is invisible to, and can be rewarded by, the automated metric -- not any instance of the entry's pattern.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-000770
+  quote: "we find models are relentlessly probe users during therapy sessions. We find many instances where, even if the patient has shared sufficient details to move the conversation forward, models continue pushing on the same topic whereas humans move to actionable content"
+  locator: Section 5.1 General Analysis of Move Distribution, 'Inquiry is the dominant LLM move'
+  licenses: The paper's abstract states models over-use inquiry at up to three times the human clinician rate, and this span is the qualitative account of what that over-use consists of. It is the only rate on this entry anchored to a human baseline. Adjacent because the rate is of the inquiry move generally, which is the entry's pattern plus a great deal that is not.
+  fit: adjacent
+  bridge: Move-share over turns, with model continuations generated on a rolling prefix of human transcripts rather than observed in deployment. The denominator is all therapist turns and the numerator is all inquiry, neither of which matches the entry's unit.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c5
+  source: kl-000553
+  quote: |-
+    across 75 transcripts, we counted 42 conversations
+    where generative AI asked a personal question within its first 3 messages.
+  locator: Section 5.1.2 Personal Questions
+  licenses: 42 of 75 real support-conversation transcripts contained a personal question from the AI within its first three messages -- a counted rate for AI-initiated inquiry in genuine conversations, which is the outer bound within which this entry's pattern sits. Adjacent because an opening personal question is neither a second request nor about already-disclosed content; it bounds the pattern from above rather than measuring it.
+  fit: adjacent
+  bridge: The count is of conversations containing at least one personal question in the opening three messages, drawn from 24 participants' own chat transcripts. The entry requires two or more requests targeting content the person already gave, which by position cannot be what an opening question does.
+  contributes: prevalence
+  contradicts: false

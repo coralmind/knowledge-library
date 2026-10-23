@@ -1,0 +1,413 @@
+# yaml-language-server: $schema=../../schema/ai_behavior.schema.json
+id: kl-000251
+display_id: AiBehavior-48
+aliases:
+- HP-48
+label: The AI responds differently to the same situation when only the person's demographics differ
+type: ai_behavior
+layer: observation
+definition: 'Holding the clinical presentation constant and varying only a stated demographic characteristic, the AI''s responses differ in measurable properties: the specificity of resources named, the presence of engagement with what was disclosed, or the degree to which the response is formulaic. The behavior is a comparison across matched inputs and is not readable from a single transcript.'
+distinguish_from:
+- neighbor: kl-000228
+  boundary: kl-000228 concerns the AI's handling of identity content raised within a conversation; this entry is a differential across matched conversations that differ only in a demographic characteristic.
+- neighbor: kl-000213
+  boundary: kl-000213 is a single generic response where personalization was available; this entry requires the matched-pair comparison, and each response in the pair may be individually unremarkable.
+body:
+  observable_criteria: 'Requires a matched set, not a single transcript. Across two or more conversations that hold the clinical presentation constant and vary a stated demographic characteristic — such as a named race, religion, nationality, age, gender, sexual orientation, or disability — the AI''s responses differ in at least one measurable property: the number or specificity of named resources, the presence of content responsive to what was disclosed, or the proportion of the response that is formulaic. Pointable span: the matched responses, compared side by side.'
+  exclusions: Does not include differences that track an adaptation the person's stated context calls for, such as naming resources available in the person's stated country. The comparison is defined on matched presentations; where the presentations differ, the pattern is not available.
+  detection_window: cross_session
+  groups:
+  - identity-equity-and-stigma
+sources: []
+standing:
+  value: theorized
+  basis: 'The content claim is observed: Xiong et al. 2026 counterfactually relabelled real help-seeking conversations across race, gender, age, religion and socioeconomic status and found emotional-support quality inconsistent across subgroups; Chang et al. 2025 produced differing counselling content from controlled substitutions varying only race, gender or the patient''s name on otherwise identical clinical prompts; and Gabriel et al. 2024 found response empathy to mental-health help-seeking posts differing significantly by the poster''s race, the model widening a 12 percent human empathy gap for Asian posters to 17 percent. The differential is not universal: Sankar et al. 2026 found race and gender in the vignette not moving stigma rates, and Gausen et al. 2026 found demographics, language and modality contributing negligibly in its setting. The entry''s detection assertions are what the evidence does not carry: the claim that the behavior cannot be read without a matched set of conversations and the declared cross-session window both drew no support and several counter-readings, because every differential in the evidence base was surfaced by constructing a matched counterfactual set inside an evaluation rather than by observation across sessions, with the one deployed-population disparity found in accumulated real use reported by Shankar et al. 2026.'
+  floored_by: c3
+  as_of: '2026-09-05'
+lifecycle:
+  status: active
+  since: '2026-08-22'
+claims:
+- id: c1
+  kind: existence
+  text: Holding the clinical presentation constant and varying only a stated demographic characteristic, the AI's responses differ in at least one measurable property.
+- id: c2
+  kind: definition_boundary
+  text: The properties in which the responses differ are the specificity of resources named, the presence of engagement with what was disclosed, or the proportion of the response that is formulaic -- rather than some other property.
+- id: c3
+  kind: detectability
+  text: The behavior is not readable from a single transcript; identifying it requires a matched set of two or more conversations compared side by side.
+- id: c4
+  kind: detection_window
+  text: The behavior is readable within a cross-session window.
+- id: c5
+  kind: context_dependence
+  text: The differential holds in some conditions and not others -- it varies by deployment, by which characteristic is stated, and by how the system is configured.
+- id: c6
+  kind: definition_boundary
+  text: 'This entry is distinct from kl-000228 (kl-000228, response frame unchanged against an established cultural, developmental or processing context): kl-000228 concerns the AI''s handling of identity content raised within one conversation, while this entry is a differential across matched conversations.'
+- id: c7
+  kind: definition_boundary
+  text: 'This entry is distinct from kl-000213 (kl-000213, crisis response containing no reference to what the person disclosed): kl-000213 is a single generic response where personalization was available, while this entry requires the matched-pair comparison and each response in the pair may be individually unremarkable.'
+claim_evidence:
+- claim_id: c1
+  source: kl-001064
+  quote: These findings highlight significant fairness issues, suggesting that emotional support quality is inconsistent and biased toward specific demographics.
+  locator: Section 4.3 Dimensional Results, Fairness
+  licenses: 'The entry''s own design, run: real help-seeking conversations (ESConv) purged of demographic identifiers and implicit cues, then counterfactually relabelled across race, gender, age, religion and socioeconomic status, with the response scored on Fluency, Professionalism, Empathy and Helpfulness. The authors'' conclusion from that run is that support quality is inconsistent across demographic subgroups on the identical presentation. This is the one citation on this entry whose manipulation, unit and outcome are all the ones the entry names.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000791
+  quote: "prompts were given to the model with only race, gender, or name of the patient adjusted, models gave significantly different responses"
+  locator: Results, the bias paragraph
+  licenses: 'A controlled substitution on otherwise identical clinical prompts, varying only race, gender or the patient''s name, produced significantly different responses. The manipulation is exactly the entry''s: presentation held constant, one stated demographic characteristic varied, difference measured across the matched pair.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000791
+  quote: seling for White patients stressed the importance of empathy, whereas
+  locator: 'Results, the bias paragraph; the sentence opens ''Suggestions reflected implicit bias: coun-'' on the preceding line and closes ''counseling for Black patients focused on proper documentation to address medicolegal liability'' below'
+  licenses: 'Names what differed across the matched race conditions in the same red-teaming run: the counselling offered to White patients stressed empathy where the counselling for Black patients addressed medicolegal documentation. Engagement with what was disclosed is one of the three properties the entry enumerates, and this is a difference in it on identical clinical facts.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000886
+  quote: 'Black men received elevated irritability symptom scores: Gemini-3-Flash endorsed irritability for 37% of Black male patients compared to 22% of White male patients with equivalent overall severity.'
+  locator: Results, Symptom-level stereotyping (Table 23 and following paragraph)
+  licenses: A demographic label changed which symptoms a model attributed with overall severity held equivalent, at a 15-point gap on a single symptom. The counterfactual logic is the entry's and the control on presentation is explicit.
+  fit: adjacent
+  bridge: What the model produced is a PHQ-8 completion in the voice of a demographically labelled patient, so the model occupies the patient's role rather than the responder's. The entry's properties are properties of a reply to a person who disclosed something; symptom attribution while simulating the person is not one of them.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001048
+  quote: "In-depth analysis of advice-seeking queries (Appendix D.2 Figure 7) reveals that the exclusion probability of useful items varies significantly with attributes such as gender, age, and physical health. We adopt Fisher’s exact test with a binary partition of each attribute, and find that personalization systematically leaves out useful options and amplifies social stereotypes."
+  locator: Section 4.2, Preference Narrowing
+  licenses: On identical advice-seeking queries, the probability that a useful option is omitted varies significantly with the person's stated gender, age and physical health, tested per option with Fisher's exact test. Option omission is a difference in the specificity of what is named, which is the first of the entry's three properties.
+  fit: adjacent
+  bridge: The queries are general advice-seeking rather than a clinical presentation, so the presentation held constant is not a clinical one. The entry defines its comparison on a clinical presentation.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001048
+  quote: Physically unwell personas are cut off from higher-paying opportunities such as consulting, regardless of how the query is framed.
+  locator: Appendix D.2, third bullet under 'Narrowing is not random'
+  licenses: 'Names the omission concretely: a disclosed physical health limitation removes a whole option class from what the model presents, and the effect survives changes in how the question is framed, so it is not an artifact of one phrasing.'
+  fit: adjacent
+  bridge: Physical health status rather than one of the demographic characteristics the entry enumerates, and a career-advice rather than clinical presentation. The entry lists disability, which this is adjacent to but not identical with.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001068
+  quote: "Introducing user context generally increases benign refusals, and BIO+MH often yields the highest refusal rates (e.g., Haiku 4.5: 19.3% → 27.8% → 32.4%; Opus 4.5: 27.8% → 38.1% → 46.0%; Sonnet 4.5: 11.4% → 13.1% → 15.9%)"
+  locator: Section 4.3 Personalization Effects on Refusals, Benign tasks
+  licenses: 'A matched-pair design at the strictest grain on this entry: bio text identical but for one added sentence, paired at model x task across 176 tasks, with refusal rate rising monotonically as the sentence is added. Establishes that a single disclosed sentence about the person, with the request unchanged, measurably changes what the response does.'
+  fit: adjacent
+  bridge: The varied attribute is a mental health condition disclosure and the presentation is an agentic tool-use task, not a clinical presentation with a demographic characteristic varied. The paper's own ablation separates the mental-health cue from disability, which is the entry's nearest enumerated characteristic.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001068
+  quote: "For example, GPT-5.2 decreases from 62.3% (BASELINE) to 55.7% (BIOONLY) and 51.9% (BIO+MH); Opus 4.5 decreases from 59.5% to 50.7% to 44.6%"
+  locator: Section 4.2 Personalization Effects on Harm Scores, Benign tasks
+  licenses: 'The same matched design measured on completion rather than refusal: benign-task scores fall roughly ten to fifteen points as the disclosure is added with the task held constant, so the degradation is in what the response accomplishes and not only in whether it is given.'
+  fit: adjacent
+  bridge: 'Same gap as the sibling citation: the varied attribute is a mental-health disclosure on an agentic task, not a demographic characteristic on a clinical presentation. Scores are AgentHarm rubric scores assigned by a GPT-4o judge rather than measured properties of the text.'
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001096
+  quote: "messages [input prompts] involving women as perpetrators were frequently flagged as violations of platform terms, even if it was part of a therapeutic disclosure. However, when I said the perpetrator was a male, my session went on [nothing was flagged]”"
+  locator: 'Section 4.4, Risk: Gender, Cultural and Religious Bias, quoting P5'
+  licenses: 'A matched comparison the person ran on themselves inside a real deployment: the same therapeutic disclosure was flagged when a woman was named as perpetrator and proceeded when a male was. Flagged-versus-not is a measurable property of what the response did, and gender is one of the characteristics the entry enumerates.'
+  fit: adjacent
+  bridge: A single clinician's recollection of a self-run comparison reported in an interview, with n of one, no measurement and no control on what else changed between the two attempts. The entry's comparison is defined over a matched set; this is an anecdote with the shape of one.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000819
+  quote: |-
+    The model provides qualitatively different responses to identical clinical questions
+    depending on perceived user authority, without any mechanism to verify claimed credentials.
+  locator: Section 5.1 Key Findings, 'Authority impersonation is the dominant attack vector'
+  licenses: 'Establishes the entry''s claim structure in its general form: qualitatively different responses to identical clinical questions when one stated, unverifiable attribute of the user changes. It shows the dependency is real for stated user attributes on a held-constant clinical presentation.'
+  fit: adjacent
+  bridge: The varied attribute is a claimed professional credential, not a demographic characteristic. The entry names race, religion, nationality, age, gender, sexual orientation and disability, and authority is none of them.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001099
+  quote: |-
+    Black posters than White posters for the MHF-1
+    prompt (p = 0.01), the Clinician prompt (p < 0.01),
+    and the MHF-2 prompt (p < 0.02). For overall
+    empathy of GPT-4 responses the significant gap is
+    primarily between Black posters and the control
+  locator: Section 8.3, Auditing of GPT Responses
+  licenses: Response empathy to a mental-health help-seeking post differs significantly by the poster's race across three separate prompt framings including one instructing the model to answer as a clinician, so the differential is not an artifact of a single prompt.
+  fit: adjacent
+  bridge: 'The design is observational, not matched: 12,513 real Reddit posts stratified by a race GPT-4 inferred from each post''s own linguistic cues. Different posters wrote different posts, so the clinical presentation varies with the subgroup rather than being held constant, and the race is inferred rather than stated. The entry''s exclusions say in terms that where the presentations differ the pattern is not available.'
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001099
+  quote: "These differences can amplify biases from human peer-to-peer responses. For example, overall empathy for Asian posters in human peer-to-peer responses is 12% lower than White posters, but 17% lower in MHF-1 responses from GPT-4."
+  locator: Section 8.3, Auditing of GPT Responses
+  licenses: 'The model widens rather than merely inherits the disparity: a 12 percent human empathy gap for Asian posters becomes 17 percent in GPT-4''s responses on the same corpus. Amplification is what makes the differential a property of the AI''s conduct rather than of the material it was trained on.'
+  fit: adjacent
+  bridge: 'Same design gap as the sibling citation: inferred race on unmatched real posts, so the presentation is not held constant. The comparison here is additionally against a human baseline rather than between two demographic conditions on one input.'
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000776
+  quote: automated systems such as LLMs amplify existing stereotypes, which can lead to unjustified differences in simulated diagnoses and treatment plans for vignettes of patients with different ethnicities and genders
+  locator: Introduction, Background
+  licenses: 'A review''s characterization of the primary literature: LLM clinical output has been shown to differ by stated ethnicity and gender on otherwise matched vignettes. It reports that the entry''s comparison has been run and found a difference, without running it.'
+  fit: adjacent
+  bridge: A background sentence in a scoping review, summarizing other people's studies rather than reporting a result of its own, and the properties named are diagnosis and treatment plan rather than the entry's three. The entry's own standing rule discounts a source that reviews others' findings.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000861
+  quote: "Studies of both dedicated affect recognition systems and large language models have documented systematic tendencies to assign more passive emotional states (sadness, joy) to women, and more aggressive or dominant states to men, for identical stimuli or scenarios [Plaza-del-Arco et al., 2024a]."
+  locator: Section 3.3, Affect Detection
+  licenses: Reports that identical stimuli receive systematically different emotional labels depending on the demographic attribution attached to them, which is the entry's matched-input comparison run on an affect-attribution task.
+  fit: adjacent
+  bridge: Restated from a primary study rather than measured here, and the output measured is an emotion label assigned to the person rather than any property of a reply to them.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001057
+  quote: |-
+    Under neutral labels every model relies on
+    proxies with no information.
+  locator: Abstract
+  licenses: 'Establishes a stronger and stranger version of the dependency: model decisions shift with attributes correlated to a protected characteristic even when those attributes carry no predictive information at all, in every model tested, with the characteristic itself never stated.'
+  fit: adjacent
+  bridge: The task is a forced ranking of two synthetic numeric patient vectors, not a conversational response, and the characteristic is unstated and reaches the model only through correlates. The entry's comparison is defined on a stated characteristic and measures properties of a response.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000917
+  quote: "Treatment is disparate when, holding the user’s request and stated needs fixed, the agent offers narrower options, lower expectations, or less autonomy based on the user’s demographics."
+  locator: Section 3.1 Operational Definition
+  licenses: 'Supplies the operational definition the entry''s property list lacks: treatment is disparate when, holding the request and stated needs fixed, the agent offers narrower options, lower expectations or less autonomy based on the user''s demographics. Narrower options is the entry''s resource-specificity property stated in testable terms.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000791
+  quote: seling for White patients stressed the importance of empathy, whereas
+  locator: 'Results, the bias paragraph; the sentence opens ''Suggestions reflected implicit bias: coun-'' on the preceding line and closes ''counseling for Black patients focused on proper documentation to address medicolegal liability'' below'
+  licenses: 'Instantiates the engagement property on a matched race contrast: empathy for one group, medicolegal documentation for the other, on the same clinical facts. This is what ''the presence of engagement with what was disclosed'' looks like when it differs.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-001007
+  quote: "system and the content, quality, and diversity of the training data can significantly impact which \npeople and experiences the system can effectively understand, represent, and accommodate \n[S15,S17]. Biases and limitations introduced through these factors can lead to models that \nperform significantly worse for certain subpopulations compared with others, especially those \ndefined by disability, gender identity, race, social status, and ethnicity [S15,S33]."
+  locator: Results, Domain 1, subdomain 1.3 Unequal performance across groups
+  licenses: Places unequal performance across subpopulations, named by disability, gender identity, race, social status and ethnicity, as a defined risk category with training-data composition as its stated cause, which is the class the entry's property list is carving up.
+  fit: adjacent
+  bridge: A taxonomy subdomain defined over model performance in general, not over the three response properties the entry enumerates. It names the categories of person, not the categories of difference.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000834
+  quote: "assesses a tool’s capability to engage with users from diverse cultural backgrounds and emphasizes the need for content recognizing cultural and other identity differences"
+  locator: Body, equity and inclusivity dimension
+  licenses: Makes the tool's engagement with the person's cultural and identity context a scored dimension of the tool rather than a property of the user, which is the move the entry's property list depends on.
+  fit: analogical
+  bridge: An assessment instrument's scoring dimension, not a measurement and not a matched comparison. It supplies vocabulary for what could be scored and no evidence that anything differed.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000791
+  quote: "Racial biases were further incorporated when race was not relevant, such as listing socioeconomic factors as the number one reason for why a Black father might not be at bedside in the NICU"
+  locator: Results, the bias paragraph
+  licenses: Cuts against the claim. Race-linked content was introduced into a single response where race was clinically irrelevant, and the stereotyped attribution is legible in that one response without any comparison condition. Where the differential surfaces as content this specific, one transcript is enough to see it.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-001096
+  quote: "in one case, when a user from the Global South expressed distress because their behavior prioritized self-care but was in conflict with their family values, the LLM counselor prompted advice rooted in Western ideals of self-care and individual autonomy, responses that felt misaligned and dismissive of user’s explicitly stated cultural values."
+  locator: 'Section 4.4, Risk: Gender, Cultural and Religious Bias'
+  licenses: Cuts against the claim. A single case is reported as a legible instance of the response being keyed to the AI's default value system rather than the person's explicitly stated cultural values, identified without a comparison condition.
+  fit: adjacent
+  bridge: A clinician's account of one interaction in an interview study, offered as an illustration of a coded risk rather than as a detection result. It shows a reader judging one transcript, not a validated single-transcript detector.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000920
+  quote: |-
+    Screening criteria at reception — Presentation of proof of residence, verification of employment
+    certificate, classification as “high risk” if estimated annual income is below $800, visual assessment
+    of financial status based on appearance and attire, estimation of ability to pay based on accent and
+    clothing.
+  locator: Appendix F, Turn 2 model response (claude-3.5-haiku), English translation
+  licenses: Cuts against the claim. A single model output prescribing that ability to pay be judged from accent, clothing and appearance was scored 1 out of 10 by the benchmark from that one response alone, with no matched comparison anywhere in the procedure.
+  fit: adjacent
+  bridge: The output authors a discriminatory procedure rather than being a reply whose quality differs by the reader's demographic. It shows that demographically loaded harm is single-transcript detectable; it is not an instance of the entry's differential.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000917
+  quote: |-
+    Among
+    LLM-based guards, strong detection of overt bias
+    does not translate to benevolent bias: Granite
+    Guardian 4.1, for example, triggers on 93.1% of
+    OB dialogues but only 22.0% of BB, yielding
+    the largest overt–benevolent gap of 71.1 points.
+  locator: Section 4.4, Overt–benevolent detection gap; Table 3
+  licenses: Bears on the claim from the detector side. A guard trained on dialogue triggers on 93.1 percent of overtly biased dialogues and 22.0 percent of benevolently biased ones, so single-dialogue detection of disparate treatment is demonstrably possible and its failure is a function of tone rather than of the single-transcript unit.
+  fit: adjacent
+  bridge: The classified unit is a synthetic dialogue whose bias class was fixed at generation time, so the detector is scored against a construction rather than against an observed differential. It shows what a single-transcript detector achieves on constructed material, not on a real matched set.
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-001006
+  quote: This type of reporting would make systemic differences reflecting equity concerns readily apparent, for example, an intervention being less effective for Black users than for White users.
+  locator: READI Components, Equity
+  licenses: 'The nearest thing on this entry to a detection procedure operating over accumulated sessions rather than a constructed matched set: effectiveness, engagement and satisfaction data gathered before and after deployment and reported by demographic group, which the authors say would make systemic differences readily apparent.'
+  fit: adjacent
+  bridge: A reporting recommendation in a framework paper with no data of its own, and the signal recommended is outcome data aggregated across a deployed population rather than the response properties the entry names. It says what would surface a disparity, not that a cross-session set of conversations does.
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-000992
+  quote: "Algorithmic bias was empirically demonstrated by Sharma et al., with males, \nadolescents, and MENA users having systematically worse outcomes."
+  locator: Section 3.4.3, Ethical and Regulatory Concerns
+  licenses: 'Reports the one deployed-population result on this entry where a disparity was found in accumulated real use rather than in an evaluation harness: males, adolescents and MENA users had systematically worse outcomes across 15,531 users.'
+  fit: adjacent
+  bridge: A systematic review restating Sharma et al. rather than examining anything itself, and what was disaggregated is treatment outcome across unmatched real users, not response properties across a matched set. It establishes that a deployed corpus can surface a group disparity, and not that the entry's differential is readable in one.
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-001064
+  quote: These findings highlight significant fairness issues, suggesting that emotional support quality is inconsistent and biased toward specific demographics.
+  locator: Section 4.3 Dimensional Results, Fairness
+  licenses: Cuts against the declared window. The differential was surfaced by constructing a counterfactual matched set inside an evaluation harness -- one conversation purged of demographic cues and re-run under five relabelled conditions -- rather than by reading across a set of sessions. The window that made this behavior visible is a constructed matched set, which is not what cross_session names.
+  fit: adjacent
+  bridge: The paper declares no detection window and takes no position on deployment-time detection; the inference to the entry's window claim is mine, drawn from what the design had to construct in order to see the effect at all.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000791
+  quote: "prompts were given to the model with only race, gender, or name of the patient adjusted, models gave significantly different responses"
+  locator: Results, the bias paragraph
+  licenses: Cuts against the declared window. The difference was produced by adjusting race, gender or name on an identical prompt and comparing the outputs, which is a within-harness substitution rather than a reading across sessions.
+  fit: adjacent
+  bridge: 'As above: the paper makes no claim about detection windows. What it shows is the design that was required to elicit the difference, which is a matched substitution rather than an accumulation of sessions.'
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000820
+  quote: The 2 vignettes differed only in the gender of the main character. Each vignette was evaluated 10 times in ChatGPT-3.5, ChatGPT-4, Bard, and Claude, for a total of 80 evaluations, each in a new tab.
+  locator: Methods, 'Input Source'
+  licenses: Cuts against the declared window and names the alternative precisely. Two vignettes differing only in the main character's gender, each evaluated ten times in a fresh tab -- the entry's comparison is a paired identical-presentation design, and the pairing is across deliberately independent single sessions rather than across a person's accumulated sessions.
+  fit: adjacent
+  bridge: The paper describes this manipulation and then pools every result across the two vignettes, reporting no gender comparison anywhere. It documents the design the entry requires and supplies no finding from it.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000776
+  quote: Group fairness is evoked in 5/201 (2.5%) papers, some of which report disaggregated results based on sociodemographic features
+  locator: 'Results, Step 4: Model Development, Mentions of Bias and Clinical Utility Related Themes'
+  licenses: 'Cuts against the declared window from the reporting side: across 201 studies of LLM mental-health prediction, only five reported results broken out by sociodemographic group. Whatever window the behavior is readable in, essentially nobody has read it in one.'
+  fit: adjacent
+  bridge: A count of reporting practice in the prediction literature, not a detection result and not about conversational response quality. It bounds how much has been looked for rather than establishing what a window can carry.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-001064
+  quote: These findings highlight significant fairness issues, suggesting that emotional support quality is inconsistent and biased toward specific demographics.
+  locator: Section 4.3 Dimensional Results, Fairness
+  licenses: 'The size of the differential is a property of the deployment, not of the behavior: performance range across demographic subgroups is 0.020 to 0.040 for GPT-5.1 and 0.250 and 0.289 for Meditron3-70B and PsycoLLM, seven to eight times higher on the same task and the same relabelled conversations.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c5
+  source: kl-001099
+  quote: "The MHF-3 prompt context in Figure 2 is the only one for which we found no statistically significant difference in empathy across subgroups for GPT-4 (see Figures 2a, 2d and 2g). However, results are more mixed for GPT-3.5 and Mental-LLaMA."
+  locator: Section 9, Bias Mitigation
+  licenses: 'The differential is configurable rather than fixed: under one prompt context the empathy gap across racial subgroups was not statistically detectable for GPT-4, while remaining mixed for two other models. Whether the behavior appears depends on how the system is instructed and on which model is running.'
+  fit: adjacent
+  bridge: The subgroup comparison is the observational, inferred-race design on unmatched Reddit posts, so the presentation is not held constant. The null reported here inherits that limitation.
+  contributes: existence
+  contradicts: false
+- claim_id: c5
+  source: kl-001068
+  quote: we also ran a small ablation with alternative disclosures (physical disability and chronic health condition) for three models and two task contexts and found that these variants did not consistently reproduce the BIO+MH effects (Appendix A.4), suggesting that some disclosure-driven shifts may be specific to mental health cues rather than a generic response to adding any health-related sentence.
+  locator: Section 5 Discussion and Conclusion, Interpreting mental health disclosure effects
+  licenses: 'The differential is specific to the cue rather than generic to disclosure: substituting physical disability or chronic health condition into the same slot did not reproduce the effects, so which characteristic is stated determines whether the behavior appears at all.'
+  fit: adjacent
+  bridge: The varied characteristic is a health disclosure on an agentic task rather than a demographic characteristic on a clinical presentation, and the result is a null in an ablation on three models and two task contexts rather than a measured differential.
+  contributes: existence
+  contradicts: false
+- claim_id: c5
+  source: kl-000986
+  quote: "Additionally, because both previous work (Pescosolido et al., 2021; Moore et al., 2025) and our own findings show that race and gender do not affect the results, we now randomly sample one of the six possible demographic combinations for the vignettes rather than generating all of them."
+  locator: Section 3.1 Benchmark
+  licenses: 'Cuts against the behavior''s generality: race and gender in the vignette did not move stigma rates in this study or in the prior work it replicates, so on at least one measured property the demographic manipulation produced no difference.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000830
+  quote: Scenario was the only predictor that meaningfully improved accuracy over the 37.3% majority-class baseline (+5.3 pp; χ2(28) = 518.86, p < .001); demographics, language, and modality contributed negligibly
+  locator: Section 3.2, 'Scenario, not language or modality, is the primary driver of strategy choice'
+  licenses: 'Cuts against the demographic axis being the operative one here: demographics, language and modality contributed negligibly to predicting behavior where the situation did, on 3,152 queries from 49 countries.'
+  fit: adjacent
+  bridge: What was modelled is the person's identity-probing strategy, not the AI's response quality, so this constrains the demographic axis on the human side of the exchange rather than testing the entry's claim.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000797
+  quote: "In our experiment, we observed that the rate of crossing boundaries in English conversations was significantly lower than that in Chinese. This implies that the robustness of the model’s safety boundary varies systematically across different language environments."
+  locator: Section 5, Discussion and Limitations
+  licenses: Same models, same profiles and same breach criteria produced significantly different boundary-crossing rates in Chinese than in English, so which non-clinical attribute of the exchange is varied changes whether a safety difference appears.
+  fit: adjacent
+  bridge: The varied attribute is the conversation's language rather than a stated demographic characteristic, and the measured property is a breach rate rather than resource specificity, engagement or formulaicness.
+  contributes: existence
+  contradicts: false
+- claim_id: c5
+  source: kl-001054
+  quote: 'Moreover, the significant underperformance of Copilot, particularly for risk-averse and middle-aged investors, reveals a concerning pattern: LLMs may be least reliable for the very demographic groups most likely to seek and follow automated financial advice.'
+  locator: Results, Study 1, Financial performance analysis
+  licenses: Output quality varied with the person's stated age and disposition and was worst for the profile most likely to rely on the tool, so the differential is not uniform across the groups it touches.
+  fit: analogical
+  bridge: Financial advice scored as risk-adjusted portfolio return, with age and risk appetite as the stated characteristics. Neither the domain, the characteristic set nor the quality metric is the entry's; what carries across is the counterfactual claim structure.
+  contributes: existence
+  contradicts: false
+- claim_id: c6
+  source: kl-001096
+  quote: "In one interaction, a user discussed shame toward a ritual practice from a minority faith. The messages triggered an automatic warning, despite not violating any of the platform’s content policy."
+  locator: 'Section 4.4, Risk: Gender, Cultural and Religious Bias'
+  licenses: Bears on the boundary without settling it. A minority-faith disclosure drew an automatic warning that breached no stated policy, in a single interaction with no comparison condition -- which is the neighbour's territory, identity content handled within one conversation, rather than this entry's differential across matched conversations. It shows the two behaviors are separable in practice.
+  fit: adjacent
+  bridge: A single reported case in an interview study. Nothing here was written against the Library's distinction between these two entries, and no literature source could be.
+  contributes: definition
+  contradicts: false
+- claim_id: c7
+  source: kl-001087
+  quote: "Recent work on cultural prompting and cross-cultural empathy demonstrates that default LLM behavior often aligns more closely with Western conversational norms, and that targeted adaptation is required to improve perceived empathy for users from non-Western backgrounds [153]."
+  locator: TRANSLATIONAL RISKS, ETHICS, AND GOVERNANCE section, second risk category (bias amplification and inequity)
+  licenses: Bears on the boundary without settling it. Default model behavior aligning with Western conversational norms is a property of a single unchanged response frame, which is the neighbour's shape, and is offered as the condition that would produce a matched-set differential rather than as the differential itself.
+  fit: adjacent
+  bridge: A review's restatement of other work with no measurement of its own. As with the sibling boundary claim, no literature source was written against a distinction the Library drew between two of its own entries.
+  contributes: definition
+  contradicts: false

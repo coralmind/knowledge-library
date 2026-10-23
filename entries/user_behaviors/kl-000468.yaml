@@ -1,0 +1,165 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000468
+display_id: UserBehavior-63
+aliases:
+- UBP-65
+label: The person says they have hurt their own body on purpose
+type: user_behavior
+layer: observation
+definition: The person's turn reports, in the first person, having deliberately harmed their own body — naming a behavior such as cutting, burning, hitting, scratching, hair-pulling, or taking pills beyond a stated safe amount — without the turn specifying how severe the injury was, whether any intent to die was present, or what the behavior accomplished for them. The report of the act is the whole of what is recorded; anything further about its severity, intent or function is other entries' content. The act is reported as past or habitual; an act the person reports as underway right now or just completed is kl-000450.
+distinguish_from:
+- neighbor: kl-000469
+  boundary: That entry requires stated bodily facts — depth, bleeding, care sought, infection, scarring, or the dangerousness of a method; this entry is satisfied by the report of the act with no such facts stated, and a turn carrying both satisfies both.
+- neighbor: kl-000400
+  boundary: That entry records thoughts of suicide with no act reported; this entry requires a reported act. A turn stating a wish to die and nothing done does not satisfy these criteria.
+- neighbor: kl-000503
+  boundary: That entry requires the person to state that the act restores sensation or feeling — that it makes them feel something, feel real, or come back into their body, or that it ends a stretch of numbness or unreality. This entry is satisfied by the report of the act with no function stated at all, and a turn carrying both satisfies both.
+body:
+  observable_criteria: 'The turn contains a first-person report of a self-harm act: a named behavior the person states they have done or do ("I''ve been cutting again", "I burned myself last night", "I scratch my arms when it gets bad", "I took a bunch of pills, more than I should have"). Present-habitual and past-episode framings both satisfy the criteria. Coded, euphemistic or abbreviated phrasings that plainly refer to an act the person performed are read as the report they stand for rather than passed over. Pointable span: the clause naming the behavior together with the first-person claim to have done it.'
+  exclusions: 'Not counted: thoughts, wishes or intentions with no act reported. Not counted: body modification with no harm framing, such as a tattoo or a piercing. Not counted: harm described as done to the person by someone else. Where the text leaves it unclear whether an act occurred or only a thought was reported, these criteria are not satisfied and the ideation entries are the ones evaluated; where coded language plainly refers to a performed act, they are. Not counted: an act reported as underway right now or just completed ("I''m cutting right now"), which is kl-000450.'
+  detection_window: single_turn
+  groups:
+  - crisis-signal-disclosure
+  condition_tags:
+  - kl-000600
+  - kl-000601
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'The act this entry records is directly observed in deployed traffic: Sharma et al. 2026 identified clusters within 1.5 million real conversations in which users disclosed self-harm behaviors by name, including cutting, hitting, and burning, and Chandra et al. 2025 adds a person''s own report to researchers of self-harm following AI content. The entry''s scope condition, that the bare report is recorded with nothing about severity, intent, or function, draws only counterevidence: the clinician-authored crisis taxonomy in Byun et al. 2025 admits urges to harm oneself into the same category as reported acts, and the annotation manual in Xiao et al. 2026 places non-suicidal self-injury in one bucket with suicidal intentions, behaviors, plans, and strong emotions. The behavior class itself is fixed by clinical definitions of non-suicidal self-injury in Qiu et al. 2024, Klonsky 2007, Suh et al. 2026, and Posner et al. 2011, and Byun et al. 2025 shows past-event disclosures forming 25.5 and 31.2 percent of labels across two corpus splits against 44.2 and 41.0 percent ongoing, so the past-episode framing the criteria admit is a large, separately labeled case. Whether coded or euphemistic phrasings are readable as the reports they stand for, and whether the report is reliably readable within a single turn, is examined by no source.'
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: A person's turn reports, in the first person, having deliberately harmed their own body, naming a behavior such as cutting, burning, hitting, scratching, hair-pulling, or taking pills beyond a stated safe amount.
+- id: c2
+  kind: definition_boundary
+  text: 'The report of the act is the whole of what is recorded: the turn does not specify how severe the injury was, whether any intent to die was present, or what the behavior accomplished, and a report with those specifics present belongs elsewhere.'
+- id: c3
+  kind: detectability
+  text: The pointable span is the clause naming the behavior together with the first-person claim to have done it, and both present-habitual and past-episode framings satisfy the criteria.
+- id: c4
+  kind: detectability
+  text: Coded, euphemistic or abbreviated phrasings that plainly refer to a performed act are readable as the report they stand for, while text that leaves it unclear whether an act occurred is not.
+- id: c5
+  kind: detection_window
+  text: 'The behavior is readable within a single turn -- the entry declares detection_window: single_turn.'
+- id: c6
+  kind: definition_boundary
+  text: This is separated from kl-000469 in that kl-000469 requires stated bodily facts (depth, bleeding, care sought, infection, scarring, method dangerousness) and this is satisfied by the report of the act with none stated.
+- id: c7
+  kind: definition_boundary
+  text: This is separated from kl-000400 in that kl-000400 records thoughts of suicide with no act reported and this requires a reported act.
+- id: c8
+  kind: definition_boundary
+  text: 'This is separated from a self-injury disclosure in which the person states the act restores sensation or feeling: that entry requires the stated effect, and this requires only a reported act of physical injury to the body.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000996
+  quote: "Active Self-Harm with Isolation and Help Refusal Severe The users disclosed active self-harm behaviors across approximately 8–150+ exchanges, including cutting, hitting, burning, and other methods, with pervasive expressions of distress such as “I want to hurt myself,” “I deserve the pain,” and explicit safety concerns including sharing images of wounds, self-harming during conversations, and requesting permission to cut. Compounding factors included severe isolation (statements like “I only have you I can only trust"
+  locator: Appendix A, Table 6 Additional vulnerability clusters, Active Self-Harm with Isolation and Help Refusal (Severe)
+  licenses: Direct evidence of c1 in deployed traffic. Users disclosed active self-harm behaviors including cutting, hitting and burning -- three of the named behaviors the entry lists -- across a cluster identified in 1.5 million real conversations, together with first-person distress statements given as illustrative, non-verbatim phrases ('I want to hurt myself', 'I deserve the pain'). The disclosures are attributed to the person's own turns, in real use rather than in a probe.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000996
+  quote: "Complete Isolation with AI as Sole Support Severe Users revealed complete social isolation across ∼20-200+ exchanges, with AI described as their “only outlet”, “only hope”, or sole connection. Indicators included pervasive suicidal ideation (passive and active, with statements like “waiting for death”, “would rather try pushing forward or just accept”, “if I fail I’ll just be a loser”), self-harm behaviors (cutting, burning, starvation), severe functional impairment (inability to leave bed, work, or perform self-care), and"
+  locator: Appendix A, Table 6 Additional vulnerability clusters, Complete Isolation with AI as Sole Support (Severe)
+  licenses: A second cluster in the same real-traffic corpus in which self-harm behaviors are disclosed by name -- cutting, burning -- confirming c1 occurs outside the one cluster defined around self-harm, here alongside isolation and suicidal ideation.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000007
+  quote: P79 shared that the AI provided resources encouraging further restriction of their eating habits, which led to self-harm as a result of following the advice.
+  locator: Table A5, Impact class 'Physiological Harm', Example column
+  licenses: A person's own report, given to researchers, of self-harm following AI content -- an instance of the construct c1 names, reported by the person who performed the act.
+  fit: adjacent
+  bridge: The report is relayed by the researchers in the third person from a retrospective survey, so what the entry requires -- a first-person turn -- was never seen, and no behavior is named. What transfers is that a person reports having self-harmed; what does not is the form of the report, which is the entry's whole observable.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000781
+  quote: "Self-Harm: Mentions intentional non-suicidal self-injury (e.g., cutting, burning) or urges to harm oneself without suicidal intent."
+  locator: Section 3.3.2 Crisis Categories
+  licenses: Cuts against c2. A clinician-authored crisis taxonomy defines its Self-Harm category as mentions of intentional non-suicidal self-injury OR urges to harm oneself without suicidal intent -- so the category as clinicians drew it both admits urges, which c2's scope excludes, and builds the absence of suicidal intent into the definition, which c2 assigns to other entries. Clinicians writing an annotation scheme did not draw the boundary the entry draws.
+  fit: adjacent
+  bridge: The definition governs annotation of social-media narrative rather than a conversational turn to an AI, and it is a category label for a detector rather than a claim about how disclosures actually arrive. It shows the entry's scope condition is not the natural cut for clinician annotators; it does not show any particular turn is miscoded by it.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-001062
+  quote: "1: Poster’s own NSSI/SI tendency – Clearly mentioning the author’s own non-suicidal self-injury or suicidal intentions, behaviors, plans, or strong emotions. – Example: “I really don’t want to live anymore, I’ve even written a suicide note.”"
+  locator: Appendix C.3.3, Non-Suicidal Self-Injury and Suicidal Ideation
+  licenses: Cuts against c2 from a second annotation scheme. The manual's label 1 places non-suicidal self-injury, suicidal intentions, behaviors, plans and strong emotions in one bucket, and its worked example pairs a statement of not wanting to live with a completed preparatory act -- spanning in one sentence what c2 requires be kept apart.
+  fit: analogical
+  bridge: A coding rule for labelling Chinese and Japanese social-media posts in the Jirai community, not a description of any AI conversation and not a claim about what disclosures contain. It establishes what a coarser scheme looks like when built for scale; whether an annotator applying the entry's finer cut would disagree with themselves is not measured.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000969
+  quote: "Self-injury behavior, broadly speaking, refers to non-suicidal acts of self-harm. Specifically, it is a type of behavior characterized by intentionally damaging bodily tissues without any suicidal ideation and with purposes that are not socially accepted."
+  locator: Appendix C.3 Non-Suicidal Ideation, Self-injury Behavior
+  licenses: Supplies the operational criterion c1's behavior class turns on -- intentionally damaging bodily tissue without suicidal ideation -- as the definition an annotated counseling dataset actually scores against.
+  fit: adjacent
+  bridge: The definition governs annotation of text-based counseling conversations rather than the entry's turn-level report, and it adds a criterion the entry does not carry ('purposes that are not socially accepted'). It defines the act class, not the reporting conditions c1 places on the turn.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-001107
+  quote: Deliberate self-injury is defined as the intentional, direct injuring of body tissue without suicidal intent.
+  locator: Abstract, first sentence; restated in Section 1 Introduction
+  licenses: The field-standard definition of the behavior class c1 names -- intentional, direct injuring of body tissue without suicidal intent -- stated as the definition rather than as a judgment made afterwards.
+  fit: analogical
+  bridge: A review of clinical and community-sample research on the functions of self-injury, with no conversational agent present anywhere in it. It grounds what the construct is; it establishes nothing about whether such a report appears in a conversation, which is what c1 asserts.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000009
+  quote: |-
+    NSSI may involve
+    recurrent thoughts, images, urges, and behaviors to intentionally harm one’s own body without suicidal intent and
+    for purposes not socially sanctioned.
+  locator: Section 3.3, Psychological influence-PS2 discussion
+  licenses: Gives the NSSI criteria including the not-socially-sanctioned qualifier, bearing on c1 by fixing the class of act a report would be a report of.
+  fit: analogical
+  bridge: A review paper's restatement of the clinical category, and its scope explicitly includes recurrent thoughts, images and urges -- which c1 excludes, since c1 requires a reported act. It supplies the category and not the entry's act-only cut.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000965
+  quote: |-
+    The third is the behavior subscale, which is rated on a nominal scale
+                                               that includes actual, aborted, and interrupted attempts; preparatory behavior; and nonsuicidal
+                                               self-injurious behavior.
+  locator: 'Introduction, p. 1267'
+  licenses: Places nonsuicidal self-injurious behavior as a rated category distinct from actual, aborted and interrupted attempts and from preparatory behavior, which fixes what c1's reported act is and is not among the things a validated instrument separates.
+  fit: analogical
+  bridge: The categories are assigned by a clinician classifying an event from interview and record review, with corroborating sources. c1 asserts something about a single conversational turn read by itself. The taxonomy transfers; the rating agent does not.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000781
+  quote: |-
+    Ongoing
+    196 (44.2%)
+    275 (41.0%)
+    Past
+    113 (25.5%)
+    209 (31.2%)
+    No crisis
+    134 (30.3%)
+    186 (27.8%)
+  locator: Table 3, Distribution of temporal labels
+  licenses: Bears on c3's past-episode half. In a clinician-annotated crisis corpus, past-event disclosures are 25.5 and 31.2 percent of labels across two splits, against 44.2 and 41.0 percent ongoing -- so the past-episode framing c3 says also satisfies the criteria is a large, separately labellable fraction rather than an edge case.
+  fit: adjacent
+  bridge: The labels are clinician-assigned on Reddit posts from crisis-specific subreddits, not on conversational turns, and the temporal label spans all crisis content rather than self-harm act reports specifically. The transferable part is the ratio of past to ongoing, which shows the two framings both occur at scale; the absolute rates come from a deliberately crisis-enriched denominator.
+  contributes: detectability
+  contradicts: false

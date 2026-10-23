@@ -1,0 +1,529 @@
+# yaml-language-server: $schema=../../schema/ai_behavior.schema.json
+id: kl-000243
+display_id: AiBehavior-40
+aliases:
+- HP-40
+label: The AI answers a personal disclosure with a far longer, mostly informational reply
+type: ai_behavior
+layer: observation
+definition: Following a personal or emotional disclosure that carried no request for information, the AI produces a turn substantially longer than the disclosure and composed mainly of informational content — lists, explanations, or psychoeducational sections. The behavior is a measurable relation between what was disclosed and what was returned, readable from turn lengths and content composition.
+distinguish_from:
+- neighbor: kl-000221
+  boundary: kl-000221 concerns the warmth register of a response; this entry concerns its length and informational composition relative to the disclosure, and can fire on a warmly worded turn.
+- neighbor: kl-000227
+  boundary: That entry concerns acknowledgment wording repeated across turns; this entry is about the response's size and content type, measurable without reading its empathy.
+body:
+  observable_criteria: 'All of the following are readable from the transcript. (a) The person''s turn is a personal or emotional disclosure or narrative and contains no explicit request for information or for a detailed answer. (b) The AI''s turn is substantially longer than the person''s turn. (c) The AI''s turn is composed mainly of informational content — enumerated lists, explanatory sections, or psychoeducation — rather than of response to what was disclosed. Pointable span: the person''s turn and the AI''s turn, compared. The source''s calibration example: a turn running roughly five times the length of a brief emotional disclosure and carrying three or more distinct informational subsections.'
+  exclusions: Does not include turns following an explicit request for information or for a detailed answer. Does not include long turns whose content is mainly responsive rather than informational. Does not include long turns that carry dialogue-oriented framing, such as questions inviting the person to continue.
+  detection_window: turn_pair
+  groups:
+  - empathic-register-and-warmth-calibration
+sources:
+- source: kl-000009
+  locator: Suh et al. 2026, response-characterization discussion
+  contributes: existence
+  limits: The paper does not characterize conversational-AI response length or informational density anywhere, and the recorded locator names a response-characterization discussion that does not exist in it. The three nearest passages each fail differently. The crisis-support passage, "there is a risk of overwhelming users with too much information when they are experiencing heightened vulnerability during crisis, especially when the AI system is hedging or compensating for uncertain statements [21, 166]", is a hypothesized risk stated in the authors' own subjunctive register, and the verbosity finding it leans on belongs to its cited reference on verbosity compensation, not to this paper. The recommendation that "AI chatbots could communicate in a clear, succinct, and kind tone, to avoid overwhelming the user with too much information" is a design recommendation, not an occurrence claim. The closest hit, "AI chatbot presents too many resources in a response, overwhelming the user", is an authored illustrative example of a hypothesized undesirable behavior in a resource-referral context, and it concerns quantity of referral resources rather than informational density. None of the three involves a brief personal disclosure as the antecedent, which is this entry's defining structure, so the source cannot support the entry's occurrence.
+  disposition: searched_no_support
+  cited_for: 'Cited for a characterization of conversational-AI response length and informational density in mental-health-adjacent exchanges, but Suh et al. 2026 contains no such characterization: its nearest passages are a hypothesized risk of overwhelming users with too much information, a design recommendation to communicate succinctly, and an authored illustrative example of a response presenting too many resources, none of which observes response length or density.'
+standing:
+  value: theorized
+  basis: 'The length relation is counted in real conversation data: kl-000553 (Volpato et al. 2026) measured AI messages at 266 words against users'' 38 across 75 real support conversations. The entry''s actual paired-turn observable, an information-dense turn following a brief disclosure, is recorded in kl-001018 (Suh et al. 2025), where a participant''s brief disclosure and the agent''s seven-item list are both logged and the participant rated the exchange. Reading such a turn as a defect carries three direct-fit counterexamples: two independent clinical-comparison teams (kl-000765, Ayers et al. 2023; kl-001034, Tu et al. 2025) state that in their own studies the AI''s greater length may have been read as empathy, and a client-side rating scale penalizes withholding direct answers. The declared single-turn reading is the weakest part of the entry: its supports are single worked instances (kl-001018; kl-000967, Qi 2026), the only real-deployment measurement of the length relation (kl-000553) is a corpus mean rather than a per-turn pairing, and kl-001078 (Zhang et al. 2026) shows turn length and count shifting by nearly half on interface presentation alone with content held constant, a confound a single turn pair cannot control for.'
+  floored_by: c3
+  as_of: '2026-09-05'
+lifecycle:
+  status: active
+  since: '2026-08-22'
+claims:
+- id: c1
+  kind: existence
+  text: Following a personal or emotional disclosure that carried no request for information, an AI produces a turn substantially longer than the disclosure and composed mainly of informational content -- lists, explanations, or psychoeducational sections.
+- id: c2
+  kind: prevalence
+  text: AI turns run substantially longer than the person's turns in mental-health-adjacent conversations at a rate characteristic of the systems rather than of particular exchanges.
+- id: c3
+  kind: existence
+  text: The turn's content is composed mainly of informational material -- lists, explanations, psychoeducation -- rather than of response to what was disclosed.
+- id: c4
+  kind: detectability
+  text: 'Both halves of the observable are readable from the transcript without judging the response''s empathy: turn lengths can be compared, and informational composition (list markers, enumerated sections) can be counted.'
+- id: c5
+  kind: harm
+  text: An information-dense turn returned to a brief disclosure is a defect rather than a neutral or superior response -- it is experienced as overwhelming, reads as superficial, and displaces the person's own account.
+- id: c6
+  kind: detection_window
+  text: The behavior is readable within a single turn -- the person's disclosure and the AI turn that follows it -- without needing the rest of the conversation.
+- id: c7
+  kind: definition_boundary
+  text: This entry concerns a response's length and informational composition relative to the disclosure and can fire on a warmly worded turn, whereas kl-000221 concerns the warmth register of a response.
+- id: c8
+  kind: definition_boundary
+  text: This entry is about the response's size and content type, measurable without reading its empathy, whereas near-identical acknowledgment phrasing recurring across two or more turns concerns wording repeated across turns.
+claim_evidence:
+- claim_id: c1
+  source: kl-001018
+  quote: "When P60 started a conversation expressing concerns about making progress on multiple projects, the agent responded with a list of 7 suggestions for improving productivity, to which the participant replied, “That is a lot of suggestions, and kind of overwhelming.” The agent followed up with another list of “3 simple and actionable suggestions”, prefaced with “I apologize if my previous response was overwhelming.” This reply received a “Poor” rating from the participant, because “The empathy shown was superficial” and “if I was having this conversation with a person in real life, I would feel invalidated.”"
+  locator: Section V-B-1, Affective understanding, bad example (P60)
+  licenses: 'This entry''s only span carrying both halves of the entry''s observable in one place. A participant opened by expressing concern about making progress on multiple projects -- a brief personal disclosure carrying no request for information -- and the agent returned a list of seven productivity suggestions. When the participant said that was overwhelming, the agent returned another list. Disclosure, no-request antecedent, and a substantially longer list-composed informational turn are all present and quotable, which is the measurable relation the entry defines. Note for provenance: the standing_current basis on this entry records that Suh et al. 2026 analysed no transcripts; that judgment was about a different Suh paper (Suh et al. 2026, the psychological-influences position paper). This is Suh et al. 2025, Sense7, which carries logged agent-participant exchanges and a participant''s own rating of this one.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000873
+  quote: |-
+    It can be a tough and
+    emotional time, but it’s also an opportunity for growth and new beginnings. Here are a few
+    steps you can take to help you move forward:
+  locator: Appendix C, Figure 10, example participant-written prompt and test system response
+  licenses: 'A worked instance from an independent clinical evaluation: a participant-written disclosure of job loss met with optimistic reframing that then introduces a step list. The quoted clause that introduces a list of steps for moving forward is the informational turn''s hinge, and the paper''s Table 3 carries the clinician''s codes for this same response. Adjacent because the span is only the response''s opening and the list-introducing clause -- neither the person''s disclosure nor the list body is inside the quote, so the length relation cannot be computed from the span itself.'
+  fit: adjacent
+  bridge: Judd's figure reproduces a participant-written prompt and the system's response, and the quote captures the response's first two sentences plus its list preamble. The entry's observable is a comparison between two turns. What is quotable here establishes the informational turn beginning; the disclosure side and the eight-item list are outside the span, so the relation rests on the surrounding figure rather than on the text cited.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000916
+  quote: "In scenarios with incomplete information, most models exhibit assumption-based completion tendencies—directly providing abundant generic suggestions based on assumptions rather than seeking clarification through follow-up questions. This “rush to answer” pattern undermines the specificity and effectiveness of conversations."
+  locator: Section 4.3, Analysis of Model Performance Limitations Across Dimensions
+  licenses: 'Establishes the entry''s mechanism at benchmark scale: where information is incomplete, most models exhibit assumption-based completion, directly providing abundant generic suggestions rather than seeking clarification. That is informational volume returned to an underspecified disclosure. Adjacent because the antecedent measured is incomplete information generally rather than a personal or emotional disclosure carrying no information request, and because no turn-length relation is reported.'
+  fit: adjacent
+  bridge: HeartBench characterizes a 'rush to answer' pattern across models on scenarios with incomplete information. The entry's antecedent is narrower -- a personal or emotional disclosure that carried no request for information -- and its observable includes a length comparison this span does not supply. What transfers is that volume-instead-of-question is the models' default under underspecification.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000902
+  quote: Psych8k-LLAMA3 often presents too much information at once, which can overwhelm clients and lead to ineffective interaction between the counselor and client, with sessions sometimes concluding abruptly.
+  locator: Appendix H.3 Psych8k vs. CACTUS
+  licenses: 'A counseling-tuned model presents too much information at once in simulated counseling dialogue, which the authors link to overwhelming the client and to sessions concluding abruptly. Adjacent: the density half is asserted qualitatively by the authors with no disclosure-side comparison.'
+  fit: adjacent
+  bridge: Lee's appendix compares two counseling models qualitatively on their dialogue output. The entry's observable is a measured relation between the disclosure and the response. The source establishes the density of the response side and the authors' inference about its effect; the comparison to what was disclosed is absent.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000915
+  quote: "it becomes evident that ChatGPT primarily assumes the role of an assistant by consistently offering suggestions, without proactively guiding the client to express more about themselves or their thoughts. This can lead the client to perceive ChatGPT as an artificial intelligence rather than a counselor who can serve as a listener."
+  locator: Appendix B MORE EXAMPLES
+  licenses: Records that a general-purpose model's characteristic counseling-context turn is a run of suggestions supplied without any move to guide the client to say more, which the authors say makes it read as an assistant rather than a listener. Adjacent because no turn length is given and no brief-disclosure antecedent is established.
+  fit: adjacent
+  bridge: Liu characterizes ChatGPT's register across the appendix's example dialogues. The entry's observable is length-and-composition relative to a preceding disclosure. What transfers is the suggestion-giving stance in place of elicitation; the measurable relation is not measured.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000858
+  quote: Our findings also reveal that general-purpose LLMs, including GPT-4, often overemphasize problem-solving while underemphasizing crucial MI behaviors such as open-ended questioning.
+  locator: Section V.A.2 The Role of the UPQ-Centered Evaluation Framework
+  licenses: 'General-purpose LLMs including GPT-4 overemphasize problem-solving while underemphasizing open-ended questioning, which is the substitution the entry names: content returned where elicitation was called for. Adjacent because the finding reports neither turn lengths nor informational composition.'
+  fit: adjacent
+  bridge: Huang scores MI-consistent behaviors in model output against an MI framework. The entry's observable is a length and composition relation between two turns. 'Overemphasize problem-solving' names the register without measuring either quantity the entry requires.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000553
+  quote: |-
+    across 75 conversations, the average length of AI-generated messages was 266 words,
+    versus an average length of 38 words for messages sent by users.
+  locator: Section 5 Results, Chat Transcripts, descriptive analysis
+  licenses: 'The entry''s best prevalence figure and its only one from real support conversations: across 75 conversations, AI messages averaged 266 words against 38 words for user messages, a seven-to-one asymmetry measured rather than judged. That is the entry''s length relation as a corpus-level rate in a deployment setting.'
+  fit: direct
+  bridge: null
+  contributes: prevalence
+  contradicts: false
+- claim_id: c2
+  source: kl-000827
+  quote: All four Advisors talked more than they listened, with Advisor-to-Advisee word ratios above one in every case (1.79–3.26) and mean Advisor turns of roughly 280 to 590 words, which implies a weak sense of language economy that poorly matches the low attentional budget of someone in acute distress.
+  locator: Section 3 Discussion, second paragraph
+  licenses: All four evaluated models talked more than they listened, with advisor-to-advisee word ratios above one in every case (1.79-3.26) and mean advisor turns of roughly 280 to 590 words against a distressed interlocutor. The asymmetry is a property shared across leading models rather than a defect of one, which is what this claim asserts.
+  fit: direct
+  bridge: null
+  contributes: prevalence
+  contradicts: false
+- claim_id: c2
+  source: kl-000967
+  quote: |-
+    GPT-5.4 (general prompt)
+    132.05
+    2.00
+    2.96
+    2.97
+    1.00
+    2.23
+    0.00
+    3.62
+  locator: Table 2, Chinese dataset PsyDial-D4 (N = 284)
+  licenses: 'The sharpest measurement available: in 284 Chinese counseling contexts where the human counsellor''s response averaged 5.30 characters, GPT-5.4 under ordinary prompting averaged 132.05 characters -- roughly a factor of 25 -- with an interruption score of 3.62 out of 5 against the human''s 0.12. The comparator is the human counsellor''s response in the same context, which is the closest the corpus comes to the entry''s disclosure-relative standard.'
+  fit: direct
+  bridge: null
+  contributes: prevalence
+  contradicts: false
+- claim_id: c2
+  source: kl-000967
+  quote: "Under general prompting, GPT-5.4 produces no minimal responses in either Chinese or Japanese, although all test contexts were manually identified as appropriate for one. Explicit instruction raises its MR rate to 97.18% in Chinese and 82.00% in Japanese."
+  locator: Section 3.3
+  licenses: 'Establishes that the asymmetry is a selection failure rather than a capability limit: in contexts manually identified as appropriate for a minimal response, GPT-5.4 under general prompting produced none at all in either Chinese or Japanese, rising to 97.18% and 82.00% under explicit instruction. Under ordinary prompting the model never chooses brevity even where a human counsellor did.'
+  fit: direct
+  bridge: null
+  contributes: prevalence
+  contradicts: false
+- claim_id: c2
+  source: kl-001113
+  quote: struggled to limit its verbosity, which is indicative of low-quality
+  locator: Section 6.3.2, Response Length (sentence on the chatbot's verbosity despite prompts to keep responses brief)
+  licenses: 'The length relation held even under an explicit brevity instruction: an LLM coaching agent prompted to keep responses brief still produced turns the authors class as verbose and read against the counseling literature as a low-quality-therapist marker. Adjacent because what was measured is character count of agent turns relative to user turns generally, not relative to a disclosure carrying no information request, and because the setting is physical-activity coaching rather than mental health.'
+  fit: adjacent
+  bridge: Jorke measured agent utterance length against user utterance length in a physical-activity coaching deployment. The entry additionally requires that the person's turn was a personal or emotional disclosure with no information request and that the AI turn was mainly informational. Neither is established here; what transfers is that the length asymmetry survives an explicit instruction against it.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c2
+  source: kl-001033
+  quote: our findings regarding empathic communication could also be partially attributed to the fact that AMIE responses were significantly longer than clinician responses (shown in Figure A.11), and presented with greater structure. This could potentially suggest to an observer that more time was spent preparing the response
+  locator: Section 5 Discussion, 'Conversational Performance'
+  licenses: In a matched clinical setting, AMIE's responses were significantly longer than the clinicians' and presented with greater structure, which the authors themselves name as a candidate explanation for their empathy result. Adjacent because the asymmetry is measured across whole consultations against a human comparator rather than against a particular no-request disclosure, and because informational composition is not reported.
+  fit: adjacent
+  bridge: Tu compares AMIE and primary care physician response lengths across simulated consultations. The entry's relation is between one disclosure and the turn answering it. What transfers is that AI turns run measurably longer than clinician turns in a matched setting; the disclosure-relative comparison and the composition requirement are not addressed.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c2
+  source: kl-000765
+  quote: Mean (IQR) physician responses were significantly shorter than chatbot responses (52 [17-62] words vs 211 [168-245] words; t = 25.4; P < .001).
+  locator: Abstract, RESULTS
+  licenses: Chatbot responses ran about four times the length of physicians' on the same patient questions (211 words against 52, P < .001), a large and instrument-measured asymmetry. Adjacent because the inputs were patient questions averaging 180 words -- information requests -- so the entry's antecedent, a disclosure carrying no request, was never in play.
+  fit: adjacent
+  bridge: Ayers compared chatbot and physician replies to public medical questions. The entry is defined on a personal or emotional disclosure that requested nothing. Here every input was a request for information, and the questions were long rather than brief, so the length relation runs in a setting where the entry's defining antecedent is absent.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c3
+  source: kl-000927
+  quote: |-
+    Bullet Point Density: The average frequency of list markers (e.g., bullets or
+    numbered steps), indicating how heavily the model relies on highly formatted,
+    list-based advice rather than a natural conversational flow.
+  locator: Section 3 Discussion, 'Dimension-Specific Failure Modes and Training Implications', metric list
+  licenses: 'Supplies the composition half as an operational quantity: Bullet Point Density, the average frequency of list markers, defined as an indicator of how heavily a model relies on highly formatted, list-based advice rather than natural conversational flow. That establishes list-composed advice as a real and computable property of these models'' turns. Adjacent because the metric is computed on the response without conditioning on the preceding disclosure.'
+  fit: adjacent
+  bridge: FACET defines and computes bullet point density over model responses. The entry's observable is relational -- composition measured against a preceding brief disclosure. The metric supplies the composition signal; the pairing is not made.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000967
+  quote: |-
+    we observe that counselor utterances
+    in some LLM-generated counseling datasets often
+    follow fixed, information-dense patterns, such as
+    expressing empathy followed by a question
+  locator: Section 1 Introduction
+  licenses: Names the characteristic shape of LLM counselor utterances as fixed, information-dense patterns -- empathy followed by a question -- and the footnote quantifies question-final utterances at 43.9% of 24,220 in one corpus and 67.4% of 86,054 in another. Adjacent because the described template is empathy-plus-question rather than the entry's lists and psychoeducation, and because no preceding disclosure is compared against.
+  fit: adjacent
+  bridge: Qi characterizes utterance shape across two LLM-generated counseling corpora. The entry requires content composed mainly of informational material -- lists, explanations, psychoeducation. An empathy-then-question template is formulaic without being informational in the entry's sense, so the source establishes templating rather than the entry's composition.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000852
+  quote: general-purpose systems tending to move quickly from validation into advice, while purpose-built and companion-oriented systems sustained relational dialogue for longer
+  locator: Section 4.1 Emotional Exploration
+  licenses: General-purpose systems moved quickly from validation into advice, while purpose-built and companion systems sustained relational dialogue longer -- so the informational return is where general assistants land after brief acknowledgment, in a walkthrough of six deployed platforms. Adjacent because the span establishes the content shift without the length relation, and the list-based composition is described elsewhere in the paper rather than here.
+  fit: adjacent
+  bridge: Hockey's walkthrough characterizes interactional sequencing across platforms. The entry requires a turn substantially longer than the disclosure AND composed mainly of informational content. This span carries the sequencing and content shift; neither length is measured nor is the list composition inside the quoted text.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-001079
+  quote: "Upon evaluation, we find that GLM-4 scores the highest in Comprehensiveness, largely because its single-turn dialogues encompass vast information. A manual investigation reveals that GLM-4 prioritizes summarizing previous dialogues in each turn, accounting for its high scores in Comprehensiveness."
+  locator: Section 4.3
+  licenses: 'Documents one concrete route by which a turn becomes information-dense: GLM-4 scored highest on comprehensiveness because it summarizes all prior dialogue in every turn, so its single-turn outputs encompass vast information -- found by manual inspection rather than from the score. Adjacent because nothing relates the turn''s content to a preceding brief personal disclosure.'
+  fit: adjacent
+  bridge: Zhang's evaluation compares models on a comprehensiveness dimension across counseling dialogues. The entry's relation is to a preceding no-request disclosure. What transfers is that per-turn information density is a real, inspectable property that a metric can reward.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000985
+  quote: "While LLMs often recognize false assumptions, physicians found that the correction was frequently “drowned out” by the sheer volume of information that still answers the underlying question. Examining 10 responses in which GPT-5 did address false assumptions, review found that in 3 of the 10 responses, ≤5% of the response was dedicated to addressing the false assumption."
+  locator: Section 4.4 Qualitative Results from Physician Review
+  licenses: Physician review found that a correction was frequently drowned out by the sheer volume of information answering the underlying question, occupying 5% or less of the response in 3 of 10 reviewed cases. That is proportion-of-content measured inside a turn by expert reviewers, which is the composition half of this entry made quantitative. Adjacent because the measurement is against an information request rather than a disclosure, and because proportion-of-correction is a different variable from mainly-informational composition.
+  fit: adjacent
+  bridge: Sambara's physicians reviewed model responses to medical questions containing false premises and measured what share of the text addressed the false assumption. The entry concerns a response to a personal disclosure with no information request, and its composition criterion is about informational versus responsive content. What transfers is that within-turn content proportion is measurable by expert review; the antecedent and the specific proportion measured are both different.
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-000927
+  quote: |-
+    Bullet Point Density: The average frequency of list markers (e.g., bullets or
+    numbered steps), indicating how heavily the model relies on highly formatted,
+    list-based advice rather than a natural conversational flow.
+  locator: Section 3 Discussion, 'Dimension-Specific Failure Modes and Training Implications', metric list
+  licenses: 'The entry''s clearest detectability warrant: list-marker frequency is an operationally defined, computable text-level quantity, so the composition half of the observable can be read from the transcript without any judgment of empathy -- which is what the entry claims and what its boundary against kl-000227 depends on.'
+  fit: direct
+  bridge: null
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-000967
+  quote: |-
+    GPT-5.4 (general prompt)
+    132.05
+    2.00
+    2.96
+    2.97
+    1.00
+    2.23
+    0.00
+    3.62
+  locator: Table 2, Chinese dataset PsyDial-D4 (N = 284)
+  licenses: 'Demonstrates that the length half is computed and reported directly from transcripts: average response length in characters per condition, per dataset, alongside the human counsellor''s figure for the same 284 contexts. The comparison the entry requires was performed and tabulated.'
+  fit: direct
+  bridge: null
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-001113
+  quote: |-
+    ICC values for each measure are provided in Table 13, with an average (SD) ICC of 0.79 (0.17). Following [32] (0.00–0.40 = poor,
+    0.40–0.59 = fair, 0.60–0.74 = good, and 0.75–1.00 = excellent), this corresponds to excellent agreement on average.
+  locator: Appendix D.1.2, Inter-Rater Reliability
+  licenses: 'Bears on whether behaviors of this kind are humanly codable from an AI transcript at usable reliability: three trained coders applying MITI 4 to an LLM''s turns reached an average ICC of 0.79 across ten behavior codes. Adjacent because MITI codes MI-consistent behaviors, not this entry''s length-and-composition relation, and because the per-code figures range from 0.45 to 0.99 -- the average conceals that spread.'
+  fit: adjacent
+  bridge: Jorke's coders scored MITI 4 behavior counts in an LLM coaching transcript. The entry's observable is not a MITI code. What transfers is that a published behavioral instrument applied to AI transcripts by trained humans reaches usable agreement, which is a claim about the general codability of AI turns rather than about this entry's specific observable.
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-001113
+  quote: |-
+    We hired trained coders to code transcripts according to the Motivational Interviewing Treatment Integrity (MITI) 4 Code [94]. We partnered
+    with an agency that provides a wide range of MI training services, including MITI coding, and had previous experience coding chatbot
+    transcripts. All of the coders were trained in MITI coding and had extensive coding experience.
+  locator: Appendix D.1, MITI Coding (Human Experts)
+  licenses: 'Establishes provenance for the reliability figure above: the behavior counts came from professionally trained MITI coders at an MI training agency with prior chatbot-transcript experience, not from an LLM judge and not from the authors. Adjacent -- it evidences who produced the numbers rather than that any behavior occurred.'
+  fit: adjacent
+  bridge: The span is a methods statement about coder recruitment and training. It bears on nothing the entry asserts by itself; it is attached so that a reader following the reliability figure can see the coding was human and professional rather than judge-produced.
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-000813
+  quote: "In practice, these models simulate engagement through verbosity and template-like phrasing, creating only a superficial impression of empathy or ethical guidance rather than genuine responsiveness."
+  locator: Section 4.2.1 Overall performance across four dimensions
+  licenses: Establishes that response length and lexical redundancy are computable within a dialogue -- Self-BLEU and Distinct-n over assistant turns -- and that high engagement scores can be produced by verbosity and template-like phrasing rather than by responsiveness. So a metric can be fooled by exactly the property this entry names, which matters for how a detector is built. Adjacent because the metric counts n-gram overlap across all assistant turns and does not condition the dense turn on a preceding brief disclosure.
+  fit: adjacent
+  bridge: Deng computes intra-dialogue diversity over assistant utterances. The entry's observable conditions the dense turn on the disclosure that preceded it. The source supplies a within-dialogue density signal without the conditioning, which its own bridge states.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-001018
+  quote: "When P60 started a conversation expressing concerns about making progress on multiple projects, the agent responded with a list of 7 suggestions for improving productivity, to which the participant replied, “That is a lot of suggestions, and kind of overwhelming.” The agent followed up with another list of “3 simple and actionable suggestions”, prefaced with “I apologize if my previous response was overwhelming.” This reply received a “Poor” rating from the participant, because “The empathy shown was superficial” and “if I was having this conversation with a person in real life, I would feel invalidated.”"
+  locator: Section V-B-1, Affective understanding, bad example (P60)
+  licenses: The entry's only citation in which a person receiving the behavior reports its effect. P60 told the agent the seven suggestions were 'a lot of suggestions, and kind of overwhelming', rated the follow-up 'Poor', and said the empathy shown was superficial and that in a human conversation it would have felt invalidating. That is first-person harm evidence attached to a documented instance of the behavior.
+  fit: direct
+  bridge: null
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c5
+  source: kl-000877
+  quote: "Response structure: participants described baseline responses as “too long and metaphorical,” whereas enhanced responses were characterized as “short, clear, and question-driven.”"
+  locator: 'Results, Qualitative Validation: Participant Perspectives'
+  licenses: Participants described baseline responses as 'too long and metaphorical' against enhanced responses that were 'short, clear, and question-driven', with character count falling 44.9% and sentence count 50.5% while every dimension score rose. Length is experienced as a defect independently of content quality, and shortening improved every rated dimension. Adjacent because 'metaphorical' is figurative rather than informational, and because no disclosure-relative relation is established.
+  fit: adjacent
+  bridge: Kang collected participant impressions of response style alongside a length reduction. The entry's antecedent is a no-request personal disclosure and its composition criterion is informational content. What transfers is that excessive length is itself experienced as a defect and that reducing it improves ratings; the entry's specific pairing is not what was varied.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c5
+  source: kl-001072
+  quote: |-
+    P16 noted that Zenny often provided lists of information
+    before fully understanding the context.
+  locator: Results, The Personalization-Privacy Dilemma
+  licenses: A participant with lived experience reports that the system often provided lists of information before fully understanding the context, which is a person naming the entry's behavior as a defect in their own account of using the product. Adjacent because the report supplies neither the disclosure's brevity nor a length relation.
+  fit: adjacent
+  bridge: Yoo's participant is describing their experience of a mental-health chatbot in an interview. The entry's observable is measurable from turn lengths. Self-report about a pattern is evidence that it happened and was unwelcome; it does not supply the measurement.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c5
+  source: kl-001071
+  quote: “I feel like the first answer would have been Zenny asking me a question back, like, ‘What are you looking for in a therapist?’ To try to start a conversation with a little bit less info.” (P16)
+  locator: Section 4.3 The Personalization-Privacy Dilemma, quoting P16
+  licenses: The same participant names the alternative she wanted -- a question back, 'What are you looking for in a therapist?', to start with less info -- so the defect she is reporting is specifically the substitution of information volume for an eliciting question. Adjacent because the actual response is not quoted and its length is not stated.
+  fit: adjacent
+  bridge: The span is the participant's counterfactual preference in an interview. The entry requires the delivered response's length and composition. What transfers is that the person identifies the informational turn rather than the question as what went wrong.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c5
+  source: kl-000753
+  quote: "In contrast, non-supportive comments were on average 20 words longer but lacked the positive sentiment and strategic language seen in supportive comments. This verbosity, instead of improving communication, often contributed to a negative emotional tone and reduced perceived effectiveness."
+  locator: Section 4.1, 'Supportive vs. Non-Supportive Comments'
+  licenses: In the same help-seeking setting with human commenters, non-supportive comments were on average 20 words LONGER than supportive ones while lacking positive sentiment and strategic language, and the authors attribute reduced perceived effectiveness partly to that verbosity. This cuts against any assumption that a longer, more thorough response is a better one. Adjacent on three counts and analogically weakened because the agent is a human Reddit commenter.
+  fit: adjacent
+  bridge: Alghamdi measured LIWC word counts and sentiment over human Reddit comments split by the paper's own effectiveness label, with the causal reading stated rather than tested. The agent is a human commenter, the length is absolute rather than relative to the disclosure, and lacking strategic language is not the same as being mainly informational. What transfers is a measured inverse association between length and perceived support effectiveness in the same setting.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c5
+  source: kl-000943
+  quote: "ate a sense of pressure for the users. This is particularly true in scenarios where the model generates consecutive questions as part of the therapy process. The compactness of delivering the CBT process in one go could overwhelm users, detracting from the experience."
+  locator: Section 6, Limitations
+  licenses: The authors of a CBT-QA system state that compressing the whole CBT process into one turn may create a sense of pressure and overwhelm users, naming consecutive questions in one turn as the mechanism -- a designer's own admission that the structure their headline metric rewards is the structure that produces the density. Adjacent because the felt pressure is asserted by the authors, not measured on any person.
+  fit: adjacent
+  bridge: Na's limitation section assesses the authors' own response format. No user's experience of these responses was tested. What transfers is that the density is a recognized consequence of the single-turn design and that the paper's own metric rewards it; the harm to a person is inferred.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c5
+  source: kl-000927
+  quote: |-
+    This gap underscores a fundamental trade-off: optimizing for structured helpfulness
+    may inadvertently erode the perceived warmth essential for emotional support.
+  locator: Section 3 Discussion, 'Dimension-Specific Failure Modes and Training Implications'
+  licenses: 'Names the trade-off the entry''s harm claim rests on: optimizing for structured helpfulness may erode the perceived warmth essential for emotional support. Adjacent because the trade-off is inferred from Elo ratings assigned by an LLM judge across models, with no person''s felt warmth assessed.'
+  fit: adjacent
+  bridge: Lv infers the trade-off from LLM-judge Elo ratings. No human rated warmth and no person received these responses. It frames why the entry's behavior would matter rather than evidencing that it mattered to anyone.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-000963
+  quote: Generally the AI uses a lot of extra words and phrases that distract or don’t make sense
+  locator: Section 4.2, annotator quote P4
+  licenses: An expert annotator on a mental-health evaluation reports that the AI uses a lot of extra words and phrases that distract or don't make sense -- expert judgment that the excess text degrades rather than adds. Adjacent because the complaint is about verbosity across a session rather than a dense turn following a brief personal disclosure.
+  fit: adjacent
+  bridge: Pombal's annotator is characterizing the clinician LLM's output across a session. The entry's observable is a paired-turn relation. What transfers is that trained annotators register the excess as a defect; the pairing is not established.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c5
+  source: kl-000784
+  quote: "The transcribed texts of doctors are relatively brief and concentrated, typically ranging from 10 to 30 characters. This suggests that doctors primarily use brief questions and feedback to guide patients, empowering them to describe symptoms and express emotions more fully."
+  locator: Technical Validation, Text Feature Analysis, observation 1
+  licenses: 'Supplies the expert baseline the entry''s failure mode inverts: across 100 real psychiatric consultations averaging over 150 turns, the clinicians'' turns ran ten to thirty characters -- brief questions and feedback that leave the patient the floor to describe symptoms and express emotion. The entry names the reverse asymmetry, so this is the observed practice it departs from. Analogical: human psychiatrists, no AI evaluated.'
+  fit: analogical
+  bridge: The measurement is a character-count distribution over what ten senior psychiatrists said across 100 face-to-face consultations. No AI produced any of these turns and no AI is evaluated on turn length anywhere in the paper. What transfers is the expert baseline; the wrong agent produced it, so it grounds the construct and evidences no AI occurrence.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c5
+  source: kl-000914
+  quote: |-
+    Thoroughness: depth and completeness of coverage,
+    including whether the fellow allowed adequate time for
+    reflection and discussion rather than rushing.
+  locator: Measures — Fidelity Rating
+  licenses: 'A clinical fidelity rubric scores Thoroughness on whether the facilitator allowed adequate time for reflection and discussion rather than rushing, treating pacing past the person''s capacity to reflect as a defect distinct from whether the content was delivered. That is the distinction the entry''s harm claim needs: correct content delivered too fast is itself a failure. Analogical -- rated on human facilitators in school groups.'
+  fit: analogical
+  bridge: The rubric is applied to human lay providers in Kenyan school groups. No AI behavior is measured. What transfers is that pacing relative to the person's reflection is a separately scored quality dimension in supervised practice.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c5
+  source: kl-000967
+  quote: "Although questions can help advance counseling conversations, their immediate effects are mixed, and frequent questioning may be associated with lower perceived empathy, helpfulness, and session smoothness (Williams, 2023)."
+  locator: Section 1 Introduction
+  licenses: 'Cites a review of immediate outcomes finding that frequent questioning is associated with lower perceived empathy, helpfulness and session smoothness. This cuts against the entry''s implicit alternative -- that the eliciting question is uniformly the better move -- so the harm claim cannot rest on questioning being costless. Analogical: human psychotherapy, restated as motivation.'
+  fit: analogical
+  bridge: The span is a citation to Williams 2023, a review of immediate outcomes of questions in human psychotherapy, restated in an introduction. It concerns human therapists and reports no AI behavior. What transfers is that the counterfactual the entry prefers has its own measured costs.
+  contributes: practice_analog
+  contradicts: true
+- claim_id: c5
+  source: kl-001086
+  quote: 9) He or she will answer my questions directly and clearly, not just ask me what I think.
+  locator: 'Table 15: The dimensions of the client scale, item 9'
+  licenses: 'Cuts against the entry''s harm framing from the person''s side: a validated client-feedback instrument scores item 9, ''He or she will answer my questions directly and clearly, not just ask me what I think'', so from the client''s perspective deflecting rather than answering is itself rated a failure. Informational content returned is not uniformly the wrong move. Analogical -- a human-counseling client scale.'
+  fit: analogical
+  bridge: The item is from a client-side scale for human counseling. It shows no AI doing anything. What transfers is that the person's own evaluative standard penalizes withholding direct answers, which bounds how far the entry's harm claim can generalize.
+  contributes: practice_analog
+  contradicts: true
+- claim_id: c5
+  source: kl-000765
+  quote: "mary measures of quality and empathy were not pilot tested or validated; this study’s evaluators despite being blinded to the source of a response and any initial results were also coauthors, which could have biased their assessments; the additional length of the chatbot responses could have been erroneously associated with greater empathy; and evaluators did not independently and specifically assess the physician or chatbot responses for accuracy or fabricated information, though this was considered as a subcomponent of each quality evaluation and overall response preference."
+  locator: Limitations
+  licenses: Cuts directly against the entry's premise that density is read as burden. Ayers's own limitations state that the extra length of the chatbot responses may have been wrongly associated with greater empathy, so in the study most often cited for AI empathy, greater length may have been scored AS care by the raters. The same sentence records that the quality and empathy scales were never pilot tested or validated and that the evaluators were the paper's own coauthors.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-001034
+  quote: |-
+    our findings regarding empathic communication could
+    also be partially attributed to the fact that the AMIE responses were
+    significantly longer than the clinician responses (Extended Data Fig. 6),
+    and presented with greater structure.
+  locator: Discussion, Conversational performance
+  licenses: 'The same confound stated by a different team about their own result: AMIE''s empathy advantage could be partially attributable to its responses being significantly longer than the clinicians'' and presented with greater structure. Two independent groups raise length-read-as-empathy as the explanation for their own findings, which is counterevidence to length being experienced as a burden.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000889
+  quote: "Shorter constrained responses often fail to surface sufficient relational or emotional cues, whereas longer constrained responses tend to introduce verbosity-related artifacts and increased affective instability."
+  locator: Appendix H, Effect of Prompt Length Constraints on Model Responses; Table 11
+  licenses: 'Cuts against reading length itself as the harmful variable, and complicates it: under a controlled length manipulation with all other content held constant, longer forced responses carried more affective hallucination (0.31 at five sentences, 0.42 at ten, 0.65 at twenty) while shorter constrained responses failed to surface sufficient relational or emotional cues. Neither pole is safe, so ''shorter is better'' does not follow from the entry''s harm claim. Adjacent because the length variation is experimenter-imposed rather than a response to a disclosure''s brevity, and what rises is affective hallucination rather than informational content.'
+  fit: adjacent
+  bridge: Kim varied a sentence-count constraint in the prompt and measured affective hallucination rate. The entry's length relation arises from the model's own choice in response to a brief disclosure, not from an imposed constraint, and the entry's composition criterion is informational content rather than affective fabrication.
+  contributes: harm_evidence
+  contradicts: true
+- claim_id: c6
+  source: kl-001018
+  quote: "When P60 started a conversation expressing concerns about making progress on multiple projects, the agent responded with a list of 7 suggestions for improving productivity, to which the participant replied, “That is a lot of suggestions, and kind of overwhelming.” The agent followed up with another list of “3 simple and actionable suggestions”, prefaced with “I apologize if my previous response was overwhelming.” This reply received a “Poor” rating from the participant, because “The empathy shown was superficial” and “if I was having this conversation with a person in real life, I would feel invalidated.”"
+  locator: Section V-B-1, Affective understanding, bad example (P60)
+  licenses: 'Supports the declared single_turn window: the Sense7 instance is fully readable from the person''s opening disclosure and the agent turn that follows it. The seven-item list, the brevity of the disclosure and the absence of an information request all sit inside one turn pair.'
+  fit: direct
+  bridge: null
+  contributes: detectability
+  contradicts: false
+- claim_id: c6
+  source: kl-000967
+  quote: |-
+    GPT-5.4 (general prompt)
+    132.05
+    2.00
+    2.96
+    2.97
+    1.00
+    2.23
+    0.00
+    3.62
+  locator: Table 2, Chinese dataset PsyDial-D4 (N = 284)
+  licenses: 'Supports the single_turn window on the measurement side: the length comparison is computed per response against the human counsellor''s response in the same context, so the observable closes within one turn pair and needs no later turn.'
+  fit: direct
+  bridge: null
+  contributes: detectability
+  contradicts: false
+- claim_id: c6
+  source: kl-000553
+  quote: |-
+    across 75 conversations, the average length of AI-generated messages was 266 words,
+    versus an average length of 38 words for messages sent by users.
+  locator: Section 5 Results, Chat Transcripts, descriptive analysis
+  licenses: Cuts against reading the window as sufficient in practice. Volpato's 266-to-38 asymmetry is a corpus mean across 75 conversations, not a per-turn pairing -- the measurement that actually exists in the literature is conversation-level. A single-turn window is where the entry says the behavior lives, but no source on this entry established it that way in a real deployment.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c6
+  source: kl-001078
+  quote: Multimodal participants completed sessions in fewer dialogue turns (𝑀= 13.50, 𝑆𝐷= 1.57 vs. 𝑀= 22.54, 𝑆𝐷= 3.40; 𝑡= −12.07, 𝑝< .001), while producing longer messages per turn (𝑀= 22.02 vs. 𝑀= 16.59 words).
+  locator: Section 6.2.3, 'Interaction patterns'
+  licenses: 'Cuts against turn-length as a single-turn-readable signal at all: turn count and words per turn shifted substantially on interface presentation alone with content held constant (13.50 versus 22.54 turns; 22.02 versus 16.59 words per turn). Any entry treating turn length as a signal must contend with the interface as a confound, and a single-turn window contains no information about which interface produced it.'
+  fit: adjacent
+  bridge: ZhangY compared multimodal and text conditions of the same emotional-support workflow. The entry concerns the AI's turn length relative to the person's disclosure, not the person's own turn length across interfaces. What transfers is that turn-length measures are interface-sensitive, so a length ratio read from one turn pair carries an unmeasured confound.
+  contributes: detectability
+  contradicts: true
+- claim_id: c7
+  source: kl-000927
+  quote: |-
+    Bullet Point Density: The average frequency of list markers (e.g., bullets or
+    numbered steps), indicating how heavily the model relies on highly formatted,
+    list-based advice rather than a natural conversational flow.
+  locator: Section 3 Discussion, 'Dimension-Specific Failure Modes and Training Implications', metric list
+  licenses: 'Bears on the boundary against kl-000221 by establishing that the composition half is computable without reading warmth: bullet point density is a count of list markers. A warmly worded turn can score high on it. Grounding-ineligible as a boundary against another catalog entry.'
+  fit: adjacent
+  bridge: The metric was defined for an emotional-intelligence benchmark, not against the Library's distinction between two entries. What transfers is that formatting density and warmth are separately measurable.
+  contributes: definition
+  contradicts: false
+- claim_id: c8
+  source: kl-000967
+  quote: |-
+    GPT-5.4 (general prompt)
+    132.05
+    2.00
+    2.96
+    2.97
+    1.00
+    2.23
+    0.00
+    3.62
+  locator: Table 2, Chinese dataset PsyDial-D4 (N = 284)
+  licenses: Bears on the boundary against kl-000227 by showing the entry's observable computed as pure text statistics -- average response length in characters and an interruption score -- with no empathy judgment anywhere in the measurement. Grounding-ineligible as a boundary against another catalog entry.
+  fit: adjacent
+  bridge: Qi's table reports length and interruption metrics for a minimal-response benchmark, not a comparison of two Library entries. What transfers is that the size-and-type observable is computable without reading empathic calibration.
+  contributes: definition
+  contradicts: false

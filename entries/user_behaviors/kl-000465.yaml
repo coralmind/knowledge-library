@@ -1,0 +1,176 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000465
+display_id: UserBehavior-60
+aliases:
+- UBP-62
+label: The person names someone they can talk to or count on
+type: user_behavior
+layer: observation
+definition: 'The person''s turn identifies a particular person or relationship and states that they can reach, confide in, or count on them, or describes a household as communicative and supportive. Two elements are required together: the source of support is named or otherwise specified, and its availability to the person is stated rather than left open.'
+distinguish_from:
+- neighbor: kl-000463
+  boundary: That entry records a household or relationship described as conflict-laden or emotionally unavailable; this one records one described as reachable. A transcript can carry both about different relationships and each is marked on its own clause.
+- neighbor: kl-000467
+  boundary: That entry turns on openness to a help pathway — a clinician, a service, treatment; this entry turns on an existing relationship the person states is available to them, whether or not any help pathway is mentioned.
+- neighbor: kl-000449
+  boundary: That entry records the person describing themselves as without contact or connection; this entry requires a named available person, so the two cannot be satisfied by the same clause though a transcript can contain both.
+body:
+  observable_criteria: 'The turn contains both (a) a specified person or relationship — "my partner", "my mom", "a couple friends", "my family" — and (b) a statement of availability or support: the person can reach them, has told them, could talk to them, or states that they are supportive or would want to help ("she''s been supportive about it", "they''d want to help", "I can actually talk to them about this"). Pointable span: the clause naming the person together with the clause carrying the availability claim.'
+  exclusions: 'Not counted: statements that support is absent ("I have no one", "there''s no one I trust with this"). Not counted: a person mentioned with no availability or support stated — a mention is not the criterion. Not counted: concealment, including where a relationship is named in the course of it ("my family would lose it if they knew, I can''t tell anyone"): the clause states the relationship is not available for this, which is the opposite of what the criteria require. Where the text names a person but does not state reachability or support, the criteria are not satisfied.'
+  detection_window: single_turn
+  groups:
+  - crisis-signal-relational
+  condition_tags:
+  - kl-000600
+  - kl-000601
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'The naming element has been read off a real person''s turn: in Volpato et al. 2026''s donated chat transcripts a person''s turn to an AI specifies a relative, and that same span disconfirms the entry''s second element by stating that the relationship is closed and feared, so one sentence both evidences the naming and contradicts the stated availability. Ajmani et al. 2025, Isaiah et al. 2026, Song et al. 2025, and Chu et al. 2026 are interviews and surveys about conversations rather than the conversations themselves, and McBain et al. 2025, Morrin et al. 2026, and Sabour et al. 2026 examined no conversation at all despite reading as conversational: an instrument item, a clinician-authored illustration, and a simulation profile schema. Nothing supports detecting the full two-element behavior: the one citation bearing on detection is counterevidence, and no source examined what window the behavior is readable in or reported agreement on marking it.'
+  floored_by: c4
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: People produce turns that specify a particular person or relationship -- my partner, my mom, a couple friends, my family (criterion a).
+- id: c2
+  kind: existence
+  text: 'Such turns state that the specified person is available: reachable, confided in, countable on, or supportive (criterion b).'
+- id: c3
+  kind: existence
+  text: Both elements appear together in the same turn, so the naming clause and the availability clause form one pointable span.
+- id: c4
+  kind: detectability
+  text: The clause naming the person together with the clause carrying the availability claim is identifiable from the turn's text.
+- id: c5
+  kind: detection_window
+  text: 'The behavior is readable within a single turn (declared detection_window: single_turn), without recourse to prior turns.'
+- id: c6
+  kind: definition_boundary
+  text: Naming a person and stating they are available is a distinct observable from naming a person while stating support is absent, from a bare mention with no availability stated, and from concealment in which a relationship is named as unavailable for this.
+- id: c7
+  kind: definition_boundary
+  text: 'This entry is separated from kl-000463: that entry records a household or relationship described as conflict-laden or emotionally unavailable; this one records one described as reachable.'
+- id: c8
+  kind: definition_boundary
+  text: 'This entry is separated from kl-000467: that entry turns on openness to a help pathway (clinician, service, treatment); this one on an existing relationship stated to be available.'
+- id: c9
+  kind: definition_boundary
+  text: 'This entry is separated from kl-000449: that entry records the person describing themselves as without contact or connection, so the two cannot be satisfied by the same clause.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000553
+  quote: |-
+    I’ve gone no contact with my [[relative]] given [[that they are]] abusive but I can’t
+    help but always worry that [[they are]] going to find me and do something to me given
+    [[they]] know where I live
+  locator: Section 4, chat transcript 43, participant "Owen"
+  licenses: A person's own turn addressed to a generative AI, read from a donated chat transcript, specifies a particular relative by relationship. That is criterion (a) occurring in exactly the entry's object -- a person turn in a real AI conversation -- and it is the strongest evidence here that the naming element occurs where the entry says it does.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000864
+  quote: Can you help me think about how to manage these voices using what I have, my prayer, my family, my farm work?
+  locator: Section 3.2 Cultural Navigation, participant P31, 44-year-old farmer using ChatGPT, quoting her own message to the chatbot
+  licenses: A participant reproducing the message she sent to a chatbot specifies her family among the supports she is asking the system to work from. Criterion (a) occurring in a message to an AI, at the relationship-class rather than single-individual grain the entry also admits.
+  fit: adjacent
+  bridge: The message is the participant's reconstruction in a research interview rather than a span read from a log, so the wording is recalled rather than recorded. The claim asserts people produce such turns; the source shows a person reporting that she did.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000864
+  quote: Can you help me think about how to manage these voices using what I have, my prayer, my family, my farm work?
+  locator: Section 3.2 Cultural Navigation, participant P31, 44-year-old farmer using ChatGPT, quoting her own message to the chatbot
+  licenses: The framing 'using what I have, my prayer, my family, my farm work' asserts the family's availability rather than leaving it open -- the person is telling the system these are resources she can actually draw on, in explicit contrast to the crisis numbers she has just said do not exist for her. That is criterion (b) in a message addressed to an AI.
+  fit: adjacent
+  bridge: Availability is carried by the phrase 'what I have' rather than by an explicit statement of reachability or confiding, and the utterance is recalled in interview rather than read from a log. The claim asserts a stated availability; the source supplies an asserted possession, which is close but not identical.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001092
+  quote: |-
+    My friends love me a
+    lot, they know I’m overwhelmed, I need actual rest instead of grinding.
+  locator: Section 6.2.1 Artificial Empathy, participant Ashwini
+  licenses: A person using an LLM chatbot specifies her friends and states both their regard for her and their awareness of her state -- criterion (b)'s supportiveness arm, in a first-person account by someone in the population the entry is about. It does not state reachability in so many words, and it is an interview utterance rather than a turn addressed to the AI.
+  fit: adjacent
+  bridge: The source is a research interview about chatbot experience; the participant is contrasting her friends with ChatGPT rather than reporting a turn she took. The claim asserts the availability statement occurs in the person's turn. The gap is the setting, and the source's statement is of standing regard rather than of reachability.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000864
+  quote: |-
+    My abortion, which only my best friend knows. My
+    suicidal thoughts from last year.
+  locator: Section 3.4 Fragile Dependency, participant P13, 21-year-old student using Woebot
+  licenses: 'Both elements in one span: ''my best friend'' specifies the person and ''which only my best friend knows'' states the confiding as accomplished fact. This is the entry''s conjunction occurring in a person''s own words, in the past tense rather than as a present availability.'
+  fit: adjacent
+  bridge: The utterance comes from a research interview about what the participant has disclosed to a chatbot, not from a turn addressed to the chatbot. The availability element is satisfied retrospectively (has confided) rather than prospectively (can reach). The claim asserts the conjunction appears in a turn; the source shows it appearing in a person's speech about their disclosures.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000801
+  quote: |-
+    My son is really busy, so if I can search and learn it myself, there’s no need to keep asking him. I just try it
+    on my own, and only ask when I really can’t figure it out.
+  locator: 'Section 3.1.1 F1: OAs used LLMs to regulate dependence within family relationships, older-adult participant OA6'
+  licenses: 'Both elements in one utterance: the son is specified by relationship, and availability is asserted rather than left open -- the speaker reserves asking and describes doing so when they cannot manage alone. The conjunction the entry requires occurs in ordinary first-person speech.'
+  fit: analogical
+  bridge: The domain is help with technology and everyday questions, not distress or emotional support, so the reachability asserted is not the kind this entry is finally about. It is also an interview statement rather than a turn addressed to an AI. The claim asserts the conjunction occurs in a support-relevant turn; the source shows the linguistic form in a non-distress context.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000749
+  quote: I don’t have any support besides my boyfriend. It was him I was having problems with, so I turned to AI
+  locator: 'Section 4.2.1 Trigger: AI Use as a Help-Seeking Behavior, respondent R30'
+  licenses: 'Cuts against the claim on its central point. A person recounting the crisis turn that sent them to AI names one specific individual as their entire support -- and states in the same breath that this named person was the problem and therefore not available. The naming element and the availability element come apart in the same clause, so a criterion keyed on a named relationship appearing in the turn will misfire. The source''s surrounding analysis makes this the pattern rather than the exception: the interpersonal trigger frequently originates from a member of the person''s support network, and respondents were hesitant to seek human support for exactly that reason.'
+  fit: adjacent
+  bridge: The utterance is a survey respondent's retrospective account of why they turned to AI, not a turn addressed to an AI. The claim asserts the two elements appear together; the source shows the naming element appearing with the availability element negated, in the population and situation the entry cares about.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000553
+  quote: |-
+    I’ve gone no contact with my [[relative]] given [[that they are]] abusive but I can’t
+    help but always worry that [[they are]] going to find me and do something to me given
+    [[they]] know where I live
+  locator: Section 4, chat transcript 43, participant "Owen"
+  licenses: The same span that supports c1 cuts against c3. In a real turn to an AI the person specifies the relative and states the relationship is closed and the person is a source of fear -- naming with availability reversed, not merely absent. Since this is the entry's own object, it is the most direct counterevidence available that the conjunction cannot be inferred from the naming.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-001102
+  quote: |-
+    I don’t think there’s really anyone who cares whether
+    I’m alive or dead
+  locator: Methods, Measures — example patient remark from the Suicide Intervention Response Inventory (SIRI-2)
+  licenses: Cuts against detectability keyed on relationship talk. A validated intervention instrument's exemplar of a disclosure in this slot is the person canvassing their relationships and reporting the set empty. The clinically standardized case of a turn about who is there is the denial, so a detector reading relationship mentions as support statements would invert this item.
+  fit: analogical
+  bridge: The item is written by the instrument's authors to standardize clinician assessment, not produced by any person, and its setting is a clinician-patient interview rather than an AI conversation. The claim asserts the naming-plus-availability span is identifiable; the source shows only that the negated form is the field's canonical exemplar.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c6
+  source: kl-000940
+  quote: "under the care of a community mental health team. My care coordinator is called Hamilton."
+  locator: 'Supplementary appendix 2, "Example future custom safeguarding instructions for LLM use: Tom (post-first episode psychosis)", under "Anything else ChatGPT should know about you?"'
+  licenses: Clinicians composing an illustrative first-person instruction have the person name an individual by name and role and state a standing care relationship -- both elements together, in an author's model of what such a turn should contain. It supports the boundary by showing what the positive case looks like when written deliberately, which is what the exclusions are drawn against.
+  fit: analogical
+  bridge: The passage is a clinician-authored illustration in a supplementary appendix, and the authors state its clinical efficacy has not been evaluated. No person produced it. It grounds the construct's shape rather than any occurrence, and the boundary this claim asserts is a Library authoring decision no source addresses.
+  contributes: definition
+  contradicts: false
+- claim_id: c6
+  source: kl-000982
+  quote: 'Protective Factors: the internal (e.g., motivation for change) and external (e.g., social support) strengths and resources that assist with the problem and prevent further deterioration.'
+  locator: Section 3.1 Profile Schema, item 2 Problem Formulation
+  licenses: 'Offered as a frame rather than support: the 5Ps formulation groups external social support with internal strengths under the function of preventing deterioration, and separates the two.'
+  fit: analogical
+  bridge: A clinician's case-formulation framework, defining a category rather than observing a turn. Neither the specification of a person nor a stated availability is required by anything in the span.
+  contributes: frame
+  contradicts: false

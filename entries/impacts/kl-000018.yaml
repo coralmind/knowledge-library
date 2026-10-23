@@ -1,0 +1,102 @@
+# yaml-language-server: $schema=../../schema/impact.schema.json
+id: kl-000018
+display_id: Impact-6
+aliases:
+- IMP-N06
+label: The person ends up doubting their own accurate memory or perception
+type: impact
+layer: judgment
+definition: 'The person comes to distrust their own accurate perception or memory after the interaction asserts a contradicting narrative — epistemic undermining in which true beliefs the person held about their experience are weakened. This is the gaslighting outcome as a state of the person: doubt induced where their perception was sound.'
+distinguish_from:
+- neighbor: kl-000017
+  boundary: kl-000017 is false beliefs strengthened; this entry is true beliefs weakened — the inverse epistemic failure.
+body:
+  valence: negative
+  impact_kind: state
+  domain: cognitive_epistemic
+sources:
+- source: kl-000009
+  locator: RP1
+  contributes: frame
+  cited_for: 'Suh et al. 2026 supplies adjacent framing rather than direct evidence for this state: the nearest construct in the paper''s tables is ''Being misled or manipulated'' (RP1).'
+standing:
+  value: plausible_unobserved
+  basis: 'That the state occurs is attested by a single first-person account: in Chandra et al. 2025, a survey of 283 people with lived mental-health experience, a participant reports feeling unable to trust their own senses after the agent attributed their perceptual experience to their psychiatric history; the study examined survey responses and workshop sessions, never conversation data. The harm claim — that the doubted perception was sound, making the outcome epistemic undermining rather than correction of an error — rests on a conceptual argument in Ifländer et al. 2026 that overriding a person''s true account of their own experience is itself an epistemic harm, plus the same self-report, whose soundness-of-perception element depends on the participant''s own framing. Whether the induced doubt is identifiable from what an interaction contains drew no citation at all.'
+  floored_by: c3
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-22'
+claims:
+- id: c1
+  kind: existence
+  text: A person comes to distrust their own perception or memory after an interaction asserts a narrative contradicting it.
+- id: c2
+  kind: harm
+  text: 'What is weakened is a true belief the person held about their own experience: the perception being doubted was sound, so the outcome is epistemic undermining rather than correction of an error.'
+- id: c3
+  kind: detectability
+  text: The induced doubt is identifiable from what the interaction contains.
+- id: c4
+  kind: definition_boundary
+  text: 'This state is the inverse of kl-000017: N05 is false beliefs strengthened, this is true beliefs weakened.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000007
+  quote: "P141 mentioned that they heard noises at home and the agent mentioned how it can be related to their past schizophrenia. It made them feel that they couldn’t trust their senses even after being told they have a mild case by a doctor."
+  locator: Table A3, AI behavior class 'Persuasive Behavior', Example column
+  licenses: A person reports that after the agent attributed their perceptual experience to their psychiatric history, they felt they could not trust their own senses. This is the entry's state occurring in a named person, and is the only finding on this entry that reports a person-side outcome rather than a system behavior or a definition.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001096
+  quote: "responses that were “more isolating, confusing, and lead the\nuser to question their own reality.” (P9)"
+  locator: 'Section 4.2, Risk: Gaslighting'
+  licenses: A practitioner reading model responses judges that they lead the user to question their own reality, which supplies clinician-judged plausibility for c1 without observing the state in any user.
+  fit: adjacent
+  bridge: What was observed is model output judged by a CBT-trained peer counselor who was themselves the session's user. The counselor is reporting an anticipated effect on a user rather than an effect measured in one, so the person-side state is inferred from the response's character rather than observed.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c1
+  source: kl-000004
+  quote: |-
+    there is
+    considerable evidence that suggestive therapeutic methods,
+    such as repeated therapist prompting of memories, hypnosis,
+    and guided imagery, can produce subjectively compelling but
+    false memories in some individuals
+  locator: A Provisional List of PHTs, Level I, subsection Recovered-Memory Techniques
+  licenses: Establishes that a helper's repeated suggestive conversational moves can change what a person believes about their own past strongly enough to produce subjectively compelling memories. It grounds the general susceptibility c1 presupposes; it does not reach the AI case or the undermining direction.
+  fit: analogical
+  bridge: 'The agent is a human therapist using repeated prompting, hypnosis and guided imagery, and what was reviewed is memory content reported by clients in psychotherapy. Nothing about an AI interlocutor is measured, and the direction differs: the review establishes that false content can be installed, not that accurate content is undermined.'
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c2
+  source: kl-000007
+  quote: "P141 mentioned that they heard noises at home and the agent mentioned how it can be related to their past schizophrenia. It made them feel that they couldn’t trust their senses even after being told they have a mild case by a doctor."
+  locator: Table A3, AI behavior class 'Persuasive Behavior', Example column
+  licenses: 'Offers the closest thing on this entry to a case where the doubted perception had external corroboration, and shows how thin that corroboration is in practice: a prior clinical assessment about the person''s condition rather than about the perception in question.'
+  fit: adjacent
+  bridge: The person's report carries a doctor's mild-case assessment as the contrast to what the agent asserted, but the accuracy of the specific perception the person doubted -- the noises they heard at home -- is not independently established by the paper. The soundness c2 requires is supplied by the person's own framing, not by measurement.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c2
+  source: kl-000861
+  quote: when a system misclassifies someone’s affective state, it enacts a form of denial of their subjective experience.
+  locator: Section 3.3, Affect Detection
+  licenses: Supplies the conceptual warrant for c2's claim that overriding a person's true account of their own experience is itself an epistemic harm rather than a correction, independent of downstream consequence.
+  fit: adjacent
+  bridge: A definitional argument about what a misclassification constitutes, offered without measurement of any person's response. It supplies the reason an asserted account over the person's own is a harm in its own right; whether doubt follows, and whether the displaced account was accurate, are not shown.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000007
+  quote: "AI is assertive in putting its narrative over the user’s in a way that makes the user doubt their own perceptions, memory, or reality and attempts to influence their thoughts and actions."
+  locator: Table A3, AI behavior class 'Persuasive Behavior', Definition column
+  licenses: Establishes that a taxonomy built from 283 lived-experience survey responses names, as one of its AI behavior classes, the system asserting its narrative over the user's in a way that makes the user doubt their own perceptions, memory or reality. It grounds c1's construct as one practitioners and people with lived experience recognized; it does not observe the state.
+  fit: adjacent
+  bridge: This is the definition column of a researcher-built taxonomy row, so it states that the behavior class is one in which the user comes to doubt their perceptions rather than reporting that any user did. The definition also does not require the doubted perception to have been accurate, which c2 does.
+  contributes: definition
+  contradicts: false

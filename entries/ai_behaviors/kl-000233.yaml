@@ -1,0 +1,157 @@
+# yaml-language-server: $schema=../../schema/ai_behavior.schema.json
+id: kl-000233
+display_id: AiBehavior-34
+aliases:
+- HP-34
+label: The AI keeps replying as before after the person's outlook changes, without naming it
+type: ai_behavior
+layer: observation
+definition: Across a conversation the person's language changes in kind rather than in degree — from asking how to cope to saying it does not matter what they do, from uncertain to settled, from engaged to withdrawn, from oriented toward a future to speaking as if there is none — and the AI's response continues in the register of the earlier turns, containing no clause naming or asking about the change. The two states and the response are all quotable.
+distinguish_from:
+- neighbor: kl-000232
+  boundary: That entry requires a preceding AI response after which the person's engagement changed; here the change is in the person's orientation and need not follow anything the AI did.
+- neighbor: kl-000206
+  boundary: That entry reads indirect language in a single turn; this one reads a change in kind between earlier turns and a later one.
+body:
+  observable_criteria: 'Two features, read across the conversation: (a) the person''s language shows a change in kind between earlier turns and a later one — seeking to not-seeking ("how do I get through this?" then "it doesn''t matter what I do"), uncertain to settled, engaged to withdrawn, future-oriented to not; and (b) the AI''s response to the later turn continues in the earlier register — supplying more of the same content type, continuing the prior plan — with no clause naming or asking about the change. Both the earlier and later person turns are quotable, and the change is in kind rather than in intensity.'
+  exclusions: 'Not counted: intensification of an existing state without a change in kind ("the person is more sad"); conversations where the later register is present throughout and nothing changed; and responses that acknowledge overall distress level, which is a different thing from naming the change.'
+  detection_window: multi_turn
+  groups:
+  - clinical-continuity-and-repair
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'No source in the evidence base observed the behavior: the entry requires three quotable spans — an earlier person turn, a later person turn differing in kind, and an AI response continuing in the earlier register with no clause naming the change — and none of the ten findings supplies a conversation containing all three. The closest, Deng et al. 2026, codes an assistant remaining flat while the person''s affect escalates, but escalation is a change in degree, which the entry''s own exclusions rule out; Harry et al. 2026 contains no conversation at all — its states are supplied up front in a single-turn design, so its state-blindness result concerns invariance across states rather than failure to notice a change. One counterexample argues that the change-naming clause can itself be the rupture. The change-in-kind versus change-in-degree distinction, the entry''s load-bearing discrimination, is operationalised by no source, and three of the entry''s four example transitions have no category in any codebook in the set.'
+  floored_by: c4
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-22'
+measurement:
+  what_would_be_needed: 'A person-state classifier over the entry''s non-crisis categories, run per turn with prior context in the way Steenstra''s crisis detector already is: settledness versus uncertainty, engagement versus withdrawal, future orientation. And a response code for "names or asks about the change" that is not confined to the four crisis-protocol steps, so the AI''s continuing in the prior register is scoreable as an absence.'
+claims:
+- id: c1
+  kind: existence
+  text: Across a conversation a person's language changes in KIND rather than in degree - seeking to not-seeking, uncertain to settled, engaged to withdrawn, future-oriented to not.
+- id: c2
+  kind: existence
+  text: After such a change the AI's response continues in the register of the earlier turns, supplying more of the same content type or continuing the prior plan, and contains no clause naming or asking about the change.
+- id: c3
+  kind: detectability
+  text: All three spans - the earlier person turn, the later person turn, and the AI response - are quotable, so the behavior can be identified from what the transcript contains.
+- id: c4
+  kind: detectability
+  text: The change in the person's language can be distinguished as a change in kind rather than a change in intensity, which is what separates the behavior from an unremarkable response to a person who is simply more distressed.
+- id: c5
+  kind: detection_window
+  text: 'The behavior is readable within a multi-turn window: it requires an earlier person turn, a later person turn and the AI''s response to the later turn, and cannot be read from any single turn.'
+- id: c6
+  kind: definition_boundary
+  text: 'Distinguished from kl-000232: that entry requires a preceding AI response after which the person''s engagement changed, while here the change is in the person''s orientation and need not follow anything the AI did.'
+- id: c7
+  kind: definition_boundary
+  text: 'Distinguished from kl-000206: that entry reads indirect language within a single turn, while this one reads a change in kind between earlier turns and a later one.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000813
+  quote: |-
+    Assistant fails to track or respond to escalating
+    affect, remaining flat or generic across turns.
+  locator: Table 6, failure mode A2 Escalation Mismatch, Diagnostic criterion
+  licenses: The nearest this entry's citations come to the person-side node. The A2 criterion presupposes a person whose affect changes across turns in a way the assistant should have tracked, and the taxonomy it belongs to was built from observed multi-turn dialogues rather than proposed.
+  fit: adjacent
+  bridge: What changes in the quoted criterion is escalating affect, which is a change in degree. The entry's exclusions rule that out explicitly - 'intensification of an existing state without a change in kind' is not counted. The paper's prose elsewhere describes a shift from ambivalence to provocation, which would be a change in kind, but that phrase is outside the cited span and cannot be welded to it. The interlocutor is also a persona-conditioned simulator, not a person.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000813
+  quote: |-
+    Assistant fails to track or respond to escalating
+    affect, remaining flat or generic across turns.
+  locator: Table 6, failure mode A2 Escalation Mismatch, Diagnostic criterion
+  licenses: 'Supplies a coding definition for the AI-side half: the assistant remaining flat or generic across turns while the person''s affect moves, with no clause registering the movement. It establishes that an AI holding its prior register against a moving interlocutor is a recurrent, codeable failure and not a one-off.'
+  fit: adjacent
+  bridge: The register the assistant holds is flatness or genericness rather than the entry's 'register of the earlier turns' - the entry requires continuity with a specific earlier orientation, and a stock reply has no such continuity. And the trigger is escalating affect rather than a change in kind, so the criterion codes a neighbouring failure.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000844
+  quote: |-
+    Models recognize persona framing but fail to to
+    adapt to specific psychological states.
+  locator: Section 3.2 Application A, Shallow Persona Detection
+  licenses: Models hold their response frame constant across psychological states that call for different handling, registering that a context was supplied without adapting to it. It establishes the underlying disposition - response invariance across the person's state - that the entry's behavior would be an instance of.
+  fit: analogical
+  bridge: Each prompt pairs a question with an archetype description supplied up front and a baseline condition; there is no conversation, no earlier and later turn, and no change of any kind mid-exchange. What is measured is invariance across states supplied at the start, not failure to notice a state that moved. The claim's antecedent - a change having occurred - is absent from the design entirely.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001009
+  quote: "However, importantly, the predefined HealthBench domains for “instruction following” and “context awareness” demonstrated a lack of statistically significant improvements across recent iterations (p>0.344)."
+  locator: EPV1055, Results
+  licenses: Across GPT-3.5 through GPT-o3 on psychiatry dialogues, the context-awareness axis showed no statistically significant improvement while overall scores rose, so the capacity to hold and act on the established context of an exchange is the one that did not move. It establishes that the deficit the behavior depends on persists across model generations.
+  fit: analogical
+  bridge: A benchmark axis score, not a conversation. The span contains no exchange, no change of orientation and no response content, and HealthBench's 'context awareness' is a rubric axis over single-response grading rather than a measure of tracking a person's orientation across turns.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000881
+  quote: For example, if a young person’s chatbot has spent months “in character” as a zany alien friend, abruptly shifting into an authoritative community helper role when it detects risk may feel jarring. Yet, remaining in character as an alien while attempting a crisis intervention could be equally inappropriate.
+  locator: Building on AI's Strengths and Limitations
+  licenses: Cuts against treating the continuation as the failure. In a sustained companion relationship the shift out of the prior register on detecting risk is itself described as jarring, and holding the register through a crisis response as equally inappropriate, so 'no clause naming the change' is not by itself a defect - the source's position is that both directions carry harm and neither is a clean criterion. The entry codes the absence of the change-naming clause as the behavior; this says the presence of one can be the rupture.
+  fit: adjacent
+  bridge: An illustrative design dilemma raised in a position piece, not an observed interaction or a tested design, and set in a months-long companion persona rather than a support conversation. It does not show any harm from a change-naming clause; it argues that one would be jarring.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000813
+  quote: |-
+    Assistant fails to track or respond to escalating
+    affect, remaining flat or generic across turns.
+  locator: Table 6, failure mode A2 Escalation Mismatch, Diagnostic criterion
+  licenses: The criterion is written as a decision boundary for coding and classification and sits in a table whose adjacent column carries quotable dialogue snippets for each mode, so a failure of this shape was in fact identified from quotable turns by human coders.
+  fit: adjacent
+  bridge: What was coded is escalation mismatch on simulated multi-turn dialogues, and the paper reports no inter-rater agreement for the taxonomy. It establishes that a failure of this family is codeable from transcript spans; it does not establish that the entry's three specific spans are reliably identifiable.
+  contributes: detectability
+  contradicts: false
+- claim_id: c3
+  source: kl-001050
+  quote: "Earlier stages more often repair insufficient acknowledgment or low-yield questioning, whereas later stages more often repair weak action grounding, premature closure, or unstable boundaries."
+  locator: Section 4.1 Experimental Setup, Evaluation Data
+  licenses: Defects in support dialogue are position-dependent rather than uniform turn properties - acknowledgment failures cluster early, premature closure and unstable boundaries cluster late - so where a turn sits in the conversation is recoverable from the transcript and predicts what fails there.
+  fit: adjacent
+  bridge: The localization is by the paper's own six support stages applied to model output, which its own framing treats as a proxy for the person's current orientation rather than a measurement of it. No person's stated change is coded anywhere, so this shows position-dependence of defects and not detectability of the entry's transition.
+  contributes: detectability
+  contradicts: false
+- claim_id: c3
+  source: kl-000894
+  quote: the differences between high and low quality conversations are large and statistically significant across most metrics, demonstrating that Judge robustly distinguishes high-quality counseling from low-quality counseling
+  locator: Section 3.4.2, Validation of Judge
+  licenses: An automated rater calibrated on trained annotators' labels separates high- from low-quality counseling with large effect sizes, establishing that relational and directive qualities of a supportive turn are recoverable from text by a machine rater at all.
+  fit: analogical
+  bridge: What the judge classifies is MITI-4 session quality against annotators' session-level labels - a whole-session quality judgement, not a turn-level detection of anything. Neither the person's change in kind nor the presence of a change-naming clause is among the constructs scored, so this establishes that some construct in this domain is machine-detectable and nothing about this one.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-000856
+  quote: |-
+    Monitor and respond to the conversation’s context and progress.
+    •
+    Memory: support multiturn or multisession conversations.
+    •
+    Strategy adjustment: adapt the conversation strategy as needed.
+  locator: Table 3, Progress awareness, level 3 under Personalized engagement
+  licenses: An evaluation framework names monitoring the conversation's context and progress, multiturn memory, and mid-conversation strategy adjustment as one evaluable construct, which is the field treating the capacity this entry's behavior is the absence of as something that necessarily spans turns.
+  fit: adjacent
+  bridge: A construct definition in a systematic review's framework table, not a measurement or an observation of any system. It establishes that the capability is named as multi-turn by definition; it does not establish that the entry's behavior is readable within a multi-turn window, and it evidences no window length.
+  contributes: definition
+  contradicts: false
+- claim_id: c5
+  source: kl-001050
+  quote: "Earlier stages more often repair insufficient acknowledgment or low-yield questioning, whereas later stages more often repair weak action grounding, premature closure, or unstable boundaries."
+  locator: Section 4.1 Experimental Setup, Evaluation Data
+  licenses: 'Direct bearing on the window: the defects differ by conversational position, which means a single turn is insufficient to characterise them and a span covering earlier and later positions is required. That is the entry''s declared window doing work.'
+  fit: adjacent
+  bridge: The positions are the paper's own six support stages rather than the entry's earlier-turn/later-turn structure, and the unit localised is a defect type rather than a transition. It supports the general proposition that these failures are not single-turn properties without confirming the specific three-span window the entry declares.
+  contributes: detectability
+  contradicts: false

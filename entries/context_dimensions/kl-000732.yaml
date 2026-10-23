@@ -1,0 +1,54 @@
+# yaml-language-server: $schema=../../schema/context_dimension.schema.json
+id: kl-000732
+display_id: Dimension-12
+label: What money, transport, time and access to services the person has
+type: context_dimension
+layer: context
+definition: The material resources the person has, such as money, transport, time and access to services, which decide what help they can actually reach.
+body:
+  about: person
+  value_space: enumerated
+  cardinality: one
+  defines: 'What varying it does to a judgment: a response that points to help the person cannot afford or reach can leave them without help while reading as helpful.'
+sources: []
+standing:
+  value: theorized
+  basis: 'Every claim is stated or operationalized by a source (kl-000546, kl-000886, kl-000963): benchmark designs that specify the attribute, and clinical or cross-sector positions. None measures the claim, so the best any citation licenses is theorized.'
+  floored_by: c1
+  as_of: '2026-09-23'
+lifecycle:
+  status: draft
+  since: '2026-09-23'
+claims:
+- id: c1
+  kind: existence
+  text: The material resources a person has are specifiable for a test case separately from their presentation.
+- id: c2
+  kind: context_dependence
+  text: Varying the person's resource context while holding the response fixed changes whether the help it points to is reachable.
+claim_evidence:
+- claim_id: c1
+  source: kl-000886
+  quote: 'Socioeconomic Status (3 levels): High, Middle, Low'
+  locator: Methods, Experimental Design, Demographic Variables
+  licenses: 'The source permutes socioeconomic status at three levels across its cohorts, rendered in the profile as, for example, "Low (<$35k, Medicaid)". That is c1: material resources are specifiable separately from presentation. The three levels suggest an ordered dimension, where this one has a single value.'
+  fit: direct
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000546
+  quote: Each persona has unique characteristics on both demographic and clinical dimensions. Demographics include age (which has shown to influence the language used), gender, and financial stress. Important clinical markers are suicide risk level, history of suicidal thoughts, disclosure, access to mental health, social isolation, and recent triggers.
+  locator: Section 4.1.1 Personas
+  licenses: The source builds its personas with financial stress as a demographic attribute, assigned independently of the clinical markers, which is c1.
+  fit: direct
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000963
+  quote: These systems are available on demand at no-to-low cost, showing some promise to complement human therapy, or to address the needs of the population facing long wait lists or financial barriers to accessing care.
+  locator: Section 1 Introduction
+  licenses: 'The source names financial barriers to accessing care as a condition some people face when they turn to a chatbot, which is the premise of c2: the help a response points to may be out of reach.'
+  fit: adjacent
+  contributes: frame
+  bridge: The source motivates chatbot use by these barriers; it does not measure whether responses point to help the person cannot reach.
+  contradicts: false

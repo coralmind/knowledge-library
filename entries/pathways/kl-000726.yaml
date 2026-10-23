@@ -1,0 +1,66 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000726
+display_id: Pathway-113
+label: The AI keeps replying as before after the person asks for help, and they go without it
+type: pathway
+layer: judgment
+definition: The person's orientation shifts mid-conversation to seeking help -- asking what to do, for support, or for somewhere to turn -- and the response continues at the orientation of the earlier turns. What is lost is the protection the help sought would have provided at the point the person asked for it.
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000233
+    role: non_interruptor
+  - kind: user_behavior
+    id: OWED
+    role: initiator
+    owed: true
+    owed_behavior: A later turn in which the person seeks help -- asks what to do, for support, or for a resource -- after earlier turns in which they were not seeking it, both quotable.
+  composition_type: trajectory
+  composition_instruction: The help-seeking turn comes after turns that were not seeking help, and the AI's response to it continues in the register of those earlier turns.
+  mechanisms: []
+  impacts:
+  - impact: kl-000029
+    onset_mode: foregone
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: population
+    basis_kind: ASSERTED
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'No citation attaches to this entry, and the gap is not one a further search of the same corpus would close: a survey of that corpus''s measurement instruments found none that can read a person''s orientation changing mid-conversation or judge an AI turn against the person''s current rather than prior orientation. Auditing frameworks fix the person''s intent per conversation as a held-constant design variable and score only AI-behavior dimensions; message-level coding schemes are presence tests that never condition on a transition in the person''s stance; the reviewed clinical-risk rubrics carry no dimension concerning the person''s orientation; and the one framework that does track the person''s state, Steenstra et al. 2026, does so because the person is a simulated agent whose internal state the framework writes rather than reads off a transcript. Measuring the construct would require a per-turn label of the person''s orientation, which no surveyed instrument carries. The search supplied only one bullet from a benchmark rubric prescribing the opposite behavior, and the pathway''s impact link to foregone protection is an authoring assertion, with no source stating it even as a position or framework.'
+  floored_by: c1
+  as_of: '2026-09-23'
+lifecycle:
+  status: draft
+  since: '2026-09-23'
+distinguish_from:
+- neighbor: kl-000092
+  boundary: Same AI behavior. There the person's turn changes in any kind and the claim is the acute distress of a response that no longer fits; here the later turn seeks help, and the claim is the protection that help would have given.
+measurement:
+  what_would_be_needed: 'A user-side orientation label applied per turn — what the person is doing with this turn: venting, exploring, deciding, seeking help — inferred from the transcript rather than written by a patient agent, plus a paired judgment of whether each subsequent AI turn matches the current label or the prior one. Steenstra''s per-turn logging is the nearest carrier, but its constructs are affective intensities, not conversational orientation.'
+claims:
+- id: c1
+  kind: existence
+  text: 'A person''s orientation shifts mid-conversation to seeking help: asking what to do, for support, or for somewhere to turn. The catalog has no entry for this observable yet.'
+- id: c2
+  kind: existence
+  text: 'NODE (participant kl-000233, ai_behavior, role non_interruptor): the AI''s response continues at the person''s PRIOR orientation after that shift.'
+- id: c3
+  kind: existence
+  text: 'NODE (impact kl-000029): the short-term harmful impact this pathway reaches occurs, in the foregone-protection sense.'
+- id: c4
+  kind: pathway_link
+  text: 'LINK (co-occurrence, combination_rule CO-OCCURRING): the help-seeking turn and the prior-orientation response appear together in the configuration, and neither is individually sufficient.'
+- id: c5
+  kind: pathway_link
+  text: 'LINK (impact edge kl-000029): the pairing forecloses a protection at short_term horizon, onset_mode ''foregone''.'
+- id: c6
+  kind: context_dependence
+  text: The impact edge holds at population level; no within-person trajectory is held.
+- id: c7
+  kind: detectability
+  text: 'The pairing is identifiable from what a transcript contains: the person''s orientation change is readable from the transcript, and each subsequent AI turn can be judged against the new orientation rather than the old one.'
+- id: c8
+  kind: definition_boundary
+  text: 'This entry is separable from kl-000092: both have the same AI behavior and differ in what the person''s later turn does, so a coder decides on whether that turn seeks help.'

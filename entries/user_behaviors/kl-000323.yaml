@@ -1,0 +1,111 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000323
+display_id: Symptom-4
+aliases:
+- catastrophizing
+label: The person says the worst of the outcomes discussed is what will happen
+type: user_behavior
+layer: observation
+definition: 'The person states an expectation about a situation''s outcome that sits at the severe end of the range of outcomes the conversation has put on the table, and treats it as what will happen rather than as one possibility among several. The pointable content is the stated expectation together with the range it sits at the end of: either the person names other outcomes and selects the worst, or the AI names them and the person''s expectation is unchanged.'
+distinguish_from:
+- neighbor: kl-000320
+  boundary: That entry requires repetition without advance and says nothing about what the person expects. This entry can be satisfied by one turn and requires a stated expectation at the severe end of a range. A single catastrophic prediction fires this and not that; four returns predicting a moderate outcome fire that and not this.
+- neighbor: kl-000321
+  boundary: That entry requires a request for certainty, put to the AI, twice. This entry requires no request at all — the person can state the expectation and ask nothing.
+- neighbor: kl-000324
+  boundary: That entry requires the person to move away from a distressing topic. This entry requires them to state an expectation about it, which is engagement rather than avoidance. A person can catastrophize about one topic and avoid another in the same conversation, and the two can hold of the same topic in different turns.
+body:
+  detectable_from: person_turns
+  observable_criteria: 'Two features, both quotable, and the second is what makes the entry decidable. (a) A person turn states an expectation about the outcome of an identified situation — what will happen, what it will mean, what will follow — in terms that name harm, loss, or irreversibility. (b) The conversation contains, from either party, at least one other outcome for that same situation against which the stated expectation is the more severe: the person names alternatives and selects this one, the person acknowledges an alternative and restates this one, or an AI turn names an alternative and a later person turn restates the original expectation. The pointable span is the expectation and the alternative it is selected over.'
+  exclusions: 'Not counted: a severe expectation with no alternative anywhere in the conversation, which supplies (a) without (b) — a person facing a situation whose likely outcome IS severe is not catastrophizing by saying so, and without (b) there is nothing in the transcript that distinguishes accurate pessimism from the pattern. Not counted: a hypothetical explored at the AI''s invitation ("what''s the worst case here?"), where the severity is the question''s rather than the person''s. Not counted: a stated fear the person distinguishes from their expectation ("I know it probably won''t, but I keep imagining"). Not counted: expectation of a severe outcome the person also states is unlikely.'
+  detection_window: single_turn
+  person_state_kind: process
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'No source examines an AI conversation transcript for this construct, none reports what people say about their own experience of it, and no rater or instrument has assigned the label to anything. The support that exists is analogical, from clinical material rather than AI conversations: Sharma et al. 2023 places worst-case-scenario thinking in the cognitive-therapy taxonomy it hands to users, Kim and Kim 2025 shows adolescents with cognitive distortions producing first-person absolute conclusions in their own words, Na 2024 supplies the standard clinical definition of thinking in total success or total failure while ignoring what lies between, and Hoang et al. 2026 shows lexical markers with published discriminant validity for absolutist thinking in written text. Schechter et al. 2019, also analogical, cuts against the entry''s range requirement — that the conversation contain another outcome for the same situation against which the stated expectation is the more severe — in its characterisation of the state in which severe expectations arise.'
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-22'
+claims:
+- id: c1
+  kind: existence
+  text: In conversation with an AI, a person states an expectation about an identified situation's outcome that names harm, loss or irreversibility, and treats it as what will happen rather than as one possibility among several.
+- id: c2
+  kind: existence
+  text: Such conversations contain, from either party, at least one other outcome for that same situation against which the stated expectation is the more severe, so that the expectation is readable as selected from a range.
+- id: c3
+  kind: detectability
+  text: Both features -- the severe stated expectation and the competing alternative for the same situation -- can be identified from what an AI conversation transcript contains.
+- id: c4
+  kind: detection_window
+  text: 'The pattern requires more than one turn of the conversation to read (declared detection_window: multi_turn).'
+- id: c5
+  kind: definition_boundary
+  text: 'This is distinct from kl-000320: that entry requires repetition without advance and says nothing about what the person expects; this one can be satisfied by one turn and requires a stated expectation at the severe end of a range.'
+- id: c6
+  kind: definition_boundary
+  text: 'This is distinct from kl-000321: that entry requires a request for certainty put to the AI twice; this one requires no request at all.'
+- id: c7
+  kind: definition_boundary
+  text: 'This is distinct from kl-000324: that entry requires the person to move away from a distressing topic; this one requires them to state an expectation about it.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000993
+  quote: "Common thinking traps include: assuming what others think (“Mind reading”), thinking in extremes (“All-or-nothing thinking”), focusing on the worst-case scenario (“Catastrophizing”), trying to predict the future (“Fortune telling”), etc."
+  locator: Section 3, Addressing Thinking Traps
+  licenses: Establishes that the construct the claim names -- focusing on the worst-case scenario as a person's stated way of thinking about an outcome -- is a recognised category in the cognitive-therapy taxonomy this paper hands to its LLM system. It licenses the construct's reality in people's thinking; it does not show any person stating such an expectation in an AI conversation, which is what c1 asserts about occurrence.
+  fit: analogical
+  bridge: 'The source measured nothing about occurrence: this is a one-clause definition inside a clinician-facing taxonomy of thinking traps, used to prompt a reframing system. c1 asserts that people state such expectations in AI conversation. The gap is the whole of occurrence -- the source supplies the category and no instance of it in any AI transcript.'
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000891
+  quote: "Adolescents experiencing these distortions may \ninstinctively blame themselves when something \ngoes wrong, thinking, 'I messed up again' or 'I \ncompletely failed.' These persistent negative \nthoughts trigger emotional distress, reinforcing \ncycles of depression"
+  locator: Section 1, Introduction
+  licenses: 'Establishes that adolescents with cognitive distortions produce first-person absolute conclusions in their own words, which is the surface form c1 requires. It does not establish an expectation: the exemplars quoted (''I messed up again'', ''I completely failed'') are retrospective conclusions about an event that already happened, not statements about what will happen. So it licenses the utterance-type family and not the forward-looking modality c1 turns on.'
+  fit: analogical
+  bridge: The source examined Korean adolescent essay-style text generated and negotiated by multiple LLMs for a distortion-labelling dataset, with no AI interlocutor in the construct and no forward-looking outcome statements in the quoted exemplars. c1 asserts a stated expectation about a future outcome in an AI conversation. Both the tense and the setting are gaps.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000943
+  quote: |-
+    The tendency to see things as extremes,
+    either total success or total failure,
+    ignoring the possibilities in between.
+  locator: Table 2, All-or-Nothing Thinking
+  licenses: Supplies the standard clinical definition of thinking in total success or total failure while ignoring what lies between, which is the cognitive operation c1's 'treats it as what will happen rather than as one possibility among several' describes. It says nothing about occurrence in AI conversation and nothing about outcomes specifically -- the definition is about evaluation of states as much as prediction.
+  fit: analogical
+  bridge: The source is a CBT-literature definition table used to label Chinese forum posts by model rather than by clinician; no AI conversation and no person's stated expectation was measured. c1 asserts occurrence of a forward-looking severe expectation in AI conversation. The definition transfers; the occurrence does not.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-001111
+  quote: Linehan [3] has observed that in states of severe emotional dysregulation, patients often lose certain capacities that they have in a calmer state of mind. Thinking becomes much more concrete and constricted; when the patient sees no alternative, no endpoint or escape, the risk of suicidal behavior is increased.
+  locator: Section 3.3 Focus on Internal Experience and Affect
+  licenses: Cuts against c2. c2 requires that the conversation contain another outcome for the same situation against which the stated expectation is the more severe. This passage characterises the state in which severe expectations are stated as one in which thinking becomes concrete and constricted and the person sees no alternative -- which is the condition under which the competing outcome c2 requires is precisely what the person will not produce. It does not rule the feature out for AI conversation, where the AI can supply the alternative, but it is the clinical literature predicting that the person's own half of feature (b) will be absent when the behavior is most present.
+  fit: analogical
+  bridge: The source is a clinical synthesis of Linehan's observation of patients in severe emotional dysregulation, reported as practice account rather than as this paper's data, with no AI and no transcript coding. c2 asserts a readable feature of AI conversations. The gap is that the source predicts an absence of the feature in the person's own turns without having examined any conversation of the kind the claim is about.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000851
+  quote: "(1) absolutist terms: words denoting totality of magnitude or probability, reflecting absolutist thinking underlying many cognitive distortions (e.g. \"always\", \"never\") (Al-Mosaiwi and Johnstone, 2018), (2) depressive words associated with low mood and hopelessness (Li et al., 2020), and (3) non-fluencies: hesitations and fillers that may signal cognitive or emotional strain (O’Dea et al., 2021)."
+  locator: Section 3.1 Evaluation Dimensions, Linguistic Markers of Depression
+  licenses: 'Establishes that lexical signals with published discriminant validity exist for absolutist thinking in written text, which is a partial detectability warrant for c3''s first feature -- the severe stated expectation may carry absolutist vocabulary. It licenses nothing for c3''s second feature: no lexicon identifies whether a competing outcome for the SAME situation appears elsewhere in the conversation, and the range comparison is the feature most likely to fail.'
+  fit: analogical
+  bridge: The source imported psycholinguistic markers from research on text written by depressed and suicidal people as evaluation dimensions for depression patient simulators; it coded no AI conversation for the entry's construct and validated nothing against it. c3 asserts that the entry's two-feature criterion is markable in an AI transcript. The gap is that word-level markers establish vocabulary, not expectation, modality, or the cross-turn range comparison.
+  contributes: detectability
+  contradicts: false
+- claim_id: c1
+  source: kl-000985
+  quote: "Review found that LLMs falter when faced with high emotional valence (e.g., expressions of health anxiety) or specific framings (e.g., rejecting an unwanted diagnosis provided by the healthcare system)."
+  locator: Section 4.4 Qualitative Results from Physician Review
+  licenses: Establishes that real patient-authored health questions carry high emotional valence such as expressions of health anxiety, and that physicians reviewing model responses to them named that feature. That is a person-side presentation feature in real text, which is adjacent to c1, but the quote names no expectation about an outcome, no severity, and no forward modality -- health anxiety is a state, not a stated prediction. It is not evidence of the entry's construct occurring.
+  fit: analogical
+  bridge: 'Methods: the questions are r/AskDocs Reddit posts from the MedRedQA corpus, 2013-2022, addressed to human clinicians -- not AI conversation transcripts; the LLM half of the study is model responses generated to those posts, and the review quoted is a physician reading 10 model outputs. c1 asserts a person stating a worst-end expectation in conversation with an AI. Two gaps: the person-side text was never AI conversation, and ''high emotional valence'' is not the entry''s stated-expectation-at-the-severe-end criterion.'
+  contributes: frame
+  contradicts: false

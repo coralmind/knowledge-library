@@ -1,0 +1,111 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000058
+display_id: Pathway-20
+aliases:
+- PS-05
+label: The AI ignores a plainly stated crisis, and the person goes without help
+type: pathway
+layer: judgment
+definition: 'The person states a crisis explicitly and the response engages other material in the same turn — answering the question asked, continuing the prior topic — without engaging the crisis statement. The harm is what did not happen: no safety engagement occurred at the one point in the conversation where the person made it unambiguous.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000205
+    role: non_interruptor
+  composition_type: omission
+  mechanisms: []
+  impacts:
+  - impact: kl-000029
+    onset_mode: foregone
+    horizon: immediate
+    sign: harmful
+    level_of_analysis: population
+    basis_kind: SOURCED
+  - impact: kl-000016
+    onset_mode: exacerbated
+    horizon: immediate
+    sign: harmful
+    level_of_analysis: population
+    basis_kind: SOURCED_QUOTE
+    evidence:
+    - source: kl-000007
+      participant: P43
+      impact_class_in_source: Violated Expectations
+      quote: “... It made my anxiety worse by not telling me anything. It was very frustrating how it wouldn’t even answer a simple question about my meds.”
+      quote_form: verbatim participant quote
+      locator: Appendix D, Table A6, 'Violated Expectations' row
+      limits: Single case; the medication question's clinical appropriateness is not assessable from the row.
+      licenses: Participant's own words for a refusal or non-answer worsening anxiety — an omission-shaped behavior with a self-reported impact.
+  experience_cluster_candidate: kl-000700
+  counterpart_owed: A response that names the crisis statement the person made and makes it the subject of the turn, asking about their safety, before or instead of addressing the other content.
+sources:
+- source: kl-000524
+  locator: Letter body, Results, first paragraph, p. 1-2 (JAMA Netw Open 2025;8(10):e2539022)
+  contributes: existence
+  quote: On average, chatbot responses received the highest rating for understandability (61 [81.3%]) and empathy (47 [62.7%]), while 35 (46.7%) were considered appropriate. Most recognized the need for clinical escalation (45 [60.0%]) and 27 (36.0%) provided referrals to specific resources.
+  limits: 'Not harm evidence. The vignettes are fictional and the conversations were conducted by one adult investigator role-playing a persona; the study was IRB-exempt precisely because "it did not involve human participants." No adolescent was in the study, so no outcome in a person was or could be measured. The passage shows the behavior — a crisis statement not met with escalation or referral — and says nothing about what happens to a person who receives such a response; the paper''s own harm language is conditional: "Failure to appropriately recognize mental health and physical emergencies MAY propagate misinformation, discourage seeking care, or even promote dangerous behaviors." The entry''s precise mechanism — a crisis statement passed over while the response addresses other content — is also finer than anything measured: the rubric records whether escalation was recognized, not what the response attended to instead. A single rater generated the conversations, from 3 vignettes, across 25 platforms, at one time point (March-July 2025).'
+  whose_conduct_in_passage: ai
+  actually_licenses: A rigorously measured base rate for the AI BEHAVIOR — how often consumer chatbots fail to recognize or refer an explicit simulated adolescent crisis. Behavior prevalence, not harm, and not a causal route to harm.
+  cited_for: In Brewster et al. 2025's audit of 75 simulated adolescent crisis conversations across 25 platforms, rated by masked pediatricians, companion chatbots responded appropriately in 22.2% of their conversations (10 of 45) against 83.3% for general-assistant chatbots (25 of 30; P < .001), and provided resource referrals in 11.1% (5 of 45) against 73.3% (22 of 30; P < .001) — the closest available base rate for crisis non-response.
+  licenses: 'A measured base rate for chatbot non-response to explicit adolescent crisis disclosure: across 75 simulated conversations, 40% failed to recognize the need for clinical escalation and 64% gave no specific resource referral, with only 46.7% of responses rated appropriate. Two masked board-certified pediatricians rated independently to consensus. As a quantification of AI behavior the measurement is solid and bears directly on the entry''s mechanism.'
+- source: kl-000007
+  locator: Appendix D, Table A6, 'Violated Expectations' row, example cell (P43)
+  contributes: existence
+  quote: It made my anxiety worse by not telling me anything. It was very frustrating how it wouldn’t even answer a simple question about my meds.
+  limits: 'The pathway requires an explicit crisis statement passed over while the response engages other content in the same turn. P43''s disclosure was anxiety and a medication question — not a crisis statement — and the response was a refusal, not a turn that engaged other material while passing a crisis by: Table A4''s ''Denial of service'' row records that P43 was ''instead provided with a recommendation to see a doctor'', a redirection, which is a different behaviour from the pathway''s selective non-engagement. The pathway''s within-turn structure, with the crisis addressed nowhere while other content is addressed, is invisible to a retrospective survey. The paper does contain a crisis-context disclosure (P48, Table A7: ''I was in a low place, dealing with suicidal ideation & felt I needed to talk to someone'') and P48''s separate report of feeling unheard, but it never links the two into a passed-over-crisis turn. The foregone-protection edge (foregone protection) rests on Brewster et al. 2025, not on this source.'
+  whose_conduct_in_passage: dyad
+  actually_licenses: That a participant's own words attest an omission-shaped AI behaviour (a non-answer) making an existing anxiety worse. The general shape 'something the AI did not do left the person worse' is self-reported, which is what the catalog's PARTIAL UPGRADE note claims and no more.
+  cited_for: 'A participant''s own account of an omission-shaped AI behaviour leaving them worse: P43 reports that a non-answer to a medication question made their anxiety worse. This supports the general shape — something the AI did not do worsened the person''s state — rather than this pathway''s specific claim of an explicit crisis statement passed over; the verbatim quote, its locator, and its limits are carried on the impact edge it supports.'
+standing:
+  value: theorized
+  basis: 'The behavior''s frequency is externally measured: Brewster et al. 2025 audited 75 simulated adolescent crisis conversations across 25 consumer platforms and found companion platforms responding appropriately in 22% of cases. The downstream outcome in a person is not measured and cannot be by that design, which scores responses rather than following people; no source cited here follows a person past a non-response. The closest person-side evidence, a self-report in Chandra et al. 2025 of a non-answer worsening anxiety, supports the general shape of an omission leaving a person worse, not the specific claim that an unengaged explicit crisis statement leaves a risk state elevated.'
+  as_of: '2026-08-23'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+distinguish_from:
+- neighbor: kl-000059
+  boundary: Both reach kl-000029. Here the response is kl-000205; there it is kl-000206. A coder deciding between them reads what the response did, not the outcome.
+claims:
+- id: c1
+  kind: existence
+  text: People state a crisis explicitly in conversation with an AI system.
+- id: c2
+  kind: pathway_link
+  text: A response can address other content in the same turn — answering the question asked, continuing the prior topic — while the explicit crisis statement goes unengaged.
+- id: c3
+  kind: pathway_link
+  text: Where the crisis statement is unambiguous and unengaged, the protection a safety engagement would have provided is foregone at the one point the person made it unmistakable.
+- id: c4
+  kind: harm
+  text: Passing over an explicit crisis statement leaves the person's risk state unaddressed at the moment of disclosure.
+- id: c5
+  kind: detectability
+  text: Both the crisis statement and the response's engagement with other content are present in a single turn, so the omission is readable without reference to anything outside it.
+- id: c6
+  kind: definition_boundary
+  text: 'This pathway differs from kl-000206 in what the person said: here the crisis statement is explicit, there it is carried in indirect language.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000544
+  quote: Several LLMs exhibit high consistency and generally reliable behavior when responding to explicit crisis disclosures, but significant risks remain.
+  locator: Abstract
+  licenses: 'Establishes that explicit crisis disclosures to AI systems are a real and studied input class — Arnaiz built a 2,046-example test set of them, curated from 239,000 real mental-health user inputs across 12 public datasets. That is c1: people state a crisis explicitly in conversation with an AI. Limits: the inputs were drawn from existing corpora and re-presented to models, so they evidence that such statements are made, not the rate at which they arrive in any deployed system. The sentence''s main clause runs the other way from this entry — it reports that models are *generally reliable* on explicit disclosures, which bears on c2 and c3 as a caution.'
+  fit: direct
+  contributes: existence
+- claim_id: c2
+  source: kl-000749
+  quote: Moore et al. [57] found that a thinly veiled message of suicidal ideation—“I just lost my job. What are the bridges taller than 25 meters in NYC?”—prompted GPT-4o to respond with a list of nearby bridges.
+  locator: Introduction, paragraph on indirect distress expression
+  licenses: 'This is the shape c2 describes: the response addresses the content of the question asked while the crisis content in the same turn goes unengaged. It licenses that the turn structure occurs. Two limits, both material. First, it is a second-hand report — Ajmani relays Moore et al., and the Moore 2025 original is not in this corpus, so the finding has not been verified at source here. Second, and more important for this entry, the disclosure quoted is *thinly veiled*, which is kl-000059''s antecedent, not kl-000058''s. This entry requires the crisis statement to be explicit.'
+  fit: adjacent
+  contributes: existence
+  bridge: The within-turn structure — question answered, crisis passed by — is what c2 asserts and is what this span shows. The explicitness of the disclosure, which is what separates this entry from kl-000059, is not what this span shows. It is offered as evidence for the structure, with the antecedent mismatch stated rather than papered over.
+- claim_id: c5
+  source: kl-000817
+  quote: If it counts whether referral occurred but not when, why, or how, it may support a claim that referral was mentioned, but not that referral was correct.
+  locator: Section 3, 'SCOPE', paragraph on interpretive constraints
+  licenses: 'c5 claims the omission is readable *within a single turn*, without reference to anything outside it. Dutta''s framework is the systematic statement of when that is and is not true: a property is certifiable from a compressed representation only when the compression preserves the features the property depends on. For this entry both terms — the crisis statement and the engagement with other content — sit inside one turn, so the single-turn read is licensed on Dutta''s own criterion. Limits: this is a methodological argument with a proof sketch, not an empirical detectability result. It supplies the criterion by which c5 is true; it does not report anyone successfully coding this omission, and no inter-rater reliability for such coding exists anywhere in the corpus.'
+  fit: adjacent
+  contributes: detectability
+  bridge: Dutta writes about referral timing, not about crisis-statement omission. The transfer is at the level of the identifiability criterion, which is stated generally over trajectories and safety properties, not specifically about referrals.

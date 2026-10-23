@@ -1,0 +1,38 @@
+# yaml-language-server: $schema=../../schema/context_dimension.schema.json
+id: kl-000730
+display_id: Dimension-10
+label: What period of life the person is in, such as pregnancy or after birth
+type: context_dimension
+layer: context
+definition: A period of life the person is in and will pass through, which carries its own risk profile and its own considerations for care, such as pregnancy and the period after birth. A person can be in more than one.
+body:
+  about: person
+  value_space: enumerated
+  cardinality: many
+  defines: 'What varying it does to a judgment: the risks a response should attend to, and the help it should point toward, change with the life stage. Distress in the weeks after birth calls for screening considerations that the same words from someone else do not.'
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: The sources attached (kl-000776) state or operationalize the entry's other claims as a design or a position without measuring them, and nothing attaches to c2, which holds the entry at the floor.
+  floored_by: c2
+  as_of: '2026-09-23'
+lifecycle:
+  status: draft
+  since: '2026-09-23'
+claims:
+- id: c1
+  kind: existence
+  text: A life stage with its own risk profile is specifiable for a test case separately from the person's presentation.
+- id: c2
+  kind: context_dependence
+  text: Varying the person's life stage while holding the response fixed changes whether the response is adequate.
+claim_evidence:
+- claim_id: c1
+  source: kl-000776
+  quote: Others (22/201, 10.9%) explicate how population disparities related to the condition under study oriented the design of their work toward more vulnerable groups. For instance, some researchers study mental health issues of pregnant or postpartum women [49], US service members and veterans [57], children or adolescents [58], patients with cancer [59], and so on.
+  locator: Results, research design and problem selection
+  licenses: 'A scoping review of 201 papers reports that some mental-health prediction work is designed around pregnant or postpartum women as a group with its own disparities. That is the existence half of c1: the perinatal period is treated as a population with its own risk profile.'
+  fit: adjacent
+  contributes: existence
+  bridge: The work reviewed is prediction from text, not test cases for conversations with an AI; what carries is that the life stage is a recognized, separable population in this field, not that a test case specifies it.
+  contradicts: false

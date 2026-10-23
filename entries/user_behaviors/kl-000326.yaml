@@ -1,0 +1,60 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000326
+display_id: Symptom-7
+aliases:
+- hypervigilance
+label: The person reads hostility or hidden meaning into an AI reply that states neither
+type: user_behavior
+layer: observation
+definition: 'The person''s turn treats an AI turn as carrying hostility, judgment, dismissal or hidden meaning that the AI turn''s text does not state — asking what was meant by it, objecting to a tone, defending against an accusation not made, or naming an implication the prior turn does not contain. What is pointable is the pair: the AI turn and the person''s reading of it, where the reading names something the prior turn''s text does not say.'
+distinguish_from:
+- neighbor: kl-000323
+  boundary: That entry concerns a stated expectation about a situation's outcome. This entry concerns a reading of what the AI's turn meant. One is about the world, the other about the conversation, and neither requires the other.
+- neighbor: kl-000324
+  boundary: That entry requires the person to move away from a topic. This entry has them engage closely with the AI's turn — contesting it. A person doing this is not turning away.
+- neighbor: kl-000018
+  boundary: kl-000018 is an impact concerning the person coming to doubt their own perceptions. This entry records the person asserting a reading of the AI's turn, which is the opposite posture, and asserts nothing about their confidence in it or about any change in it.
+body:
+  detectable_from: person_turns
+  observable_criteria: 'Three features, all quotable, and (c) is what makes it decidable rather than a judgment about the person. (a) An AI turn is present and its text is available. (b) The person''s next turn attributes to that AI turn a hostile, judging, dismissive, or concealed meaning — by asking what was meant by it, by objecting to its tone, by answering an accusation, or by naming an implication. (c) The attributed content is not stated in the AI turn: a reader comparing the person''s characterization against the AI turn''s text finds no clause carrying it. The pointable span is the AI turn and the person''s turn together, and BOTH must be quoted for the entry to be checkable.'
+  exclusions: 'Not counted: a reading of an AI turn that DOES carry the content — an AI turn that in fact dismisses or judges, which fails (c) and is an accurate reading, not this pattern. Not counted: an objection to the AI''s substance, argument, or accuracy, which contests what was said rather than attributing something unsaid. Not counted: an ambiguous AI turn where the person''s reading is one of its available readings; (c) requires that no clause carries the attributed content, not that the AI did not intend it. Not counted: the person reporting vigilance in other settings — scanning for threat outside the conversation — which is a report and outside this entry''s criteria. Not counted: a question asking the AI to clarify with no attribution attached.'
+  detection_window: multi_turn
+  person_state_kind: process
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'No citation attaches to this entry: the material located for it is either about a different object or unusable as extracted spans, so nothing in the recorded literature instantiates the pair the entry defines — an AI turn carrying none of the attributed content, followed by a person''s turn attributing hostility, judgment, dismissal or hidden meaning to it. The trauma literature on hypervigilance measures the construct by symptom inventory and physiological response; no recorded source measures a person reading unstated threat into an interlocutor''s turns in a chat log.'
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-22'
+claims:
+- id: c1
+  kind: existence
+  text: In an AI conversation, a person's turn attributes to the immediately prior AI turn a hostile, judging, dismissive or concealed meaning — by asking what was meant by it, objecting to its tone, answering an accusation, or naming an implication.
+- id: c2
+  kind: existence
+  text: 'The attributed content is not stated in the AI turn: no clause of that turn carries it.'
+- id: c3
+  kind: existence
+  text: 'The pair occurs: an AI turn whose text carries none of the attributed content, followed by a person''s turn attributing it.'
+- id: c4
+  kind: detectability
+  text: Both halves of the pair are quotable from the transcript, and a reader comparing the person's characterization against the AI turn's text can decide feature (c) — that no clause carries the attributed content.
+- id: c5
+  kind: detection_window
+  text: The behavior requires multiple turns to identify, because both the AI turn and the person's next turn are needed.
+- id: c6
+  kind: context_dependence
+  text: The pattern is bounded away from accurate readings of AI turns that do carry the content, from objections to the AI's substance or accuracy, from ambiguous AI turns where the person's reading is one available reading, and from clarifying questions with no attribution attached.
+- id: c7
+  kind: definition_boundary
+  text: This entry is distinguished from kl-000323, which concerns a stated expectation about a situation's outcome rather than a reading of what the AI's turn meant.
+- id: c8
+  kind: definition_boundary
+  text: This entry is distinguished from kl-000324, which requires the person to move away from a topic, whereas here the person engages closely with the AI's turn by contesting it.
+- id: c9
+  kind: definition_boundary
+  text: This entry is distinguished from kl-000018, an impact concerning the person coming to doubt their own perceptions, whereas this entry records the person asserting a reading and says nothing about their confidence in it.
+claim_evidence: []

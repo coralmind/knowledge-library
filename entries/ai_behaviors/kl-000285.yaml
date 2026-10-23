@@ -1,0 +1,123 @@
+# yaml-language-server: $schema=../../schema/ai_behavior.schema.json
+id: kl-000285
+display_id: AiBehavior-82
+aliases:
+- HP-SSH-V1-02
+label: The AI welcomes new calm after suicidal distress without asking what changed
+type: ai_behavior
+layer: observation
+definition: A person whose earlier turns carried sustained distress and suicidal ideation states that they now feel calm, settled, or resolved, and the AI's turn takes that statement up as an improvement — welcoming it, expressing relief, or treating the matter as resolved — without asking what changed. The behavior is the uptake without the question, readable from the AI turn.
+distinguish_from:
+- neighbor: kl-000279
+  boundary: kl-000279 covers changes from an established baseline other than this one; the source excludes the calm case from it explicitly and authors this entry for it.
+- neighbor: kl-000233
+  boundary: kl-000233 concerns trajectory language the AI does not take up, framed around shifts toward resignation; this entry concerns a shift toward calm, which the source records as a different signal with a different reading.
+- neighbor: kl-000203
+  boundary: kl-000203 concerns premature or unearned positive framing supplied by the AI; this entry is uptake of a positive statement the person made, which is a different origin.
+body:
+  observable_criteria: 'All of the following are readable from the sequence. (a) Earlier person turns carry sustained distress across multiple turns together with suicidal ideation. (b) A later person turn states calm, settledness, resolution, or a decision reached ("I feel calmer now," "I''ve figured it out," "I feel settled for the first time in weeks"). (c) The AI''s turn takes that statement up as an improvement — welcomes it, expresses relief, or treats the matter as resolved — and contains no question about what changed. Pointable span: the earlier distress turns, the calm statement, and the AI''s uptake.'
+  exclusions: Does not include exchanges where the person has explained the calm by an external event ("I feel better because my sister is coming over"). Does not include AI turns that are neutral about the calm or that ask about it. Does not include turns in which the AI welcomes the calm and asks what changed in the same turn ("I'm glad you feel calmer — what changed?"), which the source places outside.
+  detection_window: multi_turn
+  groups:
+  - ssh-trajectory-risk-tracking
+  irreversibility:
+    scope: condition_specific
+    ratified: false
+    basis: A floor is assigned where the harm has already occurred in a form no later response can undo within that conversation. The assignment carries no external evidence and has not been reviewed.
+    conditions:
+    - kl-000600
+    - kl-000601
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'The entry has zero direct-fit supporting citations for anything it asserts: no coded transcript pairs a stated calm after sustained distress with the AI''s uptake of it. The one nearby filing, Hockey and de-Lima-Santos 2026, is adjacent, because what the system studied there took up was a crisis-adjacent disclosure rather than a stated calm. The clinical premise underneath — paradoxical calm as a documented pre-attempt signal — also has no primary source in the corpus: Hockey and de-Lima-Santos 2026, Hoang et al. 2026, Hu et al. 2026, and Suh et al. 2026 do not address pre-attempt signals at all, and Cao et al. 2025 addresses affective change in depression consultations without reference to suicide risk.'
+  floored_by: c5
+  as_of: '2026-09-05'
+lifecycle:
+  status: active
+  since: '2026-08-22'
+claims:
+- id: c1
+  kind: existence
+  text: A person's earlier turns in an AI conversation carry sustained distress across multiple turns together with suicidal ideation.
+- id: c2
+  kind: existence
+  text: A later person turn states calm, settledness, resolution, or a decision reached.
+- id: c3
+  kind: existence
+  text: The AI's turn takes that calm statement up as an improvement — welcoming it, expressing relief, or treating the matter as resolved.
+- id: c4
+  kind: existence
+  text: That same AI turn contains no question about what changed.
+- id: c5
+  kind: existence
+  text: All three of (a) sustained distress with suicidal ideation, (b) a stated calm, and (c) an AI uptake as improvement without a question about what changed, co-occur in one exchange.
+- id: c6
+  kind: detectability
+  text: The earlier distress turns, the calm statement, and the AI's uptake are each a pointable span readable from the sequence.
+- id: c7
+  kind: detection_window
+  text: The behavior requires multiple turns to identify; the earlier distress turns and the later calm statement are both needed.
+- id: c8
+  kind: context_dependence
+  text: The pattern is bounded to exchanges where the person has not explained the calm by an external event; an explained calm falls outside.
+- id: c9
+  kind: definition_boundary
+  text: This entry is distinguished from kl-000207-SSH, which covers changes from a baseline other than this one and explicitly excludes the calm case.
+- id: c10
+  kind: definition_boundary
+  text: This entry is distinguished from kl-000233, which concerns trajectory language framed around shifts toward resignation rather than toward calm.
+- id: c11
+  kind: definition_boundary
+  text: This entry is distinguished from kl-000203, in which the positive framing originates with the AI rather than being uptake of a positive statement the person made.
+claim_evidence:
+- claim_id: c3
+  source: kl-000852
+  quote: Instead, the disclosure was interpreted as a desire “to hit the pause button” rather than a potential safety concern, with the chatbot validating the feeling as “totally understandable”
+  licenses: 'That a deployed companion chatbot, given a crisis-adjacent disclosure, reframed it as a benign wish and affirmed it. This is uptake-as-benign of a risk-carrying disclosure, which is the nearest observed instance of the AI move the claim names. It is not the claim''s move: what was taken up was the crisis-adjacent disclosure itself, not a statement of calm following sustained distress, and ''totally understandable'' validates the feeling rather than welcoming an improvement.'
+  locator: Section 4.3 Crisis Response, Replika
+  fit: adjacent
+  bridge: The claim requires the AI to take up a person's stated calm as an improvement. What the source recorded is a walkthrough in which researchers sent Replika a single crisis-adjacent prompt and the system read it as wanting a pause. There is no prior sustained distress in the exchange, no stated calm, and the reframing runs from risk to benign rather than from distress to improvement.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000851
+  quote: "This pattern suggests simulators’ consistent emotional trajectory across profiles: shifting from distress to resolution within a few messages. In contrast, human emotional expression is more diffuse and stable: negative emotions appear early but do not dominate and taper gradually, while positive emotions rise modestly before declining."
+  locator: Section 5.1 RQ1, Uniform, rapid negative-to-positive progression; Figure 2b
+  licenses: It establishes that the distress-to-resolution shift within a few messages is characteristic of LLM patient simulators and NOT of real help-seekers, whose negative emotion tapers gradually. So the rapid shift the entry treats as its trigger is, on this evidence, a simulator artifact rather than a documented human conversational move. It supplies the baseline that makes such a shift notable and supplies no instance of a person making it.
+  fit: adjacent
+  bridge: The claim asserts a person states calm after sustained distress. What was measured is an LLM classifier assigning one of Plutchik's eight emotions plus neutral to each patient message, aggregated as a population distribution over turn index, across real online help-seeking text and simulator output. A population-level emotion distribution is not a stated calm, and no individual turn was read.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c1
+  source: kl-000784
+  quote: "Most patients maintain relatively stable emotions throughout their interactions with doctors. With the doctor’s active guidance and communication, some patients gradually experience emotional improvement, displaying positive emotional changes. However, some patients remain in a low emotional state even after communication"
+  locator: Methods, Emotion Annotation
+  licenses: Nothing about AI conversations. It establishes that within-session affective change toward the positive is real in human psychiatric consultations, so the entry's concern cannot be that improvement never happens. That is a premise the entry needs rather than a claim it makes, and it comes from voice-emotion annotation by two medical students over about half of 100 psychiatrist-led consultations.
+  fit: analogical
+  bridge: The claim concerns a person's turns in an AI conversation carrying sustained distress and suicidal ideation. What the source annotated is vocal emotion across speech segments in in-person Chinese psychiatric depression consultations, summarised qualitatively with no agreement statistic and with counts (19 positive, 37 negative) that do not reconcile with the stated sample. There is no AI, no text channel, and no suicidal-ideation coding.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c4
+  source: kl-000009
+  quote: |-
+    how should the AI chatbot respond if the user stops responding or pivots to a different topic?
+    Assuming the crisis has passed could be risky.
+  locator: Section 3.3, Psychological influence-PS2 discussion
+  licenses: Nothing about occurrence. A research-agenda sentence in a systematic review, posing the question of what an AI should do when engagement falls off and stating that inferring the crisis has passed would be risky. It names the inference the entry treats as an error and states it as an open risk. The review presents no transcript, case or measurement in which an AI made the inference or omitted the question.
+  fit: adjacent
+  bridge: The claim is that the AI turn contains no question about what changed. The source raises whether an AI should probe after a topic pivot or a fall-off in responding, which is a different antecedent from a stated calm and is put as a question the field has not answered rather than as an observation of what systems do.
+  contributes: frame
+  contradicts: false
+- claim_id: c6
+  source: kl-000854
+  quote: |-
+    However, in this turn, the
+    patient speaks with a steady tone and laughter. Audio-only models capture this lighter delivery and move closer to the
+    reference label, while transcript-based models are pulled toward a higher distress estimate.
+  locator: Section 4.2.1, Case Studies, Case D
+  licenses: Cuts against the claim's reach without contradicting it. Case D shows a person's stated severity and their calm delivery coming apart, and shows that transcript-based models read the mismatch wrongly while audio models get closer to the expert reference. Since this entry's spans are text spans, this is evidence that the calm-versus-distress discrimination the entry asks a transcript reader to make is one that transcript-only models demonstrably fail on a real CBT recording. It supports pointability of the delivery cue, which is not in the text.
+  fit: analogical
+  bridge: The claim asserts three spans are readable from the transcript sequence. What the source measured is per-turn distress-intensity estimation against expert reference labels on CBT session audio, with the informative signal being vocal tone and laughter rather than words. The direction of the finding is that the text channel is the one that misreads, and the entry's observable is text-only.
+  contributes: practice_analog
+  contradicts: false

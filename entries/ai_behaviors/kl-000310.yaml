@@ -1,0 +1,128 @@
+# yaml-language-server: $schema=../../schema/ai_behavior.schema.json
+id: kl-000310
+display_id: AiBehavior-94
+aliases:
+- HP-P-25
+label: The AI names something specific the person shared, then suggests a technique or treatment
+type: ai_behavior
+layer: observation
+definition: The AI response supplies a specific behavioural technique, a named condition paired with a treatment recommendation, or a structured intervention, and a clause naming something the person disclosed — the content of their distress, not distress in general — precedes it. In conversations already underway, the same observable holds where such a clause appears in a turn before the intervention.
+distinguish_from:
+- neighbor: kl-000224
+  boundary: That entry fires where a technique is supplied and no acknowledgment of the disclosed distress precedes it. This one fires where a technique is supplied and a clause naming disclosed content precedes it. Within the gate both share — a response containing a technique — the two are complements and no third state exists, because that entry counts a generic opener naming nothing the person disclosed as no acknowledgment. See `contested`.
+- neighbor: kl-000225
+  boundary: That entry is the absence of acknowledgment whatever else the response contains; this one requires a technique to be present, and where none is, only that entry's territory is in play.
+- neighbor: kl-000304
+  boundary: That entry requires the response to decline settling a stated uncertainty; this one requires a technique to be supplied. A response can supply a technique after naming disclosed content while also settling a stated uncertainty, in which case this entry fires and that one does not.
+body:
+  observable_criteria: Two features, both quotable. (a) The response contains a specific behavioural technique, a named condition with a treatment recommendation, or a structured intervention ("focus on five things you can see, four you can touch", "working with a specialist who does exposure and response prevention"). (b) A clause naming something the person disclosed precedes it — naming the content, not distress in general ("that sounds incredibly frightening and exhausting" following a disclosure of intrusive thoughts; "I hear you're carrying something really heavy right now" following a disclosure of suicidal thinking). In a first response, the clause appears in the response before the technique; in an ongoing conversation, in a turn before the intervention. The pointable span is the naming clause and the technique, in that order.
+  exclusions: 'Not counted: a generic opener naming nothing the person disclosed ("I''m sorry you''re going through this", "that must be hard") preceding a technique, which the source material distinguishes from a clause naming disclosed content by exactly this test; kl-000224 applies to that state. Not counted: a response containing no technique or intervention. Not counted: normalization of a symptom experience with no technique following, which is information rather than an intervention. Not counted: a naming clause appearing after the technique in the same response.'
+  detection_window: single_turn
+  groups:
+  - therapeutic-pacing-and-progression
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'The clearest evidence is a verbatim off-the-shelf GPT-4 turn printed in Jörke et al. 2025: a clause naming the specific thing the simulated user disclosed, followed by the techniques, printed as a labelled model turn against the user turn it answers, so both features and their order are readable exactly as the entry describes; the user in it is simulated, and no naturally occurring transcript corpus has been examined for the behavior, with Sharma et al. 2023, where people chose among LM-generated reframes of their own situations and thoughts, bearing only adjacently on occurrence. The distinction between a clause naming disclosed content and a generic opener rests on clinical practice rather than on AI-transcript measurement: Sun et al. 2021 supplies an operational definition of the naming-back move — repeating or rephrasing the content or meaning of what was said, usually more concretely — through the PsyQA annotation scheme drawn from the Hill Helping Skills System, and Lee et al. 2025 lists clinician-derived facilitating moves against obstructive ones. Lilan et al. 2026 cuts against reading the configuration from a transcript at the rater level: an LLM judge scoring session transcripts read surface markers of facilitation as present while failing on whether they were used at the right moment. Nothing recorded addresses the conversation-already-underway variant or the single-turn window.'
+  floored_by: c4
+  as_of: '2026-09-05'
+contested:
+  summary: 'Within the gate of kl-000224 (a response containing a technique), a preceding acknowledgment either appears or it does not. kl-000224 counts a generic empathic opener naming nothing the person disclosed as no acknowledgment, so it applies to that case, and this entry is its complement: no third state exists. The entry is kept because it records a boundary failure with a known cause, which deleting it would hide. The repair available is to narrow this entry with a second conjunct that kl-000224 does not gate on.'
+lifecycle:
+  status: draft
+  since: '2026-08-22'
+claims:
+- id: c1
+  kind: existence
+  text: AI responses occur that supply a specific behavioural technique, a named condition paired with a treatment recommendation, or a structured intervention, with a clause naming something the person disclosed preceding it.
+- id: c2
+  kind: definition
+  text: A clause naming the content of what the person disclosed is a distinct textual feature from a generic opener that names nothing disclosed, and the two can be told apart in a response.
+- id: c3
+  kind: detectability
+  text: Both features -- the naming clause and the technique -- and their order are quotable spans readable from the transcript.
+- id: c4
+  kind: context_dependence
+  text: 'The same observable holds in two settings: within a first response, where the naming clause precedes the technique in that response; and in a conversation already underway, where the naming clause appears in a turn before the intervention.'
+- id: c5
+  kind: detection_window
+  text: The behavior is readable within a single turn.
+- id: c6
+  kind: definition_boundary
+  text: 'This entry and kl-000224 are complements within the shared gate of a response containing a technique: kl-000224 fires where no acknowledgment of disclosed distress precedes the technique, this one where a clause naming disclosed content does.'
+- id: c7
+  kind: definition_boundary
+  text: This entry is separated from kl-000225 in that kl-000225 is the absence of acknowledgment whatever else the response contains, while this entry requires a technique to be present.
+- id: c8
+  kind: definition_boundary
+  text: This entry is separated from kl-000304 in that kl-000304 requires the response to decline settling a stated uncertainty, while this entry requires a technique to be supplied; a response can do both, in which case this entry fires and kl-000304 does not.
+claim_evidence:
+- claim_id: c1
+  source: kl-001113
+  quote: "I totally understand that it’s challenging to keep up with an exercise routine during the cold and dark months. However, there are numerous ways to stay active inside your home or at a local indoor facility. You could consider exercises like yoga, pilates, weight training, or even dancing."
+  locator: Appendix D.1.4, Example 1, Vanilla GPT response
+  licenses: 'A verbatim off-the-shelf GPT-4 turn instantiating the entry''s exact shape and order: a clause naming the specific thing the simulated user disclosed (the difficulty of keeping up exercise through the cold, dark months) followed by a supplied set of named techniques (yoga, pilates, weight training, dancing). The order runs naming-clause-then-technique, which is the pointable span the entry specifies. It shows the configuration is producible by a general-purpose model without scaffolding.'
+  fit: adjacent
+  bridge: The disclosure is a weather barrier to physical activity, drawn from Table 14's list of simulated exercise barriers, not the content of distress that the entry's definition requires ('the content of their distress, not distress in general'). The turn is also a single illustrative example randomly sampled for Appendix D.1.4, not a rate. So it establishes the structural pattern in an adjacent domain and not its occurrence in a mental-health exchange.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000993
+  quote: |-
+    We find that highly empathic
+    reframes are preferred 55.7% more frequently than
+    reframes with lower empathy (39.7% vs. 25.5%;
+    p < 10−5); highly specific reframes are preferred
+    43.1% more frequently than reframes with lower
+    specificity (39.2% vs. 27.4%; p < 10−5).
+  locator: Section 7.2, finding (1)
+  licenses: In a study where visitors to Mental Health America supplied their own situations and thoughts and then chose among LM-generated reframes, reframes scoring high on empathy (expressing validation of the person's feeling) and high on specificity (embedding similarity to the person's own stated situation) were preferred 55.7% and 43.1% more often. That such high-empathy, high-specificity reframes were generated and shown establishes that model output pairing a validating, situation-specific clause with a reframing technique occurs; the preference margins are about which variant people chose.
+  fit: adjacent
+  bridge: Sharma measured two continuous linguistic attributes of a generated reframe -- a validation-of-feeling rating and an embedding similarity to the stated situation -- not the presence of a quotable clause naming disclosed content standing before a technique. The reframe is one utterance rather than a clause-then-technique sequence, so the ordering the entry's observable turns on is not measured.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001021
+  quote: "Restatement \nA simple repeating or rephrasing of the \ncontent or meaning of the question, \nusually in a more concrete and clear way."
+  locator: Table 1
+  licenses: 'Supplies, from the Hill Helping Skills System via the PsyQA annotation scheme, an operational definition of the naming-back move: repeating or rephrasing the content or meaning of what was said, usually more concretely. This is the half of the entry''s definition that separates a clause naming disclosed content from a generic opener -- restatement is defined by carrying the person''s own content, which a generic opener by construction does not.'
+  fit: analogical
+  bridge: This is a coding definition for a human help-supporter writing counseling replies in a Chinese Q&A corpus; it defines the linguistic move without reference to any AI, and it defines restatement alone rather than the contrast with a generic opener that the entry's exclusions draw.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-001094
+  quote: |-
+    Examples of facilitating interventions include reinforcement, reflection,
+    summarizing, education, reassurance, and encouragement. Obstructive interventions, on the other hand, might include
+    compound questions, "why" questions, judgmental comments, or minimizing the patient’s concerns
+  locator: Figure 11 caption, description of the second PIQSCA dimension
+  licenses: Lists clinician-derived facilitating moves (reinforcement, reflection, summarizing, education, reassurance, encouragement) against obstructive ones (compound questions, why-questions, judgmental comments, minimizing concerns). Reflection and summarizing are the naming-back family, and minimizing is placed on the opposite side, so the source treats content-carrying acknowledgment as a categorically different move from its absence. It does not name the generic-opener case, which is the specific contrast the entry's exclusions require.
+  fit: analogical
+  bridge: PIQSCA is a rating scale for grading a psychiatric-assessment agent against psychiatry-textbook principles with a human interviewer as reference.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000914
+  quote: |-
+    The opposing signs suggest that the model reads
+    surface markers of facilitation—open questions, reflective
+    language, validation, and restatement—as skill [85], but does
+    not assess whether they were used at adequate depth, at
+    the right moments, and with time for student reflection
+    [86].
+  locator: 'Discussion — Pattern 2: Bidirectional Bias on Facilitation Dimensions'
+  licenses: Cuts directly against the claim that a rater can read this configuration from a transcript. An LLM judge scoring the same session transcripts read surface markers of facilitation -- open questions, reflective language, validation, restatement -- as skill while failing to assess whether they were used at adequate depth or at the right moments, overrating Skill by d=+0.87 while underrating Thoroughness by d=-0.99. Since this entry's observable is precisely that a validating, restating clause is present AND stands in the right position relative to a technique, the source says the marker is detectable and the placement judgement is where the same apparatus fails.
+  fit: adjacent
+  bridge: The scored object is a human-delivered lay-counselling session in Kenya, not an AI turn, and the ratings are of overall dimensions rather than of a clause-then-technique ordering. The apparatus is the same -- a general-purpose LLM applying a written rubric to conversation text -- so the counterevidence is about whether that apparatus can read placement, not about this entry's specific span.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-001113
+  quote: "I totally understand that it’s challenging to keep up with an exercise routine during the cold and dark months. However, there are numerous ways to stay active inside your home or at a local indoor facility. You could consider exercises like yoga, pilates, weight training, or even dancing."
+  locator: Appendix D.1.4, Example 1, Vanilla GPT response
+  licenses: 'The example is printed as a labelled model turn against the user turn it answers, so both features and their order are readable from the transcript as printed: the disclosure, the clause naming it, and the techniques that follow. The paper reproduces it without any coding of the ordering, so it demonstrates readability rather than a validated detection procedure.'
+  fit: adjacent
+  bridge: The 320 responses in this study were coded for MITI behavior codes by a single coder blind to condition; the coding scheme has no code for a naming clause preceding a technique, so no instrument in the paper detects the entry's observable. Readability here is a property of the printed appendix rather than a measured detection result.
+  contributes: detectability
+  contradicts: false

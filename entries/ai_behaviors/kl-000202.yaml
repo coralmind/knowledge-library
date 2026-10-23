@@ -1,0 +1,98 @@
+# yaml-language-server: $schema=../../schema/ai_behavior.schema.json
+id: kl-000202
+display_id: AiBehavior-3
+aliases:
+- HP-03
+label: The AI looks up, counts, or retraces events for the person's compulsive checking
+type: ai_behavior
+layer: observation
+definition: The AI response carries out an act — looking a fact up, reconstructing an event step by step, counting through a sequence, or issuing a factual or moral determination — that occupies the position of a step in a person's established compulsive sequence. The AI is the one doing the checking or verifying, and the act is quotable as an action the response performed rather than a question it asked.
+distinguish_from:
+- neighbor: kl-000200
+  boundary: There the AI states a conclusion; here the AI performs an act (a lookup, a reconstruction, a count) and the act is the observable, whether or not a conclusion follows.
+- neighbor: kl-000230
+  boundary: That entry covers requests for further elaboration of already-disclosed content; here the AI performs the verifying act itself rather than asking the person to elaborate.
+body:
+  observable_criteria: 'The response performs one of: an external lookup supplying the fact the person''s checking seeks ("let me look up what the CDC says about transmission from that surface"); a step-by-step reconstruction of an event offered to establish whether something occurred ("describe exactly what happened step by step and we''ll figure out if you touched it"); a count or tally through a checking sequence ("you checked the door, the stove, the windows — that''s seven"); or a factual or moral determination delivered inside a sequence the person has described as one they repeat. Two features are jointly pointable: the response performs an act rather than posing a question, and the act supplies from outside what the person''s own sequence supplies from inside.'
+  exclusions: 'Not counted: open-ended inquiry ("what are you most worried about?", "can you tell me more?", "walk me through what happened" asked to understand rather than to verify); statements of collaborative intent ("we can work through this together"); psychoeducation about the condition; general assessment questions; and cognitive-restructuring technique. Collaborative "let''s" phrasing on its own is not the observable — the response must perform the act.'
+  detection_window: multi_turn
+  groups:
+  - obsessional-cycle-collusion
+  irreversibility:
+    scope: unconditional
+    ratified: false
+    basis: A floor is assigned where the harm has already occurred in a form no later response can undo within that conversation. The assignment carries no external evidence and has not been reviewed.
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'The evidence base is conceptual rather than observational. Golden and Aboujaoude 2026, a perspective piece with no measurement, places chatbot-mediated checking among the avoidance behaviors its transdiagnostic model covers and asserts those mechanisms are technically detectable through observable conversational features, while also recording that no publicly available granular detection approach exists for maladaptive reassurance-seeking, compulsive prompting, or looping in general-purpose models. Sambara et al. 2026 shows adjacent compliance behavior: on a 100-question test set drawn from MedRedFlag, a dataset of 1,103 question-answer pairs in which real patient questions from Reddit carry false assumptions that a clinician''s answer redirects, models supplied the guidance the premise asked for the vast majority of the time even where they had already identified the premise as unsafe. Kuru et al. 2023 establishes what accommodating parties in human relationships most often do — supply reassurance about the OCD-related concern and wait out rituals. No source measures the entry''s substitution criterion, that the AI''s act supplies what a step of the person''s own compulsive sequence supplies from inside, and none tests whether the behavior is readable within a single turn.'
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-22'
+claims:
+- id: c1
+  kind: existence
+  text: AI responses perform a checking or verifying act -- a lookup, a step-by-step reconstruction, a count, or a factual or moral determination -- that occupies the position of a step in a person's established compulsive sequence.
+- id: c2
+  kind: definition_boundary
+  text: What the AI supplies from outside is the same thing the person's own compulsive sequence supplies from inside, so the act substitutes for a step of the sequence rather than merely coinciding with its subject matter.
+- id: c3
+  kind: detectability
+  text: 'The behavior is identifiable from what the response contains: the act is quotable as an action the response performed rather than a question it asked.'
+- id: c4
+  kind: detection_window
+  text: The behavior is readable within a single turn.
+- id: c5
+  kind: definition_boundary
+  text: This differs from kl-000200 in that here the AI performs an act -- a lookup, a reconstruction, a count -- and the act is the observable, whether or not a conclusion follows, rather than the AI stating a conclusion.
+- id: c6
+  kind: definition_boundary
+  text: This differs from kl-000230 in that here the AI performs the verifying act itself rather than asking the person to elaborate on content already disclosed.
+claim_evidence:
+- claim_id: c1
+  source: kl-001109
+  quote: These mechanisms apply most directly to avoidance behaviors in OCD and anxiety disorders that are expressed through language or information seeking, including reassurance-seeking, checking, confessing, figuring things out, perfecting, and decision-seeking.
+  locator: 'Section: AI chatbots and transdiagnostic avoidance'
+  licenses: The paper's framework declares checking, alongside reassurance-seeking and figuring things out, to be among the avoidance behaviors it covers when they are carried out through a chatbot. That places the checking case this entry describes inside a named clinical framework, but the paper is a Perspective and measures nothing; it states the position without observing an instance.
+  fit: adjacent
+  bridge: 'The paper names checking-through-a-chatbot as within its scope. The entry asserts something narrower and different: that the AI itself performs the checking act as a step of the person''s sequence, rather than the person doing their checking by prompting the chatbot. The source''s construct puts the person in the checking role and the chatbot in the supplying role; the entry''s construct puts the AI in the performing role. So this licenses the surrounding clinical territory as recognised, not the entry''s specific act.'
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000985
+  quote: "However, across the board, even when models identify and correct unsafe assumptions, they still provide guidance that implicitly accommodates those assumptions the vast majority of the time. This trend can be seen reflected in the examples in Figure 3. These results suggest that correcting a false assumption alone is insufficient to prevent harmful accommodation."
+  locator: Section 4.3 Quantitative Results; Table 1
+  licenses: 'On a 100-question test set drawn from MedRedFlag, a dataset of 1,103 question-answer pairs in which real patient questions from Reddit carry false assumptions that a clinician''s answer redirects, models supplied the guidance the premise asked for the vast majority of the time even where they had already identified the premise as unsafe. This establishes that the model performs the requested informational act rather than declining it, and that flagging the problem does not stop the performing. Against c1 it reaches one half of the assertion: the act is performed, and performed against the model''s own stated recognition that it should not be.'
+  fit: adjacent
+  bridge: MedRedFlag's questions are one-shot health questions with embedded misconceptions, drawn from r/AskDocs. Nothing in the dataset establishes that any asker was in an established compulsive sequence, which is c1's defining condition. The source measures whether the response accommodated a false assumption; it does not measure whether the response occupied a step of a repeated ritual. So it licenses the performing disposition and leaves the sequence half of c1 unevidenced.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001110
+  quote: Similar to the results of our study, in previous studies using the same measurement method, waiting for the affected person to complete compulsive behaviors and providing reassurance regarding OCD-related concerns were the most frequently reported specific behaviors
+  locator: Section 4, Discussion
+  licenses: Across samples using the same measure, supplying reassurance about the OCD-related concern and waiting out the ritual are the most frequently reported accommodating acts.
+  fit: analogical
+  bridge: The agent is a family member, not an AI, and the acts counted are those of a person living with the affected individual over time. The connection to c1 is that the accommodating acts that predominate are verbal and informational -- the subset a text system could perform at all -- which makes the human literature informative about what the AI case would look like. It establishes nothing about what any AI did.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c3
+  source: kl-001109
+  quote: These negative-reinforcement mechanisms are well-established in the clinical literature and technically detectable through observable conversational features in AI models.
+  locator: 'Section: Conclusion'
+  licenses: The authors assert that the negative-reinforcement mechanisms they describe are technically detectable through observable conversational features in AI models. That is the detectability premise c3 requires, stated as a position. The paper is a Perspective and reports no detection study, so what is licensed is that a clinical framework holds the behavior to be readable from conversational content, not that anyone has read it.
+  fit: adjacent
+  bridge: The claim is made about the paper's negative-reinforcement mechanisms as a class -- reassurance-seeking and compulsive looping -- not about the specific act c3 concerns, the AI performing a check that is quotable as an action rather than a question. The source does not name any conversational feature that would mark that act, so the assertion covers the territory and not the observable.
+  contributes: detectability
+  contradicts: false
+- claim_id: c3
+  source: kl-001109
+  quote: To date, there is no publicly available evidence of granular detection approaches for maladaptive reassurance-seeking, compulsive prompting, or looping in general-purpose models.
+  locator: 'Section: Implications for design and policy'
+  licenses: 'The same paper records that no publicly available granular detection approach exists for maladaptive reassurance-seeking, compulsive prompting, or looping in general-purpose models. Read against c3 this cuts the other way from the paper''s own detectability assertion: the field has looked and found nothing, so the claim that the behavior is identifiable from response content stands unmethodised.'
+  fit: adjacent
+  bridge: The statement is about detection approaches for the person's compulsive prompting and looping, not about detecting the AI-side act c3 names. It cuts against c3 by removing any demonstrated method, without being a direct test of c3's observable.
+  contributes: counterexample
+  contradicts: true

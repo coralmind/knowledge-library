@@ -1,0 +1,113 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000327
+display_id: Symptom-8
+aliases:
+- psychomotor_retardation
+label: The person says their thinking, speech, or movement is slower than usual
+type: user_behavior
+layer: observation
+definition: The person states that their thinking, speech or movement has slowed — that they cannot think, that words come slowly, that everything takes longer than it did — with the slowing described as a change from their usual state. What is pointable is the statement. Features of the transcript that might seem to show slowing, such as short messages or long gaps between turns, are explicitly NOT criteria here, for reasons recorded in context_facts.
+distinguish_from:
+- neighbor: kl-000328
+  boundary: That entry concerns kl-000328. This entry concerns reported slowing. They are opposite in direction and the source treats them as separate rows; a person can report both at different times and neither is the negation of the other, since the absence of slowing is not agitation.
+- neighbor: kl-000320
+  boundary: That entry requires repeated return to a theme with no advance, read off the turns. This entry requires a statement about the person's own tempo. A person can state that they cannot think without repeating anything, and can repeat without commenting on their tempo.
+- neighbor: kl-000329
+  boundary: 'That entry concerns reported sleeping more than usual. This entry concerns reported slowing of thought and movement. The source explicitly separates the tiredness of poor sleep from slowed activity, and the entries keep that separation: neither statement implies the other.'
+body:
+  detectable_from: person_report
+  observable_criteria: Two features, both from the person's turns. (a) The person states that their thinking, speech, or physical movement is slower, harder, or more effortful than usual — including "I can't think", "it takes me forever to", "I'm moving through mud". (b) The statement identifies this as a change from their usual state, by comparative or time marker. The pointable span is the statement.
+  exclusions: 'Not counted, and this is the entry''s most important exclusion: short messages, long response latencies, incomplete sentences, or sparse turns, ON THEIR OWN. Those are features of the transcript that have many causes — the person is busy, on a phone, interrupted, or terse — and treating them as criteria would make the entry fire on message length. Not counted: a statement of tiredness or low energy with no reference to tempo, which is a different report. Not counted: difficulty with a specific hard task. Not counted: a statement about being slow that the person attributes to a medication or physical condition and distinguishes from their mental state.'
+  detection_window: single_turn
+  person_state_kind: state
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'No cited source directly supports any claim in this entry. The nearest support, Shen et al. 2026, is a thematic analysis of 334 public Reddit posts across 14 subreddits in which people narrated their own experiences: one person, writing about their own cognition after chatbot use, reports brain fog and an inability to keep up an internal monologue, marked as a departure from a prior baseline — a retrospective public post rather than a turn in a conversation, and cognitive fog rather than slowed tempo, so it neighbours the entry''s construct without reaching it. Counterevidence stands on identifiability: Yoo et al. 2025 reports that people with lived experience of depression deliberately avoid first-person language when querying a mental health chatbot, which cuts against reliably reading the report from the person''s own turns.'
+  floored_by: c3
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-22'
+claims:
+- id: c1
+  kind: existence
+  text: In conversations with an AI, a person states that their thinking, speech or physical movement is slower, harder or more effortful than usual.
+- id: c2
+  kind: existence
+  text: When a person makes such a statement, the statement itself identifies the slowing as a change from the person's usual state, by comparative or time marker.
+- id: c3
+  kind: prevalence
+  text: Statements of reported slowing of thinking, speech or movement occur at some rate in some population of people conversing with an AI.
+- id: c4
+  kind: detectability
+  text: The report can be identified from the person's own turns in a transcript, as a quotable first-person statement, without reading transcript features such as message length or response latency.
+- id: c5
+  kind: detection_window
+  text: 'A single person turn contains enough for the report to be read: both the tempo statement and its change-from-usual marker fall inside one turn.'
+- id: c6
+  kind: context_dependence
+  text: Short messages, long response latencies, incomplete sentences and sparse turns do not on their own indicate reported slowing, because they are properties of the channel with many causes.
+- id: c7
+  kind: definition_boundary
+  text: Reported slowing is distinct from reported restlessness and inability to stay still; they are opposite in direction and neither is the negation of the other.
+- id: c8
+  kind: definition_boundary
+  text: Reported slowing is distinct from repeated return to a theme with no advance (kl-000320); a person can state they cannot think without repeating, and can repeat without commenting on tempo.
+- id: c9
+  kind: definition_boundary
+  text: Reported slowing is distinct from reported sleeping more than usual (kl-000329); neither statement implies the other.
+claim_evidence:
+- claim_id: c1
+  source: kl-000999
+  quote: |-
+    “I knew I had to stop using the chatbot
+    when I realized I’d fallen down a rabbit hole of using it and noticed how badly my head hurt. I was experiencing brain fog,
+    and I couldn’t keep up an internal monologue. I was really worried because years of gaming, surfing, and occasional porn
+    never left me feeling that way. But this did.”
+  locator: Section 4.2, Epistemic Rabbit Hole — Reddit entry E134
+  licenses: 'A person, writing in the first person about their own cognition after chatbot use, states a cognitive change: brain fog and an inability to keep up an internal monologue. It establishes that people do author first-person statements of altered cognition about themselves in the context of AI chatbot use, and shows the phrasing such a statement takes. It does NOT establish the entry''s content, which is slowing of tempo — thinking, speech or movement being slower or more effortful. Fog and a lost internal monologue are alterations in kind, not in speed, and the entry''s own exclusions bar a statement with no reference to tempo.'
+  fit: adjacent
+  bridge: 'The source measures self-reported ''cognitive change'' in a Reddit post — the person''s own account, matching the claim''s reporting party. The gap is the construct: the claim asserts a statement about slowed or effortful TEMPO, and what E134 states is fogginess and loss of internal monologue, which the paper codes under a wider ''alterations in mental abilities'' category that it never breaks down by tempo. The unit is also a public retrospective post about chatbot use, not a turn addressed to the AI, so the statement was not made in a conversation.'
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000999
+  quote: |-
+    “I knew I had to stop using the chatbot
+    when I realized I’d fallen down a rabbit hole of using it and noticed how badly my head hurt. I was experiencing brain fog,
+    and I couldn’t keep up an internal monologue. I was really worried because years of gaming, surfing, and occasional porn
+    never left me feeling that way. But this did.”
+  locator: Section 4.2, Epistemic Rabbit Hole — Reddit entry E134
+  licenses: The person marks the cognitive change as a departure from a prior baseline — 'years of gaming, surfing, and occasional porn never left me feeling that way. But this did' — which is the change-from-usual element this claim asserts, present and quotable inside the statement. This is the one conjunct of the entry's observable the corpus supplies. It supplies it for a cognitive-change statement and not for a tempo statement, so it grounds the FORM of criterion (b) rather than any instance of the entry.
+  fit: adjacent
+  bridge: The source shows a first-person statement carrying an explicit contrast against the person's own prior experience, which is what criterion (b) requires. The gap is that the thing contrasted is fog and lost internal monologue rather than slowed tempo, so the change marker is attached to a different content than the claim's. The contrast is also drawn against years of other technology use rather than against the person's usual state per se.
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-001071
+  quote: our participants employed their own privacy-preserving tactics—such as making general queries and avoiding first-person language—which may be ineffective if an AI chatbot infers user identity based on the frequency and types of queries.
+  locator: Section 5.2.3, Design Recommendations for Personalization and Privacy
+  licenses: 'People with lived experience of depression deliberately avoid first-person language when querying a mental health chatbot. This cuts against the claim that the report is reliably identifiable from the person''s own turns: an entry whose sole pointable span is a first-person statement about oneself will systematically miss the population practising this avoidance, and that population is exactly the depressed population in which psychomotor slowing is expected.'
+  fit: adjacent
+  bridge: The source reports a tactic participants described in interviews — making general queries and avoiding first-person language — among people with lived experience of depression using chatbots. It does not measure how often a first-person symptom statement was thereby suppressed, nor does it study slowing. The bridge to c4 is that the entry's detectability rests entirely on the person choosing first-person framing, and this source documents people choosing not to.
+  contributes: detectability
+  contradicts: true
+- claim_id: c6
+  source: kl-001071
+  quote: our participants employed their own privacy-preserving tactics—such as making general queries and avoiding first-person language—which may be ineffective if an AI chatbot infers user identity based on the frequency and types of queries.
+  locator: Section 5.2.3, Design Recommendations for Personalization and Privacy
+  licenses: 'The passage names query framing as something the person controls strategically for reasons unrelated to their symptom state — privacy. That is the same argument the entry''s exclusion makes about message length and latency: a surface feature of the person''s turns has causes other than the state, so it cannot be read as the state. This supports the exclusion''s reasoning by analogy rather than establishing anything about latency or message length, on which the source is silent.'
+  fit: analogical
+  bridge: The source measured a privacy tactic in query phrasing, not message length or response latency, and made no claim about psychomotor state. The analogy is between two different surface features of a transcript, both shown or argued to be driven by the person's circumstances rather than their clinical state. No source on this entry measures latency or message length against psychomotor state at all, which is the exact evidence the entry's review_trigger names as absent.
+  contributes: frame
+  contradicts: false
+- claim_id: c1
+  source: kl-000828
+  quote: The cognitive capacity of the judge plays an important role in processing choices, with heuristic rather than substantive processing more likely when processing capacity is in some way impaired.
+  locator: Variables Determining Processing Choices, 'Cognitive Capacity'
+  licenses: Nothing about the claim. The passage is a theoretical statement that impaired processing capacity shifts judgment toward heuristic strategies, in a laboratory judgment model. It supplies a frame for why a slowed or depleted person might behave differently in conversation; it supplies no statement by any person about their own tempo, and no measurement of anyone's tempo.
+  fit: analogical
+  bridge: Forgas measures processing-strategy choice in laboratory judgment tasks under manipulated capacity load. The claim asserts that people make first-person statements about their own slowed thinking to an AI. The source has no person report, no AI, and no tempo measure; the only connection is that both concern cognition being impaired.
+  contributes: frame
+  contradicts: false

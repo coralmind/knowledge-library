@@ -1,0 +1,99 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000410
+display_id: UserBehavior-11
+aliases:
+- UBP-11
+label: The person asks the AI to agree that avoiding something frightening is reasonable
+type: user_behavior
+layer: observation
+definition: The person's turn asks the AI to confirm that not doing something, or staying away from something, is a reasonable or appropriate course of action. The thing being avoided is a situation, an activity, a place, an object or a person the person has described as frightening or difficult. The framing 'reasonable' or 'appropriate' is the person's own, quoted in the request; what is pointable is a request whose object is the person's own course of action rather than a state of affairs.
+distinguish_from:
+- neighbor: kl-000408
+  boundary: 'That entry''s requests are addressed to a state of affairs, a reaction, or the person''s character — is it safe, is this normal, am I a bad person. This entry''s request is addressed to a course of action the person is contemplating or has taken: is not going all right. A single turn can carry both, in which case both fire.'
+- neighbor: kl-000411
+  boundary: That entry is a request that the AI take part in a repeated sequence the person carries out. This entry is a request about NOT doing something, and asks for a judgment rather than for participation.
+- neighbor: kl-000324
+  boundary: kl-000324 is the person turning away from a distressing topic inside the conversation — the avoidance is of the conversational material and it is enacted rather than asked about. This entry is a request about avoiding something outside the conversation, and the person raises the topic rather than leaving it.
+body:
+  detectable_from: person_turns
+  observable_criteria: A person turn contains a request for the AI to endorse, agree with, or confirm the reasonableness of the person not doing something or staying away from something. Three forms are pointable. (a) A direct question about the course of action — "is it okay if I just don't go?", "would it be reasonable to skip it this time?". (b) A statement of the avoidance with an agreement request attached — "I'm not going to go, that makes sense right?", "I think staying home is the healthy choice, don't you?". (c) A request for permission or licence — "can I just avoid it until I feel better?". The thing avoided must be identifiable from the turn or its surroundings as something the person has described as frightening or difficult.
+  exclusions: 'Not counted: a statement that the person avoided something, with no request for agreement attached — a report rather than a request. Not counted: a request about a state of affairs rather than about the person''s course of action, which is request in one turn for confirmation about a feared or doubted matter. Not counted: a practical question about logistics or scheduling with no feared object — rearranging a commitment is not this entry. Not counted: a request for help doing the difficult thing, or for a way to make it manageable, which asks for the opposite endorsement. Not counted: the person turning away from the topic inside the conversation, which is turning away from a distressing topic the person or the AI raised.'
+  detection_window: multi_turn
+  condition_tags:
+  - kl-000606
+  - kl-000608
+  - kl-000609
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: No source on record shows a person asking an AI to confirm that avoiding a feared thing is reasonable, and the entry carries no direct-fit support or direct-fit counterevidence. The closest observation, Barkhuff 2026, is a re-phrased Reddit post about choosing a college major, from a grounded-theory analysis of 100 subreddit posts rather than conversation data; it establishes the surrounding form — a person with OCD bringing their own course of action to a general-purpose chatbot and asking whether the choice was right — not the avoidance-confirmation request itself. The strongest statement of the construct appears in Jiao et al. 2026 inside a proposed constitutional design principle about users looking for validation concerning avoidance behavior, which asserts the behavior is worth designing against without observing it; the same source's design rule, that such a user should be asked what strategies they have tried rather than given reassurance or encouragement to avoid further, bears on the harm claim as expert guidance rather than measurement.
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: A person's turn to an AI asks the AI to endorse, agree with, or confirm the reasonableness of the person NOT doing something or staying away from something.
+- id: c2
+  kind: existence
+  text: The thing being avoided in such a request is identifiable from the turn or its surroundings as a situation, activity, place, object or person the person has described as FRIGHTENING OR DIFFICULT.
+- id: c3
+  kind: existence
+  text: The 'reasonable' or 'appropriate' framing is the PERSON'S OWN and is quoted in the request, rather than being the reader's characterisation of what the person wanted.
+- id: c4
+  kind: existence
+  text: The three enumerated request forms — a direct question about the course of action, a statement of the avoidance with an agreement request attached, and a request for permission or licence — are the forms this behavior actually takes.
+- id: c5
+  kind: harm
+  text: 'Endorsing such a request is harmful or clinically counterindicated: confirming that avoidance is reasonable reinforces the avoidance rather than helping the person.'
+- id: c6
+  kind: detectability
+  text: The request is identifiable from a person turn in a transcript, distinguishably from a report of avoidance with no request attached and from a request about a state of affairs.
+- id: c7
+  kind: prevalence
+  text: Requests for confirmation that avoidance is reasonable occur at some rate in some population of people conversing with an AI.
+- id: c8
+  kind: detection_window
+  text: The request is readable from a single person turn. Whether the thing avoided is something the person has described as frightening or difficult can need earlier turns, which is why the window is multi_turn.
+- id: c9
+  kind: context_dependence
+  text: The behavior arises in obsessive-compulsive presentations, anxiety and eating disorders, and what counts as the feared object differs across the three.
+- id: c10
+  kind: definition_boundary
+  text: 'Distinct from kl-000408: that entry''s requests address a state of affairs, a reaction or the person''s character; this one addresses a course of action the person is contemplating or has taken.'
+- id: c11
+  kind: definition_boundary
+  text: 'Distinct from kl-000411: that entry is a request that the AI take part in a repeated sequence; this one asks for a judgment rather than for participation.'
+- id: c12
+  kind: definition_boundary
+  text: 'Distinct from kl-000324: that entry is the person turning away from a distressing topic inside the conversation; this one is a request about avoiding something outside the conversation.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000772
+  quote: I have no idea how often I have used ChatGPT to help me decide on things, like what to major in in school or if I made the right decision. I even ask it what I should do when I am old, even though I’m only 23!
+  locator: Section 5.2, AI-Based Compulsions (decision-making)
+  licenses: 'Establishes the general form the entry sits inside: a person with OCD brings their own course of action to a general-purpose chatbot and asks it to say what they should do or whether the choice they made was right. The object of the request is the person''s own conduct rather than a state of affairs, which is the distinction c1 turns on and the one that separates this entry from kl-000408. It does not establish the entry''s own content, because the courses of action named — choosing a major, deciding what to do when old — are not avoidances of anything, and there is no request for endorsement of NOT doing something.'
+  fit: adjacent
+  bridge: The source is a grounded-theory analysis of 100 posts from an OCD subreddit, and the paper states that all quotes were re-phrased under heavy disguise for poster privacy — so this span is the author's wording of a poster's words, not a person's verbatim turn, and the setting is a retrospective public post rather than a turn addressed to the AI. Substantively, the source measures AI-based compulsions of the decision-making subtype; the claim asserts a request to endorse an avoidance. Asking what to do and asking permission not to do are different requests, and only the first is shown.
+  contributes: existence
+  contradicts: false
+- claim_id: c5
+  source: kl-000867
+  quote: "Example Implementation: When addressing users who are looking for validation concerning avoidance behavior, it is preferable to ask about the strategies they have tried instead of providing direct reassurance or encouraging further avoidance."
+  locator: Section 5.2, Agency Principle
+  licenses: 'States, as a design rule, that a user looking for validation concerning avoidance behavior should be asked what strategies they have tried rather than given direct reassurance or encouragement to avoid further. For c5 it is the clearest thing on this entry that endorsement is treated as the wrong response, and it names the behavior the entry names almost in the entry''s own terms — ''users who are looking for validation concerning avoidance behavior''. It is a proposed constitutional principle in a position paper, not an implemented system and not an observed outcome: nothing is measured, so it licenses the claim as a stated normative position and nothing more.'
+  fit: adjacent
+  bridge: The source proposes an Agency Principle for constitutional AI training and gives an example implementation. The claim asserts that endorsing an avoidance-confirmation request is harmful. The gap is that the source asserts the preferability of one response over another as a design position; it runs no comparison, measures no user outcome, and the system it describes is proposed rather than built.
+  contributes: frame
+  contradicts: false
+- claim_id: c1
+  source: kl-000867
+  quote: "Example Implementation: When addressing users who are looking for validation concerning avoidance behavior, it is preferable to ask about the strategies they have tried instead of providing direct reassurance or encouraging further avoidance."
+  locator: Section 5.2, Agency Principle
+  licenses: Nothing about whether the request occurs, but it is worth recording that a second, independent set of authors names the same behavior — users looking for validation concerning avoidance behavior — as something worth writing a principle about. That is corroboration that the construct is recognised, not that it was observed. The source presents no instance and no rate.
+  fit: analogical
+  bridge: A design principle stated in a position paper about AI empathy and adolescent cognitive autonomy. The claim asserts that person turns of this form occur in conversations. The source observes no conversation and cites no instance; naming a behavior in a normative principle is not evidence that it happens.
+  contributes: frame
+  contradicts: false

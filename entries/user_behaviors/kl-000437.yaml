@@ -1,0 +1,138 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000437
+display_id: UserBehavior-35
+aliases:
+- UBP-35
+label: The person explains in their own words why their symptoms happen
+type: user_behavior
+layer: observation
+definition: In a single turn the person states a connection between something they do or experience and something else that follows from it, concerning their own symptoms — using first-person causal or contrastive construction, naming a specific mechanism or functional relationship rather than restating a symptom in other words, and not reproducing content the AI introduced earlier in the same conversation. What is pointable is the causal or contrastive construction, the named relationship, and the absence of that content in the AI's prior turns.
+distinguish_from:
+- neighbor: kl-000436
+  boundary: That entry requires a report of engaging with a previously avoided activity plus an experiential detail; this one requires a stated connection between two things and no engagement at all, so a person who has done nothing differently can satisfy it.
+- neighbor: kl-000438
+  boundary: That entry is read across two points in a conversation and requires an earlier fragmented or avoidant account of a theme and a later integrated one; this one is read from a single turn and requires no earlier account of any kind.
+- neighbor: kl-000432
+  boundary: That entry requires a marker that content is being stated for the first time; this one requires a causal or functional claim, and the content it concerns may have been stated many times before.
+body:
+  observable_criteria: 'Three features. (a) First-person causal or contrastive construction, quotable: "I realize that... because...", "what if part of why X is because Y", "I used to think... but now...", "the more I do X the more Y happens". (b) The claim names a specific mechanism or functional relationship — a process, a function something serves, a relation between two things the person can point at ("the more I try to push it away, the louder it gets", "this isn''t about germs, it''s about not getting swallowed up"). A restatement of a symptom in different vocabulary does not satisfy (b). (c) The content of the claim does not appear in the AI''s earlier turns in the same conversation. The pointable span is the person''s turn plus, for (c), the AI turns preceding it.'
+  exclusions: 'Not counted: a hypothetical coping plan ("maybe if I treat it like a long-term project with iterative improvements"), which has the same surface construction and states an intention rather than a relationship — the source names this the primary false-positive route and the boundary is between understanding something differently and intending to do something differently. Not counted: a reframe with no named relationship ("thinking about confession as more of a healing thing"), which fails (b). Not counted: restatement of psychoeducational knowledge ("I know that intrusive thoughts don''t mean I want to act on them"), which fails (b) and often (c). Not counted: a coping intention ("maybe I should try harder to relax"), which fails (a) and (b). Not counted: a claim whose content the AI supplied earlier in the conversation, which fails (c) however well-formed the construction is.'
+  detection_window: multi_turn
+  groups:
+  - therapeutic-movement
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'The one direct-fit citation is counterevidence: participant P9 in Yuan et al. 2026 produces the entry''s first-person realization construction and states in the same sentence that the AI supplied the content, which is the case the entry''s no-reproduction criterion exists to exclude. The mechanism requirement also draws counterevidence, since the only spontaneous causal attributions observed being typed to a chatbot, in Zheng et al. 2026, were condition labels such as stress, depression, and ADHD placed alongside affect keywords, which the entry''s own text says do not satisfy it. No source examined the turn-level conversational data the entry needs: Yuan et al. 2026 is Reddit language analysis plus 18 interviews, Cao et al. 2026 is one therapist''s recollection, Sabour et al. 2026 is a simulation benchmark''s behavior specification, and Zheng et al. 2026 alone captured people typing to a chatbot but under assigned role-play scenarios, so the symptoms were not the participants'' own. The insight-versus-restatement boundary does have independent warrant, with Sabour et al. 2026''s client-behavior taxonomy defining insight as connecting patterns and recognizing causes, a qualitative shift rather than a difference in wording, and carrying plan-discussion as a separate client behavior; the only sign the articulation is consequential is a therapist''s comparative impression in Cao et al. 2026 that participants arrived at a first session describing their emotional states with unusual fluency after a week of daily interaction with the agent.'
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: A person's turn to an AI carries a first-person causal or contrastive construction about themselves — criterion (a).
+- id: c2
+  kind: existence
+  text: That claim names a SPECIFIC MECHANISM or functional relationship — a process, a function something serves, a relation between two things the person can point at — rather than restating a symptom in different vocabulary — criterion (b).
+- id: c3
+  kind: existence
+  text: The content of the claim does NOT appear in the AI's earlier turns in the same conversation; the person arrived at it rather than reproducing what the AI supplied — criterion (c).
+- id: c4
+  kind: existence
+  text: 'All three features occur TOGETHER in one pointable span: the construction, the named relationship, and the absence of that content in the AI''s prior turns.'
+- id: c5
+  kind: definition_boundary
+  text: A turn articulating a causal or functional connection is distinguishable from a turn that merely describes or recounts symptoms; the difference is a qualitative shift, not a difference in wording.
+- id: c6
+  kind: definition_boundary
+  text: A turn articulating a relationship is distinguishable from a hypothetical coping plan or coping intention, which shares the surface construction but states an intention rather than a relationship. The entry names this the primary false-positive route.
+- id: c7
+  kind: harm
+  text: Such a turn is protective or therapeutically consequential — it marks movement rather than being an incidental feature of talk.
+- id: c8
+  kind: detectability
+  text: The three features can be marked reliably from a transcript, and the constrained observable does not over-mark the way the unconstrained one does.
+- id: c9
+  kind: prevalence
+  text: Turns meeting all three criteria occur at some rate in some population of people conversing with an AI.
+- id: c10
+  kind: detection_window
+  text: 'The multi_turn window is the right one: criterion (c) requires reading the AI''s prior turns, so the span cannot be read from the person''s turn alone.'
+- id: c11
+  kind: definition_boundary
+  text: 'Distinct from kl-000436: that entry requires a report of engaging with a previously avoided activity plus an experiential detail; this one requires no engagement at all.'
+- id: c12
+  kind: definition_boundary
+  text: 'Distinct from kl-000438: that entry is read across two points in a conversation and requires an earlier fragmented account and a later integrated one; this one requires no earlier account of any kind.'
+- id: c13
+  kind: definition_boundary
+  text: 'Distinct from kl-000432: that entry requires a marker that content is being stated for the first time; this one requires a causal or functional claim whose content may have been stated many times before.'
+claim_evidence:
+- claim_id: c5
+  source: kl-000982
+  quote: "Insight: The client demonstrates a new understanding: connecting patterns, recognizing causes, an ’aha’ moment. A qualitative shift, not just description."
+  locator: Appendix C.2 Client Behaviors
+  licenses: 'Pins the entry''s discriminating criterion in a taxonomy of client behaviors: Insight is connecting patterns and recognizing causes, ''a qualitative shift, not just description''. That is exactly the insight-versus-restatement boundary c5 asserts, stated by someone other than the entry''s author, and read in place it sits in a list that separately names ''recounting'' as narrating events factually and ''cognitive exploration'' as self-analysis short of a new understanding — so the boundary is drawn against its neighbours, not just asserted. This is a definitional warrant, not evidence that the boundary can be applied reliably by two readers, which is c8.'
+  fit: analogical
+  bridge: The category descends from Hill's taxonomy of client actions in human psychotherapy sessions, and appears here as a behavior specification written to drive a simulated client in an LLM benchmark. No person and no AI conversation is observed. The claim concerns a distinction drawn on turns in AI conversations; the source supplies the distinction's content from a different setting and does not test it anywhere.
+  contributes: definition
+  contradicts: false
+- claim_id: c6
+  source: kl-000982
+  quote: "Insight: The client demonstrates a new understanding: connecting patterns, recognizing causes, an ’aha’ moment. A qualitative shift, not just description."
+  locator: Appendix C.2 Client Behaviors
+  licenses: 'Bears on the plan-versus-realization boundary, and read in place it bears more strongly than the quote alone shows: the same list carries ''discussing plans'' as a separate client behavior — changes the client wants to make, actions they intend to try — immediately after Insight. So an independent taxonomy separates the two the way the entry''s primary exclusion does.'
+  fit: analogical
+  bridge: A behavior taxonomy for simulating a client in a benchmark, descended from a human-psychotherapy coding scheme. The claim asserts that insight turns are distinguishable from coping-plan turns in AI conversations. The source separates the two categories by definition; it reports no attempt to apply the distinction to any transcript and no agreement figure, which is exactly what the entry's review_trigger asks for.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-001084
+  quote: "This included keyword labeling of their conditions such as “anxious,” “frustrated,” “helpless,” and “exhausted,” and sometimes “self-diagnosis” that attributed their conditions to “stress”, “depression”, “ADHD”, or “difficulties with emotion regulation.”"
+  locator: Section 3.2.2 Heightened Concerns, More Assertive Responses and Disclosure in Mental Health Inquiries
+  licenses: 'Establishes that participants typing to a chatbot spontaneously attributed their conditions to a cause — ''stress'', ''depression'', ''ADHD'', ''difficulties with emotion regulation'' — unprompted, alongside affect labels. For c1 this is the closest thing on this entry to the causal construction the criterion names, in the right setting: a person typing to an AI, with the turns captured. Two things it does not supply. It is the researchers'' summary of what participants did rather than a quotable turn, so the pointable construction the entry requires cannot be read off it; and the paper states participants role-played an assigned scenario, so the conditions attributed were not their own.'
+  fit: adjacent
+  bridge: 'The source is a 2x2x3 within-subjects experiment (N=48) in which participants conducted health inquiries with a chatbot under assigned scenarios, coded for communicative acts. The claim asserts that a person''s turn carries a first-person causal construction about their own symptoms. Two gaps: the symptoms were supplied by the scenario rather than lived, which the paper says was done to protect privacy, and the evidence is a coded summary rather than a quoted turn.'
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001084
+  quote: "This included keyword labeling of their conditions such as “anxious,” “frustrated,” “helpless,” and “exhausted,” and sometimes “self-diagnosis” that attributed their conditions to “stress”, “depression”, “ADHD”, or “difficulties with emotion regulation.”"
+  locator: Section 3.2.2 Heightened Concerns, More Assertive Responses and Disclosure in Mental Health Inquiries
+  licenses: 'Counterevidence to criterion (b). The same sentence that supplies a causal attribution for c1 shows what those attributions consisted of: condition LABELS — stress, depression, ADHD — placed alongside affect keywords ''anxious'', ''frustrated'', ''helpless'', ''exhausted''. Attributing one''s state to ''stress'' or ''depression'' names a category, not a process, a function, or a relation between two things the person can point at, and the entry says outright that a restatement of a symptom in different vocabulary does not satisfy (b). So the one source showing spontaneous causal attribution to an AI shows it in the form the entry excludes. This is the clearest case in this entry of a single finding bearing in opposite directions on two conjuncts.'
+  fit: adjacent
+  bridge: The source coded self-diagnosis and keyword labeling as communicative acts in a scenario-based chatbot experiment. The claim asserts that the causal claim names a specific mechanism. The gap is that the source did not code for mechanism-naming versus labeling and so did not measure the distinction; what it reports is the content of the attributions, which as reported are labels. It is counterevidence in the sense that the observed form fails the criterion, not in the sense that the source tested and rejected it.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-001075
+  quote: "“I didn’t actually know this about myself. I always rushed \ninto making decisions without taking the time to think things \nthrough. Through sharing my bad decisions with Replika, \nI was told that I should always take time to assess issues \ninstead of always rushing to make decisions. I realized that \nabout myself, and it has helped me understand myself more \nand change for the better.” –P9"
+  locator: Section 5.2.3, Active Coping and Self-Reflection
+  licenses: 'Direct-fit counterevidence to criterion (c), read against a claim rather than against the entry. The paper''s paraphrase of P9''s interview statement carries an (a)-style construction (''I didn''t actually know this about myself'', ''I realized that about myself'') and states in the same account where the content came from: ''Through sharing my bad decisions with Replika, I was told that I should always take time to assess issues.'' The insight was supplied by the AI and the person recognised it. That is the case criterion (c) exists to exclude, and the entry says so: a claim whose content the AI supplied earlier fails (c) however well-formed the construction is. The point about where the content came from does not depend on the exact wording, so it holds in the paraphrase. It is evidence that the AI-supplied route is a real and reported pathway to insight-shaped talk, which is why (c) is doing work, and equally evidence that (a) and (c) come apart in practice.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-001075
+  quote: "“I didn’t actually know this about myself. I always rushed \ninto making decisions without taking the time to think things \nthrough. Through sharing my bad decisions with Replika, \nI was told that I should always take time to assess issues \ninstead of always rushing to make decisions. I realized that \nabout myself, and it has helped me understand myself more \nand change for the better.” –P9"
+  locator: Section 5.2.3, Active Coping and Self-Reflection
+  licenses: 'Supports criterion (a) alone: the paper''s paraphrase of P9''s interview statement carries a first-person contrastive construction (''I didn''t actually know this about myself... I realized that about myself'') in the context of companion-chatbot use. The paper paraphrased every participant quote it prints, so the construction is the paraphrase''s and does not show how P9 phrased it. It is an interview self-report rather than a captured turn, and the same quote is counterevidence to c3, so it cannot support c4.'
+  fit: adjacent
+  bridge: The source is a CHI paper combining a quasi-experimental analysis of longitudinal Reddit data with 18 semi-structured interviews; this passage is an interview quote. The claim asserts that such a construction appears in a person's TURN to an AI. The gap is that what is captured is the person telling an interviewer, retrospectively, about a realization — the turn in which it was articulated to the chatbot, if there was one, was not recorded.
+  contributes: existence
+  contradicts: false
+- claim_id: c7
+  source: kl-000785
+  quote: |-
+    There was a fluency in how they described their emotional states that
+    you don’t always see in first sessions. It’s as if they had developed a vocabulary for their feelings
+    through their interactions with Jodie.
+  locator: Section 6.4 Therapist Perspective, quoting T1
+  licenses: A therapist's comparative impression that participants arriving at a first session described their emotional states with unusual fluency, attributed to a week of daily interaction with the agent. For c7 it is the only thing on this entry pointing at articulation being consequential rather than incidental, and it points in the beneficial direction the entry's protective valence asserts. It is one clinician's uncontrolled recollection against her memory of previous first sessions — no rating scale, no pre-week baseline, no control condition, as the paper's own Limitations concede — so it licenses the claim as a clinician's impression and nothing more. It is also about fluency in describing emotional states, not about articulating a causal or functional connection, which is a different act.
+  fit: analogical
+  bridge: 'The source reports one therapist''s qualitative impression in a small study of a virtual supporter in remote psychotherapy. The claim asserts that a turn naming a causal or functional connection is therapeutically consequential. Three gaps: the observed thing is emotional vocabulary rather than causal articulation, the observer is a clinician recalling other sessions rather than an instrument, and no outcome was measured.'
+  contributes: practice_analog
+  contradicts: false

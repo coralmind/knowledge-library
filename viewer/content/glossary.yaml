@@ -1,0 +1,836 @@
+# The glossary: one source for every term and every stored value a reader meets.
+# The viewer reads `terms` for the glossary page, and `lists` to turn a stored
+# value into its plain name and meaning wherever it is shown.
+#
+# `vocabulary` names the schema enum a list covers. tests/content.test.ts fails
+# when that enum has a value this file lacks, or this file has one it lacks.
+
+title: Glossary
+
+intro: >-
+  Plain definitions of the terms used in the Knowledge Library, its guide and its
+  viewer. The first part defines the ideas. The second gives every value a field
+  can take, with the plain name a reader sees and the value stored in the catalog.
+
+terms:
+  - term: Entry
+    definition: One item in the catalog, such as one behavior or one pathway.
+  - term: Id
+    definition: >-
+      An entry's permanent identifier, such as kl-000210. Use it to cite or store an entry.
+  - term: Display id
+    definition: >-
+      A readable handle such as Pathway-29. It can change when entries are renamed, so cite the id instead.
+  - term: Behavior
+    definition: >-
+      Something said or done in a conversation that can be pointed to in the transcript. A behavior does
+      not say whether it is good or bad; pathways make that judgment.
+  - term: AI behavior
+    definition: Something the AI does in a reply that can be pointed to in the transcript.
+  - term: User behavior
+    definition: Something the person says or does in the conversation that can be pointed to.
+  - term: Operator action
+    definition: >-
+      Something the company that deployed the AI system does, such as changing, restricting or withdrawing
+      it. It shows in settings and product changes, not in the transcript.
+  - term: Pathway
+    definition: >-
+      A hypothesis that certain behaviors, under certain conditions, lead to an effect on the person. Read
+      it as a route: what starts it, what keeps it going, what must be true for it to run, and where it ends.
+  - term: Part
+    definition: >-
+      One of the behaviors or context values a pathway is built from. Each part has a role.
+  - term: Role
+    definition: >-
+      Where a part sits in a pathway's sequence, such as what starts it or what fails to interrupt it.
+      A role marks position, not which side acted.
+  - term: Condition
+    definition: >-
+      A fact about the person or situation that must hold for a pathway to apply. When a test records
+      nothing about it, the pathway does not apply.
+  - term: Mechanism
+    definition: >-
+      A process that keeps a problem going and shows up across many pathways, such as the reassurance cycle.
+  - term: Experience cluster
+    definition: >-
+      A group of pathways that share what the person goes through, such as destabilization. Used to design
+      tests; a judge never marks one.
+  - term: Contrast
+    definition: >-
+      Two pathways that share the person, the situation and what was said, and differ only in the AI's
+      response: one leads toward harm and one is well handled.
+  - term: Context
+    definition: Facts about the person or the situation that a pathway can depend on.
+  - term: Context dimension
+    definition: A kind of fact, such as current treatment or age band.
+  - term: Context value
+    definition: One answer on a dimension, such as No current mental health treatment.
+  - term: Divergence
+    definition: >-
+      Pathways where the same response leads somewhere different depending on one fact about the person
+      or situation. The opposite of a contrast. None is written yet.
+  - term: Person context
+    definition: >-
+      The library's earlier way of recording context. Retired; its ideas moved to context values and to
+      the Toolkit's test-run settings.
+  - term: Impact
+    definition: An effect on the person's wellbeing, harmful or protective. Impacts are where pathways end.
+  - term: Source
+    definition: A paper, report or other work the library cites.
+  - term: Claim
+    definition: One statement an entry makes, written so it could be shown false.
+  - term: Evidence rating
+    definition: >-
+      How well supported an entry is: the rating of the weakest of the claims it cannot do without. Stored as standing.
+  - term: Status
+    definition: Whether an entry is a draft, has been reviewed by the expert council, or has been retired.
+  - term: Irreversible
+    definition: >-
+      Marked on an AI behavior whose harm no later reply in the conversation can undo, either everywhere or
+      only for people in named situations.
+  - term: Also known as
+    definition: Other names and older codes for an entry.
+  - term: How it differs from its neighbors
+    definition: >-
+      For each entry that is easy to confuse with this one, what tells them apart. A judge uses it to
+      choose between close entries.
+  - term: Owed part
+    definition: A part of a pathway that names a behavior nobody has written as an entry yet.
+  - term: Well-handled counterpart
+    definition: >-
+      The good response a pathway implies, noted on the pathway when nobody has yet written it as its own
+      pathway.
+  - term: Open dispute
+    definition: An unsettled question about whether an entry should exist as written.
+  - term: Library
+    definition: The catalog of entries, together with the package that loads and checks it.
+  - term: Toolkit
+    definition: >-
+      The software that runs tests: it simulates conversations with the AI system under test, checks that
+      each test happened as intended, judges the transcripts, and shows the results.
+  - term: Data Repository
+    definition: >-
+      Where specifications and records live: simulated people, test cases, run settings, transcripts and labels.
+  - term: Pipeline
+    definition: >-
+      The steps of an evaluation in order, each one's output feeding the next: define the test, simulate the
+      conversation, check that the test happened, judge the transcript, and report. Each step has a defined
+      input and output, and the design allows more than one method for each.
+  - term: Benchmark
+    definition: >-
+      A fixed set of tests with a score, often published as a leaderboard.
+  - term: Simulated person
+    definition: >-
+      A fictional person a language model plays in a test, described in prose and in typed fields for their
+      traits, states and dynamics. Also called a persona.
+  - term: Specification
+    definition: >-
+      The pairing of a harm to observe with a person to observe it in, from which test cases are written.
+      Every test case names the pathway it came from.
+  - term: Scenario
+    definition: >-
+      The situation a test case puts the simulated person in. Given to the simulated person only.
+  - term: Declared behaviors
+    definition: >-
+      The user behaviors a test case says the simulated person must show for the test to count.
+  - term: Counterpart
+    definition: A test case that copies another and changes one thing about it, to compare the two.
+  - term: Run manifest
+    definition: >-
+      The description of a run: the AI system under test, the simulator, the number of turns, the judge, and
+      the test cases.
+  - term: AI system under test
+    definition: The AI system being evaluated in a run.
+  - term: Simulator
+    definition: The language model that plays the person in a simulated-person run.
+  - term: Transcript
+    definition: The record of one simulated conversation, turn by turn.
+  - term: Fidelity check
+    definition: >-
+      The check that a transcript actually shows the test case's declared behaviors, with a quote from the
+      person's turn for each. A transcript that doesn't is marked invalid rather than counted as a pass.
+  - term: Planned move
+    definition: >-
+      A move a test case allows the simulated person to make if something particular happens, such as
+      pushing back when the AI hedges. Stored as a scenario strategy.
+  - term: Pathway instance
+    definition: >-
+      One place in a transcript where a pathway plays out. The judge gives each instance its own verdict.
+  - term: Candidate pathway
+    definition: >-
+      A pathway the judge assesses in its second stage because at least one of its behaviors was detected
+      in the first.
+  - term: Library version
+    definition: >-
+      The version and content fingerprint of the library a test case was written against and a result was
+      produced with.
+  - term: Test case
+    definition: >-
+      One situation to test, naming the pathway it is built for and the context it represents.
+  - term: Judge
+    definition: >-
+      The part of the Toolkit that reads a transcript and decides which behaviors and pathways occurred.
+      A judge's result says a pattern occurred, not that the person was harmed.
+
+lists:
+  - name: Evidence rating
+    field: standing.value
+    vocabulary: Standing
+    question: How well supported is this entry?
+    values:
+      - value: plausible_unobserved
+        name: Plausible, no evidence found yet
+        meaning: We looked, and no source supports more than plausibility.
+      - value: theorized
+        name: Proposed in published work
+        meaning: A source states it as a position or framework without measuring it.
+      - value: extrapolated_from_clinical
+        name: Based on clinical practice
+        meaning: The best support is a clinical standard or practice account, not a study of AI.
+      - value: externally_classified
+        name: Labeled by raters
+        meaning: A rater or instrument assigned the label.
+      - value: observed_self_report
+        name: Reported by people
+        meaning: A source reports what people said about their own experience.
+      - value: observed_in_transcripts
+        name: Seen in real conversations
+        meaning: A source examined conversation data and found it.
+      - value: asserted
+        name: Defined only against other entries
+        meaning: Outside the scale. Every claim the entry makes is about how it differs from other entries, so no outside source could bear on it.
+      - value: ratified
+        name: Approved by the expert council
+        meaning: Outside the scale. A decision by the council, not evidence that the thing happens.
+      - value: documented_operator_act
+        name: Documented company action
+        meaning: Outside the scale. The act is documented in a changelog, terms of service, version string or announcement.
+      - value: unmeasured_by_design
+        name: Testable, not yet measurable
+        meaning: Outside the scale. Stated precisely enough to test, but no existing instrument measures it.
+
+  - name: Status
+    field: lifecycle.status
+    vocabulary: LifecycleStatus
+    question: Has this entry been reviewed?
+    values:
+      - value: draft
+        name: Draft
+        meaning: Written and in the catalog, not yet reviewed by the expert council.
+      - value: active
+        name: Reviewed
+        meaning: Reviewed by the expert council and current.
+      - value: deprecated
+        name: Retired
+        meaning: Withdrawn, and kept only so its id still works.
+
+  - name: Kind of entry
+    field: type
+    vocabulary: EntryType
+    question: What kind of entry is this?
+    values:
+      - value: ai_behavior
+        name: AI behavior
+        meaning: Something the AI does in a reply.
+      - value: user_behavior
+        name: User behavior
+        meaning: Something the person says or does, or a state they are in, as shown in the conversation.
+      - value: pathway
+        name: Pathway
+        meaning: A hypothesis that behaviors lead to an impact.
+      - value: impact
+        name: Impact
+        meaning: An effect on the person that pathways lead to.
+      - value: context_dimension
+        name: Context dimension
+        meaning: A kind of fact a test case is built along.
+      - value: context_value
+        name: Context value
+        meaning: One answer on a context dimension, which a pathway's condition can name.
+      - value: mechanism
+        name: Mechanism
+        meaning: A process that carries a behavior to an outcome.
+      - value: experience_cluster
+        name: Experience cluster
+        meaning: A group of pathways sharing what the person goes through.
+      - value: contrast
+        name: Contrast
+        meaning: The same situation with a harmful and a well-handled response.
+      - value: divergence
+        name: Divergence
+        meaning: The same response leading somewhere different depending on one fact about the person or situation.
+      - value: operator_action
+        name: Operator action
+        meaning: An act by the company that deployed the system, documented outside the transcript.
+      - value: context
+        name: Person context (retired)
+        meaning: The earlier way of recording context. Every entry of this kind is retired.
+
+  - name: Layer
+    field: layer
+    vocabulary: Layer
+    question: What kind of thing does this entry assert?
+    values:
+      - value: observation
+        name: Observation
+        meaning: Something readable from the transcript itself.
+      - value: judgment
+        name: Judgment
+        meaning: A claim about outcome or cause, which can't be observed directly.
+      - value: process
+        name: Process
+        meaning: A mechanism operating over time.
+      - value: context
+        name: Context
+        meaning: A fact about the person or situation that a pathway may depend on.
+      - value: operator
+        name: Operator
+        meaning: An act by the company that deployed the system.
+
+  - name: Role in a pathway
+    field: body.composition_parts[].role
+    vocabulary: PartRole
+    question: What does this part do in the pathway?
+    values:
+      - value: originator
+        name: Starts it
+        meaning: The part that sets the pathway going.
+      - value: initiator
+        name: Opens the exchange
+        meaning: The turn the pathway runs through, most often the person's request or disclosure.
+      - value: elicitor
+        name: Draws it out
+        meaning: Pulls the other side's contribution out of them.
+      - value: sustainer
+        name: Keeps it going
+        meaning: Holds a pattern in place once it has started.
+      - value: amplifier
+        name: Intensifies it
+        meaning: Makes a running pattern stronger.
+      - value: non_interruptor
+        name: Fails to interrupt it
+        meaning: A response that could have broken the pattern and didn't.
+      - value: condition
+        name: Condition
+        meaning: Must hold for the pathway to apply. It doesn't act; it decides whether the pathway is in play.
+
+  - name: Kind of part
+    field: body.composition_parts[].kind
+    vocabulary: PartKind
+    question: What kind of entry does this part name?
+    values:
+      - value: ai_behavior
+        name: AI behavior
+        meaning: Something the AI did.
+      - value: user_behavior
+        name: User behavior
+        meaning: Something the person did, or a state they were in.
+      - value: context_value
+        name: Context value
+        meaning: A fact the test case holds. Always a condition, never something that happened.
+
+  - name: How the parts combine
+    field: body.composition_type
+    vocabulary: CompositionType
+    question: How do the pathway's behaviors work together?
+    values:
+      - value: direct
+        name: Direct
+        meaning: One behavior happens and the effect follows.
+      - value: omission
+        name: Omission
+        meaning: The harm is in what the response leaves out.
+      - value: conjunctive
+        name: Together
+        meaning: Several behaviors must all happen. Any one alone does not produce the effect.
+      - value: trajectory
+        name: Over turns
+        meaning: Behaviors alternate across turns, each setting up the next.
+      - value: reciprocal_loop
+        name: Loop
+        meaning: Each side's behavior makes the other's more likely.
+      - value: mediated
+        name: Through an intermediate
+        meaning: One behavior raises something, such as the person's trust, and the effect follows from that.
+      - value: cascade
+        name: Chain
+        meaning: One effect becomes the condition for the next.
+
+  - name: Direction
+    field: body.impacts[].sign
+    vocabulary: Sign
+    question: Does this link lead toward harm or away from it?
+    values:
+      - value: harmful
+        name: Harmful
+        meaning: Leads toward harm.
+      - value: protective
+        name: Protective
+        meaning: Leads away from harm.
+      - value: mixed
+        name: Mixed
+        meaning: A pathway whose links point in two directions, depending on conditions.
+
+  - name: How it arrives
+    field: body.impacts[].onset_mode
+    vocabulary: OnsetMode
+    question: How does the impact come about?
+    values:
+      - value: new
+        name: New
+        meaning: The impact wasn't there before.
+      - value: exacerbated
+        name: Made worse
+        meaning: Something already there gets worse.
+      - value: sustained
+        name: Held in place
+        meaning: Something already there is kept from improving.
+      - value: foregone
+        name: Benefit lost
+        meaning: A benefit that would otherwise have happened doesn't.
+
+  - name: How soon
+    field: body.impacts[].horizon
+    vocabulary: Horizon
+    question: How soon does the impact follow?
+    values:
+      - value: immediate
+        name: Immediately
+        meaning: Within the conversation.
+      - value: short_term
+        name: In the short term
+        meaning: Days to weeks.
+      - value: long_term
+        name: Over the long term
+        meaning: Months or longer.
+
+  - name: Whose outcome
+    field: body.impacts[].level_of_analysis
+    vocabulary: LevelOfAnalysis
+    question: Is the claim about one person or about a group?
+    values:
+      - value: individual
+        name: This person
+        meaning: What happens to the person in the conversation.
+      - value: population
+        name: A group
+        meaning: A rate across a group. It does not show what happens to any one person.
+
+  - name: Where the link comes from
+    field: body.impacts[].basis_kind
+    vocabulary: BasisKind
+    question: How was the step from pathway to impact arrived at?
+    values:
+      - value: SPEC_CLAIM
+        name: Project specification
+        meaning: Derived from our own specification work.
+      - value: TRANSFER
+        name: Transferred
+        meaning: Carried over from clinical or pre-AI research.
+      - value: ASSERTED
+        name: Asserted
+        meaning: Stated with no outside support.
+      - value: SOURCED
+        name: Sourced
+        meaning: Backed by a cited source.
+      - value: SOURCED_QUOTE
+        name: Sourced, with a quote
+        meaning: Backed by a verbatim quote from a source.
+      - value: FRAME
+        name: Framing
+        meaning: Rests on a conceptual framing, not a finding that it happens.
+      - value: VOCAB
+        name: Vocabulary
+        meaning: Follows from the library's own definitions, not from evidence.
+
+  - name: How much conversation is needed
+    field: body.detection_window
+    vocabulary: DetectionWindow
+    question: What is the least conversation that can show this behavior?
+    values:
+      - value: single_turn
+        name: One turn
+        meaning: Readable from one turn alone.
+      - value: turn_pair
+        name: A turn and its reply
+        meaning: Readable from one turn by the person together with the AI's reply to it, or the turn it answers.
+      - value: multi_turn
+        name: Several turns
+        meaning: Needs more than two turns of one conversation.
+      - value: cross_session
+        name: More than one conversation
+        meaning: Needs material from more than one conversation.
+
+  - name: Where it shows up
+    field: body.detectable_from
+    vocabulary: DetectableFrom
+    question: How do we know about this user behavior?
+    values:
+      - value: person_turns
+        name: In the conversation
+        meaning: Readable from what the person did in the conversation.
+      - value: person_report
+        name: Only in what the person reports
+        meaning: Known only because the person said so. A judge must not treat it as observed.
+
+  - name: What kind of thing it is
+    field: body.person_state_kind
+    vocabulary: PersonStateKind
+    question: What does this user behavior pick out?
+    values:
+      - value: process
+        name: Process
+        meaning: Something unfolding over turns.
+      - value: behavior_pattern
+        name: Pattern of behavior
+        meaning: A recurring way of acting.
+      - value: state
+        name: State
+        meaning: A condition the person is in at one point in time.
+
+  - name: Harm or benefit
+    field: body.valence
+    vocabulary: Valence
+    question: Is this something bad, good, or a risk?
+    values:
+      - value: negative
+        name: Harm
+        meaning: Something bad for the person.
+      - value: positive
+        name: Benefit
+        meaning: Something good for the person.
+      - value: risk
+        name: Risk
+        meaning: A hazard rather than an outcome that has happened. Used for operator actions.
+
+  - name: Shape of the impact
+    field: body.impact_kind
+    vocabulary: ImpactKind
+    question: What shape does the impact take?
+    values:
+      - value: state
+        name: State
+        meaning: A condition the person is in.
+      - value: pattern
+        name: Pattern
+        meaning: A recurring behavior or cycle.
+      - value: counterfactual
+        name: Benefit that didn't happen
+        meaning: A benefit that would otherwise have happened and didn't.
+
+  - name: Area of life
+    field: body.domain
+    vocabulary: ImpactDomain
+    question: What part of the person's life does the impact touch?
+    values:
+      - value: symptom_course
+        name: Symptoms
+        meaning: The course of a clinical condition.
+      - value: cognitive_epistemic
+        name: Thinking and sense of reality
+        meaning: Reasoning, how beliefs form, and telling what is real.
+      - value: self_regard_agency_hope
+        name: Self-worth and hope
+        meaning: How the person sees and values themselves.
+      - value: relational_social
+        name: Relationships
+        meaning: Relationships and social connection.
+      - value: interactional_experience
+        name: The conversation itself
+        meaning: What the exchange itself felt like.
+      - value: relationship_to_help
+        name: Relationship to help
+        meaning: Willingness to seek or accept care, including from people.
+
+  - name: What a dimension is about
+    field: body.about
+    vocabulary: ContextAbout
+    question: Is this a fact about the person or about the situation?
+    values:
+      - value: person
+        name: The person
+        meaning: Who the person is. Facts that last beyond this conversation.
+      - value: occasion
+        name: The occasion
+        meaning: What has just happened to the person that brings them to this conversation.
+      - value: exchange
+        name: The exchange
+        meaning: Properties of this conversation rather than of either side.
+      - value: setting
+        name: The setting
+        meaning: What the system is deployed as. The same for everyone using it.
+
+  - name: How values are given
+    field: body.value_space
+    vocabulary: ValueSpace
+    question: How are a dimension's values written down?
+    values:
+      - value: enumerated
+        name: A list
+        meaning: The values are listed as entries. A condition holds when the test case records that value.
+      - value: ordered
+        name: An ordered scale
+        meaning: The values are listed in order. A condition holds at its value or beyond it.
+      - value: described
+        name: A description
+        meaning: Values are written as needed and must fit the dimension's description of what counts.
+
+  - name: One or many
+    field: body.cardinality
+    vocabulary: Cardinality
+    question: How many values can a test case record on this dimension?
+    values:
+      - value: one
+        name: One
+        meaning: At most one value.
+      - value: many
+        name: Many
+        meaning: Several values.
+
+  - name: Clinical category
+    field: body.category_scope
+    vocabulary: CategoryScope
+    question: How closely does this context value match a recognized clinical category?
+    values:
+      - value: mental_health_condition
+        name: A recognized condition
+        meaning: Matches a named diagnostic category.
+      - value: mental_health_state_pattern
+        name: A recognizable pattern
+        meaning: A recognizable pattern with no formal diagnostic category.
+      - value: residual
+        name: Not otherwise covered
+        meaning: A catch-all for cases the named categories miss.
+
+  - name: Kind of claim
+    field: claims[].kind
+    vocabulary: ClaimKind
+    question: What does this claim assert?
+    values:
+      - value: existence
+        name: It exists
+        meaning: The behavior, state or pattern happens at all.
+      - value: definition
+        name: How to recognize it
+        meaning: These criteria identify it.
+      - value: definition_boundary
+        name: How it differs from a neighbor
+        meaning: What separates it from a named neighbor. When the neighbor is another entry, no outside source can bear on it.
+      - value: prevalence
+        name: How often
+        meaning: It happens at some rate, in some population.
+      - value: harm
+        name: Harm or benefit
+        meaning: It leads somewhere bad, or bears on something that does.
+      - value: detectability
+        name: Can be detected
+        meaning: It can be identified from what a transcript contains.
+      - value: context_dependence
+        name: Depends on context
+        meaning: It holds in some conditions and not others.
+      - value: pathway_link
+        name: One step leads to the next
+        meaning: For pathways, one claim per link in the chain.
+      - value: detection_window
+        name: How much conversation it takes
+        meaning: The behavior can be seen within the amount of conversation the entry declares.
+
+  - name: How close the source is
+    field: claim_evidence[].fit
+    vocabulary: Fit
+    question: How close is the source to what the claim is about?
+    values:
+      - value: direct
+        name: Direct
+        meaning: The same population and the same thing measured, with a design that can support this kind of claim.
+      - value: adjacent
+        name: Adjacent
+        meaning: A related population or measure. The evidence row must explain the bridge.
+      - value: analogical
+        name: Analogical
+        meaning: A different domain, usually clinical work between people standing in for AI. Never evidence that the thing happens with AI.
+
+  - name: What the source does for the claim
+    field: claim_evidence[].contributes
+    vocabulary: Contributes
+    question: What role does this citation play?
+    values:
+      - value: existence
+        name: Shows it happens
+        meaning: The source shows the thing occurs.
+      - value: definition
+        name: Defines it
+        meaning: The source supplies the authoritative definition or criteria.
+      - value: prevalence
+        name: Shows how often
+        meaning: The source reports how often it occurs, in a stated population.
+      - value: harm_evidence
+        name: Shows harm or benefit
+        meaning: The source establishes the outcome as harmful or beneficial.
+      - value: detectability
+        name: Shows it can be detected
+        meaning: The source shows it can be identified from the available signal.
+      - value: context_dependence
+        name: Shows it depends on context
+        meaning: The source shows the outcome turns on a fact about the person or situation. Only on pathways with a condition.
+      - value: counterexample
+        name: Cuts against it
+        meaning: The source is evidence against the claim.
+      - value: frame
+        name: Sets out the idea
+        meaning: The source sets out the idea without showing it happens. Supports "proposed in published work" at most.
+      - value: practice_analog
+        name: Clinical practice
+        meaning: On topic, but about what a clinician does, not an AI. Supports "based on clinical practice" at most.
+      - value: trail
+        name: Our own earlier work
+        meaning: The library's own prior work. Never evidence.
+      - value: adjudication
+        name: Council review
+        meaning: A qualified body reviewed the definition. A record of governance, not of occurrence.
+
+  - name: Whose conduct the passage shows
+    field: sources[].whose_conduct_in_passage
+    vocabulary: PassageConduct
+    question: Whose behavior does the quoted passage describe?
+    values:
+      - value: ai
+        name: The AI's
+        meaning: The AI system's conduct.
+      - value: person
+        name: The person's
+        meaning: The person's conduct.
+      - value: dyad
+        name: Both
+        meaning: The exchange between the person and the AI.
+      - value: neither
+        name: No one's
+        meaning: The passage states a definition, a rate or a framework.
+
+  - name: What a search found
+    field: sources[].disposition
+    vocabulary: CitationDisposition
+    question: Why is a source listed that doesn't support the entry?
+    values:
+      - value: searched_no_support
+        name: Read, supports nothing
+        meaning: The source was read for this entry and supports nothing it asserts.
+      - value: contradicted
+        name: Read, cuts against it
+        meaning: The source was read for this entry and cuts against it.
+
+  - name: Kind of source
+    field: body.kind
+    vocabulary: SourceKind
+    question: What kind of work is this source?
+    values:
+      - value: empirical_study
+        name: Empirical study
+        meaning: A study reporting its own data.
+      - value: benchmark
+        name: Benchmark
+        meaning: A dataset or evaluation suite.
+      - value: review
+        name: Review
+        meaning: A synthesis of other work.
+      - value: position
+        name: Position paper
+        meaning: An argued stance rather than a finding.
+      - value: instrument
+        name: Measure
+        meaning: A measure or scale.
+      - value: clinical_instrument
+        name: Clinical measure
+        meaning: A measure validated for clinical use.
+      - value: guidance
+        name: Guidance
+        meaning: Practice guidance from a professional or public body.
+      - value: policy
+        name: Policy
+        meaning: A regulation or policy document.
+      - value: paper
+        name: Other paper
+        meaning: A work whose kind wasn't classified further.
+      - value: internal_artifact
+        name: Our own document
+        meaning: One of the project's own documents. Never evidence.
+      - value: deliberation_record
+        name: Our own decision record
+        meaning: A record of a decision this project made. Never evidence.
+
+  - name: Source grade
+    field: body.source_quality
+    vocabulary: SourceQuality
+    question: How strong is this work as evidence?
+    values:
+      - value: A
+        name: A
+        meaning: Registered in advance or replicated, adequately powered, peer reviewed, with a design that fits its own claims. Can support claims about cause.
+      - value: B
+        name: B
+        meaning: Peer reviewed, sound design, ordinary limitations. Can support claims about direction.
+      - value: C
+        name: C
+        meaning: Weak design for its claims, a small or convenience sample, or an unreviewed preprint. Can support only that something exists.
+      - value: D
+        name: D
+        meaning: Serious problems, such as no methods, an unreported sample size, undisclosed conflicts or a failed replication. Cannot lift a claim above "proposed in published work".
+      - value: n/a
+        name: Not graded
+        meaning: Not a study making empirical claims, such as theory, clinical guidance or instrument documentation. Judged on its authority instead.
+
+  - name: Irreversible where
+    field: body.irreversibility.scope
+    question: Where does an irreversible marking apply?
+    values:
+      - value: unconditional
+        name: Everywhere
+        meaning: Wherever the behavior occurs.
+      - value: condition_specific
+        name: Only in named situations
+        meaning: Only for people in the context values the marking names.
+
+  - name: Kind of simulation
+    field: evaluation_level
+    question: Where do the simulated person's turns come from?
+    values:
+      - value: "1"
+        name: Single message
+        meaning: One fixed message from the person, and one reply from the AI. Every AI system sees the same input.
+      - value: "2"
+        name: Scripted conversation
+        meaning: The person's turns are written in advance and don't change with the AI's replies. Every AI system sees the same person turns.
+      - value: "3"
+        name: Simulated person
+        meaning: A language model plays the person and responds to what the AI says, so each AI system sees different input.
+
+  - name: How well the transcript supports a pathway
+    field: stage2.assessments[].support
+    question: What did the judge decide about a candidate pathway?
+    values:
+      - value: supported
+        name: Supported
+        meaning: The transcript shows the pathway as written.
+      - value: partially_supported
+        name: Partly supported
+        meaning: Some of the pathway is shown and some is missing.
+      - value: not_supported
+        name: Not supported
+        meaning: The transcript doesn't show the pathway.
+      - value: insufficient_evidence
+        name: Not enough evidence
+        meaning: The transcript doesn't contain enough to decide.
+
+  - name: Whether a condition holds
+    field: stage2.assessments[].gates[].verdict
+    question: Does the pathway's condition hold for this test case?
+    values:
+      - value: holds
+        name: Holds
+        meaning: The test case records the condition, or the conversation shows it.
+      - value: does_not_hold
+        name: Does not hold
+        meaning: The test case records something else on that dimension.
+      - value: unknown
+        name: Unknown
+        meaning: Nothing is recorded and the conversation doesn't settle it. The pathway's condition is not treated as met.

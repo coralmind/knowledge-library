@@ -1,0 +1,215 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000463
+display_id: UserBehavior-58
+aliases:
+- UBP-60
+label: The person describes a current hostile home or relationship, or a recent stressful event
+type: user_behavior
+layer: observation
+definition: 'The person''s turn describes concrete external circumstances that are current or recent — a household or relationship characterised by ongoing conflict or emotional unavailability, or a discrete recent event such as a loss, a relationship ending, job loss, legal or financial trouble, or a humiliating incident. Two features are required together: the content is an event or an environment rather than a feeling or an interpretation, and its timeframe is placed as present or clearly recent.'
+distinguish_from:
+- neighbor: kl-000511
+  boundary: 'That entry records reported sleep disruption framed as extended or as a baseline; these criteria require an external circumstance and a present-or-recent timeframe, so a long-running state of the person does not satisfy them. Two further entries sit on the same line: kl-000452 covers adversity the person places in the past ("I was abused as a kid"), which these criteria exclude on timeframe, and kl-000454 covers the person''s reading of their standing with others ("I feel like a burden"), which these criteria exclude because it is an interpretation rather than a circumstance.'
+- neighbor: kl-000465
+  boundary: That entry requires a named person described as reachable or supportive; this entry records a household or relationship described as conflict-laden or unavailable. A transcript can carry both about different relationships.
+body:
+  observable_criteria: 'The turn contains both (a) a concrete external circumstance — ongoing conflict or unavailability in a household or relationship ("home is a war zone right now", "every day is a fight"), a recent loss or rupture ("my partner just left", "I lost my job"), legal or financial trouble, or a humiliating event — and (b) a timeframe placing it as present or recent, carried by present tense, "just", "this week", or a comparable marker. Pointable span: the clause naming the circumstance together with its tense or time marker.'
+  exclusions: 'Not counted: adversity framed as historical, which is a different entry''s content. Not counted: a cognitive or evaluative statement about the person''s situation or worth with no circumstance named. Where the text does not place the timeframe as current or recent, the criteria are not satisfied; the timeframe is required positively and is not inferred from the turn being distressed.'
+  detection_window: single_turn
+  groups:
+  - crisis-signal-environmental
+  condition_tags:
+  - kl-000600
+  - kl-000601
+sources:
+- source: kl-001117
+  contributes: existence
+  locator: Appendix B, Table B2 ‘Counts of prompts by harm category in PAS’, p. 32, Example column for the Financial Irresponsibility category (n = 193, 2.96%)
+  quote: claw to the side and hide umderground forever, see i’ve been dodging
+  limits: 'The entry requires two features together: content that is an event or environment rather than a feeling or interpretation, and a timeframe placed as present or clearly recent. The paper''s PAS corpus construction (Methods 6.1.1) filtered specifically for actions taken by the speaker, using regex for action-oriented statements plus time-frame references, then labelled the statements by harm category, which is the opposite selection criterion from an event or environment rather than a feeling. No span in the paper is annotated for external circumstance, and the historical-adversity exclusion the entry demands was never applied. The study scenarios in Tables E6 and E7 (study 3 topics and study 2 vignettes) are researcher-authored vignettes and edited AITA posts, not participants'' own turns; no participant conversational turn is quoted anywhere in the paper.'
+  note: The full example concerns weeks of dodging a landlord with a confrontation due 'tomorrow' — a current external stressor — but the paper classifies it as Financial Irresponsibility, i.e. as the speaker's problematic action.
+  cited_for: Partial support only. Cheng et al. 2025 show that first-person statements referencing a current, ongoing external circumstance occur in a corpus of real advice-seeking posts (r/Advice via ConvoKit). The paper does not establish the pattern as this entry defines it.
+standing:
+  value: plausible_unobserved
+  basis: 'That people describe concrete current external circumstances in conversation with AI systems is observed in real transcript data: Sharma et al. 2026 (kl-000996) examined 1.5 million consumer Claude.ai conversations and report person-side disclosures of ongoing domestic violence and trafficking, with illustrative fragments that the paper states are not verbatim. The entry''s second required feature, a present-or-recent timeframe carried positively in the turn by tense or a time marker, is unevidenced: kl-000996 records currency in the coders'' own summaries over long spans of conversation, Ajmani et al. 2025 (kl-000749) supplies survey testimony rather than conversational turns, and Derczynski et al. 2023 (kl-000814) asserts currency as a taxonomy definition rather than observing it. The declared single-turn detection window holds direct counterevidence from the same corpus study: kl-000996''s own unit for identifying these disclosures is a span of roughly 10 to 200-plus exchanges. No source supplies a prevalence figure, and pointability at the clause level is evidenced only at conversation granularity (kl-000996) or through an annotation rule that comes with no agreement figure (Qiu et al. 2024, kl-000969).'
+  floored_by: c5
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: A person's conversational turn describes a concrete external circumstance -- an ongoing conflict-laden or emotionally unavailable household or relationship, or a discrete recent event such as a loss, a relationship ending, job loss, legal or financial trouble, or a humiliating incident.
+- id: c2
+  kind: existence
+  text: Such a turn places the circumstance's timeframe as present or clearly recent, carried positively by tense or a time marker rather than inferred from the turn being distressed.
+- id: c3
+  kind: definition_boundary
+  text: Content that is an event or an environment is separable in a turn from content that is a feeling or an interpretation, so the first can be identified without the second.
+- id: c4
+  kind: detectability
+  text: The clause naming the circumstance together with its tense or time marker is a pointable span in a transcript, so the pattern can be identified from what a transcript contains.
+- id: c5
+  kind: detection_window
+  text: 'A single turn is sufficient to identify the pattern; the entry declares detection_window: single_turn.'
+- id: c6
+  kind: prevalence
+  text: Turns describing a current or recent external circumstance occur at some rate in a population of help-seeking or emotional-support conversations.
+- id: c7
+  kind: definition_boundary
+  text: 'These criteria are separable from kl-000511 (reported sleep disruption framed as extended or as a baseline): a long-running state of the person does not satisfy the external-circumstance and present-or-recent requirements.'
+- id: c8
+  kind: definition_boundary
+  text: 'These criteria are separable from kl-000465 (a named person described as reachable or supportive): this entry records a household or relationship described as conflict-laden or unavailable, and a transcript can carry both about different relationships.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000996
+  quote: "Active Abuse with Severe Safety Crises Severe The user disclosed across ∼10–200+ exchanges severe and compounding vulnerabilities including histories of childhood sexual abuse (CSA), ongoing domestic violence, trafficking, grooming, incest, physical assault, and sexual coercion, often with pervasive suicidal ideation, active self-harm, dissociation, and statements like “I hope he grooms the fuck out of me,” “is Daddy going to kill Mommy,” “I’m holding mom’s gun,” and “if I die will all this be fixed.” Compounding"
+  locator: Appendix A, Table 6 Additional vulnerability clusters, Active Abuse with Severe Safety Crises (Severe)
+  licenses: "In a corpus of 1.5 million real consumer Claude.ai conversations, users disclosed ongoing domestic violence, trafficking, grooming and sexual coercion, and the row gives illustrative person-side fragments ('is Daddy going to kill Mommy', 'I'm holding mom's gun') that the paper states are not verbatim. These are concrete external circumstances -- an environment and an event -- rather than feelings or interpretations, described in the paper's summary of the conversations. This is the only finding on this entry that establishes c1 from conversation data itself."
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000996
+  quote: "Active Abuse with Severe Safety Crises Severe The user disclosed across ∼10–200+ exchanges severe and compounding vulnerabilities including histories of childhood sexual abuse (CSA), ongoing domestic violence, trafficking, grooming, incest, physical assault, and sexual coercion, often with pervasive suicidal ideation, active self-harm, dissociation, and statements like “I hope he grooms the fuck out of me,” “is Daddy going to kill Mommy,” “I’m holding mom’s gun,” and “if I die will all this be fixed.” Compounding"
+  locator: Appendix A, Table 6 Additional vulnerability clusters, Active Abuse with Severe Safety Crises (Severe)
+  licenses: The row places the circumstances as current in the authors' own coding words -- 'ongoing domestic violence', 'active danger from perpetrators (often living with abusers or being actively trafficked)'. That the coders read these disclosures as present-tense circumstances supports the entry's second required feature. Adjacent rather than direct because the present-tense placement is stated by the researchers' cluster description, not shown in the person's own tense or time marker; the illustrative person-side fragments the row gives ('I'm holding mom's gun') carry present tense but are not the abuse-disclosure clauses themselves.
+  fit: adjacent
+  bridge: The source characterises the timeframe at the level of a cluster description over ~10-200+ exchanges. The entry requires the timeframe to be carried positively inside the pointable span of a single turn. The gap is between a coder's summary of when the circumstances obtained and a linguistic marker present in the turn.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000996
+  quote: "Active Abuse with Severe Safety Crises Severe The user disclosed across ∼10–200+ exchanges severe and compounding vulnerabilities including histories of childhood sexual abuse (CSA), ongoing domestic violence, trafficking, grooming, incest, physical assault, and sexual coercion, often with pervasive suicidal ideation, active self-harm, dissociation, and statements like “I hope he grooms the fuck out of me,” “is Daddy going to kill Mommy,” “I’m holding mom’s gun,” and “if I die will all this be fixed.” Compounding"
+  locator: Appendix A, Table 6 Additional vulnerability clusters, Active Abuse with Severe Safety Crises (Severe)
+  licenses: The row separates the circumstances disclosed (childhood sexual abuse, domestic violence, trafficking, incest, physical assault) from the states and expressions accompanying them (suicidal ideation, dissociation), which is exactly the event-or-environment versus feeling-or-interpretation distinction the entry's boundary rests on, and shows a coding scheme keeping them apart in practice. Adjacent because the paper draws the line to build vulnerability clusters, not to test whether the two content types are separable in a turn.
+  fit: adjacent
+  bridge: The source's separation is a taxonomy convenience within a vulnerability coding scheme applied to whole conversations; the entry asserts that the separation holds at the span level within a single turn. The source never tested annotator agreement on that distinction.
+  contributes: definition
+  contradicts: false
+- claim_id: c4
+  source: kl-000996
+  quote: "Active Abuse with Severe Safety Crises Severe The user disclosed across ∼10–200+ exchanges severe and compounding vulnerabilities including histories of childhood sexual abuse (CSA), ongoing domestic violence, trafficking, grooming, incest, physical assault, and sexual coercion, often with pervasive suicidal ideation, active self-harm, dissociation, and statements like “I hope he grooms the fuck out of me,” “is Daddy going to kill Mommy,” “I’m holding mom’s gun,” and “if I die will all this be fixed.” Compounding"
+  locator: Appendix A, Table 6 Additional vulnerability clusters, Active Abuse with Severe Safety Crises (Severe)
+  licenses: Circumstance disclosures were identified from conversation text at scale by an automated privacy-preserving pipeline, which establishes that this content is readable from what a transcript contains. Adjacent because what was identified was a conversation-level cluster over 10-200+ exchanges, not the pointable single-turn span the entry's criteria specify.
+  fit: adjacent
+  bridge: The source detected vulnerability at conversation granularity across tens to hundreds of exchanges. The entry asserts detectability of a clause-level span. Nothing in the source shows the circumstance clause was localised, and its unit of analysis is larger than the entry's by two orders of magnitude.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-000996
+  quote: "Active Abuse with Severe Safety Crises Severe The user disclosed across ∼10–200+ exchanges severe and compounding vulnerabilities including histories of childhood sexual abuse (CSA), ongoing domestic violence, trafficking, grooming, incest, physical assault, and sexual coercion, often with pervasive suicidal ideation, active self-harm, dissociation, and statements like “I hope he grooms the fuck out of me,” “is Daddy going to kill Mommy,” “I’m holding mom’s gun,” and “if I die will all this be fixed.” Compounding"
+  locator: Appendix A, Table 6 Additional vulnerability clusters, Active Abuse with Severe Safety Crises (Severe)
+  licenses: Cuts against the declared single_turn window. The paper's own unit for identifying these disclosures is a span of approximately 10 to 200-plus exchanges, and the row's opening words state that as the observation frame. A source that examined 1.5 million real conversations and chose a multi-hundred-exchange unit for exactly this content is evidence that a single turn was not sufficient for the people who did the work.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000749
+  quote: "I don’t have any support besides my boyfriend. It was him I was having problems with, so I turned to AI"
+  locator: Section 4.2.1, quoting respondent R30
+  licenses: A first-person account naming a concrete external circumstance -- a relationship with a named person that is the source of the problem, together with the absence of any other support. Content is a relational environment, not a feeling. Adjacent rather than direct because this is a testimonial-survey response written to researchers about why the respondent turned to AI, not a turn addressed to a conversational agent; the entry's criteria are about what a person's turn in a transcript contains.
+  fit: adjacent
+  bridge: The source collected written survey testimony (n = 53) about past crisis episodes plus expert interviews (n = 16). No conversational transcript was examined. The gap is between a retrospective account of a circumstance given to a researcher and the same circumstance appearing in a turn addressed to the system.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000749
+  quote: "I don’t have any support besides my boyfriend. It was him I was having problems with, so I turned to AI"
+  locator: Section 4.2.1, quoting respondent R30
+  licenses: 'The timeframe is carried inside the span by tense: ''It was him I was having problems with'' places the conflict as the live circumstance at the moment of turning to AI, and ''I don''t have any support'' is present tense. Adjacent for the same reason as c1 -- the tense is that of a survey narrative, not of a conversational turn.'
+  fit: adjacent
+  bridge: The respondent is narrating a past episode to a researcher, so the past tense in the span marks the circumstance as recent relative to the AI use being described rather than relative to the moment of the turn. The entry requires the marker to place the circumstance as present or recent within the turn itself.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000749
+  quote: "I don’t have any support besides my boyfriend. It was him I was having problems with, so I turned to AI"
+  locator: Section 4.2.1, quoting respondent R30
+  licenses: The span names a circumstance ('having problems with' a specific person, no other support) and contains no evaluative or affective statement, which shows the two content types coming apart in a real first-person account rather than only in the entry's definition.
+  fit: adjacent
+  bridge: A single illustrative quotation, chosen by the authors to illustrate an interpersonal trigger. The source made no claim that circumstance content and interpretive content are separable, and coded triggers rather than span content.
+  contributes: definition
+  contradicts: false
+- claim_id: c8
+  source: kl-000749
+  quote: "I don’t have any support besides my boyfriend. It was him I was having problems with, so I turned to AI"
+  locator: Section 4.2.1, quoting respondent R30
+  licenses: 'The span carries the two sides of the kl-000465 boundary in one sentence about one relationship: the boyfriend is the respondent''s only support AND the source of the conflict. That is the case the boundary text says a transcript can carry -- except here it is the same relationship, not two, which sharpens the boundary rather than illustrating it. Filed against c8 because the boundary separates this entry from another catalog entry and so is grounding-ineligible; the citation is recorded and does not license standing.'
+  fit: adjacent
+  bridge: 'Survey testimony rather than a conversational turn, and the source drew no boundary of this kind: it reported that interpersonal triggers often originate inside the support network. The relation to the entry''s boundary is our inference, not the paper''s finding.'
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000531
+  quote: "QE03\t\t\"- - - Social exclusion or rejection\"\tcategory\t1\tFalse\t24\t\"=hyperlink(\"\"https://icd.who.int/browse/latestrelease/mms/en#292381213\"\",\"\"browser\"\")\"\tTrue\tTrue\tBlockL1-QD5\tBlockL2-QE0\t\t\t\nhttp://id.who.int/icd/entity/1948692361\thttp://id.who.int/icd/release/11/mms/1948692361\tQE04\t\t\"- - - Target of perceived adverse discrimination or persecution\"\tcategory\t1\tFalse\t24"
+  locator: Chapter 24, block QE0 Problems associated with social or cultural environment
+  licenses: ICD-11 codes 'Social exclusion or rejection' and 'Target of perceived adverse discrimination or persecution' as distinct categories under 'Problems associated with social or cultural environment', which establishes that a hostile external environment is a recognised recordable category kept separate from the person's own states elsewhere in the classification. That separation is the same content boundary the entry's definition draws.
+  fit: adjacent
+  bridge: A classification tabulation, not a study. It supplies the category and its placement in a chapter about environment rather than about the person, and supplies nothing about turns, spans, or timeframes. The boundary it draws is nosological rather than linguistic.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000814
+  quote: |-
+    Downplaying credible threats
+    Minimising trauma/threats user is currently experiencing (e.g. dom. abuse, bullying)
+    [7]
+  locator: Appendix A, Table 4
+  licenses: Names 'trauma/threats user is currently experiencing' as a recognised category with domestic abuse and bullying as its exemplars, which supplies an independent naming of the entry's content type -- a current hostile environment reported by the person. Analogical because the row is a documented AI failure mode written from the model's side; it presupposes the person's disclosure without evidencing any.
+  fit: analogical
+  bridge: 'A single-citation row in a risk-card catalogue about what a language model may do wrong. What the source measured is nothing: it is a taxonomy entry. The person''s turn is implied by the failure mode''s definition and is never observed, quoted or counted.'
+  contributes: frame
+  contradicts: false
+- claim_id: c2
+  source: kl-000814
+  quote: |-
+    Downplaying credible threats
+    Minimising trauma/threats user is currently experiencing (e.g. dom. abuse, bullying)
+    [7]
+  locator: Appendix A, Table 4
+  licenses: 'The word ''currently'' in the row does the entry''s timeframe work: the risk is defined specifically over threats the person is experiencing now, not historically, which is an independent statement that the present-timeframe distinction matters operationally. Analogical for the same reason -- it is a taxonomy assertion, not a measurement.'
+  fit: analogical
+  bridge: The catalogue asserts the currency of the threat as part of a risk definition. It never examined a turn and so cannot show that the timeframe is carried positively in the person's language rather than supplied by context.
+  contributes: frame
+  contradicts: false
+- claim_id: c1
+  source: kl-000969
+  quote: "Individuals may also be threatened by others' suicides, thus expressing statements about others' suicide to seek help and get out \nof the predicament."
+  locator: Table 6, Annotation guidelines (English version), Aggression against Users
+  licenses: An annotation guideline written for a real online counselling corpus records that people disclose being threatened by another person's suicide as the predicament they are seeking help about -- a concrete external circumstance involving another person, not the speaker's own feeling. That the guideline exists means annotators encountered the content often enough to need a rule for it.
+  fit: adjacent
+  bridge: The guideline is a rule for annotators, not a count or a quoted turn. The entry asserts that turns describing external circumstances occur; the guideline establishes that the corpus builders anticipated them well enough to write a rule, which is one inferential step short.
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-000969
+  quote: "Individuals may also be threatened by others' suicides, thus expressing statements about others' suicide to seek help and get out \nof the predicament."
+  locator: Table 6, Annotation guidelines (English version), Aggression against Users
+  licenses: The guideline exists to let annotators separate a third-party suicide disclosure from the speaker's own risk on the basis of what the text says, which establishes that this circumstance-versus-state distinction was operationalised for span-level annotation of real counselling text. That is the entry's detectability assertion applied to one circumstance type.
+  fit: adjacent
+  bridge: The source operationalised the distinction for the Aggression against Users label within a suicide-detection taxonomy. It reports no agreement statistic for this specific clause, and its span unit is the utterance rather than the entry's clause-plus-time-marker.
+  contributes: detectability
+  contradicts: false
+- claim_id: c3
+  source: kl-000969
+  quote: "Individuals may also be threatened by others' suicides, thus expressing statements about others' suicide to seek help and get out \nof the predicament."
+  locator: Table 6, Annotation guidelines (English version), Aggression against Users
+  licenses: The guideline's whole point is that the same surface content -- a statement about suicide -- resolves differently depending on whether it names an external circumstance or the speaker's own state, and it instructs annotators to make that call. Independent operational support for the entry's event-versus-interpretation boundary.
+  fit: adjacent
+  bridge: The distinction the guideline draws is between whose suicide is at issue, not between circumstance content and interpretive content in general. The entry's boundary is broader than the one the source operationalised.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-001015
+  quote: "Results from the studies that were included in this review support the assumption that stress affects decision making. If stress confers an advantage or disadvantage in terms of outcome depends on the specific task or situation."
+  locator: Section 5.1, "Consistent results"; the same formulation appears in the Abstract
+  licenses: Bounds rather than supports. The review's headline conclusion is that whether stress helps or harms depends on the specific task or situation, which cuts against any reading of this entry as marking a uniform state.
+  fit: analogical
+  bridge: Laboratory decision tasks in healthy humans with no conversational agent and no transcript. It measured decision-making outcomes under induced stress, not what a person's turn contains. The bearing on the entry is on what a stressor-present context may be taken to imply, not on whether the turn type occurs.
+  contributes: counterexample
+  contradicts: true

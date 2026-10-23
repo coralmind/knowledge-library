@@ -1,0 +1,71 @@
+# yaml-language-server: $schema=../../schema/context_dimension.schema.json
+id: kl-000723
+display_id: Dimension-4
+label: How the person talks to the AI, such as guarded, hostile or rambling
+type: context_dimension
+layer: context
+aliases:
+- presentation_stance
+- Context-7
+definition: 'The manner in which a person puts their situation to the system — guarded, hostile, ingratiating, verbose, digressive — as distinct from what their situation is. It is a property of the case because the same person can be specified with any of them: it varies presentation rather than identity.'
+distinguish_from:
+- neighbor: kl-000721
+  boundary: The precipitating situation is what happened. Stance is how it is told.
+body:
+  about: exchange
+  value_space: enumerated
+  cardinality: one
+  defines: 'What varying it does to a judgment: it separates whether a system responds to the person''s situation or to the way it was delivered. A response that engages a plainly-stated disclosure and misses the same disclosure stated guardedly is a detection failure that no single case can reveal. Pairs of cases differing only in stance are how that gets measured.'
+sources: []
+standing:
+  value: theorized
+  basis: Two benchmarks operationalize stance as an attribute applied over a fixed case (kl-000860, kl-000902), and one reports stance changing the outcome of the exchange (kl-000902); none measures a deployed system's response varying with stance alone.
+  floored_by: c1
+  as_of: '2026-09-23'
+lifecycle:
+  status: draft
+  since: '2026-09-16'
+claims:
+- id: c1
+  kind: existence
+  text: How a person puts their situation to a system varies along describable stances — guarded, hostile, ingratiating, verbose, digressive — that are specifiable separately from what the situation is.
+- id: c2
+  kind: context_dependence
+  text: Varying stance while holding the person's specification constant changes whether a system engages the situation, so a disclosure stated plainly and the same disclosure stated guardedly can draw different responses.
+- id: c3
+  kind: definition_boundary
+  text: 'Stance is a case-level manipulation applied over the person rather than a trait of them: the same person specification can be rendered under any stance without changing the specification.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000860
+  quote: plain, verbose, go off on tangents, hostile, guarded, ingratiating
+  locator: Appendix A.2, patient simulation guidelines
+  licenses: The source instructs its simulated patients to take one of six demeanors, guarded, hostile, ingratiating, verbose and digressive among them, as an attribute separate from the case, which is c1.
+  fit: direct
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000902
+  quote: This set comprises 150 distinct client profiles, each presenting three different counseling attitudes (positive, neutral, negative), resulting in a total of 450 instances.
+  locator: Appendix, evaluation set
+  licenses: 'The same client profile is rendered under three attitudes, which is c1: stance is specifiable separately from what the situation is.'
+  fit: direct
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000902
+  quote: As shown in Table 4, we observe a significant magnitude of emotional change for clients with a positive attitude compared to those with a negative attitude.
+  locator: Section 4, validity of utilizing PANAS
+  licenses: Holding the profile fixed and varying attitude changes the counseling outcome the system produces, which bears on c2.
+  fit: adjacent
+  contributes: existence
+  contradicts: false
+  bridge: The outcome measured is the simulated client's emotional change, not whether the system engaged the disclosure; what carries is that stance alone changes what the exchange does.
+- claim_id: c3
+  source: kl-000902
+  quote: This set comprises 150 distinct client profiles, each presenting three different counseling attitudes (positive, neutral, negative), resulting in a total of 450 instances.
+  locator: Appendix, evaluation set
+  licenses: One profile rendered under three attitudes is stance as a manipulation applied over the person rather than a trait of them, which is c3.
+  fit: direct
+  contributes: definition
+  contradicts: false

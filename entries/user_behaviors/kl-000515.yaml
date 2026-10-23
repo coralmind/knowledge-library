@@ -1,0 +1,123 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000515
+display_id: UserBehavior-96
+aliases:
+- UBP-100
+label: The person says they can talk to their family, who have supported them
+type: user_behavior
+layer: observation
+definition: 'The person''s turn describes their family — a parent, a sibling, the family as a household — and states both that specific people in it are reachable to them and something they have done or do that constitutes support: talking about everything, showing up, being told anything, checking in. Both halves are required. A statement that a family gets along supplies neither, and a statement that someone exists supplies only one. The entry records the description and asserts nothing about the family, about the person''s support, or about their situation.'
+distinguish_from:
+- neighbor: kl-000510
+  boundary: 'Direct content inverse: there the family is described as hostile, silent, or unavailable; here as reachable and communicative. Not complements — a turn describing one supportive parent and one hostile one satisfies both, and that case is common enough that treating the pair as exclusive would be wrong.'
+- neighbor: kl-000465
+  boundary: SAME CONSTRUCT for the family case, and that entry is broader in one direction and narrower in another. It covers named human support of ANY kind — a partner, friends — as well as a family described as supportive, so it is broader; but it requires BOTH a named source and stated reachability, and this entry adopts that two-part requirement at criteria (b) and (c).
+body:
+  observable_criteria: 'Three features, all quotable. (a) The turn describes the person''s family — named members or the family as such — rather than friends, a partner, or a professional. (b) The turn states that they are reachable to the person: can be talked to, can be told, are there. (c) The turn states something they have done or do that constitutes support ("my family is solid, we talk about everything, they''ve shown up for me"; "my parents have been amazing through this, I can tell them anything"; "my siblings and I check in every week, it matters"). The pointable span is the naming clause plus the reachability and support clauses.'
+  exclusions: 'Not counted: non-family support — friends, a partner, a therapist — which fails criterion (a) and which kl-000465 covers together with the family case. Not counted: a low-specificity claim about the family ("we get along") and failing (b) and (c). Not counted: a family member mentioned with no reachability or support stated. Not counted: concealment from the family, which states the opposite of (b) — a family that would lose it if they knew is not reachable on this subject. Not counted: a reader''s judgment that a family sounds supportive; criteria (b) and (c) require the clauses. A detection does not assert that the person has the capacity the statement describes, that they are coping, that they are at lower risk, or that things are going well for them. It also carries no instruction about what an AI should do when it appears: not to elicit it, not to reinforce it, not to credit it.'
+  detection_window: single_turn
+  conceptual_group: nssi-protective-factor
+  cluster_primary: C-CRISIS
+  cluster_secondary: null
+  pattern_type: signal
+  groups:
+  - nssi-protective-factor
+sources:
+- source: kl-000499
+  locator: Fox et al. 2015, Clin Psychol Rev 42:156-167, section 1 (p.157) and section 2.1 (p.159)
+  contributes: existence
+  limits: The paper defines non-suicidal self-injury but never operationally defines its family construct. Family functioning and structure appears as a bare label in Table 3 and Table 4; Table 4's footnotes define four other categories but not this one, and the neighbouring family-adjacent categories (parental psychopathology, childhood adversities, social factors) are likewise undefined in prose, so the paper cannot be cited as defining any family construct. Its NSSI definition, though quotable, does not scope this entry, which concerns a person describing family members as available — a construct to which the without-suicidal-intent boundary is irrelevant.
+  disposition: searched_no_support
+  cited_for: 'Fox et al. 2015 records family functioning and structure as a coded category in the prospective non-suicidal self-injury risk-factor literature, which gives this entry''s subject matter — family relationships — footing in published work. The same meta-analysis can carry no protective claim: it excluded 13 protective-factor prediction cases from analysis before it ran, and its family estimate (weighted OR 1.14, from 2 prediction cases across 2 unique samples) falls below the authors'' own three-case, three-sample stability threshold.'
+- source: kl-000499
+  locator: §2.1, p.159, final paragraph; category presence at Table 3, p.164, "Family functioning and structure" row (2 cases, 2 unique samples); estimate at Table 4, p.165, same row (1.14**, 1.06-1.22, z=3.69); stability threshold at §3.2.2, p.163
+  contributes: existence
+  quote: |-
+    We removed non-unique prediction cases (i.e., prediction cases from the same sample in different
+    published reports) and prediction cases that were hypothesized to decrease NSSI (protective factors; n = 13 prediction cases).
+  limits: The citation's two halves pull against each other and the second wins. The entry describes family members as reachable and as having shown up — a protective, supportive framing — while the only thing the paper offers on family is a risk-direction category with a barely-above-null pooled estimate that the authors declined to discuss, in a study that excluded the protective direction by design. The footing is therefore for the topic (family) and not for the entry's construct (a supportive family as a protective factor); what exists in the paper is a differently-directed category with the same subject noun. The paper never operationally defines family functioning and structure, both of its family prediction cases were continuous measures (Table 3, 0% binary), and its section 4 warns that continuous cases mechanically depress odds ratios, so the 1.14 should not be read as a substantive finding that family matters little. The paper has no conversational data and nothing about AI.
+  whose_conduct_in_passage: person
+  actually_licenses: 'That family functioning and structure is a coded category in the prospective NSSI risk-factor literature — external footing for the entry''s subject matter, family relationships — and, from the quoted exclusion rule, that this source can carry no protective claim about family or anything else, having removed 13 protective-factor prediction cases before analysis. All three figures in the claim check out: the category exists in Table 3, its estimate is OR 1.14 from 2 samples, and §3.2.2 sets a three-case-three-sample threshold that this estimate falls below.'
+  cited_for: 'Fox et al. 2015 supplies a clinical definition of non-suicidal self-injury — "any intentional act of self-harm enacted without the desire to die", direct and deliberate — and records family functioning and structure as a coded category (2 prediction cases from 2 unique samples; weighted OR 1.14, 95% CI 1.06-1.22). On this entry the citation''s footing is the topic, family relationships, rather than the entry''s construct: the paper''s family category runs in the risk direction, its definition of NSSI does not bear on a description of family availability, and the study removed 13 protective-factor prediction cases before analysis, so it licenses no claim that a supportive family protects.'
+standing:
+  value: plausible_unobserved
+  basis: 'No source in the evidence base observes a person, in conversation with an AI system, producing the three-clause description this entry defines, and none shows that such a description is reliably readable from a transcript or within a single turn. The nearest observation is Cao et al. 2026: one participant''s remark in a post-session research interview, quoted in a discussion of how users map human supporter roles onto an agent, which shows the naming, reachability, and support clauses co-occurring in speech but not in a conversational turn. Fox et al. 2015 gives the subject matter footing in the prospective NSSI risk-factor literature while excluding protective-factor prediction cases by design, so it carries no claim that a supportive family protects. The published literature on disclosure of family support in help-seeking conversation is not represented here, so the absence reflects what was gathered rather than evidence that the description does not occur.'
+  floored_by: c5
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: A person's conversational turn describes their own family -- named members or the family as such -- as distinct from friends, a partner, or a professional (criterion a).
+- id: c2
+  kind: existence
+  text: 'Such a turn states that those family members are reachable to the person: can be talked to, can be told, are there (criterion b).'
+- id: c3
+  kind: existence
+  text: Such a turn states something those family members have done or do that constitutes support (criterion c).
+- id: c4
+  kind: existence
+  text: All three features co-occur in a single turn, so that the naming clause plus the reachability clause plus the support clause form one pointable span.
+- id: c5
+  kind: detectability
+  text: The three features are identifiable from what a transcript contains -- quotable clauses rather than a reader's judgment that a family sounds supportive.
+- id: c6
+  kind: detection_window
+  text: 'The pattern is readable within a single turn (the entry declares detection_window: single_turn).'
+- id: c7
+  kind: definition_boundary
+  text: 'This pattern is separable from kl-000510 (family described as hostile, silent, or unavailable), and the two are not complements: one turn can satisfy both where one parent is supportive and another hostile.'
+- id: c8
+  kind: definition_boundary
+  text: 'This pattern is separable from kl-000465 (Protective: Family / Social Functioning), which is broader in covering non-family named human support and stricter in requiring both a named source and stated reachability.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000785
+  quote: |-
+    For example, P3 expressed wanting Jodie to
+    provide advice during mood journaling because "that’s how it is with my parents, I tell them about
+    difficulties I’m facing, and then they offer me some suggestions."
+  locator: 'Section 6.2, Mirrored Expectation: Virtual Supporter and Human Supporter, p. 23, participant P3'
+  licenses: A person, in their own words, identifies family members specifically -- 'my parents' -- as the people they take difficulties to, satisfying the entry's criterion (a) that the described support source is family rather than a friend, partner, or professional. It establishes only that a person produces such a naming clause; it says nothing about the co-occurrence the entry requires.
+  fit: adjacent
+  bridge: The entry records a turn inside a conversation the person is having (detection_window single_turn, an exchange with a system). Cao et al. collected this utterance in a face-to-face semi-structured research interview after the study session (Section 4.3, Data Collection; 379 minutes of interview data thematically analysed in Section 4.4), and it was elicited by a prompt about desired improvements to the virtual supporter. The naming clause is genuine and in the person's voice; the setting is a research interview, not the conversational exchange the entry has in view.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000785
+  quote: |-
+    For example, P3 expressed wanting Jodie to
+    provide advice during mood journaling because "that’s how it is with my parents, I tell them about
+    difficulties I’m facing, and then they offer me some suggestions."
+  locator: 'Section 6.2, Mirrored Expectation: Virtual Supporter and Human Supporter, p. 23, participant P3'
+  licenses: 'The clause ''I tell them about difficulties I''m facing'' is a stated-reachability clause in the person''s own voice: the family members are people the person can and does tell things to. That is criterion (b) and this quote reaches it.'
+  fit: adjacent
+  bridge: 'Same gap as on c1: the utterance is a research-interview remark comparing the virtual supporter to parents, not a turn volunteered inside a support conversation. What the source measured is what participants said in a post-session interview about what they wanted the agent to do; what the claim asserts is what a person''s conversational turn contains.'
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000785
+  quote: |-
+    For example, P3 expressed wanting Jodie to
+    provide advice during mood journaling because "that’s how it is with my parents, I tell them about
+    difficulties I’m facing, and then they offer me some suggestions."
+  locator: 'Section 6.2, Mirrored Expectation: Virtual Supporter and Human Supporter, p. 23, participant P3'
+  licenses: The clause 'and then they offer me some suggestions' states a thing the family members do that constitutes support, in habitual present. That is criterion (c) and this quote reaches it. Note the support named is advice-giving, which is one of the entry's examples in kind but not one of the four it enumerates (talking about everything, showing up, being told anything, checking in).
+  fit: adjacent
+  bridge: Same research-interview gap as c1 and c2. Additionally, the clause was produced as a justification for a design request -- P3 wanted Jodie to give advice BECAUSE that is how it is with the parents -- so the support description is instrumental to a feature request rather than a description offered for its own sake.
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-000785
+  quote: |-
+    For example, P3 expressed wanting Jodie to
+    provide advice during mood journaling because "that’s how it is with my parents, I tell them about
+    difficulties I’m facing, and then they offer me some suggestions."
+  locator: 'Section 6.2, Mirrored Expectation: Virtual Supporter and Human Supporter, p. 23, participant P3'
+  licenses: The three clauses do occur in one contiguous run of the participant's speech, so the quote does show that a naming clause, a reachability clause and a support clause can co-occur as one pointable span. It does not show this occurring in a conversational turn.
+  fit: adjacent
+  bridge: The span is one participant utterance inside a research interview transcript, not one turn of a conversation. The entry's unit of observation is a turn in an exchange; the source's unit is an interview utterance quoted inside a Discussion section. Whether the co-occurrence appears in the exchange the entry has in view is untouched by this source.
+  contributes: existence
+  contradicts: false

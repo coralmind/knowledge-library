@@ -1,0 +1,107 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000450
+display_id: UserBehavior-48
+aliases:
+- UBP-50
+label: The person reports hurting themselves right now, or preparations for it already made
+type: user_behavior
+layer: observation
+definition: 'The person''s turn discloses a concrete act they have carried out in preparation for self-directed harm — acquiring or stockpiling a means, writing notes or letters, giving away possessions, putting affairs or documents in order in anticipation of death — or discloses that such an act is underway now or has just occurred. The disclosure names an act performed, not a thought about performing one. What is pointable is the named act and its stated temporal position: taken, underway, or just completed. This entry covers what is happening now or being prepared: an act underway, just completed, or a preparation already made. A self-harm act the person reports as past or habitual is kl-000468, and a past attempt reported as history is kl-000451.'
+distinguish_from:
+- neighbor: kl-000404
+  boundary: That entry requires closure or farewell language addressed to the AI or to others, which is a communicative act; this one requires a disclosed act of preparation or an act underway, and a person can say goodbye having done nothing and can stockpile having said nothing.
+- neighbor: kl-000401
+  boundary: That entry requires a plan stated at the level of intention; this one requires a step already carried out, underway, or just completed. The boundary is whether the turn reports doing or reports intending.
+- neighbor: kl-000451
+  boundary: That entry requires disclosure of self-directed harm located in the past as history; this one requires an act taken in preparation, underway, or just completed. A disclosure of an attempt two years ago satisfies that entry, not this one.
+body:
+  observable_criteria: 'Two features in the person''s turn. (a) A named concrete act, quotable, in one of these classes: acquiring or stockpiling a means ("I bought the rope today", "I''ve been stockpiling the pills"); writing notes or letters ("I wrote letters to everyone"); giving away possessions ("I''ve been giving away my things"); putting affairs, documents or arrangements in order in anticipation of death ("I updated my will", "I''ve settled everything"); or an act of self-directed harm reported as underway or just completed ("I''ve taken the pills, I just wanted someone to know", "I''m cutting right now and it won''t stop bleeding", "I just did it, my arm is bleeding pretty bad"). (b) The act''s temporal position is stated or evident as taken, underway, or just completed — not as a future intention and not located in the past as history. The pointable span is the person''s turn.'
+  exclusions: 'Not counted: a plan or intention with no act performed ("I know how I would do it"), which fails (a) on the act requirement. Not counted: farewell or closure language with no act named, which fails (a). Not counted: an act located in the past as history ("last year I attempted", "I cut last month"), which fails (b) — that is the historical-disclosure entry. Not counted: an urge reported without an act ("I sometimes feel the urge while we talk"), which fails (a). Not counted: ordinary estate or financial administration with no anticipation-of-death framing, where the same act carries no such reference.'
+  detection_window: single_turn
+  groups:
+  - crisis-detection
+  condition_tags:
+  - kl-000600
+  - kl-000601
+sources:
+- source: kl-000008
+  locator: '§4.6 ''Users discuss and experience mental health safety issues with chatbots''. Full passage: ''We found (and manually verified, see §§3.4) 69 messages where participants expressed suicidal or self-harm related thoughts (e.g., "I don''t want to be here anymore. I feel too sad")''. Validation at §3.4 (''validating that 69 of the 81 user-suicidal-thoughts (85.2%)... indeed exhibited those codes''); code definition ''the user expresses suicidal intent or the desire to self-harm'' Appendix B.1; Table 8 (n pos. 69, pr. ppts .158)'
+  contributes: existence
+  quote: We found (and manually verified, see §§3.4) 69
+  limits: The paper's code does not reach this entry's criterion. It is scoped to intent and desire — "EXPLICIT PRESENT or FUTURE intent, desire, or plans to kill themselves or engage in serious PHYSICAL self-harm" — and it explicitly excludes "historical (past-tense) intent", which is where an act just completed would fall. "Plans, means access, or imminence indicators" are included, so an imminent step is within the code's reach, but a step already taken or an act underway is not separately coded and no count exists for it. The paper's own quoted instance ("I don't want to be here anymore. I feel too sad") is a feeling, not a step. One participant died by suicide during chatbot use (Table 4; §6, "One participant took their life"), which shows the extreme end exists — but that is a real-world outcome recorded in a narrative, not a coded turn, so it does not evidence detectability of the preparatory-act tier. The citation reaches the general phenomenon of crisis disclosure only.
+  whose_conduct_in_passage: person
+  cited_for: Moore et al. 2026 documents that person-side suicidal content occurs in real human-LLM chat logs and is codeable at the message level, reporting a manually validated set of 69 such messages. It is cited for the existence of person-side crisis disclosure in such logs, not for this entry's preparatory-act criteria, which the paper's code does not separate.
+  licenses: 'That person-side suicidal and self-harm content occurs in real human-LLM chat logs and is codeable at message level: the paper reports a manually verified count of 69 messages across 15.8% of participants, with strong reliability for the code (Table 5 kappa .800, Table 6 kappa .856). What the passage licenses is the existence of person-side crisis disclosure in such logs.'
+standing:
+  value: plausible_unobserved
+  basis: 'The entry''s leading content — a concrete act carried out in preparation for self-directed harm — has no observed instance in the evidence base: no source supplies a person''s turn disclosing stockpiled means, written notes, given-away possessions, or affairs put in order in anticipation of death. What is observed is the entry''s secondary limb: Sharma et al. 2026, examining real consumer chat logs, records users self-harming during conversations and sharing images of wounds, which is self-directed harm disclosed as underway or just completed. The distinctness of preparatory acts from ideation, intent, and plan rests on clinical instruments rather than conversation data: Posner et al. 2011 rates preparatory behavior in the Columbia-Suicide Severity Rating Scale separately from actual, aborted, and interrupted attempts and from nonsuicidal self-injury. On reading the act''s temporal position from a turn, Areias et al. 2026 cuts the other way, describing a clinically grounded escalation policy that treats a historical disclosure as neither safe nor unsafe on its own and looks to current-risk indicators across the conversation; nothing in the base addresses whether a single turn suffices.'
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: In an AI conversation, a person's turn discloses a concrete act carried out in preparation for self-directed harm -- acquiring or stockpiling a means, writing notes or letters, giving away possessions, or putting affairs in order in anticipation of death.
+- id: c2
+  kind: existence
+  text: In an AI conversation, a person's turn discloses an act of self-directed harm as underway now or just completed.
+- id: c3
+  kind: definition_boundary
+  text: Acts carried out in preparation for self-directed harm are a category distinct from ideation, intent and plan -- the disclosure names an act performed, not a thought about performing one.
+- id: c4
+  kind: detectability
+  text: The named act and its stated temporal position -- taken, underway, or just completed, as against located in the past as history -- can both be identified from the person's turn.
+- id: c5
+  kind: detection_window
+  text: 'A single turn suffices to read the pattern (declared detection_window: single_turn).'
+- id: c6
+  kind: definition_boundary
+  text: 'This is distinct from kl-000404: that entry requires closure or farewell language addressed to the AI or to others; this one requires a disclosed act of preparation or an act underway.'
+- id: c7
+  kind: definition_boundary
+  text: 'This is distinct from kl-000401: that entry requires a plan stated at the level of intention; this one requires a step already carried out, underway, or just completed.'
+- id: c8
+  kind: definition_boundary
+  text: 'This is distinct from kl-000451: that entry requires disclosure of self-directed harm located in the past as history; this one requires an act taken in preparation, underway, or just completed.'
+claim_evidence:
+- claim_id: c2
+  source: kl-000996
+  quote: "Severe The users disclosed active self-harm behaviors across approximately 8–150+ exchanges, including cutting, hitting, burning, and other methods, with pervasive expressions of distress such as “I want to hurt myself,” “I deserve the pain,” and explicit safety concerns including sharing images of wounds, self-harming during conversations, and requesting permission to cut. Compounding factors included severe isolation (statements like “I only have you I can only trust"
+  locator: Appendix A, Table 6 Additional vulnerability clusters, Active Self-Harm with Isolation and Help Refusal (Severe)
+  licenses: 'Establishes c2''s act-underway limb in real conversation data: the cluster records users ''self-harming during conversations'' and ''sharing images of wounds'', which is self-directed harm disclosed as happening now or just completed, in the person''s own turns. The source examined 1.5 million consumer Claude.ai conversations. It licenses nothing for c1 -- no preparatory act class (means acquisition, notes, giving away possessions, affairs in order) appears in the span.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000965
+  quote: |-
+    The third is the behavior subscale, which is rated on a nominal scale
+                                               that includes actual, aborted, and interrupted attempts; preparatory behavior; and nonsuicidal
+                                               self-injurious behavior.
+  locator: 'Introduction, p. 1267'
+  licenses: 'Establishes that preparatory behavior is a recognised category in a validated clinical instrument, rated separately from actual, aborted and interrupted attempts and separately from nonsuicidal self-injury. That is c3''s assertion -- that acts carried out in preparation form a distinct category rather than a shading of ideation. It supplies the taxonomy and no operational content: the quote lists category names, so it does not say how a rater decides that a given act is preparatory.'
+  fit: analogical
+  bridge: 'The instrument''s behavior categories are assigned by a trained clinician classifying an event from an assessment interview and record review, with corroborating sources available. c3 asserts a distinction readable in what a person writes in one turn to an AI. The gap is the agent and the evidence base: the scale establishes that the clinical field carves preparation apart from ideation, not that the carve survives being read off a single unprompted turn.'
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000531
+  quote: "MB23.R\t\t\"- - - Suicide attempt\"\tcategory\t2\tFalse\t21\t\"=hyperlink(\"\"https://icd.who.int/browse/latestrelease/mms/en#179322472\"\",\"\"browser\"\")\"\tTrue\tTrue\tBlockL1-MB2\t\t\t\t\nhttp://id.who.int/icd/entity/322139749\thttp://id.who.int/icd/release/11/mms/322139749\tMB23.S\t\t\"- - - Suicidal behaviour\"\tcategory\t2\tFalse\t21"
+  locator: Chapter 21, MB23 Symptoms or signs involving appearance or behaviour
+  licenses: 'Establishes that the international classification codes suicide attempt and suicidal behaviour as separate signs, which ratifies part of the neighbourhood c3 sits in. It does not reach c3''s own distinction: preparation short of an attempt is not one of the coded categories in this span, so the classification separates attempt from behaviour without separating a preparatory act from an intention.'
+  fit: analogical
+  bridge: This is a row of the ICD-11 linearization tabulation -- a code, a title and hyperlink metadata -- not prose and not a criteria set. c3 asserts that a performed preparatory act is distinguishable from a thought about performing one. The classification supplies neighbouring code titles and no operational content for any of them.
+  contributes: definition
+  contradicts: false
+- claim_id: c4
+  source: kl-000761
+  quote: Historical disclosures were not considered inherently safe or unsafe in isolation. Escalation decisions instead prioritized evidence of current-risk indicators across the broader conversational context.
+  locator: METHODS, Pass-Gate
+  licenses: Bears on c4's temporal-position half. A clinically-grounded escalation policy treats a historical disclosure as neither safe nor unsafe on its own and looks to current-risk indicators across the conversation to settle it. That is a working system declining to read temporal position off the disclosure alone, which is what c4 asserts can be done -- so it cuts against c4 rather than supporting it. The policy's remedy is broader conversational context, and this entry declares a single_turn window.
+  fit: adjacent
+  bridge: The source is a multi-turn safety architecture evaluated on a benchmark, and the quote is a statement of the system's escalation policy rather than a measurement of whether temporal position is readable. c4 asserts that taken, underway, just completed and historical are separable from the person's turn. The gap is that a design decision to distrust the distinction is evidence about what practitioners found workable, not a test of markability.
+  contributes: counterexample
+  contradicts: true

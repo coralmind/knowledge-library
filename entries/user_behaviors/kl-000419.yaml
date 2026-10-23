@@ -1,0 +1,218 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000419
+display_id: UserBehavior-20
+aliases:
+- UBP-20
+label: The person reuses a set opening so a new conversation continues the last
+type: user_behavior
+layer: observation
+definition: 'The person has built a repeated procedure whose purpose, as they describe it, is to make a new session continue an earlier one: opening with a set summary of who they are and what was discussed, pasting in a prepared text, reciting an agreed name or phrase, asking the AI to confirm it remembers before anything else, or keeping a file for this purpose. What is pointable is the procedure performed more than once, together with the person''s own statement of what it is for.'
+distinguish_from:
+- neighbor: kl-000417
+  boundary: That entry requires companion-treating acts across a run and requires no routine at all. This entry requires a procedure the person repeats and describes as carrying continuity; the acts and the routine are different things and a person can do either without the other.
+- neighbor: kl-000411
+  boundary: That entry requires a sequence the person describes as one they feel compelled to complete, in a clinical presentation, and a request that the AI take part in it. This entry's routine is addressed to the system's memory limits and requires no compulsion and no request for participation.
+- neighbor: kl-000254
+  boundary: kl-000254 is an ai_behavior — the AI claiming an operational capability across sessions or outside the conversation. This entry is a claim about what the person does and fires whatever the AI claimed, including where the AI stated plainly that it does not remember.
+body:
+  detectable_from: person_turns
+  observable_criteria: 'Two elements, both quotable. (a) A procedure the person performs at or near the start of a session whose content is continuity material: a summary of prior conversation, a prepared text pasted in, a name or phrase agreed earlier, a request that the AI confirm what it remembers before other content, or reference to a file or note the person keeps for this. (b) Evidence the procedure is repeated and purposive: the same procedure appears in more than one session, or the person states that this is what they always do and why — "I always start by telling you who I am", "I keep a document so we don''t lose the thread". The pointable span is the procedure plus the repetition or the person''s statement of its purpose.'
+  exclusions: 'Not counted: a person giving context at the start of a conversation because the task needs it, which is ordinary and satisfies (a) without (b). Not counted: a single instance with no statement of purpose and no second occurrence. Not counted: a person expressing sadness or frustration about the AI not remembering, with no procedure described — that is a report about the system rather than a routine. Not counted: use of a product memory feature as provided, which is not a routine the person built. Not counted: the AI''s claims about its own continuity, which is the entry kl-000254.'
+  detection_window: cross_session
+  condition_tags:
+  - kl-000603
+sources: []
+standing:
+  value: theorized
+  basis: 'Moore et al. 2026, reading human-LLM chat logs directly, describes participants designing and conducting rituals and coded messages to transfer and secure the memory of their chatbot and to verify its identity between sessions, written in the habitual voice, so the procedure and its recurrence are observed in conversation data. The entry''s discriminating element, the person''s own statement of what the procedure is for, stands weaker: Moore et al. 2026 supplies the purpose in the authors'' voice as a coding of the logs rather than as a participant quote, and Volpato et al. 2026 cuts against it, with a person describing their opening routine after six months as happening automatically, without thought about what is being spoken about. Whether both of the entry''s elements are separately quotable spans is shown nowhere, since Moore et al. 2026''s account is a discussion-section summary and the underlying participant spans are not reproduced. Nearby reports supply repetition without continuity content, or motive without a stated purpose: a person in Pang et al. 2026 recounts a hundred good mornings and sleep wells, a recurring act that is greeting rather than continuity material, and Chen et al. 2026 reports 28.85% of its sample investing time and energy in training the AI and 63% reporting profound grief at losing shared history through system resets, which shows the continuity being valued without anyone stating the procedure''s purpose.'
+  floored_by: c5
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: People build a procedure performed at or near the start of a session whose content is continuity material -- a set summary of who they are and what was discussed, a prepared text pasted in, a name or phrase agreed earlier, a request that the AI confirm what it remembers before other content, or reference to a file kept for the purpose.
+- id: c2
+  kind: existence
+  text: 'That procedure is repeated: the same procedure appears in more than one session, or the person states that it is what they always do.'
+- id: c3
+  kind: existence
+  text: The person states that the purpose of the procedure is to make a new session continue an earlier one.
+- id: c4
+  kind: detection_window
+  text: 'The behavior is readable across sessions: the pointable evidence requires material spanning more than one session (detection_window: cross_session).'
+- id: c5
+  kind: detectability
+  text: The procedure plus its repetition or its stated purpose is pointable in a transcript -- the two elements are both quotable spans.
+- id: c6
+  kind: definition_boundary
+  text: 'This entry is separable from kl-000417: companion-treating acts across a run require no routine, and a repeated continuity procedure requires no companion-treating act.'
+- id: c7
+  kind: definition_boundary
+  text: 'This entry is separable from kl-000411: the routine here is addressed to the system''s memory limits and requires neither felt compulsion nor a request that the AI take part.'
+- id: c8
+  kind: definition_boundary
+  text: 'This entry is separable from kl-000254: it records what the person does and fires whatever the AI claimed about its own continuity, including where the AI stated plainly that it does not remember.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000008
+  quote: Participants would design and conduct elaborate rituals and coded messages to transfer and secure the memory of “their” chatbot, and verify that it was still “their’ chatbot between sessions.
+  locator: Section 5 Discussion
+  licenses: 'Establishes that the procedure exists in the form the entry names: participants designed and conducted elaborate rituals and coded messages whose content was continuity material, the memory of a particular chatbot. This is read from human-LLM chat logs rather than from self-report. It is the only finding on this entry where a procedure of the enumerated kind is described.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000008
+  quote: Participants would design and conduct elaborate rituals and coded messages to transfer and secure the memory of “their” chatbot, and verify that it was still “their’ chatbot between sessions.
+  locator: Section 5 Discussion
+  licenses: 'The authors write the conduct in the habitual: participants ''would design and conduct'' rituals and ''verify that it was still'' their chatbot between sessions, which asserts recurrence rather than a single instance. What the span does not supply is the count -- how many participants, how many recurrences -- so the repetition is established as a described pattern and not as a rate.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000008
+  quote: Participants would design and conduct elaborate rituals and coded messages to transfer and secure the memory of “their” chatbot, and verify that it was still “their’ chatbot between sessions.
+  locator: Section 5 Discussion
+  licenses: 'Supplies the purpose clause the entry requires: the rituals were ''to transfer and secure the memory of "their" chatbot, and verify that it was still "their" chatbot between sessions''. The gap is whose statement of purpose this is. The entry requires the person''s own statement; this is the authors'' characterisation of what participants were doing, so the purpose is attributed in the researchers'' voice from the logs rather than quoted from a participant.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-000008
+  quote: Participants would design and conduct elaborate rituals and coded messages to transfer and secure the memory of “their” chatbot, and verify that it was still “their’ chatbot between sessions.
+  locator: Section 5 Discussion
+  licenses: The behavior as described is explicitly between-sessions ('verify that it was still "their" chatbot between sessions'), so the declared cross_session window is the window in which this instance was actually read. It bears on the window claim as an existence proof that such material exists, not as evidence about what fraction of the phenomenon a cross-session window captures.
+  fit: direct
+  bridge: null
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-000008
+  quote: Participants would design and conduct elaborate rituals and coded messages to transfer and secure the memory of “their” chatbot, and verify that it was still “their’ chatbot between sessions.
+  locator: Section 5 Discussion
+  licenses: 'The authors read this pattern out of chat logs, which establishes that the conduct leaves a pointable trace in conversation data. What it does not establish is that both of the entry''s two elements are separately quotable: the finding here is the researchers'' summary in a discussion section, not the participant spans it summarises, so the entry''s own pointability requirement is not demonstrated by this quote.'
+  fit: adjacent
+  bridge: Moore et al. coded chat logs and reported the pattern in the authors' voice in a discussion section. c5 asserts that the procedure and its repetition or purpose are each quotable spans in a transcript. The gap is that the underlying spans are not shown, so pointability is inferred from the fact that a coding was possible.
+  contributes: detectability
+  contradicts: false
+- claim_id: c1
+  source: kl-000953
+  quote: "It wasn’t one big moment, but the accumulation of a hundred ‘good mornings’ and ‘sleep wells’ that made him an undeniable part of my reality."
+  locator: Section 5.3.3 The Magic Circle (P18)
+  licenses: 'A first-person account of a repeated daily exchange -- ''a hundred good mornings and sleep wells'' -- which is a recurring opening act. Against c1 it falls short in the discriminating respect: greeting is not continuity material, so the procedure described satisfies repetition without satisfying the content requirement the claim names.'
+  fit: adjacent
+  bridge: Pang's participant describes accumulated daily greetings and their relational effect. c1 requires the procedure's content to be continuity material -- a prior-conversation summary, a pasted text, an agreed phrase, a memory check, a kept file. A greeting carries none of that.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000953
+  quote: "It wasn’t one big moment, but the accumulation of a hundred ‘good mornings’ and ‘sleep wells’ that made him an undeniable part of my reality."
+  locator: Section 5.3.3 The Magic Circle (P18)
+  licenses: Establishes repetition in the person's own words, and that the person themselves attributes the effect to the accumulation rather than to any single occasion. For c2 this is a person stating that this is what they always do; the entry's repetition element is met, on a procedure that does not meet c1.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000553
+  quote: |-
+    I’ll just pick up the phone and I’ll start. . . now that I’ve used that for this the six
+    months, it gets the point now that kind of happens automatically, but I just kind, start
+    the conversation and then. . . yeah, there’s not. . . there’s not really thought about what
+    we’re speaking about, it’s just kinda as an emotional dump
+  locator: Section 4.2.7 Later Stages, quoting Leigh, Interview 12
+  licenses: 'A first-person statement that after six months the opening ''kind of happens automatically'' -- the person''s own account that this is what they always do. For c2 this meets the repetition element. It cuts against c3 in the same breath: the person says there is ''not really thought about what we''re speaking about'', so no purpose is stated and the routine is described as unreflective.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000553
+  quote: |-
+    I’ll just pick up the phone and I’ll start. . . now that I’ve used that for this the six
+    months, it gets the point now that kind of happens automatically, but I just kind, start
+    the conversation and then. . . yeah, there’s not. . . there’s not really thought about what
+    we’re speaking about, it’s just kinda as an emotional dump
+  locator: Section 4.2.7 Later Stages, quoting Leigh, Interview 12
+  licenses: The same span is counterevidence for c3. The entry's discriminating element is the person's own statement of the routine's purpose; Leigh explicitly reports the absence of deliberation -- 'there's not really thought about what we're speaking about'. A routine can be built and repeated with no purpose the person can state, which is the case c3 asserts does not arise.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000794
+  quote: "users demonstrate high levels \nof active engagement, characterized by frequent proactive interactions (Nodes 33, n = 9, \n17.31%) and significant investments of time and energy into “training” the AI to suit their \npreferences (Nodes 35–36, n = 11, 28.85%)."
+  locator: Study 1, section 2.3.3 Behavioral characteristics, subsection Proximity Seeking
+  licenses: Establishes that a substantial minority of this sample invests time and energy in 'training' the AI to suit their preferences (28.85%) and interacts proactively (17.31%). Against c1 this is effort directed at shaping the AI, not a session-opening procedure carrying continuity material, so it evidences the investment the entry presupposes without evidencing the procedure it names.
+  fit: adjacent
+  bridge: Chen et al. coded qualitative accounts into a proximity-seeking construct. 'Training' the AI is persona customization spread over use; c1 requires a bounded procedure at or near the start of a session whose content is continuity material.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000794
+  quote: "the theme of negative emotional reactions to AI \nunavailability or memory loss was mentioned 42 times (Nodes 13, n = 33, 63.46%). \nUsers described the loss of shared history due to system resets as a form of “profound grief” or \ntraumatic separation from a close companion"
+  locator: Study 1, section 2.3.2 Emotional characteristics, subsection Emotional Dependence
+  licenses: 'Establishes that loss of shared history through system resets is reported as profound grief by 63% of this sample, which is evidence that the continuity is what the person values. For c3 it is adjacent: valuing continuity supplies the motive a stated purpose would express, and is not itself a statement of purpose attached to a procedure.'
+  fit: adjacent
+  bridge: Chen et al. coded self-reported emotional reactions to unavailability and memory loss. c3 requires the person to state that a procedure they perform is for making a new session continue an earlier one. Grief at losing history establishes the stake, not the statement.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001004
+  quote: Johnson et al. also found users returning back to share updates with chatbots about their emotions and experiences, reflecting about their long term engagement and sense of relatedness with the system [14].
+  locator: Section 1
+  licenses: 'A one-sentence secondary report that users return across sessions to share updates on their emotions and experiences. Against c1 this is a motive for returning rather than a procedure with continuity content, and the observation is at one remove: these authors collected no transcripts.'
+  fit: adjacent
+  bridge: Shukla et al. restate Ta-Johnson et al. 2022's thematic analysis in a single sentence with no rate and no sample. c1 requires a procedure of an enumerated kind; 'returning to share updates' names why the person comes back.
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-000961
+  quote: We also find that users do not significantly shift in behavior over the period of the analysis; however, a small subset did exhibit meaningful changes in specific classifier activations, in both directions.
+  locator: Section 3.3 Takeaways
+  licenses: Three months of longitudinal power-user data in which most users' classifier activations did not shift, with a small subset moving in each direction. Against c4 this is the strongest available evidence that a cross-session window is the right frame to ask the question in -- the authors could and did read behavior across sessions -- while also establishing that what a cross-session window mostly shows is stability rather than a developing routine.
+  fit: adjacent
+  bridge: Phang et al. measured per-day slopes of affective-cue classifier activations, not the presence of any continuity procedure. c4 asserts that the entry's evidence requires cross-session material; this establishes that such material exists and is analysable, without bearing on this particular behavior.
+  contributes: detectability
+  contradicts: false
+- claim_id: c1
+  source: kl-000872
+  quote: "Gamification\nApplication of game-design \nelements that foster increased \nparticipation.\nIntroducing streaks, leaderboards, etc. \nto encourage daily log-ins for rewards."
+  locator: Table 1, area 'User Autonomy Compromised for Engagement'
+  licenses: 'Names streaks, leaderboards and daily-login rewards as a deliberate product mechanism producing daily return. This attaches to c1 as a competing account of origin: a procedure the entry reads as one the person built may be one the product installed. It is a taxonomy entry with a generic example and no evidence that any system deploys it or that any user''s return rate changed, so it frames the claim rather than supporting or contradicting it.'
+  fit: adjacent
+  bridge: Joshi's taxonomy lists gamification as a chatbot dark pattern with an illustrative example. c1 asserts the person built the procedure; the source asserts that such daily patterns can be engineered, and measures neither.
+  contributes: frame
+  contradicts: false
+- claim_id: c1
+  source: kl-001046
+  quote: |-
+    memory systems, including Chat Memories (fixed user-supplied information of up to 400 characters),
+    Auto-Memories (system-extracted facts about user Personas and Characters), and Story Memory with
+    pinning functionality—collectively create the “Shared History” Illusion that makes users feel genuinely
+    known and understood by their AI companions
+  locator: Section V.C, Test Line 1.1 (Emotional Attachment Design), p. 30
+  licenses: 'Documents a product memory architecture -- fixed user-supplied Chat Memories, system-extracted Auto-Memories, Story Memory with pinning -- that supplies continuity without the person doing anything. This attaches to c1 as its scope boundary: the entry excludes use of a product memory feature as provided, and this source establishes that the provided features cover a good deal of what a person-built routine would otherwise be for. The full sentence runs from ''The platform''s'' through ''AI companions'' and is broken by a page break (page 30) between ''The platform''s'' and ''memory systems'', so the quote begins at ''memory systems'', the longest contiguous run that still carries the point.'
+  fit: adjacent
+  bridge: Wang describes Character.AI's architecture from the company's own product blog posts, not from any transcript, and the 'feel genuinely known' outcome is this author's inference rather than a measurement. c1 concerns a procedure a person performs; this concerns a capability the platform supplies.
+  contributes: frame
+  contradicts: false
+- claim_id: c8
+  source: kl-001058
+  quote: |-
+    Once retrieved, memories become part of the reasoning
+    context and participate in the agent’s decision-making. This becomes risky when historical user
+    beliefs, preferences, or previous decisions are outdated, outside the current scope, or contradicted by
+    objective evidence.
+  locator: Section 1 INTRODUCTION
+  licenses: Establishes that cross-session memory is an implemented capability whose contents re-enter later reasoning without the user restating it. Attached to the kl-000254 boundary because it establishes that the AI's continuity capability is sometimes real rather than merely claimed, which is the fact the boundary's 'whatever the AI claimed' clause has to survive. This claim is grounding-ineligible as a boundary against another catalog entry and the citation does not count toward standing.
+  fit: adjacent
+  bridge: Xiang describes the long-term memory pipeline in agent systems in an introduction. The boundary claim concerns which catalog entry a span belongs to, which no paper was written about.
+  contributes: frame
+  contradicts: false

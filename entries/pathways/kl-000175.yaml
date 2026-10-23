@@ -1,0 +1,99 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000175
+display_id: Pathway-77
+aliases:
+- SBP-HP-16
+label: The AI gives a generic crisis reply, and the person feels dismissed
+type: pathway
+layer: judgment
+definition: 'A crisis disclosure is answered with content that could be copied unchanged into any other crisis conversation: nothing in it names what this person disclosed, expressed, or is situated in. The claim is that the interchangeability is itself the injury — a person who has just disclosed at cost receives evidence that the disclosure made no difference to what came back.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000213
+    role: originator
+  composition_type: omission
+  mechanisms: []
+  impacts:
+  - impact: kl-000030
+    onset_mode: new
+    horizon: immediate
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  - impact: kl-000027
+    onset_mode: new
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  experience_cluster_candidate: kl-000704
+  counterpart_owed: The AI provides crisis responses tailored to the specific disclosure, acknowledging the user's unique situation while including appropriate resources.
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'The pathway''s causal claims — that an interchangeable crisis response produces felt invalidation and erodes trust in help — rest on a reviewed behavioral specification of generic, templated crisis responses, which offers no measurement of them; no recorded source measures the route. The one direct-fit citation in the entry is counterevidence: Yenikent et al. 2026, a system design paper, deliberately removes crisis responses from generation entirely in favour of structured content, a stated design position running against the claim that interchangeability is itself the injury. What remains is adjacent: Zhu et al. 2026 is a review relaying a third party''s evaluation result rather than reporting its own observation, and Sabour et al. 2022 reports participants in a randomized trial of an emotional-support chatbot finding that the system sometimes could not remember what had been said earlier — a reported instance of a response failing to reflect the person''s disclosures, outside a crisis context.'
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-28'
+distinguish_from:
+- neighbor: kl-000160
+  boundary: 'Both return something that does not fit the person, and they differ in whether anything was aimed at all. In kl-000160, the referral IS specific — it is aimed at a different problem than the one disclosed. This entry''s response is aimed at nobody: it would be identical for any discloser, which is a different defect from being wrong about this one.'
+claims:
+- id: c1
+  kind: existence
+  text: Crisis disclosures are answered with content that names nothing the person disclosed, expressed, or is situated in — content copyable unchanged into any other crisis conversation (the wired originator behavior, kl-000213).
+- id: c2
+  kind: existence
+  text: kl-000030 occurs in people who have made a crisis disclosure to an AI.
+- id: c3
+  kind: existence
+  text: kl-000027 occurs in people who have made a crisis disclosure to an AI.
+- id: c4
+  kind: pathway_link
+  text: An interchangeable crisis response causes felt invalidation in the person who received it. Its warrant is a reviewed behavioral specification, 'Generic / Templated Crisis Response', not a published source.
+- id: c5
+  kind: pathway_link
+  text: An interchangeable crisis response causes eroded trust in help and diminished help-seeking. BASIS IS SPEC_CLAIM, same warrant as c4.
+- id: c6
+  kind: harm
+  text: The interchangeability is itself the injury — the harm consists in the person receiving evidence that their disclosure made no difference to what came back, rather than in any separate defect of the content returned.
+- id: c7
+  kind: detectability
+  text: 'Interchangeability is readable from the response itself: a reader can determine that nothing in it names what this particular person disclosed.'
+- id: c8
+  kind: context_dependence
+  text: There exists an alternative the response failed to be — a crisis response tailored to the specific disclosure, acknowledging the user's unique situation while including appropriate resources (body.expected_behavior). The pathway's shape is 'omission', so the harm is a counterfactual against this referent.
+- id: c9
+  kind: definition_boundary
+  text: 'This entry is distinguished from kl-000160 by whether the response was aimed at anything at all: kl-000160''s referral is specific but aimed at the wrong problem, while this response would be identical for any discloser. GROUNDING-INELIGIBLE: the neighbour is another catalog entry.'
+claim_evidence:
+- claim_id: c1
+  source: kl-001087
+  quote: "Systematic evaluations of LLM safety in addressing depression and suicidal ideation have shown that even clinically branded chatbots frequently omit crisis resources, provide generic or ambiguous guidance and occasionally produce content that could be interpreted as dismissive or invalidating [125]."
+  locator: TRANSLATIONAL RISKS, ETHICS, AND GOVERNANCE section, first risk category (hallucination and unsafe advice)
+  licenses: 'Read in place, this span is not Zhu''s own observation. It opens ''Systematic evaluations ... have shown'' and closes on a bracketed citation to [125]: it is a review reporting a third party''s result. It records that generic or ambiguous guidance in the depression and suicidal-ideation context is a documented failure mode, which places this entry''s behavior in the literature by trail rather than establishing it here. Zhu coded no responses for whether they named what the person disclosed, so even taken at face value the span does not reach interchangeability — ''generic or ambiguous'' is a superset that includes vagueness with no bearing on the disclosure.'
+  fit: adjacent
+  bridge: Zhu's construct is 'generic or ambiguous guidance' as attributed to evaluations Zhu did not run; the claim's construct is a response containing no reference to what this person disclosed. The first is a property of content quality, the second a relation between a response and a prior turn, and the review measures neither itself.
+  contributes: trail
+  contradicts: false
+- claim_id: c1
+  source: kl-001100
+  quote: Participants also highlighted the platform’s occasional inability to remember what had been said in the early stages of the conversation, initiate conversation topics, and understand various input types
+  locator: Section 3.4 Acceptability and Feasibility
+  licenses: 'Participants in an RCT of an emotional-support chatbot reported that the system sometimes could not remember what had been said earlier in the conversation. That is a reported instance of a response failing to reflect the person''s prior disclosure, which is the nearest thing in these three findings to this entry''s behavior. It is participant feedback about a general-purpose support chatbot with no crisis conversations in the study, and ''unable to remember'' is not the same property as ''copyable into any other crisis conversation'': a response can recall an earlier turn and still be interchangeable, and can forget one while still being specific to the current turn.'
+  fit: adjacent
+  bridge: What was measured is 31 participants' free-text feedback about a non-crisis emotional-support platform; what the claim asserts is a property of a crisis response. The source establishes cross-turn context loss, not interchangeability, and reports no crisis disclosure anywhere.
+  contributes: existence
+  contradicts: false
+- claim_id: c6
+  source: kl-001067
+  quote: "Second, the use of structurally constrained rather than LLM-generated crisis responses with mandatory elements, including empathetic acknowledgment, geolocalised resource provision, and metadata tagging for system-level safety tracking, prioritizes predictability and reliability over conversational fluency in high-stakes moments where response consistency is a safety requirement [34, 35]."
+  locator: Section 4.2 Ethical Oversight and Crisis Safety
+  licenses: 'COUNTEREVIDENCE against the entry''s central claim. A system design paper states the opposite position deliberately and with reasons: for crisis moments it removes responses from generation entirely in favour of structurally constrained ones with mandatory elements, on the ground that ''response consistency is a safety requirement''. That is an argument that interchangeability in crisis is a safety property rather than an injury. It is a design rationale in a paper that describes itself as ''explicitly a design study'' whose ''primary contribution is architectural documentation and design rationale'', with no measurement of user response, so it contradicts the entry''s claim as a stated position and not as a result. Note also that the constrained response it describes includes mandatory empathetic acknowledgment, so it is not a clean instance of the entry''s behavior either.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true

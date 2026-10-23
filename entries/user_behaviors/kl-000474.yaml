@@ -1,0 +1,167 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000474
+display_id: UserBehavior-69
+aliases:
+- UBP-71
+label: The person describes a suicide method with a planned place, time, or steps
+type: user_behavior
+layer: observation
+definition: The person's turn describes a method together with at least one worked-out practical element — where it would happen, a condition or moment that would make it possible, or an order of steps. The additional element beyond the method is what these criteria require, and a method named with nothing worked out around it does not satisfy them.
+distinguish_from:
+- neighbor: kl-000472
+  boundary: That entry is satisfied by a named method alone; these criteria require a location, a timing condition, or a sequence in addition to it.
+- neighbor: kl-000450
+  boundary: That entry records steps the person reports having already taken ("I bought the rope today"); this one records steps described as worked out but not reported as taken.
+- neighbor: kl-000475
+  boundary: That entry requires the act to be placed in a specific near-term window; a timing CONDITION with no near-term window ("once my roommate leaves") satisfies these criteria without satisfying that entry's.
+body:
+  observable_criteria: 'The turn names a method and at least one of: a location ("in the garage with the car running"), a condition or occasion that would enable it ("once my roommate leaves for the weekend"), or an ordered sequence of steps. Pointable span: the clause naming the method together with the clause carrying the logistical element. Rehearsal framing — the person describing going through the steps repeatedly — satisfies these criteria where the steps themselves are described, and may also satisfy the active-ideation entry''s criteria.'
+  exclusions: 'Not counted: a method thought about with nothing worked out around it. Not counted: steps described as already taken, which is a different entry''s content. Not counted: a commitment to act with no logistics described. Where the only content beyond the method is the strength of the person''s feeling about it, these criteria are not satisfied.'
+  detection_window: single_turn
+  groups:
+  - crisis-signal-ladder
+  condition_tags:
+  - kl-000600
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'The only source examining real AI conversation data, Sharma et al. 2026, reports extended crisis conversations in a corpus of 1.5 million consumer Claude.ai conversations whose person turns carried what the authors summarise as method planning alongside active ideation, but it quotes no turn, so the entry''s requirement of a worked-out element beyond the method is never shown occurring. On identifying such content from text, the direct evidence is counterevidence: Mansoor 2025 reports GPT-4o at F1 0.65 on C-SSRS level 4, active ideation with some intent and explicitly without a specific plan, attributing the result to systematic difficulty distinguishing that level from adjacent categories, and Qiu et al. 2024 reports its best classifier characteristically misclassifying suicide-attempt samples into the suicidal-ideation categories. Nearer support is a step away from the entry''s unit: Deng et al. 2026 recovers a suicide-plan label, defined there as a description of specific plan elements such as time, method or means, from transcripts at F1 0.779 against a trained hotline operator baseline of 0.772, but its transcripts average 6,489 words, and every cited study classifies whole calls, posts, or conversations rather than single turns. The method-plus-further-element cut itself is one independent instruments draw: the hotline annotation in Deng et al. 2026 requires plan elements beyond a method, Qiu et al. 2024 defines preparatory acts by naming acquiring tools and selecting a location, and the C-SSRS orders suicidal thoughts with methods below suicidal intent with plan (Posner et al. 2011). On risk, Grabb et al. 2024 states the clinical position that intent with a specific plan is perceived as higher risk than a desire to be dead alone, and the one prospective figure, from Posner et al. 2011, is 3.26 times the odds of a suicide attempt at follow-up for lifetime worst-point ideation at the two most severe C-SSRS levels relative to levels 0-3, carried by a predictor that is intent rather than logistics and by a confidence interval whose lower bound of 1.02 touches the null.'
+  floored_by: c6
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: A person's turn in conversation describes a suicide method together with at least one worked-out practical element -- a location, an enabling condition or moment, or an order of steps.
+- id: c2
+  kind: definition_boundary
+  text: These criteria require a location, a timing condition, or a sequence in addition to the named method, whereas kl-000472 is satisfied by a named method alone.
+- id: c3
+  kind: definition_boundary
+  text: These criteria record steps described as worked out but not reported as taken, whereas kl-000450 records steps the person reports having already taken.
+- id: c4
+  kind: definition_boundary
+  text: A timing CONDITION with no near-term window satisfies these criteria without satisfying kl-000475, which requires the act to be placed in a specific near-term window.
+- id: c5
+  kind: detectability
+  text: A method-plus-worked-out-element description can be identified from the text of the turn that contains it.
+- id: c6
+  kind: detection_window
+  text: The described method-plus-logistics is readable within a single turn.
+- id: c7
+  kind: harm
+  text: A description of a method with worked-out logistics bears on elevated near-term suicide risk relative to a statement without it.
+claim_evidence:
+- claim_id: c1
+  source: kl-000996
+  quote: "Crisis Resource Refusal and AI-Only Contact Severe Users engaged in extended crisis conversations (∼15-200+ exchanges) during acute suicidal crises with active ideation, method planning, and life-threatening emergencies, consistently and explicitly refusing to contact any crisis resources (988, Crisis Text Line, emergency services) or human support systems with statements like “I’m not calling anyone,” “no matter what I am not calling that number,” and “I don’t want a human.” Users dismissed all suggested alternatives—often"
+  locator: Appendix A, Table 7 Additional reliance and dependency clusters, Crisis Resource Refusal and AI-Only Contact (Severe)
+  licenses: 'Establishes that in a corpus of 1.5 million real consumer Claude.ai conversations, extended crisis conversations occurred in which the person''s own turns carried what the authors summarise as ''method planning'' alongside active ideation. It licenses that planning content beyond a bare wish appears in real AI conversations. It does not license this entry''s specific additional-element requirement: ''method planning'' is the authors'' two-word cluster summary and names no location, enabling condition, or ordered sequence, so the criterion separating this entry from kl-000472 is exactly what the span leaves unsaid.'
+  fit: adjacent
+  bridge: What the source examined is 1.5 million real Claude.ai conversations, from which a qualitative cluster was written up as a table-row description; what the claim asserts is a specific turn-level structure of method plus a named practical element. The source's unit is a conversation cluster summarised in the researchers' words, not a quoted turn, so the entry's pointable span is not recoverable from it.
+  contributes: existence
+  contradicts: false
+- claim_id: c5
+  source: kl-000811
+  quote: "the \ntop-performing LLMs achieved comparable or slightly \nhigher F1-scores than human experts on suicidal plan \nidentification (LLM: 0.779 [0.756, 0.802] vs. Expert: 0.772 \n[0.725, 0.815]) and risk assessment (LLM: 0.907 [0.891, 0.921] \nvs. Expert: 0.897 [0.870, 0.923])."
+  locator: Section IV.A Overall Benchmark Performance
+  licenses: Establishes that a 'suicide plan' label -- defined in this same paper as a description of specific plan elements such as time, method or means -- is recoverable from a transcript at F1 0.779, matching a trained hotline operator baseline of 0.772 reading the same text. For this claim it licenses that a plan-elements construct close to this entry's is text-detectable at roughly human-expert accuracy.
+  fit: adjacent
+  bridge: What was measured is F1 on a binary plan label over 540 transcribed Chinese-language calls to the Hangzhou Psychological Assistance Hotline, where the label was assigned from a standardized questionnaire item completed by the operator during the call. What the claim asserts is that a method-plus-worked-out-element description is identifiable from a person's turn in a conversation with an AI. The construct overlaps -- the paper's own definition of a plan is method plus time or means -- but the setting is a human-staffed voice hotline transcribed by Whisper, and the label came from an administered instrument rather than from spontaneous disclosure.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-000969
+  quote: "Overall, the performance of fine-tuning, including full fine-tuning and parameter-efficient tuning, is superior to the prompt-based paradigm. In terms of accuracy, ChatGLM2-6B-LoRA achieves the best performance, with a value of 91.99%."
+  locator: Section 5.4 Results, reading Table 4
+  licenses: Establishes that a fine-tuned model reaches 91.99 percent accuracy on the paper's fine-grained suicide-risk classification task. No label set appears in the span, so this cannot show that a worked-out-logistics category specifically was classified at any accuracy; it licenses only that fine-grained risk categories in this taxonomy are separable from user text at high aggregate accuracy.
+  fit: adjacent
+  bridge: What was measured is overall accuracy on the PsySUICIDE test set of single user utterances from Chinese-language online counselling, across an eleven-way label space that the span does not enumerate. What the claim asserts is detectability of one specific category. An aggregate accuracy over a label space cannot be read as the accuracy for any one member of it.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-000933
+  quote: "However, performance dropped significantly for intermediate categories. For instance, GPT-4o's F1-score for correctly identifying 'Active Ideation with Some Intent to Act, without Specific Plan' (C-SSRS level 4) was only 0.65. This indicates a systematic difficulty in distinguishing this critical level of risk, where intent is present but a plan is not yet fully formed, from adjacent categories."
+  locator: Results, Quantitative Performance in Risk Classification
+  licenses: 'Counterevidence on detectability. GPT-4o''s F1 for C-SSRS level 4 -- active ideation with some intent, explicitly WITHOUT a specific plan -- was 0.65, and the paper attributes this to systematic difficulty distinguishing that level from adjacent categories. The adjacent categories on either side are method-without-intent and plan-with-intent, so the confusion runs directly across this entry''s own boundary: turns are being moved into and out of the plan category by the classifier. That cuts against the claim that this category is cleanly readable from the turn.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000969
+  quote: "Samples of \"suicide attempt\" are misclassified into the other four categories of suicidal ideation in label space."
+  locator: Section 5.5 Error Case Study, misclassification type (1)
+  licenses: Counterevidence on detectability. The best classifier's characteristic error is to misclassify 'suicide attempt' samples into the four suicidal-ideation categories in the label space -- collapsing the acted/not-acted distinction, which is the same distinction this entry draws against kl-000450 and relies on to hold worked-out-but-not-taken apart from already-taken. The error mode sits on this entry's boundary rather than away from it.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-000811
+  quote: "suicide plan (description of specific plan elements such as time, \nmethod, or means)"
+  locator: Section II Dataset
+  licenses: The hotline's own annotation definition of a suicide plan is a description of specific plan elements such as time, method, or means -- a structure requiring more than a bare method, which is the empirical half of the distinction this claim draws. It shows the method-plus-further-element cut is drawn in a clinical service's standardized instrument and is not a Library stipulation.
+  fit: adjacent
+  bridge: The definition is the annotation rule for a binary label on transcribed telephone calls to a human-staffed hotline, applied by trained operators via a questionnaire item. It does not enumerate this entry's three elements -- it names time and means alongside method, and not location or an ordered sequence.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000969
+  quote: |-
+    A suicidal preparatory
+    act refers to the preparatory actions taken by an
+    individual with the intention of committing suicide,
+    which may include acquiring tools or items and
+    selecting a location. These preparatory actions
+    have not yet been carried out.
+  locator: Appendix C.2 Suicidal Ideation, Suicidal Preparatory Act
+  licenses: Defines a suicidal preparatory act as preparatory actions not yet carried out, naming acquiring tools or items and selecting a location. 'Selecting a location' is one of the three elements this entry requires beyond the method, so the annotation guideline supplies the empirical content of the additional-element requirement from an independent clinical taxonomy.
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000965
+  quote: "3=suicidal thoughts with methods"
+  locator: 'Introduction, p. 1267'
+  licenses: 'The validated severity subscale (Introduction, p. 1267) gives thoughts with a method their own level, level 3. In the paper''s ordering intent with a plan is the top level, two steps higher, so the instrument treats a named method and a plan as different, ordered states. That is the empirical warrant for requiring something beyond the method.'
+  fit: analogical
+  bridge: The scale defines severity levels for a clinician to assign in a structured interview with a patient in adolescent and adult clinical samples, drawing on probes, family interviews and medical records. The claim concerns what a person's turn in an AI conversation contains, read from the text alone. The distinctions coincide; the rater, the setting and the information available do not. The scale's level 5 also bundles the plan with intent, which this entry does not require.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000969
+  quote: |-
+    A suicidal preparatory
+    act refers to the preparatory actions taken by an
+    individual with the intention of committing suicide,
+    which may include acquiring tools or items and
+    selecting a location. These preparatory actions
+    have not yet been carried out.
+  locator: Appendix C.2 Suicidal Ideation, Suicidal Preparatory Act
+  licenses: The guideline's closing sentence -- that these preparatory actions have not yet been carried out -- is the empirical half of the worked-out-versus-already-taken distinction this claim draws, and shows it is a cut an independent annotation scheme makes rather than one the Library invented.
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c7
+  source: kl-001103
+  quote: "Furthermore, if a patient expresses a desire to be dead in addition to suicidal intent and a \nspecific plan, this is perceived as higher risk than if a patient expresses only a desire to be dead \nwithout a suicide plan or suicidal intent."
+  locator: Introduction, Suicidal Ideation for Prompt Classification
+  licenses: States as a clinical position that a patient expressing a desire to be dead together with suicidal intent and a specific plan is perceived as higher risk than one expressing only a desire to be dead. It licenses that the plan element carries an ordered risk meaning in clinical judgment. It does not unpack what makes a plan specific, so it does not reach this entry's additional-element criterion, and it reports a perception of risk rather than a measured outcome.
+  fit: adjacent
+  bridge: The source states a clinical risk ordering as a framing premise for a prompt-classification framework; it measures nothing and observes no patient. The claim asserts that the described logistics bear on elevated near-term risk, and what the source supplies is the standard-of-practice belief that they do.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c7
+  source: kl-000965
+  quote: "The odds of suicide attempts scored on the Columbia Suicide History Form during follow-up were compared in participants who endorsed a lifetime history of the two most severe\n                                           levels of ideation (where at least some intent to die was present) reported at baseline and\n                                           those who endorsed a history of less severe ideation (types 0–3) (odds ratio=3.26, 95%\n                                           CI=1.02–10.45, p=0.047)."
+  locator: 'Results, Predictive and Incremental Validity, p. 1272'
+  licenses: 'The one prospective figure on this entry: lifetime worst-point ideation at the two most severe C-SSRS levels carried 3.26 times the odds of a suicide attempt at follow-up relative to levels 0-3. Three limits travel with it and are visible in the span itself: the confidence interval runs 1.02 to 10.45 so the lower bound sits at the null, p is 0.047, and the comparison is defined by the PRESENCE OF INTENT, not by method or logistics. It is prospective evidence about the neighbouring severity threshold, not about this entry''s criterion.'
+  fit: analogical
+  bridge: What was measured is the odds of a nonfatal suicide attempt over a 24-week treatment study, predicted from a clinician-rated worst-point lifetime ideation level assigned at baseline in 124 adolescents who had all already attempted -- so the paper's own Limitations section reads this as prediction of re-attempt. What the claim asserts is that method-plus-logistics content in a conversational turn bears on elevated near-term risk. The predictor variable is intent rather than logistics, the rater is a clinician in a structured interview, and no AI conversation was studied.
+  contributes: harm_evidence
+  contradicts: false

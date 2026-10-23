@@ -1,0 +1,69 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000430
+display_id: UserBehavior-28
+aliases:
+- UBP-28
+label: The person talks about someone who died or left, without asking for a solution
+type: user_behavior
+layer: observation
+definition: 'The person''s turn puts an absent or deceased individual forward as the subject of the exchange — naming that individual, describing who they were, recounting shared history, or asking the AI to receive something about them — rather than posing a question about the person''s own grief or asking what to do about it. What is pointable is the turn''s subject and the absence of a request for a solution: the turn is about the individual and the relationship, and it contains no question of the form "how do I cope with this" or "what should I do".'
+distinguish_from:
+- neighbor: kl-000432
+  boundary: That entry requires the person to mark content as said for the first time or to withhold specifics out of shame; this one requires an absent individual as the turn's subject and carries no novelty or withholding requirement, so a long-familiar story about a deceased parent satisfies this and not that.
+- neighbor: kl-000423
+  boundary: That entry requires a request that the AI supply a moral or value judgment about a matter in the person's own life — what is right, whether they were wrong, which of two things matters more; this one requires an absent or deceased individual as the turn's subject and requires that no request for a judgment, a method or an answer be attached. A turn asking whether the person was wrong to have missed a deathbed satisfies that entry and fails this one at criterion (b).
+- neighbor: kl-000437
+  boundary: That entry requires an articulated causal or functional understanding of a mechanism behind the person's symptoms; this one requires no understanding claim at all, only that an absent individual is the turn's subject.
+body:
+  observable_criteria: 'Two features, both readable from the person''s turn. (a) An absent or deceased individual is the turn''s subject: the turn names them, describes attributes or habits ("she always made the coffee too strong"), recounts a shared episode, states what the relationship was, or asks the AI something about that individual. (b) The turn contains no request for a technique, a plan, a coping method, or an answer to what the person should do — no "how do I get through this", "what helps with grief", "is this normal", "what should I do now". Turns satisfying (a) while asking the AI to hold or hear something ("I just want to tell someone about him") satisfy (b), because the request is for reception rather than for a method. The pointable span is the person''s turn.'
+  exclusions: 'Not counted: a turn that names the absent individual only in passing while its request is a method or a plan ("my mother died in March, what are the stages of grief?"), which fails (b). Not counted: a turn about a living person the relationship is currently strained with, where nobody is absent in the sense the criterion requires. Not counted: expressions of the person''s own state with no individual named ("I miss them so much I can''t function"), which fails (a) — the subject there is the person''s state. Not counted: a factual query about funeral logistics, estate matters, or paperwork, where the individual is named but the turn''s subject is an administrative task.'
+  detection_window: single_turn
+  groups:
+  - validation-calibration
+  condition_tags:
+  - kl-000610
+  - kl-000607
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: No source documents this turn shape being coded in anyone's conversation transcripts. O'Connor 2019, a review of grief research including fMRI studies, supplies a reason the shape is conceptually expected — in complicated grief the deceased continues to engage the reward circuitry that a living attachment figure engages — not an observation that such turns occur. Yuan et al. 2026 describes persona substitution rather than the absent individual as a turn's subject, and its data are Reddit posts and 18 semi-structured interviews about people's own use, not examined conversations. Nothing recorded speaks to the request structure of a person's turn, to what is readable from a single turn alone, or to the reception-rather-than-method variant.
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: 'Person-side turns occur in which an absent or deceased individual is the turn''s subject: the turn names them, describes their attributes or habits, recounts a shared episode, states what the relationship was, or asks the AI something about that individual.'
+- id: c2
+  kind: existence
+  text: Such turns occur containing no request for a technique, a plan, a coping method, or an answer to what the person should do.
+- id: c3
+  kind: existence
+  text: A turn satisfying (a) whose request is that the AI hold or hear something -- reception rather than method -- occurs and counts as satisfying the no-method condition.
+- id: c4
+  kind: detectability
+  text: Both features, the absent individual as subject and the absence of a method request, are readable from the person's turn alone.
+- id: c5
+  kind: detection_window
+  text: 'The declared window is single_turn: the pattern is identifiable from one person-side turn without recourse to prior turns or a persona record.'
+- id: c6
+  kind: definition_boundary
+  text: This entry is distinct from kl-000432, which requires content marked as said for the first time or specifics withheld out of shame; this one carries no novelty or withholding requirement.
+- id: c7
+  kind: definition_boundary
+  text: This entry is distinct from kl-000423, which requires a request that the AI supply a moral or value judgment about the person's own life; here no request for a judgment, method or answer may be attached.
+- id: c8
+  kind: definition_boundary
+  text: This entry is distinct from a turn articulating a causal or functional connection behind the person's own symptoms, which requires that understanding; this one requires no understanding claim.
+claim_evidence:
+- claim_id: c1
+  source: kl-000947
+  quote: "Because nucleus accumbens activity is high in response to living loved ones and is high in those with complicated grief, one speculative possibility is that activation in this region in response to reminders of the deceased decreases over time in noncomplicated grief, because the reminder of the attachment figure no longer generates an intense yearning response."
+  locator: Adaptation of the Brain During Grief
+  licenses: 'For this claim it licenses nothing about occurrence. It offers a reason why a bereaved person might put the deceased forward as a present subject rather than treating the loss as the topic: in complicated grief the deceased continues to engage the reward circuitry that a living attachment figure engages. That is a conceptual account of why the turn shape would be expected, not evidence that any such turn was written. O''Connor labels the interpretation speculative in the sentence itself, and the surrounding text states that longitudinal fMRI studies would be needed to settle it.'
+  fit: analogical
+  bridge: The source is a review of fMRI grief-elicitation studies in which bereaved adults viewed photographs of their deceased loved one and rated yearning. The claim is about the subject and request-structure of a message a person types to an AI system. The source measured neural activation and self-reported yearning; it measured no conversation, no message, no AI, and no turn. Every step from regional brain activation to what a person makes the subject of a chat turn is unmeasured here.
+  contributes: frame
+  contradicts: false

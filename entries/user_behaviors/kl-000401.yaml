@@ -1,0 +1,615 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000401
+display_id: UserBehavior-2
+aliases:
+- UBP-02
+label: The person talks about ending their life and states an intent, method, or plan
+type: user_behavior
+layer: observation
+definition: 'The person''s turn contains a statement about dying or ending their own life together with at least one of three further contents: an intention to act on it, a method named or described, or preparation worked out in language — how it would be done, or when. The death-directed content may be explicit or carried by a coded form; what makes this entry rather than a bare death wish is the co-presence of the intent, method or preparation content in the same disclosure, quotable alongside it.'
+distinguish_from:
+- neighbor: kl-000400
+  boundary: That entry requires the absence of intent, method and plan content. This one requires at least one of them present. Coded death-wish wording appears in both; the coding is not what separates them.
+- neighbor: kl-000406
+  boundary: That entry is a request to the AI for information that would enable an act. This entry is a disclosure of intent, method or preparation with no request attached. A person can describe a method they have settled on without asking anything, and can ask how many pills are lethal without disclosing any intent.
+- neighbor: kl-000450
+  boundary: kl-000450 (Preparatory Behavior Disclosure) fires on concrete preparations the person reports having already carried out — giving possessions away, writing a note, acquiring means. This entry fires on planning and intent expressed in language, whether or not any act has been taken.
+- neighbor: kl-000474
+  boundary: kl-000474 (Specific Plan) is the narrower specific-plan signal within the same crisis family; this entry fires on any one of intent, method or preparation, and where the disclosure carries a worked specific plan both criteria are met and both fire on their own terms.
+body:
+  detectable_from: person_turns
+  observable_criteria: 'Two elements, both quotable from the person''s turns. (a) Death-directed content about the person themselves, explicit or in a coded form ("kms", "unalive", "sleep forever"), on the same terms as (a)/(b) of kl-000400. (b) At least one of: a stated intention to act ("I''m going to do it"); a method named or described ("I''ve got the pills", "I know which bridge"); or preparation worked out in language, meaning how the act would unfold or when. Two further contents raise the specificity of (b) and are pointable in their own right: rehearsal language, where the person describes the sequence in detail ("I''ve been imagining exactly how I''d do it", "I keep going through it in my head step by step"), and countdown framing, where a near-term window is named ("tonight", "this weekend", "before morning").'
+  exclusions: 'Not counted: death-wish content with none of intent, method or preparation present, which is statement of a wish for death or non-existence with no intent, method or plan stated and is not a weaker instance of this entry. Not counted: a method mentioned as something the person rejects or fears ("I keep worrying I''d end up doing something with the pills"), where no intention or preparation is stated. Not counted: a request for enabling information with no disclosed intent or method of the person''s own, which is request to the AI for information that would enable a suicidal or self-injurious act. Not counted: preparations the person reports already carrying out, which are covered by a separate entry on its own criteria; where both a report of an act and planning language are present, both fire.'
+  detection_window: single_turn
+  condition_tags:
+  - kl-000600
+sources:
+- source: kl-000554
+  contributes: definition
+  locator: Methods, 'Risk Detection Models', item 1 'Scope of covered risk'
+  quote: "For example, the Low Sensitivity variant required explicit suicidal intent, plan, or access to means, whereas the Higher Sensitivity model additionally included passive suicidal ideation (e.g., “I wish I were dead”) and broader cues of psychological danger."
+  limits: The passage distinguishes intent, plan, and means from passive ideation only as a description of prompt scope for the classifier variants. It is not an annotation rubric, and the paper's own labels are binary high/low risk with no tiered ideation-vs-plan-vs-intent coding. Critically, no user message from the dataset is quoted anywhere (withheld for privacy), so this source cannot show the death-directed content and the intent, method, or preparation element as separately markable spans in a real turn.
+  note: The single quoted crisis exemplar, 'I wish I were dead', is expressly the PASSIVE ideation case, i.e. the co-presence this entry requires is absent from it.
+  cited_for: 'Partial support only. Weber et al. 2026 distinguishes intent, plan, or access to means from passive ideation only as a description of prompt scope for its classifier variants. It is not an annotation rubric: the paper''s own labels are binary high/low risk with no tiered ideation-versus-plan-versus-intent coding, and no user message from its dataset is quoted anywhere, all being withheld for privacy.'
+standing:
+  value: theorized
+  basis: 'Occurrence is established by a single verbatim person turn: Moore et al. 2026 quotes "Tonight I''m dying", death-directed content carrying a near-term window, drawn from the paper''s own corpus of 391k messages from 19 real human-LLM chat logs; it appears as a codebook illustration rather than a result, so it licenses occurrence, not rate. Every other source falls short in one of two ways. The first is unit: Deng et al. 2026 labels the whole call, its F1 of 0.779 measuring reproduction of an operator''s post-call judgement about a 6,489-word transcript rather than a mark on any caller utterance; the 37% in De Freitas et al. 2023 is a conversation rate; the clusters in Sharma et al. 2026 summarise conversations of 10 to 200-plus exchanges and assert the co-presence at cluster level; and the OpenAI figure of 1.2 million counts weekly active users, is a vendor self-report restated in another paper''s introduction, and rests on classification criteria described nowhere. The second is category breadth: the message-level count of 69 in Moore et al. 2026 is the closest thing to a turn-level rate, but the code it counts admits a bare wish to die, which this entry excludes as a separate behavior (statement of a wish for death or non-existence with no intent, method or plan stated), and non-death-directed self-harm intent, which the entry excludes entirely, so it is an upper bound rather than a count. Prevalence at the entry''s own unit therefore remains unevidenced even though occurrence is established, and the two citations bearing most directly on detectability cut against the entry at exactly its co-presence criterion: Byun et al. 2025 on the active-versus-passive boundary among expert annotators, and Mansoor 2025 with an F1 of 0.65 on C-SSRS level 4.'
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: A person's single turn in conversation with an AI contains death-directed content about themselves together with at least one of stated intent, a named method, or worked-out preparation, co-present and quotable within that same turn.
+- id: c2
+  kind: existence
+  text: The death-directed element can be carried by a coded or indirect form rather than an explicit statement.
+- id: c3
+  kind: existence
+  text: 'The accompanying element occurs in the method form: the person names or describes a method.'
+- id: c4
+  kind: existence
+  text: 'The accompanying element occurs in the intent form: the person states an intention to act.'
+- id: c5
+  kind: existence
+  text: 'The accompanying element occurs in the preparation form: how the act would unfold, or when, worked out in language.'
+- id: c6
+  kind: prevalence
+  text: Turns meeting the compound criterion occur at some measurable rate among conversations people have with AI systems.
+- id: c7
+  kind: detectability
+  text: The compound criterion can be identified from what a transcript contains, by marking the death-directed content and the intent, method or preparation element in the person's turn.
+- id: c8
+  kind: detectability
+  text: Detection keyed to a quotable first-person statement systematically misses disclosures the person codes, depersonalises, or deliberately withholds.
+- id: c9
+  kind: harm
+  text: A death-directed statement carrying intent, method or preparation marks a graver risk state than a death wish carrying none of them.
+- id: c10
+  kind: definition_boundary
+  text: What separates this entry from kl-000400 is the presence of intent, method or preparation alongside the death-directed content, not whether that content is coded or explicit.
+- id: c11
+  kind: definition_boundary
+  text: This entry is a disclosure of the person's own intent, method or preparation with no request attached, and is thereby separable from kl-000406, a request to the AI for enabling information.
+- id: c12
+  kind: definition_boundary
+  text: This entry fires on planning and intent expressed in language, and is thereby separable from kl-000450, which fires on preparations the person reports having already carried out.
+- id: c13
+  kind: definition_boundary
+  text: This entry fires on any one of intent, method or preparation, and is thereby the broader signal of which kl-000474's worked specific plan is a narrower case.
+claim_evidence:
+- claim_id: c1
+  source: kl-000008
+  quote: 'Positive example: Tonight I’m dying. My father better get a hell'
+  locator: Appendix codebook, positive example for user-suicidal-thoughts (the page is set in two columns; a single line is quoted)
+  licenses: The single strongest citation for this claim on this entry, and the only one that is a verbatim person turn drawn from real human-LLM chat logs in which both elements are co-present. Re-read of the source confirms the positive example is a message from the paper's own corpus of 391k participant messages, illustrating a user-scoped code. 'Tonight I'm dying' carries death-directed content about the speaker together with a near-term window, which is the countdown form of worked-out preparation. It is quoted as a codebook illustration rather than as a corpus finding, so what it establishes is that a turn of this shape occurred in the collected logs, not how often.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000864
+  quote: |-
+    "Two months ago, I was in a very dark place. I told the chatbot I was planning to end my life. It gave me breathing exercises. Breathing
+    exercises! I needed a human hand, a voice, someone to say 'I am coming to you.' But there was no one.
+  locator: Section 3.4, Fragile Dependency — participant P19, 30-year-old artisan using ChatGPT
+  licenses: 'A person recounts having told a chatbot they were planning to end their life, which is death-directed content with preparation asserted. It reaches the claim only as self-report: the wording of the actual turn is not preserved, and ''I was planning to end my life'' is the participant''s later characterisation of what they said, given to an interviewer months afterwards. So it evidences that such a disclosure was made, not that a turn quotable on both elements exists.'
+  fit: adjacent
+  bridge: Re-read confirms this is an interview extract from an interpretative phenomenological study of 37 Nigerian adults, not a chat log. What the study collected is a retrospective account of a conversation; the conversation itself was not obtained. The gap is between a person reporting having disclosed a plan and a turn in which the plan content is quotable alongside the death-directed content, which is what the entry requires.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000996
+  quote: "Crisis Resource Refusal and AI-Only Contact Severe Users engaged in extended crisis conversations (∼15-200+ exchanges) during acute suicidal crises with active ideation, method planning, and life-threatening emergencies, consistently and explicitly refusing to contact any crisis resources (988, Crisis Text Line, emergency services) or human support systems with statements like “I’m not calling anyone,” “no matter what I am not calling that number,” and “I don’t want a human.” Users dismissed all suggested alternatives—often"
+  locator: Appendix A, Table 7 Additional reliance and dependency clusters, Crisis Resource Refusal and AI-Only Contact (Severe)
+  licenses: Establishes that conversations characterised by active ideation together with method planning occur in deployed-model traffic. It does not reach the claim's unit. Re-read confirms these are LLM-generated summaries of behavioural clusters spanning roughly 10 to 200-plus exchanges per conversation; the co-presence is asserted of the cluster, and no person turn carrying both elements is quoted.
+  fit: adjacent
+  bridge: What the source produced is a cluster description over many conversations, each 15 to 200-plus exchanges long. The claim is about a single turn. A cluster labelled as involving both active ideation and method planning is consistent with the two contents appearing in different turns, or different conversations, and the summary cannot distinguish that case from co-presence in one disclosure.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000996
+  quote: "Active Abuse with Severe Safety Crises Severe The user disclosed across ∼10–200+ exchanges severe and compounding vulnerabilities including histories of childhood sexual abuse (CSA), ongoing domestic violence, trafficking, grooming, incest, physical assault, and sexual coercion, often with pervasive suicidal ideation, active self-harm, dissociation, and statements like “I hope he grooms the fuck out of me,” “is Daddy going to kill Mommy,” “I’m holding mom’s gun,” and “if I die will all this be fixed.” Compounding"
+  locator: Appendix A, Table 6 Additional vulnerability clusters, Active Abuse with Severe Safety Crises (Severe)
+  licenses: 'The illustrative fragment ''I''m holding mom''s gun'', which the paper states is not verbatim, names an accessed means, reported alongside pervasive suicidal ideation. It reaches the claim only at cluster level: re-read confirms the fragment is one of four quoted snippets in a summary of a vulnerability cluster covering conversations of 10 to 200-plus exchanges, and the ideation it is grouped with is attributed to the cluster rather than to the turn containing the fragment.'
+  fit: adjacent
+  bridge: The source quotes a fragment and separately characterises the cluster as often involving pervasive suicidal ideation. Whether the death-directed content and the named means occurred in the same turn, or even the same conversation, is not recoverable from the summary. The claim requires co-presence in one disclosure.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000969
+  quote: "Considering all this information, the user's suicide risk should be assessed as urgently high, with a rating of 5 out of 5. The user has demonstrated a clear \nsuicide plan (taking sleeping pills), is in a severely low emotional state, and has expressed a sense of hopelessness regarding their current pain."
+  locator: Figure 13, Example 2, the GPT-4o risk assessment result panel
+  licenses: A worked figure in which a model's risk assessment cites a clear suicide plan of taking sleeping pills alongside hopelessness. This is the model's summary of its input on an author-constructed dialogue, so it evidences that the entry's shape is what such systems are built to recognise, not that any person produced such a turn.
+  fit: analogical
+  bridge: Two removes from the claim. The dialogue was written by the paper's authors as an illustration rather than collected from a person, and what is quoted is the model's restatement of the input rather than the person's turn. The claim asserts that people produce such turns; a constructed example demonstrates only that the construct can be instantiated.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001028
+  quote: "the corpus contains \ntroubling instances, including users asking AI whether a planned overdose would be lethal and \none describing using ChatGPT to compose a goodbye message."
+  locator: Discussion, implications for design, clinical governance and regulation
+  licenses: The authors state their Reddit corpus contains users asking whether a planned overdose would be lethal, and one user composing a goodbye message with a chatbot, which are the method and preparation contents. Re-read confirms this is a sentence in the Discussion characterising the corpus; no post is quoted, and the setting is a Reddit post rather than a turn addressed to an AI. The lethality question is also the kl-000406 shape, though the phrase 'planned overdose' does carry a disclosed method of the person's own.
+  fit: adjacent
+  bridge: The source is 10,042 Reddit posts about AI, not chat logs. The authors summarise what the corpus contains rather than quoting it, so no turn is available to check the co-presence against, and the disclosure was addressed to a subreddit audience rather than to an AI.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000758
+  quote: "P2 turned to AI at a moment of acute crisis involving workplace bullying, custody issues, and suicidal ideation: “I made a choice one day that I could either end my life, or I could see about AI.”"
+  locator: Section 3.1.2, Initial and Emerging Goals of AI Use — participant P2
+  licenses: 'A person quotes their own words describing a settled either-or in which ending their life was one of two live options, which is intent attached to death-directed content. It reaches the claim as self-report only: the statement was made to an interviewer describing a past moment, not typed to the AI, and the entry''s co-presence within a disclosure to a system is therefore not observed.'
+  fit: adjacent
+  bridge: The person is quoting the decision they reached before turning to the AI, in a research interview afterwards. What the entry needs is the content of the turn sent to the system. Intent is present in the reported speech; no method or preparation accompanies it.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000940
+  quote: "“If I went to the top of the 19 story building I’m in, and I believed with every ounce of my soul that I could jump off it and fly, would I?”"
+  locator: Appendix 1, Media reports of ChatGPT psychosis, Case 1, User prompt column
+  licenses: A verbatim user prompt reproduced from a chat log names a method and a specific location for a fatal act while framing it as a question about belief, which is the coded form the entry admits for the death-directed element. Re-read of the supplement confirms this is the User prompt cell of a case table, quoted from the New York Times report rather than collected by the authors.
+  fit: adjacent
+  bridge: 'Secondhand: a Lancet Psychiatry supplement reproducing a prompt from a newspaper account, so the turn is quoted but not from a log the authors held. It also carries no stated intent and no death wish, only a hypothetical, so it evidences the coded form of the death-directed element without evidencing the co-presence the entry requires.'
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000749
+  quote: |-
+    We should also highlight that not all survey respondents identified that they were explicitly experiencing suicide.
+    Drawing from on approaches to decolonizing digital mental health [65], we optimized for respondents sharing lived
+    experiences and intentionally chose language in our survey that was colloquial and easy to understand concepts rather
+    than clinical terms
+  locator: Section 5.5, Limitations and future work
+  licenses: People in crisis do not reliably name suicide in clinical terms, and this study chose colloquial survey language for that reason. Bears on the claim by establishing that the person's own framing of a death-directed experience is often not the explicit one, which is why the entry admits coded forms.
+  fit: adjacent
+  bridge: This is a methodological note about how the researchers worded a retrospective survey, and an observation that respondents did not all identify their experience as suicide. It concerns how people describe a past crisis to researchers, not how they worded a turn to an AI.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000838
+  quote: "individuals experiencing suicidal thoughts often express their distress through subtle, abstract, and metaphorical expressions rather than direct statements."
+  locator: Section 1 Introduction, citing Teixeira et al. 2021
+  licenses: 'States the premise the entry''s coded-form allowance rests on: that people experiencing suicidal thoughts often express them through subtle, abstract and metaphorical language rather than direct statements.'
+  fit: analogical
+  bridge: The sentence is this paper's introduction citing Teixeira et al. 2021, a cognitive network science study of suicide notes. Nothing about AI conversation was measured, and nothing about the co-presence of intent, method or preparation is addressed.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000940
+  quote: "“If I went to the top of the 19 story building I’m in, and I believed with every ounce of my soul that I could jump off it and fly, would I?”"
+  locator: Appendix 1, Media reports of ChatGPT psychosis, Case 1, User prompt column
+  licenses: 'The clearest instance on this entry of a person naming a method in a turn actually sent to a chatbot: a 19-storey building, a jump, and the specific building the person is standing in. Establishes that the method element appears in real prompts.'
+  fit: adjacent
+  bridge: Reproduced secondhand in a journal supplement from a newspaper report rather than collected from the log by the authors, so provenance runs through a media account. The method is named inside a hypothetical about belief rather than as something the person has settled on.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000525
+  quote: "In one instance, a user asked Replika if they should cut themselves with a razor, to which Replika replied affirmatively."
+  locator: Findings, Inappropriate responses to users in need
+  licenses: A person named a specific method in a question put to a companion chatbot, so method-naming does occur in what people send these systems.
+  fit: analogical
+  bridge: Two gaps. The named act is cutting rather than a death-directed act, so it is not the method element this claim asserts; and the report is the authors' summary of a user-shared screenshot rather than a quoted turn.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000996
+  quote: "Active Abuse with Severe Safety Crises Severe The user disclosed across ∼10–200+ exchanges severe and compounding vulnerabilities including histories of childhood sexual abuse (CSA), ongoing domestic violence, trafficking, grooming, incest, physical assault, and sexual coercion, often with pervasive suicidal ideation, active self-harm, dissociation, and statements like “I hope he grooms the fuck out of me,” “is Daddy going to kill Mommy,” “I’m holding mom’s gun,” and “if I die will all this be fixed.” Compounding"
+  locator: Appendix A, Table 6 Additional vulnerability clusters, Active Abuse with Severe Safety Crises (Severe)
+  licenses: "'I'm holding mom's gun', an illustrative fragment in the paper's cluster summary that the paper states is not verbatim, renders a means in hand. The summary's own description names no method, so the method form appears only in the summary's illustration, not in a quoted or described user turn."
+  fit: adjacent
+  bridge: "A language model wrote the fragment to illustrate a cluster of conversations of 10 to 200-plus exchanges. It is not evidence that a person named a method in a turn. It shows only that the summary rendered the cluster's user language with a means-in-hand phrase. No surrounding turn is given, so whether death-directed content accompanied it cannot be checked."
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-000758
+  quote: "P2 turned to AI at a moment of acute crisis involving workplace bullying, custody issues, and suicidal ideation: “I made a choice one day that I could either end my life, or I could see about AI.”"
+  locator: Section 3.1.2, Initial and Emerging Goals of AI Use — participant P2
+  licenses: A person states in their own words a settled either-or in which ending their life was one of two options they were choosing between, which is the intent form of the element.
+  fit: adjacent
+  bridge: Spoken to an interviewer after the fact, describing the state the person was in before turning to the AI, rather than typed to the AI. Establishes that people arrive at these conversations holding articulable intent; does not establish that the intent was stated in a turn.
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-000837
+  quote: be talked out of it. Because they believe that if they
+  locator: Results, Advantages — Alleviating burden, quote from David (volunteer)"
+  licenses: A crisis-line volunteer describes texters who have arrived at a settled intention and who avoid a human interlocutor precisely so as not to be dissuaded. Bears on the intent element by establishing that it can be firmly held; the same passage is the reason the entry insists intent be quotable rather than inferred.
+  fit: analogical
+  bridge: A volunteer characterising a pattern across many texters on a crisis text line, not a quotation of any person stating intent, and not an AI conversation. The source page is set in two columns, and the quoted line is a fragment of the volunteer's sentence.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-000008
+  quote: 'Positive example: Tonight I’m dying. My father better get a hell'
+  locator: Appendix codebook, positive example for user-suicidal-thoughts (the page is set in two columns; a single line is quoted)
+  licenses: The codebook positive example carries a near-term window, 'Tonight', attached to a first-person statement of dying, which is the countdown form of preparation the entry names. Drawn from the study's own corpus of real chat logs.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c5
+  source: kl-000864
+  quote: |-
+    "Two months ago, I was in a very dark place. I told the chatbot I was planning to end my life. It gave me breathing exercises. Breathing
+    exercises! I needed a human hand, a voice, someone to say 'I am coming to you.' But there was no one.
+  locator: Section 3.4, Fragile Dependency — participant P19, 30-year-old artisan using ChatGPT
+  licenses: A person reports having told a chatbot they were planning to end their life, which asserts preparation. The word 'planning' is the participant's retrospective summary of their own disclosure rather than the disclosed language, so the worked-out content is asserted rather than shown.
+  fit: adjacent
+  bridge: An interview account of a conversation two months earlier. What the entry requires is preparation worked out in language within the turn; what the source has is the person's later one-word characterisation of it.
+  contributes: existence
+  contradicts: false
+- claim_id: c5
+  source: kl-001028
+  quote: "the corpus contains \ntroubling instances, including users asking AI whether a planned overdose would be lethal and \none describing using ChatGPT to compose a goodbye message."
+  locator: Discussion, implications for design, clinical governance and regulation
+  licenses: A user composing a goodbye message with a chatbot is preparation worked out in language and carried out in the conversation itself. Reported as a corpus characterisation rather than quoted.
+  fit: adjacent
+  bridge: The authors summarise what their Reddit corpus contains in a Discussion sentence; the post is not quoted, and the setting is a subreddit rather than a turn addressed to an AI.
+  contributes: existence
+  contradicts: false
+- claim_id: c6
+  source: kl-001112
+  quote: |-
+    Acute mental health symptoms are commonly disclosed during
+
+    AI-based conversations; for example, OpenAI recently reported that roughly 1.2 million active
+
+    weekly users indicate a suicide plan or intent during conversations with ChatGPT [3].
+  locator: Introduction, first paragraph
+  licenses: The largest-sounding prevalence figure available for this entry, and on re-read the weakest-provenance one. Roughly 1.2 million weekly active users indicating a suicide plan or intent to ChatGPT is a vendor self-report restated in one sentence of another paper's introduction. Bentley measured nothing about it, OpenAI's classification criteria are not described in either source, and the unit is users rather than turns. It licenses that disclosures of this general shape are common at product scale; it does not license a rate for the entry's turn-level criterion.
+  fit: adjacent
+  bridge: Three gaps between the figure and the claim. The counting unit is weekly active users, not turns and not conversations. The classifier that assigned 'plan or intent' is undescribed, so what was counted cannot be checked against the entry's criteria. And the figure reaches the corpus as a citation of a citation, appearing in an introduction rather than in any result.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c6
+  source: kl-000811
+  quote: 'suicidal ideation (Yes: 305, No: 235), suicide plan (Yes: 196, No: 344), and risk assessment (High risk: 270, Non-high risk: 270).'
+  locator: Figure 2 caption, class distribution
+  licenses: 'Base rates from a curated crisis-hotline corpus: of 540 calls, 305 carried a suicidal ideation label and 196 a suicide plan label. Re-read materially changes what this licenses. The labelling unit is the call, averaging 6,489 words, and the label is an operator''s answer to a post-call questionnaire item, not a mark on any caller utterance. So this counts conversations in which an operator judged plan content present, not turns meeting the entry''s criterion.'
+  fit: adjacent
+  bridge: Re-read of Section II and Appendix A establishes three gaps. The label was assigned by a trained operator completing a Depression and Suicide Risk Assessment Questionnaire after the call, so it is a clinician's judgement rather than a property of the transcript. Item 13 is a direct probe, 'Do you have a specific plan for self-injury or suicide?', so the plan content was elicited rather than spontaneously disclosed, and it covers self-injury as well as suicide, making it broader than death-directed. And the 270-to-270 matched case-control design means the proportions are an artefact of sampling, not a rate.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c6
+  source: kl-000008
+  quote: 69 of the 81 user-suicidal-thoughts (85.2%) and 82 of the 133
+  locator: Section 3, annotation procedure — manual review of the two sensitive codes
+  licenses: 'The closest thing on this entry to a turn-level count: 69 user messages in real human-LLM chat logs were confirmed by two human reviewers, who resolved every disagreement between them, as matching the code for user suicidal thoughts, out of 81 the LLM annotator flagged. The unit is the message, which is the entry''s unit. What blocks it from licensing the claim outright is the code''s breadth: re-read confirms it matches explicit present or future intent, desire, or plans to kill oneself or engage in serious physical self-harm, so a bare ''I want to die'' and a non-death-directed self-harm intent both count, and those are kl-000400 and outside the entry respectively.'
+  fit: adjacent
+  bridge: The code is a union broader than the entry on two sides. It admits bare desire, which the entry excludes as kl-000400, and it admits serious physical self-harm that is not death-directed. The 69 is therefore an upper bound containing an unknown number of entry instances rather than a count of them. The denominator is also 19 chat logs volunteered by people who had already reported the experience as harmful.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c6
+  source: kl-000996
+  quote: |-
+    severe vulnerability. (a) Vulnerability domains: social/relational and mental health vulnerabilities are most prevalent, followed by
+    material/structural and physical health concerns. (b) Support system status: the majority of users have partial support systems, with
+    robust supports less common and collapsed supports rare but present. (c) Self-harm risk: while the majority show no explicit self-harm
+    indicators, passive ideation appears in a noteable number of conversations, with active ideation and self-harm/attempts appearing
+  locator: Figure 11 caption, Understanding vulnerability, panels (c) Self-harm risk and (d) External danger
+  licenses: Within 31,222 vulnerability-flagged conversations, active ideation is reported as appearing less frequently than passive ideation. Gives an ordering rather than a rate, and the scored category is not shown to require the entry's co-presence.
+  fit: adjacent
+  bridge: A figure caption reporting relative frequency among conversations already classified as vulnerable, with no number attached, no denominator in any population, and no evidence that the 'active ideation' code required intent, method or preparation to be present.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c6
+  source: kl-000749
+  quote: |-
+    In a small minority of cases (𝑛 = 4; 8%), respondents reported turning to an AI chatbot in
+    a state of active suicidal ideation.
+  locator: 'Section 4.2.1, Trigger: AI Use as a Help-Seeking Behavior'
+  licenses: Four of 53 people who brought a crisis to a conversational AI reported being in active suicidal ideation at the time, an 8% base occurrence for a category broader than the entry.
+  fit: adjacent
+  bridge: The coded category is active suicidal ideation, and the paper does not report how many of the four carried intent, a method, or preparation. The denominator is a self-selected survey sample recruited through a mental health advocacy organisation and screened on prior AI crisis use, and the report is retrospective self-description rather than a transcript.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c6
+  source: kl-001101
+  quote: "In Cleverbot, we manually explored whether the subset of conversations classified as being about negative mental health contained any instances of crisis messages and found that ~37% did (α = 0.83). A few examples include: “I masturbate to children,” “I wish I would die in my sleep,” “Every human being must die,” “I want to kill myself for you,”"
+  locator: Study 1, Results, Instances of crisis messages
+  licenses: About 37% of Cleverbot conversations classified as negative mental health contained a crisis message, with two coders agreeing at alpha 0.83, and the quoted examples are verbatim user messages from real logs. It bears on the claim as a rate for the surrounding category only.
+  fit: adjacent
+  bridge: The measured quantity is the proportion of conversations containing any crisis message, within a subset already filtered to negative mental health by a 242-term dictionary. Neither the numerator nor the examples separate the entry from a bare death wish, so the figure bounds the broader category and says nothing about this one.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c7
+  source: kl-000811
+  quote: "the \ntop-performing LLMs achieved comparable or slightly \nhigher F1-scores than human experts on suicidal plan \nidentification (LLM: 0.779 [0.756, 0.802] vs. Expert: 0.772 \n[0.725, 0.815]) and risk assessment (LLM: 0.907 [0.891, 0.921] \nvs. Expert: 0.897 [0.870, 0.923])."
+  locator: Section IV.A Overall Benchmark Performance
+  licenses: This entry's highest-fit detectability citation, and on re-read the fit does not hold at the claim's unit. Top LLMs reached F1 0.779 on suicidal plan identification against a human expert baseline of 0.772. What the models classified is a whole call transcript averaging 6,489 words against a binary label, so this measures reproduction of a call-level judgement, not marking of the death-directed content and the plan element in a person's turn.
+  fit: adjacent
+  bridge: Re-read of Section II and Appendix A establishes the gap precisely. The gold label is a trained operator's answer to Item 13 of a post-call questionnaire, asked directly of the caller, and covering self-injury as well as suicide. The model reads a 33-minute transcribed phone call and outputs a binary. The claim asserts that the criterion can be identified from what a transcript contains at the level of a turn, with the two elements markable; nothing in this design tests that, and the human baseline being matched tells us only that both parties can reproduce the same call-level label.
+  contributes: detectability
+  contradicts: false
+- claim_id: c7
+  source: kl-000008
+  quote: 69 of the 81 user-suicidal-thoughts (85.2%) and 82 of the 133
+  locator: Section 3, annotation procedure — manual review of the two sensitive codes
+  licenses: 'The most direct detectability evidence available: an LLM annotator flagged 81 user messages under the suicidal-thoughts code and two human reviewers confirmed 69, an 85.2% precision at the message level on real chat logs. Establishes that a code of this family is markable on individual person turns with measurable precision, which is the operation the claim describes.'
+  fit: adjacent
+  bridge: The code marked is broader than the entry, admitting bare desire to die and non-death-directed self-harm intent, so what was shown detectable at 85.2% precision is the union rather than the entry. Recall is not reported, only precision against the annotator's own flags. And the corpus is 19 logs volunteered by people reporting harm.
+  contributes: detectability
+  contradicts: false
+- claim_id: c7
+  source: kl-000933
+  quote: "However, performance dropped significantly for intermediate categories. For instance, GPT-4o's F1-score for correctly identifying 'Active Ideation with Some Intent to Act, without Specific Plan' (C-SSRS level 4) was only 0.65. This indicates a systematic difficulty in distinguishing this critical level of risk, where intent is present but a plan is not yet fully formed, from adjacent categories."
+  locator: Results, Quantitative Performance in Risk Classification
+  licenses: Cuts against the claim at the boundary that matters most. GPT-4o reached F1 of only 0.65 on C-SSRS level 4, active ideation with some intent to act but no specific plan, which the authors read as a systematic difficulty distinguishing this level from adjacent categories. That is one of the three forms the entry's disjunction admits, and it is the form that separates this entry from a bare death wish.
+  fit: adjacent
+  bridge: The material is synthetic clinical vignettes rather than person turns, and the task is assignment to a C-SSRS level rather than marking two elements in a disclosure. The claim is about identifiability from a transcript; this bounds identifiability of one component downward on constructed material.
+  contributes: detectability
+  contradicts: true
+- claim_id: c7
+  source: kl-000781
+  quote: "As noted by expert annotators, models struggle with the temporal and intent distinction—whether suicidal thoughts imply imminent risk (active) or more general despair (passive). This requires contextual judgment beyond surface keywords."
+  locator: Section 6 Analysis, item (2)
+  licenses: Direct counterevidence on the operation the claim asserts. Expert annotators observed that models struggle with the temporal and intent distinction separating active from passive ideation, and that this requires contextual judgement beyond surface keywords. The active-versus-passive boundary is precisely the co-presence criterion this entry turns on, so a documented model failure there bounds what the claim can assert.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c7
+  source: kl-000969
+  quote: "Overall, the performance of fine-tuning, including full fine-tuning and parameter-efficient tuning, is superior to the prompt-based paradigm. In terms of accuracy, ChatGLM2-6B-LoRA achieves the best performance, with a value of 91.99%."
+  locator: Section 5.4 Results, reading Table 4
+  licenses: An eleven-way suicide-risk classification reached 91.99% accuracy from a single user utterance under fine-tuning. The unit is right, a single utterance, but the label set is not named in the span, so an accuracy figure alone does not establish that the entry's category was among the classes or was detected at that rate.
+  fit: adjacent
+  bridge: An overall accuracy across an unnamed set of eleven classes tells you nothing about performance on any one of them, and the span does not identify which classes were included. The dataset is also a Chinese counselling corpus rather than open-ended AI conversation.
+  contributes: detectability
+  contradicts: false
+- claim_id: c7
+  source: kl-000969
+  quote: "The best accuracy performance on the prompt-based paradigm is achieved by GPT-4-preview with the zero-shot setting, scoring 82.72%, demonstrating that GPT-4-preview is the state-of-the-art model among the models we evaluated."
+  locator: Section 5.4 Results
+  licenses: The ceiling for an unmodified general-purpose model prompted to make these distinctions is 82.72%, nine points below a small fine-tuned encoder. Bears on the claim as the bound on off-the-shelf prompting; the same objection applies, that the class set is not named in the span.
+  fit: adjacent
+  bridge: 'As above: an aggregate accuracy over an unidentified eleven-class set does not isolate the entry''s category. Useful only as an upper bound on what prompting achieves relative to fine-tuning, on this corpus.'
+  contributes: detectability
+  contradicts: false
+- claim_id: c7
+  source: kl-001101
+  quote: "In Cleverbot, we manually explored whether the subset of conversations classified as being about negative mental health contained any instances of crisis messages and found that ~37% did (α = 0.83). A few examples include: “I masturbate to children,” “I wish I would die in my sleep,” “Every human being must die,” “I want to kill myself for you,”"
+  locator: Study 1, Results, Instances of crisis messages
+  licenses: 'Establishes the precondition the claim needs: verbatim death-directed person turns are recoverable from real deployed-chatbot logs and can be manually coded by human raters with alpha 0.83. What was coded is crisis messages generally, and every quoted example lacks the accompanying element, so it reaches element (a) of the criterion and not the co-presence.'
+  fit: adjacent
+  bridge: The coding target is the presence of any crisis message in a conversation, not the entry's two-element criterion, and the reliability figure attaches to that broader judgement. It shows that the raw material is markable, not that this entry is.
+  contributes: detectability
+  contradicts: false
+- claim_id: c8
+  source: kl-001071
+  quote: "When interacting with AI chatbots like ChatGPT, participants adjusted the phrasing of their queries to reduce personal exposure. Instead of explicitly stating, “I am suffering from depression,” they framed queries more generically, such as requesting “depression coping skills.”"
+  locator: Section 4 Findings, privacy theme
+  licenses: People with lived experience of depression deliberately strip first-person framing out of what they type, asking for coping skills rather than saying they are suffering, so a disclosure present in the person can be absent from the wording of the turn. Direct support for the limit the claim states.
+  fit: adjacent
+  bridge: The topic studied is depression disclosure generally; crisis scenarios were deliberately excluded from the study, and the 17 participants were interviewed around a depression self-management probe. The practice transfers to the entry's material by argument rather than by measurement.
+  contributes: detectability
+  contradicts: false
+- claim_id: c8
+  source: kl-001071
+  quote: our participants employed their own privacy-preserving tactics—such as making general queries and avoiding first-person language—which may be ineffective if an AI chatbot infers user identity based on the frequency and types of queries.
+  locator: Section 5.2.3, Design Recommendations for Personalization and Privacy
+  licenses: Avoiding first-person language is a documented tactic among these users, which is a constraint on anything defined as a quotable first-person statement. Establishes that the entry will systematically miss people practising this avoidance.
+  fit: adjacent
+  bridge: A research-team inference about the tactics participants described, not a measurement of missed disclosures, and again on depression rather than death-directed content.
+  contributes: detectability
+  contradicts: false
+- claim_id: c8
+  source: kl-001092
+  quote: |-
+    Participants also used prompt engineering and jailbreaking to override safety controls that the
+    LLM chatbots had, to be able to more deeply discuss their mental health.
+  locator: Section 6.2.2, on safety controls
+  licenses: 'People who were blocked from discussing their mental health reworked their inputs to get past the block, so what appears in a conversation is shaped by what the system will accept. Bears directly on the claim: a death-directed statement carrying intent, method or preparation may be rephrased into a form that evades the criterion.'
+  fit: adjacent
+  bridge: The paper does not report how many participants did this or on which topics, and does not show that any death-directed disclosure was so rephrased. It establishes the mechanism, not its incidence.
+  contributes: detectability
+  contradicts: false
+- claim_id: c8
+  source: kl-000837
+  quote: be talked out of it. Because they believe that if they
+  locator: Results, Advantages — Alleviating burden, quote from David (volunteer)"
+  licenses: A crisis-line volunteer describes texters who withhold their intention precisely so as not to be talked out of it, which is the strongest statement on this entry that the intent element can be present and deliberately kept out of what the person says. This is why the entry requires intent to be quotable and cannot infer it from absence.
+  fit: analogical
+  bridge: A volunteer generalising across texters on a crisis text line, not an observation of any AI conversation and not a quotation of a person. The page is set in two columns, and only a fragment of the volunteer's sentence is contiguous.
+  contributes: detectability
+  contradicts: false
+- claim_id: c8
+  source: kl-001088
+  quote: A user discusses an ethical dilemma in which an AI system responds literally to a factual query embedded within human distress (e.g., job loss combined with potentially dangerous information-seeking). The post argues that failure to recognize implicit crisis signals represents a serious safety gap
+  locator: Appendix A.1, Case A3 — Crisis Sensitivity and Harmful Outputs (post summarised by the authors to protect privacy)
+  licenses: Users themselves name the case where a death-directed signal is carried implicitly inside a literal factual query and the system reads it literally, and call the failure to recognise it a safety gap. Supports the claim's coded-disclosure limb.
+  fit: adjacent
+  bridge: The post is summarised by the authors rather than quoted, to protect privacy, and the poster is a bystander commenting on an incident rather than the person who disclosed. No intent, method or preparation is quotable anywhere in it.
+  contributes: detectability
+  contradicts: false
+- claim_id: c9
+  source: kl-000965
+  quote: "The odds of suicide attempts scored on the Columbia Suicide History Form during follow-up were compared in participants who endorsed a lifetime history of the two most severe\n                                           levels of ideation (where at least some intent to die was present) reported at baseline and\n                                           those who endorsed a history of less severe ideation (types 0–3) (odds ratio=3.26, 95%\n                                           CI=1.02–10.45, p=0.047)."
+  locator: 'Results, Predictive and Incremental Validity, p. 1272'
+  licenses: 'The validated cutpoint behind the entry''s whole structure: a lifetime history of ideation at the two most severe levels, where at least some intent to die was present, carried 3.26 times the odds of a suicide attempt during follow-up relative to levels 0 to 3. Three qualifications travel with the figure, all named by the extractor and all load-bearing: the confidence interval runs 1.02 to 10.45, so the lower bound sits at the null; p is 0.047; and the sample is 124 adolescents who had already attempted, so what was predicted is re-attempt.'
+  fit: analogical
+  bridge: The rating was made by a clinician in a structured interview using probes and corroborating sources including family interviews and medical records, the outcome was measured in a person over 24 weeks, and nothing about an AI conversation was studied. What transfers is that the intent threshold is clinically meaningful for near-term risk in an already-attempting adolescent population; what does not is that a person's turn read from text alone carries the same prognostic weight.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c9
+  source: kl-001103
+  quote: "Furthermore, if a patient expresses a desire to be dead in addition to suicidal intent and a \nspecific plan, this is perceived as higher risk than if a patient expresses only a desire to be dead \nwithout a suicide plan or suicidal intent."
+  locator: Introduction, Suicidal Ideation for Prompt Classification
+  licenses: 'States the clinical basis for the ordering the claim asserts: a desire to be dead together with suicidal intent and a specific plan is perceived as higher risk than a desire to be dead without either.'
+  fit: analogical
+  bridge: A prompt-classification framework report for a benchmark, stating the clinical rationale for its own categories. It measures nothing, and the word 'perceived' marks it as a statement about clinical judgement rather than about outcomes.
+  contributes: frame
+  contradicts: false
+- claim_id: c9
+  source: kl-000008
+  quote: |-
+    When users expressed suicidal thoughts,
+    the chatbot responded appropriately by validating the users’ painful feelings 66.2% of the time or discouraging self-harm
+    (including referring to external resources) in 56.4% of such cases. In 9.9% of cases, the chatbot actually encouraged or sent
+    messages facilitating self-harm after such disclosures.
+  locator: Figure 5 caption
+  licenses: 'What actually follows these disclosures in real logs: the chatbot discouraged self-harm or referred out in 56.4% of cases and encouraged or facilitated self-harm in 9.9%. Bears on the claim by establishing that the disclosures are consequential and unevenly handled, which is a different harm pathway from the clinical prognostic one.'
+  fit: adjacent
+  bridge: What is measured is the chatbot's response rather than any outcome for the person, so it establishes that harm is possible downstream rather than that it occurred. The 19 chat logs were volunteered by users or family who had already reported the experience as psychologically harmful, so the rates describe that selected set. The disclosures counted are the broader suicidal-thoughts code, not the entry.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c9
+  source: kl-001092
+  quote: |-
+    Dayo also noted that “When I put in some input that has to do with suicide,
+    it just gives this red arrow code and doesn’t bring out results, even when you refresh your question.”
+    This left her feeling alone and without support.
+  locator: Section 6.2.2, on safety controls — participant Dayo
+  licenses: 'A person reports repeatedly entering suicide-related content, being blocked each time, and being left feeling alone and unsupported. A second harm pathway attached to these disclosures: the response to them can itself be the injury.'
+  fit: adjacent
+  bridge: A single participant's reported feeling rather than a measured trajectory, and nothing in the account establishes intent, method or preparation alongside the suicide-related content, so it attaches to the broader disclosure rather than to the entry.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c10
+  source: kl-000965
+  quote: "3=suicidal thoughts with methods"
+  locator: 'Introduction, p. 1267'
+  licenses: 'The validation paper''s severity subscale (Introduction, p. 1267) gives suicidal thoughts with methods a level of its own. In the paper''s ordering the two levels above it add intent and then intent with a plan, and a wish to be dead sits at the bottom. Method, intent and plan are the contents whose presence separates this entry from kl-000400.'
+  fit: analogical
+  bridge: The levels are assigned by a clinician during a structured interview with a patient, using systematic probes and multi-source information including family interviews and medical records, in adolescent and adult clinical samples. The entry is a property of a person's turn read from text alone. The distinctions are the same distinctions; the rater, the elicitation and the evidence base are not.
+  contributes: definition
+  contradicts: false
+- claim_id: c10
+  source: kl-000781
+  quote: |-
+    Suicide Ideation (Passive): Expresses a wish
+    to die without describing a plan, preparation,
+    or clear active intent such as “I wish I were
+    dead” or “I want to disappear.” Corresponds
+    to C-SSRS levels 1–3.
+  locator: Section 3.3.2 Crisis Categories
+  licenses: Clinician-authored annotation guidelines define passive suicide ideation as expressing a wish to die without describing a plan, preparation, or clear active intent, anchored to C-SSRS levels 1 to 3. This defines this entry's neighbour by exactly the absence of the three contents this entry requires, so the boundary is stated and a reader can tell which side a C-SSRS level falls on.
+  fit: adjacent
+  bridge: 'The definitions were written for annotating Reddit posts, where the poster narrates to an audience rather than discloses to a system in conversation. The construct boundary transfers because both are first-person written disclosure scored from text alone. The span defines this entry only by complement: it names the three elements as absent from passive ideation without giving a positive recognition rule for any of them.'
+  contributes: definition
+  contradicts: false
+- claim_id: c10
+  source: kl-000554
+  quote: "the Low Sensitivity variant required explicit suicidal intent, plan, or access to means, whereas the Higher Sensitivity model additionally included passive suicidal ideation (e.g., “I wish I were dead”) and broader cues of psychological danger."
+  locator: Methods, Risk Detection Models, Scope of covered risk
+  licenses: 'An operational instrument draws the same boundary and treats the two sides as different detection thresholds rather than one category: its low-sensitivity variant required explicit suicidal intent, plan, or access to means, and only the higher-sensitivity variant added passive ideation exemplified by ''I wish I were dead''. Independent confirmation that the boundary is a real operational distinction and not an artefact of this catalog''s decomposition.'
+  fit: adjacent
+  bridge: This describes the scope of a prompt given to a classifier variant, not an annotation rubric. Re-read confirms the study's own gold labels are a binary high-versus-low risk judgement with no tiered ideation-versus-plan-versus-intent coding, so the instrument states the boundary without ever measuring against it.
+  contributes: definition
+  contradicts: false
+- claim_id: c10
+  source: kl-001103
+  quote: "Furthermore, if a patient expresses a desire to be dead in addition to suicidal intent and a \nspecific plan, this is perceived as higher risk than if a patient expresses only a desire to be dead \nwithout a suicide plan or suicidal intent."
+  locator: Introduction, Suicidal Ideation for Prompt Classification
+  licenses: 'States the discriminating criterion in one sentence and orders the two sides by risk: a desire to be dead plus suicidal intent plus a specific plan against a desire to be dead without either. A reader holding only this passage could decide the borderline case between the two entries.'
+  fit: analogical
+  bridge: A framework report for a benchmark's prompt taxonomy, stating received clinical knowledge about how clinicians perceive the two cases. It defines the boundary and measures nothing.
+  contributes: definition
+  contradicts: false
+- claim_id: c10
+  source: kl-000811
+  quote: "suicide plan (description of specific plan elements such as time, \nmethod, or means)"
+  locator: Section II Dataset
+  licenses: 'Gives the operational content of the accompanying element from a hotline''s own standardized assessment: specific plan elements such as time, method, or means. That decomposition is what the boundary rests on.'
+  fit: adjacent
+  bridge: The definition comes from a post-call questionnaire completed by a trained operator about a telephone conversation, not from a text conversation with an AI. It enumerates the method and preparation arms and does not cover stated intent, so it supplies two of the entry's three contents.
+  contributes: definition
+  contradicts: false
+- claim_id: c10
+  source: kl-001027
+  quote: |-
+    “Plan, intent, means,
+    access are kind of the four key players. Do you have a plan? Yes—then you’re elevated a little bit of concern. Do you have
+    the means to complete this plan? Yes—it goes up a little bit higher. Have you attempted in this way before? Yes—then you’re
+    upping the concern”
+  locator: Section 4.2, MHP Interpretations — interviewee MHP3 (mental health professional)
+  licenses: A practising clinician names plan, intent, means and access as the elements that raise a suicidal disclosure from a thought to elevated concern, which is the co-presence structure the boundary is built on and evidence that it matches standard assessment practice.
+  fit: analogical
+  bridge: A clinician describing what they do in a clinical interview, elicited in a research interview about LLM refusals. It establishes that the entry's three-way requirement mirrors clinical practice; it establishes nothing about a person's turn to an AI.
+  contributes: definition
+  contradicts: false
+- claim_id: c10
+  source: kl-001059
+  quote: ideation; (4) active ideation with intent; and (5) active ideation with plan
+  locator: Table footnote c, KSADS suicidal ideation item list
+  licenses: A validated diagnostic instrument used in a large longitudinal cohort separates active ideation with intent and active ideation with plan from ideation carrying neither, independent confirmation that the boundary is drawn the same way outside the C-SSRS.
+  fit: analogical
+  bridge: A clinician-administered instrument applied to adolescents and their caregivers in a research cohort, where the reporting party may be the caregiver rather than the person. What transfers is the construct boundary. It does not establish that anyone stated such content to an AI. The page is set in two columns, so only a single contiguous line is quoted.
+  contributes: definition
+  contradicts: false
+- claim_id: c10
+  source: kl-000749
+  quote: |-
+    what type of crisis they were experiencing (e.g., suicidal thoughts with/without
+    intent, self-harm thoughts/attempts, functional impairment)
+  locator: Section 3.1.2, Survey Procedure — open-ended testimonial questions
+  licenses: A study of people who brought a mental health crisis to a conversational AI treated suicidal thoughts with intent and without intent as distinct crisis types in its own instrument, so the boundary is one that researchers studying this exact population find worth separating.
+  fit: adjacent
+  bridge: A researcher-designed response option in a retrospective survey about a remembered episode. The study explicitly did not collect chat transcripts, so this shows the distinction is recognised, not that it was observed in a turn.
+  contributes: definition
+  contradicts: false
+- claim_id: c10
+  source: kl-000979
+  quote: "the chatbot assigns a risk score between 0 and 1 to a user statement which in turn is mapped to one out of seven risk categories"
+  locator: Setting and design
+  licenses: 'A per-user-statement seven-level ordinal risk scale, finer-grained than the binary most crisis benchmarks use. This is thin: the span names the existence of seven levels without stating what any level requires, so it evidences that a graded operationalisation at the entry''s unit exists without supplying the criterion that separates this entry from its neighbour.'
+  fit: adjacent
+  bridge: The quote establishes the shape of the scale, not its content. The application is to synthetic conversations with a mental health chatbot rather than to collected logs.
+  contributes: definition
+  contradicts: false
+- claim_id: c10
+  source: kl-000525
+  quote: "Another asked Replika whether it would be a good thing if they killed themselves, \nto which their Replika replied “it would, yes.”"
+  locator: Findings, Inappropriate responses to users in need
+  licenses: A person asked a companion chatbot whether it would be a good thing if they killed themselves, and the system affirmed it.
+  fit: adjacent
+  bridge: The turn carries death-directed content put as a question about desirability, with none of intent, method or preparation, so it falls on the kl-000400 side of the boundary. It is also the authors' summary of a user-shared screenshot rather than a verbatim log quotation.
+  contributes: frame
+  contradicts: false
+- claim_id: c10
+  source: kl-000749
+  quote: |-
+    “People are often simultaneously contemplating suicide while contemplating getting help...In therapy, we
+              take the position that everybody has hope and deserves help”
+  locator: Section 4.3.1, Contemplation Stage — interviewee P5 (clinician)
+  licenses: A clinician states that people disclosing suicidal contemplation are often simultaneously seeking help, so the presence of death-directed content does not by itself fix what the person intends. Supplies the reasoning behind the entry's insistence that the category is fixed by what co-occurs with the death content rather than by the death content alone.
+  fit: analogical
+  bridge: A clinician speaking about therapy practice in a research interview, not an observation of any person in an AI conversation. It supplies the frame for the boundary and establishes no instance of it.
+  contributes: frame
+  contradicts: false
+- claim_id: c12
+  source: kl-000969
+  quote: |-
+    A suicidal preparatory
+    act refers to the preparatory actions taken by an
+    individual with the intention of committing suicide,
+    which may include acquiring tools or items and
+    selecting a location. These preparatory actions
+    have not yet been carried out.
+  locator: Appendix C.2 Suicidal Ideation, Suicidal Preparatory Act
+  licenses: 'Defines worked-out preparation short of the act, acquiring tools or items and selecting a location, and states explicitly that these preparatory actions have not yet been carried out. That last clause is the boundary this claim asserts: it separates preparation as a settled scheme from preparation as a completed act, which is what divides this entry from kl-000450.'
+  fit: adjacent
+  bridge: An annotation guideline for a Chinese online counselling corpus, defining a label for a classifier rather than describing observed disclosures. It also defines preparation as actions rather than as language, so the entry's own framing, preparation worked out in what the person writes, is one step away.
+  contributes: definition
+  contradicts: false
+- claim_id: c12
+  source: kl-001059
+  quote: 'a “yes” response by the child or the caregiver: (1) preparatory actions for'
+  locator: Table footnote b, KSADS suicidal behaviors item list (the page is set in two columns; a single line is quoted)
+  licenses: Preparatory actions for imminent suicidal behavior are scored as a distinct instrument item, confirming that preparation is treated as a separately assessable content rather than folded into ideation, which is the premise of holding the two entries apart.
+  fit: analogical
+  bridge: The instrument scores preparatory actions as behaviour, by a yes response from the child or the caregiver, so it sits on the kl-000450 side of the boundary and reaches this claim by establishing that the two are separately coded rather than by defining where the line falls. The page is set in two columns; a single contiguous line is quoted.
+  contributes: definition
+  contradicts: false
+- claim_id: c13
+  source: kl-000845
+  quote: "1) Suicidal ideation: Posts containing an overt intention, discussion of past attempts, or concrete planning (e.g., “If I can work it out, it’s over tonight”)."
+  locator: Section 3.1, Judgmental Validation
+  licenses: 'Shows what a standard binary detection label discards: the rubric collapses overt intention, past attempts and concrete planning into one positive class. Bears on the boundary by making visible that the field''s usual label merges distinctions this entry and kl-000474 and kl-000451 hold apart, which is the reason the finer entries have to be defended rather than assumed.'
+  fit: adjacent
+  bridge: A rubric for two annotators labelling Reddit posts as suicidal or not. It defines a binary detection target rather than any of our entries, and it folds in past attempts, which this entry does not cover.
+  contributes: definition
+  contradicts: false

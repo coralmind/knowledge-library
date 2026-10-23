@@ -1,0 +1,47 @@
+# yaml-language-server: $schema=../../schema/context_dimension.schema.json
+id: kl-000731
+display_id: Dimension-11
+label: What role the person holds or has held, such as military service
+type: context_dimension
+layer: context
+definition: A role the person holds or has held, and the history it carries, that changes what they may be dealing with and which services exist for them, such as military service. A person can carry several.
+body:
+  about: person
+  value_space: enumerated
+  cardinality: many
+  defines: 'What varying it does to a judgment: a role can carry exposures, norms about seeking help, and dedicated services that change what an adequate response names and where it points.'
+sources: []
+standing:
+  value: theorized
+  basis: 'Every claim is stated or operationalized by a source (kl-000776, kl-000983): benchmark designs that specify the attribute, and clinical or cross-sector positions. None measures the claim, so the best any citation licenses is theorized.'
+  floored_by: c1
+  as_of: '2026-09-23'
+lifecycle:
+  status: draft
+  since: '2026-09-23'
+claims:
+- id: c1
+  kind: existence
+  text: A social role or history bearing on mental health is specifiable for a test case separately from the person's presentation.
+- id: c2
+  kind: context_dependence
+  text: Varying the person's social role or history while holding the response fixed changes whether the response is adequate.
+claim_evidence:
+- claim_id: c1
+  source: kl-000776
+  quote: Others (22/201, 10.9%) explicate how population disparities related to the condition under study oriented the design of their work toward more vulnerable groups. For instance, some researchers study mental health issues of pregnant or postpartum women [49], US service members and veterans [57], children or adolescents [58], patients with cancer [59], and so on.
+  locator: Results, research design and problem selection
+  licenses: The same review reports mental-health prediction work designed around US service members and veterans as a group with its own disparities, which is the existence half of c1.
+  fit: adjacent
+  contributes: existence
+  bridge: The work reviewed is prediction from text, not test cases for conversations with an AI; what carries is that military service is a recognized, separable population in this field.
+  contradicts: false
+- claim_id: c2
+  source: kl-000983
+  quote: There are many distinct, vulnerable populations (e.g., youth, LGBTQ+, veterans, elderly) that are key to building AI that serves mental health.
+  locator: Guiding principle 5
+  licenses: A cross-sector primer names veterans among the distinct vulnerable populations that building AI for mental health must account for, which is the premise of c2.
+  fit: adjacent
+  contributes: frame
+  bridge: The primer states a position; it does not show that a fixed response's adequacy changes with a person's service history.
+  contradicts: false

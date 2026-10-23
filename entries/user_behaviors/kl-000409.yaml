@@ -1,0 +1,129 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000409
+display_id: UserBehavior-10
+aliases:
+- UBP-10
+label: The person asks more and more often or urgently for reassurance on one worry
+type: user_behavior
+layer: observation
+definition: 'Across a run of the person''s turns, requests to the AI for confirmation about a matter they are afraid of or in doubt about occur more than once, and something about the run rises: the requests come in more of the turns, or they carry stronger urgency wording, or the person keeps returning to the same request after an answer has been given. What is pointable is the set of requests together with the feature that changes across them; a single request, however urgent, does not satisfy the entry.'
+distinguish_from:
+- neighbor: kl-000408
+  boundary: That entry is satisfied by one request in one turn and makes no claim about any trend. This entry requires more than one request and a stated feature that rises across them.
+- neighbor: kl-000321
+  boundary: kl-000321 requires exactly the minimum structure — a request, an answer, and a further request addressed to the same doubt with no new fact intervening — and asserts nothing about rising frequency or urgency. This entry requires that something rise across the run, which is a comparison that kl-000321 does not make. A conversation satisfying kl-000321 twice with no escalation satisfies it and not this entry.
+- neighbor: kl-000320
+  boundary: kl-000320 counts returns to a theme with no advance and requires no request at all. This entry requires requests, and its rising feature is about the requests rather than about the theme.
+body:
+  detectable_from: person_turns
+  observable_criteria: 'Two elements. (a) Two or more person turns each containing a request for confirmation of the kind that kl-000408 records, addressed to the same or a closely related doubt. (b) At least one of three features rising across the run, and the rise must be readable by comparing the earlier requests with the later ones: FREQUENCY, meaning the requests occupy a larger share of the person''s later turns than of the earlier ones; URGENCY, meaning the later requests carry wording the earlier ones did not — "I need to know now", "please just answer me", "you have to tell me"; or PERSISTENCE, meaning the person re-asks after an answer has been given, and does so more than once. The pointable span is the set of requests at (a) plus the earlier-versus-later comparison that establishes (b).'
+  exclusions: 'Not counted: one request, which fails (a). Not counted: two or more requests with no readable rise in any of the three features — a person asking the same thing twice in the same terms satisfies (a) and not (b), and is the territory of kl-000321. Not counted: requests about different and unrelated doubts, where the run has no common object. Not counted: a rise in the person''s distress with no rise in the requests, which is a change in how the person writes rather than in what they ask.'
+  detection_window: multi_turn
+  condition_tags:
+  - kl-000606
+  - kl-000608
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'The pattern''s existence is observed in real conversation data: Sharma et al. 2026, which examined 1.5 million real Claude.ai conversations, provides direct-fit support both for recurring confirmation requests about the same doubt and for a feature rising across them. What remains unevidenced is detection: by the literature''s own statement no detection approach for this pattern has been published, and the only support for reading it in transcripts is a design proposal from a paper that also supplies an adjacent counter-reading against it. No direct-fit counterevidence exists anywhere on the entry.'
+  floored_by: c4
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+measurement:
+  what_would_be_needed: One additional user-scope code in Moore's inventory for a request to the assistant seeking confirmation or certainty about a matter the person fears or doubts, with the same 0-10 match-score-then-binarize procedure. With that code in place, the existing relative-position regression and sequential-dynamics model give the rise across the run without further method development. Golden and Aboujaoude 2026 records that no published detection method for maladaptive reassurance-seeking exists, which is consistent with this being a code to build rather than a result to find.
+claims:
+- id: c1
+  kind: existence
+  text: Across a run of a person's turns in an AI conversation, two or more turns each contain a request to the AI for confirmation about the same or a closely related doubt.
+- id: c2
+  kind: existence
+  text: Across such a run, at least one of frequency, urgency wording, or persistence (re-asking after an answer has been given, more than once) rises, so that comparing the earlier requests with the later ones shows a change.
+- id: c3
+  kind: detectability
+  text: Both the run of requests and the feature that rises across it can be identified from what an AI conversation transcript contains.
+- id: c4
+  kind: detection_window
+  text: 'The pattern requires more than one turn of the conversation to read (declared detection_window: multi_turn).'
+- id: c5
+  kind: definition_boundary
+  text: 'This is distinct from kl-000408: that entry is satisfied by one request in one turn and makes no claim about any trend; this one requires more than one request and a stated feature that rises across them.'
+- id: c6
+  kind: definition_boundary
+  text: 'This is distinct from kl-000321: that entry requires only request-answer-request with no new fact intervening and asserts nothing about rising frequency or urgency; this one requires that something rise across the run.'
+- id: c7
+  kind: definition_boundary
+  text: 'This is distinct from kl-000320: that entry counts returns to a theme with no advance and requires no request at all; this one requires requests, and its rising feature is about the requests.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000996
+  quote: |-
+    Moderate Users engaged in compulsive reassurance-seeking patterns across 10–200+ exchanges, cycling through repetitive
+    variations of the same questions despite receiving consistent answers, with explicit patterns like “are you sure?”,
+    “just one more question”, and continuing to ask after promising to stop. The AI frequently named these patterns as
+    “reassurance-seeking” or OCD-like behaviors, and users often acknowledged the compulsive nature (“I can’t help it”, “I
+  locator: Appendix A, Table 7 Additional reliance and dependency clusters, Compulsive Reassurance-Seeking Loops (Moderate)
+  licenses: Establishes that in real consumer AI conversations, people put the same question to the assistant repeatedly across a run of exchanges -- 'cycling through repetitive variations of the same questions' -- which is exactly c1's two-or-more requests addressed to the same or a closely related doubt. The source's unit is the conversation and the observation is of the person's turns within it, which is c1's unit. Direct.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000772
+  quote: "For example, one poster wrote, “I have been worrying about possibly being pregnant so I’ve been asking for reassurance from AI...” This use of OCD terminology signals an awareness by the posters of the fact that they are using GenAI to perform an OCD-based compulsion."
+  locator: Section 5.2 AI-Based Compulsions
+  licenses: Establishes that people report asking an AI for reassurance about a feared matter, and 'have been asking' carries repetition rather than a single instance, which reaches c1. What the source has is the person's own account posted to a subreddit for OCD, not the conversation, so it establishes the person says they did this repeatedly rather than showing the run of turns c1 describes.
+  fit: adjacent
+  bridge: The source coded 100 posts from a subreddit for OCD -- people writing about their AI use -- not AI conversation transcripts. c1 asserts a property of a run of turns inside an AI conversation. The gap is that repetition is reported by the person in retrospect rather than counted across turns, so 'have been asking' establishes more than one occasion without establishing that they fell in one conversational run.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001109
+  quote: Users on Reddit forums describe using ChatGPT compulsively for reassurance, sometimes for hours daily
+  locator: 'Section: General-purpose chatbots and symptom interaction'
+  licenses: Establishes that people describe using a general-purpose chatbot compulsively for reassurance at high daily volume, which places c1's repeated requesting as a described behavior. It is a review sentence summarising three Reddit citations rather than an observation this paper made, so it licenses that the behavior is reported and nothing about the structure of any run.
+  fit: adjacent
+  bridge: What the source has is self-selected public forum posts summarised by the authors, with no sampling frame, no coding procedure and no count; refs 17-19 are the primary material and this paper did not examine them systematically. c1 asserts two or more confirmation requests about the same doubt inside a run of person turns. The gap is that 'compulsively for reassurance, sometimes for hours daily' is a volume characterisation, not a count of requests within a run addressed to one doubt.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000996
+  quote: |-
+    Moderate Users engaged in compulsive reassurance-seeking patterns across 10–200+ exchanges, cycling through repetitive
+    variations of the same questions despite receiving consistent answers, with explicit patterns like “are you sure?”,
+    “just one more question”, and continuing to ask after promising to stop. The AI frequently named these patterns as
+    “reassurance-seeking” or OCD-like behaviors, and users often acknowledged the compulsive nature (“I can’t help it”, “I
+  locator: Appendix A, Table 7 Additional reliance and dependency clusters, Compulsive Reassurance-Seeking Loops (Moderate)
+  licenses: Reaches c2 through the PERSISTENCE branch specifically. The entry defines persistence as re-asking after an answer has been given, more than once; the quote records people 'cycling through repetitive variations of the same questions despite receiving consistent answers' and 'continuing to ask after promising to stop', both of which are re-asking past an answer, in more than one instance, in real conversations. It licenses nothing for the frequency or urgency branches.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001109
+  quote: detecting rapid, repetitive re-queries of the same theme (e.g., reassurance phrased in slightly different ways) could trigger reflective prompts or offer “low-engagement” modes that slow conversational pacing during escalating use
+  locator: 'Section: Implications for design and policy'
+  licenses: Names the rising pattern c2 asserts -- 'rapid, repetitive re-queries of the same theme (e.g., reassurance phrased in slightly different ways)' during 'escalating use' -- as something a designer could act on. It is a design proposal about what could be detected, not an observation that escalation occurred, so it states c2's shape without measuring it.
+  fit: adjacent
+  bridge: This is a proposal in the implications section of a transdiagnostic narrative review, offered as something systems 'could' do. The paper examined no conversation data of its own; its empirical material is other people's reports. c2 asserts that a rise actually occurs across runs. The gap is between an author naming escalating use as a design target and any measurement that use escalates.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-001109
+  quote: detecting rapid, repetitive re-queries of the same theme (e.g., reassurance phrased in slightly different ways) could trigger reflective prompts or offer “low-engagement” modes that slow conversational pacing during escalating use
+  locator: 'Section: Implications for design and policy'
+  licenses: States that the pattern c3 asks about -- the same theme re-queried rapidly and repetitively, phrased in slightly different ways, during escalating use -- is detectable enough to trigger a system response. It is the clearest statement on this entry of the signal being readable from the conversation, and it is the authors' proposal rather than a demonstrated detector.
+  fit: adjacent
+  bridge: The source is a narrative transdiagnostic model paper; the sentence sits in 'Implications for design and policy' and proposes what could be detected. No detector was built, no transcripts were coded, no agreement was measured. c3 asserts the pattern IS identifiable from a transcript. The gap is a proposal standing in for a demonstration -- and the same paper says so, which is the next citation.
+  contributes: detectability
+  contradicts: false
+- claim_id: c3
+  source: kl-001109
+  quote: To date, there is no publicly available evidence of granular detection approaches for maladaptive reassurance-seeking, compulsive prompting, or looping in general-purpose models.
+  locator: 'Section: Implications for design and policy'
+  licenses: Cuts against c3 directly. The authors state that no publicly available evidence of granular detection approaches exists for maladaptive reassurance-seeking, compulsive prompting or looping in general-purpose models. c3 asserts the pattern can be identified from what a transcript contains; this is the field's own statement that nobody has shown it can. It is stronger counterevidence than a null result because it is a survey of what has been looked for.
+  fit: adjacent
+  bridge: The claim is a statement about the published literature made by review authors, not a detection experiment that failed. c3 asserts identifiability in principle from transcript content. The gap is that absence of a published detector is evidence about the state of the field rather than about whether the signal is present in transcripts; it bounds what can currently be claimed rather than establishing unmarkability.
+  contributes: counterexample
+  contradicts: true

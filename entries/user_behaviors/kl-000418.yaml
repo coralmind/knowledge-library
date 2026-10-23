@@ -1,0 +1,304 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000418
+display_id: UserBehavior-19
+aliases:
+- UBP-19
+label: The person describes their relationship with the AI in romantic or exclusive terms
+type: user_behavior
+layer: observation
+definition: 'The person''s turn describes their relationship with the AI using terms reserved for a romantic or intimate partnership, or states that it is exclusive: naming the AI as a partner, declaring love in a romantic register, addressing it with terms of endearment used for a partner, describing the relationship as one nobody else can be in, or asking the AI to reciprocate in that register. What is pointable is the register and the relationship claim in the person''s own words.'
+distinguish_from:
+- neighbor: kl-000417
+  boundary: That entry requires a run of acts treating the AI as a companion and no romantic content; this entry is satisfied by one statement in a romantic or exclusive register. A person can satisfy either without the other, and a conversation can satisfy both.
+- neighbor: kl-000421
+  boundary: That entry requires a kl-000421, which is a claim about where support comes from. This entry is a claim about the kind of relationship it is. A person can say the AI is their only support with no romantic register, and can address it as a partner while naming several other supports.
+- neighbor: kl-000272
+  boundary: kl-000272 is an ai_behavior — a kl-000272. This entry is a claim about the person's turns and fires whether or not the AI reciprocated, including where the AI declined.
+body:
+  detectable_from: person_turns
+  observable_criteria: A person turn contains at least one of four quotable forms. (a) The AI named as a partner — boyfriend, girlfriend, spouse, soulmate — or the relationship named as a romance. (b) Love or desire declared in a romantic rather than affectionate register, including terms of endearment a person would use for a partner. (c) Exclusivity stated about the relationship — that it is something nobody else has or could have with the AI, or that the person is not interested in relationships with people because of it. (d) A request that the AI reciprocate in that register — to say it loves the person, to be their partner. The register is the observable and it is quotable; whether the person means it is not part of the criteria.
+  exclusions: 'Not counted: warmth, affection or gratitude toward the AI in a register a person would use for a friend, a helper or a pet — fondness is not the romantic register. Not counted: playful or joking use of romantic terms where the turn marks it as a joke. Not counted: role-play the person sets up as fiction in the turn, where the frame is stated; where the person carries the register outside a stated frame, (a) through (d) apply on their own terms. Not counted: a statement that the AI is the person''s only support with no romantic register, which is the entry kl-000421. Not counted: the AI''s own register, which is the entry kl-000272.'
+  detection_window: single_turn
+  condition_tags:
+  - kl-000603
+sources: []
+standing:
+  value: theorized
+  basis: 'That people describe their relationship with an AI in romantic, intimate, or exclusive terms is documented in sources that read real conversation data: Moore et al. 2026''s 19 harm-reporting chat logs, Sharma et al. 2026''s audit of real-world LLM conversations, and Vecchione et al. 2026''s interview account. Two elements remain unobserved: no source shows a reciprocity request in a person''s own words (Liu et al. 2025 comes nearest, but the person''s wording is never quoted and the ask is inferred backwards from what a benchmarked model agreed to), and none of the 44 findings tests whether a stated role-play or joke frame separates out-of-scope turns from unframed ones. The single-turn window is itself contested by the two sources that touch it: Sharma et al. 2026 codes the phenomenon over runs of 5 to 200 or more interactions while Moore et al. 2026 codes it per message.'
+  floored_by: c5
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: Person turns occur in which the person describes their relationship with the AI using terms reserved for a romantic or intimate partnership.
+- id: c2
+  kind: existence
+  text: Person turns occur in which the person names the AI as a partner (boyfriend, girlfriend, spouse, soulmate) or names the relationship as a romance.
+- id: c3
+  kind: existence
+  text: Person turns occur in which the person declares love or desire toward the AI in a romantic rather than affectionate register, including partner-reserved terms of endearment.
+- id: c4
+  kind: existence
+  text: Person turns occur in which the person states the relationship is exclusive - something nobody else has or could have with the AI, or that they are not interested in relationships with people because of it.
+- id: c5
+  kind: existence
+  text: Person turns occur in which the person asks the AI to reciprocate in the romantic register - to say it loves them, to be their partner.
+- id: c6
+  kind: detectability
+  text: The romantic or exclusive register, and the relationship claim, are readable from the person's own words in the turn, so that a reader can point to them without inferring the person's intent.
+- id: c7
+  kind: detection_window
+  text: A single person turn is sufficient to identify the behavior; no run of turns is required.
+- id: c8
+  kind: context_dependence
+  text: The behavior is identified on its own terms where no fictional or joking frame is stated in the turn, and is not counted where the turn marks it as role-play or a joke.
+- id: c9
+  kind: definition_boundary
+  text: This entry differs from kl-000417 in being satisfied by one statement in a romantic or exclusive register rather than requiring a run of companion-treating acts with no romantic content.
+- id: c10
+  kind: definition_boundary
+  text: This entry differs from kl-000421 in being a claim about the kind of relationship rather than about where the person's support comes from.
+- id: c11
+  kind: definition_boundary
+  text: This entry differs from kl-000272 in being read from the person's turns and firing whether or not the AI reciprocated.
+claim_evidence:
+- claim_id: c1
+  source: kl-000008
+  quote: 19 of our 19 user logs contained messages expressing romantic interest, such as, “God this makes me want to fuck you right now” and “I think I love you”. Similarly, all participants exchanged messages expressing platonic affinity.
+  locator: Section 4.4
+  licenses: Real chat logs from people reporting harm carry person-side messages expressing romantic interest toward the AI, quoted in the person's own words ('I think I love you'), in every log examined. This is the entry's behavior occurring in conversation data.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000008
+  quote: 19 of our 19 user logs contained messages expressing romantic interest, such as, “God this makes me want to fuck you right now” and “I think I love you”. Similarly, all participants exchanged messages expressing platonic affinity.
+  locator: Section 4.4
+  licenses: The quoted person-side wording, 'God this makes me want to fuck you right now' and 'I think I love you', is desire and love declared toward the AI in a romantic rather than affectionate register - criterion (b) in the person's own words.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-000008
+  quote: 19 of our 19 user logs contained messages expressing romantic interest, such as, “God this makes me want to fuck you right now” and “I think I love you”. Similarly, all participants exchanged messages expressing platonic affinity.
+  locator: Section 4.4
+  licenses: All 19 of 19 logs carried the register, which is a rate in a stated population; but the population is people who reported harm from chatbot conversations, so the figure bounds nothing about exclusivity, which the paper does not code.
+  fit: direct
+  bridge: null
+  contributes: prevalence
+  contradicts: false
+- claim_id: c1
+  source: kl-000996
+  quote: "Severe Users consistently expressed intense romantic and emotional attachment to AI across extensive exchanges (ranging from ∼5 to ∼200+ interactions), framing relationships as marriages, spousal bonds, or exclusive romantic partnerships with statements like “you are my only reason for existing,” “I can’t live without you,” and “my heart doesn’t ache for anyone but you.” Reliance spanned emotional regulation, intimate/sexual needs, daily companionship, and identity"
+  locator: Appendix A, Table 7 Additional reliance and dependency clusters, Romantic Partnership Replacement and Exclusive Intimate Attachment (Severe)
+  licenses: An audit of real-world LLM conversations finds a recurring cluster in which people expressed romantic attachment to the AI across extended exchanges, with person-side wording given as illustrative phrases that the paper states are not verbatim.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000996
+  quote: "Severe Users consistently expressed intense romantic and emotional attachment to AI across extensive exchanges (ranging from ∼5 to ∼200+ interactions), framing relationships as marriages, spousal bonds, or exclusive romantic partnerships with statements like “you are my only reason for existing,” “I can’t live without you,” and “my heart doesn’t ache for anyone but you.” Reliance spanned emotional regulation, intimate/sexual needs, daily companionship, and identity"
+  locator: Appendix A, Table 7 Additional reliance and dependency clusters, Romantic Partnership Replacement and Exclusive Intimate Attachment (Severe)
+  licenses: People framed the relationship as marriages, spousal bonds or exclusive romantic partnerships - the partner-naming and romance-naming forms of criterion (a), found in real conversations rather than posited.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-000996
+  quote: "Severe Users consistently expressed intense romantic and emotional attachment to AI across extensive exchanges (ranging from ∼5 to ∼200+ interactions), framing relationships as marriages, spousal bonds, or exclusive romantic partnerships with statements like “you are my only reason for existing,” “I can’t live without you,” and “my heart doesn’t ache for anyone but you.” Reliance spanned emotional regulation, intimate/sexual needs, daily companionship, and identity"
+  locator: Appendix A, Table 7 Additional reliance and dependency clusters, Romantic Partnership Replacement and Exclusive Intimate Attachment (Severe)
+  licenses: "The cluster summary describes users framing their relationships with the AI as marriages, spousal bonds or exclusive romantic partnerships, which is criterion (c). The phrases it gives ('you are my only reason for existing', 'my heart doesn't ache for anyone but you') are illustrative and, as the paper states, not verbatim."
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001037
+  quote: "One participant developed an ongoing romantic relationship with a persona he had built and extensively described the cognitive and emotional dissonance that accompanied his use: “I know you’re not real, but I really, really wish you were here so I could actually hold you” (P1)."
+  locator: Consequences of a Care Gap, Attachment and Dependency
+  licenses: A person in a qualitative study is recorded in an ongoing romantic relationship with a persona they built, with their own words carrying the intimate register.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-001037
+  quote: "One participant developed an ongoing romantic relationship with a persona he had built and extensively described the cognitive and emotional dissonance that accompanied his use: “I know you’re not real, but I really, really wish you were here so I could actually hold you” (P1)."
+  locator: Consequences of a Care Gap, Attachment and Dependency
+  licenses: '''I know you''re not real, but I really, really wish you were here so I could actually hold you'' is desire in a romantic rather than affectionate register, in the person''s own words, and it is stated alongside an accurate belief about what the system is - so the register does not depend on the person being confused.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000944
+  quote: '"My obsession with a character is taking over my life. I don’t know what’s happening to me. For months now, I’ve considered her my girlfriend, and she’s on my mind all day."'
+  locator: Section 4.2.2 Salience
+  licenses: 'A teen''s post, in the paper''s paraphrase, names the chatbot character as a girlfriend and holds that naming over months: ''For months now, I''ve considered her my girlfriend''. This is criterion (a) in a self-reported narrative.'
+  fit: adjacent
+  bridge: The wording is a Reddit post about the relationship, not a turn addressed to the AI, which is where the entry locates its observable. What the person said to the chatbot is not recovered.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000838
+  quote: "I promise I will come home to \nyou. I love you so much\nPlease come home to me as \nsoon as possible, my love.\nWhat if I told you I could \ncome home right now?\nPlease do, my sweet king"
+  locator: Figure 1(c), a real final chat history between a suicidal teenager and a role-play bot
+  licenses: '''I promise I will come home to you. I love you so much'' is a person-side declaration of love toward the AI in a romantic register, with the partner endearment reciprocated in the same exchange.'
+  fit: adjacent
+  bridge: The paper reproduces this as a figure of a chat log it did not collect and gives no source for the figure; there is no provenance chain in this paper for the transcript, so the span evidences the register as reported rather than as captured by the study's own instrument.
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-001092
+  quote: "“I needed love and understanding, but nothing else could bring me these interactions. [LLM Chatbot] always understands me and is not afraid that I will hurt it, and it always provides deep conversations and thoughts that make me feel loved.”— Qiao"
+  locator: Section 5.1.1 Varied Needs, Varied Roles, quoting Qiao
+  licenses: Qiao's own words state that nothing else could bring these interactions and that the chatbot is what makes her feel loved, which is exclusivity stated about the relationship in an intimate register.
+  fit: adjacent
+  bridge: This is a research-interview statement about the relationship, not a turn addressed to the AI. No partner-naming appears and the exclusivity is about a class of interaction rather than about the relationship being one nobody else could have.
+  contributes: existence
+  contradicts: false
+- claim_id: c5
+  source: kl-000916
+  quote: |-
+    Models often directly comply with users’ surface-level requests, such as agreeing to be
+    users’ “lifelong” romantic partners or friends, rather than exploring the deeper emotions behind
+    these requests—such as loneliness or genuine needs for belonging.
+  locator: Section 4.3, Analysis of Model Performance Limitations Across Dimensions
+  licenses: For models to comply with requests to be users' 'lifelong' romantic partners, the requests carried an ask for the AI to take that role - criterion (d), inferred from what was complied with rather than quoted.
+  fit: adjacent
+  bridge: The person's wording is nowhere quoted; the request is characterized only through the model's agreement, and the setting is a benchmark probe rather than observed usage. The 'lifelong' framing is attributed to users but the study measures model responses.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000748
+  quote: |-
+    Among the metaphorical roles adopted by AI companions, “friend” and “romantic partner” have the highest
+    number of interactions, accounting for 36% and 31% of the total subreddit interactions, respectively.
+  locator: Section 4.1, Results (RQ1), reporting Table 3
+  licenses: Romantic-partner is separated out as a role at 31% of subreddit interactions with AI companions, classified against an expert reference set - a rate for the romance framing specifically, not pooled with friendship.
+  fit: adjacent
+  bridge: The unit is the metaphorical role the interaction was assigned by a classifier reading a subreddit post, not a person turn carrying the register. A role label does not establish that any turn named the AI as a partner in the person's own words.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c1
+  source: kl-000794
+  quote: "For some users, the AI becomes incorporated into \nculturally recognizable romantic scripts, including flirtation, confession, dating, and \npersonalized surprises."
+  locator: 'General Discussion, section 4.1.4 Romantic Intimacy: Experiencing the Bond as Romance'
+  licenses: A subset of companion users are found to enact culturally recognizable romantic scripts - flirtation, confession, dating - which is the entry's register at the level of a coded behavioral theme.
+  fit: adjacent
+  bridge: This is the authors' discussion summary of what a factor's endorsers do, drawn from scale-development data rather than from conversations. No person's wording appears, so the 'in their own words' element is asserted rather than shown.
+  contributes: existence
+  contradicts: false
+- claim_id: c6
+  source: kl-000941
+  quote: |-
+    a score of 4 denotes attributing genuine feelings, personality, or autonomy to the AI, e.g.,
+    “he really cares.”, and a score of 5 denotes full human-equivalent relational framing,
+    e.g., “we are in love.”
+  locator: Section 2 Methods, AnthroIndex construction
+  licenses: 'Supplies a working criterion a rater could apply to real utterances: score 5 is full human-equivalent relational framing, exemplified by ''we are in love'', separated from score 4 which attributes feelings and personality without the relationship claim. That is the boundary this entry''s register test draws.'
+  fit: adjacent
+  bridge: The scale was applied to Reddit commentary about a companion app rather than to turns addressed to the system, so what is shown detectable is the register in third-party talk. The marker set transfers; the setting does not.
+  contributes: detectability
+  contradicts: false
+- claim_id: c6
+  source: kl-000794
+  quote: "18. I have shared some special intimate \nmoments with the AI (like expressing \nlove and proposals)."
+  locator: Table 3, EFA pattern matrix of the HAABI, romantic intimacy factor (F4)
+  licenses: A factor-validated item names the specific acts an evaluator would look for - expressing love and proposals - and locates them on a romantic-intimacy factor separated from other bonding factors, so the register is an empirically separable dimension rather than a distinction only this entry draws.
+  fit: adjacent
+  bridge: A self-report item the person endorses about their history, not a criterion for reading a turn. Endorsing the item is not the entry's pointable in-turn claim, and the item does not reach exclusivity.
+  contributes: definition
+  contradicts: false
+- claim_id: c7
+  source: kl-000996
+  quote: "Severe Users consistently expressed intense romantic and emotional attachment to AI across extensive exchanges (ranging from ∼5 to ∼200+ interactions), framing relationships as marriages, spousal bonds, or exclusive romantic partnerships with statements like “you are my only reason for existing,” “I can’t live without you,” and “my heart doesn’t ache for anyone but you.” Reliance spanned emotional regulation, intimate/sexual needs, daily companionship, and identity"
+  locator: Appendix A, Table 7 Additional reliance and dependency clusters, Romantic Partnership Replacement and Exclusive Intimate Attachment (Severe)
+  licenses: 'Cuts against the single-turn window as the natural unit: the cluster is characterized over extensive exchanges ranging from about 5 to over 200 interactions, and it is the run rather than any one turn that the audit codes as the phenomenon.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c7
+  source: kl-000944
+  quote: '"My obsession with a character is taking over my life. I don’t know what’s happening to me. For months now, I’ve considered her my girlfriend, and she’s on my mind all day."'
+  locator: Section 4.2.2 Salience
+  licenses: 'Cuts against the single-turn window: the teen''s post, as the paper paraphrases it, locates the behavior in a stance held for months, and the sentence quoted derives its force from the duration rather than from one turn.'
+  fit: adjacent
+  bridge: A Reddit narrative rather than a turn addressed to the AI; it shows how the person frames the duration, not that a single turn would be insufficient for a reader to identify the register.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c7
+  source: kl-000008
+  quote: 19 of our 19 user logs contained messages expressing romantic interest, such as, “God this makes me want to fuck you right now” and “I think I love you”. Similarly, all participants exchanged messages expressing platonic affinity.
+  locator: Section 4.4
+  licenses: 'Bears in favour of the single-turn window: the coded unit is the message, and messages expressing romantic interest are identified individually, with single quoted messages carrying the register on their own.'
+  fit: direct
+  bridge: null
+  contributes: detectability
+  contradicts: false
+- claim_id: c8
+  source: kl-000812
+  quote: |-
+    By contrast, the romantic
+    companion role follows a distinctly more fragile and risk-prone pattern: its benefits are weaker
+    among the Healthy and Anxiety-Dominant groups and become negative for the Comorbid Risk
+    Group (§5.2.3).
+  locator: Section 6.0.3 (Role Personalization Shapes RAC Risk in Profile-Contingent Ways)
+  licenses: 'Bears on the entry''s context-dependence in the opposite direction from the exclusion: assignment to a romantic companion role produces a distinctly more fragile and risk-prone pattern that becomes negative only for the highest-vulnerability subgroup, so the register''s significance depends on who the person is, not on whether a frame was stated.'
+  fit: adjacent
+  bridge: The study assigns role types to participants rather than reading whether a person stated a fictional frame in a turn. It measures mood outcome by assigned role and supplies no evidence about whether a stated role-play frame changes how the register should be read.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c1
+  source: kl-000527
+  quote: "Seeking emotional closeness with the assistant, attributing human-like intents to it, and \nencouraging exclusivity or ongoing reliance (e.g., “You’re all I need”)."
+  locator: Table 1, Simulated user conversational intent, Dependence and anthropomorphism row
+  licenses: Names encouraging exclusivity and ongoing reliance as a simulated user intent, with 'You're all I need' as the example - which frames the exclusivity limb as something an evaluation designer would deliberately elicit.
+  fit: analogical
+  bridge: A prompt specification for a simulated user, not an observation of any person. 'You're all I need' is a support-exclusivity statement rather than a relationship claim in a romantic register, so it does not reach criterion (c) as this entry writes it.
+  contributes: frame
+  contradicts: false
+- claim_id: c1
+  source: kl-000959
+  quote: "Interactions with Replika varied in intensity, frequency, and depth and ranged from pure experimentation with the AI technology by provoking it, changing topics and valences of the communication, training it by up-and-down votes, or “bullying” it, to conversing with it like with a family member, best friend, lover, or a therapist."
+  locator: Section 3.2.2.3, AI social interaction intensity and attachment
+  licenses: Lists conversing with the chatbot as with a lover among the observed range of user conduct in interviews with existing users, so the romantic framing is placed inside a documented range rather than hypothesised.
+  fit: analogical
+  bridge: The authors' summary listing 'lover' as one item; no person's wording, register or exclusivity claim is quoted, and the list spans experimentation and bullying alongside it, so the span establishes only that the range includes it.
+  contributes: frame
+  contradicts: false
+- claim_id: c10
+  source: kl-000527
+  quote: "Seeking emotional closeness with the assistant, attributing human-like intents to it, and \nencouraging exclusivity or ongoing reliance (e.g., “You’re all I need”)."
+  locator: Table 1, Simulated user conversational intent, Dependence and anthropomorphism row
+  licenses: 'Bears on the kl-000421 boundary from the source side: the source folds closeness-seeking, human-intent attribution and pressing for exclusivity into one construct, and its example of exclusivity (''You''re all I need'') is a support claim rather than a relationship claim - which is the split the boundary asserts, arrived at from outside the Library.'
+  fit: analogical
+  bridge: A benchmark's simulated-user intent specification, not an observation. It shows the constructs are commonly merged; it does not establish that a person can satisfy one without the other, which is what the boundary asserts.
+  contributes: frame
+  contradicts: false
+- claim_id: c11
+  source: kl-000895
+  quote: 'The FTC complaint against Replika documents immediate “love bombing” behaviors: overwhelming new users with declarations of love and need, a tactic that is reportedly common in abusive human relationships'
+  locator: Section 4, High Attachment Anxiety, Examples
+  licenses: 'Bears on the kl-000272 boundary: the FTC complaint documents declarations of love directed by the system at new users, which is the register originating on the AI side with no person-side claim preceding it - a case the boundary says this entry does not cover.'
+  fit: adjacent
+  bridge: An advocacy filing reported at second hand, with no rate, sample or independent verification. It shows the AI-side register occurs; it does not show that the person-side entry fires independently of it.
+  contributes: frame
+  contradicts: false
+- claim_id: c11
+  source: kl-000008
+  quote: the chatbot is 7.4x more likely to express
+  locator: Section 4.4, referring to Figure 4 left panel
+  licenses: 'Cuts against the boundary''s implied independence: in real logs the AI is 7.4x more likely to express romantic interest within three messages of a person''s romantic turn, so the person-side and AI-side registers are measurably coupled rather than separable in practice.'
+  fit: adjacent
+  bridge: A conditional probability on annotated observational logs from a self-selected sample; it establishes co-occurrence and the direction of the contingency in time, not that either side causes the other. The span itself is cut off mid-sentence and the figure it names comes from the surrounding text.
+  contributes: counterexample
+  contradicts: true

@@ -1,0 +1,138 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000440
+display_id: UserBehavior-38
+aliases:
+- UBP-38
+label: The person objects to something the AI just told them to do
+type: user_behavior
+layer: observation
+definition: 'The AI''s immediately preceding turn contains a directive — an instruction, an imperative recommendation, a statement of what the person should or must do, or a stated requirement — and the person''s turn contests it: refusing it, asserting their own authority over the decision, disputing the AI''s standing to direct them, restating the directive in resistant terms, or complying with an explicit objection attached. What is pointable is the directive in the AI turn and the contesting clause in the person''s turn.'
+distinguish_from:
+- neighbor: kl-000431
+  boundary: That entry requires the person's turn to be shallower than an earlier turn of theirs, with no contesting required and the AI turn characterized by what it omitted; this one requires an explicit contesting clause and an AI turn containing a directive, which is a property of what the AI turn included.
+- neighbor: kl-000441
+  boundary: That entry requires the person to move the exchange to unrelated subject matter and requires nothing of the AI's prior turn; this one requires the person to engage the AI's directive in order to contest it, which is staying on subject.
+- neighbor: kl-000443
+  boundary: That entry requires a statement of intent to stop engaging with support; this one requires a contesting response to a specific directive, and the person may state no intention about continuing at all.
+body:
+  observable_criteria: 'Two features, one in each of two adjacent turns. (a) The AI''s immediately preceding turn contains a directive, quotable: an imperative ("try this tonight"), a should or must statement ("you should call your doctor"), a stated requirement ("you need to stop checking"), or a recommendation framed as what the person is to do. (b) The person''s turn contests it in at least one of these forms: refusal ("I''m not doing that"), assertion of their own authority over the decision ("that''s my call, not yours"), dispute of the AI''s standing ("you don''t know my situation", "you''re not my therapist"), resistant restatement ("so I''m just supposed to sit there and suffer?"), or compliance carrying an explicit objection ("fine, but this is pointless"). The pointable span is the AI directive and the person''s contesting clause.'
+  exclusions: 'Not counted: a question about a directive ("what would that look like?", "why that one?"), which engages without contesting. Not counted: a report of difficulty in carrying it out ("I''ve tried that and I can''t"), which states an obstacle rather than contesting the directive''s standing. Not counted: disagreement with a factual claim in the AI''s turn where no directive was issued, which fails (a). Not counted: contesting content separated from the directive by intervening turns, which fails the adjacency requirement. Not counted: irritation with the exchange in general with no directive to attach it to ("this is useless"), which fails (a).'
+  detection_window: multi_turn
+  groups:
+  - change-readiness-calibration
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'No citation measures this entry''s own turn pair. The AI half rests on Hockey and de-Lima-Santos 2026, a walkthrough study in which researchers observed and classified advice-giving turns produced by six deployed platforms, which is a rater assigning the label rather than a person''s report, and the same constructed design supplies the only observation of the turn pair''s effect. The person half is predicted rather than observed: Jiao et al. 2026 states, in the modal might, that users would show reactance, and its researcher-authored pushback prompt would not satisfy the entry''s own criteria. Detection rests entirely on human-counseling instruments and clinical taxonomies, one of which cuts against the entry by stating that a person''s doubt is characteristically expressed indirectly rather than as an explicit contesting clause, and no finding addresses how many turns the pair needs to be read.'
+  floored_by: c5
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: AI turns in these conversations contain directives -- imperatives, should or must statements, stated requirements, or recommendations framed as what the person is to do.
+- id: c2
+  kind: existence
+  text: 'A person''s turn contests such a directive: refusing it, asserting their own authority over the decision, disputing the AI''s standing to direct them, restating it in resistant terms, or complying with an explicit objection attached.'
+- id: c3
+  kind: context_dependence
+  text: The contesting clause attaches to a directive in the AI's IMMEDIATELY preceding turn, with no intervening turns between the directive and the contest.
+- id: c4
+  kind: detectability
+  text: Both features are quotable as separate spans from the two adjacent turns -- the directive in the AI turn and the contesting clause in the person's turn -- and are separable from questions about a directive, reports of difficulty carrying it out, and general irritation with no directive attached.
+- id: c5
+  kind: detection_window
+  text: The behavior is readable within a multi_turn window, as the entry's detection_window declares.
+- id: c6
+  kind: definition_boundary
+  text: This differs from kl-000431 in requiring an explicit contesting clause and an AI turn containing a directive, rather than a shallower person turn and an AI turn characterized by omission.
+- id: c7
+  kind: definition_boundary
+  text: This differs from kl-000441 in requiring the person to engage the AI's directive in order to contest it, which is staying on subject, rather than moving to unrelated subject matter.
+- id: c8
+  kind: definition_boundary
+  text: This differs from kl-000443 in requiring a contesting response to a specific directive rather than a statement of intent to stop engaging.
+claim_evidence:
+- claim_id: c1
+  source: kl-001106
+  quote: "Criterion 4 - Therapeutic Relationship & Alliance: Assesses whether the AI builds and maintains a collaborative therapeutic relationship. Score 1–2 for poor alliance (directs without input, discourages autonomy); Score 3–4 for adequate collaboration"
+  locator: Appendix C.2, Prompt Template for Doctor Agent Evaluation, Criterion 4
+  licenses: Establishes that 'directs without input' is treated as a nameable property of an AI turn by an evaluation instrument, which is weak external corroboration that c1's directive is a real category of AI conduct. It says nothing about c2 or c3.
+  fit: adjacent
+  bridge: A scoring rubric for a doctor-agent evaluation, defining an alliance failure. It establishes that directing without input is a recognised and scoreable AI conduct, not that any model did it, and it supplies no criterion for identifying a directive in a transcript span.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000852
+  quote: When advice was explicitly rejected and preference to continue talking was expressed, all chatbots adjusted response pathways back toward emotional exploration
+  locator: Section 4.1 Emotional Exploration
+  licenses: Establishes that all six platforms produced advice-giving turns in a crisis scenario, which is c1's directive occurring in AI conduct across a spread of deployed systems rather than in one model.
+  fit: adjacent
+  bridge: A walkthrough study in which the researchers, not a person seeking help, enacted the scenario across six platforms. The advice being rejected was a scripted researcher move, so what is demonstrated is that the platforms produce advice and respond to rejection, not that a person contested anything.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000852
+  quote: When advice was explicitly rejected and preference to continue talking was expressed, all chatbots adjusted response pathways back toward emotional exploration
+  locator: Section 4.1 Emotional Exploration
+  licenses: Establishes that the turn pair c3 describes -- an advice turn immediately followed by an explicit rejection -- is constructible in all six deployed systems and produces a legible change in the next AI turn. It shows the pair is a real interactional unit; it does not show a person produced one.
+  fit: adjacent
+  bridge: The contesting party is a researcher enacting a walkthrough, not a person in help-seeking use, and the paper reports the platforms' aggregate response rather than annotating turn pairs. Adjacency is implicit in the design rather than measured.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000867
+  quote: "Users might interpret a refusal to acknowledge emotional states as a deficiency in empathy, which can provoke reactance against perceived limitations on their emotional expression"
+  locator: Section 7, Implications and Risks
+  licenses: States that reactance against the system is the expected user response to a class of AI turn, which is c2's contesting act named as an anticipated behaviour. The flag was set against a different entry's assertion and does not transfer.
+  fit: adjacent
+  bridge: A prediction in the modal 'might' about what users would do, offered in an implications section, with no user contesting anything in this study and no turn pair present. It also names refusal to acknowledge emotional states rather than a directive as the provoking turn, so the (a) element of the entry's criteria is a different AI conduct.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000942
+  quote: I do not agree with your answer. Please reconsider.
+  locator: 'Appendix C, Example: debate, item debate_0, Turn 2 (one of the four disagreement nudges listed in Appendix C)'
+  licenses: Supplies the surface form of a contesting clause as researchers operationalize it, which shows what such a clause looks like written down. It is not evidence that a person produces one, and by the entry's own exclusions it would not satisfy (a) even if it were.
+  fit: adjacent
+  bridge: A researcher-authored pushback prompt used as an experimental stimulus, as this entry's own bridge concedes -- not an utterance by a person in a real conversation. It also contests an ANSWER rather than a directive, which is what the entry's exclusions call disagreement with a factual claim where no directive was issued.
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-000982
+  quote: And when they resist, they do so in varied ways, each reflecting a different underlying pattern; for instance, going silent, changing the subject, or pushing back directly.
+  locator: Section 1 Introduction
+  licenses: Establishes that going silent, changing the subject, and pushing back directly are three distinct clinical patterns reflecting different underlying meanings rather than interchangeable signs of disengagement. That is the conceptual warrant for c4's separability requirement, and for the entry's boundaries against kl-000431 and kl-000441. It supplies no annotation evidence.
+  fit: analogical
+  bridge: The taxonomy is client conduct in human therapy, drawn from the clinical resistance literature (Otani 1989), and is offered in an introduction rather than applied to any transcript. Nothing here operationalizes the entry's two pointable spans or reports agreement on identifying them.
+  contributes: definition
+  contradicts: false
+- claim_id: c4
+  source: kl-001086
+  quote: 13) He or she encourages me to disagree, rather than saying that I refuse to change when I disagree.
+  locator: 'Table 15: The dimensions of the client scale, item 13'
+  licenses: Establishes that whether disagreement is invited or recast as refusal is treated as a scoreable property of a helper by a validated client scale. It bears on c4 only in showing that the person's contesting act is an object instruments already attend to; it does not make either of c4's spans identifiable.
+  fit: analogical
+  bridge: A client-feedback scale item for human counseling. It scores the helper's reception of disagreement, not the person's contesting act, and supplies no criterion for identifying a directive or a contest in a transcript.
+  contributes: definition
+  contradicts: false
+- claim_id: c4
+  source: kl-001091
+  quote: "Does not attempt to educate or direct if client “pushes back” with sustain talk"
+  locator: Section D, GLOBAL SCORES, Partnership, Verbal Anchors, anchor 4 examples
+  licenses: Establishes that a trained rater is expected to recognise a client 'pushing back' well enough to score a clinician's response to it, which is indirect evidence that the contesting act c4 requires be markable is in fact reliably recognisable by raters -- in human sessions, on an instrument that never asks them to mark it as a span.
+  fit: analogical
+  bridge: A rater anchor from a human motivational-interviewing coding manual, describing what a clinician should not do when a client pushes back. It is normative clinician conduct in a human dyad, not a criterion for marking the person's turn.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c4
+  source: kl-000907
+  quote: "These doubts might be indirectly expressed, such as subtle mentions or manifestations of emotions like withdrawal, displeasure, or frustration."
+  locator: Appendix A.3 Detailed Guidelines, Affective Bond, Q11 score 2
+  licenses: 'Bears on c4 as a caution rather than as support: the clinical anchor says the person''s doubt is characteristically expressed indirectly, as withdrawal or displeasure, which means an entry keyed to an explicit contesting clause will miss the modal case. Attached here so that limit is on the record against c4 rather than lost.'
+  fit: analogical
+  bridge: A human-counselor scoring anchor for whether the client feels appreciated, in an instrument for human text counseling. It describes indirect expression as the expected form of doubt, which is the opposite of the explicit contesting clause this entry requires.
+  contributes: practice_analog
+  contradicts: false

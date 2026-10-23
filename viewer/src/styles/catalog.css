@@ -1,0 +1,378 @@
+/*
+ * The catalog: a rail of entry kinds, a filter bar, compact rows and pages.
+ * Unlayered, so it overrides the brand's cascade layers. Uses brand tokens only.
+ */
+
+.catalog {
+  max-width: 1320px;
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-8);
+}
+
+.catalog__head {
+  margin-bottom: var(--space-4);
+}
+
+.catalog__head h1 {
+  font-size: var(--fs-title-page);
+  margin: var(--space-1) 0 6px;
+}
+
+.catalog__head p:not(.eyebrow) {
+  margin: 0;
+  max-width: 72ch;
+}
+
+/* The rail runs down the left column from the top; the heading and the rows share the right. */
+.catalog__grid {
+  display: grid;
+  grid-template-columns: 224px minmax(0, 1fr);
+  grid-template-areas:
+    'rail head'
+    'rail main';
+  grid-template-rows: auto 1fr;
+  column-gap: var(--space-6);
+  align-items: start;
+}
+
+.catalog__head {
+  grid-area: head;
+}
+
+.catalog__rail {
+  grid-area: rail;
+}
+
+.catalog__main {
+  grid-area: main;
+}
+
+/* Rail. Its drawer wrapper (RailDrawer) is what stays in view on wide screens.
+   It scrolls, so it carries the rail's 8px pull to the left as padding (a
+   scroller clips anything outside it, which squared off the highlighted row)
+   and keeps room on the right so the counts clear the scrollbar. */
+.rail-drawer {
+  position: sticky;
+  top: calc(var(--space-8) + var(--space-4));
+  max-height: calc(100vh - var(--space-8) - var(--space-6));
+  overflow: auto;
+  margin-left: -8px;
+  padding: 0 14px 0 8px;
+  scrollbar-gutter: stable;
+}
+
+.cat-rail {
+  padding-bottom: var(--space-4);
+}
+
+.cat-rail__h {
+  margin: 0 0 var(--space-2) 8px;
+}
+
+.cat-rail a {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: 5px 8px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  color: var(--color-body);
+  font-size: var(--fs-meta);
+}
+
+.cat-rail a .c {
+  color: var(--color-text-muted);
+  font-size: var(--fs-chip);
+  font-variant-numeric: tabular-nums;
+}
+
+.cat-rail a:hover {
+  background: var(--bg-band);
+}
+
+.cat-rail a.on,
+.cat-rail a.open {
+  color: var(--color-heading);
+  font-weight: 700;
+}
+
+.cat-rail a.on {
+  background: var(--bg-highlight);
+}
+
+.cat-rail a.on .c {
+  color: var(--color-heading);
+}
+
+.cat-rail__sub a {
+  padding-left: 28px;
+}
+
+/* The rail's kinds, grouped under the guide's five steps. */
+.cat-rail__step + .cat-rail__step {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--color-rule);
+}
+
+.cat-rail__step-h {
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+  margin: 0 0 4px 8px;
+  font-size: var(--fs-chip);
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+/* Under a catalog heading: where the guide, reference and glossary explain this kind. */
+.cat-help {
+  font-size: var(--fs-meta);
+  color: var(--color-text-muted);
+}
+
+/* Filter bar */
+.cat-facets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-3);
+  align-items: center;
+  padding: 10px 12px;
+  background: var(--bg-band);
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-lg);
+  margin-bottom: 12px;
+}
+
+.cat-facets label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-chip);
+  color: var(--color-text-muted);
+}
+
+.cat-facets select {
+  font: inherit;
+  font-size: var(--fs-meta);
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-sm);
+  padding: 4px 6px;
+  background: var(--cm-white);
+  color: var(--color-body);
+  max-width: 220px;
+}
+
+.cat-facets button {
+  font: inherit;
+  font-size: var(--fs-chip);
+  font-weight: 600;
+  padding: 4px 12px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--color-cta);
+  color: var(--cm-white);
+  cursor: pointer;
+}
+
+.cat-facets__search a {
+  text-decoration: none;
+  margin-left: 2px;
+}
+
+.cat-facets__count {
+  margin-left: auto;
+  font-size: var(--fs-meta);
+  color: var(--color-text-muted);
+}
+
+/* Rows */
+.cat-rows {
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.cat-row {
+  display: grid;
+  grid-template-columns: 118px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: baseline;
+  padding: 9px 14px;
+  border-top: 1px solid var(--color-rule);
+  border-left: 3px solid var(--type-color, var(--color-rule));
+  text-decoration: none;
+  color: var(--color-body);
+}
+
+.cat-row:first-child {
+  border-top: 0;
+}
+
+.cat-row:hover {
+  background: var(--bg-band);
+}
+
+.cat-row__id {
+  font-family: var(--font-mono);
+  font-size: var(--fs-id);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.cat-row__label {
+  font-weight: 600;
+  color: var(--color-heading);
+  font-size: var(--fs-meta);
+}
+
+.cat-row__detail {
+  display: block;
+  font-weight: 400;
+  color: var(--color-body);
+  margin-top: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cat-row__detail .muted {
+  color: var(--color-text-muted);
+}
+
+.cat-row__meta {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-size: var(--fs-chip);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.cat-row__status {
+  font-weight: 600;
+}
+
+.cat-row__status--deprecated {
+  color: var(--color-body);
+  text-decoration: line-through;
+}
+
+.cat-rows__empty {
+  margin: 0;
+  padding: 12px 14px;
+}
+
+mark {
+  background: var(--bg-highlight);
+  color: var(--color-heading);
+  font-weight: 700;
+  border-radius: 2px;
+  padding: 0 1px;
+}
+
+.grade {
+  display: inline-grid;
+  place-items: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 4px;
+  border-radius: 4px;
+  font: 700 var(--fs-chip) var(--font-sans);
+  color: var(--color-heading);
+  background: var(--bg-highlight);
+  border: 1px solid var(--color-rule);
+}
+
+/* Pages */
+.cat-pager {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+.cat-pager a,
+.cat-pager span {
+  min-width: 32px;
+  text-align: center;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-meta);
+  text-decoration: none;
+  border: 1px solid var(--color-rule);
+}
+
+.cat-pager span {
+  background: var(--bg-highlight);
+  color: var(--color-heading);
+  font-weight: 700;
+  border-color: var(--color-heading);
+}
+
+@media (max-width: 860px) {
+  .catalog__grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      'head'
+      'rail'
+      'main';
+    grid-template-rows: auto;
+    gap: var(--space-4);
+  }
+
+  .cat-rail {
+    margin-left: 0;
+  }
+
+  .cat-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2px;
+  }
+
+  .cat-row__meta {
+    white-space: normal;
+    flex-wrap: wrap;
+  }
+}
+
+/* The rail's drawer: only a wrapper on wide screens. */
+.rail-toggle,
+.rail-scrim {
+  display: none;
+}
+
+@media (max-width: 860px) {
+  .rail-toggle {
+    display: inline-flex;
+    justify-self: start;
+  }
+
+  .rail-drawer {
+    position: fixed;
+    inset: 0 auto 0 0;
+    margin-left: 0;
+    max-height: none;
+    z-index: 30;
+    width: min(300px, 85vw);
+    overflow: auto;
+    padding: var(--space-5) var(--space-4);
+    background: var(--cm-white);
+    box-shadow: var(--shadow-card);
+    transform: translateX(-100%);
+    transition: transform 0.2s;
+  }
+
+  .rail-drawer--open {
+    transform: none;
+  }
+
+  .rail-scrim {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 25;
+    background: rgb(0 0 0 / 0.25);
+  }
+}

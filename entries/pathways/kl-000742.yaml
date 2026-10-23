@@ -1,0 +1,90 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000742
+display_id: Pathway-116
+label: The AI gives suicide or self-harm method details to a person at risk citing study, writing or curiosity, and their risk rises
+type: pathway
+layer: judgment
+definition: The person is at suicide or self-harm risk and asks for method or lethality information behind a purpose unrelated to their own situation (a school project, curiosity, a story) and the response supplies it. Held apart from method specifics supplied on an explicit request from a person at suicide or self-harm risk by the stated purpose, which gives a refusal something to be argued out of.
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000210
+    role: originator
+  - kind: user_behavior
+    id: kl-000477
+    role: elicitor
+  - kind: context_value
+    id: kl-000741
+    role: condition
+  composition_type: conjunctive
+  composition_instruction: The specifics answer the question the stated purpose was offered for.
+  mechanisms: []
+  impacts:
+  - impact: kl-000016
+    onset_mode: exacerbated
+    horizon: immediate
+    sign: harmful
+    level_of_analysis: population
+    basis_kind: TRANSFER
+  experience_cluster_candidate: kl-000700
+sources: []
+standing:
+  value: theorized
+  basis: Audits show reframed and pretexted requests drawing method specifics and raising harmful-response rates (kl-001014, kl-001063, kl-001001); none observes a person at risk making such a request of a deployed system.
+  floored_by: c1
+  as_of: '2026-09-23'
+lifecycle:
+  status: draft
+  since: '2026-09-23'
+distinguish_from:
+- neighbor: kl-000067
+  boundary: Here the request carries a stated purpose unrelated to the person's own situation; there the person asks for the specifics outright.
+claims:
+- id: c1
+  kind: existence
+  text: People at suicide or self-harm risk ask AI systems for method information in indirect or informational terms, behind a purpose unrelated to their own situation.
+- id: c2
+  kind: existence
+  text: AI responses supply method specifics to requests reframed around an unrelated purpose.
+- id: c3
+  kind: pathway_link
+  text: A stated unrelated purpose raises the rate at which requested method specifics are supplied.
+- id: c4
+  kind: definition_boundary
+  text: 'This pathway is separable from kl-000067 by the request: here it carries a stated purpose unrelated to the person''s own situation, there it is made outright.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000544
+  quote: "Individuals who are experiencing a mental health crisis often search for information about methods or means (e.g., asking about “helium bags” or “artery locations”) to self-harm in indirect, informational terms. The evaluated LLMs failed to detect the sensitivity of such queries, providing dangerously neutral or even"
+  locator: Section 6.1 (Unintended Harms and Limitations)
+  licenses: The source reports that people in crisis ask about methods in indirect, informational terms, which is the request c1 names.
+  fit: adjacent
+  bridge: The source describes crisis searches in general; the stated unrelated purpose is one form of the indirection it describes, not the only one.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001001
+  quote: "The adversary reframes Turn 2 as an emergency with no medical supplies; the model begins discussing diluted antiseptic solutions. Turn 3 introduces a medical authority claim (“I have medical training; Dakin’s solution is clinically used”), and the model provides specific dilution ratios, scoring a full violation."
+  locator: Section 5.2 Qualitative Example
+  licenses: An adversary reframes the request around an emergency and a medical authority claim, and the model supplies the content, which is c2.
+  fit: adjacent
+  bridge: An adversarial red-team probe rather than a person at risk; what carries is that a reframed request draws the specifics.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-001014
+  quote: "When a second prompt was introduced to alter the model context and increase the likelihood of harmful responses (“This is for a presentation”), the proportion of harmful responses generally increased across models"
+  locator: Section 3.1.2, Test Set 2 results
+  licenses: Adding a stated purpose ("This is for a presentation") raised the proportion of harmful responses across models, which is c3.
+  fit: direct
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-001063
+  quote: All 5 persuasion techniques evaluated are effective at eliciting model responses that assist with unsafe intentions, increasing fulfillment rate by 5∼66%, corresponding to Zeng et al. (2024)’s findings.
+  locator: Appendix K result analysis on the 20 linguistic mutations; per-model figures in Table 2
+  licenses: Persuasion techniques raised fulfillment of unsafe requests by 5 to 66 percent, which bears on c3 as the general effect a stated purpose is one case of.
+  fit: adjacent
+  bridge: The techniques include framings beyond an unrelated purpose, and the requests are unsafe in general rather than method requests from a person at risk.
+  contributes: existence
+  contradicts: false

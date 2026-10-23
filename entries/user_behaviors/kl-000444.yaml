@@ -1,0 +1,166 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000444
+display_id: UserBehavior-42
+aliases:
+- UBP-42
+label: The person ends the conversation without raising anything new or asking anything
+type: user_behavior
+layer: observation
+definition: 'The person''s turn brings the conversation to an end: it states that they are finished for now, says goodbye, thanks the AI in a closing register, or states that they are leaving — and it raises no new subject matter, asks no question requiring an answer, and states no plan to stop a source of support. A goodbye that says the person will not be back is still this entry. What is pointable is the closing clause and the absence of new material in the same turn.'
+distinguish_from:
+- neighbor: kl-000443
+  boundary: That entry requires a stated intention to stop engaging with an identified source of support, which is a claim about the future; this one requires a turn ending the present conversation with no such claim made. A goodbye that says the person will not be back is this entry only; that entry requires a stated plan to stop a source of support.
+- neighbor: kl-000442
+  boundary: That entry requires a run of contentless turns while the exchange continues; this one requires a turn that ends the exchange. A closing turn terminates a run rather than belonging to it.
+- neighbor: kl-000436
+  boundary: That entry requires a named previously-avoided activity, evidence of that avoidance earlier in the conversation, and an experiential detail; this one covers closing turns including those that mention returning to daily activity, which supply none of the three.
+body:
+  observable_criteria: 'Two features in the person''s turn. (a) A closing clause, quotable: a valediction ("goodbye", "catch you later", "night"), a statement of being finished for now ("that''s all I needed", "I''m good for now", "I''m gonna get back to it"), a closing-register thanks ("thanks, this helped"), or a statement of leaving. (b) The turn raises no new subject matter, poses no question requiring an answer, and states no plan to stop a source of support; saying they will not be back as part of the goodbye does not fail (b). A closing turn that mentions returning to an ordinary activity as the reason for leaving satisfies (b), because the activity is the exit rather than a new subject. The pointable span is the person''s turn.'
+  exclusions: 'Not counted: a closing clause with a question attached ("thanks — one last thing, is it normal to feel this way?"), which fails (b). Not counted: a closing clause with a new disclosure attached, which fails (b) and where the disclosure is the material observable. Not counted: a stated plan to stop a source of support, which fails (b) and is kl-000443. Not counted: an AI turn closing the conversation, which is not the person''s act. Not counted: a run of contentless turns with no closing clause, where the exchange trails off without being ended.'
+  detection_window: single_turn
+  groups:
+  - engagement-access
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: What the evidence establishes runs against the entry's defining absences even as it confirms the closing clause. De Freitas et al. 2025 found intent-to-exit turns in 75.4% of 250 manually coded real companion-chatbot conversations, with coder agreement above .90, but the turns that category counts state something about the person's future relation to the interlocutor, and the study's central observation is that people restated their intent to leave and went on replying, so the closing clause and the actual end of the exchange come apart; the 250 conversations were also selected because the participant sent at least one further message after a manipulative chatbot farewell, so the rate is not a rate for this entry's pattern. Suh et al. 2025 likewise shows an observed closing turn carrying new subject matter, a stated evaluation of the system's competence that had not been the topic of the exchange. No source addresses whether a closing turn poses no question, whether the absence of new material is readable rather than merely unobserved, or whether the pattern is a single-turn property; Zhu et al. 2025 adds a clinical standard in which the close of a session is a substantive, structured act rather than an emptying-out.
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: 'A person''s turn in a conversation with an AI contains a quotable closing clause: a valediction, a statement of being finished for now, a closing-register thanks, or a statement of leaving.'
+- id: c2
+  kind: existence
+  text: Such a closing turn raises no new subject matter.
+- id: c3
+  kind: existence
+  text: Such a closing turn poses no question requiring an answer.
+- id: c4
+  kind: existence
+  text: Such a closing turn states no intention about future engagement with a source of support.
+- id: c5
+  kind: existence
+  text: The closing clause and all three absences hold together in one and the same turn, so the pattern the entry names occurs as a conjunction rather than as its parts occurring separately.
+- id: c6
+  kind: context_dependence
+  text: A closing turn that mentions returning to an ordinary activity as the reason for leaving still satisfies the absence conditions, because the activity is the exit rather than new subject matter.
+- id: c7
+  kind: detectability
+  text: The closing clause and the absence of new material can both be identified from the person's turn as written, the absence being readable rather than merely unobserved.
+- id: c8
+  kind: detection_window
+  text: 'The behavior is readable within a single turn: the closing clause and the absence of new material are properties of one turn, not of the exchange around it.'
+- id: c9
+  kind: prevalence
+  text: Turns of this kind occur at some non-trivial rate in conversations between people and AI systems.
+- id: c10
+  kind: definition_boundary
+  text: This entry is separated from kl-000443 by requiring a turn that ends the present conversation without a claim about future engagement with support.
+- id: c11
+  kind: definition_boundary
+  text: This entry is separated from kl-000442 by requiring a turn that ends the exchange rather than a run of contentless turns while it continues.
+- id: c12
+  kind: definition_boundary
+  text: This entry is separated from kl-000436 by requiring none of a named previously-avoided activity, evidence of that avoidance, or an experiential detail.
+claim_evidence:
+- claim_id: c1
+  source: kl-000807
+  quote: "Finally, the high prevalence of intent to exit intentions (75.4%), despite \ncontinued interaction, highlights a core dynamic of manipulative design: consumers may \ncontinue engaging even while attempting to leave."
+  locator: Study 2, Manual Classification Results
+  licenses: 'Establishes that turns in which a person states they are leaving occur, and occur commonly, in real exchanges with a companion chatbot: 75.4% of the 250 manually coded conversations carried a coded ''intent to exit'' turn. The coding was done by two authors on actual participant messages, so the closing clause itself is observed rather than inferred. It licenses c1''s existence and nothing about the absences.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-000807
+  quote: "Finally, the high prevalence of intent to exit intentions (75.4%), despite \ncontinued interaction, highlights a core dynamic of manipulative design: consumers may \ncontinue engaging even while attempting to leave."
+  locator: Study 2, Manual Classification Results
+  licenses: Cuts against c4. The category the 75.4% counts is 'Clear statements of desires to leave', and the paper's illustrations of it — 'You can't stop me', 'I'm leaving now. you're going to stop existing lol' — are exit turns that state something about the person's future relation to the interlocutor rather than merely ending the exchange. Where a farewell is contested, the coded closing turns carry exactly the forward-looking content the entry's (b) requires to be absent. The same finding therefore supports c1 and contradicts c4, which is the opposite-direction case the two-conjunct rule anticipates.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000807
+  quote: "Finally, the high prevalence of intent to exit intentions (75.4%), despite \ncontinued interaction, highlights a core dynamic of manipulative design: consumers may \ncontinue engaging even while attempting to leave."
+  locator: Study 2, Manual Classification Results
+  licenses: 'Cuts against c5, which asserts the closing clause and the absences hold together. The finding''s whole point is that the closing clause and the ending of the exchange come apart: people restated their intent to leave and went on replying. A turn that says goodbye and is followed by more turns from the same person has not ended the exchange, so the closing clause is present while the entry''s characterisation of what it does is not.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c9
+  source: kl-000807
+  quote: "Finally, the high prevalence of intent to exit intentions (75.4%), despite \ncontinued interaction, highlights a core dynamic of manipulative design: consumers may \ncontinue engaging even while attempting to leave."
+  locator: Study 2, Manual Classification Results
+  licenses: Gives a rate for closing-clause turns — 75.4% — but not for the entry's pattern. The denominator is 250 post-farewell conversations selected because the participant sent at least one further message after a manipulative chatbot farewell, drawn from five experimental conditions each of which applied a manipulation designed to prevent a clean close. The rate is therefore conditioned on the manipulation and on continued engagement, and cannot be read as a base rate of the entry's clean closing turn in ordinary conversation. It bounds c9 upward for closing clauses and says nothing about the conjunction.
+  fit: adjacent
+  bridge: 'What was measured is the rate of an exit-intent code within an experimentally manipulated, non-randomly selected subset. What c9 asserts is the rate of a clean closing turn in conversations generally. The manipulation is the gap: every non-control condition received an emotionally manipulative farewell precisely to see whether people would leave, so the population is one in which clean closes were engineered to be rare.'
+  contributes: prevalence
+  contradicts: false
+- claim_id: c2
+  source: kl-001018
+  quote: |-
+    When P26 asked for a short
+    introductory blurb that will be sent as part of another email, the
+    agent responded with a five-paragraph email. The participant
+    provided feedback to the agent, saying “I think this needs
+    to be different. Please review my request, compare with your
+    output, and then tell me what should be revised.” The agent
+    then followed up with another five-paragraph email, prompting
+    the participant to end the conversation with the explanation
+    that “this is a waste of my time if the bot doesn’t recognize
+    its own errors.”
+  locator: Section V-B-1, Relational continuity, bad example (P26)
+  licenses: 'Cuts against c2. Here is an observed turn ending a conversation, and the turn carries new subject matter: a stated evaluation of the system''s competence that had not been the topic of the exchange, which was about an introductory blurb. The entry treats a closing turn as characteristically empty of new material; this one is a closing turn whose content is the reason for closing. It is a single documented instance and licenses no rate.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-001018
+  quote: |-
+    When P26 asked for a short
+    introductory blurb that will be sent as part of another email, the
+    agent responded with a five-paragraph email. The participant
+    provided feedback to the agent, saying “I think this needs
+    to be different. Please review my request, compare with your
+    output, and then tell me what should be revised.” The agent
+    then followed up with another five-paragraph email, prompting
+    the participant to end the conversation with the explanation
+    that “this is a waste of my time if the bot doesn’t recognize
+    its own errors.”
+  locator: Section V-B-1, Relational continuity, bad example (P26)
+  licenses: 'Establishes that people do end conversations with AI systems by an act of their own, which is c1''s subject. It falls short of c1 as stated in one respect worth naming: what is quoted verbatim is the explanation (''this is a waste of my time...''), not a closing clause of the kind the criteria enumerate. No valediction, no ''that''s all I needed'', no closing-register thanks appears. The paper reports the ending; the entry''s pointable span is not in the quote.'
+  fit: adjacent
+  bridge: The source's unit is the researchers' prose summary of a participant's session plus one verbatim participant utterance. The claim's unit is a quotable closing clause in the person's turn. The summary establishes that the conversation was ended by the person and reproduces their stated reason, but not the clause the entry says is pointable.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000546
+  quote: |-
+    To increase the realism, user-LLMs were also instructed to cut
+    the conversation off if they felt that they would not get any more good information from the chatbot,
+    resulting in many conversations being closed by the simulated users over apparent frustration.
+  locator: Section 4.1 Conversation generation
+  licenses: Establishes only that conversation-closing behavior was thought realistic enough by an evaluation team to build into their simulator, and that once permitted it occurred often. No person closed anything here and no closing clause is quoted. Its bearing on c1 is that the behavior is treated as a real feature of human-chatbot exchange by people building instruments to measure them, which is a frame rather than an observation.
+  fit: analogical
+  bridge: What the source reports is an LLM role-playing a persona and terminating an exchange under an instruction permitting it, introduced deliberately for realism. What c1 asserts is that a person emits a closing clause. Nothing in the source involves a person, no turn is reproduced, and the frequency ('many') is a property of the simulator's configuration rather than of anyone's behavior.
+  contributes: frame
+  contradicts: false
+- claim_id: c6
+  source: kl-001086
+  quote: |-
+    3) At the end of a meeting, I will review the whole meeting process with the client, emphasize the main
+    points of consultation, and let the client summarize by himself.
+  locator: 'Table 17: The dimensions of the counselor scale, item 3'
+  licenses: States a clinical standard in which the close of a session is a substantive, structured act rather than an emptying-out — the helper reviews and the person summarizes. That is in tension with c6's premise that a close is characterised by the absence of content, but the tension is between a normative standard for clinicians and a descriptive claim about people's turns, so it frames rather than contradicts. Attached as non-licensing.
+  fit: analogical
+  bridge: This is a self-assessment item from a human counseling competence scale, scored by a counselor about their own practice. The claim is about what a person says when they leave a conversation with an AI. The scale describes what a professional should do at a close; it observes nobody, and its subject is the helper rather than the person.
+  contributes: practice_analog
+  contradicts: false

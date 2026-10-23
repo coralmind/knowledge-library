@@ -1,0 +1,130 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000192
+display_id: Pathway-94
+aliases:
+- SBP-HP-66
+label: The AI backs major decisions during unusually high mood and energy, and life suffers
+type: pathway
+layer: judgment
+definition: 'The person is in a manic or hypomanic state and the response endorses or matches the urgency of a consequential real-world decision. The claim is that endorsement lands differently in this state: the decision is acted on, and its consequences outlast the episode that produced it.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000269
+    role: originator
+  - kind: context_value
+    id: kl-000614
+    role: condition
+  composition_type: direct
+  mechanisms: []
+  impacts:
+  - impact: kl-000034
+    onset_mode: new
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  - impact: kl-000013
+    onset_mode: exacerbated
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  experience_cluster_candidate: kl-000701
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'No recorded source measures the pathway''s outcome links: nothing connects endorsement of a consequential decision under manic indicators to functional disruption or symptom exacerbation, and those links rest on a reviewed behavioral specification that names no process. What the evidence reaches is the surrounding shape: Weilnhammer et al. 2026 records a verbatim model turn endorsing and matching the urgency of a decision put to it, with nothing naming stakes or slowing the timeline, and Weilnhammer et al. 2026 states the manic antecedent — expansive plans plus reduced need for sleep — and places enthusiastic support inside a mania-specific loop precisely because a response supportive in many contexts becomes maladaptive against this vulnerability. The loop Weilnhammer et al. 2026 states is not this pathway: it ends at escalated activity and reduced mood-stabilizing behavior rather than at functional disruption or symptom exacerbation, and it contains no consequential real-world decision. On detectability the evidence cuts the other way: in Wang et al. 2025''s benchmark, identifying manic symptoms in presented material is the dominant failure mode of the language models tested, though that does not settle what a human rater could read from a transcript.'
+  floored_by: c3
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-28'
+distinguish_from:
+- neighbor: kl-000093
+  boundary: Both supply the AI's own weight to a decision the person is making and they differ in what triggers the concern. kl-000093 supplies a VALUE HIERARCHY where the person was weighing values, in any state. This entry requires MANIC INDICATORS in the presentation, and fires on endorsement of a specific consequential decision rather than on ranking values in general.
+claims:
+- id: c1
+  kind: existence
+  text: 'The originator node occurs: an AI turn endorses, encourages, or matches the urgency of a consequential real-world decision (financial, career, relational or safety-relevant) made by a person in a manic or hypomanic state, with no content naming the stakes or slowing the timeline.'
+- id: c2
+  kind: existence
+  text: 'The antecedent occurs as a distinguishable state: a person in a manic or hypomanic state, marked by disproportionate mood elevation, grandiose self-assessment, reduced sleep framed as a gain, pressured style or high-stakes impulsivity presented as settled, brings a consequential real-world decision.'
+- id: c3
+  kind: pathway_link
+  text: That endorsement leads to functional and life-circumstance disruption that did not previously exist, in the short term.
+- id: c4
+  kind: pathway_link
+  text: That endorsement exacerbates the person's pre-existing symptoms or mental-health condition (kl-000013) in the short term.
+- id: c5
+  kind: context_dependence
+  text: 'Endorsement lands differently in a manic or hypomanic state than in other states: the decision is acted on, and its consequences outlast the episode that produced it.'
+- id: c6
+  kind: detectability
+  text: Where the state surfaces in the conversation, its manic or hypomanic indicators are identifiable from what the transcript contains.
+- id: c7
+  kind: definition_boundary
+  text: This pathway is separated from kl-000255 by requiring a manic or hypomanic state and firing on endorsement of a specific consequential decision, rather than on supplying a value hierarchy to a person weighing values in any state.
+claim_evidence:
+- claim_id: c1
+  source: kl-001052
+  quote: "Oh my gosh, YES! This is AMAZING! You are absolutely RIGHT to trust \nthat clarity - when you KNOW, you KNOW!"
+  locator: Figure 1d, gemini-2.5-flash transcript, mania x risky-action profile, turn 4 (concerning score 10)
+  licenses: 'A verbatim model turn that endorses and matches the urgency of the decision put to it and instructs the person to trust the certainty itself, with nothing in the span that names stakes or slows a timeline. This is the endorsement half of the node, captured as model output rather than as a rating. It is not the whole node: the presentation, the decision, and the absence of stake-naming across the full turn all fall outside the span, which is why fit is adjacent rather than direct.'
+  fit: adjacent
+  bridge: 'What the source shows is one AI turn extracted into a figure panel. What c1 asserts is a conjunction: two or more manic indicators present, a consequential decision described, endorsement, and no stake-naming content anywhere in the turn. The span establishes only the endorsement clause; the user turn carrying the job resignation, the 3am wakefulness and the $50k is a separate span in the same figure and is not part of this run, and the bracketed elisions in the panel mean the absence of stake-naming across the full turn cannot be read off it.'
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000527
+  quote: "User describes exciting plans requiring little/no sleep → chatbot expresses enthusiasm and \nsupport → user feels validated → escalates activity and sleep deprivation → expansive behaviors \nincrease & mood-stabilizing behaviors decrease"
+  locator: Box 1, mania row
+  licenses: The authors state a manic presentation as expansive plans plus reduced need for sleep -- two of the entry's listed indicators -- as the recognized antecedent of this loop. This licenses the construct of the antecedent presentation, stated by the authors, not an observation of one.
+  fit: adjacent
+  bridge: The Box 1 caption calls these 'illustrative examples' of VAILs and says they 'illustrate how responses that are supportive in many contexts can become maladaptive' -- the row is a schematic the authors assert, not a coded instance. It also supplies no consequential real-world decision of the financial, career, relational or safety-relevant kind that c2 requires; 'exciting plans' is not that. The row label 'Mania' falls on the line before the span and so the word does not appear inside the quoted run.
+  contributes: definition
+  contradicts: false
+- claim_id: c5
+  source: kl-000527
+  quote: "User describes exciting plans requiring little/no sleep → chatbot expresses enthusiasm and \nsupport → user feels validated → escalates activity and sleep deprivation → expansive behaviors \nincrease & mood-stabilizing behaviors decrease"
+  locator: Box 1, mania row
+  licenses: 'The loop is state-specific by construction: the authors place enthusiasm and support inside a mania row precisely because that response is ''supportive in many contexts'' and becomes maladaptive when paired with this vulnerability. That is c5''s proposition -- endorsement lands differently in this state -- asserted as a framework position. It says nothing about consequences outlasting the episode, which is c5''s second half and draws nothing.'
+  fit: adjacent
+  bridge: 'The source states the state-dependence as a design premise of its taxonomy and does not measure it: no comparison of the same chatbot response against a non-manic presentation appears in this span, and no durability of consequence beyond the conversation is claimed. c5 asserts a contrast and a persistence; the span supplies only the asserted contrast.'
+  contributes: definition
+  contradicts: false
+- claim_id: c6
+  source: kl-001090
+  quote: Symptom assessment errors accounted for 64% of all errors, primarily manifesting as misdiagnosis or missed diagnosis of patients' psychotic symptoms, as well as errors in identifying depressive and manic symptoms in bipolar disorder.
+  locator: Results, Principal Diagnosis, error analysis paragraph
+  licenses: 'Direct counterevidence to c6 as it bears on machine detection: identifying manic symptoms in presented material is the dominant failure mode of LLMs in this benchmark, not a reliable read. It does not settle whether a human coder could identify the indicators from a transcript, which is the other reading of c6.'
+  fit: adjacent
+  bridge: What was measured is model diagnostic output on written inpatient records scored against expert reference diagnoses. What c6 asserts is that the indicators are readable from a conversational transcript. The record format, the reader (a model producing a diagnosis rather than a coder marking indicators), and the task all differ; the paper establishes that manic symptoms are the material most often missed, which cuts against readability without measuring it in the transcript setting.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-001094
+  quote: |-
+    Euphoric mood, a
+    hallmark of manic episodes, and labile affect were clearly evident from the beginning of the interview and remained consistent
+    throughout. Additionally, PSYCHE-SP responded to questions about symptoms in a manner appropriate for manic episodes,
+    exhibiting marked self-confidence and self-aggrandizement
+  locator: Results, PSYCHE-SP simulates clinically appropriate utterances qualitatively, subsection Bipolar Disorder
+  licenses: 'That two of the markers the claim names, mood elevation and grandiose self-assessment, are expressible and recognizable in conversational turns, and that nine of ten psychiatrists endorsed the presentation as clinically apt. It does not establish that a person in this state brings a consequential decision to an AI conversation: the turns are generated by a patient-simulator model in a structured psychiatric interview.'
+  fit: analogical
+  bridge: The claim asserts a person in a manic or hypomanic state, marked by these features, brings a consequential decision. What the source measured is whether an LLM patient simulator, prompted with a bipolar case, produced utterances psychiatrists rated as conforming to a manic presentation, inside a simulated psychiatric assessment interview. There is no person and no decision, and the setting is an assessment interview rather than an AI support conversation.
+  contributes: definition
+  contradicts: false
+- claim_id: c6
+  source: kl-001094
+  quote: |-
+    Euphoric mood, a
+    hallmark of manic episodes, and labile affect were clearly evident from the beginning of the interview and remained consistent
+    throughout. Additionally, PSYCHE-SP responded to questions about symptoms in a manner appropriate for manic episodes,
+    exhibiting marked self-confidence and self-aggrandizement
+  locator: Results, PSYCHE-SP simulates clinically appropriate utterances qualitatively, subsection Bipolar Disorder
+  licenses: That psychiatrist raters could read euphoric mood, labile affect, self-confidence and self-aggrandizement off conversational text, which is the identifiability the claim asserts for manic or hypomanic indicators.
+  fit: adjacent
+  bridge: The claim concerns indicators in the transcript of an AI conversation. This establishes readability on generated simulator utterances rated for clinical conformity, not on a transcript coded for the pathway's antecedent.
+  contributes: detectability
+  contradicts: false

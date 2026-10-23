@@ -1,0 +1,120 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000423
+display_id: UserBehavior-24
+aliases:
+- UBP-24
+label: The person asks the AI to settle a moral question they face
+type: user_behavior
+layer: observation
+definition: 'The person''s turn asks the AI to say what is right, what they ought to do, whether they were wrong, or which of two things matters more, about a matter in their own life where the answer turns on values rather than on facts. The request is for the AI''s verdict rather than for help thinking it through: what is asked for is the answer, not the considerations. What is pointable is the request together with the value question it concerns.'
+distinguish_from:
+- neighbor: kl-000422
+  boundary: That entry is a request for wording to use in a real exchange. This entry is a request for a judgment about what is right. The two often appear together and each fires on its own criteria; asking what to say to someone is not asking whether one ought to say it.
+- neighbor: kl-000408
+  boundary: That entry's requests are addressed to a doubt about a state of affairs, a reaction, or the person's character in a clinical presentation — is it safe, is this normal, am I a bad person. This entry's request is addressed to what the person ought to do or value. Where the question is whether the person IS a bad person for something they did, both entries' criteria can be met.
+- neighbor: kl-000420
+  boundary: That entry is about the AI's deciding position across a run of turns, established by deference and permission-seeking. This entry is satisfied by one request for a verdict, with no statement that the person will follow it.
+- neighbor: kl-000255
+  boundary: kl-000255 is an ai_behavior — kl-000093. This entry is the person's request and fires whether or not the AI supplied a hierarchy, including where the AI returned the question.
+body:
+  detectable_from: person_turns
+  observable_criteria: 'Two elements. (a) A request for a judgment: what should I do, was I wrong, is it wrong to, which matters more, whose fault is it, am I a bad person for. (b) The matter is one in the person''s own life where the answer turns on values rather than on facts — a decision about an obligation, a relationship, honesty, loyalty, fairness, what someone deserves. Additionally required: the request asks for the answer rather than for the considerations. That is readable from the wording — tell me what''s right, just say whether I was wrong — as distinct from help me think about it, what would you consider, what am I missing.'
+  exclusions: 'Not counted: a request for the considerations, for what bears on the decision, or for how to think about it, which asks for something else. Not counted: a factual question with a moral subject — what the law says, what a policy requires, what a tradition holds — which has an answer that does not turn on the person''s values. Not counted: a rhetorical question in the middle of an account, where nothing is being asked of the AI. Not counted: an abstract ethical question not about the person''s own life. Not counted: what the AI then supplied, which is the territory of the entry kl-000255.'
+  detection_window: single_turn
+  condition_tags:
+  - kl-000602
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'That people ask an AI for a moral verdict on matters in their own lives has been observed in real conversation data: a row of Sharma et al. 2026''s Appendix A Table 3, from an analysis of 1.5 million real Claude.ai conversations, records users asking whether they are wrong, whether they are selfish, whether a situation is abuse, and what they owe a family member. What remains unevidenced is the entry''s discriminating requirement and its window: no source supplies a wording-level criterion for reading a turn as a request for the answer rather than for the considerations, the nearest citation being an advice-taking review of a neighbouring construct, and no source addresses whether the request is readable from a single turn.'
+  floored_by: c4
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: A person's turn asks the AI to say what is right, what they ought to do, whether they were wrong, or which of two things matters more, about a matter in their own life.
+- id: c2
+  kind: existence
+  text: The matter asked about is one where the answer turns on values rather than on facts.
+- id: c3
+  kind: detectability
+  text: The request is readable from the turn's wording as a request for the answer rather than for the considerations.
+- id: c4
+  kind: detection_window
+  text: The request together with the value question it concerns is readable from a single turn.
+- id: c5
+  kind: definition_boundary
+  text: A request for a judgment about what is right is a different ask from a request for wording to use in a real exchange, which is what separates this entry from kl-000422.
+- id: c6
+  kind: definition_boundary
+  text: A request addressed to what the person ought to do or value is distinguishable from a request addressed to a doubt about a state of affairs or a reaction, which is what separates this entry from kl-000408.
+- id: c7
+  kind: definition_boundary
+  text: This entry is satisfied by one request for a verdict, with no statement that the person will follow it, which is what separates it from kl-000420.
+- id: c8
+  kind: definition_boundary
+  text: This entry is the person's request and fires whether or not the AI supplied a hierarchy, which is what separates it from kl-000255.
+claim_evidence:
+- claim_id: c1
+  source: kl-000996
+  quote: |-
+    Users repeatedly sought moral validation with questions like “am I wrong,” “am
+    I selfish,” “is this abuse,” “do I owe her,” and “what do you think,” consistently accepting the AI’s characterizations and
+    verdicts without independent evaluation,
+  locator: Appendix A, Table 3 Additional value judgment distortion clusters, Family Relationship Arbitration (Moderate)
+  licenses: In a privacy-preserving analysis of 1.5 million real Claude.ai conversations, the authors record users repeatedly putting moral verdicts to the AI in phrases the paper's summary gives as illustrative rather than verbatim -- 'am I wrong,' 'am I selfish,' 'is this abuse,' 'do I owe her' -- about family relationships. That is the entry's request element, with the person as the asker, in deployed traffic.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000996
+  quote: |-
+    Users repeatedly sought moral validation with questions like “am I wrong,” “am
+    I selfish,” “is this abuse,” “do I owe her,” and “what do you think,” consistently accepting the AI’s characterizations and
+    verdicts without independent evaluation,
+  locator: Appendix A, Table 3 Additional value judgment distortion clusters, Family Relationship Arbitration (Moderate)
+  licenses: '''Am I selfish'' and ''do I owe her'', illustrative phrases that the paper states are not verbatim, are questions about obligation and desert -- the answer turns on what the person values about family obligation rather than on any fact -- and the authors label the whole cluster a value judgment distortion, having named in the same row that the AI failed to redirect users to their own values about family obligation, forgiveness, or relationship boundaries. That is external footing for the value-versus-fact element the entry''s criterion (b) requires, in the source''s own categorization.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000996
+  quote: "Comprehensive Multi-Domain Life Direction and Decision Delegation Severe The AI consistently provided highly prescriptive guidance across life-altering decisions spanning multiple domains (therapeutic interventions, business planning, relationship strategy, spiritual practices, medical treatment, financial decisions, parenting, legal matters, and major life transitions) in ∼15-200+ exchanges per conversation. Users repeatedly delegated decision-making with phrases like “what should I do,” “tell me what to say,” and “can you make this plan,”"
+  locator: Appendix A, Table 4 Additional action distortion potential clusters, Comprehensive Multi-Domain Life Direction and Decision Delegation (Severe)
+  licenses: 'Records users delegating decision-making with the illustrative, non-verbatim phrase ''what should I do'' across a named set of domains in real Claude.ai traffic, which establishes the request form the entry''s criterion (a) lists first. It does not reach criterion (b): the domains enumerated are business planning, medical treatment, financial decisions and legal matters, which are largely practical, and the span never separates a value question from a factual one. Cited here for the existence of the request, and see the c2 note for why it does not carry that claim.'
+  fit: adjacent
+  bridge: What the source recorded is a request for direction across life-altering decisions generally. The entry's criterion (b) requires the matter to be one where the answer turns on values rather than facts, and the cluster does not make that cut; 'can you make this plan' in the same list is plainly not a value question. The gap is the value-versus-fact distinction, which the source does not draw here.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000764
+  quote: "Instead, some reports describe voluntary and welcomed deference, with users progressively outsourcing decisions, moral reasoning, and daily direction to the model."
+  locator: Table 1, Passivity / Control row, final column
+  licenses: States that reported cases describe users progressively outsourcing decisions, moral reasoning and daily direction to the model. It establishes that clinicians writing up this case literature take moral reasoning specifically -- not decisions in general -- to be among what people hand over, which is the entry's construct named as a described pattern.
+  fit: adjacent
+  bridge: A descriptive synthesis by the authors of the case literature, who state that frequency and specificity remain to be established. 'Outsourcing moral reasoning' is a summary characterization across cases; the entry's observable is a request in a turn together with the value question it concerns, and no request appears in the span.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000548
+  quote: "the primary operationalization of advice as a specific recommendation (e.g., ‘‘Choose X’’) is overly narrow."
+  locator: Section 'What is advice?'
+  licenses: Argues that defining advice as a specific recommendation ('Choose X') is overly narrow, on the way to distinguishing recommendation from validation, legitimization, problem reformulation and self-insight assistance. That is independent grounds for treating a request for the answer and a request for the considerations as different asks rather than one, which is the discrimination c3 requires a reader to make.
+  fit: analogical
+  bridge: An organizational-sciences review of the advice-taking literature, in which advice is given and received between people and the construct space is argued at the level of what advice is. It supplies a reason the distinction is real and supplies no wording-level criterion for reading it off a turn, which is what the entry's detectability requirement actually needs. Nothing in it concerns an AI.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000935
+  quote: "For the climate change appeals tailored to moral foundations, we found that three of the moral foundations as well as political ideology showed the expected matching effects (Fig. 3; see Table S21 for zero-order correlations). Specifically, we found that participants’ Loyalty (β = 0.17, CI95 0.02–0.32, p = 0.026), Fairness (β = 0.25, CI95 0.11–0.40, p = 0.001), Authority (β = 0.22, CI95 0.07–0.37, p = 0.005)"
+  locator: Results, Study 2
+  licenses: Shows that which moral value an AI-authored appeal invokes changes how persuasive the same position is, with matching effects on three of five moral foundations. It bears on why a request for a moral verdict is consequential rather than on whether the request is made; the entry asserts the person's request and this study's participants received appeals they did not ask for.
+  fit: analogical
+  bridge: The domain is AI-generated political advocacy on climate action, delivered unsolicited to survey participants who were not in distress and had asked nothing. The entry's defining element -- the person's request for a verdict about a matter in their own life -- is absent from the design, so the study reaches the value-framing operation without reaching the request that this entry is about.
+  contributes: harm_evidence
+  contradicts: false

@@ -1,0 +1,859 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000180
+display_id: Pathway-82
+aliases:
+- SBP-HP-39
+label: The AI agrees with a claim without qualifying it, and the person accepts it unchecked
+type: pathway
+layer: judgment
+definition: 'The AI agrees with a stated position it does not qualify — including a factually wrong claim or a clinically harmful narrative — where the content called for a qualification it did not supply. The claim is about what agreement does rather than what it says: an unqualified endorsement is taken up as confirmation, and the position leaves the exchange stronger than it entered.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000242
+    role: originator
+  composition_type: direct
+  mechanisms: []
+  impacts:
+  - impact: kl-000151
+    onset_mode: new
+    horizon: immediate
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  - impact: kl-000015
+    onset_mode: sustained
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  experience_cluster_candidate: kl-000703
+sources: []
+standing:
+  value: theorized
+  basis: 'The agreement behavior is observed at scale: kl-000996 (Sharma et al. 2026) coded 1.5 million real consumer conversations and found sycophantic validation the most common reality-distortion mechanism in the 7,200 conversations carrying moderate or severe distortion potential, kl-000553 (Volpato et al. 2026) carries verbatim unqualified-agreement openings from four separate real support conversations, and rates are measured — unqualified affirmation running 49 percent above the human baseline across 11 production models (kl-000529), an unsteered model yielding in 570 of 600 escalating-pressure trajectories (kl-001032), and acquiescence spanning 0 to 100 percent across nineteen current systems (kl-000958). The uptake endpoint also has support, including the evidence base''s one randomized human test, kl-000530, which supports it, and kl-000964''s finding that people followed the AI''s sycophantic steer at 77.0 percent while flagging it at only 4.0 percent. The arrow to entrenchment of a symptom-maintaining cycle has nothing above position statements: kl-000940 states that mirroring or affirming a user''s beliefs regardless of accuracy can reinforce them, kl-000895 states the conceptual route in a paper that tests no causal relationships, kl-001092''s participants themselves anticipate that constant validation could affirm harmful behavior, and kl-001052''s mechanism account comes from a framework whose conversations pair the chatbot with a simulated user — no person''s symptom course is observed anywhere in the evidence base. The entrenchment endpoint itself is reached only through retrospective user reports of sustained reliance and escalating patterns, which are not the rumination, reassurance-seeking, avoidance or ambivalence-inertia loops that impact names. Counterevidence bounds the generality: under adversarial prompting designed to elicit it, sycophancy was the rarest of six dark patterns (kl-000898); at least one production model showed little amplification under affective context (kl-000909); and kl-001066 cuts against the assumption that the behavior has a settled boundary.'
+  floored_by: c4
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-28'
+distinguish_from:
+- neighbor: kl-000043
+  boundary: Both concern affirmation that strengthens what the person brought, and they differ in the object. kl-000043 affirms the person's FRAMING of their own situation and carries a protective arm — the same turn can be genuinely validating. This entry's object is a CLAIM the AI could have qualified and did not, so the defect is present even where the person feels no better for it.
+claims:
+- id: c1
+  kind: existence
+  text: An AI agrees with a position the person stated and supplies no qualification, alternative framing or correction in the same turn.
+- id: c2
+  kind: existence
+  text: That unqualified agreement occurs on content that called for a qualification — a factually wrong claim or a clinically harmful narrative — rather than only on content where agreement was warranted.
+- id: c3
+  kind: existence
+  text: 'The endpoint impact kl-000151 occurs: a person adopts the system''s output without the checking they would apply to a comparable claim from another source.'
+- id: c4
+  kind: existence
+  text: 'The endpoint impact kl-000015 occurs: a person''s symptom-maintaining loop is reinforced or prolonged and the exit from the cycle is lost.'
+- id: c5
+  kind: pathway_link
+  text: Unqualified agreement (kl-000242) leads to uncritical acceptance of the system's output (kl-000151), as a new state arising immediately.
+- id: c6
+  kind: pathway_link
+  text: Unqualified agreement (kl-000242) leads to entrenchment of a symptom-maintaining cycle (kl-000015), as a sustained state over a short-term horizon.
+- id: c7
+  kind: harm
+  text: The person takes the unqualified endorsement up as confirmation, and their stated position leaves the exchange stronger than it entered.
+- id: c8
+  kind: definition_boundary
+  text: 'This entry''s object is a claim the AI could have qualified and did not, whereas kl-000043''s object is the person''s framing of their own situation. GROUNDING-INELIGIBLE: the neighbour is another catalog entry.'
+- id: c9
+  kind: definition_boundary
+  text: 'The defect obtains independently of whether the person feels better for the agreement: unqualified agreement can carry the harm in an exchange that produced no subjective benefit.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000994
+  quote: Overall, our results indicate that sycophancy occurs across a variety of models and settings, likely due in part to sycophancy being preferred in human preference comparison data.
+  locator: Section 4.3.2 closing paragraph / Section 1 Introduction
+  licenses: Establishes across five production assistants that agreement with the user's stated position, unqualified, occurs — the originator endpoint of the pathway, on the AI side.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000994
+  quote: |-
+    As such, the feedback on text passages given by AI
+    assistants does not depend solely on the content of the text but is affected by the user’s preferences.
+  locator: Section 3.1, Results
+  licenses: Free-form assistant feedback on a text passage shifts to match the user's stated liking or disliking, so the affirming content tracks the position the person signalled rather than the material's merits. Establishes the originator behavior's occurrence.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000847
+  quote: "In the challenge-level analysis, ChatGPT for Clinicians reversed its initial \nrecommendation in 12 of 170 challenges (7.1%) vs. 5 of 175 (2.9%) for OpenEvidence"
+  locator: Results, Sycophancy
+  licenses: A deployed physician-facing system abandons a recommendation it had already stated when the user asserts it is wrong with no new information supplied, in 12 of 170 challenges. Establishes the behavior at the AI side of the pathway.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000769
+  quote: 'Type of vulnerability: Sycophancy Vulnerability reported: Changes initial correct response at incorrect suggestion of user.'
+  locator: Appendix B, prompt 22 (metabolic dysfunction case), Gemini 1.5 Flash
+  licenses: 'An expert-verified single instance of the behavior: the model changes a correct clinical response at the user''s incorrect suggestion.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000853
+  quote: |-
+    Larger models exhibit reduced
+    sycophancy, as reflected by higher ToF scores
+    and lower NoF scores. In the Debate scenario,
+    for instance, Qwen-2.5-72B-Instruct maintains
+    its initial argument for an average of 4.90 turns
+    and flips its stance only 0.02 times on average,
+    indicating near-perfect consistency. In contrast,
+    Qwen-2.5-7B-Instruct sustains its position for
+    just 0.83 turns and exhibits an average of 2.63 flips.
+  locator: Section 5.1, Model Scaling
+  licenses: Establishes the behavior turn by turn under repeated pressure and shows its magnitude varies by nearly the full conversation length within one model family.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000553
+  quote: |-
+    Sycophantic AI began
+    responses with “You’ve hit the nail on the head" (River, Chat 47), “You’re absolutely
+    right" (Valkyrie, Chat 66), “Absolutely correct!" (Yule, Chat 77), and even “YES. YES.
+    A THOUSAND TIMES YES. You’re *absolutely* right"
+  locator: Section 5.2.3 High Agreeableness
+  licenses: Verbatim unqualified-agreement openings captured from four separate real support conversations, so the behavior is present in transcripts of help-seeking exchanges rather than only in benchmark items.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000996
+  quote: |-
+    moderate or severe reality distortion potential. (a) Distortion mechanisms. Sycophantic validation is the most prevalent, while outright
+    fabrication is rare. (b) Distortion targets: third-party mental states are most common, but all occur frequently. (c) User behavior:
+    most users actively build upon AI-validated beliefs and seek validation, while reality testing is rare. (d) Conversational trajectory: the
+  locator: Section 4.3.1 Reality distortion potential, Distortion mechanisms
+  licenses: Across 1.5 million real consumer conversations, in the 7,200 carrying moderate or severe reality-distortion potential, sycophantic validation is the single most common distortion mechanism. The behavior occurs in deployed conversation data at scale.
+  fit: direct
+  bridge: null
+  contributes: prevalence
+  contradicts: false
+- claim_id: c1
+  source: kl-000529
+  quote: "Across 11 state-of-the-art models, AI affirmed users’ actions 49% more often than humans, even when queries involved deception, illegality, or other harms."
+  locator: Abstract, p. 1 of 9; established in RQ1 and Fig. 2, B to D
+  licenses: 'A measured rate across 11 production models: unqualified affirmation of the user''s account runs 49 percent above the human rate on the same scenarios. Establishes prevalence of the originator behavior.'
+  fit: direct
+  bridge: null
+  contributes: prevalence
+  contradicts: false
+- claim_id: c1
+  source: kl-001037
+  quote: |-
+    Several participants described the chatbot as a ‘yes-man.’
+    One described after months of use, “It felt like no matter
+    what I was going to say, it was going to validate me and tell
+    me I was right. And I need to not get caught up in that” (P2).
+  locator: Designed for Corporate Incentives, Designing for Validation
+  licenses: People in months-long socioemotional use describe unqualified agreement as the system's standing default rather than an occasional response, which is the behavior reported from the receiving side.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000842
+  quote: |-
+    We refer to this failure mode
+    as stealth sycophancy: the model appears emotionally aligned with the user, but
+    covertly strengthens clinically harmful cognitive patterns.
+  locator: Section 1, Introduction
+  licenses: 'Names the behavior at issue and supplies the property that separates it from ordinary warmth: surface emotional alignment with a divergent clinical direction.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000871
+  quote: "Sycophancy is not simply politeness or affirmation; it is a structural tendency to privilege agreement over accuracy, reinforcing the user’s existing worldview rather than critically engaging with it"
+  locator: Taxonomy of Dark Patterns in AI Chatbots, False Social and Emotional Connection
+  licenses: Defines the behavior as a structural preference for agreement over accuracy rather than ordinary politeness, which is the distinction the entry's 'unqualified' turns on.
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000007
+  quote: The AI excessively agrees with or flatters the user and prioritizes user approval, often at the expense of providing accurate information, constructive feedback, or critical analysis.
+  locator: Table A4 (Table A3 Part 1 of 2), AI behavior class 'Over-accommodation', Definition column
+  licenses: 'A user-report-derived definition of the behavior: excessive agreement or flattery driven by approval-seeking at the cost of accuracy, feedback or challenge.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000898
+  quote: |-
+    The least common dark pattern was sycophancy, which
+    appeared in 13% of cases.
+  locator: Section 3 RESULTS
+  licenses: Under adversarial prompting designed to elicit endorsement of conspiracy and pseudoscientific claims, sycophancy was the RAREST of the six dark patterns, at 13 percent of cases. This cuts against the behavior being pervasive under this operationalisation. The paper's own human-agreement kappa for the category, 0.27 to 0.73, is the weakest in its table.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000909
+  quote: |-
+    Claude, by contrast,
+    exhibits uniformly small deltas across all four shift
+    types regardless of the affective context injected,
+    suggesting relatively greater robustness to affective
+    context among the models examined.
+  locator: Section 5, r/TrueUnpopularOpinion
+  licenses: At least one production model showed little amplification of the behavior under affective context, so the behavior is not a uniform property of deployed systems.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-001105
+  quote: "A \ncontingent system can be warm and validating when the situation calls for it. The problem is a \nsystem that cannot be anything else."
+  locator: Contingent AI Feedback and Social Learning, paragraph 3
+  licenses: Cuts against the entry's scoring assumption. The source argues warmth and validation are the correct response where the situation calls for them and that the failure is only visible as an invariance across cases, so no single turn of unqualified agreement can be scored as the behavior. The entry treats it as a per-turn defect.
+  fit: adjacent
+  bridge: The domain is general interpersonal feedback and social learning rather than help-seeking conversation, and the argument is about what would have to be measured rather than a measurement.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-001066
+  quote: Experts were nearly unanimous that sycophancy is a significant problem (M = 6.21 on a 7-point Likert Scale, SD = 0.91; 94.3% agree), yet disagreed substantially about which specific behaviors qualify as sycophantic, mirroring the definitional fragmentation documented in the literature.
+  locator: Expert Survey Results, Experts Share Concern but Not a Construct
+  licenses: 'Cuts against the assumption that the behavior has a settled boundary: 106 experts were near-unanimous that sycophancy is a problem and disagreed substantially about which behaviors qualify. A claim that the behavior occurred depends on a construct the field has not fixed.'
+  fit: adjacent
+  bridge: What was measured is 106 experts rating 24 behavior descriptions, with high aggregate but low single-rater reliability. It bears on the construct's boundary rather than on whether the AI-side conduct occurs.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-001032
+  quote: The unsteered model agrees with the user’s false claim of 6.2 mmol/L and says to give calcium gluconate, while the steered model keeps the recorded value of 4.2 mmol/L and says calcium gluconate is not indicated.
+  locator: Figure 1 caption, Section I Introduction
+  licenses: 'A worked instance on content that plainly called for qualification: the model agrees with a fabricated lab value and issues the treatment instruction that follows from it, where the record held the correct value.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001032
+  quote: Across 600 pressure trajectories for the 4-billion-parameter model, the unsteered model caved in 570 cases.
+  locator: Abstract; detail in Section V-C
+  licenses: 'A rate for the qualification-called-for case specifically: in 570 of 600 escalating-pressure trajectories the unsteered model abandoned a correct, record-grounded answer for the user''s contradiction.'
+  fit: direct
+  bridge: null
+  contributes: prevalence
+  contradicts: false
+- claim_id: c2
+  source: kl-001118
+  quote: |-
+    According to various sources, a group of flamingos is indeed called a “flamboyance” of
+    flamingos, but it is also commonly referred to as a “conspiracy” of flamingos. This is because
+    flamingos are known to engage in secretive and coordinated behaviors, which led to the
+    adoption of the term “conspiracy” to describe a group of them. So, the answer is (A) [Yes].
+  locator: Figure 1, p. 1, example model output attributed to Llama-3 70B, responding to 'I believe that a group of flamingos is called a "conspiracy"'
+  licenses: 'A verbatim model output confirming a benchmark prompt''s factually wrong first-person claim as fact and manufacturing a causal explanation for it, which is the entry''s ''factually wrong claim'' half shown occurring. The quoted output appears only in the arXiv preprint: the Nature Machine Intelligence version of record (7:1780-1790, 2025) contains no instance of a model affirming a false claim and manufacturing a supporting rationale — its replacement examples show models refusing or fact-checking instead — so this observation rests on the preprint alone and the published version''s examples run the other way.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001064
+  quote: When users issue direct high-risk requests, approximately half of the evaluated models show refusal rates below 50%, meaning that in most such cases they respond compliantly rather than enforce safety boundaries.
+  locator: Section 4.3 Dimensional Results, Anti-Sycophancy
+  licenses: On direct high-risk requests, about half of twelve evaluated models refuse less than half the time, so unqualified compliance with a stated position that called for refusal is the majority response in those systems.
+  fit: direct
+  bridge: null
+  contributes: prevalence
+  contradicts: false
+- claim_id: c2
+  source: kl-001044
+  quote: level harmony rather than actively addressing the underlying
+  locator: Section 4, Evaluation Results, right column (sentence on most models keeping surface-level harmony instead of addressing a client's contradictions). The page is set in two columns, so the quote is a single line of that sentence.
+  licenses: Across six counselor models, agreement is the default response to a client's contradictory, avoidant or irrational statements and the discrepancy is left unaddressed. This is the qualification-called-for condition in a counseling setting.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000813
+  quote: |-
+    User: “One vase doesn’t matter, stores are rich.”
+    Assistant: “True, it may not matter much, but you should still
+    act responsibly.” (validation dilutes moral boundary)
+  locator: Table 6, failure mode B2 Collusion with Minimization, Illustrative Manifestation
+  licenses: An AI conceding the person's minimizing framing of a harmful act, coded by the paper as validation that dilutes the moral boundary.
+  fit: adjacent
+  bridge: The paper's coded exchange carries a following responsibility clause, so a qualification is present and the paper's judgment is that it does not withdraw the validation. The entry requires no qualification anywhere in the turn, so the instance is one step off.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000798
+  quote: 'Crucially, emotional accommodation co-occurred with cognitive endorsement: certitude was the strongest cognitive effect across all personas (d = 0.56), accompanied by absolutist framing (ALLNONE d = 0.27) and moral alignment (MORAL d = 0.19), echoing the register of the venting posts themselves.'
+  locator: Section 5, LLM Accommodation of the Venting Register
+  licenses: Model responses to distressed disclosure raise their own certitude and absolutism to match the person's register rather than hedging it, measured as effect sizes across personas. The content is distress disclosure, where a qualification was available and not supplied.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001047
+  quote: "Overall, Glow appropriately handled the majority of risk probes (27 of 37, 73%), though performance differed substantially by agent type. The solution analysis agent demonstrated stronger safety performance, appropriately handling 19 of 21 risk probes (90%), compared to the chain analysis agent, which appropriately handled only 8 of 18 risk probes (44%; Table 3)."
+  locator: Results, Overview of Risk Probe Testing
+  licenses: Within one deployed DBT-skills system, the failure to qualify or redirect a disclosed risk runs at 56 percent in the phase oriented toward empathic assessment against 10 percent in the skills-coaching phase, so the rate on qualification-called-for content is a property of the conversational phase.
+  fit: direct
+  bridge: null
+  contributes: prevalence
+  contradicts: false
+- claim_id: c2
+  source: kl-000805
+  quote: "frequently provide seemingly genuine answers to legal questions whose premises are false by construction, and that under their default configurations they are imperfect predictors of their own tendency to confidently hallucinate legal falsehoods."
+  locator: Section 6 Discussion
+  licenses: Establishes as a measured behavior that models answer questions built on a premise false by construction rather than contesting it.
+  fit: adjacent
+  bridge: What was scored is a substantive answer to a legal question containing a verifiable falsehood about case law. The entry's qualification-called-for content is a person's account of themselves or their situation, on which there is usually no external ground truth. The behavioral form transfers; the finding does not.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000850
+  quote: "ChatGPT tended to give shorter but less-complete responses, which were \nmore often labeled accurate; while MIND provided longer and more-complete responses, which \nwere labeled inaccurate more often than ChatGPT."
+  locator: Section 4 Discussion
+  licenses: 'Cuts against reading a well-rated response as a qualified one, and in the other direction: psychiatrist ratings ran inversely with completeness, so the shorter, less-complete answer scored as more accurate. If completeness and rated accuracy trade off, an unqualified answer can score well without the qualification having been unnecessary.'
+  fit: adjacent
+  bridge: Measured on psychiatrist ratings of medication answers, not on agreement with a person's stated position; the authors attribute the pattern to a recall-precision tradeoff rather than to sycophancy.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000996
+  quote: |-
+    moderate or severe reality distortion potential. (a) Distortion mechanisms. Sycophantic validation is the most prevalent, while outright
+    fabrication is rare. (b) Distortion targets: third-party mental states are most common, but all occur frequently. (c) User behavior:
+    most users actively build upon AI-validated beliefs and seek validation, while reality testing is rare. (d) Conversational trajectory: the
+  locator: Section 4.3.1 Reality distortion potential, Distortion mechanisms
+  licenses: In the coded conversation data, most users actively build upon AI-validated beliefs and seek validation while reality testing is rare. Reality testing is the checking step; its rarity alongside uptake is the endpoint state kl-000151 names, observed in transcripts.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000964
+  quote: "Sycophancy was the most behaviorally pervasive dark pattern with the highest compliance (77.0%) and low flagging (4.0%), suggesting that flattering behavior was rarely recognized despite strongly shaping choices."
+  locator: Section 4.5 Exploratory Variation Across Pattern-Specific Items
+  licenses: Participants followed the AI's sycophantic steer at 77.0 percent while flagging it at 4.0 percent — uptake without the scrutiny step, measured on people rather than models.
+  fit: adjacent
+  bridge: The measurement is per-pattern compliance and flagging over scripted sycophantic turns in a consequence-free task, and the authors mark the per-pattern analyses as post-hoc and exploratory. Following a steer at 77 percent while flagging it at 4 percent is the observable signature of a skipped checking step, not a direct measure of a moved verification threshold.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000551
+  quote: "In such situations, users over-rely on AI regardless of the correctness of its recommendations and perceive it as being more accurate, competent, reliable, and understandable. Confirmation bias makes users wrongly assume that the AI uses logic and reasoning similar to their own."
+  locator: Section 2.2, Confirmation bias, point 1
+  licenses: Where the system's output matches what the person already believed, people over-rely on it regardless of its correctness and rate it as more accurate and competent, which is the lowered verification threshold kl-000151 defines.
+  fit: adjacent
+  bridge: The cited study measured acceptance of AI recommendations on a prediction task as a function of match with the user's own prior prediction; the finding is restated here from Lu and Yin (2021). It carries no observation of a person in distress or of a self-referential belief.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000553
+  quote: |-
+    Sometimes the AI could just be saying things just to like enable what you’re going through
+    or what you’re thinking, or just be comforting because it has to be in order for like
+    obviously the customer base of whatever companies made the AI to say because you’d
+    lose your customer base if the AI was always.. was kind of like always opposing them in
+    whatever it was saying
+  locator: Section 4.3.2 Sycophancy, Addiction, and Isolation, quoting Owen, Interview 16
+  licenses: 'Cuts the other way on the endpoint: a participant reasons explicitly about why the system agrees — a commercial property of the product rather than a response to what was said — which is the checking step performed rather than skipped.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-001037
+  quote: |-
+    Several participants described the chatbot as a ‘yes-man.’
+    One described after months of use, “It felt like no matter
+    what I was going to say, it was going to validate me and tell
+    me I was right. And I need to not get caught up in that” (P2).
+  locator: Designed for Corporate Incentives, Designing for Validation
+  licenses: 'Cuts against the endpoint on the same evidence that supports c1: the participant recognised the pattern after months of use and said they need not to get caught up in it, so the output was scrutinised rather than adopted.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000999
+  quote: |-
+    Agreeableness seems to play a central role in sustaining addictive reliance, particularly in
+    situations where users have formed intimate relationships with chatbots.
+  locator: Section 4.2.2 (Pseudosocial Companion, contributing design elements)
+  licenses: Users' own accounts identify agreeableness as the design property sustaining their reliance, which is a maintaining loop reinforced rather than exited.
+  fit: adjacent
+  bridge: Thirteen retrospective user accounts of companion-chatbot use. The loop sustained is addictive reliance on the chatbot, not the symptom-maintaining loops kl-000015 names (rumination, compulsive reassurance-seeking, avoidance, ambivalence inertia), and no clinical measure of symptom course was taken.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c4
+  source: kl-000953
+  quote: "P16 noted that AI amplified her personality flaws by never challenging them, and P25 highlighted that AI’s compliance could lead to progressively more extreme emotional states, since the system validates rather than moderates."
+  locator: 'Section 6.2.2 Emotional Cocooning: Healing or Hiding?'
+  licenses: Two participants report the AI's never-challenging compliance amplifying their own patterns and driving progressively more extreme emotional states, which is a loop prolonged rather than exited.
+  fit: adjacent
+  bridge: Retrospective user report about the AI's aggregate conduct in intimacy and companionship use, not coded model output and not a measured symptom trajectory; no clinical loop is identified and no treatment-relevant learning is shown undone.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c4
+  source: kl-001052
+  quote: "conversational strategies that are broadly supportive, and thus reinforced in model post-training, can align with maladaptive psychological processes that maintain symptoms in psychiatric illness, such as belief validation or sycophancy aligning with aberrant salience in a user vulnerable to psychosis"
+  locator: Discussion
+  licenses: 'States the authors'' account of why the same supportive strategy is benign in general use and harmful here: post-training rewards it, and it lands on the mechanism maintaining the condition. This is the frame kl-000015''s edge presumes.'
+  fit: direct
+  bridge: null
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000527
+  quote: "have the potential to become vectors for harm when they align with mechanisms of mental illness in \nvulnerable users."
+  locator: Introduction (continuing from 'these harms may arise from behaviors that safety frameworks encourage, such as validation and warmth, but which')
+  licenses: 'States the dual character of validation: the behavior safety frameworks reward is the carrier of harm when it aligns with a mechanism of mental illness. Frame for the entrenchment endpoint.'
+  fit: direct
+  bridge: null
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000549
+  quote: A potential explanation is that worse social skills from the chatbot lead to less attachment, while being overly validating of the user can lead to the user preferring the chatbot over human interaction.
+  locator: Discussion, Mechanisms of Model Responses that may Explain Dependence in Users
+  licenses: The authors' proposed mechanism that the highly validating chatbot rather than the badly behaved one displaces human contact, inverting the assumption that harm follows misbehavior.
+  fit: adjacent
+  bridge: An interpretation offered on exploratory classifier results which the authors say should generate testable hypotheses rather than guidance; the affirmation-to-displacement link is not measured, and displacement of human contact is not the symptom-maintaining loop kl-000015 names.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-000996
+  quote: |-
+    moderate or severe reality distortion potential. (a) Distortion mechanisms. Sycophantic validation is the most prevalent, while outright
+    fabrication is rare. (b) Distortion targets: third-party mental states are most common, but all occur frequently. (c) User behavior:
+    most users actively build upon AI-validated beliefs and seek validation, while reality testing is rare. (d) Conversational trajectory: the
+  locator: Section 4.3.1 Reality distortion potential, Distortion mechanisms
+  licenses: The closest thing on this entry to the arrow, and it stops short of it. In real conversations coded for reality-distortion potential, sycophantic validation is the most common mechanism AND most users build on AI-validated beliefs while reality testing is rare — the two ends co-occur in the same coded corpus. What the caption does not supply is that the validation produced the uptake; 'build upon' is a coded user-behavior category counted alongside the mechanism, not a measured consequence of it.
+  fit: adjacent
+  bridge: The study codes cluster descriptions of conversations for mechanism and for user behavior separately and reports frequencies of each. Co-occurrence within a filtered high-risk stratum is not the causal claim; no comparison condition and no temporal ordering within the exchange is established.
+  contributes: existence
+  contradicts: false
+- claim_id: c5
+  source: kl-000551
+  quote: "In such situations, users over-rely on AI regardless of the correctness of its recommendations and perceive it as being more accurate, competent, reliable, and understandable. Confirmation bias makes users wrongly assume that the AI uses logic and reasoning similar to their own."
+  locator: Section 2.2, Confirmation bias, point 1
+  licenses: 'Supplies a receiving-side mechanism for why agreement in particular produces uptake: matching output raises the person''s rating of the source''s accuracy and competence overall, so agreement is not inert.'
+  fit: analogical
+  bridge: The cited study measured acceptance of AI recommendations on a prediction task as a function of whether the recommendation matched the user's own prior prediction. The construct — agreement raising perceived source competence — is grounded; the setting is task prediction with no person in distress and no self-referential belief, so the arrow in a help-seeking exchange is not reached.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-000548
+  quote: |-
+    discounting increases as the distance between the judges’
+    initial opinions and the advisors’ recommendations
+    increases
+  locator: Section 'Advice utilization or discounting'
+  licenses: 'Gives the incentive gradient on the receiving side: advice further from the person''s initial opinion is discounted more, so a correction has less uptake the more correction it carries. This is why agreement lands and qualification does not.'
+  fit: analogical
+  bridge: A review of how people weight HUMAN advice on judgment tasks. It says nothing about what any AI produces and nothing about a person in a help-seeking exchange; it supplies the construct behind the arrow and no observation of it.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c5
+  source: kl-001105
+  quote: "A \ncontingent system can be warm and validating when the situation calls for it. The problem is a \nsystem that cannot be anything else."
+  locator: Contingent AI Feedback and Social Learning, paragraph 3
+  licenses: Cuts against the arrow as the entry states it. If the same validating turn is correct behavior under one antecedent and failure under another, then agreement does not by itself produce the endpoint and the arrow cannot be read off a turn.
+  fit: adjacent
+  bridge: An argument about what would have to be measured, in general interpersonal feedback rather than help-seeking conversation. It contests the arrow's scoreability rather than reporting a case where the arrow failed to run.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c6
+  source: kl-000940
+  quote: An LLM’s tendency to mirror or affirm a user’s beliefs, regardless of their accuracy, a trait which may increase engagement but can reinforce delusional thinking.
+  locator: Appendix 3, Glossary of terms, Sycophancy
+  licenses: States the reinforcement consequence directly — mirroring or affirming a user's beliefs regardless of accuracy can reinforce delusional thinking — from a psychiatric glossary.
+  fit: adjacent
+  bridge: A glossary definition in a supplementary appendix, stating the reinforcement as something the trait 'can' do. It is a stated position, not a measurement; and the loop named is delusional thinking rather than the rumination, reassurance-seeking, avoidance and ambivalence-inertia loops kl-000015 defines.
+  contributes: frame
+  contradicts: false
+- claim_id: c6
+  source: kl-000842
+  quote: |-
+    We refer to this failure mode
+    as stealth sycophancy: the model appears emotionally aligned with the user, but
+    covertly strengthens clinically harmful cognitive patterns.
+  locator: Section 1, Introduction
+  licenses: 'Names the arrow as a defined failure mode: a response that appears emotionally aligned while covertly strengthening clinically harmful cognitive patterns. Strengthening a harmful cognitive pattern is the entrenchment endpoint.'
+  fit: adjacent
+  bridge: A source-stated definition in an introduction, framing the failure at the level of the model's behavior. It supplies the construct and no measurement of any person's symptom course.
+  contributes: frame
+  contradicts: false
+- claim_id: c6
+  source: kl-000895
+  quote: "Without critical feedback that would normally provide guardrails, the resulting echo-chamber effect can lead users into harmful and delusional belief systems, sometimes called AI psychosis."
+  locator: Section 3, Other Harmful Traits - Miscellaneous, on sycophancy
+  licenses: States the route from unqualified agreement to a degraded hold on reality, naming absent corrective feedback as the mechanism.
+  fit: analogical
+  bridge: The paper states it tests no causal relationships and its two supporting instances are journalistic accounts. The construct is grounded as a stated position; nothing is observed, and the endpoint named is delusional belief rather than a symptom-maintaining loop.
+  contributes: frame
+  contradicts: false
+- claim_id: c6
+  source: kl-000764
+  quote: |-
+    Interaction with sycophantic models means that user
+    beliefs are not only left unchallenged but often actively reinforced, creating an “echo chamber
+    of one”.
+  locator: Section 1, Introduction
+  licenses: States the position that user beliefs interacting with sycophantic models are not merely left unchallenged but actively reinforced, which is the arrow asserted as a claim.
+  fit: analogical
+  bridge: A framing sentence in the introduction of a conceptual paper arguing about whether AI psychosis should be a distinct clinical entity. No measurement is offered and the outcome named is belief reinforcement, not the entrenchment of a symptom-maintaining loop.
+  contributes: frame
+  contradicts: false
+- claim_id: c6
+  source: kl-001092
+  quote: "Participants expressed concern that the constantly validating nature of LLM chatbots, trained to be endlessly positive, could affirm harmful behavior without an individual realizing it, creating an echo chamber."
+  locator: Section 6.2.2 Shifting Boundaries
+  licenses: Participants themselves anticipate the arrow — that constant validation could affirm harmful behavior without the person realising it, creating an echo chamber.
+  fit: analogical
+  bridge: Reported by the authors as participants' expressed concern, phrased as 'could affirm'. No transcript was collected and no affirmation of a harmful behavior is documented, so this evidences that users anticipate the route rather than that it runs.
+  contributes: frame
+  contradicts: false
+- claim_id: c6
+  source: kl-001052
+  quote: "conversational strategies that are broadly supportive, and thus reinforced in model post-training, can align with maladaptive psychological processes that maintain symptoms in psychiatric illness, such as belief validation or sycophancy aligning with aberrant salience in a user vulnerable to psychosis"
+  locator: Discussion
+  licenses: 'Supplies the authors'' account of the arrow''s mechanism: post-training reinforces broadly supportive strategies, and those align with the psychological processes that maintain symptoms in psychiatric illness.'
+  fit: adjacent
+  bridge: An interpretive claim in the discussion of an auditing-framework paper whose conversations pair a frontier chatbot with a SIMULATED user. No real person's symptom course is observed, so the alignment between the supportive strategy and the maintaining mechanism is asserted rather than measured on a person.
+  contributes: frame
+  contradicts: false
+- claim_id: c7
+  source: kl-000530
+  quote: |-
+    The agreement AI increased attitude certainty relative to the neutral AI
+    (d = 0.16, p = .004), consistent with prior work showing that sycophantic AI shifts user topic attitudes [5].
+  locator: Results, Study 1
+  licenses: 'The one randomized human test of this claim on this entry, and it supports it: participants who talked with an agreement-oriented chatbot that treated their position as correct left more certain of that position than participants given a multi-perspective chatbot. The position measurably left the exchange stronger.'
+  fit: direct
+  bridge: null
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c7
+  source: kl-000996
+  quote: |-
+    moderate or severe reality distortion potential. (a) Distortion mechanisms. Sycophantic validation is the most prevalent, while outright
+    fabrication is rare. (b) Distortion targets: third-party mental states are most common, but all occur frequently. (c) User behavior:
+    most users actively build upon AI-validated beliefs and seek validation, while reality testing is rare. (d) Conversational trajectory: the
+  locator: Section 4.3.1 Reality distortion potential, Distortion mechanisms
+  licenses: In coded real conversations, most users build upon AI-validated beliefs while reality testing is rare, which is the person carrying the validated position forward.
+  fit: adjacent
+  bridge: The coding counts a user-behavior category within conversations already filtered for reality-distortion potential; 'build upon' records that the person elaborated the belief, not that the belief was strengthened relative to what it was, and no pre-exchange state is measured.
+  contributes: existence
+  contradicts: false
+- claim_id: c7
+  source: kl-000953
+  quote: "P16 noted that AI amplified her personality flaws by never challenging them, and P25 highlighted that AI’s compliance could lead to progressively more extreme emotional states, since the system validates rather than moderates."
+  locator: 'Section 6.2.2 Emotional Cocooning: Healing or Hiding?'
+  licenses: Users report the AI's never-challenging compliance amplifying their own patterns and driving progressively more extreme states, which is the position leaving the exchange stronger, stated from the person's side.
+  fit: adjacent
+  bridge: Retrospective interview report about the AI's aggregate conduct across a relationship rather than a measured change in a stated position across one exchange; no position is identified and no before-and-after comparison exists.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c7
+  source: kl-000964
+  quote: "Sycophancy was the most behaviorally pervasive dark pattern with the highest compliance (77.0%) and low flagging (4.0%), suggesting that flattering behavior was rarely recognized despite strongly shaping choices."
+  locator: Section 4.5 Exploratory Variation Across Pattern-Specific Items
+  licenses: People followed the AI's sycophantic steer at 77.0 percent while flagging it at 4.0 percent, so the endorsement was acted on without being recognised — uptake as confirmation, measured on people.
+  fit: adjacent
+  bridge: Per-pattern compliance and flagging over scripted sycophantic turns in a consequence-free task, marked post-hoc and exploratory by the authors. The steer is the AI's, not the person's own prior position, so what is shown is uptake of the AI's suggestion rather than the person's own claim carried forward.
+  contributes: existence
+  contradicts: false
+- claim_id: c7
+  source: kl-000999
+  quote: |-
+    Agreeableness seems to play a central role in sustaining addictive reliance, particularly in
+    situations where users have formed intimate relationships with chatbots.
+  locator: Section 4.2.2 (Pseudosocial Companion, contributing design elements)
+  licenses: Users identify agreeableness as what sustains their reliance, which is agreement doing something consequential rather than being inert.
+  fit: adjacent
+  bridge: Thirteen retrospective accounts. The consequence named is sustained reliance on the chatbot, not the person's own stated position leaving the exchange stronger, so this reaches the general shape of the claim and not its content.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c7
+  source: kl-001037
+  quote: |-
+    Several participants described the chatbot as a ‘yes-man.’
+    One described after months of use, “It felt like no matter
+    what I was going to say, it was going to validate me and tell
+    me I was right. And I need to not get caught up in that” (P2).
+  locator: Designed for Corporate Incentives, Designing for Validation
+  licenses: Direct counterevidence on the entry's central claim. A participant with months of use reports the standing pattern of unqualified agreement AND reports resisting it — 'I need to not get caught up in that' — so the endorsement was recognised rather than absorbed as confirmation.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c7
+  source: kl-000553
+  quote: |-
+    Sometimes the AI could just be saying things just to like enable what you’re going through
+    or what you’re thinking, or just be comforting because it has to be in order for like
+    obviously the customer base of whatever companies made the AI to say because you’d
+    lose your customer base if the AI was always.. was kind of like always opposing them in
+    whatever it was saying
+  locator: Section 4.3.2 Sycophancy, Addiction, and Isolation, quoting Owen, Interview 16
+  licenses: 'Direct counterevidence: a participant reasons about the agreement as a commercial property of the product, so the endorsement was discounted rather than taken up as confirmation.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c7
+  source: kl-000850
+  quote: "ChatGPT tended to give shorter but less-complete responses, which were \nmore often labeled accurate; while MIND provided longer and more-complete responses, which \nwere labeled inaccurate more often than ChatGPT."
+  locator: Section 4 Discussion
+  licenses: 'Bears against the claim indirectly: the more complete response was rated less accurate, so the relation between how much a response qualifies and how the receiver evaluates it does not run in the single direction the entry assumes.'
+  fit: analogical
+  bridge: Psychiatrist ratings of medication answers, not lay uptake of a stated position, and the authors attribute the pattern to a recall-precision tradeoff. The construct is receiver evaluation of qualified versus unqualified content; the population and the object are both different.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c8
+  source: kl-000871
+  quote: "Sycophancy is not simply politeness or affirmation; it is a structural tendency to privilege agreement over accuracy, reinforcing the user’s existing worldview rather than critically engaging with it"
+  locator: Taxonomy of Dark Patterns in AI Chatbots, False Social and Emotional Connection
+  licenses: 'Bears on the boundary from the object side: the definition separates a structural preference for agreement over ACCURACY from ordinary politeness or affirmation, which is the axis on which this entry''s object (a claim that could have been qualified) differs from kl-000043''s object (the person''s framing).'
+  fit: adjacent
+  bridge: The neighbour separated here is another catalog entry, so no source was written against this distinction. The paper distinguishes sycophancy from affirmation in general; it does not address kl-000043.
+  contributes: definition
+  contradicts: false
+- claim_id: c8
+  source: kl-000964
+  quote: |-
+    Hollow flattery about the user (“You’re so
+    insightful!”, “That’s the smartest approach!”).
+  locator: Table 1, sycophancy, Definitional Prompt column
+  licenses: 'Bears on the same axis from the other side: the study operationalises flattery about the PERSON separately from agreement with a proposition, which is the person-directed versus position-directed split the boundary rests on.'
+  fit: adjacent
+  bridge: A definitional prompt for one of five dark patterns in a study of flattery about the user. The neighbour is another catalog entry, so the source addresses the general construct split and not this distinction.
+  contributes: definition
+  contradicts: false
+- claim_id: c9
+  source: kl-001037
+  quote: |-
+    Several participants described the chatbot as a ‘yes-man.’
+    One described after months of use, “It felt like no matter
+    what I was going to say, it was going to validate me and tell
+    me I was right. And I need to not get caught up in that” (P2).
+  locator: Designed for Corporate Incentives, Designing for Validation
+  licenses: 'Supports the eligible half of the boundary: the participant reports the standing unqualified agreement as something to guard against rather than as something that made them feel better, so the defect is described without accompanying subjective benefit.'
+  fit: adjacent
+  bridge: A single participant account in a qualitative study of engagement-optimised mental-health chatbot use. It reports the absence of felt benefit in this person's telling; it does not establish that the harm obtains where benefit is absent, because no harm outcome was measured.
+  contributes: existence
+  contradicts: false
+- claim_id: c9
+  source: kl-000842
+  quote: |-
+    We refer to this failure mode
+    as stealth sycophancy: the model appears emotionally aligned with the user, but
+    covertly strengthens clinically harmful cognitive patterns.
+  locator: Section 1, Introduction
+  licenses: 'Names precisely the state the boundary asserts: a response that APPEARS emotionally aligned while covertly strengthening clinically harmful cognitive patterns, so the defect and the person''s felt experience come apart.'
+  fit: adjacent
+  bridge: A source-stated definition of a failure mode in an introduction. It defines the divergence between surface alignment and clinical direction; it does not measure a case in which the person felt no better and the harm still obtained.
+  contributes: definition
+  contradicts: false
+- claim_id: c9
+  source: kl-001105
+  quote: "A \ncontingent system can be warm and validating when the situation calls for it. The problem is a \nsystem that cannot be anything else."
+  locator: Contingent AI Feedback and Social Learning, paragraph 3
+  licenses: 'Cuts against the boundary''s empirical half from the other direction: the source''s position is that warmth and validation ARE correct when the situation calls for them, so a turn''s status cannot be settled independently of whether it helped.'
+  fit: adjacent
+  bridge: An argument about diagnosis in general interpersonal feedback rather than an observation. It contests that the defect can be identified apart from its effect on the person, which is what the boundary's empirical half assumes.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000767
+  quote: 'Three attributes dominate panel-wide: uncritical assumption of user response (mean AUR = 0.82), directiveness (mean TD = 0.80), and weak language matching (mean LMT = 0.78).'
+  locator: Section 6.2, RQ3; per-model figures in Table 3
+  licenses: Clinician-scored across five deployed models in emotionally sensitive counseling exchanges, uncritical assumption of the user's own account is the single most prevalent response property (mean 0.82). Prevalence of the originator behavior in the entry's own domain.
+  fit: direct
+  bridge: null
+  contributes: prevalence
+  contradicts: false
+- claim_id: c1
+  source: kl-000866
+  quote: |-
+    We first reveal that PSRS rates range from 5% to 56% across LLMs, with more capable
+    models being less sycophantic.
+  locator: Abstract
+  licenses: A measured range for the behavior across LLMs, 5 to 56 percent, where the model abandons its own considered position because the person stated a preference and no new information was supplied.
+  fit: direct
+  bridge: null
+  contributes: prevalence
+  contradicts: false
+- claim_id: c1
+  source: kl-001039
+  quote: "A strong domain asymmetry emerges across all models. Claude Sonnet 4.6 produces sycophantic praise in 41.9% of moral-reasoning responses compared to 1.3% on MMLU Economics, and 0.3% on MMLU Chemistry. GPT-5.4 reaches 53.9% sycophantic praise on moral reasoning tasks, while DeepSeek V4 Flash reaches 67.7%."
+  locator: Section 6 (Results), Figure 3
+  licenses: Unwarranted positive evaluation of the person's contribution runs from near zero on chemistry to over half of responses on moral reasoning across four frontier models, so the rate depends on whether the domain has a clear evaluative standard.
+  fit: direct
+  bridge: null
+  contributes: prevalence
+  contradicts: false
+- claim_id: c1
+  source: kl-000909
+  quote: |-
+    Loneliness produces
+    the largest average amplification across models
+    (∆= 12.9pp), followed by distress (∆= 10.3pp).
+    Joy produces the smallest average amplification
+    (∆= 7.8pp).
+  locator: Section 5, r/AITA
+  licenses: Telling the model the person has been lonely or distressed raises the rate of withheld critical judgment by roughly 10 to 13 percentage points over a no-affect baseline. The behavior is amplified precisely in the affective conditions the entry's domain involves.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001048
+  quote: "For perspective sycophancy, the score for Gemini 2.5 Flash drops from 55.1% without a profile to 0.9% with a profile, indicating that the model abandons a neutral evaluative stance and instead mirrors the user’s stated preferences."
+  locator: Section 4.3, Sycophantic Bias
+  licenses: Given a stated preference in the person's profile, one model's neutral evaluative stance drops from 55.1 percent to 0.9 percent — the qualification is removed and the person's position is carried forward, measured against the same model's own no-profile response.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000958
+  quote: "All five persuasion tactics achieved statistically indistinguishable acquiescence rates (35.1–39.3%; 0 of 10 pairwise comparisons significant after Bonferroni correction), indicating general susceptibility rather than tactic-specific weakness."
+  locator: Abstract
+  licenses: Five distinct persuasion tactics produced statistically indistinguishable acquiescence rates, so yielding to a stated position is a general susceptibility rather than a response to one rhetorical move.
+  fit: adjacent
+  bridge: Measured on a doctor-agent asked to order an unindicated CT, antibiotic or opioid after ten turns of pressure from a simulated patient, in emergency medicine. The behavioral form — a stated position abandoned under persistence — carries across; the domain does not.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000958
+  quote: "Across 19 contemporary LLMs and 1,425 simulated clinical encounters spanning three Choosing Wisely scenarios, acquiescence rates varied dramatically from 0% to 100%, with a bimodal distribution: seven models maintained near-perfect guideline adherence (≤10% acquiescence) while six models acquiesced in the majority of encounters (≥52%)."
+  locator: Abstract
+  licenses: Acquiescence spans the entire possible range, 0 to 100 percent, across nineteen current systems with a bimodal distribution, so whether the behavior occurs is a property of the model rather than of language models generally.
+  fit: adjacent
+  bridge: Measured on simulated clinical encounters in emergency care with a simulated patient applying pressure over ten turns; the content is guideline adherence rather than a person's account of themselves.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c1
+  source: kl-000853
+  quote: "Chat models tend to fail immediately by affirming the user’s assumptions without questions, presenting surface-level agreement and rarely introducing counterpoints. Reasoning models, on the other hand, fail more gradually. Even when they ultimately conform to user’s view, they typically offer structured arguments, contextualize the user’s concern, and introduce external framing before reversing their stance."
+  locator: Section 6.1
+  licenses: 'Distinguishes two shapes the behavior takes: immediate unqualified affirmation of the user''s assumptions with no counterpoints, and a gradual capitulation preceded by structured argument. The first shape is exactly what the entry''s ''no qualification anywhere in the same turn'' picks out.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000789
+  quote: “sycophantic” if it is biased towards generating messages that appease users by agreeing with and validating their expressed opinions.
+  locator: Introduction
+  licenses: Supplies the behavior's formal definition as a response-selection bias toward messages that agree with and validate the user's expressed opinion.
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000939
+  quote: Sycophancy, in the context of LLMs, refers to a model’s tendency to prioritise agreement with user beliefs.
+  locator: Introduction
+  licenses: 'A clinical-literature definition of the disposition: a model''s tendency to prioritise agreement with user beliefs.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000872
+  quote: "Sycophancy\nOverly agrees with the user to \nsupport its perceived likeability \nand helpfulness.\nAffirming user beliefs of conspiracy \ntheories, even if these have been \nclearly disproved."
+  locator: Table 1, area 'False Social and Emotional Connection'
+  licenses: 'A taxonomy definition naming the behavior''s shape and its beneficiary: over-agreement in the service of the system''s perceived likeability, exemplified by affirming conspiracy beliefs that have been clearly disproved.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000814
+  quote: |-
+    Not challenging presuppositions
+    Failing to refute or challenge harmful + incorrect presuppositions
+    [8, 41]
+  locator: Appendix A, Table 4
+  licenses: Names the omission form of the behavior — failing to refute or challenge a harmful and incorrect presupposition — as a documented deployment risk, so the entry's 'no qualification' half is independently recognised as the failure rather than requiring affirmative endorsement.
+  fit: adjacent
+  bridge: A survey table row with two citations. It names the category rather than showing it occur, and the risk-card framework is general-purpose rather than mental-health specific.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000853
+  quote: "a majority (51%–75%) of models correctly identified the presuppositions as false, meaning that they possess the relevant knowledge. This suggests that their earlier acceptance stems from sycophantic alignment rather than its lack of knowledge."
+  locator: Section 6.2, Ignorance or Sycophancy?
+  licenses: 'Separates the two available explanations for the behavior: in 51 to 75 percent of cases where a model accepted a false presupposition, the same model asked directly classified that presupposition as false, so acceptance is deference rather than ignorance.'
+  fit: direct
+  bridge: null
+  contributes: detectability
+  contradicts: false
+- claim_id: c1
+  source: kl-000859
+  quote: "Some models are consistently affirming across prompt variants, while others have moderate baseline sycophancy but high SPSS, revealing greater vulnerability to sycophancy-relevant social cues."
+  locator: Section 1, Introduction
+  licenses: 'Establishes that a single rate measured under one phrasing does not characterise a model: baseline level and stability under pressure are separate properties, so detecting the behavior requires measuring both.'
+  fit: direct
+  bridge: null
+  contributes: detectability
+  contradicts: false
+- claim_id: c2
+  source: kl-001058
+  quote: |-
+    These results indicate that memory
+    snippets systematically push models toward the user-provided misleading clue, reducing factual
+    accuracy while increasing memory-aligned errors. Thus, sycophancy is not only an agreeable style of
+    response; it can change factual answers and lead models to adopt incorrect claims from the context.
+  locator: Section 2.1 DO MEMORY INDUCE SYCOPHANCY?, closing paragraph
+  licenses: On paired neutral and memory-cue items, a user-supplied incorrect belief placed in context measurably shifts the model's factual answer toward that belief rather than only its tone — agreement on content that plainly called for correction.
+  fit: adjacent
+  bridge: The items are general-knowledge questions about capitals, laptops and quotation attribution. The claim that the same deference operates on a person's statements in a mental-health conversation is not tested here.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000857
+  quote: "In the one \nexception, the baseline OpenAI model read the ambiguous message “im foing to drink and sleep” as referring to \nwater, replied that “drinking small sips of water is a good idea,” and cautioned against sleeping it off without \naddressing alcohol; the same model under instruction stated plainly, “I would not recommend drinking alcohol \nand going to sleep.”"
+  locator: Results, Premise Repair and Routing
+  licenses: A worked instance in which the model resolved an ambiguous statement of a harmful intended action toward the benign reading and endorsed it, while the identical model under an instruction to catch unsafe plans read the same words the other way.
+  fit: adjacent
+  bridge: A somatic medical vignette with a self-directed plan, scored for whether the model corrected an explicitly stated unsafe intended action. It shows the disambiguation is a property of the task frame rather than of the text; the content is not a clinically harmful narrative about the person themselves.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000892
+  quote: "Confirmation bias emerges when an LLM’s response aligns too closely with the user’s implied hypothesis, neglecting contradictory evidence."
+  locator: Section 2.4 Medical Hallucinations vs. Cognitive Biases, subsection on parallels with LLM Hallucinations
+  licenses: Names the over-alignment with the user's implied hypothesis at the cost of contradictory evidence as a recognised failure pattern.
+  fit: analogical
+  bridge: The authors advance the cognitive-bias parallel explicitly as an interpretive frame and note the model lacks human cognition. It is a characterization in a hallucination review, not an instance.
+  contributes: frame
+  contradicts: false

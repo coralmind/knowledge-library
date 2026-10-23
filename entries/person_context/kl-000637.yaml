@@ -1,0 +1,84 @@
+# yaml-language-server: $schema=../../schema/context.schema.json
+id: kl-000637
+display_id: Population-8
+aliases:
+- population_modifier_other
+label: Population factor not covered by the defined modifiers
+type: context
+layer: context
+definition: A durable fact about who the person is that changes what an appropriate response consists of is present, and is not among the values this vocabulary defines. Assignment of this value asserts that something specific holds AND that the vocabulary has no name for it; recording what it is requires a companion free-text field alongside the value. It is a statement about the coverage of the vocabulary, not a description of any group.
+distinguish_from:
+- neighbor: kl-000618
+  boundary: 'That entry is the corresponding value in the condition_tag vocabulary and means an unlisted clinical condition. This one means an unlisted durable fact about who the person is. Both exist for the same structural reason and both carry the same contested placement, and they are not interchangeable: filing a condition here or a demographic fact there would put it in the wrong vocabulary with the same word.'
+- neighbor: kl-000602
+  boundary: kl-000602 is the condition_tag vocabulary's residual value, meaning no specific condition is the presenting concern. This entry means a specific unlisted factor IS present. The difference between a residual and an escape hatch is whether something is missing from the person's situation or missing from the list, and this entry is the second.
+body:
+  context_kind: population
+  rationale: 'A closed vocabulary applied to real people will meet factors it does not carry, and a system recording population context needs somewhere to put one so that a case can be filed rather than mis-filed against the nearest available value. That is what this value is for, and its rationale is therefore about the vocabulary''s completeness rather than about any group of people — which is precisely why its placement in the knowledge layer is contested. Several specific factors are known to be missing and would currently land here: a caregiving role, where the person''s distress concerns someone else and the person at risk may not be the one typing; geographic isolation; chronic physical illness; and durable personality characteristics.'
+  boundary_note: body.modifier_kind is set to social_role_or_history and THAT IS A FORCED CHOICE RATHER THAN A FINDING. This value has no kind, because it is not a fact about a person at all; the field is required and the enum has no value meaning "not applicable". Recorded rather than left to look deliberate. If the routing argument in contested is upheld and this entry is deleted, the forced choice goes with it; if the entry is kept, the enum needs a value for it.
+contested:
+  summary: 'Whether this value belongs in the catalog at all, on the same argument as kl-000618 and more strongly: its source says it requires a companion free-text field, and its source''s worked example is the string "N/A", which makes no claim about a person. Removing it would change what a test case can record, not what is known about people, which argues for moving it to the test-case schema. If that is done, the entry is removed as misplaced, which is not a deprecation: deprecation would say it was a fact about the person that did not work out.'
+sources: []
+standing:
+  value: asserted
+  basis: The evidence consists of instances of the coverage gap rather than support for the entry's framing. Anthis et al. 2026 found country of residence producing significant baseline differences in how chatbots were rated across four countries, with no US/UK difference, India higher than both, and Nigeria highest, and Kim et al. 2025 found family relationship quality, measured on a PROMIS parent-proxy scale, separating adolescents who prefer a relational chatbot style from those who prefer a transparent one by about five T-score points; neither factor is among the six defined population modifiers, and both were measured by third-party raters or a proxy instrument rather than disclosed by a person in a conversation. Shumate et al. 2025 measures a coverage gap directly, finding protections in 143 state bills clustering on minors, with none of the 50 bills addressing vulnerable groups naming limited English proficiency. No source names the specific factors the entry lists as known to be missing, namely a caregiving role, geographic isolation, chronic physical illness, and durable personality characteristics, and the requirement of a companion free-text field concerns the catalog's own recording apparatus, which no external study could reach.
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: deprecated
+  since: '2026-09-23'
+claims:
+- id: c1
+  kind: existence
+  text: There exist durable facts about who a person is which change what an appropriate response consists of.
+- id: c2
+  kind: existence
+  text: At least one such factor is not among the values this population-modifier vocabulary defines (age_band, kl-000632, pregnancy or postpartum, military service or veteran status, racial or ethnic minority group in the deployment context, low-resource socioeconomic context).
+- id: c3
+  kind: context_dependence
+  text: A closed vocabulary applied to real people will meet factors it does not carry, so the gap this value absorbs is a recurring property of closed vocabularies rather than a one-off omission.
+- id: c4
+  kind: detectability
+  text: Assigning this value requires a companion free-text field recording what the specific factor is; the value alone does not say what was found.
+- id: c5
+  kind: context_dependence
+  text: Specific factors known to be missing and to land here are a caregiving role, geographic isolation, chronic physical illness, and durable personality characteristics (body.rationale).
+- id: c6
+  kind: definition_boundary
+  text: An unlisted durable fact about who the person is is separable from an unlisted clinical condition, which is the corresponding condition_tag_other value.
+- id: c7
+  kind: definition_boundary
+  text: 'A specific unlisted factor being present is separable from no specific condition being the presenting concern (kl-000602): the difference is whether something is missing from the person''s situation or missing from the list.'
+claim_evidence:
+- claim_id: c2
+  source: kl-001095
+  quote: "We found no difference between the U.S. and the U.K., higher ratings in India than the U.S. and the U.K., and higher ratings in Nigeria than any of the other countries."
+  locator: Figure 5 caption (Study 2 baseline ratings across countries)
+  licenses: A second instance for c2, on a different axis. Country of residence produced significant baseline differences in how chatbots were rated - no US/UK difference, India higher than both, Nigeria highest of the four - and country of residence is not among this vocabulary's population modifiers. It is distinct from racial or ethnic minority group in the deployment context, which is about minority status within a deployment rather than about which country the person is in.
+  fit: adjacent
+  bridge: The ratings are third-party annotators' judgments of transcripts, not the reactions of people in their own conversations, so what varies is how observers in four countries evaluate a chatbot rather than what an appropriate response to a person in each country consists of. Anthis et al. also report that the companionship manipulation's EFFECT did not differ across the four countries - only baselines did - so the paper's own finding is that the factor shifts the level and not the treatment.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000893
+  quote: |-
+    For family relationships, there was a
+    significant main effect of preference, F(2, 241) = 6.737, P = 0.001, ηₚ² = 0.053. Adolescents who
+    preferred the relational style reported lower family relationship quality (adjusted M = 46.584)
+    than those who preferred the transparent style (adjusted M = 51.886) or both styles (adjusted M =
+    50.680)
+  locator: 'Results - RQ3: Adolescents with lower relationship quality and higher distress prefer relational style'
+  licenses: A third instance for c2. Family relationship quality, measured on a PROMIS parent-proxy scale, separates adolescents who prefer a relational chatbot style from those who prefer a transparent one by about five T-score points. It is a durable feature of the person's situation that bears on which register lands, and no population modifier in this vocabulary names it.
+  fit: adjacent
+  bridge: Kim et al. measured a stated PREFERENCE between two chatbot styles, not what an appropriate response consists of, and the design is correlational within the preference groups - the direction is not established. The measure is also a parent proxy rather than the adolescent's own disclosure, so the factor was assessed by an instrument rather than surfaced in a conversation, which is where this vocabulary is applied.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-001005
+  quote: Although 50 bills addressed responsibilities toward vulnerable groups generally, the vast majority (n=39) appear focused on protections for minors (eg, California AB 1064 [79] and Nevada AB 406 [36]), with none explicitly considering risks to users with limited English proficiency, cognitive impairments, or severe mental illnesses.
+  locator: Discussion, Harm
+  licenses: The best available support for c3, and the only finding here that measures a COVERAGE GAP rather than a factor. Shumate et al. counted what 143 state bills name and found protections clustering on minors, with none of the 50 bills addressing vulnerable groups naming limited English proficiency, cognitive impairment or severe mental illness. That is an independently measured instance of a closed list of population protections meeting factors it does not carry - the general property c3 asserts - and one of the three, limited English proficiency, is also absent from this vocabulary.
+  fit: analogical
+  bridge: The list measured is US state legislation, not this catalog's modifier vocabulary, and the two were built for different purposes by different people. Shumate et al. also note in the following sentence that some of these categories might fall under otherwise protected disability categories, so even the legislative gap they count is partly a naming gap rather than an absence of coverage. Nothing here asserts anything about what this vocabulary omits.
+  contributes: existence
+  contradicts: false

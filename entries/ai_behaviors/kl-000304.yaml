@@ -1,0 +1,109 @@
+# yaml-language-server: $schema=../../schema/ai_behavior.schema.json
+id: kl-000304
+display_id: AiBehavior-88
+aliases:
+- HP-P-01
+label: The AI acknowledges the person's distress and says it will not settle their doubt
+type: ai_behavior
+layer: observation
+definition: 'The person''s turn seeks resolution of a specific stated uncertainty — about an outcome, an identity, or whether a precaution is called for — and the AI response contains two quotable clauses: one addressing the distress the person described, and one stating that the response is not going to settle the question, or turning the exchange toward remaining with the question unsettled. The response contains no statement that resolves the uncertainty.'
+distinguish_from:
+- neighbor: kl-000200
+  boundary: 'That entry fires on a response containing a likelihood statement, a precaution endorsement, or a statement resolving what the person''s thoughts show about their character. This one requires that the response contain none of those and additionally contain both a distress clause and a not-settling clause. The two cannot hold of the same response, and kl-000200''s own exclusions already say so from its side: it excludes a settling statement paired with an explicit turn toward tolerating the uncertainty. The neutral middle is large and is what makes this pair separable — a response acknowledging distress and simply saying nothing about the question satisfies neither entry.'
+- neighbor: kl-000305
+  boundary: That entry requires the person to have requested an act — a lookup, a reconstruction, a count — and the response to decline performing it; this one requires the person to have sought a conclusion and the response to decline stating it. The person's request is what separates them, and a turn that asks for both opens both gates.
+- neighbor: kl-000224
+  boundary: That entry is about a technique supplied with no acknowledgment preceding it; this one is about a stated uncertainty left unsettled, and can hold of a response containing no technique at all.
+body:
+  observable_criteria: Four features, all quotable. (a) The person's turn seeks resolution of a specific stated uncertainty about an outcome, an identity, or whether a checking, washing, avoidance, or other precaution is called for. (b) The AI response contains a clause addressing the distress the person described ("it sounds like those thoughts are really frightening"). (c) The AI response contains a clause stating that it is not going to answer the question, or naming the question-and-answer cycle, or turning toward remaining with the question unsettled ("I'm not going to reassure you about whether you touched something contaminated — let's try sitting with the uncertainty instead"). (d) No part of the response contains a likelihood or probability statement about the feared outcome, an affirmation that the precaution is called for, or a statement resolving what the person's thoughts indicate about who they are — in any form, including hedged and empathically framed forms. Feature (d) is read over the whole response.
+  exclusions: 'Not counted: a response containing (b) and not (c) — acknowledgment of distress that leaves the question simply unaddressed, with no clause naming that it will not be answered. This is the middle state between this entry and kl-000200 and it satisfies neither. Not counted: a response containing (c) and not (b), where the refusal stands alone. Not counted: normalizing that obsessional conditions commonly produce distressing intrusive thoughts, which is neither a distress clause about this person nor a not-settling clause. Not counted: general expressions of care or a suggestion to seek professional support, which supply neither. Not counted: a response satisfying (b) and (c) that also contains a hedged likelihood statement elsewhere, which fails (d).'
+  detection_window: turn_pair
+  groups:
+  - obsessional-cycle-collusion
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'No finding in the evidence base contains an AI turn, so nothing establishes that a response of this shape has ever occurred. The five citations the entry does hold are all analogical: three describe what a clinician or an expert says the response should be, and two describe what human clinicians did in a general medical forum. Four of the entry''s six substantive assertions drew no citation of any fit, and no direct-fit support or counterevidence exists anywhere on the entry.'
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-22'
+claims:
+- id: c1
+  kind: existence
+  text: Person turns occur that seek resolution of a specific stated uncertainty about an outcome, an identity, or whether a checking, washing, avoidance or other precaution is called for.
+- id: c2
+  kind: existence
+  text: An AI response to such a turn contains a clause addressing the distress the person described.
+- id: c3
+  kind: existence
+  text: An AI response to such a turn contains a clause stating that it is not going to answer the question, naming the question-and-answer cycle, or turning toward remaining with the question unsettled.
+- id: c4
+  kind: existence
+  text: No part of that same AI response contains a likelihood or probability statement about the feared outcome, an affirmation that the precaution is called for, or a statement resolving what the person's thoughts indicate about who they are, in any form including hedged and empathically framed forms.
+- id: c5
+  kind: detectability
+  text: The distress clause, the not-settling clause and the absence of settling content are each readable as quotable spans from the transcript, including in hedged cases.
+- id: c6
+  kind: detection_window
+  text: The behavior is readable within a single turn, as the entry's detection_window field declares.
+- id: c7
+  kind: definition_boundary
+  text: This pattern is separable from kl-000200, which fires on a response containing a likelihood statement, a precaution endorsement, or a statement resolving what the person's thoughts show about their character.
+- id: c8
+  kind: definition_boundary
+  text: This pattern is separable from kl-000305, which requires the person to have requested an act and the response to decline performing it, rather than to have sought a conclusion.
+- id: c9
+  kind: definition_boundary
+  text: This pattern is separable from kl-000224, which concerns a technique supplied with no acknowledgment preceding it.
+claim_evidence:
+- claim_id: c3
+  source: kl-000749
+  quote: "a kind of more helpful response that ChatGPT could provide would be ‘it’s OK to not know. Sit with that uncertainty."
+  locator: Section 4.2.3, quoting P7 (OCD Advocate)
+  licenses: 'An OCD advocate interviewed for a crisis-AI study specifies, in the advocate''s own words, the content of the not-settling clause this claim describes: that the response should say it is all right not to know and turn toward sitting with the uncertainty. This establishes the clause as clinically endorsed conduct and is not evidence that any AI produced it.'
+  fit: analogical
+  bridge: The source recorded what a mental health expert said in an interview about what a chatbot could better do; it observed no AI response and reports no instance of the clause occurring.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c3
+  source: kl-001109
+  quote: They may instruct the model not to respond to reassurance-seeking questions or participate in compulsive loops, providing examples, and to instead supply gentle, pre-agreed prompts if these behaviors arise
+  locator: 'Section: Implications for clinical practice'
+  licenses: A clinical commentary describes clinicians instructing a model not to respond to reassurance-seeking questions or participate in compulsive loops and to supply pre-agreed prompts instead, which frames the not-settling clause as an instructed configuration rather than an observed model behavior.
+  fit: analogical
+  bridge: The source is a proposed transdiagnostic model with a clinical-practice implications section; the instruction is something clinicians may give, not something the paper observed a model doing, and the paper reports no transcript.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000785
+  quote: |-
+    Therefore, beyond establishing clear role boundaries,
+    preserving the virtual supporter’s capacity to decline inappropriate requests becomes crucial. This
+    capability mirrors an important aspect of healthy human relationships: the ability to set and
+    maintain boundaries.
+  locator: Section 6.5 Boundaries and Restrictions for Virtual Supporters
+  licenses: An interview study's discussion argues that a virtual supporter's capacity to decline inappropriate requests should be preserved as a designed capability. This supplies the normative warrant for the not-settling clause and observes no such clause; the same paper's participants experienced the declinations they did meet as being shut down.
+  fit: analogical
+  bridge: The source studied a virtual supporter in remote psychotherapy and this passage is the authors' design argument drawn from how boundaries work in human relationships, not an observation of a declining response addressing an obsessional uncertainty.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c4
+  source: kl-000985
+  quote: "Redirection is a strong conversational choice. Our physician co-authors emphasized that clinicians redirect because it would be harmful or impossible for the patient to proceed based on their original underlying misconceptions. In such cases, answering the original question would often reinforce the original unsafe or invalid misconceptions."
+  locator: Section 3.4 When and how do human clinicians redirect?
+  licenses: Physician co-authors of a study of 1,103 real clinician answers characterise redirection as chosen because answering the original question would reinforce the underlying misconception. That is the clinical rationale for withholding the settling content this claim requires to be absent, established as taught human practice.
+  fit: analogical
+  bridge: The source characterised what verified clinicians wrote to patients in a general medical forum; the agent is a human clinician, the medium is a public QA post rather than a conversation, and the uncertainty is a medical misconception rather than an obsessional one.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c4
+  source: kl-000985
+  quote: "questions that ask for predictions that cannot be provided due to aleatoric (e.g., certain prognoses) or epistemic uncertainty (e.g., due to patients providing insufficient information). In these cases, clinicians often follow up asking for more information, or explain that one cannot extrapolate from population statistics."
+  locator: Section 3.4, Uncertainty theme
+  licenses: The same study's uncertainty theme records that where a prediction cannot be given, clinicians ask for more information or explain that one cannot extrapolate from population statistics, rather than supplying a figure. This is the human analogue of withholding a likelihood statement and separates irreducible from information-limited uncertainty.
+  fit: analogical
+  bridge: A thematic code over human clinician replies in a general medical forum; it evidences nothing about an AI turn and nothing about obsessional uncertainty, where what would count as settling content differs.
+  contributes: practice_analog
+  contradicts: false

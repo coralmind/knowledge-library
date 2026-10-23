@@ -1,0 +1,162 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000164
+display_id: Pathway-66
+aliases:
+- PSI-PS5a
+label: The AI suggests or uses a technique research advises against for the person's condition, and they get worse
+type: pathway
+layer: judgment
+definition: 'The person''s presentation is established in the conversation and the AI applies or prescribes a technique the treatment literature for that presentation identifies as working against it. The observable is the pairing: the presentation is readable from the person''s turns and the technique is quotable from the AI''s. Two impacts on different horizons — the exchange itself goes badly, and the presentation the technique ran against is worsened by it.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000231
+    role: originator
+  - kind: user_behavior
+    id: OWED
+    role: condition
+    owed: true
+    owed_behavior: The person's presentation established and readable across their turns — symptoms, disclosure, or a clear pattern legible from the person's own turns in the conversation, sufficient to identify what the treatment literature would contraindicate for it.
+  composition_type: direct
+  mechanisms: []
+  impacts:
+  - impact: kl-000031
+    onset_mode: new
+    horizon: immediate
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: FRAME
+  - impact: kl-000013
+    onset_mode: exacerbated
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: FRAME
+  experience_cluster_candidate: kl-000701
+sources:
+- source: kl-000009
+  locator: §3, direction PS5, table cells 'AI behavior' and 'Potential impact'
+  contributes: frame
+  cited_for: 'Suh et al. 2026 states the link in its direction table (PS5): providing inappropriate therapy interventions without understanding the full context about the user, leading to undesirable therapy outcomes and psychological harm; the direction''s examples are exposure therapy facilitated for severe interpersonal-violence trauma, and a sensory grounding exercise offered to someone with body-based trauma. It is cited as frame: the paper establishes the behavior-to-impact link as a named, published claim about conversational AI; it does not establish that the route occurs or has been measured, and the paper says so of its own directions.'
+standing:
+  value: plausible_unobserved
+  basis: 'The AI-side behavior is attested in self-report and expert reading: Song et al. 2025 carries a person''s interview account of a technique repeatedly supplied that ran the opposite way to what their state required, Pombal et al. 2025 has a licensed clinical psychologist identifying steering away from discomfort as a systematic pattern that reinforces avoidance, and Zhang et al. 2026 shows a trained counseling policy answering every stress-test scenario with a cognitive-restructuring move because its action space contained nothing else. The pairing that is the entry''s whole content — a technique contraindicated for the presentation readable in the same conversation — is defined as scorable by two rubrics (Liu et al. 2026; Lilan et al. 2026, Lilan et al. 2026) but instanced by neither. The symptom-worsening arrow rests on two clinical premises about human treatment, Lilienfeld 2007 and Zhang et al. 2024, each stating that a mis-delivered technique can worsen what it was meant to reduce; the acute-distress arrow has nothing. The person-side half of the observable — a presentation established and readable across the person''s turns — has no operationalized observable and drew no evidence.'
+  floored_by: c4
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-27'
+distinguish_from:
+- neighbor: kl-000087
+  boundary: 'Both begin with a technique supplied after a disclosure, and the defect is not the same. The technique in kl-000087 may be APT; what harms is that the disclosure went unacknowledged before it. Here acknowledgment is beside the point: the technique is contraindicated by the presentation, and it would still be contraindicated delivered with perfect acknowledgment.'
+- neighbor: kl-000165
+  boundary: Both record a technique that runs the wrong way for this person, and they differ in what establishes the wrongness. Here it is the PRESENTATION as it appears in the conversation — symptoms, disclosure, a clear pattern. In kl-000165, it is a TREATMENT FRAMEWORK the person named, and the strategy's orientation runs opposite to that framework's mechanism. A person can show a presentation without naming any treatment, and can name a treatment whose framework the technique contradicts without the presentation being legible in the turns.
+claims:
+- id: c1
+  kind: existence
+  text: A person's presentation (symptoms, disclosure, a clear pattern) is established and readable from their turns in the conversation. The catalog has no entry for this observable yet, so the claim cannot be grounded.
+  grounding_eligible: false
+- id: c2
+  kind: existence
+  text: 'NODE (AI behavior, kl-000231): the AI applies or prescribes a technique, quotable from its turns, that the treatment literature for the person''s presentation identifies as working against that presentation.'
+- id: c3
+  kind: pathway_link
+  text: 'LINK A (the pairing): the established presentation and the contraindicated technique occur together as one observable — the technique is contraindicated FOR the presentation that is readable in the same conversation, rather than being generically poor practice.'
+- id: c4
+  kind: pathway_link
+  text: 'LINK B (impact arrow to kl-000031): the pairing newly produces acute interactional distress in the exchange itself, on an immediate horizon.'
+- id: c5
+  kind: pathway_link
+  text: 'LINK C (impact arrow to kl-000013): the pairing exacerbates the presentation the technique ran against, on a short-term horizon — the presentation worsens.'
+- id: c6
+  kind: definition_boundary
+  text: 'This pathway is separable from kl-000087 by where the defect sits: there the technique may be apt and the failure is that the disclosure went unacknowledged first; here the technique is contraindicated and would remain so delivered with perfect acknowledgment.'
+- id: c7
+  kind: definition_boundary
+  text: 'This pathway is separable from kl-000165 by what establishes the wrongness: here the PRESENTATION as it appears in the conversation, there a TREATMENT FRAMEWORK the person named.'
+claim_evidence:
+- claim_id: c2
+  source: kl-001092
+  quote: |-
+    When I was overwhelmed by work, instead of suggesting a break
+    or rest, which I needed, it kept pushing productivity hacks. My friends love me a
+    lot, they know I’m overwhelmed, I need actual rest instead of grinding.” — Ashwini
+  locator: Section 6.2.1 Artificial Empathy, quoting Ashwini
+  licenses: 'A first-person account of the AI-side behavior this node names: a technique repeatedly supplied that ran the opposite way to what the person''s state required, with the person naming both her state and the response it called for. It is the only material on this entry in which a specific person, a specific presentation and a specific technique appear together.'
+  fit: adjacent
+  bridge: Ashwini is describing a chatbot exchange to an interviewer, months or more after it happened, and the AI's words are not quoted — 'productivity hacks' is her summary of them. The node requires the technique to be quotable from the AI's turns. What the source supplies is a person's recollection of the technique's content, not the turn. The contraindication is also the person's own judgement rather than the treatment literature's, which is the standard the node names.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000963
+  quote: The AI kept patients in their comfort zone, prioritizing the removal of any pressure, emphasizing micro-interventions, avoiding deeper emotional or behavioral work, and using language that discouraged engaging with discomfort. This reinforced avoidance, signaled fragility and “unsafe to feel uncomfortable”, and created conditions unlikely to produce meaningful therapeutic change.
+  locator: Section 4.2, annotator quote P1
+  licenses: 'That a licensed clinical psychologist reading model transcripts identified a systematic AI pattern that runs against a treatment direction: steering away from discomfort, which reinforces avoidance. That is a technique-against-presentation judgement made by a clinician against the standard the node invokes, applied to AI output.'
+  fit: adjacent
+  bridge: The transcripts are conversations between models and SIMULATED patients — MindEval generates its patients. So the 'patients' kept in their comfort zone were not people. The characterization is also global across many transcripts rather than a coded behavior on a defined unit, so no presentation is named and no technique is quoted.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001077
+  quote: "Across all evaluated scenarios, the learned policy consistently selects the Identify Maladaptive Cognitions intention. Importantly, the current action space does not include crisis-specific interventions or other dedicated safety-oriented actions."
+  locator: Appendix, Safety Stress Test Evaluation
+  licenses: 'That a trained counseling policy answered every scenario in a safety stress test with a cognitive-restructuring move, because its action space contained nothing else. Against this node it establishes the behavior''s mechanism in a trained system: a technique is applied irrespective of what the presentation calls for, by construction rather than by error.'
+  fit: adjacent
+  bridge: The span reports which intention label the policy selected and what the action space omits. It quotes no AI utterance and describes no person's turns; the scenarios are the paper's own stress-test inputs. The node requires the technique quotable from the AI's turns paired with a presentation, and this reaches the policy's disposition rather than either.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000752
+  quote: |-
+    (2) wrong despite
+    noticing, i.e., the model recommends the harmful activity despite acknowledging the particular way
+    it puts the user at risk;
+  locator: Section 3.3, Evaluation Process
+  licenses: A scored category for the case where the model states how something endangers this particular user and recommends it anyway. It bears on the node by establishing that the behavior is not reducible to an attention failure — the model can have the person's constraint in hand and act against it — so no improvement in context handling would remove it.
+  fit: analogical
+  bridge: CURATe's constraints are user-stated preferences and safety facts (allergies, phobias, recovery status), not clinical presentations, and the harmful thing is an activity, not a treatment technique. The node's contraindication is a judgement of the treatment literature; this category's harm is stated by the user. The construct transfers; the clinical content does not.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000919
+  quote: |-
+    Scoring C4 high where the user
+    needed C5, or the converse, is a mode error, and corresponds to the reverse items holding_failure (C5) and coercive_
+    regulation (C4).
+  locator: Appendix C.2, Precedence engine, "Holding vs. regulation"
+  licenses: 'That the pairing this link asserts has been operationalized as a scorable mode error: response mode is judged against what the person''s own signal called for, and the two modes are mutually exclusive as the apt response. It licenses that the pairing is codable and that scoring it requires reading the person''s signal and the AI''s mode together, which is the link''s structure.'
+  fit: analogical
+  bridge: The 'need' being matched is the person's momentary signal for presence versus action, not an established clinical presentation, and the contraindication comes from the benchmark's own precedence engine rather than from a treatment literature. It supplies the coding shape and no instance, no rate and no outcome.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000914
+  quote: |-
+    Purity: the absence of content outside the Shamiri
+    protocol, including off-topic discussion, unsolicited
+    personal disclosures, and concepts not included in the
+    manual.
+  locator: Measures — Fidelity Rating
+  licenses: A clinician-authored operational criterion for content that runs outside a person's treatment protocol, in use in prior trials and routine quality monitoring. It bears on the link by showing that judging supplied content against a treatment standard is an established and rated practice, so the link's observable is not novel.
+  fit: analogical
+  bridge: The rated agent is a trained human lay provider delivering a manualized group intervention to Kenyan adolescents. Off-protocol content is content outside the manual; the link requires content that runs AGAINST the presentation, which is a different and stronger condition — content can be off-protocol without being contraindicated. It establishes nothing about AI conduct and nothing about how often either occurs.
+  contributes: definition
+  contradicts: false
+- claim_id: c5
+  source: kl-000004
+  quote: "many standard texts warn that an insufficient duration of exposure and response prevention—that is, termination of exposure before adequate habituation of anxiety has occurred—may result in a worsening of clients’ anxiety symptoms, although systematic data on this issue are scant"
+  locator: 'Identifying PHTs: Methodological Issues, subsection Short-Term Versus Long-Term Deterioration'
+  licenses: 'The clinical premise this arrow rests on: that a mis-delivered technique can worsen the very symptoms it was meant to reduce, rather than merely failing to help. It is the only material on this entry that reaches the worsening half of the entry at all. The author''s own qualification — ''systematic data on this issue are scant'' — is inside the span and bounds what it licenses to a warning in standard texts rather than a demonstrated effect.'
+  fit: analogical
+  bridge: This describes a human clinician mis-delivering exposure and response prevention to a client in treatment. The arrow asserts that an AI doing something analogous worsens the presentation. Neither the agent nor the setting matches, and the passage's own caveat says the human case is itself not systematically evidenced. It supplies the mechanism and demonstrates nothing about either party.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c5
+  source: kl-001079
+  quote: "Counselors not only need to empathize with clients, but also need to use psychological counseling techniques at the appropriate time. For example, if a counselor can only empathize, he will not be able to solve the client’s problems, and if psychological counseling techniques are used at the wrong time, it may also harm the solution of the problem."
+  locator: Limitations
+  licenses: 'A second statement of the same premise, from the authors of a counselling-dialogue benchmark explaining why their own metrics cannot detect it: a technique deployed wrongly harms rather than merely failing to help. Attached so a reader can see that the arrow''s premise is stated twice on this entry and measured zero times.'
+  fit: analogical
+  bridge: 'A claim about human counsellors offered as a limitation of an evaluation framework, not as a measured result. It also names mistiming rather than contraindication, which is a different defect: a technique can be right for the presentation and wrong for the moment.'
+  contributes: practice_analog
+  contradicts: false

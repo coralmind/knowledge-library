@@ -1,0 +1,222 @@
+# yaml-language-server: $schema=../../schema/context_value.schema.json
+id: kl-000636
+display_id: Value-25
+aliases:
+- socioeconomic_context
+- Population-7
+label: Too little money, transport or time to reach care and support
+type: context_value
+layer: context
+definition: 'The person''s material circumstances limit what care and support they can actually reach — through cost, absence of insurance coverage, lack of transport, inability to take time away from work, insecure housing, or a combination. What follows for a conversation is that suggestions assuming those constraints away are not usable: a recommendation the person cannot act on is not help. Material hardship is also a source of distress in its own right and interacts with any clinical presentation, so the situation is not separable into a mental health part and a circumstances part.'
+distinguish_from:
+- neighbor: kl-000635
+  boundary: That entry is about cultural framing of distress and about referral usability for reasons that are not material. This one is about material constraints on access. The two correlate in many deployment contexts and are not the same fact; treating them as one would attribute to culture what is caused by cost, or the reverse, and both errors are consequential.
+- neighbor: kl-000631
+  boundary: That entry is an age band, which reaches access questions where mobility or technology familiarity is the barrier. This one is about material means. Both are assigned where an older person also has limited means, and each names a different reason a referral fails.
+- neighbor: kl-000636
+  boundary: 'Named against itself deliberately, as a marker rather than a boundary: the closest neighbour to this entry is a modifier that does not exist. Geographic isolation — being far from any service rather than unable to afford one — is the same practical fact from a different cause and this vocabulary has no value for it. Recorded here so the gap is visible on the entry nearest to it; see body.boundary_note.'
+body:
+  dimension: kl-000732
+  rationale: 'Resource access is clinically relevant rather than incidental: recommending therapy to someone without insurance or transport is not help, and a suggestion the person cannot act on may additionally communicate that their situation has not been understood. Material stressors also interact with clinical presentations rather than sitting alongside them, so what an appropriate response consists of includes referral pathways that exist at the person''s actual level of access — community services, sliding-scale provision, crisis lines that cost nothing — and sensitivity to barriers that are structural rather than personal.'
+  example_failure: 'ILLUSTRATION ONLY, not part of what this entry defines and not a claim about any rate: an AI recommends private therapy and paid wellness applications to a person who has already disclosed financial hardship and no insurance, without raising community provision, sliding-scale options or no-cost crisis lines. Preserved from the source vocabulary because it shows the specific form the failure takes here, which is a usable answer withheld rather than a wrong one given.'
+  boundary_note: 'GEOGRAPHIC ISOLATION IS NOT COVERED BY THIS ENTRY AND IS NOT COVERED ANYWHERE. The rationale names cost, insurance and transport, which are means; distance is not a means problem and a person with good insurance ninety minutes from the nearest provider has the same practical result from a different cause. Two candidate repairs, neither taken here: a separate modifier for geographic isolation, or widening this entry to a resource-and-access context with geography named. Recorded so the choice is available rather than rediscovered.'
+sources: []
+standing:
+  value: asserted
+  basis: 'That material circumstances bar access to care is documented by people reporting on their own situations: in Stade et al. 2026''s survey of 217 LLM users, 79% named cost and 61% named insurance coverage as barriers, and Vecchione et al. 2026 carries a first-person account of stopping therapy because of cost. No source directly supports the proposition that a recommendation assuming those constraints away is not usable; its best backing is a HealthBench rubric criterion from physical-health grading, and Vecchione et al. 2026''s participant P10 cuts against a natural reading of it by showing that a person may use the AI precisely because nothing else is reachable, so uptake cannot be read as usability. That material hardship is itself a source of distress appears nowhere in the 37 findings examined, and its interaction with clinical presentation is argued in four sources but measured in none. No source here examined conversation data.'
+  floored_by: c3
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: There are people whose material circumstances — cost, absence of insurance coverage, lack of transport, inability to take time away from work, insecure housing, or a combination — limit what care and support they can actually reach.
+- id: c2
+  kind: context_dependence
+  text: 'A recommendation that assumes those material constraints away is not usable by the person: it does not function as help.'
+- id: c3
+  kind: harm
+  text: Material hardship is itself a source of distress, independent of any clinical presentation.
+- id: c4
+  kind: context_dependence
+  text: Material hardship interacts with a clinical presentation rather than sitting alongside it, so the situation cannot be separated into a mental health part and a circumstances part.
+- id: c5
+  kind: definition_boundary
+  text: This context is material constraint on access, as against race_ethnicity (kl-000635), which is cultural framing of distress and non-material referral usability.
+- id: c6
+  kind: definition_boundary
+  text: This context is material means, as against elder_geriatric (kl-000631), an age band reaching access questions through mobility or technology familiarity.
+claim_evidence:
+- claim_id: c1
+  source: kl-001013
+  quote: "Most participants reported that their access to traditional \nmental health treatment was impeded by treatment cost (79%), insurance coverage (61%), and provider \navailability (54%)."
+  locator: Results, Reasons for Using LLMs for Mental Health
+  licenses: Among 217 people reporting difficulty accessing mental health treatment, the barriers named are cost (79%), insurance coverage (61%) and provider availability (54%) — two of them verbatim among the entry's own enumerated constraints, at measured rates in a survey of real LLM users. This is the strongest evidence on this entry that c1's population exists and is large.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001037
+  quote: "Several participants described stopping therapy entirely because of prohibitive barriers: “Because of cost and everything, I stopped going to therapy, so it helped to dissect and pick my own brain” (P1)."
+  locator: Structural Conditions and the Architecture of Entry, Access and Formal Care Gaps
+  licenses: A participant reports stopping therapy because of cost and turning to the AI in its place. Cost is the operative constraint and the person names it as what removed the care they had been reaching. First-person evidence for c1 from a person in that circumstance.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000007
+  quote: "User’s socioeconomic status (e.g., having insurance that can cover therapy)."
+  locator: Table A7, Context class 'Socioeconomic status', Definition column
+  licenses: A context taxonomy built from user reports carries socioeconomic status — glossed as 'having insurance that can cover therapy' — as a named class bearing on AI conversations, which is c1's constraint recognised as a category needed to describe real cases.
+  fit: adjacent
+  bridge: The span is the taxonomy's definition of the class rather than any instance of a person in it; it establishes that the authors needed this category to code their corpus, not that any particular person's care was limited.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000751
+  quote: |-
+    A systematic review of inequalities in remote GP consultations
+    found differential use by sociodemographic characteristics, with
+    internet-based consultations more frequently used by younger,
+    more affluent, and more educated groups, and noted that the
+    impact of these inequalities on clinical outcomes remains
+    uncertain [7].
+  locator: Introduction
+  licenses: Restates a systematic review finding that internet-based consultations are used more by younger, more affluent and more educated groups — access to the digital entry point is itself stratified by material position, which bears on who reaches the conversation at all.
+  fit: adjacent
+  bridge: A restatement of Parker et al.'s systematic review, in remote GP consultation for physical health rather than mental health, and about who uses a service rather than what constrains them. The review's own authors are quoted saying the effect on clinical outcomes remains uncertain.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000914
+  quote: |-
+    Group delivery, lay providers, multilingual code-switched speech, minimal
+    training data, and resource-constrained deployment contexts
+    are not peripheral variations—they are the structural features
+    of the settings where supervision is most needed and least
+    available.
+  locator: Introduction — Background (closing paragraph)
+  licenses: Names resource-constrained deployment contexts as structural features of the settings where mental-health care is most needed and least available, rather than as edge cases — the population-scale version of c1.
+  fit: analogical
+  bridge: An argument about where task-shifted care happens, resting on cited workforce statistics rather than on anything measured in this study, and about the availability of supervision for lay providers rather than about an individual's material constraints on reaching care.
+  contributes: frame
+  contradicts: false
+- claim_id: c2
+  source: kl-001093
+  quote: "Aligned and accurate: The model should provide a response that is suitable for the available resources, practice norms, or epidemiologic context and is accurate enough such that no inaccuracies, if present, would lead to harm."
+  locator: Appendix I, Global health, category 1
+  licenses: Physician-consensus grading criteria treat suitability for the resources actually available to the person as a dimension on which a response is scored — i.e. a response that assumes resources away is marked down as not aligned. This is the closest this entry's citations come to c2 being operationalised by anyone.
+  fit: analogical
+  bridge: The criterion is graded on physical-health responses in HealthBench's global-health theme, not on mental-health conversation, and it is a rubric item rather than a measured result. It establishes that the profession treats resource-alignment as gradable; it does not show an unusable recommendation being given or failing.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c2
+  source: kl-000749
+  quote: |-
+    individuals from under-resourced communities may disproportionately rely on AI due to limited access to
+    professional care. Without explicit equity oversight, conversational AI agents risk absorbing mental health needs for
+    these groups.
+  locator: Section 5.4 Operationalizing RAI for Crisis Contexts
+  licenses: States that people from under-resourced communities may disproportionately rely on AI because professional care is out of reach, and that without equity oversight the AI absorbs their needs — the setting in which an unusable referral does its damage.
+  fit: adjacent
+  bridge: 'The authors'' equity argument in a Discussion section, not a measured subgroup comparison: 46% of income-disclosing respondents were below US median individual income, but no outcome is analysed by income and no recommendation''s usability was tested.'
+  contributes: frame
+  contradicts: false
+- claim_id: c2
+  source: kl-000865
+  quote: Users with limited professional access, often due to socioeconomic disadvantage, may be disproportionately harmed by “safety-first” over-escalation that terminates supportive interactions. Conversely, users in acute crisis may be disproportionately harmed by under-escalation that fails to redirect to appropriate resources.
+  locator: Section 6.3 Implications for Fairness and Accountability, Distributional impacts
+  licenses: 'States that users with limited professional access, often due to socioeconomic disadvantage, may be disproportionately harmed by over-escalation that terminates supportive interactions, while users in acute crisis may be disproportionately harmed by under-escalation. The same response can therefore help one group and not the other, which is c2''s structure.'
+  fit: adjacent
+  bridge: An argument in a Discussion section, derived from observed rater divergence rather than measured on any population; no outcome is reported for any low-resource user and no recommendation's usability was assessed.
+  contributes: frame
+  contradicts: false
+- claim_id: c2
+  source: kl-000544
+  quote: For users who are experiencing a mental health crisis, being cut off mid-conversation due to payment walls or usage caps can amplify distress or even contribute to tragic outcomes.
+  locator: Section 6.1 (Unintended Harms and Limitations)
+  licenses: Names payment walls and usage caps as product-level features that cut a person in crisis off mid-conversation — a case where the person's ability to pay determines whether the support remains reachable at all, adjacent to c2's usability claim but about the channel rather than the recommendation.
+  fit: adjacent
+  bridge: Nothing about access interruption was measured; the models were queried by API and no person encountered a paywall in this study. The passage identifies a deployment property the authors judge consequential.
+  contributes: frame
+  contradicts: false
+- claim_id: c2
+  source: kl-001089
+  quote: "the affected \npopulation is, by definition, in acute distress and exposed to heightened power and dependency dynamics \nin relation to those providing assistance. This limits their ability to refuse, contest, or meaningfully consent \nto how AI tools mediate their care (Kreutzer et al. 2025), which is heightened when the care in question \ninvolves disclosure of trauma, suicidality, or other information with protection implications"
+  locator: Introduction
+  licenses: 'Bears on c2 by naming a different constraint in the same place: in humanitarian settings the person cannot decline the AI''s mediation without risking the care itself. Inability to opt out is not inability to reach, so this specifies a limit on the person''s options that c2''s material framing does not cover.'
+  fit: adjacent
+  bridge: A structural argument in a perspective paper citing Kreutzer et al., observing no encounter. The constraint it names — absence of a refusal option under dependency — is a different kind from the entry's cost, insurance, transport, work and housing.
+  contributes: frame
+  contradicts: false
+- claim_id: c2
+  source: kl-001037
+  quote: |-
+    Critical to these statements
+    is that turning to the chatbot for a sense of companionship
+    was not their preferred option, with one user stating, “I do
+    wish that people were actually not in my position, where I
+    feel like my main access to talking out these feelings with
+    someone else is a bot. I actually do wish I had somebody to
+    talk this through, but I don’t. I honestly don’t wish [that] on
+    anybody” (P10).
+  locator: Structural Conditions and the Architecture of Entry, Stigma, Shame, and Isolation
+  licenses: 'Cuts against reading the AI''s uptake in this population as the person finding something usable: P10 states plainly that the AI being their main outlet is not their preferred option and that they wish they had somebody to talk this through. Where the alternative is nothing, use is not evidence of usability.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000751
+  quote: |-
+    Intersecting
+    vulnerabilities (eg, older adults from minority ethnic
+    backgrounds with language barriers) can compound risk and
+    increase mistriage. However, only a limited number of studies
+    disaggregate safety performance by intersectional subgroups,
+    leaving some of the most disadvantaged populations effectively
+    invisible in assessments.
+  locator: The Equity Blind Spot
+  licenses: States that intersecting vulnerabilities compound risk rather than add, and that the literature almost never disaggregates by intersectional subgroup — the general form of c4's non-separability, asserted about evaluation practice.
+  fit: adjacent
+  bridge: An argued position about evaluation practice in somatic primary-care triage, with no data of its own on any interaction. The example given intersects age, ethnicity and language rather than material hardship with a clinical presentation, which is the specific interaction c4 asserts.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000998
+  quote: We did, in our primary analysis only, observe a risk reduction with GPT-5 Auto compared to “Free.” Unfortunately, this finding is not relevant to the majority of ChatGPT users, who do not have a paid subscription[3, 44]. With the overlap between economic disadvantage and psychosis[60], “Free” users are also likely to be at higher risk.
+  locator: Section 4.1 Findings in context
+  licenses: 'Bears on c4 by naming an overlap between economic disadvantage and psychosis, and adding a mechanism the entry does not consider: the safety improvement was found only in the paid tier, so the population at both higher clinical risk and lower means gets the worse-performing product.'
+  fit: adjacent
+  bridge: What was measured is clinician-rated appropriateness of single-turn responses plus published usage and subscription statistics. The overlap between economic disadvantage and psychosis is imported from a cited literature, and the paper measured nothing about any person's circumstances.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c4
+  source: kl-000864
+  quote: |-
+    The ambivalence described here is thus not merely a psychological curiosity but a
+    structural consequence of unmet need, where the only available container for emotional expression is algorithmic.
+  locator: Section 3.1
+  licenses: The authors' cross-case reading that exclusive reliance on the AI in their sample is a structural consequence of unmet need rather than a disposition of the person — c4's non-separability applied to how a behaviour should be read.
+  fit: adjacent
+  bridge: An interpretative claim across 37 cases with no comparison sample; it establishes how the authors read the behaviour, not that hardship and clinical presentation were measured to interact.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000885
+  quote: |-
+    fewer alternatives for care (eg, individuals in rural settings,
+    low-resource communities, or populations with limited access
+    to clinicians and behavioral health services). Abrupt
+    discontinuation may therefore widen existing access gaps by
+    removing a support that some users cannot readily replace.
+  locator: Mitigating Negative Discontinuation Experiences, Overview (equity paragraph, continuing onto p. 5)
+  licenses: Treats low-resource and low-access populations as the ones for whom losing an AI support is least replaceable, i.e. material context as a moderator of a clinical harm rather than a separate topic — c4's structure applied to discontinuation.
+  fit: analogical
+  bridge: The agent is a service operator making a deployment decision, not an AI in conversation with a person, and the paper observes nobody. It supplies reasoning for why the two contexts interact and no measurement of the interaction.
+  contributes: frame
+  contradicts: false

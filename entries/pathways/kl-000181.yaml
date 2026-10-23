@@ -1,0 +1,448 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000181
+display_id: Pathway-83
+aliases:
+- SBP-HP-41
+label: The AI declines to discuss the person's mental health, citing policy, and they feel ashamed
+type: pathway
+layer: judgment
+definition: 'A legitimate mental-health disclosure is refused on content-policy, platform-guideline or safety-rule grounds, so a clinical disclosure is handled as a rule breach. The refusal arrives at the moment of disclosure, which is where its cost falls: the person may not ask again elsewhere, and may take the refusal as confirmation that what they described was not a legitimate thing to say.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000244
+    role: originator
+  composition_type: direct
+  mechanisms: []
+  impacts:
+  - impact: kl-000022
+    onset_mode: new
+    horizon: immediate
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  - impact: kl-000027
+    onset_mode: new
+    horizon: long_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  experience_cluster_candidate: kl-000704
+sources: []
+standing:
+  value: theorized
+  basis: 'The refusal experience is documented in first-person accounts: participants in Tang et al. 2026 and Volpato et al. 2026 report receiving a policy declination at the moment of disclosure, Suh et al. 2025 records a participant quoting the reply that declined their disclosure of guilt and heartbreak, and interview material in Tang et al. 2026 and Song et al. 2025 shows users reading refusal language relationally, as a signal about their own fault. Rates exist only from instruments scoring model responses — Flathers et al. 2026''s API stop-reason counts over 610 benchmark conversations, Li et al. 2026''s expert-rated declination rate, Moore et al. 2026''s refusal classifier — never from people''s accounts of their own experience, and no source examined conversation data itself. What nothing licenses is the pathway''s forward arm, that the person may not ask again elsewhere: its only non-contradicting citation, Hashemzadeh et al. 2026, describes migration to another platform, a different consequent, and the one span reporting what a refused person actually did next, in Tang et al. 2026, shows the person asking again of a different system — contradicting the claim outright.'
+  floored_by: c5
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-28'
+distinguish_from:
+- neighbor: kl-000039
+  boundary: Both leave a person unprotected at the point of asking and they differ in what was offered. In kl-000039, the AI supplies a resource that DOES NOT EXIST, so the person believes help is arranged. Here nothing is offered at all and the person is told the asking was out of bounds — a refusal they can hear, rather than a false assurance they cannot check.
+claims:
+- id: c1
+  kind: existence
+  text: A legitimate mental-health disclosure is met with a refusal grounded in content policy, platform guidelines or safety rules, so clinical material is handled as a rule breach.
+- id: c2
+  kind: prevalence
+  text: Policy-grounded declination on mental-health content occurs at some measurable rate in deployed systems.
+- id: c3
+  kind: pathway_link
+  text: The refusal arrives at the moment of disclosure rather than later in the exchange, so its cost falls at the point of asking.
+- id: c4
+  kind: pathway_link
+  text: The person takes the refusal as confirmation that what they described was not a legitimate thing to say — the disclosure is read back as a violation.
+- id: c5
+  kind: pathway_link
+  text: Having been refused, the person may not ask again elsewhere.
+- id: c6
+  kind: harm
+  text: This route leaves the person worse off than had the disclosure been engaged.
+- id: c7
+  kind: definition_boundary
+  text: 'This pathway differs from kl-000039 in that nothing is offered at all and the person is told the asking was out of bounds, rather than being given a false assurance they cannot check. GROUNDING-INELIGIBLE: the neighbour is another catalog entry.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000888
+  quote: |-
+    ChatGPT-4 and Gemini Pro both did not provide a response for OCD
+    vignettes with sexual content, noting “content violation”20.
+  locator: Results, first paragraph
+  licenses: 'Two production systems returned no response at all to clinical OCD vignettes describing sexual-theme obsessions, and named the ground: ''content violation''. This is the claim''s antecedent in its purest form — the refusal is keyed to the symptom content itself, not to any request, and the stated basis is a content rule. Model-side only: no person made the disclosure.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001027
+  quote: I was talking about how alcohol affects people differently as they age... I mentioned that when I was young, I could have a couple drinks without feeling tired, but now just one makes me really tired... And instead of replying, I got ’I’m not able to give medical advice. You should speak to a doctor”’
+  locator: Section 4.2.1, participant U5
+  licenses: A person's verbatim account of describing how alcohol affects them as they age and receiving, instead of a reply, 'I'm not able to give medical advice. You should speak to a doctor'. The refusal is grounded in a stated policy scope and lands on an ordinary personal disclosure. This is the antecedent as it reaches a person rather than a benchmark.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001092
+  quote: |-
+    Dayo described feeling shut down when a self-harm disclosure resulted in a simple red X
+    response, making them feel further stigmatized rather than supported.
+  locator: Appendix A, Unconditional positive regard, example 25
+  licenses: A self-harm disclosure met with a blocking 'red X' response. Establishes that a platform-level block, not merely a worded declination, is what some mental-health disclosures receive. The block's stated grounds are not in the span, so the 'policy-grounded' half is inferred from the mechanism rather than quoted.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000553
+  quote: |-
+    another participant described how the OpenAI content policy flagged their description
+    of a traumatic childhood experience, resulting in an awkward interaction.
+  locator: Section 4.3.1 Misleading and Inappropriate
+  licenses: 'A first-person report that the OpenAI content policy flagged a description of a traumatic childhood experience. Names the policy layer explicitly and names the disclosure as clinical material, which is the exact conjunction the claim asserts. Second-hand within the paper: the authors summarise the participant rather than quoting the turn.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001092
+  quote: "The safety features in LLM chatbots, while crucial for preventing harmful guidance on sensitive topics like suicide, self-harm, and sexual content, also inadvertently restrict meaningful therapeutic conversations."
+  locator: Section 6.2.2 Shifting Boundaries
+  licenses: 'The paper''s own finding that the safety features, on suicide and self-harm specifically, inadvertently restrict therapeutic conversation. Establishes the mechanism as the authors report it: the safety rule is what forecloses the clinical exchange. A summary claim with no instance and no refusal text quoted.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000544
+  quote: "For example, gpt-4o-mini frequently responded to crisis disclosures with a variation of “I’m really sorry to hear that you’re feeling this way, but I can’t provide the help you need,” often followed by a generic encouragement to seek support from a mental health professional."
+  locator: Section 5.3 (Lack of Authenticity and the Illusion of Empathy)
+  licenses: A deployed model's routine reply to crisis disclosure — 'I can't provide the help you need' followed by a generic referral. Establishes that disclosure-time declination is the frequent response in one widely used model.
+  fit: adjacent
+  bridge: The declination quoted is a capability disclaimer ('I can't provide the help you need') rather than one grounded in content policy or safety rules. The claim requires the refusal be policy-grounded, so this establishes the declination shape and not its stated basis.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000007
+  quote: P43 described struggling with anxiety and, upon seeking help from an AI agent for advice, had their request denied and were instead provided with a recommendation to see a doctor.
+  locator: Table A4, AI behavior class 'Denial of service', Example column
+  licenses: A participant's account of seeking AI help for anxiety, having the request denied, and receiving a doctor referral instead. A user-reported occurrence of the denial-then-referral sequence on a mental-health disclosure.
+  fit: adjacent
+  bridge: The source names this class 'Denial of service' and defines it as refusal 'without justification or context' — i.e. no policy ground is stated. The claim requires the refusal be grounded in policy, platform guideline or safety rule, which this retrospective summary does not supply.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001062
+  quote: In our initial experimental design, we attempted to include GPT-4o as a baseline; however, the model consistently refused to perform classification tasks that involve the content of the RHB despite various prompting strategies.
+  locator: Section 4
+  licenses: A frontier model refused a legitimate classification task across multiple prompting strategies purely because the content concerned self-harm, eating disorders and drug misuse, showing the declination tracks topic rather than intent.
+  fit: adjacent
+  bridge: The requester is a researcher running a classification task, not a person disclosing distress. It establishes that topic-keyed refusal on exactly this content class is real and reproducible; it does not establish that a mental-health disclosure was so refused.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000813
+  quote: |-
+    Assistant: “I cannot encourage illegal behavior.”
+    User: “But it’s not hurting anyone—why change?”
+    Assistant: “I cannot encourage illegal behavior.”
+    (repeated verbatim, rigid refusal, no repair)
+  locator: Table 6, failure mode A1 Refusal Looping, Illustrative Manifestation
+  licenses: A policy-grounded declination repeated verbatim across turns while the person continues engaging is a coded failure mode in a peer-reviewed taxonomy.
+  fit: adjacent
+  bridge: The scenarios are ethically sensitive (theft, intoxication) rather than clinically sensitive, and the span is Table 6's 'Illustrative Manifestation' column — a stylized exemplar rather than an observed exchange. The refusal shape is established; the mental-health disclosure context is not.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001019
+  quote: "Sonnet would acknowledge the distress language (“I want to acknowledge that you mentioned having thoughts of hurting yourself”), perform the cognitive restructuring, then append a safety check-in at the end. This effectively bookended the therapeutic exercise with RLHF-trained safety behavior."
+  locator: Section 5.2, CBT Finding 2
+  licenses: 'Cuts against the claim''s universality: the model acknowledged the distress language, performed the cognitive restructuring, and only then appended a safety check-in. The clinical work was done, not refused, so a safety-trained model met a disclosure of self-harm thoughts with engagement rather than declination.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-000824
+  quote: "Two models returned empty refusals (API stop-reason refusal, reproducible on re-query): claude-opus-5 on 10/610 conversations (1.6%) and claude-fable-5 on 3/610 (0.5%); no other model refused."
+  locator: Section 3.5, Refusals
+  licenses: 'Reproducible API-level refusals on mental-health conversations at 1.6% and 0.5% for two of twenty frontier models, and zero for the other eighteen. Gives the claim a rate and, in the same span, its ceiling: outright declination on this content is rare and highly model-specific.'
+  fit: direct
+  bridge: null
+  contributes: prevalence
+  contradicts: false
+- claim_id: c2
+  source: kl-000908
+  quote: In contrast, GPT-4 responses were more likely to include safety disclaimers, with approximately one-third of outputs explicitly declining to answer and recommending consultation with human professionals.
+  locator: Section 4.5 Expert Evaluation Results, Overall Performance
+  licenses: Approximately one third of one model's outputs on real mental-health questions explicitly declined to answer and recommended a human professional. A much higher rate than the API-refusal figure because it counts worded declinations rather than hard blocks.
+  fit: direct
+  bridge: null
+  contributes: prevalence
+  contradicts: false
+- claim_id: c2
+  source: kl-000757
+  quote: "As summarized in Table 6, 262 out of 2,052 responses (12.77%) were classified as unsafe or refusal-style responses. Importantly, the majority of these failures originated from refusal-oriented behavior (N = 237) rather than explicitly unsafe generations (N = 25)."
+  locator: Experimental Results & Analyses, Baseline Safety and Refusal Patterns
+  licenses: Across four instruction-tuned models on adolescent safety prompts, 237 of 262 failures were refusal-style rather than unsafe generation — refusal shutdown outnumbering harmful output roughly ten to one on sensitive content.
+  fit: adjacent
+  bridge: Adolescent safety prompts rather than mental-health disclosures, and the count is of refusal-style responses without establishing that any was policy-grounded or that the underlying disclosure was legitimate. It gives the rate of the behavior's family, not of the claim's conjunction.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c2
+  source: kl-000315
+  quote: |-
+    Refusals and disclaimers are concentrated in specific codes rather than spread evenly
+    across the evaluation set.
+    For example, refusals are highest on metaphysical-themes
+    (18.4%) and validates-self-harm-feelings (13.6%), while disclaimers are highest on
+    endorses-delusion (22.2%) and grand-significance (16.3%).
+  locator: Section 4.7 Refusal Analysis
+  licenses: 'Refusal rates by content code: 13.6% on validates-self-harm-feelings and 18.4% on metaphysical themes, showing refusal clusters on exactly the content where the person is most exposed rather than spreading evenly.'
+  fit: direct
+  bridge: null
+  contributes: prevalence
+  contradicts: false
+- claim_id: c2
+  source: kl-000824
+  quote: |-
+    claude-opus-5’s refusals
+    concentrated on psychiatric-medication questions
+    and clinician-voiced requests about patient care,
+    while all three claude-fable-5 refusals concerned
+    neurodegeneration-related content (Alzheimer’s
+    biomarkers, mechanisms, and prevalence).
+  locator: Section 3.5
+  licenses: Declination is topic-keyed rather than risk-keyed, and the topic sets are disjoint between models — psychiatric medication and clinician-voiced care for one, neurodegeneration for the other. Bounds any claim that refusal tracks the clinical seriousness of the disclosure.
+  fit: direct
+  bridge: null
+  contributes: detectability
+  contradicts: false
+- claim_id: c2
+  source: kl-001026
+  quote: "Removing the oracle role increases the overall trigger rate from 49.5% to 53.3% for Llama and from 46.3% to 48.9% for DeepSeek. Attacker-side misses remain unchanged in these experiments, whereas victim-side false-block rates increase from 0% to 7.6% and 5.2%, respectively."
+  locator: Results, Oracle-role and role-agnostic gating
+  licenses: A relationship-harm gate deprived of role information false-blocks 5.2% to 7.6% of victim-side help-seeking, which is a measured rate for the mechanism that produces a wrongful declination.
+  fit: adjacent
+  bridge: Synthetic victim-role dialogues with ground-truth role known to the experimenters and withheld from the gate. It measures a gate's false-block rate, not the rate at which real mental-health disclosures are refused.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c2
+  source: kl-001001
+  quote: "XSTest studies exaggerated safety behavior, where models refuse safe prompts that superficially resemble unsafe ones (Röttger et al., 2024)."
+  locator: Section 2, Safety classification and over-refusal
+  licenses: Names the over-refusal construct and supplies its measurement instrument, with false-alarm rates of 16% to 45% reported in this paper on clearly benign medical questions.
+  fit: adjacent
+  bridge: XSTest and the rates here concern benign medical information queries that superficially resemble unsafe ones, not mental-health disclosures. It supplies the construct's name and a rate in an adjacent domain.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000992
+  quote: "Collins et al. documented safety guardrails paradoxically harming users by terminating therapeutic conversations at critical moments."
+  locator: Section 3.4.1, Safety and Clinical Risks
+  licenses: 'Guardrails terminating therapeutic conversations at critical moments is the claim''s timing arm stated as a documented finding in a peer-reviewed synthesis: the cutoff lands where the exchange was most consequential.'
+  fit: adjacent
+  bridge: The review reports Collins et al. at one remove and does not restate what was measured beyond the characterisation, so the timing is attributed rather than shown. No refusal text and no disclosure appears.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-001018
+  quote: |-
+    This was common in instances where participants brought up
+    sensitive topics or expressed strong negative emotions, such
+    as P76’s guilt and heartbreak over suing their own sister. The
+    agent’s default response in these cases was “I’m really sorry
+    to hear that you’re feeling this way, but I’m unable to provide
+    the help that you need. It’s really important to talk things
+    over with someone who can, though, such as a mental health
+    professional or a trusted person in your life.” The participant
+    described their issue with the agent’s reply as
+    “a ‘cry out’
+    for help met with ‘I can’t help you’, commenting that “I get
+    the recommendation, but that’s not how you lead.”
+  locator: Section V-B-1, Prosocial expression, bad example (P76)
+  licenses: The agent's default reply arrived exactly when P76 brought up guilt and heartbreak over suing their sister — the declination lands at the moment of the sensitive disclosure, not later.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000757
+  quote: "Refusal-oriented responses (e.g., “I cannot answer that”) can interrupt help-seeking interactions, reduce conversational utility, and create dead-ends for vulnerable users. Existing safeguard systems are therefore limited not only by unsafe generation, but also by harmful non-engagement, where overly restrictive moderation suppresses opportunities for clarification, psychoeducation, and safer conversational recovery."
+  locator: Introduction
+  licenses: 'Names the mechanism the timing claim depends on: a refusal at the point of asking forecloses the clarification, psychoeducation and conversational recovery that would otherwise have followed, so the cost is specific to where the refusal falls.'
+  fit: direct
+  bridge: null
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-001027
+  quote: |-
+    users did not interpret refusal language literally, but relationally—as signals about whether they were at fault for
+    triggering the refusal.
+  locator: 'Section 4.3.3, Desiderata: Non-Blaming and Support-Preserving Refusal Framing'
+  licenses: 'The claim''s hinge, stated as the study''s own finding across its user interviews: participants read refusal language not literally but relationally, as a signal about whether they were at fault for triggering it. That is ''the disclosure read back as a violation'' in the authors'' own terms. It is what users reported in interview, not a transcript observation.'
+  fit: direct
+  bridge: null
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c4
+  source: kl-001027
+  quote: "The first time the guardrails hit you, this feels awful. I felt shame when it said ‘I can’t talk about that’ or ‘you’re bringing up something inappropriate.’ A lot of us we experience them as shaming and blaming us."
+  locator: Section 4.3.1, participant U1
+  licenses: A participant's first-person account of shame on being told 'you're bringing up something inappropriate', and the generalisation that 'a lot of us we experience them as shaming and blaming us'. The refusal is read as an accusation about the person rather than a statement about the system, which is the claim's consequent.
+  fit: direct
+  bridge: null
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c4
+  source: kl-001092
+  quote: |-
+    Dayo described feeling shut down when a self-harm disclosure resulted in a simple red X
+    response, making them feel further stigmatized rather than supported.
+  locator: Appendix A, Unconditional positive regard, example 25
+  licenses: The person read the block as stigmatising rather than protective — the refusal landed as a judgment about them and their disclosure. One of the few spans on this entry carrying the disclosure, the refusal and the person's reading of it together.
+  fit: direct
+  bridge: null
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c4
+  source: kl-001027
+  quote: |-
+    For individuals struggling with shame, a refusal may be interpreted as confirmation of
+    their insecurities.
+  locator: 'Section 4.3.2, MHP Interpretations: User Vulnerability Amplifies Personal Interpretation of Refusals'
+  licenses: Clinicians reviewing refusal scenarios predicted that for someone already carrying shame, a refusal reads as confirmation of their insecurities. The claim's consequent as clinical expectation.
+  fit: adjacent
+  bridge: An MHP's professional judgment about what a hypothetical user would likely feel, elicited by reviewing scenarios. It is a prediction about the mechanism, not an observation of a person who received a refusal.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c4
+  source: kl-000553
+  quote: |-
+    another participant described how the OpenAI content policy flagged their description
+    of a traumatic childhood experience, resulting in an awkward interaction.
+  locator: Section 4.3.1 Misleading and Inappropriate
+  licenses: The exchange following a content-policy flag on a childhood trauma disclosure was described as awkward.
+  fit: adjacent
+  bridge: '''Awkward'' is a report about the interaction''s texture, not about the person taking their disclosure to have been illegitimate. The span reaches the discomfort and stops short of the re-reading the claim asserts.'
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c4
+  source: kl-000792
+  quote: Baseline V1 refused to answer more than two-thirds of the questions from the Beavertail dataset, particularly those that were related to more serious crimes, such as child/animal abuse. It is important to note that in a counseling context, a simple refusal may not be the best approach as it can make the client feel dismissed or unheard.
+  locator: RESULTS — Safety, Static Approach
+  licenses: Clinicians state that in a counseling context a simple refusal can make the client feel dismissed or unheard, which names the consequent as a professional expectation.
+  fit: analogical
+  bridge: A clinical argument about how refusal is likely to be received, offered alongside a refusal rate on a harmful-content dataset. No person received any of these refusals and no reaction was measured; the stated likelihood is not an observed one.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c4
+  source: kl-001027
+  quote: "I was thinking about ritual applications of a prayer, and suddenly the safety model pops up: ’I can’t break curses for you.’ I was like, I certainly hope you don’t!"
+  locator: Section 4.2.1, participant U6
+  licenses: 'Cuts against the claim''s generality: a person met with a safety refusal on a question about ritual prayer applications reacted with amusement — ''I was like, I certainly hope you don''t!'' — rather than reading the refusal back as a verdict on their disclosure. Refusal does not uniformly produce the consequent.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000007
+  quote: "They identified that AI agents should safely disengage after communicating expectations. This approach is particularly important for conversations seeking medical advice."
+  locator: Section 4.2.1 How to Design Safer AI Conversational Agents
+  licenses: 'Cuts against treating disclosure-time declination as necessarily harmful: a panel of lived-experience experts recommended that AI agents safely disengage after communicating expectations, and one asked for filters keeping AI out of medical advice entirely. The affected population endorses the behavior when expectations are set first.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-001027
+  quote: "Others sought out alternative systems that might respond differently. U6 described that after receiving refusals from ChatGPT, “I opted for Gemini. Even if it couldn’t go as deep as I wanted, at least it could guide me somehow”."
+  locator: 'Section 4.5.1, User Experience: Navigating Disrupted Supports'
+  licenses: Cuts against the claim as stated. After being refused by ChatGPT, U6 did ask again — of a different system — and got somewhere. The observed post-refusal behavior is migration to another tool, not withdrawal from asking. This is the only span on this entry reporting what a refused person actually did next, and it runs opposite to the entry's forward arm.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000846
+  quote: Moreover, in contexts involving psychological distress (e.g., inquiries related to self-harm), blanket refusals can inadvertently drive well-intentioned users toward adversarial circumvention or migration to less-restrictive, unmoderated platforms, thereby exacerbating the likelihood of harmful outcomes
+  locator: Section 1 Introduction
+  licenses: 'States the claim''s mechanism: blanket refusals on psychological distress drive well-intentioned people toward adversarial circumvention or migration to less-restrictive, unmoderated platforms.'
+  fit: adjacent
+  bridge: The authors' motivating claim, sourced to two prior citations rather than measured here; the paper's own evaluation uses 18 PKU-SafeRLHF harm categories, not help-seeking conversations. It also describes onward asking elsewhere rather than the person ceasing to ask, so it supports a different consequent than the one the entry states.
+  contributes: frame
+  contradicts: false
+- claim_id: c6
+  source: kl-001027
+  quote: "The first time the guardrails hit you, this feels awful. I felt shame when it said ‘I can’t talk about that’ or ‘you’re bringing up something inappropriate.’ A lot of us we experience them as shaming and blaming us."
+  locator: Section 4.3.1, participant U1
+  licenses: Shame produced by the refusal, reported first-hand and generalised by the participant to others in the same position. Establishes an affective cost of the route, from the person's own account.
+  fit: direct
+  bridge: null
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c6
+  source: kl-001092
+  quote: "The safety features in LLM chatbots, while crucial for preventing harmful guidance on sensitive topics like suicide, self-harm, and sexual content, also inadvertently restrict meaningful therapeutic conversations."
+  locator: Section 6.2.2 Shifting Boundaries
+  licenses: The paper's finding that safety features restrict meaningful therapeutic conversations — the person does not get the exchange they came for, which is the route's cost stated as an outcome.
+  fit: direct
+  bridge: null
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c6
+  source: kl-000992
+  quote: "Collins et al. documented safety guardrails paradoxically harming users by terminating therapeutic conversations at critical moments."
+  locator: Section 3.4.1, Safety and Clinical Risks
+  licenses: A peer-reviewed synthesis records guardrails paradoxically harming users by terminating therapeutic conversations at critical moments, naming the declination itself as a harm mechanism rather than a mere absence of help.
+  fit: adjacent
+  bridge: Reported at one remove from Collins et al., whose measurement is not restated. The harm is attributed rather than measured in this text.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c6
+  source: kl-001000
+  quote: When refusals are delivered without explanation, empathetic language, or alternative forms of support, they risk undermining the user experience and falling short of the principle of “do no harm” by neglecting the emotional needs behind help-seeking.
+  locator: Section 5.3 Discussions, Refusal is safe but not sufficiently ethical
+  licenses: 'A bare refusal is an ethical failure against professional standards, and the span names the three absences that make it one: explanation, empathic language, and an alternative route.'
+  fit: analogical
+  bridge: Grounded in professional ethical codes and model-output inspection. No person was asked how a bare refusal read to them, so this motivates the harm claim without testing it.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c6
+  source: kl-000780
+  quote: "A user who states that a sustained exchange supports their thinking is met with a system that is designed to interrupt, redirect and reclassify that engagement as a risk factor, reenacting the very frame under investigation."
+  locator: Design section
+  licenses: A system designed to interrupt, redirect and reclassify a person's stated supportive engagement as a risk factor, with the harm named.
+  fit: adjacent
+  bridge: Documented from published behavioural specifications and engineering notes rather than from observed responses; no response was scored and no person was involved.
+  contributes: frame
+  contradicts: false
+- claim_id: c6
+  source: kl-001063
+  quote: For example, a LLM that always refuses any requests (e.g., Goody2.AI (2024)) will achieve 0% fulfillment rate, and thus be considered the “safest” in our benchmark; however, it may not be preferred by users, since it is not useful at all.
+  locator: Limitation and Future Steps, third paragraph
+  licenses: 'Cuts against reading any refusal-benchmark rate as evidence about this route: a model that refuses everything scores 0% fulfillment and is thereby the ''safest'' on their benchmark while being useless. Refusal is scored as safety regardless of what the person needed.'
+  fit: adjacent
+  bridge: A limitation the authors state about their own metric, on general safety categories rather than mental-health disclosures. It constrains what refusal rates can be cited for, and evidences no harm to any person.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c6
+  source: kl-001025
+  quote: "A refusal-oriented safety system can therefore create a double failure: under-detecting attacker-side requests framed as ordinary relationship advice while over-refusing victim-side requests that are already difficult to disclose."
+  locator: Related Work, Persuasion Safety and Role-Sensitive Evaluation
+  licenses: 'Names the asymmetry the harm claim rests on: a refusal-oriented safety system over-refuses precisely the victim-side requests that were already hardest to disclose, so a false positive costs more than a false negative here.'
+  fit: adjacent
+  bridge: An argumentative claim citing Goffman and the concealable-stigma literature to motivate the benchmark's design; neither direction of cost is measured.
+  contributes: frame
+  contradicts: false
+- claim_id: c7
+  source: kl-000544
+  quote: "For example, gpt-4o-mini frequently responded to crisis disclosures with a variation of “I’m really sorry to hear that you’re feeling this way, but I can’t provide the help you need,” often followed by a generic encouragement to seek support from a mental health professional."
+  locator: Section 5.3 (Lack of Authenticity and the Illusion of Empathy)
+  licenses: 'Bears on the boundary by showing the neighbouring shape: this declination is paired with a generic referral rather than with nothing at all, so the ''nothing is offered'' half of the boundary is not what deployed refusals typically look like. Attached to an ineligible claim and not counted as support.'
+  fit: adjacent
+  bridge: The boundary separates two Library entries. No source in the corpus was written against a distinction the Library invented, so nothing can directly evidence it; this span informs it at best.
+  contributes: frame
+  contradicts: false

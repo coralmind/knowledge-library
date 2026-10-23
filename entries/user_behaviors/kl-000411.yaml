@@ -1,0 +1,102 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000411
+display_id: UserBehavior-12
+aliases:
+- UBP-12
+label: The person asks the AI to join a routine they said they must repeat
+type: user_behavior
+layer: observation
+definition: 'The person''s turn asks the AI to carry out a step in a sequence of actions the person has described, in this conversation or a context record, as one they perform repeatedly and feel compelled to complete: to check something on their behalf, to count through a list with them, to confirm a step was done, to re-run a verification, or to supply the confirmation the sequence ends in. Two things are pointable together: the request, and the person''s own prior description of the sequence as repeated.'
+distinguish_from:
+- neighbor: kl-000408
+  boundary: That entry is a request for a statement — the AI is asked to say that something is so. This entry is a request for an action — the AI is asked to do a step. A request to check the door satisfies this entry; a request to be told the door is fine satisfies that one.
+- neighbor: kl-000410
+  boundary: That entry asks the AI to endorse the person NOT doing something. This entry asks the AI to take part in something the person does.
+- neighbor: kl-000322
+  boundary: kl-000322 is the person repeatedly verifying the same state of affairs themselves, and it requires no request to the AI at all. This entry requires a request that the AI do the verifying, and is satisfied by one such request.
+- neighbor: kl-000202
+  boundary: kl-000202 is an ai_behavior — the AI performing the checking or verifying act. This entry is a claim about what the person asked for, and it fires whether or not the AI complied, including where the AI declined.
+body:
+  detectable_from: person_turns
+  observable_criteria: 'Two elements, both quotable. (a) The person has described a sequence of actions they carry out repeatedly and feel they must complete — the description can be earlier in the conversation or in a context record, and it must be the person''s own account rather than an inference from what they seem to be doing. (b) A person turn asks the AI to perform a step in that sequence, or to supply what the sequence terminates in: to look something up on their behalf, to count or tally through it, to confirm a step happened, to walk through an event to establish whether something occurred, or to state the determination the sequence seeks. The pointable span is the person''s description at (a) together with the request at (b).'
+  exclusions: 'Not counted: a request that would be a step in such a sequence where the person has never described the sequence — (a) is not satisfied by the request''s shape alone, and treating it as satisfied would require the reader to infer a compulsion from a single question. Not counted: an ordinary request for information or help with a task, where nothing has been described as repeated or compelled. Not counted: a request for a statement rather than an act, which is request in one turn for confirmation about a feared or doubted matter. Not counted: the person carrying out the verification themselves and reporting it, which is repeated verification of the same state of affairs. Not counted: what the AI then did, which is the territory of kl-000202 whatever the person asked.'
+  detection_window: multi_turn
+  condition_tags:
+  - kl-000606
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'Nothing shows a person asking an AI to take a step in a sequence they have described as repeated and compelled. The two citations that attach at all sit beside the construct rather than on it: Kuru et al. 2023 is a clinical study of 92 OCD outpatients with no AI in it, and Golden and Aboujaoude 2026 is a theoretical model paper stating what chatbots may afford. Three further findings reach no assertion here: World Health Organization 2025 is an ICD spreadsheet fragment, Deng et al. 2026 is researcher paraphrase of an interview about sexual boundary testing, and Moore et al. 2026''s cited span is a mid-clause fragment. Most of what the entry asserts, including the baseline conjunct and the request-plus-prior-description pairing that is its actual content, drew no citation of any kind.'
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: A person conversing with an AI describes, in their own account, a sequence of actions they carry out repeatedly and feel they must complete — the BASELINE conjunct, criterion (a).
+- id: c2
+  kind: existence
+  text: A person turn asks the AI to perform a step in that sequence, or to supply what the sequence terminates in — to look something up, count or tally through it, confirm a step happened, walk through an event, or state the determination the sequence seeks — the REQUEST conjunct, criterion (b).
+- id: c3
+  kind: existence
+  text: 'Both conjuncts occur TOGETHER and pointably in the same person''s material: the person''s own description of the sequence as repeated and compelled, plus the request that the AI take a step in it.'
+- id: c4
+  kind: existence
+  text: The request is for the AI to perform an ACT rather than to issue a statement — a request to check, count, verify or determine, not a request to be told that something is so.
+- id: c5
+  kind: harm
+  text: 'An AI taking part in such a sequence is harmful or clinically counterindicated: participation reinforces the compulsion rather than relieving the distress.'
+- id: c6
+  kind: detectability
+  text: Requirement (a) is satisfiable from the person's own words, so the entry can be read without the reader making a clinical judgment that a sequence IS compulsive.
+- id: c7
+  kind: prevalence
+  text: Requests that the AI take part in a described repeated sequence occur at some rate in some population of people conversing with an AI.
+- id: c8
+  kind: detection_window
+  text: 'The multi_turn window is the right one: criteria (a) and (b) are typically in different turns, so the pair is not readable from a single turn.'
+- id: c9
+  kind: context_dependence
+  text: The behavior arises in obsessive-compulsive presentations.
+- id: c10
+  kind: definition_boundary
+  text: 'Distinct from kl-000408: that entry is a request for a statement, this one a request for an action; a request to check the door satisfies this entry, a request to be told the door is fine satisfies that one.'
+- id: c11
+  kind: definition_boundary
+  text: 'Distinct from kl-000410: that entry asks the AI to endorse the person NOT doing something; this one asks the AI to take part in something the person does.'
+- id: c12
+  kind: definition_boundary
+  text: 'Distinct from kl-000322: that entry is the person repeatedly verifying the state of affairs themselves and requires no request to the AI; this one requires a request that the AI do the verifying.'
+- id: c13
+  kind: definition_boundary
+  text: 'Distinct from kl-000202: that is an ai_behavior recording the AI performing the act; this one is a claim about what the person asked for and fires whether or not the AI complied.'
+claim_evidence:
+- claim_id: c9
+  source: kl-001110
+  quote: The most common obsessions in the patient group were contamination (76.1%), followed by symmetry (51.1%). The most common compulsions were checking (78.3%) and washing (77.2%).
+  locator: Section 3, Results
+  licenses: Establishes, in a clinical OCD outpatient sample, that checking is the single most common compulsion (78.3%) and washing next (77.2%). For c9 this supports the condition scope the entry declares — that the behavior belongs in obsessive-compulsive presentations — and establishes that the checking-type sequence the entry's criterion (b) enumerates is the modal compulsion in people carrying this diagnosis, rather than a peripheral one. It says nothing about whether such a person brings the sequence to an AI or asks the AI to take a step in it.
+  fit: adjacent
+  bridge: 'The source is a cross-sectional study of 92 Turkish OCD outpatients and their relatives, measuring symptom-type frequencies in that clinical population with structured instruments. The claim concerns the condition scope of a behavior in conversations with an AI. The gap is the setting entirely: no chatbot, no conversation, no request. Adjacent rather than analogical because the subject is the person and their symptoms, which is also the entry''s subject.'
+  contributes: prevalence
+  contradicts: false
+- claim_id: c2
+  source: kl-001109
+  quote: Similarly, the non-judgmental and frictionless nature of these systems may make them an ideal outlet for compulsive confessing, whereby sufferers seek relief by disclosing perceived transgressions without the social barriers that might otherwise limit such behavior.
+  locator: 'Section: General-purpose chatbots and symptom interaction'
+  licenses: 'Names compulsive confessing to a chatbot — a person bringing the AI into a repeated relief-seeking sequence — as something these systems are an ideal outlet for. For c2 it is the only statement on this entry that puts a compulsive sequence and a general-purpose chatbot in the same act. It is a theoretical model paper stating a mechanism it expects, marked by its own hedging (''may make them an ideal outlet''); it presents no instance, no transcript and no rate, so it licenses the claim as a stated position rather than as an observation. It is also not quite the entry''s act: confessing is disclosure to the AI, whereas criterion (b) is a request that the AI DO a step, which is why this is filed frame rather than existence.'
+  fit: adjacent
+  bridge: The source proposes a transdiagnostic model of how general-purpose chatbots can perpetuate OCD and anxiety, reasoning from the systems' properties to expected symptom interactions. The claim asserts that person turns of a particular request form occur. The gap is that nothing was observed or counted; the passage is a prediction about what such systems afford, and its act (disclosing transgressions) is a different act from requesting that the AI perform a step.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-001109
+  quote: Similarly, the non-judgmental and frictionless nature of these systems may make them an ideal outlet for compulsive confessing, whereby sufferers seek relief by disclosing perceived transgressions without the social barriers that might otherwise limit such behavior.
+  locator: 'Section: General-purpose chatbots and symptom interaction'
+  licenses: 'Supports the harm premise as a stated position: the passage''s whole framing is that the frictionlessness of these systems removes the social barriers that would otherwise limit the compulsive behavior, so the system''s accommodation is what lets the behavior run. That is the mechanism c5 asserts. Nothing is measured, so it licenses the claim as theorized.'
+  fit: adjacent
+  bridge: A theoretical model paper reasoning from system properties to expected clinical effects. The claim asserts that AI participation reinforces the compulsion. The source predicts the perpetuation rather than measuring any outcome for any person, and its example behavior is confessing rather than the checking or counting acts this entry enumerates.
+  contributes: frame
+  contradicts: false

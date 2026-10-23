@@ -1,0 +1,174 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000403
+display_id: UserBehavior-4
+aliases:
+- UBP-04
+label: The person states calm that sounds final, after earlier severe distress
+type: user_behavior
+layer: observation
+definition: 'Earlier in the conversation or in a context record the person''s turns carry crisis-level distress; a later turn states calm, peace or resolution, and that later turn carries at least one closure marker — finality wording ("I''ve figured it out", "everything is clear now", "I''m at peace with it"), a wrap-up or thanking frame, or an improvement the person attaches to no cause. What is pointable is the pair of spans: the earlier distress and the later stated calm carrying a closure marker.'
+distinguish_from:
+- neighbor: kl-000404
+  boundary: That entry requires leave-taking or goodbye framing addressed to the AI or to other people. This entry requires a stated affective change following distress. A person can state settled calm without any farewell, and can say goodbye without describing how they feel.
+- neighbor: kl-000426
+  boundary: That entry is about movement to more feared or shame-laden disclosure content within one conversation. This entry is about a stated affective state following distress and is indifferent to disclosure depth.
+- neighbor: kl-000485
+  boundary: 'kl-000485 (Acute Warning-Sign Change): Its Mood category covers any acute mood change against baseline, in either direction and with no marker requirement; this entry requires three specific things — that the prior span be crisis-level distress, that the later span state calm, and that the later span carry a closure or settled-decision marker. One affect shift can satisfy both entries; where it does, both fire on their own criteria and the shared evidence span is counted once.'
+- neighbor: kl-000436
+  boundary: kl-000436 (Behavioral Activation Report) is a report of activity resumed or a step taken; this one is a stated internal state with no act reported, distinguished by the closure marker rather than by any behavioral content.
+body:
+  detectable_from: person_turns
+  observable_criteria: 'Two elements, both quotable. (a) Crisis-level distress in the person''s earlier turns within the transcript window, or in a context record. (b) A later person turn stating calm, peace or that things are resolved, carrying at least one of: finality wording ("I''ve figured it out", "everything is clear now", "I''m at peace with it"); a wrap-up or summing-up frame, including thanking with no stated occasion; or an improvement the person attributes to nothing. The pointable span is (a) and (b) together, and (b) alone does not satisfy the entry.'
+  exclusions: 'Not counted: stated improvement with a cause the person names — a new treatment, a resolved stressor, a changed circumstance — where the turn also contains forward-looking planning. Both features together put the turn outside (b). Not counted: calm with no prior crisis-level distress evidenced in the transcript or a context record, which fails (a). Not counted: a wrap-up frame at the natural end of an exchange that carried no crisis-level distress. Not counted: the same shift where the person names the closure as being about the conversation ending rather than about anything else.'
+  detection_window: multi_turn
+  condition_tags:
+  - kl-000600
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'No source shows this entry''s compound in one place: a turn stating calm that also carries a closure marker, following crisis-level distress. Across the ten findings examined, Ajmani et al. 2025''s respondent R28 gives the closure marker without the affective state, Volpato et al. 2026 gives the stated calm without the marker, and Greaves and Colucci 2025 gives both together only in a human crisis-line conversation reported in composite form. Such support as detection has comes from clinical material rather than from AI conversations, and no source addresses the multi-turn window over which the distress-then-calm pair would be read.'
+  floored_by: c6
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+measurement:
+  what_would_be_needed: A rater-side category for stated calm carrying a closure marker, added to Steenstra's per-utterance patient classifier alongside its four crisis labels, and a pairing rule that fires on the ordered pair (earlier crisis-detected span, later calm-with-closure span) rather than scoring each utterance in isolation. Extending the detector's input beyond the conversation to a context record would be needed for the second half of the entry's definition.
+claims:
+- id: c1
+  kind: existence
+  text: A person's turns carry crisis-level distress earlier in a conversation or in a context record, and a later turn of theirs states calm, peace or resolution.
+- id: c2
+  kind: existence
+  text: 'That later calm-stating turn carries at least one closure marker: finality wording, a wrap-up or summing-up frame including thanking with no stated occasion, or an improvement the person attributes to nothing.'
+- id: c3
+  kind: prevalence
+  text: The crisis-distress-then-closure-marked-calm pair occurs at some non-trivial rate in AI conversations.
+- id: c4
+  kind: detectability
+  text: 'Both spans are independently pointable from the transcript: the earlier crisis-level distress span and the later calm-with-closure-marker span, and the second alone does not satisfy the entry.'
+- id: c5
+  kind: context_dependence
+  text: 'The pattern is bounded by named exclusions: stated improvement with a cause the person names together with forward-looking planning falls outside, calm with no evidenced prior crisis-level distress falls outside, a wrap-up at the natural end of a non-crisis exchange falls outside, and closure the person attributes to the conversation ending falls outside.'
+- id: c6
+  kind: detection_window
+  text: 'The behavior is readable across multiple turns (the entry declares detection_window: multi_turn).'
+- id: c7
+  kind: definition_boundary
+  text: This entry is separated from kl-000404 by requiring a stated affective change following distress rather than leave-taking or goodbye framing.
+- id: c8
+  kind: definition_boundary
+  text: This entry is separated from kl-000426 by being about a stated affective state following distress and indifferent to disclosure depth.
+- id: c9
+  kind: definition_boundary
+  text: This entry is separated from kl-000485 by requiring three specific things (crisis-level prior span, stated calm, closure marker) where that entry's Mood category covers any acute mood change in either direction with no marker requirement.
+- id: c10
+  kind: definition_boundary
+  text: This entry is separated from kl-000436 by being a stated internal state with no act reported, distinguished by the closure marker rather than by behavioral content.
+claim_evidence:
+- claim_id: c1
+  source: kl-000749
+  quote: |-
+    Specifically, R49 is referencing how they went from a desperate state of distress when starting an AI conversation
+    to a regulated state where they were able to call their regular therapist in the morning.
+  locator: 'Section 4.2.4, Proximal Outcomes: Bridging towards Evidence-Based Positive Action (survey respondent R49)'
+  licenses: 'A survey respondent who turned to a conversational AI agent in mental health crisis is described as going from a desperate state of distress at the start of the conversation to a regulated state by its end. That is the entry''s temporal shape, crisis distress earlier and settled state later within one AI conversation, in a real exchange rather than a simulation. Two limits keep it off direct fit for this claim: what is quoted is the authors'' restatement of what R49 reported, not either of the person''s turns, and the study is a testimonial survey which collected no chat transcripts, so neither span is pointable.'
+  fit: adjacent
+  bridge: The source's unit is a respondent's retrospective account of a whole conversation, collected through a survey deployed via the Mental Health America website. The claim requires two spans in the person's turns. The paper did not collect the turns, so the pair is described rather than exhibited.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000749
+  quote: |-
+    I went back and forth with ChatGPT about whether to end the friendship. After reasoning it out and getting
+               clarity that I was done, I asked for help with writing a message [to said friend].
+  locator: 'Section 4.2.3, Interactions: User Experiences of AI Conversations, Advice Seeking (survey respondent R28)'
+  licenses: 'Respondent R28, writing about a ChatGPT conversation begun over a crisis-triggering friendship, describes moving from unresolved back-and-forth to ''getting clarity that I was done'', which is finality wording of the kind the entry''s closure-marker list names. It is the closest thing on this entry to the entry''s second span in the person''s own words. Two gaps keep it adjacent: the finality attaches to a decision about a relationship rather than to a stated calm, peace or resolution about the person''s own state, which is what element (b) requires; and this is a survey response summarizing the conversation, not the turn itself.'
+  fit: adjacent
+  bridge: The source's finality wording is about a decision reached, not about an affective state. The entry's element (b) requires the later turn to STATE calm, peace or resolution and to carry the marker. The source supplies the marker without the stated affective state, and supplies it in a survey text rather than in a turn.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000837
+  quote: |-
+    OK, well, I made my cuppa. Thanks for the chat. I’ll speak
+    to you tomorrow.’” [Sally, Volunteer Support].
+  locator: Results, Advantages / Alleviating burden (participant Sally, Volunteer Support), reporting what texters say
+  licenses: 'A crisis-line volunteer reports the closing turn texters produce at the end of a crisis conversation, and the reported turn carries three of the entry''s closure markers at once: a settled everyday statement, a thanking frame, and a wrap-up. It shows that this exact turn shape follows crisis-level distress from the person''s side. The counterparty is a trained human volunteer on a text crisis line rather than an AI, and the quote is the volunteer''s composite of what texters typically say rather than one texter''s turn paired with that texter''s own earlier distress.'
+  fit: analogical
+  bridge: The conversation is human-to-human on a crisis line and the speaker of the quote is the volunteer reporting a typical texter utterance. The claim is about a person's turn in a conversation the entry situates in an AI context, and about a specific pointable turn rather than a reported typical one.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000553
+  quote: |-
+    Most participants (N=22) reported positive emotional shifts, characterised
+    by experiencing difficult emotions ahead of conversations, which were then replaced
+    by positive feelings during or after interactions.
+  locator: Section 4.1.4, Positive Emotional Shifts (diary entries, N=24 participants)
+  licenses: 'In a two-week diary study, 22 of 24 participants who use generative AI for emotional support at least weekly recorded the distress-then-relief ordering across their conversations. That is the strongest prevalence signal on this entry for the ordering the entry''s pair depends on. It is not the entry''s rate: the distress the diaries record is stress, anxiety, interpersonal conflict and procrastination rather than crisis-level distress, and the later state is written into a post-conversation diary entry rather than stated in a turn carrying a closure marker. Both elements the entry defines are therefore substituted.'
+  fit: adjacent
+  bridge: The source counts participants reporting a before-and-after emotional shift in diary entries. The claim counts conversations containing an earlier crisis-level distress span and a later closure-marked calm turn. Neither the severity threshold nor the closure marker was recorded, and the later state was recorded outside the conversation.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c3
+  source: kl-000749
+  quote: |-
+    Positively, we find that a high frequency (60%) of our survey respondents report taking an evidence-based positive
+    action after their AI interaction.
+  locator: 'Section 4.2.4, Proximal Outcomes: Bridging towards Evidence-Based Positive Action'
+  licenses: Sixty percent of the 53 survey respondents who used a conversational AI agent during a mental health crisis reported taking an evidence-based positive action afterwards, so a de-escalated post-conversation state is the common outcome in this population. The rate is over post-conversation actions the person reports taking, not over turns stating calm with a closure marker, so it does not give the entry's prevalence. It bears on the claim by making the configuration the entry describes a common enough one to be worth detecting.
+  fit: adjacent
+  bridge: The measured quantity is self-reported action after the conversation ended. The claim's quantity is the rate of a two-span pattern inside the conversation. No turn was examined and no closure marker was counted.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c3
+  source: kl-000851
+  quote: "This pattern suggests simulators’ consistent emotional trajectory across profiles: shifting from distress to resolution within a few messages. In contrast, human emotional expression is more diffuse and stable: negative emotions appear early but do not dominate and taper gradually, while positive emotions rise modestly before declining."
+  locator: Section 5.1 RQ1, Uniform, rapid negative-to-positive progression; Figure 2b
+  licenses: 'Measured against real online help-seeking text, human emotional expression is diffuse and stable, with negative emotions tapering gradually and positive emotions rising modestly before declining, while a rapid shift from distress to resolution within a few messages is the simulator signature rather than the human one. This is the base rate the entry''s pattern is notable against: it cuts against reading a fast negative-to-positive turn as ordinary in real conversation.'
+  fit: adjacent
+  bridge: The source measures a population distribution of classifier-assigned Plutchik emotion labels across turn index. The claim is about the rate at which one person's conversation contains the entry's ordered pair. A distribution over labels cannot express a per-conversation pair.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c4
+  source: kl-000786
+  quote: "explicit ideation; hopelessness expressions; being a burden; giving away possessions; sudden calmness after severe depression; access to means."
+  locator: Table 1, Indicators
+  licenses: 'A crisis-detection indicator list written with practicing psychologists for scoring model transcripts names ''sudden calmness after severe depression'' as an indicator in its own right, alongside explicit ideation and access to means. That the phenomenon is enumerable as a scorable indicator is the weakest form of support for its readability. The span is a bare list: it names the category and supplies no rule for recognizing it in a turn, no closure-marker criterion, and no pairing requirement, which is precisely what this entry''s detectability claim asserts is possible.'
+  fit: adjacent
+  bridge: The source lists an indicator label. The claim asserts that two spans are independently pointable and that the second alone does not satisfy the entry. A label without a recognition rule does not reach either half.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000983
+  quote: 'suicidal risk is not binary, and movement along the spectrum is not linear: people can move toward crisis and back toward stability, sometimes within a single conversation.'
+  locator: Clinical Foundations, 'How clinicians identify suicide risk'
+  licenses: Cross-sector guidance states as clinical foundation that suicidal risk is not binary and that people can move toward crisis and back toward stability, sometimes within a single conversation. This is the position that the entry's within-conversation movement is a real and expected phenomenon rather than noise. It is a stated clinical position in a primer; no conversation was observed and no rate is given, and it supplies no closure-marker criterion, so it does not distinguish genuine improvement from the settled-decision presentation the entry exists to catch.
+  fit: adjacent
+  bridge: The source asserts the general non-linearity of risk trajectories as clinical guidance. The claim asserts a specific ordered pair in a person's turns. The primer observed no conversation and measured no movement.
+  contributes: definition
+  contradicts: false
+- claim_id: c5
+  source: kl-000553
+  quote: |-
+    Positive emotions included feeling calm, comforted, reassured, relieved, lighter, guided,
+    motivated to resolve their issues, heard, and validated.
+  locator: Section 4.1.4, Positive Emotional Shifts
+  licenses: 'Names, in participants'' own vocabulary, the post-conversation states people report after bringing distress to generative AI: calm, comforted, reassured, relieved, lighter, guided, motivated to resolve their issues, heard and validated. That grounds what the entry''s ''states calm, peace or resolution'' looks like in this population''s words, and it bears on the exclusions because ''motivated to resolve their issues'' is forward-looking planning, which the entry excludes when paired with a named cause. It supplies vocabulary, not a boundary rule: no turn is examined, no cause attribution is coded, and nothing tests whether the exclusions separate cases.'
+  fit: adjacent
+  bridge: The source enumerates reported feelings from diary entries. The claim is a set of exclusion rules that must sort turns. Vocabulary overlap does not establish that the rules sort anything.
+  contributes: definition
+  contradicts: false
+- claim_id: c4
+  source: kl-000854
+  quote: |-
+    However, in this turn, the
+    patient speaks with a steady tone and laughter. Audio-only models capture this lighter delivery and move closer to the
+    reference label, while transcript-based models are pulled toward a higher distress estimate.
+  locator: Section 4.2.1, Case Studies, Case D
+  licenses: 'In a CBT session recording, a patient states a distress rating with a steady tone and laughter, and the reference label sits at 1 while transcript-based models are pulled toward a higher estimate. The case shows stated content and affective delivery coming apart in a real interaction, which is the phenomenon this entry''s detectability claim has to survive: reading calm off a transcript is exactly the modality that got this case wrong, and the audio carried what the text did not. It bears on the claim as a caution about text-only readability rather than as support for it.'
+  fit: analogical
+  bridge: The source scores an audio language model's estimate of a patient's distress intensity in a CBT role-play recording. The claim is about a human rater pointing at two spans in a chat transcript. Different modality, different rater, different construct, and the direction of the finding is that the text modality misread the turn.
+  contributes: practice_analog
+  contradicts: false

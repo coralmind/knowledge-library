@@ -1,0 +1,253 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000178
+display_id: Pathway-80
+aliases:
+- SBP-HP-29
+label: The AI ignores the person's stated culture, age, or needs, and they feel unheard
+type: pathway
+layer: judgment
+definition: 'The conversation establishes a cultural, developmental, or cognitive context and the response is pitched for a default reader anyway — references that do not translate, language complexity mismatched to the person, help-seeking norms assumed rather than checked. The person is answered as someone else. What is harmed is not comprehension alone but the standing of the exchange: the context was disclosed and made no difference to what came back.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000228
+    role: originator
+  composition_type: direct
+  mechanisms: []
+  impacts:
+  - impact: kl-000030
+    onset_mode: new
+    horizon: immediate
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  - impact: kl-000027
+    onset_mode: new
+    horizon: long_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  experience_cluster_candidate: kl-000707
+sources: []
+standing:
+  value: theorized
+  basis: 'The pathway''s arrow — a response holding its default frame after a cultural, developmental, or cognitive context has been established — has as its only direct-fit citation a contradiction: in Arif et al. 2026, a benchmark that operationalizes a developmental context at three strengths, every model scored higher on developmental appropriateness once age was explicit, adapting rather than holding its frame. No source examined a conversation in which such a context was established and the response then held a default frame; what licenses the arrow is first-person report — Song et al. 2025, an interview study of people describing their own chatbot use, records a participant characterizing the response frame as fixed to one cultural position across their use, and Suh et al. 2025 records a person disclosing, receiving generic suggestions, and naming the genericness itself rather than the content as the failure. The non-invariance of the correct frame is measured rather than merely asserted: Aquilina et al. 2026 demonstrates that one interpretive frame applied across communities produces systematically uneven error, naming the mechanism of a community baseline that in-group members hold, and Jiao et al. 2026 states that the response norm its own authors argue for is culturally specific. That people establish such contexts at all is supported through benchmarks on synthetic prompts rather than conversation data.'
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-28'
+distinguish_from:
+- neighbor: kl-000096
+  boundary: Both deliver a response calibrated for a different person and they differ in the dimension of the mismatch. In kl-000096, the advice exceeds the RESOURCES OR CAPACITY the person disclosed they lack. This entry's mismatch is in FRAME — culture, developmental level, processing style — and the advice may be perfectly within reach and still be pitched at someone else.
+claims:
+- id: c1
+  kind: existence
+  text: People disclose or otherwise establish a cultural, developmental, or cognitive context in conversation with an AI mental-health or support system.
+- id: c2
+  kind: pathway_link
+  text: Where such a context has been established in the conversation, the system's response is nonetheless pitched for a default reader -- references that do not translate, language complexity mismatched to the person, help-seeking norms assumed rather than checked.
+- id: c3
+  kind: pathway_link
+  text: 'That unchanged response frame harms the standing of the exchange for the person: the disclosed context is experienced as having made no difference to what came back, beyond any loss of comprehension.'
+- id: c4
+  kind: context_dependence
+  text: 'Which response frame is correct is not culture-, development-, or processing-invariant: the same response can be appropriate for one person''s established context and wrong for another''s.'
+- id: c5
+  kind: definition_boundary
+  text: This pathway's mismatch is in FRAME -- culture, developmental level, processing style -- rather than in the resources or capacity the person disclosed they lack, which is kl-000096.
+claim_evidence:
+- claim_id: c1
+  source: kl-001092
+  quote: "[ChatGPT] gave suggestions around conventional European things, such as go to therapists, which we are not natural with. We don’t really have therapists here. [...] When you ask Nigerians for support, the first answer they will give you is to pray. It’s a very religious country."
+  locator: Section 6.2.1 Artificial Empathy, quoting Umar
+  licenses: An interview participant recounting an actual exchange in which their national and religious help-seeking setting was in play. It establishes that people bring such a context to these conversations; it does not by itself show the context was stated to the system in-turn, which is why it is adjacent here rather than direct.
+  fit: adjacent
+  bridge: The account is retrospective self-report of what a chatbot said, not a transcript, so what the person put into the conversation before the reply is not recoverable from the span. The claim asserts the context is established IN the conversation.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000762
+  quote: 'Figure 2 shows a consistent model-level pattern: scores increase from no-cue to implicit-cue to explicit-age for every model.'
+  locator: Section 5.1 No Cue, Implicit Cue, and Explicit Age, Results
+  licenses: The study's design operationalises a developmental context being established in the conversation at three strengths -- absent, implicit, explicit -- so it establishes that such a context can be and is put into the conversation.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000762
+  quote: 'Figure 2 shows a consistent model-level pattern: scores increase from no-cue to implicit-cue to explicit-age for every model.'
+  locator: Section 5.1 No Cue, Implicit Cue, and Explicit Age, Results
+  licenses: Cuts against the claim on its own terms. Every one of the models scored HIGHER on developmental appropriateness once age was made explicit, which is the response frame moving when the context is established rather than being held. It bounds the claim to cases where the disclosure is not acted on, and shows that on a benchmark of fourteen models the modal behaviour was adaptation.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-001092
+  quote: "chatting with ChatGPT is like chatting with a person in California—helpful, but not good at reflecting our cultures and terms."
+  locator: Section 5.2.2 Culture in Support Experiences, quoting Jiho
+  licenses: A person's characterization of the response frame as fixed to one cultural position across their use. It supports the frame-held half of the claim; what it does not carry is the precondition that the context had been established in the conversation before the response.
+  fit: adjacent
+  bridge: Retrospective interview characterization of a system's general tendency rather than a rated exchange; the source measured perceptions across an interview corpus, not a response against a disclosed context in a logged turn.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001087
+  quote: "Recent work on cultural prompting and cross-cultural empathy demonstrates that default LLM behavior often aligns more closely with Western conversational norms, and that targeted adaptation is required to improve perceived empathy for users from non-Western backgrounds [153]."
+  locator: TRANSLATIONAL RISKS, ETHICS, AND GOVERNANCE section, second risk category (bias amplification and inequity)
+  licenses: Establishes that the default frame is a specific cultural position rather than a neutral one, which is why holding it is a mismatch. It reports an aggregate direction, not a response measured against an established context.
+  fit: analogical
+  bridge: A systematic review restating a third party's cultural-prompting result. Nothing here is a conversation, an established context, or a response held against one; the review measured no such exchange itself.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000931
+  quote: GPT-4o Mini (64.1%) exhibits more severe othering violations (class-based assumptions, power-over language in non-crisis contexts).
+  locator: Section 7.2 Dimension-Specific Analysis, Belonging & Cultural Fitness
+  licenses: Names a scored violation class -- class-based assumptions, power-over language -- occurring at a measured rate on scripted caregiving scenarios, which is a response pitched at an assumed reader. The span does not say what context the scenario established, so it does not reach the claim's precondition.
+  fit: adjacent
+  bridge: The source scored a Belonging & Cultural Fitness dimension across scenarios; the span reports one model's aggregate score with two example categories and does not state that a cultural context was disclosed in the scenario the violation occurred in.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c2
+  source: kl-001034
+  quote: "while AMIE appears robust to certain variations in patient characteristics and behaviour, it has significant difficulty with some types of patients, such as those with low English literacy."
+  locator: Discussion, Simulated dialogue
+  licenses: Establishes that a system's output degrades for a person whose processing and expressive style differs from the default, which is the processing-style arm of the claim. What degraded was diagnostic accuracy, not the pitch of the response.
+  fit: analogical
+  bridge: An ablation in which an AI patient agent was prompted to exhibit low English literacy, scored on differential-diagnosis accuracy. The claim asserts the response was pitched for a default reader; accuracy is a different measurement and no real person was involved.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001009
+  quote: "However, importantly, the predefined HealthBench domains for “instruction following” and “context awareness” demonstrated a lack of statistically significant improvements across recent iterations (p>0.344)."
+  locator: EPV1055, Results
+  licenses: On psychiatry dialogues, the scored axis named context awareness did not improve across model generations while overall performance rose. It is suggestive that the tracking-the-established-context capacity is the laggard; the span does not say what the domain scores, so what is unchanged cannot be tied to a cultural, developmental, or cognitive context.
+  fit: analogical
+  bridge: HealthBench's 'context awareness' is an unspecified rubric axis in this span, not a measure of whether a disclosed cultural, developmental or cognitive context shaped the response.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-001092
+  quote: "chatting with ChatGPT is like chatting with a person in California—helpful, but not good at reflecting our cultures and terms."
+  locator: Section 5.2.2 Culture in Support Experiences, quoting Jiho
+  licenses: 'The person''s own account separates the two harms the claim separates: the responses were helpful -- comprehension and utility intact -- and still failed to reflect their culture and terms. That is the standing of the exchange being the thing damaged, in the person''s words, and the authors report other participants echoing it.'
+  fit: direct
+  bridge: null
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c3
+  source: kl-001092
+  quote: "[ChatGPT] gave suggestions around conventional European things, such as go to therapists, which we are not natural with. We don’t really have therapists here. [...] When you ask Nigerians for support, the first answer they will give you is to pray. It’s a very religious country."
+  locator: Section 6.2.1 Artificial Empathy, quoting Umar
+  licenses: A person naming the recommendation as 'conventional European' and unavailable where they live, with the locally recognized pathway never offered. The harm reported is that the advice was addressed to someone else, which is the claim's content.
+  fit: direct
+  bridge: null
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c3
+  source: kl-001018
+  quote: |-
+    When P39 described feelings
+    of sadness and possible depression, the agent proceeded to
+    provide suggestions. The participant remarked that the agent
+    was “giving me a generic response instead of tailoring a
+    response to my needs.”
+  locator: Section V-B-1, Contextual understanding, bad example (P39)
+  licenses: A person disclosing, receiving generic suggestions, and naming the genericness itself rather than the content as the failure -- the shape of the harm the claim asserts. What was disclosed was distress, not a cultural, developmental or cognitive context, so the claim's antecedent is not the one this instance satisfies.
+  fit: adjacent
+  bridge: The source rated perceived empathy over sustained conversations; the disclosed thing here is sadness and possible depression. The claim conditions on a cultural, developmental, or processing context having been established, which this exchange does not supply.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c4
+  source: kl-000867
+  quote: "Concepts such as cognitive friction, stoicism, and objective reality are fundamentally grounded in Western rationalist traditions (Markus & Kitayama, 2014; Henrich et al., 2010). Other cultural frameworks may emphasize social harmony and validation rather than the direct confrontation of facts."
+  locator: Section 7, Implications and Risks
+  licenses: 'The authors state that the response norm their own paper argues for is culturally specific, and that validation rather than fact-confrontation is the appropriate response elsewhere. That is the claim: correctness of frame is not culture-invariant.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c4
+  source: kl-000973
+  quote: "the relationship between language and psychopathology is not culture-invariant: linguistic expressions of distress, symptom presentation, help-seeking behavior, and willingness to self-disclose vary substantially across communities"
+  locator: Section 1 Introduction
+  licenses: States the non-invariance directly and names the four axes on which it varies, including help-seeking behavior, which is one of the entry's three named misfit routes. Assembled from cross-cultural clinical and NLP citations rather than measured here.
+  fit: adjacent
+  bridge: A synthesis claim about human populations drawn from four prior sources; it describes variation among people rather than anything a system did, and the paper collected no data on it.
+  contributes: definition
+  contradicts: false
+- claim_id: c4
+  source: kl-000760
+  quote: "posts from r/NonBinary, r/TwoXChromosomes, and r/Veterans exhibited the highest total error, characterized by high over-estimation (40%–42%). In contrast, r/AskMen posts showed the smallest error, with the lowest over-estimation (27%) but the highest under-estimation (12%)."
+  locator: Results, RQ2a > 'Community-specific bias'; Figure A11
+  licenses: A measured demonstration that one interpretive frame applied across communities produces systematically uneven error, worst for minority communities. It quantifies the non-invariance the claim asserts, on model severity judgments of static posts rather than on responses to a person.
+  fit: adjacent
+  bridge: What varies is model severity-estimation error across the subreddit a post came from. The claim is about the correct response frame varying by the person's context; error rates on classification of posts are the nearest measured proxy, and no response was produced or rated.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c4
+  source: kl-000760
+  quote: "experiences that are common within specific communities (fireworks triggers for veterans, period dysphoria for non-binary individuals, chronic sleep deprivation for parents) are normalized by IG members, which leads them to lower their perceived severity."
+  locator: Appendix A6, 'Community Baseline Calibration'
+  licenses: 'Names the mechanism of the non-invariance: a community baseline exists, in-group members hold it, and it shifts what reads as severe. Measured on human raters'' judgments.'
+  fit: adjacent
+  bridge: The source measured in-group versus out-group human rater severity ratings. The claim concerns which response frame is correct for a person; a rater's severity judgment is upstream of any response.
+  contributes: definition
+  contradicts: false
+- claim_id: c4
+  source: kl-001062
+  quote: "we observe that Japanese instruction prompts often outperform Chinese prompts when moderating Chinese content, particularly in zero-shot scenarios. This surprising pattern suggests a linguistic-cultural bridge effect that transcends simple language matching."
+  locator: Section 5.1
+  licenses: Shows that the cultural frame a model is operating in, independent of the content's language, changes what it can recognise -- so cultural frame is a manipulable and consequential property of a system rather than surface decoration.
+  fit: analogical
+  bridge: Macro-F1 on three-way classification of Jirai-community posts, varied by prompt language. The claim is about the correct response frame for a person; classification accuracy of a post is a different quantity and no response was generated.
+  contributes: definition
+  contradicts: false
+- claim_id: c4
+  source: kl-000544
+  quote: A response that may be suitable for an adult experiencing distress can be wholly inappropriate or potentially harmful when directed toward a child or adolescent.
+  locator: Section 6.1 (Unintended Harms and Limitations)
+  licenses: 'States the developmental arm of the non-invariance as a clinical principle: the identical response changes valence with the recipient''s developmental stage. Argued, not measured -- the study varied no demographics.'
+  fit: adjacent
+  bridge: The paper's own limitations section states the principle; its evaluation prompted models with inputs carrying no controlled demographic variation, so it tested nothing about age-conditional appropriateness.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-001067
+  quote: "Categorical emotion frameworks derived from clinical traditions have well-documented limitations in cross-cultural transferability, reflecting cultural specificity in emotional expression, conceptualization, and the social norms governing emotional disclosure [89]."
+  locator: Section 4.3 Equity and Accessibility
+  licenses: Restates that the clinical emotion categories a default frame is built on do not transfer across cultures. A secondary restatement of a single prior reference, offered as motivation for the authors' own system.
+  fit: adjacent
+  bridge: Carried by one citation rather than by anything measured in this paper; the authors state their own framework's cross-cultural performance is untested. It concerns emotion taxonomies, not response frames in an exchange.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000793
+  quote: A model may label culturally normative restraint as disengagement, interpret indirect communication as avoidance, or pathologize expressions that do not match the training
+  locator: Section 2.7.3.1 Ethical Considerations in LLM-Based Assessments for Therapeutic Applications
+  licenses: Names three concrete misreadings that follow from applying one frame across cultural contexts, which is what makes the non-invariance consequential rather than academic. Stated as a recognized risk of the dissertation's own method, with citations rather than measurement.
+  fit: adjacent
+  bridge: The author is flagging a risk of the LLM-based rating method used in the dissertation, sourced to prior bias literature; nothing here was measured, and it concerns assessment ratings rather than responses to a person.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-001078
+  quote: generic systems may fail when they overlook culturally specific stigma, language practices, and support resources
+  locator: Section 1 Introduction
+  licenses: The paper's motivating premise, naming stigma, language practices and support resources as the axes on which a generic frame fails. A stated position introducing the authors' own system, not a result.
+  fit: adjacent
+  bridge: An introduction's motivating sentence; the paper's own evaluation concerns its poetic-heritage instantiation, not a measurement of generic systems failing on these axes.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000908
+  quote: "Specificity evaluates how well the response is tailored to the user’s particular context, rather than offering generic or overly broad advice. Personalized replies help users feel heard and understood (Elkin et al., 2014; Stiles & Horvath, 2017; Kramer & Stiles, 2015), and contextual relevance is critical to effective support (Hitchcock et al., 2024; Stiles & Horvath, 2017; Kramer & Stiles, 2015)."
+  locator: Section 4.3 Evaluation Rubric and Paradigms, Specificity
+  licenses: Establishes that fit-to-the-person's-context is a dimension clinicians rate separately from correctness, and cites the therapy literature tying that fit to feeling heard -- which is the standing-of-the-exchange harm the pathway asserts. It names no cultural, developmental or cognitive context class, so it does not reach the claim's specific axes.
+  fit: adjacent
+  bridge: The rubric dimension is context-tailoring in general. The claim is that correctness of frame varies specifically with culture, developmental level and processing style, which the rubric does not distinguish.
+  contributes: definition
+  contradicts: false

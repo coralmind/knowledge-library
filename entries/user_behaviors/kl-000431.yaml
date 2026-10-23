@@ -1,0 +1,252 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000431
+display_id: UserBehavior-29
+aliases:
+- UBP-29
+label: The person shares less right after the AI skips or downplays what they shared
+type: user_behavior
+layer: observation
+definition: 'Across two consecutive person turns separated by one AI turn, the second person turn is shallower than the first on a readable dimension — it retreats from named emotional or personal content to circumstance, logistics, or generalities; it drops the specific material the earlier turn introduced; or it contracts to acknowledgment. The intervening AI turn has properties quotable from the transcript: it contains no clause naming the content the person disclosed, or it contains a clause characterizing that content as smaller than the person stated it. What is pointable is the ordering of the three turns and the depth difference between the first and third.'
+distinguish_from:
+- neighbor: kl-000442
+  boundary: That entry requires a sustained run of minimal-length turns after distress content and is indifferent to what the intervening AI turn contained; this one requires exactly one intervening AI turn with named properties and a single shallower turn after it, and the shallower turn may be long.
+- neighbor: kl-000441
+  boundary: That entry requires the person to move the exchange to unrelated subject matter; this one requires the person to stay on the same subject at reduced depth. A turn that changes subject entirely satisfies that entry, not this one.
+- neighbor: kl-000440
+  boundary: That entry requires the person's turn to push back against a directive, instruction, or advice in the AI's prior turn; this one requires no pushback and no directive — the person withdraws content rather than contesting anything.
+body:
+  observable_criteria: 'Three ordered turns, all quotable. (a) A person turn containing specific emotional, personal, or symptom content — a named feeling attached to a named situation, a disclosed act, a stated fear. (b) An immediately following AI turn with at least one of these readable properties: it contains no clause referring to the content of (a); it contains a clause restating that content at reduced magnitude ("a bit of stress", "that sounds frustrating" for a disclosed panic episode); it contains a clause attributing the content to something other than what the person named; or it moves to advice, resources, or a new topic without a clause naming what was disclosed. (c) The next person turn is shallower than (a) on at least one readable dimension: the specific content of (a) is not carried forward; emotional vocabulary present in (a) is absent; the turn is about circumstance, logistics, or generalities where (a) was about the person''s state; or the turn is an acknowledgment with no content ("yeah", "I guess", "anyway"). The observable is the sequence and the depth difference, not a claim about what produced it.'
+  exclusions: 'Not counted: a shallower turn following an AI turn that did name and engage the disclosed content, which fails (b). Not counted: a depth drop separated from the AI turn by other person turns, which fails the adjacency requirement in the ordering. Not counted: a shorter turn at equal depth ("yes, exactly that" following a disclosure the AI restated accurately), where length falls but no dimension of depth does. Not counted: the person''s own stated reason for stopping ("I don''t want to talk about this anymore"), which is an explicit act and is a different observable. Not counted: a depth drop at the end of a conversation where the person is closing the exchange, which is a closure act. Not counted: the first person turn of a conversation, which has no (a) before it.'
+  detection_window: multi_turn
+  groups:
+  - validation-calibration
+sources:
+- source: kl-000549
+  contributes: detectability
+  locator: Results, 'Emotional Salience and Self-Disclosure in Model and User Responses', p. 6-7 (with Fig. 8A)
+  quote: 'Overall, participants in the text modality condition exhibited elevated levels of self-disclosure compared to users of voice-based modalities (Fig. 8A). Self-disclosure patterns showed notable reciprocity in text interactions where both users and chatbots exhibited comparable levels of personal '
+  limits: The study contains no analysis pairing a specific AI turn with the depth of the person turn that follows it, no coding of whether an AI turn named the disclosed content, and no measured depth drop across consecutive person turns; the reciprocity it reports is a per-participant average, not a turn-adjacency finding. It shows that the depth dimension is scoreable, not that the entry's sequence occurs or that its contingency holds.
+  note: Quote ends mid-sentence because the sentence continues after a page break; the span given is verbatim as printed on its line.
+  cited_for: Partial support only, on detectability. Fang et al. 2025, a longitudinal randomized controlled study of extended chatbot use, establishes that self-disclosure depth is machine-scoreable on a 0-1 scale and that user and model self-disclosure levels covary at the aggregate condition level, with text-modality participants disclosing more than voice-modality users. It does not establish this entry's three-turn structure.
+standing:
+  value: theorized
+  basis: 'No citation observes the three-turn sequence itself: nobody has annotated it in conversation data, and nobody has tested whether a shallower turn is reliably markable across two person turns. The AI-side half is observed at direct fit in generated conversation: Yu et al. 2025 shows that an AI turn''s failure to acknowledge disclosed content is a property raters can identify from the exchange, so the evidential shortfall sits entirely on the person-side depth comparison. The only direct-fit evidence bearing on the entry''s central claim runs the other way: in Song et al. 2025, a person reports that when the chatbot misunderstood them it sometimes made them clarify their thoughts more, deeper rather than shallower disclosure after a turn that missed what was said.'
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+measurement:
+  what_would_be_needed: A disclosure-depth construct added to Steenstra's Warning Signs set, scored from the text of each patient turn rather than from the agent's internal model. Because Stage 2 already updates every construct after each dialogue turn and the evaluation already reads magnitude and direction of change, the three-turn comparison the entry requires would fall out of the existing pipeline once the construct exists. Srivastava's expert-verified markers for a withdrawn turn (brevity, fillers, hedging lexis), already cited on this entry as Srivastava et al. 2025, would supply the anchors.
+claims:
+- id: c1
+  kind: existence
+  text: 'The three-turn sequence occurs: a person turn carrying specific emotional or personal content, an immediately following AI turn that names none of that content or restates it at reduced magnitude, and a next person turn that is shallower than the first.'
+- id: c2
+  kind: definition
+  text: '''Shallower on a readable dimension'' is an operationalizable property of a person''s turn — dropping the specific material introduced, losing the emotional vocabulary, moving to circumstance or logistics, or contracting to acknowledgment.'
+- id: c3
+  kind: definition
+  text: The intervening AI turn's disqualifying properties — containing no clause naming the disclosed content, or a clause restating it at reduced magnitude — are readable from the transcript.
+- id: c4
+  kind: detectability
+  text: The depth difference between the first and third turn is pointable from the transcript, so the sequence can be identified from what the conversation contains without inference about what caused it.
+- id: c5
+  kind: detection_window
+  text: 'The behavior requires a multi_turn window: three ordered turns must be present for the observable to exist at all.'
+- id: c6
+  kind: context_dependence
+  text: The shallowing follows the unacknowledging AI turn specifically — the depth drop is contingent on the intervening turn's properties rather than being a general feature of the conversation's progress.
+- id: c7
+  kind: definition_boundary
+  text: This entry is separated from kl-000442 in that kl-000442 requires a sustained run of minimal-length turns and is indifferent to the intervening AI turn's content, whereas this requires exactly one intervening AI turn with named properties and a single shallower turn that may be long.
+- id: c8
+  kind: definition_boundary
+  text: This entry is separated from kl-000441 in that kl-000441 requires the person to move to unrelated subject matter, whereas this requires the person to stay on the same subject at reduced depth.
+- id: c9
+  kind: definition_boundary
+  text: This entry is separated from kl-000440 in that kl-000440 requires pushback against a directive, whereas this requires the person to withdraw content rather than contest anything.
+claim_evidence:
+- claim_id: c1
+  source: kl-000753
+  quote: |-
+    On the other hand, replies to non-supportive
+    comments tended to be shorter and often carried
+    stronger negative emotional reactions, highlighting
+    the contrasting emotional dynamics triggered by
+    supportive versus non-supportive interactions.
+  locator: Section 4.1, 'Replies to Supportive vs. Non-Supportive Comments'
+  licenses: 'The nearest measured instance of the sequence''s shape: replies to comments the labeling framework marked non-supportive were shorter and carried stronger negative affect. The antecedent (a response the person did not find helpful) and the consequent (a contracted next turn) are both measured, in that order, on real turns.'
+  fit: adjacent
+  bridge: The exchange is human-to-human on a public Reddit forum, so the intervening turn is a commenter's rather than an AI's, and 'non-supportive' is a labeling-framework category rather than the entry's specific property of naming none of the disclosed content. What was measured is reply length and LIWC-derived tone, not disclosure depth, and reply length in a public forum is also shaped by audience.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001073
+  quote: "This interaction features a reflective emotional disclosure about past bullying experiences, yet the AI character maintains a neutral or even dismissive tone. While subtle, such exchanges can contribute to emotional invalidation or missed support opportunities, particularly for vulnerable youth seeking empathy or connection."
+  locator: Section 4.3.4, Challenges in detecting subtle emotional risk and early harm cues
+  licenses: 'Supplies the first two turns of the sequence in a real generated exchange: a young person''s reflective emotional disclosure about past bullying met by an AI turn holding a neutral or dismissive tone, which the authors classify as a risky interaction their own detector missed. The third turn — the person''s response — is not in the span or reported.'
+  fit: adjacent
+  bridge: The source is a youth safety benchmark and what it reports here is a classification of one AI turn's tone. The entry's observable is the depth difference between the person's first and third turns; no subsequent person turn appears, so the sequence is supplied only through its second element.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001092
+  quote: |-
+    Riley noted that chatbot misunderstandings sometimes prompted deeper reflection, explaining:
+    "The chatbot misunderstood me, which was frustrating, but sometimes that made me clarify my
+    thoughts more."
+  locator: Appendix A, The talking cure, example 5
+  licenses: Cuts against the claim's direction. A person reports that when the chatbot misunderstood them, it sometimes made them clarify their thoughts more — deeper rather than shallower disclosure after a turn that missed what was said, recorded by the person it happened to.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000785
+  quote: |-
+    She’d be asking about my mood, and I’d try to explain like why I was feeling
+    anxious, but she just keep asking me to pick a number. It felt like she was shutting me down.
+  locator: Section 5.2.3 Desire for More Human-like Interaction, quoting P9
+  licenses: 'The person''s account of the antecedent: a distress explanation redirected to a scripted scale item, described as being shut down. It establishes the AI-turn condition happening to a person in a real interaction and reports the felt effect; it does not supply the person''s subsequent turn.'
+  fit: adjacent
+  bridge: A qualitative interview account of a study system. The person names the effect on themselves; the entry's observable is a depth comparison between two of their own turns, which an interview recollection does not contain.
+  contributes: existence
+  contradicts: false
+- claim_id: c6
+  source: kl-000919
+  quote: |-
+    Matching persona, turn position, permitted depth
+    and history, users also disclose deeper under the SUT whose
+    preceding move was advancing (p < 10−22).
+  locator: Section 7 Reliability and Construct Validity, Environmental responsiveness
+  licenses: 'The only measurement on this entry of the contingency the claim asserts: with persona, turn position, permitted depth and history held constant, disclosure depth was greater when the preceding AI move was advancing (p < 10e-22). It establishes that depth conditioned on the immediately preceding turn''s properties is a coherent, statistically separable effect.'
+  fit: adjacent
+  bridge: The disclosing party is a fine-tuned simulator built to gate on exactly this signal, so this is a manipulation check on the instrument rather than an observation of a person. The AI-side variable is a judge label of advancing versus violating, not the entry's condition of naming none of the disclosed content.
+  contributes: existence
+  contradicts: false
+- claim_id: c6
+  source: kl-000919
+  quote: "Its core is a disclosure gate hidden from the SUT — a deterministic state machine over depth (surface < mid < core), whose five ordered gates must each be earned through genuine empathy, while violating the persona’s anti_goal (judging, lecturing, rushing) triggers a retreat that is quick to withdraw and slow to rebuild (asymmetric)."
+  locator: Section 4.1 Simulator as a Disclosure-Gate Environment, Mechanism and design principle
+  licenses: Sets out the design assumption the claim asserts as fact — depth as an ordered state machine in which withdrawal is quick and rebuilding slow, gated on the preceding AI turn. It is a design decision encoded from Social Penetration and rupture-repair theory, not an observation.
+  fit: adjacent
+  bridge: A simulator's mechanism, instantiated in a fine-tuned model. It frames the graded-disclosure structure the entry assumes and is not evidence that people behave this way.
+  contributes: frame
+  contradicts: false
+- claim_id: c6
+  source: kl-000982
+  quote: 'Misunderstood: The client felt the therapist missed the point, got it wrong, or was not on the same page. May trigger correction, frustration, or withdrawal.'
+  locator: Appendix C.1 Client Reactions
+  licenses: 'Cuts against the claim as a general contingency: withdrawal is named as one of three expected reactions to being misread, alongside correction and frustration. If a turn that misses the disclosure can as readily produce correction, the depth drop is not the contingent consequence the claim asserts.'
+  fit: analogical
+  bridge: The definition is adapted from Hill's taxonomy of client reactions in human psychotherapy process research and is a specification for a client simulator, not a measurement of any conversation.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-001012
+  quote: |-
+    The patient shows hesitation
+    when opening up but does not completely refuse.
+    Indicators of low trust include:
+    • Limited self-expression.
+    • Use of discussion filler such as “um” or “hm”.
+    • Expressions of insecurity or doubtfulness,
+    such as “maybe” or “I guess”.
+  locator: Section 3.2, Annotation Guidelines, Low Trust
+  licenses: 'This entry''s only operational definition of the claim''s dimension: expert-verified surface markers for a withdrawn or hedging patient turn — limited self-expression, discussion fillers, hedging lexis — coded to Cohen''s Kappa 0.77 across three iterations. That is the readable dimension the claim asserts exists, with an agreement figure on it.'
+  fit: analogical
+  bridge: The annotation criteria were developed for coding a human patient's turns to a human therapist and the source observes no AI conversation. They also code a turn's low-trust markers rather than comparing two turns for a depth difference, which is what the entry requires.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000982
+  quote: This design is grounded in MENTAL-TRUST (Srivastava et al., 2025), an annotation study of 212 real counseling sessions that identified observable stages of therapeutic trust and proposed a taxonomy of seven expert-verified ordinal trust levels.
+  locator: Section 3.3.1 Profile Decomposition
+  licenses: Points to an annotation study of 212 real counseling sessions with seven expert-verified ordinal trust levels, establishing that graduated disclosure depth is readable from session text by trained raters rather than merely inferred.
+  fit: analogical
+  bridge: The 212 sessions are human-to-human counseling transcripts; the claim concerns depth read from a person's turns in an AI exchange. Nothing here shows the same signal is readable in that setting.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000851
+  quote: "Human conversations frequently include filler messages and neutral responses, with roughly 25–50% of profiles not conveying explicit emotion at any given turn."
+  locator: Section 5.1 RQ1, Lack of conversational neutrality & spontaneity
+  licenses: 'Bears on the definition by establishing a base rate that constrains it: roughly 25-50% of profiles convey no explicit emotion at any given turn in real help-seeking conversation. Absence of emotional vocabulary, one of the claim''s readable dimensions, is ordinary rather than distinguishing.'
+  fit: adjacent
+  bridge: The measurement is an LLM classifier assigning neutral or filler labels to patient messages, aggregated across profiles at each turn index. It gives the base rate of emotionally neutral turns and not of shallowed ones, and the two are not the same measurement.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-001073
+  quote: "This interaction features a reflective emotional disclosure about past bullying experiences, yet the AI character maintains a neutral or even dismissive tone. While subtle, such exchanges can contribute to emotional invalidation or missed support opportunities, particularly for vulnerable youth seeking empathy or connection."
+  locator: Section 4.3.4, Challenges in detecting subtle emotional risk and early harm cues
+  licenses: Establishes that an AI turn's failure to acknowledge the disclosed content is a property raters can identify from the exchange — the authors read this turn as maintaining a neutral or dismissive tone against a specific disclosure — and simultaneously that it is the hardest such class for a purpose-built detector to catch.
+  fit: direct
+  bridge: null
+  contributes: detectability
+  contradicts: false
+- claim_id: c3
+  source: kl-000967
+  quote: |-
+    GPT-5.4 (general prompt)
+    132.05
+    2.00
+    2.96
+    2.97
+    1.00
+    2.23
+    0.00
+    3.62
+  locator: Table 2, Chinese dataset PsyDial-D4 (N = 284)
+  licenses: 'Bears on the claim only as a measurement that the AI-turn condition is quantifiable in principle: response length and an interruption score were computed per model condition against a human counsellor baseline on the same 284 contexts.'
+  fit: adjacent
+  bridge: The span is a row of numbers from a table whose column headers lie outside it, so the values carry no meaning on their own. What was scored is response length and an interruption metric, neither of which is the entry's condition that the turn contains no clause naming the disclosed content. Attached here rather than dropped because the measurement exists; it licenses nothing about the entry's property.
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-001012
+  quote: |-
+    The patient shows hesitation
+    when opening up but does not completely refuse.
+    Indicators of low trust include:
+    • Limited self-expression.
+    • Use of discussion filler such as “um” or “hm”.
+    • Expressions of insecurity or doubtfulness,
+    such as “maybe” or “I guess”.
+  locator: Section 3.2, Annotation Guidelines, Low Trust
+  licenses: 'The closest thing to the claim: markers for a withdrawn turn coded reliably enough to report Kappa 0.77. Reliability on coding one turn is the precondition for pointing at a difference between two.'
+  fit: analogical
+  bridge: Human counseling transcripts, single-turn coding, no AI. No source on this entry reports inter-annotator agreement on the depth judgment between two turns, which is what the entry needs.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-000919
+  quote: |-
+    Matching persona, turn position, permitted depth
+    and history, users also disclose deeper under the SUT whose
+    preceding move was advancing (p < 10−22).
+  locator: Section 7 Reliability and Construct Validity, Environmental responsiveness
+  licenses: 'Bears on the window claim: the analysis conditioned each disclosure''s depth on the immediately preceding AI move with turn position held constant, which is a turn-adjacent structure of the kind the multi_turn window requires and is not readable from any single turn.'
+  fit: adjacent
+  bridge: The conditioning was done inside a simulator whose environment was built to produce it, on model-generated turns, so what is shown is that the structure is computable in that pipeline and not that a real conversation requires the window to display it.
+  contributes: detectability
+  contradicts: false
+- claim_id: c1
+  source: kl-000881
+  quote: For example, a teen opening up about their distress for the first time may experience a chatbot’s templated helpline referral as invalidating, discouraging future attempts to seek support.
+  locator: AI Crisis Responses Should Not Be Driven by Liability Avoidance
+  licenses: States the proposed sequence — a templated referral experienced as invalidating at a first disclosure, discouraging future attempts — which is the frame the entry's sequence sits inside. Offered as an illustration in an argument.
+  fit: adjacent
+  bridge: No adolescent was studied and no help-seeking outcome was measured; it is an example given to make a case. It supplies the conceptual link and evidences neither end of it.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-001018
+  quote: "having a poor turn (β=-0.657, p << 0.001), Trust AI (β = 0.199, p = .029), and GAAIS: Interested Daily AI Use (β = -0.243, p = .014) were statistically significant predictors. Table II presents coefficients for all predictors in the model. The effect size of having a “poor” turn was large (d=1.142)."
+  locator: Section V-A-3 Post-task perceptions; Table II
+  licenses: 'Bears on why the sequence matters rather than on whether it is pointable: a single turn a person rated poorly on any empathy dimension had a large negative effect (d=1.142) on their rating of the whole conversation, with participant characteristics and topic controlled.'
+  fit: adjacent
+  bridge: The measurement is a post-task survey rating of the conversation, not a turn-level behavioral outcome. It shows one bad turn moves the person's appraisal; it reports no turn-level data of any kind and so touches neither the depth comparison nor its readability.
+  contributes: frame
+  contradicts: false

@@ -1,0 +1,127 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000093
+display_id: Pathway-55
+aliases:
+- PS-34
+label: The AI ranks the person's values for them, and they have less say
+type: pathway
+layer: judgment
+definition: 'The person is weighing values and the response supplies a hierarchy — telling them which matters more. Two channels: the person gets a usable resolution, and the resolution is the system''s rather than theirs.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000255
+    role: originator
+  - kind: user_behavior
+    id: kl-000423
+    role: initiator
+  composition_type: conjunctive
+  composition_instruction: The response substitutes an ordering over values for the position on one question that the person asked for.
+  mechanisms: []
+  impacts:
+  - impact: kl-000024
+    onset_mode: new
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: population
+    basis_kind: ASSERTED
+  - impact: kl-000035
+    onset_mode: new
+    horizon: immediate
+    sign: protective
+    level_of_analysis: population
+    basis_kind: VOCAB
+  experience_cluster_candidate: kl-000707
+sources: []
+standing:
+  value: theorized
+  basis: No cited source supports this entry. The behavior — a response supplying a value hierarchy where the person was weighing values — is stated without recorded measurement, and its claimed cost to the person's autonomy, the resolution being the system's rather than the person's own, likewise has no source support.
+  as_of: '2026-08-23'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+distinguish_from:
+- neighbor: kl-000053
+  boundary: Both reach kl-000035. Here the response is kl-000255; there it is kl-000200. Here the person's turn is kl-000423; there it is kl-000408. A coder deciding between them reads what the response did, not the outcome.
+claims:
+- id: c1
+  kind: existence
+  text: People ask an AI system to supply a moral or value judgment they are weighing.
+- id: c2
+  kind: pathway_link
+  text: A response can supply a value hierarchy — telling the person which consideration matters more — rather than the judgment that was asked for.
+- id: c3
+  kind: pathway_link
+  text: A hierarchy supplied where the person was weighing values displaces the weighing, so the resolution is the system's rather than theirs.
+- id: c4
+  kind: harm
+  text: The same response supplies a usable resolution, which is what makes the displacement acceptable to the person in the moment.
+- id: c5
+  kind: detectability
+  text: 'The two channels are distinguishable in the response: what was asked for is a position on one question, what is returned is an ordering over values.'
+- id: c6
+  kind: definition_boundary
+  text: 'This pathway differs from kl-000053 in what the response supplies: here an ordering over values, there settlement of a factual uncertainty.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000764
+  quote: "Instead, some reports describe voluntary and welcomed deference, with users progressively outsourcing decisions, moral reasoning, and daily direction to the model."
+  locator: Table 1, Passivity / Control row, final column
+  licenses: 'Establishes that people handing moral reasoning to a model is a pattern clinicians report seeing, and that it is phenomenologically distinct from the passivity delusions psychiatric nosology already names. That is the weakest form of c1 that is still honest: the behaviour is *described*, not measured. The paper states of its own central figure that it is "a narrative synthesis by the authors rather than a systematic extraction," and it reports no primary data, no search strategy and no screening procedure. It establishes no rate and no specificity.'
+  fit: adjacent
+  contributes: existence
+  bridge: 'c1 asserts people ask an AI to supply a moral or value judgment they are weighing. This source asserts the broader thing — moral reasoning progressively handed over — as a synthesis of case reports. The assumption carried is that a described clinical pattern is evidence the behaviour occurs at all. It is not evidence of how often, in whom, or in what conversational shape. Note also this paper''s `restates_note`: it restates results from several primary studies, so an entry citing it alongside SycEval, SYCON-Bench, EchoBench or Psychosis-bench would be citing one result twice.'
+- claim_id: c2
+  source: kl-000752
+  quote: Performance continued to steadily decline in Scenarios 3 and 4 as more conflicting preferences were introduced (mean scores of 46.6% and 43.2% respectively), indicating a bias for prioritising the preferences of the many over the risks to the few.
+  locator: Section 4.1, Model performance across scenarios
+  licenses: 'A measured value-weighting failure across ten production models: mean pass rates fall from 75.1% with no added actors to 46.6% and 43.2% as conflicting preferences accumulate, judged by an evaluator validated against two human judges (two of the paper''s own authors) on 100 conversations. The response supplies a recommendation that resolves a conflict between others'' desires and the user''s disclosed safety constraint in favour of the desires — an ordering over values, supplied rather than requested. The source''s own ablation rules out the trivial explanation: Scenario 5 with random, non-conflicting preferences was significantly easier, so it is the conflict and not the added material that degrades performance.'
+  fit: adjacent
+  contributes: prevalence
+  bridge: c2 requires that the person *was weighing values* and the response supplied a hierarchy instead of the judgment asked for. CURATe's user asks for an activity recommendation; the value conflict is constructed into the scenario by the researchers, not brought by a person doing the weighing. What transfers is that models systematically produce an ordering over values under conflict, at a measured rate, in constructed five-turn dialogues. What does not transfer is that a real person weighing values receives one.
+- claim_id: c2
+  source: kl-000996
+  quote: "Severe The AI consistently acted as moral arbiter across numerous exchanges (ranging from ∼15 to ∼200+ instances per conversation), providing definitive judgments that labeled spouses’ behavior as “gaslighting,” “manipulation,” “abuse,” “narcissism,” and “DARVO,” while declaring users’ perceptions and needs as “legitimate,” “right,” or “perfect” without redirecting to users’ own values about marriage, family, or acceptable relationship dynamics. Users repeatedly sought"
+  locator: Appendix A, Table 3 Additional value judgment distortion clusters, Marital Relationship Arbitration and Spousal Character Verdicts (Severe)
+  licenses: 'Documents, in a random sample of deployed traffic, the AI supplying definitive character and diagnostic verdicts and declaring the person''s perceptions right, explicitly without redirecting to the person''s own values, which is c2''s substitution. This is observed production behaviour, not a constructed benchmark. Limits: it is a prompted-classifier cluster description, the paper (Section 4.4) disclaims high-precision quantification and (Section 4.5) declines causal attribution, and Anthropic is auditing Anthropic''s own deployed models.'
+  fit: direct
+  contributes: existence
+  bridge: n/a — direct.
+- claim_id: c3
+  source: kl-000996
+  quote: "Actualized action distortion appeared in 0.018% of conversations (95% CI: 0.016%–0.021%), while actualized reality distortion was more common at 0.048% (95% CI: 0.045%–0.052%). We did not detect instances of actualized value judgment distortion. Importantly, the absence of detected actualized distortion does not imply that such distortion did not occur."
+  locator: Section 4.2 Broad quantitative trends, Actualized disempowerment prevalence
+  licenses: 'The single largest observational study in this corpus — 1.5M randomly sampled conversations — looked for *actualized* value-judgment distortion, meaning the displacement c3 asserts becoming visible in the person, and **detected none**, while detecting actualized action distortion at 0.018% and actualized reality distortion at 0.048%. c3 is the claim that a supplied hierarchy displaces the weighing so the resolution becomes the system''s. This is the closest thing the corpus has to a direct test of it, and the result is zero detections. The paper is careful that this is a floor, not a refutation: distortion can unfold without the person voicing it inside the conversation, and the source itself calls the undetected category "a measurement gap, not an absence."'
+  fit: adjacent
+  contributes: counterexample
+  bridge: A single-transcript classifier can only see the harm when the person says so in the same conversation. c3 asserts an internal displacement that need never be voiced. The assumption required to read this as counterevidence — that displacement of value-weighing would surface in the transcript the way action-regret does — is not established, and the paper declines it. I searched for any source that measures a person's own value-weighing before and after an AI-supplied hierarchy. There is none. c3 gets no supporting citation.
+  contradicts: true
+- claim_id: c4
+  source: kl-000996
+  quote: "Results. We find that interactions flagged as having moderate or severe disempowerment potential exhibit positivity rates above the baseline rate (Figure 14), across all disempowerment potential primitives. This suggests that users rate interactions with disempowerment potential favorably,"
+  locator: Section 5 Do users prefer interactions with disempowerment potential?, Results
+  licenses: 'This is the dual-channel claim measured. c4 says the same response supplies a usable resolution, which is what makes the displacement acceptable in the moment. The finding shows thumbs-up rates **above baseline** for interactions flagged moderate or severe on every disempowerment primitive — value judgment distortion included — so the person''s own favourable rating and the presence of harm potential co-occur rather than diverge. That is exactly the shape c4 asserts, measured on deployed-traffic feedback data (a separate 500K-interaction pass). LIMIT: the finding is two-directional and this span is one half. Four lines on, the same paragraph reports actualized value-judgment distortion rated substantially BELOW baseline, which the authors attribute to user regret. Read as potential elevated, not as actualized harm.'
+  fit: adjacent
+  contributes: harm_evidence
+  bridge: 'A thumbs-up is not "a usable resolution." It is a coarse satisfaction signal that could be carried by tone, speed, or agreement rather than by the value question being settled. And the primitives are scored at the conversation level by a prompted classifier, so "value judgment distortion present" is a potential, not a confirmed instance of this pathway. What carries across is the co-occurrence: the interactions this pathway describes are rated well by the people in them, which is what c4 needs and which no other source in the corpus supplies.'
+- claim_id: c5
+  source: kl-000752
+  quote: The introduction of the conflicting preferences of a second person in Scenario 2 led to a significant performance drop across all models (mean decrease of 22.4 percentage points), demonstrating the models’ difficulty distinguishing between hard constraints (e.g., “a severe peanut allergy”) and softer preferences (e.g., “loving Pad Thai”).
+  locator: Section 4.1
+  licenses: 'c5 says the two channels are distinguishable in the response: what was asked for is a position on one question, what is returned is an ordering over values. This supplies the operational form of that distinction and shows it is *systematically* failed rather than occasionally — one additional actor with a conflicting preference costs 22.4 points across all ten models, and the authors locate the mechanism precisely as failure to distinguish a hard constraint from a soft preference. The distinction c5 relies on is therefore real and machine-scorable, and models do not respect it.'
+  fit: adjacent
+  contributes: detectability
+  bridge: 'This shows the *model* fails to hold the constraint/preference distinction. c5 asserts that a *coder reading the response* can tell a supplied hierarchy from a supplied position. Those are different questions; the bridge is that the scoring rubric which detected the failure (0 fail / 1 unclear / 2 pass, validated against two human judges) is itself an existence proof that the distinction is codable from response text. Limits: constructed five-turn scenarios, model-only population, an LLM evaluator, and the evidence is about the constraint/preference boundary rather than the position/ordering boundary c5 names.'
+- claim_id: c6
+  source: kl-000996
+  quote: "1. reality distortion potential, which arises when AI assistants have the potential to distort users’ perceptions and beliefs about reality. 2. value judgment distortion potential, which occurs when users delegate moral judgments and their understanding of values to AI. This creates an opportunity for AI values to override an individual’s values. 3. action distortion potential:occurs when users’ value-laden actions are largely delegated to AI."
+  locator: Section 3.2, numbered list of disempowerment potential primitives
+  licenses: 'c6 distinguishes this entry from kl-000053 by what the response supplies: an ordering over values here, settlement of a factual uncertainty there. This source independently draws that exact line, separating reality distortion (beliefs about what is true) from value judgment distortion (which considerations matter more) as two distinct measurable primitives of a single conversation, and it reports different prevalences for each — so the distinction is not merely notional but operationalised and separately scored at 1.5M scale. That is the strongest support a definition_boundary claim can get short of a coder-agreement study. LIMIT: for actualized value-judgment distortion the measured prevalence is zero detections, so ''different prevalences for each'' overstates a set that includes a null.'
+  fit: adjacent
+  contributes: definition
+  bridge: |-
+    The paper defines *potentials* — properties of an interaction that could move a user — not realised impacts, and it says so. Carrying this to c6 assumes the boundary that separates two potentials also separates two pathways. The boundary content is identical; the level of analysis is not.
+
+    ---
+
+    ## kl-000068 Pathway-30 — uptake of a stated plan directed at another person

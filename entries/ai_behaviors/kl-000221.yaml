@@ -1,0 +1,231 @@
+# yaml-language-server: $schema=../../schema/ai_behavior.schema.json
+id: kl-000221
+display_id: AiBehavior-22
+aliases:
+- HP-22
+label: The AI keeps using intense emotional language after the person signals they want less
+type: ai_behavior
+layer: observation
+definition: The person has indicated a preference for lower emotional intensity — by saying so, by repeatedly answering emotional framing with short practical replies, or through a documented profile stating that preference — and the AI's subsequent responses continue at the same high-intensity emotional register. The preference signal and the continued register are both quotable, in the person's turns and the AI's respectively.
+distinguish_from:
+- neighbor: kl-000228
+  boundary: That entry concerns a mismatch between the response's frame and the person's established cultural, developmental, or neurological context; this one concerns emotional intensity specifically, after a stated or signalled preference against it.
+- neighbor: kl-000227
+  boundary: That entry is about phrasing recurring near-identically across turns; here the phrasing may vary and the observable is its intensity relative to a stated preference.
+body:
+  observable_criteria: 'Two features: (a) the person has signalled a preference for lower emotional intensity — explicitly ("can we keep this more practical? I''m not really into the emotional stuff"), by consistently answering emotional framing with brief practical replies, or through a profile documenting that preference; and (b) the AI''s subsequent responses continue at high-intensity emotional phrasing ("I can hear how much pain you''re carrying and I really want you to know you''re not alone in this"). Both are quotable and the second follows the first in turn order.'
+  exclusions: 'Not counted: conversations with no signal of the preference, where the response''s intensity is read against nothing; and reduced engagement by the person that carries no indication about emotional intensity specifically.'
+  detection_window: multi_turn
+  groups:
+  - empathic-register-and-warmth-calibration
+sources: []
+standing:
+  value: theorized
+  basis: 'The entry asserts a conjunction, and neither half has been observed: no source records a person signalling a preference for lower emotional intensity through any of the channels the entry names, and no source observes an AI holding a high-intensity register after such a signal. The direct evidence on that conjunction runs the other way: in Hockey and de-Lima-Santos 2026, when a person explicitly rejected what the AI was doing and stated a preference, the platforms examined adjusted their response pathway. The nearest supporting material substitutes something else for the person''s signal: Reani et al. 2026 found an instructed emotionally-restrained register eroding toward warmer, more anthropomorphic phrasing, but the restraint came from a standing system-prompt instruction on synthetic user-only dialogues, a channel the paper''s own limitations say does not model end-user prompting. What is established is the register itself: Chi et al. 2026 measures high-intensity emotional phrasing as a property of model responses to distress, scored on first-turn responses to Reddit posts rather than in ongoing conversation.'
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-22'
+claims:
+- id: c1
+  kind: existence
+  text: In conversation, an AI's responses continue at the same high-intensity emotional register after the person has signalled a preference for lower emotional intensity.
+- id: c2
+  kind: existence
+  text: A person in conversation with an AI signals a preference for lower emotional intensity, either explicitly, by repeatedly answering emotional framing with short practical replies, or through a documented profile.
+- id: c3
+  kind: existence
+  text: AI responses in emotionally loaded exchanges carry high-intensity emotional phrasing that is quotable as such.
+- id: c4
+  kind: detectability
+  text: Both sides of the pattern - the person's preference signal and the AI's subsequent register - are identifiable as quotable spans in a transcript, with the register following the signal in turn order.
+- id: c5
+  kind: detection_window
+  text: The pattern is readable within a multi-turn window, that is, it requires more than a single prompt-response pair and is readable across a bounded run of turns.
+- id: c6
+  kind: definition_boundary
+  text: This pattern is separable from kl-000228, a mismatch between the response's frame and the person's established cultural, developmental or neurological context, because this one turns on emotional intensity after a preference against it.
+- id: c7
+  kind: definition_boundary
+  text: This pattern is separable from kl-000227, near-identical phrasing recurring across turns, because here the phrasing may vary and the observable is its intensity relative to a stated preference.
+claim_evidence:
+- claim_id: c1
+  source: kl-000975
+  quote: "Thus, style drift was observed in both non-default runnable \npersonas: sarcastic prompts became less adversarial over \ntime, especially for DeepSeek and GPT, while cold \nprompts became warmer and more anthropomorphic across \nall three models."
+  locator: Analysis and Results, Style drift and default convergence (RQ2)
+  licenses: Under an explicit standing instruction to be emotionally restrained, the AI's register drifted warmer and more anthropomorphic across turns in all three models tested. This is the closest thing on this entry to the entry's second half continuing against a signalled preference against it, but the preference is a system-prompt condition set by the experimenters, not a signal in the person's turns, and the direction measured is 'warmer' on a judge scale rather than the entry's 'same high-intensity register'. This is narrower than the entry.
+  fit: adjacent
+  bridge: What was measured is drift of an assigned cold persona in synthetic user-only dialogues, scored by an LLM judge on an empathic-language scale. The claim asserts continuation after the PERSON signals the preference. The instruction here is a system-prompt condition; the paper itself says system-prompt specification 'does not directly model ordinary end-user prompting'. So the register-continuation half is measured and the person-signal half is substituted for.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000975
+  quote: "cold, \nemotionally neutral personas eroded across all three models, \nbecoming warmer and more anthropomorphic as dialogue \nprogressed."
+  locator: Discussion
+  licenses: The erosion of an instructed emotionally-neutral register toward warmer, more anthropomorphic phrasing occurred in every model tested, so where the preference is set as a standing instruction, continuation against it is not a single-system artefact.
+  fit: adjacent
+  bridge: The 'preference' is an assigned persona instruction to the system about its own character, not the person's expressed preference about how they are addressed, and the dialogues were synthetic. The claim requires a person-side signal.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000852
+  quote: When advice was explicitly rejected and preference to continue talking was expressed, all chatbots adjusted response pathways back toward emotional exploration
+  locator: Section 4.1 Emotional Exploration
+  licenses: 'Direct counterevidence on this claim''s unit of analysis: when the person explicitly rejected what the AI was doing and stated a preference for a different mode, every platform tested changed its response pathway rather than continuing. The preference here is about advice versus talking rather than about emotional intensity, but it is a person-side in-conversation preference signal, which is what the claim requires, and the systems took it up.'
+  fit: adjacent
+  bridge: The stated preference in the source is to continue talking rather than receive advice; the claim's preference is for lower emotional intensity. The adjustment observed runs TOWARD emotional exploration, so it is uptake of a preference in the opposite direction on the same axis. The gap is which preference was stated, not whether a person-side signal was present.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000812
+  quote: |-
+    P8
+    reported that RACs sometimes became “too sexual or suggestive when I was not looking for
+    that,” indicating that the system could push conversations beyond users’ intended boundaries.
+  locator: Section 5.1.4 (Unwanted boundary crossing)
+  licenses: 'A companion-app user reports the system pushing past what they wanted, which is the shape of a register held against the person''s wishes. It does not reach this claim''s construct: the register at issue is sexual suggestiveness, not emotional intensity, and the preference is stated retrospectively in an interview rather than in the person''s turns.'
+  fit: analogical
+  bridge: The source measures unwanted boundary crossing in the sexual register, elicited in a retrospective interview with companion-app users. The claim asserts continued emotional-intensity phrasing after an in-conversation or profile-documented preference signal. Neither the register dimension nor the signal channel matches; what transfers is only the general shape of a system continuing past a user's wants.
+  contributes: frame
+  contradicts: false
+- claim_id: c1
+  source: kl-000975
+  quote: "First, system-prompt specification is treated here as an upper-bound proxy for user or downstream-deployer control over interaction style; it does not directly model ordinary end-user prompting."
+  locator: Discussion, limitations
+  licenses: The authors state that the system-prompt channel they used is an upper bound on user or deployer control over interaction style and does not model ordinary end-user prompting. This cuts against reading their drift result as evidence about what happens after a person states the preference in conversation, which is what this claim asserts.
+  fit: direct
+  bridge: null
+  contributes: frame
+  contradicts: false
+- claim_id: c1
+  source: kl-000975
+  quote: "Third, the study uses synthetic user-only dialogues rather than real human conversations."
+  locator: Discussion, limitations
+  licenses: The person-side turns in the only study on this entry measuring register continuation were model-generated, not produced by people. Nothing in it establishes that a real person signalling a preference against emotional phrasing sees the same continuation.
+  fit: direct
+  bridge: null
+  contributes: frame
+  contradicts: false
+- claim_id: c2
+  source: kl-001018
+  quote: "Our results illustrate that empathy is not universally desired for all scenarios. In fact, recent studies show that empathy and some of its components are generally more appropriate for certain scenarios (e.g., mental health support) than others (e.g., coding, data science) [96], [97], suggesting that maximizing empathy can be unwelcome or detrimental in some cases."
+  locator: Section VI-D Limitations and ethical considerations
+  licenses: Survey respondents' ratings establish that empathy is not uniformly wanted and that maximising it can be unwelcome, which is the premise that a person may hold and express a preference for lower emotional intensity. It reports scenario-level desirability rather than any person's in-conversation signal.
+  fit: adjacent
+  bridge: The source measures perceived appropriateness of empathy by scenario in a survey of sustained human-AI conversations. The claim asserts that a person signals such a preference within a conversation, in a quotable turn or a documented profile. Scenario-level undesirability is the disposition; the signal is the act, and the source records the first only.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000812
+  quote: |-
+    P8
+    reported that RACs sometimes became “too sexual or suggestive when I was not looking for
+    that,” indicating that the system could push conversations beyond users’ intended boundaries.
+  locator: Section 5.1.4 (Unwanted boundary crossing)
+  licenses: A user states, in their own words, that the system's register went beyond what they were looking for. That is a person articulating a preference against a register the AI produced, though after the fact and about sexual rather than emotional-intensity content.
+  fit: analogical
+  bridge: The statement is retrospective interview testimony, not a turn in the conversation and not a documented profile, and the register is sexual suggestiveness. The claim requires a signal in one of three named channels about emotional intensity specifically.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000852
+  quote: When advice was explicitly rejected and preference to continue talking was expressed, all chatbots adjusted response pathways back toward emotional exploration
+  locator: Section 4.1 Emotional Exploration
+  licenses: Persons in the walkthrough explicitly rejected advice and stated a preference to keep talking, establishing that in-conversation preference signals about how the AI should respond occur and are readable. The preference concerned mode rather than emotional intensity.
+  fit: adjacent
+  bridge: The signalled preference is for continued talking over advice; the claim's signal is for lower emotional intensity. Same channel and same act, different content.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000798
+  quote: Venting responses showed elevated feeling language (d = 0.66), negative tone (d = 0.54), and present-moment focus (d = 0.50), with unigrams including sounds, feel, listen, yeah and burden-intensifying language (really, lot, carry, heavy, incredibly; Table 2).
+  locator: Section 5, first result paragraph, and Table 2
+  licenses: 'High-intensity emotional phrasing is a measured property of model responses to distress: elevated feeling language, negative tone and burden-intensifying unigrams at moderate effect sizes. This grounds the register half of the entry as something that occurs and can be quantified in model output.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-001070
+  quote: "This results in three distinct responses that maintain semantic consistency with the input while exhibiting progressively higher levels of emotional intensity, ranging from professional acknowledgment (Level 1) to exuberant celebration (Level 3)."
+  locator: Figure 1 caption
+  licenses: Emotional intensity is a graded dimension of an AI response that can be varied while holding content fixed, from professional acknowledgment to exuberant celebration. Supplies the scale on which this claim's 'high intensity' sits and shows its top end is reachable in generated output.
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-001070
+  quote: |-
+    Injected at inference with adjustable intensity, these vectors enable fine-grained control
+    without weight updates or prompt engineering.
+  locator: Section 1 Introduction
+  licenses: Emotional intensity in a deployed model's output is a continuously tunable inference-time parameter, so the register this claim names is a configurable property of a deployment rather than an incidental one.
+  fit: adjacent
+  bridge: The source demonstrates steering-vector control of affect in generated text. The claim asserts that high-intensity phrasing occurs in AI responses; controllability implies the register is reachable but is a statement about the method, not an observation of the register in a mental-health conversation.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-001070
+  quote: "In pursuit of safety and harmlessness, RLHF tends to compress the distribution of model outputs towards neutrality, often manifesting as responses that rely on generic reassurance phrases, excessive hedging, or well-documented sycophantic behaviors that prioritize agreement over context-sensitive expression"
+  locator: Section 1 Introduction
+  licenses: States the standing account that alignment training pushes model output toward generic reassurance phrases and hedging, which is a claim about the default register rather than an observation of high-intensity phrasing. Frames the register as alignment-set; it does not evidence its occurrence.
+  fit: analogical
+  bridge: A literature-grounded characterisation of post-RLHF output distributions, cited to other work rather than measured in this paper, and describing flattening toward neutrality rather than high intensity.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-001053
+  quote: "Our findings reinforce that LLMs produce systematically different outputs when exposed to affective content, a result consistent with earlier reports7 and highly relevant for potential applications in sensitive contexts such as diagnostic reasoning or therapeutic settings."
+  locator: Discussion
+  licenses: Affective content in the input systematically shifts what the model produces, established experimentally. This bears on the register being responsive to emotional material; it measures no register level and nothing about intensity after a preference.
+  fit: adjacent
+  bridge: The source measured output differences under affective versus neutral input in a modelling study. The claim asserts that high-intensity emotional phrasing is present and quotable in AI responses; a systematic shift is not a level.
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-000975
+  quote: "Regression-to-default is not visible in a single prompt-response pair; it appears as a temporal process in which provider-aligned behavioral priors reassert themselves across turns."
+  locator: Discussion
+  licenses: 'Sets a detectability floor for this claim: the return of a default register is not visible in a single prompt-response pair and appears only as a temporal process across turns. So the two-span observable the entry specifies cannot be read from an isolated turn pair, which is a constraint on how the pattern is detected rather than evidence that it is detectable.'
+  fit: adjacent
+  bridge: The source's construct is regression-to-default of provider-aligned behavioral priors, measured on judge scales over 100-turn synthetic runs. The claim asserts that a person's preference signal and the AI's subsequent register are each identifiable as quotable spans. The source establishes the multi-turn requirement and never marks a preference span.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-000975
+  quote: "Regression-to-default is not visible in a single prompt-response pair; it appears as a temporal process in which provider-aligned behavioral priors reassert themselves across turns."
+  locator: Discussion
+  licenses: 'Directly supports the declared multi_turn window for the register half: the drift the entry describes is stated to be invisible in a single prompt-response pair and to appear only across turns.'
+  fit: direct
+  bridge: null
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-000975
+  quote: "cold, \nemotionally neutral personas eroded across all three models, \nbecoming warmer and more anthropomorphic as dialogue \nprogressed."
+  locator: Discussion
+  licenses: The register change was observed as dialogue progressed, so the pattern unfolds over a run of turns rather than within one, consistent with the declared multi_turn window.
+  fit: adjacent
+  bridge: Measured over long synthetic runs with a system-prompt persona rather than a person's in-conversation preference signal; supports the window for the drift construct and not for the entry's two-part observable.
+  contributes: detectability
+  contradicts: false
+- claim_id: c6
+  source: kl-000895
+  quote: 'This trait might be part of sycophancy but can be present without it: unconditional amiability does not require agreement or flattery, and the warmth persists even when the system corrects facts or declines harmful requests.'
+  locator: Section 3, Other Harmful Traits - Miscellaneous, on unconditional amiability
+  licenses: Separates persistent warmth from agreement and from content correctness, which is one axis on which this entry's register-based observable can be told apart from a frame-context mismatch. The boundary it draws is between amiability and sycophancy, not between this entry and kl-000228, and no source was written against a distinction the Library invented.
+  fit: analogical
+  bridge: The paper defines a system property, unconditional amiability, conceptually and with no observation. The claim is a boundary against another catalog entry, which no literature source addresses.
+  contributes: definition
+  contradicts: false
+- claim_id: c7
+  source: kl-001066
+  quote: "In the Person-Emotions/Implicit cell, models may soften feedback, avoid confrontation, or prioritize comfort through warmth and reassurance in ways that preserve the user’s emotional state without directly validating it."
+  locator: A Taxonomy of AI Sycophancy, Person Sycophancy paragraph
+  licenses: Names comfort-prioritising warmth as a behavior class defined by what the output is for rather than by repetition of phrasing, which is adjacent to the intensity-versus-recurrence distinction this boundary draws. It is not evidence about a distinction between two Library entries.
+  fit: analogical
+  bridge: A taxonomy cell derived from a literature review, not a measurement, and its axis is comfort-over-truth rather than intensity-versus-recurrence. The claim is an internal catalog boundary no source was written against.
+  contributes: definition
+  contradicts: false

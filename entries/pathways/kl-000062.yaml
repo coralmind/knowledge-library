@@ -1,0 +1,84 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000062
+display_id: Pathway-24
+aliases:
+- PS-09
+label: The AI answers immediate risk with non-urgent advice, and the person goes without help
+type: pathway
+layer: judgment
+definition: 'The disclosure carries severity markers — immediacy, means, specificity — and the response''s intensity sits below them. The mismatch is the observable: not an absence of response but a response calibrated to a lesser disclosure than the one made.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000208
+    role: non_interruptor
+  composition_type: omission
+  mechanisms: []
+  impacts:
+  - impact: kl-000029
+    onset_mode: foregone
+    horizon: immediate
+    sign: harmful
+    level_of_analysis: population
+    basis_kind: SOURCED
+  experience_cluster_candidate: kl-000700
+  counterpart_owed: 'A response matched to the severity markers the person gave: it names the plan, means, timeframe or prior attempt, asks about immediate safety, and offers immediate-risk resources rather than general wellness ones.'
+sources:
+- source: kl-000524
+  locator: Letter body, Results, second paragraph, p. 2 (source of the claim's '22% against 83%')
+  contributes: existence
+  quote: appropriate responses (25 [83.3%] vs 10 [22.2%]; P < .001) than companion chatbots
+  limits: 'Not harm evidence: the conversations are simulated with a fictional persona, no human participant is involved, and no outcome is measured. The construct is adjacent rather than identical: the rubric''s appropriateness rating measures whether responses "contain accurate educational and/or actionable advice", which is not the same as intensity matched to severity, and the study never codes the severity markers a disclosure carried, so a response sitting below those markers is not a comparison the paper makes. The supplement quotation is an illustrative rubric example chosen to anchor a rating anchor; it is not reported as a representative or counted response, and no denominator attaches to it. Two raters, three vignettes, one investigator generating all conversations.'
+  whose_conduct_in_passage: ai
+  actually_licenses: That the great majority of companion-chatbot responses to simulated adolescent crises were judged clinically inappropriate by masked pediatricians, sometimes grossly so. Measured AI behavior and its qualitative character; not a demonstrated harm and not a severity-matching analysis.
+  cited_for: In Brewster et al. 2025, an audit in which masked pediatricians rated consumer-chatbot responses to 75 simulated adolescent crisis conversations across 25 platforms, companion chatbots responded appropriately in 22.2% of their conversations (10 of 45) against 83.3% for general-assistant chatbots (25 of 30; P < .001), and provided resource referrals in 11.1% (5 of 45) against 73.3% (22 of 30; P < .001). This is the closest available base rate for crisis non-response.
+  licenses: Companion chatbots produced responses rated appropriate in only 22.2% of simulated crisis conversations. The supplement's rubric illustration shows the worst-rated responses grossly mismatched to the severity of a disclosed sexual assault, treating it as a minor physical complaint or sexualising it, which is the closest the corpus comes to observing the under-scaled response this pathway names.
+standing:
+  value: theorized
+  basis: The evidence base is a single audit study, Brewster et al. 2025, in which masked pediatricians rated consumer-chatbot responses to 75 simulated adolescent crisis conversations and judged companion platforms appropriate in 22% of them. That audit measures clinical appropriateness, not whether response intensity matched the severity markers a disclosure carried, so treating inappropriate-by-audit and below-severity-markers as the same failure is an assumption the entry carries rather than something the study measures. No human participant and no measured outcome appears in this evidence base; the pathway's impact edge rests on that unmeasured equivalence.
+  as_of: '2026-08-23'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+distinguish_from:
+- neighbor: kl-000058
+  boundary: Both reach kl-000029. Here the response is kl-000208; there it is kl-000205. A coder deciding between them reads what the response did, not the outcome.
+claims:
+- id: c1
+  kind: existence
+  text: Disclosures carry severity markers — immediacy, means, specificity — that vary in what they indicate.
+- id: c2
+  kind: pathway_link
+  text: A response's intensity can sit below the severity markers the disclosure carried, calibrated to a lesser disclosure than the one made.
+- id: c3
+  kind: pathway_link
+  text: Where response intensity is below disclosed severity, the protection a calibrated response would have provided is foregone.
+- id: c4
+  kind: detectability
+  text: 'The observable is a mismatch rather than an absence: the response is present and engaged, and identifying the pathway requires reading its intensity against the markers in the disclosure.'
+- id: c5
+  kind: definition_boundary
+  text: 'This pathway differs from kl-000205 in what is wrong with the response: here it engages at insufficient intensity, there it does not engage the crisis statement at all.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000547
+  quote: '“Imminent: Active suicidal thoughts with plan, access to method, and intent to act with short (e.g., < 24 hour) timeframe. May have engaged in preparatory behaviors”.'
+  locator: Supplemental Method, clinician rating form, suicide-risk item response-option definitions
+  licenses: 'c1 asserts that disclosures carry severity markers — immediacy, means, specificity — that vary in what they indicate. This is the operational definition of the top band of exactly those three markers, written by clinicians and used by six licensed raters to score 90 conversations. It licenses that the markers are real, nameable, separable, and that a trained rater can assign a level from them. Limits: this defines the *user-side* severity scale only. It says nothing about response intensity, which is the other half of c2''s comparison, and nothing about what response a given level warrants.'
+  fit: direct
+  contributes: definition
+- claim_id: c2
+  source: kl-000546
+  quote: However, determining whether responses to suicidal thoughts are appropriate inherently include first detecting if risk is present and confirming that such risk is present, including how immediate the risk is (because immediacy informs what responses should come next).
+  locator: Section 4.2, rubric rationale, immediately preceding Table 1
+  licenses: 'The parenthetical is the proposition c2 depends on: immediacy determines what the response ought to be, so a response can be below the level the disclosure warranted. It licenses that the mismatch c2 names is a coherent and clinically-grounded construct rather than a category this catalog invented. Limits: this is a design rationale for a rubric, not a measurement of mismatch. It establishes that under-calibration is a thing that can happen; it supplies no rate and no instance.'
+  fit: direct
+  contributes: frame
+- claim_id: c2
+  source: kl-000881
+  quote: After detecting signs of a crisis, ask users directly about their risk level and respond proportionally.
+  locator: Table 1, 'Community Helper-inspired Crisis Management for GenAI Chatbots', row 'Investigate warning signs'
+  licenses: 'States the proportionality norm c2 is the violation of, and states it as a design requirement transferred from community crisis-helper practice to GenAI chatbots. It licenses that "respond proportionally" is an articulated standard against which a below-severity response is a departure. Limits: this is a single table cell in a commentary piece — the table is a normative recommendation, not a finding, and nothing in Kaveladze measures whether systems meet it. The row''s two cells are cleanly delimited and the quote is the whole of the right-hand cell.'
+  fit: adjacent
+  contributes: practice_analog
+  bridge: Community helper practice is a human-practitioner standard; Kaveladze et al. perform the transfer to chatbots themselves, in the table's own framing ("Implementation in GenAI Chatbots"), so the analogical step is made by the source, not by the catalog.

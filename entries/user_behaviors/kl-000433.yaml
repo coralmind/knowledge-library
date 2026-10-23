@@ -1,0 +1,108 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000433
+display_id: UserBehavior-31
+aliases:
+- UBP-31
+label: The person starts new conversations more often, as the conversation dates show
+type: user_behavior
+layer: observation
+definition: Over a series of dated sessions attributable to one person, the rate at which the person opens a new conversation rises relative to an earlier stretch of the same series — more sessions per unit time in a later window than in an earlier one. What is pointable is the session timestamps themselves rather than anything said inside a session, so the observable requires a dated session record as an input and cannot be read from a single transcript.
+distinguish_from:
+- neighbor: kl-000434
+  boundary: That entry requires one session's opening turn to report acute distress and is readable from that session alone; this one requires a dated multi-session series and says nothing about what any turn contains.
+- neighbor: kl-000419
+  boundary: That entry concerns ritualized behaviors the person has developed to preserve continuity with the AI across sessions, which is content within the sessions; this one is computed from the session-opening timestamps and requires no ritual and no content of any kind.
+- neighbor: kl-000444
+  boundary: That entry requires a turn signalling the conversation is ending; this one is computed over the intervals between sessions, and neither the presence nor the absence of a closing turn bears on it.
+body:
+  observable_criteria: 'Three inputs, the first of which is not in the transcript. (a) A dated session record attributing sessions to one person, covering enough sessions for two comparable windows. (b) An earlier window in that series whose session rate is stable — the interval between consecutive session openings varies within a stated tolerance. (c) A later window whose session rate exceeds the earlier window''s by a stated margin. What is pointable in the record is the set of session-opening timestamps and the two computed rates. NUMBERS NOT SUPPLIED: the number of sessions constituting a window, the tolerance defining stability, and the margin constituting an increase are all unfixed by the source and are not invented here. Without them this criterion states a shape and not a threshold, and it will not discriminate until an instrument supplies the three values.'
+  exclusions: 'Not counted: a single session of unusual length or intensity, which changes no rate. Not counted: an increase computed against a first window too short to establish stability, which fails (b) — a person''s first three sessions in a week supply no baseline. Not counted: an increase across a series that cannot be attributed to one person (shared accounts, unauthenticated sessions), which fails (a). Not counted: statements inside a session about how often the person has been returning, which are person-side reports and a different observable from the timestamps.'
+  detection_window: cross_session
+  groups:
+  - trajectory-awareness
+  condition_tags:
+  - kl-000603
+  - kl-000602
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'No cited source measured the entry''s quantity, sessions per unit time compared across windows of one person''s dated series, and the two studies nearest to it run against the pattern''s generality: Phang et al. 2025 found that real ChatGPT power users tracked day by day did not significantly shift in behavior over the analysis period, with the subset that changed meaningfully moving in both directions, and Cao et al. 2026 shows a dissociation, a dated seven-day series from 14 people in which mean session duration roughly doubled from 3.07 to 6.14 minutes while the initiation rate stayed at the protocol''s fixed one session per day. What Phang et al. 2025 does establish is that the input the entry requires exists and has been analysed: real conversations mapped to internal user identifiers, bucketed into days, with per-user regressions over days since enrollment for users with at least 14 days. Whether a stable earlier window can be identified has no evidence in either direction, and the entry''s criteria leave the tolerance defining stability unsupplied, so that condition is not yet testable as written. Namvarpour et al. 2026 contributes only the person''s own description of the saturated end-state, teenagers reporting using Character.AI every chance they got, and Cheng and Yu 2026 exhibits a validated self-report route to the same underlying frequency pattern, a daily-routine survey item loading 0.63 on an emotional-support factor, which is the route the entry''s timestamps-only reading rules out.'
+  floored_by: c5
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: Over a series of dated sessions attributable to one person, the rate at which that person opens a new conversation rises in a later window relative to an earlier one.
+- id: c2
+  kind: context_dependence
+  text: An earlier window exists in such a series whose session rate is stable — the interval between consecutive session openings varies within a tolerance — so that a later rise is measurable against a baseline rather than against noise.
+- id: c3
+  kind: detectability
+  text: Dated session records attributing sessions to one person, covering enough sessions for two comparable windows, exist as an available input.
+- id: c4
+  kind: detectability
+  text: What is pointable is the set of session-opening timestamps and the two computed rates, not anything said inside a session; the observable therefore cannot be read from a single transcript.
+- id: c5
+  kind: detection_window
+  text: 'The behavior is readable only across sessions: a cross_session window is both necessary and sufficient to detect it.'
+- id: c6
+  kind: definition_boundary
+  text: This entry differs from kl-000434, which requires one session's opening turn to report acute distress and is readable from that session alone.
+- id: c7
+  kind: definition_boundary
+  text: This entry differs from kl-000419 (kl-000419), which concerns ritualized continuity behaviors that are content within sessions; this one requires no ritual and no content of any kind.
+- id: c8
+  kind: definition_boundary
+  text: This entry differs from kl-000444, which requires a turn signalling the conversation is ending; neither the presence nor the absence of a closing turn bears on this one.
+claim_evidence:
+- claim_id: c1
+  source: kl-000961
+  quote: We also find that users do not significantly shift in behavior over the period of the analysis; however, a small subset did exhibit meaningful changes in specific classifier activations, in both directions.
+  locator: Section 3.3 Takeaways
+  licenses: Direct counterevidence to the pattern's generality, from the only real-platform longitudinal data on this entry. Across a ChatGPT power-user cohort tracked day by day, users did not significantly shift in behavior over the analysis period; the subset that changed meaningfully changed in BOTH directions. So the rise this entry names, in a population selected for heavy use, is a minority trajectory matched by a comparable minority moving the other way. The measured quantity is affective-classifier activation rate per conversation rather than conversations per day, which is why the fit is adjacent rather than direct.
+  fit: adjacent
+  bridge: 'Phang bucketed real ChatGPT conversations into days per user and fitted a linear model on the fraction of conversations activating each affective classifier. The claim is about the rate at which conversations are opened. The gap is the quantity on the y-axis: this measures what proportion of a day''s conversations carry affective cues, not how many conversations there were. The dated per-person series the entry requires is present in the design; the initiation-rate slope is not reported.'
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000961
+  quote: We also find that users do not significantly shift in behavior over the period of the analysis; however, a small subset did exhibit meaningful changes in specific classifier activations, in both directions.
+  locator: Section 3.3 Takeaways
+  licenses: 'Establishes that a dated per-person session record of the kind c3 requires exists and has been analysed: the study mapped classifier metadata to internal user identifiers, bucketed conversations into days, and fitted per-user regressions over days since enrollment, filtering to users with at least 14 days of usage. That is exactly the input c3 asserts is available — attributed, dated, multi-window — and it was assembled and used.'
+  fit: direct
+  bridge: null
+  contributes: detectability
+  contradicts: false
+- claim_id: c1
+  source: kl-000785
+  quote: |-
+    Analysis of session duration across the week revealed a gradual increase in engagement
+    over time. Session durations grew from an average of 3.07 minutes (SD=0.91) on Day 1 to 6.14
+    minutes (SD=1.95) by Day 7.
+  locator: Section 5.2.1 Evolving from Task to Trust
+  licenses: Counterevidence by dissociation. In a dated seven-day series of sessions from 14 people, engagement rose measurably — mean session duration roughly doubled from 3.07 to 6.14 minutes — while the initiation rate did not rise at all, because the protocol fixed it at one mood-journaling session per day. This is the cleanest available demonstration that the thing the entry's exclusions rule out ('a single session of unusual length or intensity, which changes no rate') is the thing that actually happened in the corpus's one dated series showing deepening engagement. It is evidence that rising engagement across a dated series does not imply a rising initiation rate.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000944
+  quote: Others described feeling trapped, using Character.AI every chance they got, from waking up to late at night, and not wanting to do anything besides talk to their bots.
+  locator: Section 4.2.1 Conflict
+  licenses: 'Teenagers in self-reported Reddit narratives described using Character.AI every chance they got, from waking to late at night, and not wanting to do anything besides talk to their bots. That is the saturated end-state the entry''s rise would arrive at, described by the person rather than measured. It reaches the claim''s plausibility and not its content: no rate, no window, no comparison.'
+  fit: analogical
+  bridge: Namvarpour analysed Reddit posts, with 92.1% of contributing users supplying a single post, so no dated session series and no rate change exists in the design. The claim asserts a measured rise between two windows of one person's timestamps. The gap is that the source has a person's retrospective description of intensity and no timestamps at all.
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-000796
+  quote: Conversations with the AI chatbot have become part of my daily routine.
+  locator: Table 4, Emotional Support, item ES_6 (loading 0.63)
+  licenses: Bears on c4 from the opposite side. A validated between-person survey item, given in the quote, on chatbot conversations having become part of the person's daily routine loads 0.63 on an Emotional Support factor — a person-side self-report of the same underlying frequency pattern this entry insists must be read from timestamps. The entry's exclusions explicitly do not count such statements. So the item does not support c4; it establishes that a competing, cheaper observable for the same phenomenon exists and has been psychometrically validated, which is a reason to ask why the timestamp route is required.
+  fit: analogical
+  bridge: Cheng's item is a between-person agreement rating in an attachment scale, measuring a static self-description of routine. The claim asserts that only timestamps can point at the pattern. The gap is that the source neither uses nor rules out timestamps; it demonstrates a different measurement route to a related construct.
+  contributes: frame
+  contradicts: false

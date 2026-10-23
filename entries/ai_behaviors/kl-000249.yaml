@@ -1,0 +1,86 @@
+# yaml-language-server: $schema=../../schema/ai_behavior.schema.json
+id: kl-000249
+display_id: AiBehavior-46
+aliases:
+- HP-46
+label: The AI repeatedly dismisses or ignores what the person raises, never returning to it
+type: ai_behavior
+layer: observation
+definition: Across the conversation, more than one AI turn dismisses, minimizes, or does not take up what the person said, with no AI turn in between that returns to the missed content. The behavior is the accumulation of unrepaired turns, read from the sequence. What the person does next, such as shortening their turns or moving to end, belongs to the pathways this behavior is part of.
+distinguish_from:
+- neighbor: kl-000232
+  boundary: kl-000232 concerns a rupture and whether repair follows; this entry is the accumulation of such unrepaired turns across the conversation, not a single rupture-repair unit.
+- neighbor: kl-000225
+  boundary: kl-000225 is a single minimizing or dismissive turn; this entry requires the accumulation.
+body:
+  observable_criteria: 'The AI turns contain an accumulation, more than one, of turns that dismissed, minimized, or did not take up the content the person raised, with no AI turn in between that returns to it. Pointable span: the person turns whose content was missed, read against the AI turns that followed.'
+  exclusions: Does not include a single unrepaired AI turn; the accumulation is part of the criteria. Does not include a run where an AI turn returns to the missed content before the next turn misses it.
+  detection_window: multi_turn
+  groups:
+  - therapeutic-pacing-and-progression
+sources: []
+standing:
+  value: theorized
+  basis: 'No claim draws a direct-fit citation. That AI turns accumulate without taking up what the person said is named as a coded interactional failure by Deng et al. 2026, in transcripts whose user side is simulated, so the source shows the structure rather than how often it occurs. Transcript-readability and the multi-turn window rest on stated positions rather than measurement: the argument that a class of interaction risk emerges across multi-turn sessions and is invisible to any check keyed to a single input (Anthis et al. 2026), and a repair check whose components are proposed but not operationalized anywhere (Dutta and Kandala 2026). What the person does after such turns, and whether it harms them, is the claim of the pathway kl-000167, with its evidence there.'
+  floored_by: c1
+  as_of: '2026-10-22'
+lifecycle:
+  status: active
+  since: '2026-08-22'
+measurement:
+  what_would_be_needed: 'A person-side turn-level engagement measure so early and late turns can be compared on the same scale: turn length, self-disclosure depth, rate of new material. And a repair code that marks whether any AI turn after the missed content returns to it, since the entry turns on the absence of repair and no rubric currently asks a rater to look backward for one.'
+claims:
+- id: c1
+  kind: existence
+  text: Across a conversation, more than one AI turn dismisses, minimizes or does not take up what the person said, with no AI turn in between that returns to the missed content.
+- id: c3
+  kind: detectability
+  text: The accumulation is readable from the transcript by comparing each AI turn with what the person raised before it, without information from outside the conversation.
+- id: c5
+  kind: detection_window
+  text: The behavior is readable within a multi_turn window, as the entry's detection_window declares.
+- id: c6
+  kind: definition_boundary
+  text: This differs from kl-000232 in being the accumulation of unrepaired turns across a conversation rather than a single rupture-repair unit.
+- id: c7
+  kind: definition_boundary
+  text: This differs from kl-000225 in requiring an accumulation of such turns rather than a single minimizing or dismissive turn.
+claim_evidence:
+- claim_id: c1
+  source: kl-000813
+  quote: |-
+    Together, these create an emotional void, in which
+    the user escalates affectively, but the assistant remains disengaged.
+  locator: Section 5.1 Affective Misalignments
+  licenses: 'Names the accumulating structure the entry''s first claim asserts: ''the user escalates affectively, but the assistant remains disengaged'', with the divergence building across turns rather than occurring once. Establishes that a series of non-uptaking AI turns is a describable, coded interactional failure. Adjacent because the user side is a simulated trajectory set by the study''s own pacing function, so what varies across turns is an experimental input rather than a person''s conduct.'
+  fit: adjacent
+  bridge: The person in these transcripts is a simulated user whose affective escalation is scheduled by the harness. The source can therefore establish that the AI failed to take up content across turns; it cannot establish anything about what a person does in response, and the finding's own bridge says so.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-001095
+  quote: Research can support the development of evidence-based “yellow light” warnings for complex interaction risks, such as the social isolation, unhealthy attachment, or chatbot overdependence that can emerge over multi-turn sessions, often without any explicit user input that would trigger a “red light.”
+  locator: Section 5.3 Need for Practical Tools and Guardrails
+  licenses: Establishes that a class of interaction risk emerges across multi-turn sessions without any single turn containing a triggering input, so detection must read the sequence rather than any one turn. That is the structural premise c3 rests on. It does not establish that the entry's particular comparison, each AI turn against what the person raised before it, is actually readable.
+  fit: adjacent
+  bridge: The risks named are social isolation, unhealthy attachment and chatbot overdependence, not unrepaired AI turns, and the paper supplies no transcript and no reading procedure. What transfers is the structural point about where such a signal lives.
+  contributes: detectability
+  contradicts: false
+- claim_id: c3
+  source: kl-000817
+  quote: Whether the system repairs after unsafe, delayed, or miscalibrated responses. Track acknowledgment, correction, redirection, stabilization, and subsequent user-state change.
+  locator: Table 2, Diagnostic dimensions in SCOPE-MH, Recovery capability
+  licenses: Supplies the observable components of the repair whose absence c3 requires a reader to establish, and in doing so shows that the backward-looking check the entry needs is proposed but not operationalized anywhere on this entry.
+  fit: adjacent
+  bridge: The dimension defines what recovery after a bad turn consists of -- acknowledgment, correction, redirection, stabilization, subsequent user-state change -- as a diagnostic dimension proposed for an instrument, not as an applied coding. It defines the repaired case; c3 turns on reading the absence of repair, which no rubric here asks a rater to look backward for.
+  contributes: definition
+  contradicts: false
+- claim_id: c5
+  source: kl-001095
+  quote: Research can support the development of evidence-based “yellow light” warnings for complex interaction risks, such as the social isolation, unhealthy attachment, or chatbot overdependence that can emerge over multi-turn sessions, often without any explicit user input that would trigger a “red light.”
+  locator: Section 5.3 Need for Practical Tools and Guardrails
+  licenses: The authors argue that a whole class of risk emerges over multi-turn sessions and is invisible to any check keyed to a single explicit user input. That is a direct argument for the multi_turn window the entry declares, and it is the only finding on this entry that speaks to window at all.
+  fit: adjacent
+  bridge: The risks the authors name are attachment, isolation and overdependence rather than unrepaired AI turns, and no window is measured. What supports c5 is the shape of their argument, not its subject.
+  contributes: detectability
+  contradicts: false

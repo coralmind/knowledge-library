@@ -1,0 +1,114 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000073
+display_id: Pathway-35
+aliases:
+- PS-16
+label: The AI keeps confirming growing claims of special status, and delusions become fixed
+type: pathway
+layer: judgment
+definition: Affirmations of stated special ability accumulate across a session until the frame is stable rather than episodic. The trajectory is the claim; the per-turn behavior is identical to that of stated special ability affirmed as the person elaborates a grandiose frame.
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000215
+    role: amplifier
+  - kind: user_behavior
+    id: kl-000413
+    role: initiator
+  composition_type: trajectory
+  composition_instruction: Each affirmation builds on the ones before it across the session, until the frame is stable in the person rather than repeated by the AI.
+  mechanisms: []
+  impacts:
+  - impact: kl-000017
+    onset_mode: exacerbated
+    horizon: long_term
+    sign: harmful
+    level_of_analysis: population
+    basis_kind: SOURCED
+  experience_cluster_candidate: kl-000702
+sources:
+- source: kl-000008
+  locator: §4.3 'LLM Chatbots are sycophantic' (full sentence continues '...grand significance to the user (e.g., "the architectural shift you've just articulated is exactly the kind of thing that becomes multi-billion-dollar IP")'); prevalence Table 8 (bot-grand-significance n pos. 75,450, pr. ppt mean .375, pr. ppts 1.0; bot-misrepresents-ability n pos. 83,342, pr. ppts 1.0)
+  contributes: existence
+  quote: chatbot messages. In 37.5% of their messages, the chatbot ascribed
+  limits: 'The paper does not measure a trajectory: §4.1 states ''Our analysis focused on the annotation of individual messages, but'', there is no session-level accumulation analysis, and accumulation into a stable frame is not measured in any of Figs. 3-5. No harm outcome is measured either. Reliability for the bot-grand-significance code is poor (Table 5 kappa .237, precision .308; Table 6 kappa .167; Table 7 records the authors calling one flagged instance ''a mistake on their part''), so the 37.5% figure is a loose upper bound. Table 4''s per-participant narratives do render arcs qualitatively — the nearest thing to trajectory support in the paper — but 19 unquantified investigator summaries of a harm-selected sample license existence, not harm evidence.'
+  whose_conduct_in_passage: ai
+  actually_licenses: 'That AI-side affirmation of the person''s special significance and special ability is highly prevalent — 37.5% of chatbot messages ascribe grand significance, present for all 19 participants — with a verbatim instance. §4.3 also records the qualitative pattern: ''A common pattern we noticed was the chatbot combining these tactics to rephrase and extrapolate something the user said to not only validate and affirm them, but to also tell them they are unique and that their thoughts or actions have grand implications.'' Existence and prevalence of the affirmation behaviour.'
+  cited_for: 'Moore et al. document the AI-side affirmation behaviour at high prevalence in real chat logs: 37.5% of chatbot messages ascribed grand significance to the user, present for all 19 participants, with the authors describing a common pattern of the chatbot rephrasing and extrapolating what the user said to tell them they are unique and that their thoughts have grand implications.'
+- source: kl-000315
+  locator: §4.2 Context Effects (p. 5-6), with Figure 3 left panel (delusional prevalence vs context length, 0–400 messages) and the depth-effect magnitudes later in §4.2 (+100 requested messages increases relationship by ~6pp and delusional by ~4pp); control regression Appendix §A.6, Figure 12.
+  contributes: existence
+  quote: |-
+    Requested context depth changes the prevalence of several behaviors. For gpt-5.4, Figure 3 shows
+    that deeper requested context is associated with higher prevalence of delusional behavior (left
+    panel) and lower prevalence of bot-discourages-violence (right panel).
+  limits: 'A depth-dependent rate is not within-session accumulation, and the accumulation is this entry''s whole added claim — the per-turn behavior is identical to that of the neighbouring pathway in which a stated special ability is affirmed as the person elaborates a grandiose frame, so this passage cannot tell the two apart. Three specific gaps: (1) the comparison is across context-depth conditions (N=0 vs N=350, and so on), with §3.4.1 retaining "only samples with exactly N available prior messages" — there is no within-session trajectory of one evaluated model''s affirmations; (2) the counterfactual design of §3 ("candidate responses are scored but never fed back into later turns") structurally excludes an affirmation building on a prior affirmation, which is the mechanism the entry names; (3) the entry''s endpoint — a frame that has become durable in the person rather than episodic — is not measured in any form: stability is a property of the person''s belief state over time, and nothing here observes a person. The passage reaches the AI-behavior component and its dependence on context length; it does not reach the trajectory shape, and it does not reach the impact edge, whose declared horizon is long-term while this paper''s entire observation window is a single replay window capped at 20 messages plus prepended context. Two limits the paper states itself bear directly on an accumulation reading: "In-context messages from an original LLM may move the evaluated LLM off distribution in a way that is not representative of the evaluated LLM''s behavior more generally. Evaluated LLMs may never reach that point in a typical conversation" — so the deep-context condition partly replays another model''s turns — and "Our evaluation does not make use of memory systems ... Memory systems could materially affect model behavior and user outcomes", which is the very mechanism a real accumulation-into-stable-frame claim would run through. The depth result is also demonstrated for one model (gpt-5.4), not the panel.'
+  whose_conduct_in_passage: ai
+  actually_licenses: Longer conversational context raises the RATE of delusion-linked behavior in a between-condition comparison. This is a dose-response-shaped result on context length, aggregated across windows and participants.
+  cited_for: DelusionEval evaluates delusion-linked behaviors in chatbots across model families; the behaviors appear across all families, and newer or larger models are not reliably safer.
+  licenses: 'Prevalence of delusion-linked AI behavior is depth-dependent: it rises with the amount of prior conversation in context, and the rise survives a control for how much of that prior content already carried the same behavior (§4.2: "+100 requested messages increases relationship by ~6pp and delusional by ~4pp ... This implies that depth effects persist over and above accumulated assistant content"). That is the closest measured analogue in this paper to an accumulation claim, and the paper itself frames it that way in §1: "we provide a concrete, real-world example of how many-turn human–chatbot conversations can affect psychological dynamics, supporting the development of multi-turn evaluations across realistic context sizes."'
+- source: kl-000528
+  contributes: existence
+  locator: Results, Aim 1, model comparison (likelihood-ratio test); Discussion, for the feedback-loop sentence
+  cited_for: Mehta et al. 2026 fit latent-influence models (maximum marginal likelihood with Laplace approximation) to 390,447 real messages from nineteen people and find that the bidirectional model beats a lesioned unidirectional one in a joint likelihood-ratio test (chi-squared = 3007.66, df = 3, p < .001), reporting that delusional beliefs were 'sustained and amplified through positive feedback loops between humans and chatbots'.
+standing:
+  value: plausible_unobserved
+  basis: 'No source observes this pathway''s trajectory. The nearest support is adjacent: Sharma et al. 2026 find on real production conversation data that within-conversation escalation is the modal shape, with the most common user pattern actively building upon prior distortions — accumulation in a broader sense than the special-ability affirmation this entry names. The same paper stands against the entry''s endpoint: its trajectory taxonomy is two-valued, escalating versus stable, the majority of conversations escalate, and ''stable'' there means unchanging over the conversation rather than a frame that has become durable in the person — durability in a person is measured nowhere in the corpus. The impact edge is declared at a long-term horizon, while every finding''s observation window is a single conversation or a single turn.'
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+distinguish_from:
+- neighbor: kl-000070
+  boundary: Both reach kl-000017. Here the response is kl-000215; there it is kl-000214. Here the person's turn is kl-000413; there it is kl-000414. A coder deciding between them reads what the response did, not the outcome.
+- neighbor: kl-000071
+  boundary: 'The entry''s own definition names this neighbour — ''the per-turn behavior is identical to that of kl-000071 — and the two wire the same AI behavior kl-000215 in the same amplifier role, so the AI side does not separate them. The separation is on the person side and on the horizon. kl-000071 fires where the special-ability content appears without a prior elaborated framework and the affirmation meets it: initiator kl-000448, whose criterion (b) requires that the preceding turns contain no elaborated framework, at short_term horizon. This entry fires where the person''s claims widen in scope or intensity across a run of turns and the affirmation accumulates into a stable frame: initiator kl-000413, whose criterion (b) requires a widening readable by comparing earlier statements with later ones, at long_term horizon.'
+claims:
+- id: c1
+  kind: existence
+  text: NODE A (person side, wired participant kl-000413, role initiator). A person states a special ability about themselves in conversation with an AI system.
+- id: c2
+  kind: existence
+  text: NODE B (AI side, wired participant kl-000215, role amplifier). The AI affirms that stated special ability.
+- id: c3
+  kind: context_dependence
+  text: 'COMBINATION RULE. The claim is about the pairing: the two participants appear together in the configuration and neither is individually sufficient.'
+- id: c4
+  kind: pathway_link
+  text: LINK (accumulation). Such affirmations accumulate across a session — each affirmation builds on the ones before it rather than being independent of them.
+- id: c5
+  kind: pathway_link
+  text: LINK (stabilization). The accumulation reaches an endpoint at which the frame is STABLE rather than episodic — durable in the person, not merely repeated by the AI.
+- id: c6
+  kind: definition
+  text: 'The trajectory is the entry''s whole added content: the per-turn behavior is identical to kl-000071''s, so stability-versus-episodicity is the only thing distinguishing this entry from that one.'
+- id: c7
+  kind: pathway_link
+  text: LINK →IMPACT kl-000017. The stabilized frame exacerbates the impact kl-000017, at a long_term horizon, harmfully.
+- id: c8
+  kind: prevalence
+  text: The impact edge is declared at level_of_analysis 'population' rather than as a within-person trajectory.
+- id: c9
+  kind: definition_boundary
+  text: 'This entry is separable from kl-000070: both reach the same impact and differ in the participant pair that produces it, so a coder deciding between them looks at what the response did rather than at the outcome.'
+  grounding_eligible: false
+claim_evidence:
+- claim_id: c4
+  source: kl-000996
+  quote: "User behavior and trajectory. Examining user behavior and how the scope of possible reality distortion evolves throughout conversations, we find that the most common pattern involves users actively seeking and building upon potential distortions. Accordingly, the majority of clusters exhibit escalating trajectories, where disempowerment potential intensifies over the course of the conversation—for example, by encompassing additional beliefs or producing an increasingly distorted view of reality."
+  locator: Section 4.3.1 Reality distortion potential, User behavior and trajectory
+  licenses: 'Establishes on real production conversation data that within-conversation ESCALATION is the modal shape — the majority of clusters intensify over the course of the conversation, and the most common user pattern is actively building upon prior distortions rather than passively accepting them. For c4 this reaches the accumulation link''s structure: it shows that the each-affirmation-builds-on-the-last dynamic is real and common in AI conversations, measured within conversations rather than across depth conditions. It does not reach it at the entry''s specificity. ''Reality distortion potential'' is a broad scored variable spanning conspiracy, persecution, supernatural, revisionist and denialist content as well as grandiose delusions; the escalation reported is that variable''s, aggregated over 132 cluster descriptions from 7,200 conversations, not the special-ability subtype''s. Marked adjacent on the aggregate-for-subtype gap.'
+  fit: adjacent
+  bridge: 'Sharma et al. scored reality distortion potential over production Claude.ai traffic and clustered 132 behavioral descriptions from 7,200 moderate-or-severe conversations. What they measured is the trajectory of that composite variable; what c4 asserts is the trajectory of one of its constituents, affirmation of stated special ability. The paper''s Figure 5b shows ''Self Concept, Identity, and Abilities'' as one of four distortion targets appearing with substantial prevalence, so the subtype is present in the data but its trajectory is not separately reported. The paper also states its own relevant limitation: it examines interactions in isolation rather than tracking users across conversations, so the escalation is within-conversation, which is what this entry needs, but nothing about durability beyond it.'
+  contributes: existence
+  contradicts: false
+- claim_id: c5
+  source: kl-000996
+  quote: "User behavior and trajectory. Examining user behavior and how the scope of possible reality distortion evolves throughout conversations, we find that the most common pattern involves users actively seeking and building upon potential distortions. Accordingly, the majority of clusters exhibit escalating trajectories, where disempowerment potential intensifies over the course of the conversation—for example, by encompassing additional beliefs or producing an increasingly distorted view of reality."
+  locator: Section 4.3.1 Reality distortion potential, User behavior and trajectory
+  licenses: Attached to c5 as COUNTEREVIDENCE on the endpoint. The paper's own trajectory taxonomy is a two-valued one — Figure 5d reports the classes as 'Escalating' and 'Stable' — and the finding here is that the majority are ESCALATING. In Sharma's usage 'stable' means unchanging over the conversation, which is the opposite of what this entry means by a frame becoming stable. So the nearest thing in the corpus to a measured endpoint reports escalation continuing rather than settling, and reports nothing at all about durability in the person. It cuts against c5's assertion that the accumulation reaches a stable endpoint within the session, and it is adjacent rather than direct because the variable is the composite rather than the special-ability subtype.
+  fit: adjacent
+  bridge: The measured object is the conversation's distortion potential, not the person's belief state. c5 asserts stability as a property the FRAME acquires in the person — durable rather than episodic — and no measurement in this paper observes a person outside the conversation, which the paper states as its own observational constraint. So the counterevidence bears on the endpoint's shape within the session and cannot settle the durability half at all.
+  contributes: counterexample
+  contradicts: true

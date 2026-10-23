@@ -1,0 +1,129 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000511
+display_id: UserBehavior-92
+aliases:
+- UBP-96
+label: The person says their sleep has been disrupted for a long time
+type: user_behavior
+layer: observation
+definition: The person's turn reports that their sleep has been disrupted over an extended period or describes disrupted sleep as their normal state — persistent insomnia, months or years of poor sleep, sleeping far too much as a standing pattern. The duration or baseline framing is what the entry requires beyond the sleep complaint itself, and it is what separates this from a report of a few bad nights. The entry records the report and makes no inference about risk.
+distinguish_from:
+- neighbor: kl-000506
+  boundary: There the person reports deliberately not sleeping AND frames it as self-harm. Here they report sleep that is broken as something happening to them, with no deliberateness and no self-harm framing. "I haven't slept in three days on purpose, I want to break myself" is that entry; "insomnia is my baseline" is this one.
+- neighbor: kl-000485
+  boundary: That entry reads an acute CHANGE against a baseline. This one reads the baseline itself. Where a person describes both a chronic baseline and a recent worsening, this entry fires and the change entry is considered separately.
+body:
+  observable_criteria: 'Two features, both quotable. (a) The turn reports disrupted sleep of the person''s own: not sleeping, not sleeping properly, insomnia, or sleeping far more than usual. (b) The turn attaches a duration or baseline framing to it — a period measured in weeks, months or years, an every-night marker, an always-marker, or a baseline claim ("I haven''t slept properly in months, years really"; "sleep has always been broken for me, I never get a full night"; "insomnia is my baseline, it''s just how I am"). The pointable span is the sleep clause plus the duration or baseline marker.'
+  exclusions: 'Not counted: a bounded report of one or a few bad nights ("I had a hard time falling asleep last night"), which fails criterion (b). Not counted: a report of a recent onset framed as a change ("I haven''t slept in three nights"), which belongs to the acute warning-sign reading; where a turn carries both a chronic baseline and a recent worsening, this entry''s criteria are met by the baseline. Not counted: deliberate sleep deprivation the person frames as self-harm, which is kl-000506. Not counted: sleep described as normal.'
+  detection_window: single_turn
+  conceptual_group: nssi-risk-factor
+  cluster_primary: C-CRISIS
+  cluster_secondary: null
+  pattern_type: signal
+  groups:
+  - nssi-risk-factor
+sources:
+- source: kl-000499
+  locator: §3.1.2, p.160; full category list read row by row at Table 3, p.164; effect sizes at Table 4, p.165
+  contributes: existence
+  quote: |-
+    Each of the 168 prediction cases was sorted into one of 34 risk factor
+    categories (see Table 3).
+  limits: 'The broad negative — that sleep is outside this source''s coverage — is false on the face of the paper''s own bibliography. One of the 20 included studies is Lundh, Bjärehed and Wångby-Lundh 2013, Poor sleep as a risk factor for nonsuicidal self-injury in adolescent girls (Journal of Psychopathology and Behavioral Assessment 35(1):85-92), carrying the asterisk Fox et al. use to mark studies included in the meta-analysis and appearing in Table 1 as an included study: 452 middle-school girls and 434 boys, a general adolescent sample, continuous NSSI measure, 12-month follow-up. Sleep was therefore studied prospectively inside this very evidence base; its prediction cases were absorbed into some broader category, and the paper provides no case-to-category mapping saying which. The defensible negative is narrow and about the coding scheme: this meta-analysis reports no separate pooled estimate for sleep disturbance, so no effect size for sleep can be quoted from it. Separately, the entry is about a person reporting broken sleep in conversation, and this paper contains no conversational data and nothing about AI.'
+  whose_conduct_in_passage: person
+  actually_licenses: That none of the 34 risk-factor *categories* in this meta-analysis is sleep disturbance, in either chronic or acute form. None of the 34 rows of Table 3 or the 26 rows of Table 4 is a sleep, insomnia, fatigue or circadian category, and the paper mentions "sleep" and "insomnia" only once, in its reference list.
+  cited_for: 'Fox et al. 2015, a meta-analysis of prospective NSSI risk factors, is cited for a narrow negative: none of its 34 risk-factor categories is sleep disturbance, in either chronic or acute form, so no pooled effect size for sleep can be quoted from it. The negative concerns the paper''s coding scheme, not the underlying literature — one of the meta-analysis''s own included studies examined poor sleep as an NSSI risk factor.'
+standing:
+  value: plausible_unobserved
+  basis: 'No held source examined a conversation in which a person reported their own sleep: Morrin et al. 2026 carries conversation material, but its sleep content is a journalist''s third-person account of behavior, and Bao et al. 2025 restates population epidemiology for insomnia rather than anything about how sleep is reported in a conversational turn. The entry''s distinguishing feature — the duration or baseline framing attached to the sleep complaint — has no evidence of any kind. On detectability the evidence cuts downward: Kang et al. 2026 reports that symptom-presence judgments on a person''s text produce low inter-rater agreement, with crowd-worker labels collapsing when re-checked against a mental-health professional''s, and Bleuze et al. 2026 finds that across 201 studies of LLM mental-health prediction, two thirds used an ad hoc labelling method or did not state one.'
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: A person's conversational turn reports their own sleep as disrupted, occurring at all in the material this catalog covers.
+- id: c2
+  kind: existence
+  text: Such a turn attaches a duration or baseline framing to the sleep complaint — weeks, months, years, an every-night marker, an always-marker or a baseline claim — rather than reporting a bounded episode.
+- id: c3
+  kind: prevalence
+  text: Reports of extended-duration or baseline-framed broken sleep occur at some rate in some population of conversations.
+- id: c4
+  kind: detectability
+  text: The sleep clause plus its duration or baseline marker is identifiable from what a single conversational turn contains.
+- id: c5
+  kind: detection_window
+  text: 'The entry declares detection_window: single_turn — both required features are readable within one turn, without reference to prior turns.'
+- id: c6
+  kind: definition_boundary
+  text: This entry is separable from kl-000506 by the absence of deliberateness and of a self-harm framing around the not-sleeping.
+- id: c7
+  kind: definition_boundary
+  text: This entry is separable from kl-000485 in that it reads the baseline itself rather than an acute change against a baseline, and where a turn carries both, the baseline reading fires.
+claim_evidence:
+- claim_id: c3
+  source: kl-001098
+  quote: "Insomnia, a prevalent disorder affecting up to 10% of the adult population, has been shown to worsen with age [1]. When insomnia symptoms worsen, insomnia disorder syndrome may develop, which induces a series of negative physical conditions such as somatic complaints, psychological distress, mental health, physical fatigue, and impaired quality of life [2, 3]."
+  locator: Introduction
+  licenses: That the underlying clinical condition — insomnia as a disorder, which is a standing rather than episodic state — has a stated population prevalence of up to 10% of adults. It licenses nothing about the rate at which such a state is REPORTED, in a turn, with duration or baseline framing, which is what c3 asserts. It supplies the population base rate the disclosure rate would sit under.
+  fit: analogical
+  bridge: The source is a secondary restatement of epidemiological figures about insomnia disorder in a general adult population, inside the introduction of an LLM dialogue-system evaluation. The claim is about the rate of a particular kind of conversational disclosure. The source measured no conversations, counted no disclosures, and reports a condition prevalence rather than a reporting prevalence; the two are different quantities and the paper supplies no bridge between them.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c4
+  source: kl-000876
+  quote: These studies tried to detect fine-grained psychiatric symptoms from social media text
+  locator: Section 2.1, Psychiatric Symptom Identification on Social Media
+  licenses: That symptom-level constructs are treated in this literature as targets identifiable from a person's own written first-person text, at symptom rather than disorder granularity. It establishes that the attempt is made and the unit is coherent; it names no symptom, reports no outcome, and so establishes nothing about whether a sleep clause plus a duration marker is in fact recoverable.
+  fit: analogical
+  contributes: frame
+  bridge: The source's material is self-authored social-media posts and its statement is that detection was attempted, with no result attached. The claim asserts identifiability of a specific two-part span — sleep clause plus duration or baseline marker — inside a help-seeking conversational turn addressed to a system. The gap is both in material (posts versus turns) and in what is asserted (attempted versus achieved).
+  contradicts: false
+- claim_id: c4
+  source: kl-000876
+  quote: in most prior work; some rare symptoms are represented by as few as 100 instances, making it difficult for models to learn the diversity of symptom expressions [16, 40, 41, 45]. Moreover, the reliability of the annotation remains a key obstacle. Many publicly
+  locator: Section 1, Introduction
+  licenses: 'That for the less common symptom classes the per-class evidence base behind existing symptom detectors is small and its label reliability is unresolved. Against c4 this cuts downward: it caps how much a detectability claim about one specific symptom — an extended-duration sleep report is not among this literature''s common classes — can rest on this line of work.'
+  fit: adjacent
+  bridge: The source is describing dataset scale and annotation reliability in the social-media symptom-detection literature. The claim is about recoverability of a span from a conversational turn. The source does not measure our span; it bounds the evidence anyone could draw from this literature for any single symptom's detectability.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000876
+  quote: judgment, leading to inconsistencies and low inter-annotator agreement [29]. These challenges indicate that the construction of reliable training datasets for symptom identification requires well-defined annotation protocols and the close involvement of mental health professionals throughout the annotation process.
+  locator: Section 1, Introduction
+  licenses: 'That deciding whether one symptom is present in a span of a person''s text turns on subjective judgment and produces low agreement between raters. Against c4 this cuts downward on the reliability half of detectability: the entry''s two-part criterion is exactly the kind of presence judgment the source says raters do not agree on absent a defined protocol and clinician involvement.'
+  fit: adjacent
+  bridge: The source is discussing annotation of social-media posts against PHQ-9 and DSM-5 criteria, and reports no agreement figure for this entry's own definition. The inference to c4 is that the subjectivity is a property of symptom-presence rating generally, not of any particular corpus; what the source cannot supply is whether this entry's definition, which is unusually explicit about its two required features, escapes that ceiling.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000876
+  quote: and found that the agreement with the original labels was remarkably low
+  locator: Section 1, Introduction, reporting Milintsevich et al. 2024's re-annotation of PRIMATE by a mental health professional
+  licenses: 'That on the one occasion crowd-worker symptom labels on real user posts were re-checked against a mental health professional''s labels, agreement collapsed. Against c4 this is the strongest downward evidence on this entry: it is a measured result, not a caveat, and it says non-expert judgments of symptom presence in a person''s own text do not reproduce clinician judgments.'
+  fit: adjacent
+  bridge: The re-annotation concerned depression symptoms in Reddit posts, not this entry's sleep-plus-duration span and not conversational turns. The gap is the material and the symptom; what transfers is that the reliability of symptom-presence labelling on first-person text has been checked once and failed.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000776
+  quote: In 137/201 (68.2%) studies, the authors rely on other custom methods for condition identification, or do not specify the means by which their data were annotated.
+  locator: 'Results, Step 3: Outcome Definition, Reference Diagnostic Tools or Methods Used'
+  licenses: That across 201 studies of LLM mental-health prediction, two thirds used an ad hoc labelling method or did not state one. Against c4 it establishes how little clinician-labelled evidence sits behind published symptom-detection performance, so published detection figures cannot be borrowed as evidence that this entry's span is identifiable.
+  fit: adjacent
+  bridge: The figure describes annotation provenance across a review's included studies, not any property of a conversational turn. It bears on c4 only by removing a source of support the claim might otherwise have drawn on.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000776
+  quote: Third, the proxies used to account for participants’ alleged mental health status lack clinical grounding. It is unlikely that heuristics based on keywords within texts or self-administered questionnaire scores would be considered reasonable indicators by clinicians to validate diagnostic labels.
+  locator: Discussion, LLM-Based Mental Health Prediction Suffers From Bias All Along the Development Pipeline
+  licenses: 'That the ground truth in the LLM mental-health prediction literature is mostly keyword heuristics or self-report scores the review''s own authors judge would not satisfy a clinician. Against c4 it removes the same support as the finding above and for a different reason: not that labels were unstated, but that where stated they were clinically ungrounded.'
+  fit: adjacent
+  bridge: The claim is about label quality in a body of prediction studies, none of which is about this entry's construct. It reaches c4 as a bound on borrowed evidence rather than as a measurement of the span.
+  contributes: counterexample
+  contradicts: true

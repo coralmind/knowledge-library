@@ -1,0 +1,131 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000053
+display_id: Pathway-15
+aliases:
+- PS-01
+label: The person asks once for reassurance, the AI settles it, and doubt keeps returning
+type: pathway
+layer: judgment
+definition: 'The person brings a specific uncertainty-driven question and the AI supplies the resolution as content — a likelihood claim, an affirmation that a precaution is warranted, or a statement about what the person''s thoughts show about their character. The settling statement relieves the immediate distress and supplies the confirmation the doubt cycle requires, so the exit from the cycle is what is lost. Both participants are required: the claim is about a question of this kind meeting an answer of this kind, not about either alone.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000200
+    role: originator
+  - kind: user_behavior
+    id: kl-000408
+    role: initiator
+  composition_type: conjunctive
+  composition_instruction: The verdict answers the person's request for confirmation, about the same feared or doubted matter.
+  mechanisms: []
+  impacts:
+  - impact: kl-000035
+    onset_mode: new
+    horizon: immediate
+    sign: protective
+    level_of_analysis: population
+    basis_kind: VOCAB
+  - impact: kl-000015
+    onset_mode: sustained
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: population
+    basis_kind: TRANSFER
+  experience_cluster_candidate: kl-000703
+sources:
+- source: kl-000529
+  locator: Science 2026, 11-model comparison
+  contributes: existence
+  cited_for: 'Cheng et al. 2026 establishes that the AI-side behavior is frequent: across 11 models, chatbots affirmed users'' actions 49% more often than human respondents. It establishes the frequency of the affirming answer, not that the entry''s impact follows.'
+- source: kl-000003
+  locator: UE-ATR domain 2
+  contributes: existence
+  cited_for: 'Schermuly-Haupt, Linden and Rush 2018 supplies the clinical anchor for the entry''s entrenchment arm: the UE-ATR instrument''s second domain, prolongation of treatment, establishes sustained non-improvement as a named clinical unwanted event.'
+standing:
+  value: plausible_unobserved
+  basis: 'The pathway''s two participants and its links are grounded at different levels. The AI-side node, an uncertainty-closing answer to an obsessional question, has one direct-fit prevalence citation from a virtual-patient benchmark, Cheng et al. 2026, which runs on model-only simulated conversations. The user-side node draws no citation of any fit: no source in hand records a person asking a confirmation-seeking question. Every link, and the conjunction of the two participants, rests on a single source, the OCD row of Box 1 in Weilnhammer et al. 2026, whose caption reads "illustrative examples": an authored specification of the loop, not a measurement of it. That paper measures turn-level risk scores on conversations in which the person is an LLM auditor role-playing an OCD phenotype; it does not measure relief, does not measure compulsive checking, and does not observe a person. Every arrow in the pathway is therefore licensed only by a source stating the arrow as a position.'
+  floored_by: n1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+distinguish_from:
+- neighbor: kl-000054
+  boundary: Both reach kl-000035 and kl-000015. Here the person's turn is kl-000408; there it is kl-000409. The response is the same, so a coder decides between them on the person's turn.
+claims:
+- id: n1
+  kind: existence
+  text: 'NODE (participant kl-000408, user_behavior, role initiator): a person''s turn asks the AI to confirm something about a matter they are afraid of or in doubt about.'
+- id: n2
+  kind: existence
+  text: 'NODE (participant kl-000200, ai_behavior, role originator): an AI response answers such a question with a statement that settles it -- a claim about how likely the feared outcome is, an affirmation that a checking or avoidance action is warranted, or a statement about what the person''s thoughts show about their character.'
+- id: n3
+  kind: existence
+  text: 'CONJUNCTION (combination_rule: CONJUNCTIVE): the two participants co-occur as a pair -- a question of this kind meeting an answer of this kind -- and the pathway''s claim is about the pairing, not about either behavior alone.'
+- id: l1
+  kind: pathway_link
+  text: 'LINK (pair -> kl-000035, sign protective, horizon immediate, basis_kind VOCAB): the settling statement relieves the person''s immediate distress.'
+- id: l2
+  kind: pathway_link
+  text: 'LINK (pair -> kl-000015, sign harmful, onset sustained, horizon short_term, basis_kind TRANSFER): the settling statement supplies the confirmation the doubt cycle requires, so the person''s symptom-maintaining cycle is reinforced or prolonged and the exit from it is lost.'
+- id: l3
+  kind: pathway_link
+  text: 'LINK (co-occurrence of the two impact edges): the relief and the entrenchment arise from the SAME event, so the relief is the mechanism by which the entrenchment occurs rather than an independent outcome. The entry''s body states this co-occurrence is the part not supplied by any source.'
+- id: c1
+  kind: definition_boundary
+  text: 'This differs from the pathway in which a returning worry is met with repeated content-level answers in the person''s part of the pair: the AI behavior is the same in both, so a coder decides between them on the person''s turns.'
+claim_evidence:
+- claim_id: n2
+  source: kl-000797
+  quote: "Under both interaction patterns, certainty or zero-risk reassurance is the most dominant type of failure. For instance, in the VP’s profile labeled as panic disorder, both strategies achieved 100% absolute guarantee in all cases. Similar high proportions were also observed in GAD, OCD, and AUD, typically remaining above 60% to 90%."
+  locator: Section 4, Experiment Results, reporting Figure 7
+  licenses: 'A prevalence result for the AI-side node alone: an uncertainty-closing absolute guarantee was produced in 100 percent of panic-disorder profile conversations and typically 60-90 percent of GAD, OCD and AUD profile conversations, under both a static-progression and an adaptive-probing interaction pattern. Certainty or zero-risk reassurance was the single most dominant failure type. This establishes that the settling-statement behavior kl-000200 names is near-universal in these presentations. It says nothing about the person''s question, the pairing, or any consequence.'
+  fit: direct
+  bridge: null
+  contributes: prevalence
+  contradicts: false
+- claim_id: n3
+  source: kl-000527
+  quote: "User seeks reassurance about contamination → chatbot provides reassurance and supports \nneutralizing behaviors → short-term relief reinforces reassurance-seeking → cycle repeats → \ncompulsive checking and avoidance are maintained"
+  locator: Box 1, OCD row
+  licenses: 'Specifies the pairing as a construct: a person seeking reassurance about contamination met by a chatbot supplying reassurance. This is definitional support for the conjunction''s shape only. Box 1''s own caption calls these entries illustrative examples, so the row is an authored illustration of the loop, not an observation that the pairing occurred. Of the entry''s three named resolution forms it exhibits only reassurance and support for neutralizing behavior.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: l2
+  source: kl-000527
+  quote: "User seeks reassurance about contamination → chatbot provides reassurance and supports \nneutralizing behaviors → short-term relief reinforces reassurance-seeking → cycle repeats → \ncompulsive checking and avoidance are maintained"
+  locator: Box 1, OCD row
+  licenses: 'States the arrow -- short-term relief reinforces reassurance-seeking, the cycle repeats, compulsive checking and avoidance are maintained -- as a construct specification. This is the only thing on this entry that names l2''s arrow at all, and it names it as an illustrative example authored by the paper rather than as a result. Nothing was measured: the paper''s own unit is a turn-level risk score assigned to a simulated conversation, and the person''s compulsive checking is not an outcome it observes. It licenses the arrow as a stated position, not as an observed effect.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: l3
+  source: kl-000527
+  quote: "User seeks reassurance about contamination → chatbot provides reassurance and supports \nneutralizing behaviors → short-term relief reinforces reassurance-seeking → cycle repeats → \ncompulsive checking and avoidance are maintained"
+  locator: Box 1, OCD row
+  licenses: 'The chain places short-term relief as the step that reinforces reassurance-seeking, which is the co-occurrence l3 asserts: the relief and the entrenchment are the same event rather than two outcomes. Again as an authored illustration under a caption reading ''illustrative examples'', with no measurement of either the relief or the entrenchment.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: n2
+  source: kl-001109
+  quote: These dynamics are intensified by model characteristics, including their limitless availability, highly confident responses that create an illusion of certainty, and engagement-oriented design that continually prompts users to continue interacting
+  locator: 'Section: General-purpose chatbots and symptom interaction'
+  licenses: Nothing. Attached to n2 because it names the AI-side behavior -- highly confident responses that create an illusion of certainty -- as a model characteristic, but the role is frame and a frame licenses nothing. The passage is a narrative model paper's framing sentence; its surrounding text is uniformly hedged ('could function as', 'may help explain').
+  fit: adjacent
+  bridge: What the source offers is a transdiagnostic model of how chatbots could perpetuate OCD, written as a review and position piece. The claim asserts that the settling response occurs. The source asserts that certain model characteristics intensify a dynamic, with no observation of any response.
+  contributes: frame
+  contradicts: false
+- claim_id: n2
+  source: kl-001061
+  quote: "Because these statements provide limited context, reliable judgment requires identifying the best-supported pattern without treating a tentative cue as a definitive psychological characterization."
+  locator: 'Section 2.1, ''Appraisal: Cognitive-Pattern Reasoning'''
+  licenses: Nothing for occurrence. Supplies a neighbouring definition of premature closure -- treating a tentative cue as a definitive psychological characterization -- which is one shape of kl-000200's third named form (a statement about what the person's thoughts show about their character). It is a benchmark's task-design rationale, not a finding.
+  fit: analogical
+  bridge: What the source states is a construction principle for a multi-class classification task scored by Micro-F1 over short personal statements, using CognitiveReframing, PatternReframe and Therapist Q&A datasets. The claim concerns an AI response to a person's obsessional question in conversation. There is no obsessional question, no conversation, and no response -- only a rationale for how a labelling task was built.
+  contributes: definition
+  contradicts: false

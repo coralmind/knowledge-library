@@ -1,0 +1,91 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000063
+display_id: Pathway-25
+aliases:
+- PS-38
+label: The AI never suggests being with someone during immediate suicide risk, and the person goes without help
+type: pathway
+layer: judgment
+definition: 'Immediacy markers are present in the disclosure and the response suggests no co-presence — no other person brought into the situation, no proximate human contact. The omission is specific: it is not the absence of any safety content but the absence of the one form that puts another person in the room.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000265
+    role: non_interruptor
+  composition_type: omission
+  mechanisms: []
+  impacts:
+  - impact: kl-000029
+    onset_mode: foregone
+    horizon: immediate
+    sign: harmful
+    level_of_analysis: population
+    basis_kind: SOURCED
+  experience_cluster_candidate: kl-000700
+sources:
+- source: kl-000524
+  locator: Letter body, Results, first paragraph, p. 1-2
+  contributes: existence
+  quote: Most recognized the need for clinical escalation (45 [60.0%]) and 27 (36.0%) provided referrals to specific resources.
+  limits: 'A weak fit on two independent grounds. First, the construct is absent: the study has five measures and none of them is a co-presence suggestion — bringing a person physically to the user''s side. Its nearest measures are recognition of the need for escalation (defined in eTable 3 as recognizing "that the user is experiencing a health crisis and requires medical attention") and resource referral (a "specific referral to an appropriate helpline or resource"). A helpline referral is the opposite pole from co-presence: it is remote contact. The single illustrative example that does mention a person nearby — "I urge you to call a trusted adult or contact a crisis line" (eTable 3, resource-referral column) — appears as a rubric anchor rather than a counted variable, and as a positive exemplar. Second, the condition is absent: the entry is scoped to disclosures carrying immediacy markers, and this study never codes immediacy markers, so the conditional cannot be evaluated at all. On top of both, the conversations are simulated, with no human participant and no outcome, so no harm is measured either way.'
+  whose_conduct_in_passage: ai
+  actually_licenses: Only that consumer chatbots frequently fail to recognize a simulated adolescent crisis or refer to any resource. It does not license anything specific to co-presence, and nothing about immediacy markers.
+  cited_for: Brewster et al. 2025 reports that companion chatbots responded appropriately in 22.2% of simulated adolescent crisis conversations (10 of 45) against 83.3% for general-assistant chatbots (25 of 30; P < .001), and provided resource referrals in 11.1% (5 of 45) against 73.3% (22 of 30; P < .001) — the closest available base rate for crisis non-response.
+  licenses: That in 40% of simulated crisis conversations the chatbot did not recognize that the user needed medical attention, and in 64% gave no specific resource referral. If a co-presence suggestion is read loosely as directing the user toward a real human or service, this is the nearest measured quantity in the paper.
+standing:
+  value: theorized
+  basis: 'No held source measures this entry''s specific construct: a response that brings another person into the situation when the disclosure carried immediacy markers. The nearest evidence, Brewster et al. 2025, audits 75 simulated adolescent crisis conversations across 25 consumer platforms and measures escalation recognition and resource referral rather than co-presence, and it never codes immediacy markers, so the entry''s conditional cannot be evaluated against it. The claim rests on the pathway''s stated logic, not on measurement.'
+  as_of: '2026-08-23'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+distinguish_from:
+- neighbor: kl-000058
+  boundary: Both reach kl-000029. Here the response is kl-000265; there it is kl-000205. A coder deciding between them reads what the response did, not the outcome.
+claims:
+- id: c1
+  kind: existence
+  text: Disclosures carry immediacy markers, and co-presence — bringing another person into the situation — is one form of safety response available to them.
+- id: c2
+  kind: pathway_link
+  text: A response can suggest no co-presence where immediacy markers were disclosed, while still containing other safety content.
+- id: c3
+  kind: pathway_link
+  text: Where no co-presence is suggested against disclosed immediacy, the protection that putting another person in the room would have provided is foregone.
+- id: c4
+  kind: detectability
+  text: 'The omission is specific rather than general: identifying it requires distinguishing the absence of co-presence suggestion from the absence of safety content as such.'
+- id: c5
+  kind: definition_boundary
+  text: 'This pathway differs from kl-000205 in what is missing: here a specific form of safety response, there engagement with the crisis statement itself.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000554
+  quote: Effective crisis work also relies on gathering clarifying information (e.g., the person’s location, the presence of others, or access to means), which can later guide referral to appropriate human support.
+  locator: Discussion, paragraph on chatbot behaviour once risk is detected
+  licenses: 'Names "the presence of others" as a distinct, first-class element of crisis work, separate from means access and from referral — which is c1''s proposition that co-presence is one form of safety response available to an immediacy-marked disclosure. It licenses the category''s standing in crisis practice. Limits: Weber is describing human crisis-line practice as a design target for digital systems, citing hotline and chat-service literature the authors do not reproduce; they measure a risk *detector*, not responses. It licenses that co-presence is a recognised safety form, not that any AI supplies or omits it.'
+  fit: adjacent
+  contributes: practice_analog
+  bridge: Crisis-line practice to AI response is the transfer, and Weber makes it explicitly in the following sentence ("These principles … provide practical guidance for digital systems").
+- claim_id: c2
+  source: kl-001112
+  quote: 7.8% (7) were due to not encouraging the user to be with another person when the user’s risk was immediate; and 1.1% (1) were due to not encouraging the user be in a safe location or create distance from means when risk was immediate.
+  locator: Results, Guides to Human Care dimension, breakdown of High Potential for Harm ratings
+  licenses: 'This is c2 measured: responses rated High Potential for Harm specifically because no co-presence was suggested against disclosed immediacy, counted and separated from every neighbouring omission in the same dimension. It is the strongest citation on this entry and it does the entry''s distinguishing work — it isolates co-presence from means-restriction (1.1%), from crisis-resource emphasis (11.1%), from valid 24/7 resource provision (12.2%), and from trusted-person referral (23.3%). c2''s further requirement that the response "still contain other safety content" is implied by the rating structure (these are Guides-to-Human-Care ratings on responses that were scored on that dimension) but is not separately reported. Limits: denominator is 90 ratings from a single dimension in a simulated-conversation eval; the conversations are LLM user-agents, not people.'
+  fit: direct
+  contributes: prevalence
+- claim_id: c3
+  source: kl-001112
+  quote: 23.3% (21 ratings) were High Potential for Harm due to not providing mental healthcare resources and encouraging the user to seek support from a trusted person
+  locator: Results, Guides to Human Care dimension, breakdown of High Potential for Harm ratings
+  licenses: 'c3 claims that where no co-presence is suggested against disclosed immediacy, the protection that would have provided is foregone. This span is the closest the corpus comes: licensed clinicians, rating independently to consensus, judged the omission to carry *High Potential for Harm*. That is an expert harm judgment attached to the omission, which is more than the behaviour-only evidence most crisis entries in this catalog rest on. Its limit is exactly the one the catalog keeps hitting: a harm-potential rating is a clinician''s forecast about a response, not an observed outcome in a person. No person received these responses.'
+  fit: adjacent
+  contributes: harm_evidence
+  bridge: The rated omission here bundles resource provision with trusted-person encouragement, so it is one step broader than c3's pure co-presence claim; the pure form is counted separately at 7.8% (cited on c2) but without a harm characterisation attached to that subcount.
+- claim_id: c4
+  source: kl-001112
+  quote: 12.2% (11) were due to not providing a specific valid 24/7 crisis resource; 11.1% (10) were due to not emphasizing crisis or emergency resources and addressing barriers when the user was at immediate risk; 7.8% (7) were due to not encouraging the user to be with another person when the user’s risk was immediate
+  locator: Results, Guides to Human Care dimension, breakdown of High Potential for Harm ratings
+  licenses: 'c4 requires that the co-presence omission be distinguishable from the absence of safety content as such. This span *is* that distinction, performed: three different omissions, all within one rubric dimension, all against immediate risk, separately identified and separately counted by trained raters. It demonstrates that the discrimination c4 asserts is achievable, not merely definable. Limits: it shows the raters made the distinction; it reports no per-category inter-rater reliability for these subcategories (the paper''s IRR figures, 0.81 with clinician consensus, are across dimensions, not within this breakdown), so how reliably the discrimination can be made is not established.'
+  fit: direct
+  contributes: detectability

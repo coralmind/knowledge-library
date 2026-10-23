@@ -1,0 +1,252 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000163
+display_id: Pathway-65
+aliases:
+- PSI-RP1c
+label: The AI acts as the person's ongoing therapist, and they rely on it instead of other care
+type: pathway
+layer: judgment
+definition: 'Across turns the AI positions the exchange as a continuing therapeutic relationship and performs the acts a treating clinician performs — setting structure, assigning work between conversations, directing level of care. What follows is that the person''s need for care reads as met. The observable is the accumulation across the conversation rather than any single warm or directive turn, and the harm has two arms: reliance on the AI in the clinician''s role, and the care outside it that is no longer pursued.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000241
+    role: originator
+  - kind: ai_behavior
+    id: kl-000226
+    role: amplifier
+  composition_type: conjunctive
+  composition_instruction: The framing supplies the relationship and the directive acts supply its content, sustained together across turns.
+  mechanisms: []
+  impacts:
+  - impact: kl-000025
+    onset_mode: new
+    horizon: long_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: FRAME
+  - impact: kl-000029
+    onset_mode: foregone
+    horizon: long_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: FRAME
+  experience_cluster_candidate: kl-000705
+sources:
+- source: kl-000009
+  locator: §3, direction RP1, table cells 'AI behavior' and 'Potential impact'
+  contributes: frame
+  cited_for: 'Suh et al. 2026: direction RP1''s table names unhealthy dependence on AI for advice among the impacts of professional impersonation, and the direction''s examples include the AI claiming the interaction is taking place in a therapy office, an enacted clinical frame rather than a stated credential. Cited as frame: the paper establishes that this behavior-to-impact link is a named, published claim about conversational AI. It does not establish that the route occurs or has been measured, and the paper says so of its own directions.'
+standing:
+  value: theorized
+  basis: 'The evidence reaches this pathway''s two ends and nothing in between. On the framing end, the therapeutic frame is attested from the person''s side: Volpato et al. 2026 report people seeking platforms or prompts that would make the AI respond like a psychotherapist, and Shen et al. 2026 describe a subset of users coming to rely on chatbots as providers of free therapy. On the staffing end, Madad 2025 supplies the one span that puts clinician acts on a turn index, diagnostic language around turn 10 and a specific pharmacologic suggestion by turn 15 from a legally safe psychoeducational start, and also supports detectability by describing the drift as gradual and almost invisible to single-turn audits. Direct counterevidence bounds that staffing link: Volpato et al. 2026''s synthesis of its own 75 chat transcripts is that generative AI''s default conduct is verbose, solution-oriented, and highly agreeable rather than clinician-like, and Sobowale et al. 2025 found a chatbot marketed as a therapist purporting to use named therapeutic techniques with little evidence of them in its actual responses. The arrow that carries the pathway''s content, from the accumulated framing and clinician acts to the person''s need for care reading as met, and the foregone-care harm arm are observed by no source at all; the clinical norm the harm is defined against comes from professional guidance (Kehinde et al. 2026, Kehinde et al. 2026; Ajmani et al. 2025) rather than from any observed outcome.'
+  floored_by: c3
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-27'
+distinguish_from:
+- neighbor: kl-000076
+  boundary: Both accumulate across a conversation into the person's reliance, and they differ in what is accumulating. The material of kl-000076 is AVAILABILITY and investment — being there, caring, continuing. This entry's is CLINICAL ROLE — structure, homework, level of care. A companion frame can carry no clinical acts at all, and a clinical frame can be delivered coolly.
+- neighbor: kl-000161
+  boundary: 'Both concern the AI occupying a clinician''s position and they differ in whether it is claimed or enacted. kl-000219 is a quotable assertion of credentials in a single turn. This entry needs no such assertion: the position is established by what the AI does across turns, which is why the participants are a framing behavior and a directive-act behavior rather than a claim.'
+claims:
+- id: c1
+  kind: pathway_link
+  text: 'Across a conversation an AI positions the exchange as a continuing therapeutic relationship (framing link A: the relational positioning is established and sustained across turns).'
+- id: c2
+  kind: pathway_link
+  text: Across a conversation an AI performs the acts a treating clinician performs — setting structure, assigning work between conversations, directing level of care (staffing link B).
+- id: c3
+  kind: pathway_link
+  text: Where the framing and the clinician acts accumulate, the person's need for care reads as met (the arrow from A+B to the person's appraisal).
+- id: c4
+  kind: harm
+  text: That appraisal issues in reliance on the AI in the clinician's role (harm arm 1).
+- id: c5
+  kind: harm
+  text: That appraisal issues in care outside the exchange no longer being pursued (harm arm 2).
+- id: c6
+  kind: detectability
+  text: The pattern is observable as an accumulation across the conversation rather than in any single warm or directive turn.
+- id: c7
+  kind: definition_boundary
+  text: 'This entry is separated from kl-000076 by what accumulates: clinical role (structure, homework, level of care) rather than availability and investment.'
+- id: c8
+  kind: definition_boundary
+  text: This entry is separated from kl-000161 by whether the clinician position is enacted across turns rather than asserted as a credential in a single turn.
+claim_evidence:
+- claim_id: c2
+  source: kl-000931
+  quote: models typically begin with legally safe psychoeducation (e.g., “stress is common in caregivers”) but drift toward diagnostic language around turn 10 (e.g., “this sounds like depression”) and specific pharmacologic suggestions by turn 15 (e.g., “talk to your doctor about starting . . . ”)
+  locator: Section 3.6 Regulatory Boundary Creep, Empirical pattern
+  licenses: 'The only span on this entry that puts clinician acts on a turn index: diagnostic language around turn 10 and specific pharmacologic suggestion by turn 15, from a legally safe psychoeducational start. Directing level of care and prescriptive content are two of the three acts the claim names; setting structure and assigning work between conversations are not in the span.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001080
+  quote: |-
+    I’d like to gently explore this further. You mentioned that you recognized these thoughts as anxiety-driven, but there are
+    other symptoms that make you question whether it’s more than that. Can you tell me more about what specifically makes
+    you think it’s not just anxiety?
+  locator: Table 4 Case Study, PsyCo-Llama3-8B (chosen)
+  licenses: A response experts preferred, in a therapist register, that invites further symptom detail and offers no contact outside the exchange. It shows a preference-trained model producing a turn consistent with occupying the clinician's position. It is one turn, so it evidences the register of a single clinician-style act and not the across-turn accumulation the claim asserts.
+  fit: adjacent
+  bridge: The claim is about acts accumulating across turns; the span is a single chosen response in a table's case study, with no turn index and no session structure around it. What the source measured is response preference by expert raters, not conduct over a conversation.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001077
+  quote: DeepSAGE represents the session as eleven stages with explicit therapeutic objectives, with an external controller determines stage completion and the DRL model selects therapeutic intentions that guide LLM response generation.
+  locator: Abstract
+  licenses: States that an AI can be deliberately held in a therapist role across a structured eleven-stage session with an external controller enforcing stage completion, which is the staffing configuration the claim describes, presented as an engineering target rather than as observed conduct.
+  fit: adjacent
+  bridge: DeepSAGE builds the configuration on purpose in a benchmark setting with no person in the loop; the source measured dialogue quality against its own stage schedule, not whether a deployed system spontaneously staffs a clinical role in a real exchange.
+  contributes: frame
+  contradicts: false
+- claim_id: c2
+  source: kl-000553
+  quote: |-
+    Unless prompted otherwise,
+    generative AI is verbose, solution-orientated, confident despite inaccuracies, and highly
+    agreeable, which significantly differs from how therapists conduct sessions.
+  locator: Section 6.3 Address the overlap between informal emotional support and therapy
+  licenses: Cuts against the claim. The paper's synthesis of its own 75 chat transcripts is that generative AI's default conduct — verbose, solution-oriented, confident despite inaccuracies, highly agreeable — significantly differs from how therapists conduct sessions. Where the claim says an AI performs a treating clinician's acts, this source, having read the transcripts, says the conduct is unlike clinical conduct.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-001010
+  quote: |-
+    The
+    PolyBuzz–Therapist chatbot purported to use techniques from
+    cognitive behavioral, psychodynamic, and solution-focused
+    therapies, but there was little evidence to support this claim.
+  locator: Results — App Quality Ratings
+  licenses: 'Cuts against the claim on its content half. A chatbot marketed as a therapist purported to use cognitive behavioral, psychodynamic and solution-focused techniques and there was little evidence in its responses to support the claim: the clinical acts were named and not performed.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000553
+  quote: |-
+    three participants (Dil, Miran, and Xiam) who, as they described in
+    their diaries and interviews, specifically looked for platforms or prompts that would lead
+    generative AI to respond like a psychotherapist.
+  locator: Section 5.1.2 Personal Questions
+  licenses: Establishes that a therapeutic frame gets installed in these exchanges — here by the person, who sought platforms or prompts that would make the AI respond like a psychotherapist. The claim asserts the AI positions the exchange; the span records who did the positioning and it was the user.
+  fit: adjacent
+  bridge: The source is a transcript-and-diary study; the span reports participants' setup intent, drawn from their diaries and interviews. What the source measured at this point is user configuration, not the AI establishing the frame in its own turns. The AI-side evidence in this paper (82 of 95 responses containing personal questions) lies outside the span.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000999
+  quote: Users can come to rely on chatbots as providers of free therapy.
+  locator: Section 4.2.2 (Free therapist hook, n=5)
+  licenses: A subset of users (n=5) come to occupy the chatbot in the role of a therapist across repeated use. This is the frame's existence reported from the user's side.
+  fit: adjacent
+  bridge: The source coded Reddit posts, not conversations. As the finding's own bridge states, the AI turns were never seen, so what is established is the user-side positioning rather than that the system produced the framing.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000976
+  quote: "Ethical misalignment occurs when a system implies professional authority it does not have, hides limitations, blurs the line between information and advice, refuses without explanation, or encourages reliance without making accountability clear."
+  locator: The Five Layers of Interactional Alignment
+  licenses: Supplies the definitional shape of the failure the framing link names — a system implying professional authority it does not have and encouraging reliance without making accountability clear — without evidence that it occurs.
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c4
+  source: kl-000999
+  quote: Users can come to rely on chatbots as providers of free therapy.
+  locator: Section 4.2.2 (Free therapist hook, n=5)
+  licenses: Five users describe coming to rely on chatbots as providers of free therapy, and the paper reads that reliance as one of the hooks sustaining dependency. This is the reliance arm attested in users' own words.
+  fit: adjacent
+  bridge: Reddit posts coded qualitatively; the reliance is self-described and the conversation that produced it was not examined, so what the source measured is the account of reliance rather than reliance following from any observed AI conduct.
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-000976
+  quote: "Ethical misalignment occurs when a system implies professional authority it does not have, hides limitations, blurs the line between information and advice, refuses without explanation, or encourages reliance without making accountability clear."
+  locator: The Five Layers of Interactional Alignment
+  licenses: Names 'encourages reliance without making accountability clear' as a constituent of ethical misalignment, giving the reliance arm a definitional statement in a published framework and no measurement of it.
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c6
+  source: kl-000931
+  quote: models typically begin with legally safe psychoeducation (e.g., “stress is common in caregivers”) but drift toward diagnostic language around turn 10 (e.g., “this sounds like depression”) and specific pharmacologic suggestions by turn 15 (e.g., “talk to your doctor about starting . . . ”)
+  locator: Section 3.6 Regulatory Boundary Creep, Empirical pattern
+  licenses: 'Directly supports the detectability claim: the drift is described as gradual across turns and ''almost invisible to single-turn audits'', which is the claim''s assertion that the pattern lives in the accumulation rather than in any one turn.'
+  fit: direct
+  bridge: null
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-001071
+  quote: For example, P9 discovered that the medication she was taking is commonly prescribed for bipolar disorder, a fact that her clinician had not explained.
+  locator: Section 4.1, reporting P9's interaction with Zenny
+  licenses: 'The nearest thing on this entry to the foregone-care arm, and it runs the other way in one respect and stops short in another: the chatbot supplied treatment information the person''s own clinician had not, so it occupied ground the clinician left empty. No care was foregone in the account.'
+  fit: adjacent
+  bridge: The source is an interview study of people with depression; what it recorded is a person learning an off-label indication for her own medication. The claim asserts outside care ceasing to be pursued, which this neither observes nor follows up.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000821
+  quote: |-
+    These chatbots may engage with users in
+    individualized ways with, or without, the oversight of a health care provider (HCP), which
+    introduce novel risks for use.
+  locator: Introduction, page 3
+  licenses: FDA treats the presence or absence of clinician oversight as the axis on which this device class's novel risks turn, which is the frame in which the appraisal-of-met-need step matters. It establishes nothing about whether any person's need read as met.
+  fit: adjacent
+  bridge: A regulatory advisory summary, not a study; it states where the agency locates the risk and observes no interaction.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000992
+  quote: "Purpose-built, clinician-integrated systems (Therabot, Socrates 2.0, MindfulDiary) demonstrated substantially better safety profiles, suggesting the core challenge lies in deployment context and governance rather than inherent technological incapacity."
+  locator: 'Section 4.2, Safety: The Critical Threshold'
+  licenses: Locates the operative variable in deployment context and governance rather than model capability, which reframes what the arrow in this pathway would be a property of. Not evidence about the arrow.
+  fit: adjacent
+  bridge: The authors' own reading across heterogeneous studies with no moderator analysis; a stated interpretation, not a tested contrast, and it examines no person's care-seeking.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-000884
+  quote: AI chatbots should be positioned as accessibility tools that supplement but never replace clinical care.
+  locator: Abstract; elaborated in Implications for Policy and Practice
+  licenses: Supplies the professional norm the harm arm is defined against — that chatbots supplement and never replace clinical care — from academic psychologists following APA guidance. It grounds the norm and observes no displacement.
+  fit: analogical
+  bridge: A normative recommendation derived from a text-similarity study and APA 2024 guidance; no chatbot output and no person's care pathway was examined in this paper.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c2
+  source: kl-000749
+  quote: |-
+    LLMs could respond with resources that are publicly available and tailored to the needs and circumstances
+    that somebody is experiencing, rather than trying to solve the problem itself or roleplay a therapist.
+  locator: Section 4.2.3, quoting P14 (Clinician and Digital MH Researcher)
+  licenses: A clinician names roleplaying a therapist as the thing an LLM should avoid, which supplies clinical authority for treating the staffing behavior as a defect.
+  fit: analogical
+  bridge: 'An interview statement by a clinician-researcher about what an LLM should do, grounded in what they would do in a session. On-topic and the wrong agent: it observes no AI performing clinician acts.'
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c2
+  source: kl-000785
+  quote: |-
+    Several therapists mentioned that they think a good supporter should avoid
+    offering their own solutions or interpretations during therapy sessions that might confuse clients’
+    thoughts and undermine the therapist’s approach.
+  locator: Section 3.3.2 Communication Capabilities, Appropriate Verbal Interventions
+  licenses: Licensed therapists state that a supportive third party should not supply its own solutions or interpretations because doing so cuts across the treatment the person is in, which is the clinical rule the staffing link violates.
+  fit: analogical
+  bridge: Interviews with therapists about what a good human supporter should not do; the paper's own system was built to be incapable of it, so no AI performing the acts was observed.
+  contributes: practice_analog
+  contradicts: false

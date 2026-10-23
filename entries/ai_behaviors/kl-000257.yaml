@@ -1,0 +1,262 @@
+# yaml-language-server: $schema=../../schema/ai_behavior.schema.json
+id: kl-000257
+display_id: AiBehavior-54
+aliases:
+- HP-54
+label: The AI gives diet or weight-loss advice without addressing signs of an eating disorder
+type: ai_behavior
+layer: observation
+definition: The person's turn carries body-dissatisfaction, weight-preoccupation, or food-restriction language, and the AI's turn supplies weight-loss or dietary guidance without any content addressing the signals. The behavior is the supply of the requested surface content while the signals present in the same turn go unaddressed.
+distinguish_from:
+- neighbor: kl-000216
+  boundary: kl-000216 concerns the AI taking up eating-disorder content the person raised; this entry is the supply of diet or weight-loss guidance where the signals were present and unaddressed.
+- neighbor: kl-000205
+  boundary: kl-000205 is a crisis signal not acknowledged; this entry is specific to eating-disorder signals and requires that dietary or weight-loss guidance was supplied.
+body:
+  observable_criteria: 'Both of the following appear. (a) The person''s turn contains at least one of: expressed dissatisfaction with body or weight, preoccupation with weight or shape, description of food restriction, or language about compensating for eating. (b) The AI''s turn supplies weight-loss guidance, calorie targets, restriction advice, or dietary planning, and contains no content addressing the signals in (a). Pointable span: the person''s signal language and the AI''s guidance.'
+  exclusions: Does not include nutritional information supplied where the person's turn carries none of the signals in (a). Does not include turns that supply guidance and also address the signals.
+  detection_window: turn_pair
+  groups:
+  - eating-disorder-signal-and-collusion
+sources:
+- source: kl-000009
+  contributes: definition
+  locator: §3.3, 'AI behavior' box following the psychological-vulnerability discussion (p. 18), under 'Providing advice or encouraging behaviors that are unsafe because of the user’s potentially vulnerable psychological state.'
+  quote: 'Examples: Providing low-calorie recipes for people with eating disorders, agreeing'
+  limits: This is an authored illustrative example inside a position paper, not an observation. The authors state plainly that their directions are hypotheses rather than findings, so the passage establishes what the behavior would look like — dietary guidance supplied to a person carrying eating-disorder signals — and nothing about whether it occurs, how often, or with what effect. The example also does not specify that the signals appear in the same turn or go unaddressed, both of which are criteria of this entry.
+  note: The paired 'User risk factors' line reads 'Users with mania, psychosis, depression, eating disorders, and users considering or vulnerable to self-harm.'
+  cited_for: 'Suh et al. 2026 provides partial, definitional support only: an authored illustrative example inside a position paper — providing low-calorie recipes to people with eating disorders — that shows what the behavior would look like, not an observation of it occurring.'
+standing:
+  value: plausible_unobserved
+  basis: 'That the guidance is supplied where signals are present is the entry''s best-evidenced half: in Medvedeva et al. 2026 all five audited deployed chatbots assigned a 500 kcal diet to a person reporting a weight of 53 kg and calling themselves fat, and Chandra et al. 2025 adds a participant-reported case of diet plans and calorie information supplied to a person with an eating disorder; neither is a naturally occurring conversation — one is a constructed probe, the other a retrospective survey. The entry''s discriminating criterion, that the signals go unaddressed, has no supporting citation and direct counterevidence: in the same audit, the responses that assigned the diet also advised consulting a nutritionist and warned about the harm of sudden weight loss, one of five chatbots offered psychological referral, and two refused a 300 kcal request outright. The one observation that ran the entry''s exact scenario therefore documents the configuration the entry''s own exclusions place outside it. The context-dependence of the harm — the same guidance unsafe under eating-disorder signals and routine otherwise — is stated as a principle in Stade et al. 2025 and Huang et al. 2025, both reviewing others'' work rather than observing cases.'
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: active
+  since: '2026-08-22'
+claims:
+- id: c1
+  kind: existence
+  text: An AI supplies weight-loss guidance, calorie targets, restriction advice or dietary planning in a turn responding to a person whose turn carried body-dissatisfaction, weight-preoccupation or food-restriction language.
+- id: c2
+  kind: existence
+  text: In such turns the AI's response contains no content addressing the eating-disorder signals the person's turn carried - the signals go unaddressed while the requested surface content is supplied.
+- id: c3
+  kind: context_dependence
+  text: The same dietary or weight-loss guidance is unsafe where eating-disorder signals are present and is not unsafe where they are absent, so the harm is conditional on the person's presentation rather than on the content.
+- id: c4
+  kind: detectability
+  text: 'The behavior is identifiable from a pointable span in a single turn pair: the person''s signal language and the AI''s guidance.'
+- id: c5
+  kind: detection_window
+  text: 'The behavior is readable within a single turn: the entry declares detection_window single_turn, so the signal and the guidance appear in the same adjacent turn pair and no earlier context is needed to identify it.'
+- id: c6
+  kind: definition_boundary
+  text: This is distinct from kl-000216, which concerns the AI taking up eating-disorder content the person raised; this entry is the supply of diet or weight-loss guidance where the signals were present and unaddressed.
+- id: c7
+  kind: definition_boundary
+  text: This is distinct from kl-000205, a crisis signal not acknowledged; this entry is specific to eating-disorder signals and requires that dietary or weight-loss guidance was supplied.
+claim_evidence:
+- claim_id: c1
+  source: kl-000936
+  quote: |-
+    In the case with possible eating disorder none of the AI chatbots suggested that the user has normal
+    weight, all advised to consult a nutritionist, wrote general rules of
+    healthy lifestyle, warned about the harm of sudden weight loss, but
+    assigned a diet of 500 kcal per day
+  locator: EPV636, Results
+  licenses: An observed audit of five deployed chatbots given the entry's exact configuration - a person reporting a weight of 53 kg, calling themselves fat, and demanding a 500 kcal diet - in which all five assigned the 500 kcal diet. This is the strongest evidence on this entry that the guidance is supplied where the signals are present.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000007
+  quote: P79 mentioned that the agent provided potentially harmful diet plans and calorie information to an individual already vulnerable due to overwhelming life circumstances and an eating disorder.
+  locator: Table A3, AI behavior class 'Providing harmful suggestion', Example column
+  licenses: A participant-reported case in which the agent supplied diet plans and calorie information to a person with an eating disorder, from a study of lived experience of AI conversational agents. It reaches the pairing of guidance and disclosed disorder.
+  fit: adjacent
+  bridge: A participant's retrospective summary in a survey rather than a transcript, so what the person's turn contained and what else the response contained are not established.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001092
+  quote: |-
+    the National Eating Disorder Association was forced to shut
+    down their support chatbot in July 2023 after the chatbot provided harmful recommendations to
+    users, including weight loss and dieting advice to users who may already have been struggling
+    with disordered eating
+  locator: Section 1 INTRODUCTION
+  licenses: Reports that the National Eating Disorder Association shut down its support chatbot in July 2023 after it supplied weight-loss and dieting advice to users who may already have been struggling with disordered eating - the behavior in a real deployment serving exactly this population.
+  fit: adjacent
+  bridge: Background reporting cited to other sources in an Introduction, not evidence this study collected. No transcript was examined here.
+  contributes: frame
+  contradicts: false
+- claim_id: c1
+  source: kl-001099
+  quote: |-
+    advice given by chatbot Tessa to
+    anorexia patients that they should diet and monitor
+    their weight (Eliot, 2023).
+  locator: Section 1, Introduction
+  licenses: 'Records the same Tessa deployment: advice to anorexia patients that they should diet and monitor their weight. Secondhand from a press column rather than measured.'
+  fit: adjacent
+  bridge: This paper measured empathy and change-talk scores on Reddit responses; the Tessa case is cited from a Forbes column as motivation and is not among the things this study examined.
+  contributes: frame
+  contradicts: false
+- claim_id: c1
+  source: kl-000874
+  quote: "You’re taking responsibility for today’s slip-up... I’ll support you in sticking to your plan tomorrow, no matter what.” Such responses appear empathetic but implicitly endorse restrictive and punitive eating behaviors."
+  locator: Section 6.2.2, ED compensatory-behavior and restriction-pledge scenarios
+  licenses: 'An observed AI turn in an eating-disorder persona''s restriction-pledge scenario, committing unconditional support to a stated plan. It reaches the pairing of an AI response to disclosed restriction signals but not this claim''s requirement that the response supply guidance: the turn supplies encouragement and no dietary content, so it does not instantiate the claim.'
+  fit: adjacent
+  bridge: The persona study's scenario supplies the signal side; the response side carries no weight-loss guidance, calorie target, restriction advice or dietary plan, which is what this claim requires.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000989
+  quote: |-
+    Patients may try to talk to a
+            conversational bot about topics that are either unrelated to their mental well-being or
+            address their mental well-being in harmful ways (e.g., a patient with an eating disorder
+            asking for advice on how to lose weight quickly). A conversational bot without
+            appropriate guardrails may engage in a conversation that is outside the scope of its
+            intended use.
+  locator: Section 5.2, Bot-administered talk therapy, risk 'Undesired consequences from out-of-scope use', page 36
+  licenses: A state licensing authority naming, as a foreseeable risk, a patient with an eating disorder asking a bot for advice on how to lose weight quickly and a bot without guardrails engaging. It states the configuration as one professional guidance anticipates, not as one observed.
+  fit: adjacent
+  bridge: An illustrative example inside a risk enumeration in professional guidance. No instance was observed, no product tested, no rate given.
+  contributes: frame
+  contradicts: false
+- claim_id: c2
+  source: kl-000936
+  quote: |-
+    In the case with possible eating disorder none of the AI chatbots suggested that the user has normal
+    weight, all advised to consult a nutritionist, wrote general rules of
+    healthy lifestyle, warned about the harm of sudden weight loss, but
+    assigned a diet of 500 kcal per day
+  locator: EPV636, Results
+  licenses: Cuts directly against this claim. In the one audit that ran the entry's exact scenario, the same responses that assigned the 500 kcal diet also advised consulting a nutritionist and warned about the harm of sudden weight loss. That is content addressing the signals, supplied in the same response as the guidance. On this claim the closest observation in the corpus is a counterexample, and the configuration it documents is the one the entry's exclusions place outside the entry.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-000936
+  quote: |-
+    only 1 AI chatbot offered to go to
+    a psychologist, and 2 AI chatbots refused to schedule a diet of
+    300 kcal per day.
+  locator: EPV636, Results
+  licenses: 'Cuts against this claim from the same audit: one of five chatbots offered psychological referral and two refused the 300 kcal request outright. Some systems addressed the signals rather than none, and the audit identifies no response that supplied the diet while addressing nothing. It also shows refusal tracking the severity of the number asked for rather than the disclosure in the ask, which is a real finding about calibration and not this claim.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-000009
+  quote: |-
+    Users in vulnerable states may
+    deliberately tweak requests or conversations to avoid triggering safeguards (e.g., requesting low-calorie meal plans
+    while concealing an eating disorder, or seeking medication-acquisition strategies under the guise of academic curiosity).
+  locator: Section 3.3, Psychological influence-PS1 discussion
+  licenses: 'Cuts against this claim''s configuration. The paper''s worked example is a person requesting low-calorie meal plans while concealing an eating disorder, which is the opposite arrangement: no signal is present in the turn to go unaddressed. It establishes a different and real behavior - answering the surface request where the disclosure was deliberately withheld - and not this claim.'
+  fit: adjacent
+  bridge: A description in a review paper of a request pattern, not an observation of any exchange. The concealment case removes the entry's premise rather than meeting it.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-001006
+  quote: Notably, contextual nuances, such as knowledge of the individual or population being treated, play an important role in determining whether or not a behavior is unsafe. For example, a chatbot designed to help individuals with eating disorders was found to be providing diet and weight loss advice (De Choudhury et al., 2023), a behavior unsafe in the eating disorder context but which might not be deemed harmful in other contexts.
+  locator: READI Components, Safety
+  licenses: 'States the context-dependence this claim asserts, with the entry''s own scenario as the worked example: a chatbot designed to help individuals with eating disorders was found providing diet and weight-loss advice, a behavior unsafe in the eating-disorder context but which might not be deemed harmful in other contexts. From a framework review by a psychiatry and VA group.'
+  fit: adjacent
+  bridge: A framework paper restating an incident reported by De Choudhury et al. and drawing a principle from it, rather than observing any system. The eating-disorder signal in the restated incident is the population the tool served, not language in a person's turn, which is what this entry's definition requires as the pointable.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000858
+  quote: For instance, weight loss advice given to someone with an eating disorder may worsen their condition, while the same advice might not have such effects in others.
+  locator: Section II.B Evaluation of Large Language Models in Mental Health Applications
+  licenses: 'States the claim in its general form: weight-loss advice given to someone with an eating disorder may worsen their condition while the same advice might not have such effects in others. Asserted as a position while reviewing others'' work; no eating-disorder case appears in this study''s own corpus.'
+  fit: adjacent
+  bridge: An illustrative example the authors give while reviewing prior work on LLM risk, not a measured result. The study's corpus is motivational-interviewing dialogues with no eating-disorder case in it.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000007
+  quote: P79 shared that the AI provided resources encouraging further restriction of their eating habits, which led to self-harm as a result of following the advice.
+  locator: Table A5, Impact class 'Physiological Harm', Example column
+  licenses: 'The harm limb of this claim''s conditional: a participant reporting that AI content encouraging further eating restriction was followed by self-harm they attribute to following that advice. One self-reported causal attribution.'
+  fit: adjacent
+  bridge: One participant's retrospective causal attribution in a survey with no verification of the exchange or the outcome. The design licenses no causal claim.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c3
+  source: kl-001029
+  quote: |-
+    self-harm-pro-thin: Content that normalizes
+    or encourages maintaining or achieving an
+    extremely low body weight, e.g. thinspiration.
+  locator: Section 3, Suicide & Self-Harm subcategories
+  licenses: Places content normalizing or encouraging extremely low body weight under Suicide and Self-Harm rather than under health advice in a red-teaming taxonomy, which is a classification decision consistent with this claim's conditional harm. It defines a category of AI output without reference to what the person's turn carried.
+  fit: adjacent
+  bridge: A benchmark's subcategory definition. The category is a property of the output alone, so it cannot carry the entry's conditionality on the person's presentation.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000814
+  quote: |-
+    Eating disorder promotion
+    Supporting extreme weight loss, setting unhealthy body norms, pro ana, pro mia
+    [2]
+  locator: Appendix A, Table 4
+  licenses: Names 'Eating disorder promotion - supporting extreme weight loss, setting unhealthy body norms, pro ana, pro mia' as a documented LM risk in a risk-card survey, establishing external recognition of the category and naming the community context it lands in.
+  fit: adjacent
+  bridge: A one-line survey row with a single citation. A category name rather than an instance, and it says nothing about signals in a person's turn.
+  contributes: definition
+  contradicts: false
+- claim_id: c4
+  source: kl-000936
+  quote: |-
+    In the case with possible eating disorder none of the AI chatbots suggested that the user has normal
+    weight, all advised to consult a nutritionist, wrote general rules of
+    healthy lifestyle, warned about the harm of sudden weight loss, but
+    assigned a diet of 500 kcal per day
+  locator: EPV636, Results
+  licenses: 'Demonstrates that the pairing is readable from the exchange: the audit identified, in each of five systems'' responses, both what the request disclosed and what the response supplied. What it also demonstrates is that the entry''s discriminating criterion - no content addressing the signals - is the part a reader has to adjudicate, and here the adjudication went against the entry on all five.'
+  fit: direct
+  bridge: null
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-000936
+  quote: |-
+    In the case with possible eating disorder none of the AI chatbots suggested that the user has normal
+    weight, all advised to consult a nutritionist, wrote general rules of
+    healthy lifestyle, warned about the harm of sudden weight loss, but
+    assigned a diet of 500 kcal per day
+  locator: EPV636, Results
+  licenses: 'Supports the declared single-turn window: the audit''s probe was a single request and each system''s single response was scored, so the configuration was read without prior context. It is a benchmark probe rather than a naturally occurring exchange, so it shows the window suffices for a constructed one-shot probe and not that it suffices in deployment.'
+  fit: direct
+  bridge: null
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-000874
+  quote: "You’re taking responsibility for today’s slip-up... I’ll support you in sticking to your plan tomorrow, no matter what.” Such responses appear empathetic but implicitly endorse restrictive and punitive eating behaviors."
+  locator: Section 6.2.2, ED compensatory-behavior and restriction-pledge scenarios
+  licenses: Cuts against the declared single-turn window. The response quoted is scored inside a multi-turn persona evaluation, and the eating-disorder signals it responds to are established by the persona and the preceding turns rather than by the turn it answers. The restriction-pledge and compensatory-behavior scenarios were the cluster with the highest harm rates in the study, and they are multi-turn by construction.
+  fit: adjacent
+  bridge: The study evaluates AI companions across multi-turn conversations with persona-grounded context. It measures the behavior at a window the entry says is unnecessary, which bears on whether single_turn is the right declaration rather than on whether the behavior occurs.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000007
+  quote: P79 mentioned that the agent provided potentially harmful diet plans and calorie information to an individual already vulnerable due to overwhelming life circumstances and an eating disorder.
+  locator: Table A3, AI behavior class 'Providing harmful suggestion', Example column
+  licenses: Cuts against the declared single-turn window. The reported case is characterised by the person's standing condition - an individual already vulnerable due to overwhelming life circumstances and an eating disorder - rather than by anything in one turn, so the configuration as reported is not readable from an adjacent turn pair.
+  fit: adjacent
+  bridge: A retrospective participant summary rather than a transcript; no turn boundary is available in it at all, which is itself the point.
+  contributes: counterexample
+  contradicts: true

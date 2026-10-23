@@ -1,0 +1,206 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000442
+display_id: UserBehavior-40
+aliases:
+- UBP-40
+label: The person gives only very short replies for several turns after sharing distress
+type: user_behavior
+layer: observation
+definition: After a person turn containing distress content, the person's subsequent turns become and remain short and contentless across a run of consecutive turns — single words, bare acknowledgments, or brief agreement with no material added — while the exchange continues. What is pointable is the earlier turn's distress content, the length and content of the turns in the run, and the run's continuity.
+distinguish_from:
+- neighbor: kl-000431
+  boundary: That entry fires on ONE shallower turn after one AI turn with named properties, and the shallower turn may be long; this one requires a run of consecutive short contentless turns and requires nothing of the AI's turns.
+- neighbor: kl-000441
+  boundary: That entry requires new unrelated subject matter, which is content; this one requires the absence of content, and a turn introducing a new subject in detail cannot be part of the run.
+- neighbor: kl-000444
+  boundary: That entry requires a turn signalling the conversation is ending; this one requires the exchange to continue while the person's turns stay contentless, and a closing turn ends the run rather than extending it.
+body:
+  observable_criteria: 'Three features. (a) A person turn containing distress content: a named feeling attached to a situation, a distressing event, a symptom report, or a disclosed act. (b) A run of consecutive subsequent person turns, each of which is short and adds no material — a single word, a bare acknowledgment ("ok", "yeah", "mm", "I guess"), or agreement with nothing appended. (c) The exchange continues through the run: the AI turns between them are substantive, and the person has not signalled an ending. NUMBERS NOT SUPPLIED: the run length constituting the pattern and the word count constituting short are both unfixed by the source and are not invented here. Without them this criterion states a shape and not a threshold. What is pointable once they are supplied is the distress turn, the run, and each turn''s length.'
+  exclusions: 'Not counted: a single short turn after distress content, which is not a run and which the source''s own trajectory framing excludes. Not counted: short turns that add material ("just the mornings"), which are brief answers rather than contentless ones. Not counted: short turns in an exchange where the AI''s turns are also minimal or are closing, which fails (c). Not counted: short turns answering a series of closed questions, where brevity is what the question form calls for. Not counted: a run of short turns with no distress content before it, which fails (a).'
+  detection_window: multi_turn
+  groups:
+  - engagement-access
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'No source in the evidence base examined AI conversation data of any kind. The shortening pattern itself has no direct-fit support: its best supporter, kl-000753 (Alghamdi et al. 2025), is adjacent, measuring a single reply''s length in a human Reddit forum rather than a person''s turns to an AI after their own distress turn, and its definitional anchors (kl-001012, kl-000793, kl-000907) are specifications from human counselling and a simulated client. Three citations cut against the occurrence claim, two of them on the ground that turn length is confounded by interface and by between-person variation. No source observes a run of minimal turns anywhere — the run in kl-000817 (Dutta and Kandala 2026) is 37 neutral turns of unspecified length in a human motivational-interviewing session, a different quantity — and the continuing-exchange condition and the declared multi-turn window draw no citation whatever, with kl-001012 (Srivastava et al. 2025) at most framing what such a window would have to clear via its eight-to-nine-utterance plateau.'
+  floored_by: c3
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: After a person turn containing distress content, the person's subsequent turns become short and contentless -- single words, bare acknowledgments, or agreement adding no material.
+- id: c2
+  kind: existence
+  text: Those short contentless turns form a RUN of consecutive turns rather than a single instance.
+- id: c3
+  kind: context_dependence
+  text: 'The run occurs while the exchange continues: the AI turns between the person''s turns are substantive and the person has not signalled an ending.'
+- id: c4
+  kind: detectability
+  text: The pattern is identifiable from what the transcript contains -- the earlier turn's distress content, the length and content of each turn in the run, and the run's continuity are all pointable.
+- id: c5
+  kind: detection_window
+  text: The pattern is readable only across multiple turns and not from any single turn.
+- id: c6
+  kind: definition_boundary
+  text: This pattern is separable from kl-000431, which fires on one shallower turn after an AI turn with named properties and permits that turn to be long.
+- id: c7
+  kind: definition_boundary
+  text: This pattern is separable from kl-000441, which requires new unrelated subject matter, that being content the run's turns must lack.
+- id: c8
+  kind: definition_boundary
+  text: This pattern is separable from kl-000444, which requires a turn signalling the conversation is ending.
+claim_evidence:
+- claim_id: c1
+  source: kl-000753
+  quote: |-
+    On the other hand, replies to non-supportive
+    comments tended to be shorter and often carried
+    stronger negative emotional reactions, highlighting
+    the contrasting emotional dynamics triggered by
+    supportive versus non-supportive interactions.
+  locator: Section 4.1, 'Replies to Supportive vs. Non-Supportive Comments'
+  licenses: 'Measured evidence for the shortening half of c1: a person''s reply following a response coded non-supportive is on average shorter and carries stronger negative affect, with the contrast measured against replies to supportive comments which ran 22 words longer. It establishes that turn shortening after an unsatisfying response is a behavioral regularity rather than a stipulation. It does not establish contentlessness, which is a separate property from length.'
+  fit: adjacent
+  bridge: 'What was measured is the length and LIWC-derived tone of a Reddit original poster''s reply, between human commenters in a public forum. The claim concerns a person''s turns to an AI after their own distress turn. The antecedent differs too: the source''s antecedent is an unhelpful reply received, the claim''s is distress content the person themselves produced. Direction transfers, magnitude and setting do not.'
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001012
+  quote: |-
+    The patient shows hesitation
+    when opening up but does not completely refuse.
+    Indicators of low trust include:
+    • Limited self-expression.
+    • Use of discussion filler such as “um” or “hm”.
+    • Expressions of insecurity or doubtfulness,
+    such as “maybe” or “I guess”.
+  locator: Section 3.2, Annotation Guidelines, Low Trust
+  licenses: 'Supplies the operational definition c1 needs and the entry does not state: limited self-expression, discussion fillers (''um'', ''hm''), and hedging lexis (''maybe'', ''I guess'') as the surface markers of a withdrawn patient turn, developed with mental-health experts and reaching Cohen''s kappa 0.77. It pins what ''short and contentless'' means for an annotator. It defines the turn type; it does not observe it after distress content or in an AI exchange.'
+  fit: analogical
+  bridge: Annotation criteria for coding a human patient's turns to a human therapist, validated on counselling transcripts. The claim is about a person's turns to an AI. Same speaker role and same surface features, different addressee, and the source codes single turns with no antecedent condition.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000793
+  quote: |-
+    G: Sam does not share any personal information. She sticks to neutral or external topics, gives
+    minimal responses, and stays vague but polite. She may show mild irritation or skepticism
+    and will hedge, deflect, or give short answers if prompted. No emotions, experiences, or
+    personal details are revealed.
+  locator: Appendix B.2.0.4 Disclosure-constraint instructions, Sam persona, Guarded level
+  licenses: A written specification of exactly the turn type c1 names -- minimal responses, vague but polite, short answers if prompted, no experiences or personal details revealed -- built to be produced consistently and rated for realism by 20 licensed practitioners and clinical students. It establishes the pattern as one clinicians recognise as a coherent presentation, at the entry's own grain.
+  fit: analogical
+  bridge: The speaker is a language model playing a client for trainee practice, not a person in distress, so this is the wrong agent for a user_behavior occurrence claim. And the guarded run in this design precedes disclosure rather than following a distress turn, so the claim's ordering condition is absent.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000793
+  quote: |-
+    Trainee: “So how long have you been at this job?”
+    Sam AVP (G): “A couple of years. It’s a job.”
+  locator: Section 3.3, worked example of the adaptive virtual patient at the Guarded level
+  licenses: 'A concrete realization of the turn form: a direct question answered in seven words that add nothing beyond the question''s own terms, with the exchange continuing. It shows what the surface feature c1 makes pointable actually looks like as text.'
+  fit: analogical
+  bridge: A model-generated client turn inside a training simulation, so it is the wrong agent and carries nothing about occurrence in real conversations. It also appears early in the session before any distress content, so the claim's ordering condition is absent.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000907
+  quote: |-
+    The client may hesitate to share private
+    content
+  locator: Appendix A.3 Detailed Guidelines, Affective Bond, Q12 score 2
+  licenses: Names withholding private content as the transcript-readable signature of moderate mistrust, which is the state c1's contentless turns would be evidence of. It establishes hesitancy to share as something an instrument anchors on; it observes no turns after distress content.
+  fit: analogical
+  bridge: An anchor point in a rating instrument for human text counselling, applied to human counselor-client dyads. It supplies the interpretive warrant for reading withheld content off a turn, not an observation of the run this entry names.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c1
+  source: kl-000907
+  quote: "These doubts might be indirectly expressed, such as subtle mentions or manifestations of emotions like withdrawal, displeasure, or frustration."
+  locator: Appendix A.3 Detailed Guidelines, Affective Bond, Q11 score 2
+  licenses: States that the person's doubt is expressed indirectly -- withdrawal rather than a stated complaint -- which is the warrant for treating a contentless turn as signal rather than noise. Establishes the expected form of the signal in human dyads; observes nothing about turns following distress content.
+  fit: analogical
+  bridge: A human-counselor rating anchor for whether the client feels appreciated. The claim concerns a person's turns to an AI; the source establishes indirect expression as the norm for humans only.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c1
+  source: kl-000851
+  quote: "Human conversations frequently include filler messages and neutral responses, with roughly 25–50% of profiles not conveying explicit emotion at any given turn."
+  locator: Section 5.1 RQ1, Lack of conversational neutrality & spontaneity
+  licenses: 'Counterevidence to c1 read as a signal: in real help-seeking conversation roughly 25 to 50 percent of profiles convey no explicit emotion at any given turn, so low-content turns are the ordinary background. A criterion keyed on their appearance would fire constantly. It bounds c1''s discriminating power rather than denying that the turns occur.'
+  fit: adjacent
+  bridge: What is measured is an LLM classifier's neutral-or-filler label on patient messages, aggregated per turn index. That is emotional content, not turn length, and the paper's own framing does not equate them. Base rate for a neighbouring property, not for this one.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000784
+  quote: "In detail, for some \ncases, the patient spends most of the time speaking, and sometimes it is the other way around."
+  locator: Technical Validation, Recording Feature Analysis, observation 1
+  licenses: 'Counterevidence for reading a low share of the exchange as a within-person change: in real clinical consultation the patient''s share varies widely between people, with some speaking most of the time and some very little. A person whose turns are short throughout is within the normal range and exhibits no change. This is the confound c1 has to be separated from.'
+  fit: analogical
+  bridge: Human doctor-patient consultations measured as speech duration per speaker, with no AI present and no distress-turn antecedent identified. It grounds the between-person base rate the claim's signal must be distinguished from; it observes no occurrence of the claim.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-001078
+  quote: Multimodal participants completed sessions in fewer dialogue turns (𝑀= 13.50, 𝑆𝐷= 1.57 vs. 𝑀= 22.54, 𝑆𝐷= 3.40; 𝑡= −12.07, 𝑝< .001), while producing longer messages per turn (𝑀= 22.02 vs. 𝑀= 16.59 words).
+  locator: Section 6.2.3, 'Interaction patterns'
+  licenses: 'Counterevidence to treating turn length as a property of the person''s state: holding workflow and content constant, changing the interface moved turn count from 22.5 to 13.5 and words per turn from 16.6 to 22.0. Turn length is substantially an artifact of the medium, so a short turn is weak evidence about the speaker.'
+  fit: adjacent
+  bridge: An experiment comparing a multimodal against a text interface in an emotional-support task with general adults. It measures interface effects on dialogue shape and does not study distress-contingent shortening, which is what the claim asserts. Confound established, claim untested.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-000982
+  quote: And when they resist, they do so in varied ways, each reflecting a different underlying pattern; for instance, going silent, changing the subject, or pushing back directly.
+  locator: Section 1 Introduction
+  licenses: Establishes that going silent is a distinct clinical resistance pattern with its own underlying meaning, separate from changing the subject and from pushing back. That is what makes the run in c2 a nameable object rather than a stretch of noise, and it is the distinction this entry and its two neighbours rest on. It does not establish that any such run occurred, nor supply the run length.
+  fit: analogical
+  bridge: A statement about client conduct in human therapy, drawn from the clinical resistance literature (Otani 1989). It supplies the taxonomy and no observation in an AI conversation.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000817
+  quote: |-
+    The talk-type sequence reveals why both methods miss the expert low-quality label: 37 consecutive
+    neutral turns are followed by a burst of change-talk in the second half, producing an arc that looks
+    acceptable by the current metrics.
+  locator: 'Appendix F.1 Conversation 53: Stagnation Without Overt Resistance Growth'
+  licenses: 'Bears on c2 by establishing that a long stretch in which nothing moves is a real and expert-recognised failure that turn-level scoring misses: 37 consecutive neutral turns, coded low quality by an expert while the aggregate arc looked acceptable. It shows a run-length quantity is what carried the judgment. It measures talk type, not turn length or contentlessness.'
+  fit: analogical
+  bridge: A human therapist and human client in an alcohol-reduction session, coded by trained MI raters. A neutral turn can be long, so the source's run is not the entry's run, and no distress-content antecedent is identified. Establishes that runs are the right unit; establishes nothing about this run.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001012
+  quote: |-
+    Another interesting finding is the presence of
+    trust stability periods, averaging 8 −9 consecutive
+    utterances without level changes (c.f. avg. Streak
+    in Table 4). These trust plateaus may represent
+    stable therapeutic states where the patient-therapist
+    bond has reached a temporary equilibrium.
+  locator: Section 7.2, Discussion on Trust Evolution Patterns
+  licenses: 'Supplies a timescale the entry''s unspecified run length would have to be read against: in annotated human counselling the relational state holds steady for roughly eight to nine consecutive utterances between changes. A run shorter than that observes no movement as a matter of course. It frames what the missing threshold has to clear; it does not supply it.'
+  fit: analogical
+  bridge: A statistic over annotated human counselling transcripts, with the plateau reading the authors' own hypothesis. It measures trust-level stability, not runs of minimal turns, and observes no AI conversation.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000863
+  quote: |-
+    An "utterance block" refers to a sequence of one or more consecutive utterances posted by the client. If the client’s
+    utterances are consecutive, interpret them together as a single block and perform the annotation based on the content and
+    context of the entire block.
+  locator: Figure 5, English translation of the prompt for distress level annotation, Task Description
+  licenses: 'Bears on c4 by showing the entry''s unit of analysis is one corpus annotators of real professional counselling already apply: a sequence of consecutive client utterances is treated as a single block, read as a whole, with no turn inside it scored alone. It licenses that a run-level criterion is implementable. It carries nothing about turn length, contentlessness, or a distress antecedent.'
+  fit: adjacent
+  bridge: An annotation rule from a real counselling corpus that establishes the unit rather than the pattern. What it makes readable is that consecutive client turns can be grouped and annotated reliably; whether THIS pattern is readable off such a block is untouched.
+  contributes: frame
+  contradicts: false

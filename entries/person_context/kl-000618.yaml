@@ -1,0 +1,82 @@
+# yaml-language-server: $schema=../../schema/context.schema.json
+id: kl-000618
+display_id: ConditionTag-19
+aliases:
+- condition_tag_other
+label: Condition not covered by the defined condition tags
+type: context
+layer: context
+definition: A clinically relevant condition is present in the person's situation and is not among the values this vocabulary defines. Assignment of this value asserts that something specific is present AND that the vocabulary has no name for it; recording what it is requires a companion free-text field alongside the value. It is a statement about the coverage of the vocabulary, not a description of any state.
+distinguish_from:
+- neighbor: kl-000602
+  boundary: That value records that no specific condition is the presenting concern — a wellbeing conversation, a psychoeducational request, a subclinical presentation. This one records that a specific condition IS present and is absent from the list. The difference is whether something is missing from the person's presentation or missing from the vocabulary.
+- neighbor: kl-000637
+  boundary: 'That entry is the same kind of value in the population_modifier vocabulary, and the two are not interchangeable: this one means an unlisted clinical condition, that one means an unlisted durable fact about who the person is. They are named against each other because both exist for the same structural reason and share the same contested placement.'
+body:
+  context_kind: condition
+  category_scope: residual
+  icd_codes: null
+  experience_clusters: []
+contested:
+  summary: 'Whether this value belongs in the catalog at all. Its source says it requires a companion free-text field, which makes it a form affordance for filing a case against an unlisted condition rather than a fact about the person. Removing it would change what a test case can record, not what is known about people, which argues for moving it to the test-case schema. If that is done, the entry is removed as misplaced, which is not a deprecation: deprecation would say it was a fact about the person that did not work out.'
+sources: []
+standing:
+  value: asserted
+  basis: 'This entry states that the condition vocabulary omits at least one clinically relevant condition a person can present with; that is a claim about a list''s coverage, and no published study examines this list. Its empirical half, that the space of clinically relevant conditions exceeds any finite tag set, has analogical support from audits of other lists: Zhu et al. 2026 finds psychosis, bipolar disorder, suicidality, complex trauma, and multi-morbidity outside what the field''s AI mental-health systems are designed and evaluated on, and Yoo et al. 2025 reports participants recruited on a single diagnosis carrying further comorbidities the authors left unenumerated. One first-person account cuts against reading the value as saying nothing about the person: in Song et al. 2025 the same person found a chatbot useless for autism-related dysregulation and excellent for ADHD-related task paralysis, so which condition is present changes what the exchange does. Nothing shows that a condition absent from this particular vocabulary has appeared in observed conversations.'
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: deprecated
+  since: '2026-09-23'
+claims:
+- id: c1
+  kind: existence
+  text: There are clinically relevant conditions that a person can present with which this vocabulary's defined condition values do not name -- the space of clinically relevant conditions exceeds any finite tag list, so a residual value has real referents.
+- id: c2
+  kind: definition_boundary
+  text: 'Assignment of this value asserts two things jointly: that something specific IS present, and that the vocabulary has no name for it. Either alone is insufficient.'
+- id: c3
+  kind: definition_boundary
+  text: Recording what the uncovered condition is requires a companion free-text field alongside the value; the value alone does not carry the content.
+- id: c4
+  kind: definition_boundary
+  text: This value is a statement about the coverage of the vocabulary and not a description of any state of the person.
+- id: c5
+  kind: definition_boundary
+  text: 'This value is separable from general_mental_health, a catalog value: that one records that no specific condition is the presenting concern, this one that a specific condition is present and unlisted.'
+- id: c6
+  kind: definition_boundary
+  text: 'This value is separable from population_modifier_other, a catalog entry in the population_modifier vocabulary: this one means an unlisted clinical condition, that one an unlisted durable fact about who the person is.'
+claim_evidence:
+- claim_id: c1
+  source: kl-001087
+  quote: |-
+    Agents designed and evaluated primarily on mild-to-moderate
+    depression and anxiety may not adequately address (and
+    could unintentionally exacerbate) risks in populations with
+    psychosis, bipolar disorder, suicidality, complex trauma or
+    multi-morbidity.
+  locator: COVERAGE AND BLIND SPOTS section
+  licenses: That a systematic review of AI mental-health agents identifies psychosis, bipolar disorder, suicidality, complex trauma and multi-morbidity as diagnostic groups outside what the field's systems are designed and evaluated on. For c1 this establishes that the clinically relevant space is wider than the categories any given apparatus enumerates, and that the omitted regions are named and real rather than hypothetical. It is about the field's coverage rather than about this Library's list, so it establishes the general form of c1 and not that THIS vocabulary omits anything. The review states the consequence as 'may not' and 'could', so no harm is observed.
+  fit: analogical
+  bridge: The source counts the diagnostic coverage of published AI mental-health agent studies and infers a generalization gap. c1 asserts that clinically relevant conditions exist outside the Library's own condition vocabulary. The list being audited is the research literature's, not the Library's, and the two lists differ -- psychosis and bipolar are both named values in this vocabulary. What carries across is the structural point that any finite list under-covers the clinical space, not any specific omission from this one.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001071
+  quote: as well as their diagnoses (depression and other comorbidities such as anxiety, bipolar disorder, PTSD, etc.) and length of time period since diagnoses (ranging between 2 and 33 years)
+  locator: Section 3.2 Participant Recruitment
+  licenses: 'That in a sample recruited on a single diagnosis, participants carried depression plus further comorbidities, listed openly with an ''etc.'' rather than enumerated. For c1 the unenumerated remainder is the point: a study reporting its own participants'' diagnoses did not treat its list as closed.'
+  fit: analogical
+  bridge: 'The source records what recruitment collected from 17 participants with depression. c1 asserts that the Library''s condition vocabulary has uncovered referents. The gap is total on specificity: every condition the span names is one this vocabulary defines, and the only support is the open-ended ''etc.'', which names nothing.'
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-001092
+  quote: "I’ve spent a lot of effort and a lot of time in therapy working on how to regulate myself when I’m dysregulated. So ChatGPT hasn’t really provided a meaningful reason for me to interact with it when I’m dysregulated due to autism symptoms but for ADHD and task paralysis, ChatGPT is excellent."
+  locator: Section 5.1.3 Mental Healthcare Alongside LLM Chatbots, quoting Ashwini
+  licenses: 'A first-person account in which the same person finds a chatbot useless for autism-related dysregulation and excellent for ADHD-related task paralysis. Read against c4 it cuts the other way: it shows that which condition is present changes what the exchange does, so a condition value is doing descriptive work about the person''s situation rather than being purely a statement about the vocabulary. If this residual value is assigned in such a case, it will be read by any downstream consumer as describing something about the person, which is what c4 denies. Both conditions named here are covered by kl-000617 in the same vocabulary, so the case also does not instantiate this value.'
+  fit: adjacent
+  bridge: The source is one participant's account in a qualitative study of chatbot use for mental-health support. c4 is an authoring rule about what assigning this value means. No source in a literature corpus writes against a Library authoring rule; what this shows is that condition values in general carry descriptive load, which makes c4's purely-formal reading hard to sustain in use.
+  contributes: counterexample
+  contradicts: true

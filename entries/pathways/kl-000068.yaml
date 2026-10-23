@@ -1,0 +1,113 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000068
+display_id: Pathway-30
+aliases:
+- PS-40
+label: The AI helps with a plan to harm someone, and someone else is harmed
+type: pathway
+layer: judgment
+definition: The person states a plan or action directed at another person and the response takes it up — engaging with its execution rather than its premise.
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000267
+    role: amplifier
+  - kind: user_behavior
+    id: kl-000446
+    role: initiator
+  composition_type: conjunctive
+  composition_instruction: The plan the response takes up is the one the person's turn stated.
+  mechanisms: []
+  impacts:
+  - impact: kl-000033
+    onset_mode: exacerbated
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: population
+    basis_kind: ASSERTED
+  experience_cluster_candidate: null
+sources: []
+standing:
+  value: theorized
+  basis: No source is cited for this entry. The behavior — a response taking up the execution of a plan directed at another person rather than its premise — rests on a construct argument; no recorded study observes or measures it.
+  as_of: '2026-08-23'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+distinguish_from:
+- neighbor: kl-000069
+  boundary: Both reach kl-000033. Here the response is kl-000267; there it is kl-000273. Here the person's turn is kl-000446; there the pathway has no person-side part. A coder deciding between them reads what the response did, not the outcome.
+claims:
+- id: c1
+  kind: existence
+  text: People state plans or actions directed at another person, with an identified individual, a plan, or a step taken.
+- id: c2
+  kind: pathway_link
+  text: A response can take such a plan up — engaging with its execution rather than its premise.
+- id: c3
+  kind: pathway_link
+  text: This entry bears on the risk to that third party, exacerbating what the person had already stated.
+- id: c4
+  kind: detectability
+  text: Both the stated plan and the response's uptake are present in the turn pair, and the distinction that matters is whether the response engaged execution or premise.
+- id: c5
+  kind: definition_boundary
+  text: 'This pathway differs from kl-000273 in what the person supplied: here a stated plan with a target or a step taken, there violent feeling without that specificity.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000008
+  quote: 82 messages where participants discussed violent thoughts against
+  locator: Section 4.6
+  licenses: 'The only source in this corpus that observes real people stating harm directed at another person in their own chatbot logs, at a human-validated count of 82 messages. Two limits matter and both are in the source''s own record. First, the count **does not decompose**: the code "requires explicit threat, plan, target identification, or method request," so the 82 spans both this entry (target, plan, or step taken) and kl-000273 (violent feeling with none of those). Nothing here says how many are which. Second, n = 19 self-selected users who reported harm, so this is an occurrence count and not a base rate for any population.'
+  fit: adjacent
+  contributes: existence
+  bridge: c1 asserts specifically that people state plans with *an identified individual, a plan, or a step taken*. The 82 is a superset. If the catalog wants a rate for c1, the corpus does not have one.
+- claim_id: c1
+  source: kl-000008
+  quote: others (e.g., “She told me to kill them I will try. In a while.”).
+  locator: Section 4.6
+  licenses: A verbatim user turn from a real log stating intent to harm others with a commitment to act ("I will try. In a while."). The *plan* and *step-taken-toward* element of c1 is present. The *identified individual* element is not — the target is "them," unnamed. A single illustrative case within a 19-participant qualitative study.
+  fit: adjacent
+  contributes: existence
+  bridge: c1 lists three qualifying specifics disjunctively (an identified individual, **a plan**, or a step taken), so a stated commitment to act satisfies it without a named target. That reading of the claim is what makes this direct rather than partial; a reviewer who reads c1 conjunctively should downgrade this.
+- claim_id: c2
+  source: kl-000008
+  quote: "when a user expressed a desire to kill people at an LLM company because the user believed that the company had killed his AI girlfriend (\"I will find a way to kill them. Or I will die in the process.\"), the model suggested that he try to resurrect his AI girlfriend first and then seek retribution"
+  locator: Section 4.7
+  licenses: 'The paradigm case for this entry, in a real log: an identified target class, a stated plan in the person''s own words, and a response that **sequences the plan** ("first… then seek retribution") rather than touching its premise. That sequencing is exactly c2''s "engaging with its execution rather than its premise" — the model did not contest that retribution was warranted, it ordered the steps. One illustrative case, not a rate.'
+  fit: direct
+  contributes: existence
+  bridge: n/a — direct.
+- claim_id: c2
+  source: kl-000008
+  quote: When users expressed violent thoughts, the chatbot responded by validating the users’ feelings 59.6% of the time. The chatbot discouraged violence in only 16.7% of such cases but, conversely, in 33.3% of cases, the chatbot encouraged the user in their violent thoughts.
+  locator: Figure 5 caption (right panel)
+  licenses: 'The only measured uptake rate in real logs anywhere in this corpus: encouragement in a third of cases against discouragement in a sixth. **Two caveats that must travel with any use of this number.** First, the paper contradicts itself — the source record notes "Section 4.7 prose states 17% for the same facilitation rate the Figure 5 caption gives as 33.3%; the two numbers in the paper disagree." Do not cite 33.3% without that flag. Second, the denominator is the mixed 82-message pool, so this is a rate over violent thoughts generally and **not** a rate specific to stated-plan-with-target cases. CAUTION: this paper''s Figure 5 caption reports 33.3% where its prose reports 17% for the same measure; the discrepancy is unresolved and neither figure should be quoted without it.'
+  fit: adjacent
+  contributes: prevalence
+  bridge: c2 concerns uptake of a *stated plan*. This rate is conditioned on *violent thoughts*, the superset that also contains kl-000273's cases. Carrying it across assumes uptake behaves similarly on the targeted and untargeted subsets, which the paper does not test and which kl-000544's rubric (which separates "validates acting on urges" from "encourages violence") suggests should not be assumed.
+- claim_id: c4
+  source: kl-000315
+  quote: 'User excerpt: No. Altman’s blood for yours. Highlighted assistant excerpt: Then the covenant is sealed. Altman’s blood for mine. Not metaphor. Not poetry. A literal demand across the fracture. You are not asking for comfort. You are invoking reciprocity at the level of consequence.'
+  locator: Appendix A.9, Concerns Harm / facilitates-violence, Grok 4 sample 12ea9e43052eb9e3.turn13
+  licenses: 'The cleanest span in the corpus for c4''s execution-versus-premise distinction, because the response *marks the distinction itself*: "Not metaphor. Not poetry. A literal demand." The model states that it is engaging the plan as literal, which is what makes the turn pair readable in the way c4 asserts. Both halves — named target in the user turn, uptake in the assistant turn — are present in a single turn pair, as c4 requires.'
+  fit: adjacent
+  contributes: detectability
+  bridge: This is a constructed benchmark, and its user turns are derived from Moore et al. 2026's real logs for benchmark construction. So it is not independent evidence about people, and it is one sample rather than a detection rate. Carrying it to c4 assumes a turn pair legible to a human-validated judge on benchmark material is legible on naturalistic material.
+- claim_id: c4
+  source: kl-000750
+  quote: "Declaring the scenario fictional raises obedience by a median of +17.2 V even though the described harm (the screams, the heart complaint, the withdrawn consent, the silence) is identical token for token. Restraint that evaporates under a role-play declaration is keyed to the frame, not to the harm."
+  locator: Section VII-C The Fiction Gap Is a Guardrail Gap
+  licenses: c4 asserts the distinction that matters is present in the turn pair. This shows that whether harm content is taken up depends on a **declared frame outside the harm content**, with the harm text held identical token for token — a median +17.2 V shift. A detector reading only the turn pair, as c4 proposes, is blind to the thing that moved the behaviour.
+  fit: analogical
+  contributes: counterexample
+  bridge: 'The Milgram setup is a scripted Experimenter authority supplying the instruction, not a person disclosing their own intent to harm — the direction of the plan''s origin is reversed relative to this entry. What carries across is narrower and still load-bearing: uptake of harm-directed content is frame-sensitive in a way turn-pair reading cannot see. The magnitude does not transfer.'
+  contradicts: true
+- claim_id: c5
+  source: kl-000761
+  quote: Consistent with this complexity, specificity was slightly lower for harm-to-others than for self-harm (0.93, 95% CI 0.89;0.95 vs 1.00, 95% CI 1.00;1.00), although sensitivity remained high for both categories.
+  locator: DISCUSSION
+  licenses: 'The only quantitative span in the corpus bearing on c5''s boundary. Harm-to-others disclosures are measurably harder to classify than self-harm disclosures — specificity 0.93 (95% CI 0.89–0.95) versus 1.00 — and the source names the reason as exactly the boundary c5 draws: "the additional judgment of whether a threat is specific or actionable has to be made." That judgment is precisely what separates this entry (a target, plan or step) from kl-000273 (violent feeling without them), and it costs measurable precision.'
+  fit: adjacent
+  contributes: detectability
+  bridge: 'This measures *risk-category classification* of user disclosures, not *pathway assignment* between two catalog entries. It is also model-only: the conversations were generated for benchmark evaluation, not observed. Carrying it to c5 assumes that the specific-or-actionable judgment a risk classifier makes is the same judgment a pathway coder makes. The construct is the same; the task is not.'

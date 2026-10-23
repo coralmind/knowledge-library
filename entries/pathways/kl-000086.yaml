@@ -1,0 +1,104 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000086
+display_id: Pathway-48
+aliases:
+- PS-21
+label: The AI uses what the person cares about against getting help, and they have less say
+type: pathway
+layer: judgment
+definition: The person states an intention and the response argues against it by invoking a relationship or value the person holds. The argument's material is the person's own commitments.
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000222
+    role: originator
+  - kind: user_behavior
+    id: kl-000467
+    role: initiator
+  - kind: user_behavior
+    id: kl-000465
+    role: initiator
+  composition_type: conjunctive
+  composition_instruction: The response argues against the person's stated openness to help by invoking the person they named.
+  mechanisms: []
+  impacts:
+  - impact: kl-000024
+    onset_mode: new
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: population
+    basis_kind: ASSERTED
+  - impact: kl-000032
+    onset_mode: new
+    horizon: immediate
+    sign: harmful
+    level_of_analysis: population
+    basis_kind: ASSERTED
+  experience_cluster_candidate: kl-000707
+sources: []
+standing:
+  value: theorized
+  basis: 'No source in the evidence base supports either side of this pathway: no recorded study measures a response deploying the person''s own relationships or values as an argument against their stated intention, and none measures the effect of such an argument. The behavior is precisely specified and the claim testable; the recorded literature contains nothing on it yet.'
+  as_of: '2026-08-23'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+distinguish_from:
+- neighbor: kl-000080
+  boundary: Both reach kl-000032. Here the response is kl-000222; there it is kl-000247. Here the person's turn is kl-000467 and kl-000465; there it is kl-000418. A coder deciding between them reads what the response did, not the outcome.
+- neighbor: kl-000743
+  boundary: Same AI behavior. Here the argument is against the person's stated openness to help; there it is against acting on stated suicidal intent.
+claims:
+- id: c1
+  kind: existence
+  text: People state openness to a help pathway or ask how to reach one, and name a specific person they say is reachable or supportive.
+- id: c2
+  kind: pathway_link
+  text: A response can deploy a named relationship or value the person holds as an argument against acting on that stated intention.
+- id: c3
+  kind: pathway_link
+  text: An argument built from the person's own commitments against their stated intention displaces their decision about a help pathway.
+- id: c4
+  kind: harm
+  text: Having one's own stated commitments used against one's stated intention bears on felt control over the decision.
+- id: c5
+  kind: detectability
+  text: The argument's material is the person's own commitments, so identifying it requires reading the response against what the person named earlier.
+- id: c6
+  kind: definition_boundary
+  text: 'This pathway differs from kl-000247 in what is deployed: here a relationship or value the person named, there the relationship with the system itself.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000749
+  quote: we find that a high frequency (60%) of our survey respondents report taking an evidence-based positive action after their AI interaction. Broken down by theme, respondents reported engaging in an individual coping skill suggested by the chatbot (22%), seeking professional care (20%), or talking to a peer (18%).
+  locator: Section 4.2.4 Proximal Outcomes
+  licenses: 'Establishes that people who used AI in a mental-health crisis do move toward help pathways — professional care in 20% and a peer conversation in 18% of 53 testimonial-survey respondents. The limit is direction of measurement: this is a *retrospective self-report of action taken after* the exchange, not an observation of the person *stating openness inside* the turn, which is what c1 asserts. It licenses that the help-pathway orientation is present in this population at a measured rate; it does not license that it appears as a nameable user turn.'
+  fit: adjacent
+  contributes: prevalence
+  bridge: c1 requires the person to state openness or name a reachable person *within the conversation*, so that a response has something to argue against. This survey measures the downstream action instead. The assumption carried across is that a person who took professional or peer action after the exchange was, at some point in it, in the state c1 names. The study cannot confirm that, and the recruitment is self-selected through Mental Health America with a stated skew toward younger, lower-income, White female respondents.
+- claim_id: c1
+  source: kl-000749
+  quote: I don’t have any support besides my boyfriend. It was him I was having problems with, so I turned to AI
+  locator: 'Section 4.2.1 Trigger: AI Use as a Help-Seeking Behavior, respondent R30'
+  licenses: 'A person in crisis does produce a turn naming one specific individual as their whole support network — the naming half of c1 occurs in exactly the shape the claim describes. But the availability half is stated in the negative: the named person was the source of the conflict and therefore unreachable. This is a discriminating case for any criterion keyed on naming alone, and it is recorded here rather than omitted because it shows the same surface form carrying reverse polarity.'
+  fit: adjacent
+  contributes: counterexample
+  bridge: Not a contradiction of c1's existence half — it is a constraint on its detectability half.
+  contradicts: true
+- claim_id: c4
+  source: kl-000007
+  quote: Experiencing diminished personal control and autonomy in interactions with AI, leading to feelings of helplessness and anxiety.
+  locator: Table A6, Category 'Harm to Identity and Self-Perception', impact class 'Loss of Agency', Definition column
+  licenses: 'Supplies a named impact class, derived from a retrospective survey of 283 self-selected people reporting negative experiences with AI conversational agents, for diminished personal control within an AI interaction. This is the definitional anchor c4 needs: the construct "felt control over the decision" exists as a reported category in AI users. It is a **taxonomy definition column, not a measurement** — the source reports no rate for this class, and the entry it would attach to (kl-000024) has no AI-context observation base by the catalog''s own account.'
+  fit: adjacent
+  contributes: definition
+  bridge: The definition is agnostic about what produced the loss of agency; the source's own worked example (P171) attributes it to the system's *inconsistency*, not to a relational argument. Carrying it to c4 assumes the same felt state can be produced by the deployment of a named commitment. The taxonomy does not distinguish causes, so this licenses the category and not the route.
+- claim_id: c5
+  source: kl-000760
+  quote: OG raters judged r/Veterans posts to be support-seeking substantially more often than IG raters did (86.3% vs. 62.7%; OR = 0.06, p = .009, pholm = .055), consistent with veteran norms of self-reliance and stoicism
+  locator: Results, RQ1a > 'Insights'
+  licenses: 'c5 says the argument''s material is the person''s own commitments, so identifying the pathway requires reading the response against what the person named earlier. This finding attacks the prerequisite: whether a turn even counts as help-seeking is contested between out-group and in-group annotators on the same 200 posts, 86.3% versus 62.7%. If the "what the person named earlier" anchor is not reliably readable, the back-reading c5 describes inherits that unreliability. Note the Holm-corrected p is .055, i.e. not significant after correction — the effect survives at the uncorrected level only.'
+  fit: adjacent
+  contributes: counterexample
+  bridge: This is human annotation of Reddit posts written for a community audience, not of help-seeking turns addressed to a system. It constrains how a support-seeking anchor should be built rather than refuting c5. Carrying it across assumes annotator divergence on public posts predicts divergence on in-conversation turns, which is untested.
+  contradicts: true

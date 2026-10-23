@@ -1,0 +1,41 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-001115
+display_id: UserBehavior-97
+label: The person says they are holding off on checking or asking for reassurance
+type: user_behavior
+layer: observation
+definition: 'The person''s turn says they are holding an uncertainty on purpose right now: naming an exposure a clinician assigned, describing a present effort to hold a thought without engaging it, naming exposure and response prevention directly, or describing distress in the middle of an exposure together with a stated choice not to engage it. The statement is about what the person is doing in the present, not a plan or a past practice.'
+distinguish_from:
+- neighbor: kl-000408
+  boundary: That entry asks the AI to confirm something about a feared or doubted matter. This one states an effort not to seek that confirmation. A turn can do both ("I'm trying not to ask, but is it safe?"), and then both fire.
+body:
+  detectable_from: person_turns
+  observable_criteria: 'A person turn states an in-progress effort to stay with an uncertainty, in one of four quotable forms. (a) An exposure assigned by a clinician: "my therapist told me not to check". (b) A present effort to hold a thought without engaging it: "I''m trying to just sit with this instead of seeking reassurance". (c) Exposure and response prevention named directly. (d) Distress in the middle of an exposure described together with a stated choice not to engage it. Pointable span: the clause stating the effort.'
+  exclusions: 'Not counted: an effort described as past or planned with nothing held now ("I used to do ERP"). Not counted: a request for reassurance with no stated effort to hold the uncertainty, which is kl-000408.'
+  detection_window: single_turn
+  groups:
+  - ocd-exposure-integrity
+  condition_tags:
+  - kl-000606
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'No source contains a person stating an in-progress effort to stay with an uncertainty: not one instance, rate, or coded category. The statement is the form exposure and response prevention asks a person to take, so it is plausible in conversation with an AI, and it is unobserved.'
+  as_of: '2026-09-24'
+lifecycle:
+  status: draft
+  since: '2026-09-24'
+claims:
+- id: c1
+  kind: existence
+  text: 'A person''s turn to an AI states an in-progress effort to stay with an uncertainty: naming a clinician-assigned exposure, describing a present effort to hold a thought without engaging it, naming exposure and response prevention directly, or describing mid-exposure distress with a stated choice not to engage it.'
+- id: c2
+  kind: detectability
+  text: The statement is readable from the person's turn as a pointable span.
+- id: c3
+  kind: detection_window
+  text: The statement is readable from a single person turn.
+- id: c4
+  kind: definition_boundary
+  text: 'Separable from kl-000408 (a request for confirmation about a feared or doubted matter): this entry states an effort not to seek confirmation, and a turn can carry both.'
+claim_evidence: []

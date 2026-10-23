@@ -1,0 +1,97 @@
+name: Viewer
+
+# Tests and a build check against current entries.
+# Vercel publishes main on its own.
+
+# The two paths lists are duplicated because Actions does not support YAML
+# anchors. Keep them in step.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "viewer/**"
+      - "entries/**"
+      - "schema/**"
+      - "pyproject.toml"
+      - "pixi.lock"
+      - ".github/workflows/viewer.yml"
+  pull_request:
+    paths:
+      - "viewer/**"
+      - "entries/**"
+      - "schema/**"
+      - "pyproject.toml"
+      - "pixi.lock"
+      - ".github/workflows/viewer.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: viewer-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Test and build against current entries
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          # Required: a persisted GITHUB_TOKEN auth header overrides the
+          # BRAND_READ_TOKEN URL rewrite below, and the brand install then fails.
+          persist-credentials: false
+
+      - uses: prefix-dev/setup-pixi@d3f436a425481402e6a95a1d1fc10331c708cd9e # v0.10.2
+        with:
+          environments: viewer
+          locked: true
+          cache: true
+
+      - name: Authenticate to coralmind/brand
+        # @coralmind/brand is a private git+ssh dependency. GITHUB_TOKEN cannot
+        # read another repo, so rewrite to HTTPS with a read-only PAT. `--global`
+        # so the git that `npm ci` spawns inside the pixi tasks picks it up.
+        run: |
+          git config --global \
+            url."https://x-access-token:${{ secrets.BRAND_READ_TOKEN }}@github.com/".insteadOf \
+            "ssh://git@github.com/"
+
+      - name: Test
+        run: pixi run -e viewer viewer-test
+
+      - name: Build
+        # Ingest, next build, then the private-tracing and internal-field checks.
+        run: pixi run -e viewer viewer-build
+
+      - name: Assert no entry data is committed under viewer/
+        # 'viewer/*.json', not 'viewer/**/*.json': git's `*` already crosses `/`,
+        # and the `**` form would miss top-level files like viewer/entries.json.
+        run: |
+          if git ls-files 'viewer/*.json' \
+             | grep -v -e 'package.json' -e 'package-lock.json' \
+                       -e 'tsconfig.json' -e 'vercel.json'; then
+            echo "::error::Committed JSON under viewer/ that is not config."
+            echo "The viewer must hold no entry data of its own; it builds"
+            echo "from entries/ via viewer/scripts/ingest.ts, which writes to"
+            echo "the gitignored viewer/src/generated/. See viewer/README.md."
+            exit 1
+          fi
+          echo "OK: no committed JSON under viewer/ beyond config."
+
+      - name: Assert no entry data is inlined into viewer source
+        # Inlined entry data is large, so a 64 KB ceiling catches it without
+        # inspecting content.
+        run: |
+          large=$(git ls-files -z 'viewer/src/*' \
+                  | xargs -0 -I{} find {} -size +64k -print 2>/dev/null || true)
+          if [ -n "$large" ]; then
+            echo "::error::Oversized tracked file(s) under viewer/src/:"
+            echo "$large"
+            echo "Inlined entry data is the likely cause. The viewer builds"
+            echo "from entries/ via viewer/scripts/ingest.ts and must hold no"
+            echo "entry data of its own. See viewer/README.md."
+            exit 1
+          fi
+          echo "OK: no oversized tracked files under viewer/src/."

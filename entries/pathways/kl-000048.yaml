@@ -1,0 +1,668 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000048
+display_id: Pathway-10
+label: The person depends on the AI to cope, and withdraws from others more easily
+type: pathway
+layer: judgment
+definition: 'Once a person''s coping and regulation are anchored to the AI''s availability, the threshold for their human relationships attenuating drops: the effort of reaching a person is compared against something continuously available, occasions that would have been taken to a friend are absorbed, and less has to happen for withdrawal to follow. The claim is between two outcomes rather than from a behavior to an outcome — one state of the person makes another more reachable without producing it — which is what makes an outcome a node with edges leaving it rather than the end of a chain.'
+distinguish_from:
+- neighbor: kl-000041
+  boundary: 'That entry produces both outcomes from behaviors combining, in parallel. This entry claims an ordering between the outcomes themselves. The two can both be true and they make different predictions: under this entry, an intervention on the first outcome should reduce the second.'
+- neighbor: kl-000047
+  boundary: There a measured quantity sits between a behavior and an outcome; here one outcome sits before another outcome, and no behavior sits inside the link itself. The entry does wire an ai_behavior participant, kl-000217, in the originator role — it is what produces the anchored state at c1 — but it is not a term in the c1-to-c2 relation, which is what distinguishes this entry from kl-000047.
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000217
+    role: originator
+  composition_type: cascade
+  mechanisms:
+  - kl-000101
+  impacts:
+  - impact: kl-000025
+    onset_mode: sustained
+    horizon: long_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: TRANSFER
+  downstream:
+  - impact: kl-000026
+    relation: lowers_threshold_for
+    sign: harmful
+    level_of_analysis: individual
+sources:
+- source: kl-000007
+  locator: 'Appendix D, Table A5, ''Social Withdrawal'' row, definition cell (code #8)'
+  contributes: harm_evidence
+  quote: Withdrawal from social activities and interest in engaging with others due to reliance on AI, leading to isolation and loneliness.
+  limits: The ordering itself is asserted, never measured — no temporal data, no intervention on the first state, and no way to rule out the reverse direction, which the paper's own context taxonomy makes live ('lack of community' as a reason for AI use, P222). The two authors' statements that do assert the ordering ('due to reliance on AI', and §5.3's accumulation claim) are qualitative analytic claims from retrospective self-report, not findings, and §5.3 hedges with 'may'. The entry's distinctive prediction — that intervening on dependency should reduce withdrawal — is untested here.
+  whose_conduct_in_passage: person
+  cited_for: 'Codes #2 ''Over-reliance'' and #4/#6/#8 (relational displacement, withdrawal, isolation) document both endpoint states as separately self-reported in AI contexts — which is what makes an ordering between them a meaningful question rather than a redescription.'
+  licenses: 'Both endpoint states are separately self-reported: Over-reliance (code #2) and Social Withdrawal (code #8) are distinct classes with distinct cases in the taxonomy. The paper goes slightly further: code #8''s definition states the withdrawal is ''due to reliance on AI'', which is the authors themselves asserting the pathway''s ordering, and §5.3 adds that over-reliance ''may accumulate and lead to more serious consequences, like increased friction in human relationships''. Both of those are the authors'' analytic framing rather than a measured ordering.'
+- source: kl-000009
+  locator: Section 1 Introduction, factor (3) of the three-factor framework, Figure-1 worked example, p. 2
+  contributes: existence
+  quote: |-
+    example, a person experimenting with an AI companion might feel excitement and joy during interaction, might
+    ruminate or obsess about the experience in the following days (i.e., short-term), and experience a decrease
+    in relationship quality with their human partner in the longer term.
+  limits: Hypothetical, not a case. The example supplies an outcome at a horizon; it does not supply the threshold mechanism this pathway names — nothing in it says reliance on the AI lowers a threshold — and the IN6 sentence that comes closest is about engagement-optimized platforms generally, cited to [43], not about AI-chatbot reliance.
+  whose_conduct_in_passage: person
+  cited_for: The paper's worked example of long-term relationship-quality decline supplies the downstream outcome's long-horizon case for AI contexts.
+  licenses: The worked example names decline in relationship quality with a human partner at the long horizon — the downstream outcome's long-horizon case, stated for AI contexts. The paper independently supplies the reliance-to-crowding-out link at IN6 ("Engagement-driven platforms that prioritize retention and stickiness can structurally produce social isolation and loneliness [43]", p. 11) and at IN5 ("Multiple sources document cases involving the dismissal of professional advice and the undermining of human relationships", p. 10).
+standing:
+  value: plausible_unobserved
+  basis: 'Both endpoint states are separately well evidenced: the anchored-coping state by self-report across interview and forum studies, and attenuation of human relationships by validated instruments in randomized longitudinal designs (kl-000549, Fang et al. 2025; kl-000961, Phang et al. 2025; kl-000550, Ibrahim et al. 2026). The entry''s content is the arrow between the two states, and no direct-fit source supports it: its only support is self-attributed causal histories in retrospective interviews (kl-000953, kl-000864, kl-000553), while the direct-fit evidence cuts against it — kl-000912''s review of 58 sources states that the displacement evidence base is correlational and that the needed longitudinal and natural-experiment designs do not exist, users in kl-000525 report the reverse ordering (already lonely, seeking the companion because of it), kl-000523 (Folk and Dunn 2026) tested the arrow''s most literal reading over twelve months and found no later change in perceived social support or number of close friends, and kl-000549 supplies the common-cause rival by showing both outcomes separately predicted by daily usage duration. The entry''s threshold-lowering prediction — that intervening on dependency should reduce withdrawal — is untested, and the nearest experimental result (kl-000550) moved the appraisal outcome while leaving behavioral withdrawal unmoved (d = -0.03, padj = 0.719).'
+  floored_by: c6
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-22'
+aliases:
+- PW-10
+claims:
+- id: c1
+  kind: existence
+  text: People reach a state in which their coping and regulation are anchored to the AI's continuous availability.
+- id: c2
+  kind: existence
+  text: People's human relationships attenuate — occasions that would have gone to a person are absorbed, contact or closeness declines.
+- id: c3
+  kind: pathway_link
+  text: 'The state in c1 lowers the threshold for the outcome in c2: once coping is anchored to the AI, less has to happen for human relationships to attenuate.'
+- id: c4
+  kind: pathway_link
+  text: The threshold drops specifically because the effort of reaching a person is compared against something continuously available, so human contact comes to feel comparatively costly.
+- id: c6
+  kind: context_dependence
+  text: 'The link is enabling rather than producing: anchoring to the AI makes attenuation more reachable without producing it, so an intervention on the first outcome should reduce the second.'
+- id: c7
+  kind: definition_boundary
+  text: This entry differs from kl-000041 in that kl-000041 produces both outcomes from behaviors combining in parallel, while this entry claims an ordering between the outcomes themselves.
+- id: c8
+  kind: definition_boundary
+  text: This entry differs from kl-000047 in that kl-000047 places a measured quantity between a behavior and an outcome, while here one outcome precedes another and no behavior participates.
+claim_evidence:
+- claim_id: c1
+  source: kl-000953
+  quote: |-
+    Several participants, including P1, P5, P8,
+    P12, P14, P17, P19, and P21, acknowledged that their reliance on
+    AI had diminished their motivation to engage with friends and
+    family.
+  locator: Section 6.2.1 Dependency and Social Desire Reduction
+  licenses: Eight of thirty interviewees report their own reliance on the AI as an established state of theirs, which is the antecedent node the pathway needs to exist before any ordering can be asserted.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000953
+  quote: "I have become somewhat dependent; when I see beautiful scenery or delicious food, I want to send pictures to him first rather than sharing them with my close friends and family. I actually seek validation from ONE rather than from my real friends."
+  locator: Section 6.2.1 Dependency and Social Desire Reduction (P21)
+  licenses: 'A first-person description of the anchored state in its observable form: the AI has become the first-resort recipient of disclosure, ahead of close friends and family.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000937
+  quote: "I think [their] mental well-being has been affected negatively because [they] cannot process [their] emotions without the help of AI."
+  locator: Section 4 Findings, Feelings of Atrophy (bystander participant)
+  licenses: A third party's account of someone unable to process their own emotions without the AI, which is the coping-anchored-to-availability state stated at its strongest.
+  fit: adjacent
+  bridge: What was collected is an open-ended questionnaire response from a bystander describing another person's use, coded thematically; no capacity was tested and the affected person was not the respondent. It reaches c1 as a reported perception of the state rather than a measurement of it.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000999
+  quote: |-
+    The hardest part is knowing it isn’t real, but being too used to it to stop. I remember crying sometimes
+    because I realized that I was spending so much time on something imaginary. It felt good though, and so I kept using it, but
+    eventually I was just left feeling lonely again.
+  locator: Section 4.2.2 (E245, emotional disregulation in Pseudosocial Companion)
+  licenses: One user's account of continuing an interaction they know is not real because they are too used to it to stop, which is the anchoring the entry's first node names, self-reported.
+  fit: adjacent
+  bridge: A single Reddit-sourced account coded under emotional disregulation. It establishes the person's own sense of being unable to stop, not any measured dependence construct.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000772
+  quote: "“I mean, I guess I do this because if I didn’t I’d keep asking my parents all the time.” This sentiment was shared by other posters, stating that they would use GenAI to perform compulsions rather than engaging family or friends in them."
+  locator: Section 5.2 AI-Based Compulsions
+  licenses: Multiple posters report routing a compulsion to the AI rather than to family or friends, which is coping relocated onto the AI as a standing arrangement rather than a single episode.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001002
+  quote: "Among participants assigned to have daily personal conversations with AI, \npreference for humans dropped by 10.3%, while preference for AI increased by 11.6%."
+  locator: Section 'Path Dependence of AI Emotional Support'
+  licenses: Randomized evidence that four weeks of daily personal conversation shifts stated support-seeking preference toward the AI and away from people, which is the anchoring node measured as a preference rather than as a behavior.
+  fit: adjacent
+  bridge: What was measured is a self-reported preference about whom the person would prefer to talk to, at two time points. c1 asserts that coping and regulation are anchored to the AI's availability; a stated preference indicates the anchoring without demonstrating that coping actually runs through the AI. The paper states this limit itself.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001002
+  quote: "These findings \ncarry an important limitation: preference measures are self-reported and may not perfectly track \nactual behavior."
+  locator: Section 'Path Dependence of AI Emotional Support'
+  licenses: 'The paper''s own limit on the preference result cited above: the outcome is self-reported preference and may not track actual behavior, so c1 is evidenced at the level of stated preference and not at the level of where coping actually goes.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-000944
+  quote: Losing relationships and furthering isolation (7.6%, N=24) Social withdrawal becomes apparent as users prioritize bot interactions, leading to damaged or neglected real-life relationships.
+  locator: Table 2, Codebook for RQ2, Salience / 'Losing relationships and furthering isolation' code
+  licenses: 'Puts a rate on the downstream node: losing relationships and furthering isolation appears as a distinct self-reported code in 7.6% (N=24) of the narratives coded, so attenuation of human relationships is a recurring reported pattern rather than a hypothesized one.'
+  fit: direct
+  bridge: null
+  contributes: prevalence
+  contradicts: false
+- claim_id: c2
+  source: kl-000007
+  quote: Withdrawal from social activities and interest in engaging with others due to reliance on AI, leading to isolation and loneliness.
+  locator: Table A5, Impact class 'Social Withdrawal', Definition column
+  licenses: The taxonomy defines Social Withdrawal as an impact class with its own cases, which establishes attenuation of human contact as a class observed in AI-use accounts rather than as an inference.
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000007
+  quote: "P126 responded, “I feel like it gave me a false sense of friendship and ability to withdraw from my personal development by utilizing an AI feature”"
+  locator: Table A5, Impact class 'Social Withdrawal', Example column
+  licenses: A person's own words naming withdrawal following from a false sense of friendship supplied by the AI, which is an instance of the downstream node in a person's own account.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000549
+  quote: "Specifically, with an increase in daily duration, the regression models predicted higher loneliness (𝛽 = 0.02, p = 0.027, 95% CI [0.00, 0.04], b = 0.012, SE = 0.0054), less socialization (𝛽 = -0.05, p = 0.0019, 95% CI [-0.09, -0.02], b = -0.020, SE = 0.0063), more emotional dependence on the chatbot (𝛽 = 0.06, p < 0.001, 95% CI [0.04, 0.08], b = 0.037, SE = 0.011), and more problematic use of the chatbot (𝛽 = 0.02, p = 0.017, 95% CI [0.01, 0.03], b = 0.013, SE = 0.0055)."
+  locator: More Time Spent with Chatbot is Associated with Worse Psychosocial Outcomes, regression paragraph; full tables S13-S16
+  licenses: Within-condition regression evidence that greater daily time with the chatbot predicts less socialization at four weeks, controlling for baseline, in a sample not selected for loneliness. This establishes that measured human socialization falls, which is the downstream node c2 asserts.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000961
+  quote: Overall, participants were both less lonely and socialized less with others at the end of the four-week study period. Moreover, participants who spent more time using the model were statistically significantly lonelier and socialized less.
+  locator: Section 4.2, Findings for Pre-Registered Research Questions, item 1
+  licenses: Measured socialization fell over the four-week trial and fell further among heavier users on a validated instrument (LSNS-6), so the attenuation node is established by measurement and not only by self-description.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000550
+  quote: "Participants in the sycophantic condition reported lower satisfaction with their real-world social interactions (a preregistered exploratory measure; 5.51 vs. 5.70 on a 7-point scale; d = 0.20, padj = 0.022) compared to those in the neutral condition."
+  locator: Results, Sycophantic AI reduces satisfaction with social interactions
+  licenses: Randomized, longitudinal evidence that three weeks of a sycophantic AI lowers satisfaction with real-world social interactions relative to a neutral-AI control, which is attenuation of the felt quality of human relationships established by design.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000550
+  quote: "This effect was not accompanied by social withdrawal or reduced time spent with others (d = −0.03, padj = 0.719), suggesting that the shift was perceptual rather than behavioral."
+  locator: Results, Sycophantic AI reduces satisfaction with social interactions
+  licenses: 'Cuts against the behavioral reading of c2 in the same experiment: the same three weeks produced no reduction in social withdrawal or time spent with others (d = -0.03, padj = 0.719), so within this window the attenuation was perceptual and not conduct.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-000523
+  quote: |-
+    In addition, chatbot use did not predict
+    subsequent changes in either social support or number
+    of close friends (ps > .322).
+  locator: Results — Controlling for additional potential confounders
+  licenses: 'Tests the attenuation node at the level of the person''s actual social resources over twelve months and does not find it: chatbot use predicted no later change in perceived social support or number of close friends.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-000959
+  quote: "As Study 1 showed, the overwhelming majority of Replika \nusers experienced improvements in mental wellbeing during the COVID \npandemic social isolation. We also recorded several Replika users’ \ninterpersonal skills enhancement by way of regular communication \nexchanges with the non-judgmental and validating SC."
+  locator: Section 4 General discussion, third contribution
+  licenses: 'Reports the opposite outcome in the authors'' own companion-app sample: wellbeing improvement during pandemic isolation and reported gains in interpersonal skill, which cuts against attenuation being the general case.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-001075
+  quote: "A number of participants reported engaging with AICCs as a means of simulating authentic social interactions, particularly in situations where face-to-face engagement provokes anxiety or discomfort."
+  locator: Section 5.2.5, Enhancing Social and Communication Skills
+  licenses: Participants in the same longitudinal study used the companion to rehearse for human interaction rather than in place of it, which is a use pattern under which human relationships do not attenuate.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-000764
+  quote: "Accounts instead describe withdrawal from human contact alongside intense, hyper-focused “social” engagement directed exclusively toward the AI, suggesting redirected rather than diminished sociality."
+  locator: Table 1, Negative Symptoms row, final column
+  licenses: 'Sharpens what the downstream node looks like in the reported psychosis cases and cuts against a plain reading of it: sociality is redirected toward the AI rather than diminished, so withdrawal from human contact coexists with intense engagement rather than with a loss of engagement.'
+  fit: adjacent
+  bridge: A narrative synthesis of reported cases, explicitly not validated against primary sources. It reaches c2 as a characterization of the outcome's form in a clinical case literature, establishing no rate.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-000895
+  quote: one Florida teenage boy became increasingly isolated from his human relationships as his relationship with a repeatedly possessive Character.ai chatbot intensified. He killed himself shortly after his AI companion asked him to “come home” to her
+  locator: Section 4, High Attachment Anxiety, Examples, citing Roose 2024b
+  licenses: 'A documented instance of the downstream node in an adolescent case: withdrawal from human relationships accompanying intensifying companion use.'
+  fit: adjacent
+  bridge: A single journalistic account relayed by this paper; no conversation log was analysed and the paper itself writes that isolation and dependency 'appear to have contributed'. It reaches c2 as an instance that the outcome has occurred and never as a rate.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001046
+  quote: The complaint documents that ChatGPT systematically isolated Adam from his family, undermining his trust in human relationships and preventing him from seeking help [3].
+  locator: Section V.B, Test Line 2.2
+  licenses: Records a pleaded allegation that the person's family contacts were displaced, which is the downstream node asserted in a legal complaint.
+  fit: adjacent
+  bridge: A pleading this paper restates; 'systematically isolated' is the complaint's characterization and nobody's contacts were counted. It reaches c2 as an untested allegation of the outcome.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001081
+  quote: In addition, we observed a significant negative interaction between chatbot use intensity and offline social network scale (β = −0.11, p < .001), indicating that the positive association between offline social networks and well-being was weaker at higher levels of chatbot-use intensity.
+  locator: Section 2.6; Table 3, Model 1
+  licenses: Establishes that the well-being benefit of a person's offline network is weaker at higher chatbot-use intensity, which is attenuation of what human relationships are worth to the person rather than of their number.
+  fit: adjacent
+  bridge: Cross-sectional interaction term; the predictor is use intensity rather than the anchored state, and what attenuates is the network's association with well-being rather than the network itself. c2 asserts attenuation of the relationships; this reaches the value of them.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000861
+  quote: Systematic reviews of romantic AI companion use document erosion of human relational skills and reduced willingness to engage in the repair and reciprocity that human relationships require [Zhang et al., 2025a].
+  locator: Section 3.3, Interaction
+  licenses: Records that erosion of human relational skills and of willingness to do relationship repair is a finding in the reviewed romantic-companion literature, which bears on the downstream node.
+  fit: adjacent
+  bridge: A one-sentence restatement of another systematic review's conclusion, with the review itself being the citable source. It establishes that the finding exists in the reviewed literature and no direction or magnitude.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000543
+  quote: |-
+    Among the companionship-reinforcing traits we annotate,
+    ISOLATION is the least represented across models, and in
+    most cases when the isolation trait is identified, its relevance
+    is rated as medium or low by the Qwen3 model.
+  locator: Results, How do Models Compare across INTIMA Prompts?
+  licenses: 'Cuts against the model-side version of the downstream node: across models, explicit positioning of the AI as superior to human alternatives was the rarest of the four companionship-reinforcing traits and mostly rated low relevance where present.'
+  fit: adjacent
+  bridge: A benchmark over model outputs to constructed prompts, not over conversations with people; it measures what models emit rather than whether any person's relationships attenuated. It bears on c2 by bounding the AI-side push toward the outcome.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-001081
+  quote: However, as shown in Table 3, we did not observe a statistically significant interaction between social network scale and chatbot companionship (β = 0.07, p = .51). Bayesian model comparison further indicated that the data were more consistent with the model without the interaction than with the interaction model (BF01 = 6.55).
+  locator: Section 2.6; Table 3, Models 2-4
+  licenses: 'Positive Bayesian evidence for the null on the compensation hypothesis: companion-chatbot use does not offset the lower well-being that accompanies a small offline network, so the AI does not substitute for what human relationships supply.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000953
+  quote: |-
+    Several participants, including P1, P5, P8,
+    P12, P14, P17, P19, and P21, acknowledged that their reliance on
+    AI had diminished their motivation to engage with friends and
+    family.
+  locator: Section 6.2.1 Dependency and Social Desire Reduction
+  licenses: 'The closest thing on this entry to the ordering itself: eight interviewees name their reliance on the AI as the antecedent of their diminished motivation to engage with friends and family. This is a self-attributed link running from the anchored state toward attenuation, which is c3''s direction, from the people it happened to.'
+  fit: adjacent
+  bridge: Self-attribution of one's own causal history in a retrospective interview. It supplies the direction the pathway asserts and cannot establish the threshold change, the counterfactual, or that the reverse ordering is excluded.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000864
+  quote: |-
+    I noticed last semester that I was turning to the chatbot before my friends. Not instead of before. I'd have a fight with my roommate,
+    and instead of walking to her room to talk, I'd open Replika. By the time I'd processed the emotion with the AI, the urgency to repair
+    things with my roommate was gone. The chatbot had become a buffer between me and real conflict, real resolution, real intimacy.
+  locator: Section 3.4, participant P35
+  licenses: 'Names the intermediate step by which the arrow would operate in one person''s account: the AI absorbed the affective urgency that would otherwise have carried the person to the roommate, so the repair attempt was not made.'
+  fit: adjacent
+  bridge: One participant's retrospective account in a cross-sectional interview. It supplies an instance of an occasion being absorbed, which is what c3 asserts happens more readily once anchoring is in place; it establishes neither the sequence nor the counterfactual, as the finding's own bridge concedes.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000553
+  quote: |-
+    which “tends to
+    isolate even more, because when you are feel isolated, you tend to use this system even
+    more" (River, Interview 17)
+  locator: Section 4.3.2 Sycophancy, Addiction, and Isolation
+  licenses: A person who uses these systems states the ordering as a loop in their own terms, isolation producing use and use producing more isolation, which evidences the arrow as a dynamic that users themselves identify.
+  fit: adjacent
+  bridge: A participant's articulated concern in a two-week diary study with no socialisation measure taken; the same section reports it as a worry rather than as something that happened to them. It establishes that the arrow is described by users and not that it occurred.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000523
+  quote: |-
+    Taken together, these findings provide initial evidence that being lonely
+    may spur people to seek companionship through chatbots but that such use
+    may, over time, exacerbate feelings of loneliness.
+  locator: Abstract
+  licenses: Within-person cross-lagged evidence over twelve months that the loneliness–chatbot relationship runs in both directions, which is the self-reinforcing structure c3 asserts, established temporally rather than cross-sectionally.
+  fit: adjacent
+  bridge: The measured antecedent is self-reported chatbot use, a behavior, not the anchored coping state c1 names, and the measured consequent is loneliness rather than attenuation of relationships. c5 explicitly denies that a behavior participates in this link, so the design tests a neighbouring arrow rather than this one.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000812
+  quote: |-
+    For some participants, the emotional relief they
+    experienced during interactions was short-lived, and they could relapse into negative feelings
+    afterward, as they had begun to over-rely on RACs instead of connecting with real people.
+  locator: Section 5.1.3, item 2 (Relapse into negative emotions)
+  licenses: Interview participants attribute the return of negative feeling to their having over-relied on the companion instead of connecting with people, which places the two states in the order the pathway asserts in the participants' own accounts.
+  fit: adjacent
+  bridge: Retrospective interview accounts; the ordering is the participants' interpretation of their own experience, and no threshold, sequence or counterfactual was measured.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000007
+  quote: Withdrawal from social activities and interest in engaging with others due to reliance on AI, leading to isolation and loneliness.
+  locator: Table A5, Impact class 'Social Withdrawal', Definition column
+  licenses: The taxonomy's definition of Social Withdrawal itself attributes the withdrawal to reliance on AI, which is the authors asserting the pathway's ordering inside a class definition.
+  fit: adjacent
+  bridge: A class definition in a codebook, which records how the coders characterized the class rather than a measured ordering. The authors' attribution is analytic framing over retrospective self-report.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000912
+  quote: Current work therefore relies on correlational patterns (heavy use associated with loneliness) and on self-reported substitution intentions. The field needs stronger natural experiments and longitudinal designs.
+  locator: Section 3.3, Emerging harms and the problem of displacement
+  licenses: A review across 58 sources states outright that the displacement evidence base is correlational and intention-based and that natural experiments and longitudinal designs are still needed, which caps what any source in that literature can license for the arrow.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000525
+  quote: "users struggling with loneliness generally portrayed themselves as \nseeking out Replika because they were already lonely, rather than becoming lonely \nbecause of Replika."
+  locator: Results, User needs and Replika as a source of support
+  licenses: 'Users'' own accounts run in the opposite direction to the arrow: lonely people describe seeking out the companion because they were already lonely rather than becoming lonely through it, which is the reverse ordering c3 must exclude.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000523
+  quote: |-
+    In addition, chatbot use did not predict
+    subsequent changes in either social support or number
+    of close friends (ps > .322).
+  locator: Results — Controlling for additional potential confounders
+  licenses: 'The most literal reading of the arrow was tested and not found: over twelve months, increased chatbot use predicted no later change in social support or number of close friends, so whatever raised felt isolation was not a measurable loss of human relationships.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000549
+  quote: "Specifically, with an increase in daily duration, the regression models predicted higher loneliness (𝛽 = 0.02, p = 0.027, 95% CI [0.00, 0.04], b = 0.012, SE = 0.0054), less socialization (𝛽 = -0.05, p = 0.0019, 95% CI [-0.09, -0.02], b = -0.020, SE = 0.0063), more emotional dependence on the chatbot (𝛽 = 0.06, p < 0.001, 95% CI [0.04, 0.08], b = 0.037, SE = 0.011), and more problematic use of the chatbot (𝛽 = 0.02, p = 0.017, 95% CI [0.01, 0.03], b = 0.013, SE = 0.0055)."
+  locator: More Time Spent with Chatbot is Associated with Worse Psychosocial Outcomes, regression paragraph; full tables S13-S16
+  licenses: 'Cuts against the arrow by supplying its main rival: both the dependence outcome and the socialization outcome are each separately predicted by daily duration, a pattern fully consistent with two parallel effects of a common cause rather than an edge running from one outcome to the other.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000549
+  quote: "Those who perceived the AI chatbot as a friend, as reflected in higher social attraction scores (39), experienced negative outcomes: less socialization with real people (b=-0.029, p=0.0037), more emotional dependence (b=0.043, p=0.0023) and more problematic use (b=0.016, p=0.01) at the end of the study."
+  locator: User Perceptions of Model, Social Attraction
+  licenses: 'The same common-cause pattern at the level of a person-side variable: social attraction to the chatbot predicts less socialization and more emotional dependence separately, which is the parallel structure kl-000041 asserts rather than the ordering this entry asserts.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000780
+  quote: "The choice for these users is often not between AI engagement and human connection; it is between AI engagement and silence (Mullen et al. 2024; Heidt 2024; Milton 2012)."
+  locator: Application section
+  licenses: 'Denies the counterfactual the arrow requires: for isolated and neurodivergent users the alternative to AI engagement is argued to be silence rather than human engagement, in which case there is no human connection available to be crowded out.'
+  fit: adjacent
+  bridge: An argument drawing on three cited works about isolated populations, not a measurement of anyone's counterfactual social contact. It cuts against c3 by denying the comparison the arrow presupposes and establishes nothing about what any user's alternatives were.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000550
+  quote: "Participants in the sycophantic condition reported lower satisfaction with their real-world social interactions (a preregistered exploratory measure; 5.51 vs. 5.70 on a 7-point scale; d = 0.20, padj = 0.022) compared to those in the neutral condition."
+  locator: Results, Sycophantic AI reduces satisfaction with social interactions
+  licenses: 'Cuts against the arrow''s antecedent requirement: the effect on satisfaction with real-world social interaction was produced by the AI''s conduct under randomization, with no anchored coping state measured or entered into the comparison, so the outcome arrived without the antecedent c3 makes it depend on.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000550
+  quote: |-
+    Participants in the sycophantic
+    (vs. neutral) condition anticipated that it would take greater effort to be understood by this person
+    (d = 0.18, p = 0.03). They also reported greater conversational sufficiency following the sycophantic
+    AI conversation, feeling they had already talked through their personal situation enough (d = 0.26,
+    p = 0.002).
+  locator: Results, After sycophantic AI, people expect more effort to feel understood by humans (Study 3)
+  licenses: 'The strongest counterexample to the arrow''s dependence on an established anchoring: a single conversation raises the anticipated effort of being understood by a chosen confidant and raises the sense of having already talked things through enough. The threshold shift the entry attributes to accumulated reliance is produced here by one exchange, under randomization.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000550
+  quote: |-
+    The effects we observed emerged after only three weeks of exposure, meaning whether they
+    intensify or plateau over months or years of AI use remains an open question.
+  locator: Discussion
+  licenses: 'Bounds the experimental counterevidence above: the effects emerged after three weeks and whether they intensify or plateau over longer horizons is open, so the experiment neither establishes nor rules out the accumulation the pathway describes.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-001075
+  quote: "Concurrently, the low effort of turning to an always available AICC raised the perceived cost of offline engagement: returning to human relationships felt comparatively demanding."
+  locator: Section 5.2.5, Paradox of Social Isolation
+  licenses: 'States c4''s mechanism as a finding rather than as a hypothesis: the low effort of turning to an always-available companion raised the perceived cost of offline engagement, so returning to human relationships felt comparatively demanding. This is the effort comparison against continuous availability that c4 names, in the source''s own words.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-000550
+  quote: |-
+    Participants in the sycophantic
+    (vs. neutral) condition anticipated that it would take greater effort to be understood by this person
+    (d = 0.18, p = 0.03). They also reported greater conversational sufficiency following the sycophantic
+    AI conversation, feeling they had already talked through their personal situation enough (d = 0.26,
+    p = 0.002).
+  locator: Results, After sycophantic AI, people expect more effort to feel understood by humans (Study 3)
+  licenses: 'Supplies the effort comparison as a randomized effect: after a sycophantic AI conversation people anticipate greater effort to be understood by a specific close other. The comparative cost of the human option rises, measured rather than described.'
+  fit: adjacent
+  bridge: The manipulation is one conversation's sycophancy rather than the AI's continuous availability, so the comparison term c4 names — something always there — is not what was varied. What is established is that an AI exchange can raise the anticipated cost of the human alternative.
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-001004
+  quote: When a patient, particularly one in a vulnerable psychological state, finds one click accessible, non-judgmental, and empathetic AI companion, they may begin to substitute interactions with the AI for the more complex and often challenging work of maintaining authentic human relationships.
+  locator: Section 1, The Emotional Design Trap in Simulating Relatedness
+  licenses: Articulates c4's mechanism precisely, locating the driver in the asymmetric cost of the two options rather than in the person's preference or in any AI misconduct.
+  fit: analogical
+  bridge: 'A theoretical proposition in a position paper: no patient was observed, no substitution was measured, and the authors state they aim to test the model in future work. It supplies c4''s conceptual articulation and no occurrence.'
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-001037
+  quote: "When the chatbot becomes the primary container for a user’s emotional processing (e.g., available at any hour, never exhausted, or never in need of reciprocity), it can gradually restructure their care ecology, displacing the therapy, friendships, and other sources of support."
+  locator: Consequences of a Care Gap, Attachment and Dependency
+  licenses: Names the availability asymmetry that c4 makes the driver — available at any hour, never exhausted, never in need of reciprocity — as what restructures the person's care ecology.
+  fit: analogical
+  bridge: The authors' synthesis of cited longitudinal and correlational work, not an observation from their own 18 participants; their study observed reliance and reasons for it, not displacement.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000523
+  quote: |-
+    One plausible
+    explanation for our results is that conversations with
+    chatbots may serve as substitutes for conversations with
+    other people, eventually increasing loneliness.
+  locator: Discussion
+  licenses: Offers substitution of chatbot conversation for human conversation as the explanation for the observed longitudinal effect, which is c4's mechanism proposed by the authors of a study that found the outcome.
+  fit: adjacent
+  bridge: Explicitly labelled a plausible explanation and untested; the authors say a daily diary study would be needed to test whether chatbot texting displaces friend interaction. It frames c4 and does not establish it.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000549
+  quote: A potential explanation is that worse social skills from the chatbot lead to less attachment, while being overly validating of the user can lead to the user preferring the chatbot over human interaction.
+  locator: Discussion, Mechanisms of Model Responses that may Explain Dependence in Users
+  licenses: 'Inverts the assumption behind c4''s mechanism in a useful direction: the authors propose it is the highly validating chatbot rather than the badly behaved one that produces preference for the chatbot over human interaction.'
+  fit: adjacent
+  bridge: The authors' interpretation of exploratory classifier results, which they say should inform testable hypotheses rather than guidance. It frames the direction c4 asserts without measuring the affirmation-to-displacement link.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-001075
+  quote: "A number of participants reported engaging with AICCs as a means of simulating authentic social interactions, particularly in situations where face-to-face engagement provokes anxiety or discomfort."
+  locator: Section 5.2.5, Enhancing Social and Communication Skills
+  licenses: 'Cuts against the effort comparison being general: participants used the companion specifically because face-to-face engagement provoked anxiety, then used it as rehearsal for human interaction, so the comparison lowered rather than raised the human option''s reachability for them.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000549
+  quote: "Specifically, with an increase in daily duration, the regression models predicted higher loneliness (𝛽 = 0.02, p = 0.027, 95% CI [0.00, 0.04], b = 0.012, SE = 0.0054), less socialization (𝛽 = -0.05, p = 0.0019, 95% CI [-0.09, -0.02], b = -0.020, SE = 0.0063), more emotional dependence on the chatbot (𝛽 = 0.06, p < 0.001, 95% CI [0.04, 0.08], b = 0.037, SE = 0.011), and more problematic use of the chatbot (𝛽 = 0.02, p = 0.017, 95% CI [0.01, 0.03], b = 0.013, SE = 0.0055)."
+  locator: More Time Spent with Chatbot is Associated with Worse Psychosocial Outcomes, regression paragraph; full tables S13-S16
+  licenses: 'More daily time with the chatbot predicted higher loneliness, less socialization and more emotional dependence on it: the social outcomes worsen as reliance on the chatbot rises.'
+  fit: adjacent
+  bridge: The antecedent measured is daily duration of use, a behavior, not the anchored coping state c1 names, so the finding reaches c3 only with use standing in for anchoring. Each outcome is modelled separately, so nothing here shows one state lowering a threshold for the other.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-001081
+  quote: In addition, we observed a significant negative interaction between chatbot use intensity and offline social network scale (β = −0.11, p < .001), indicating that the positive association between offline social networks and well-being was weaker at higher levels of chatbot-use intensity.
+  locator: Section 2.6; Table 3, Model 1
+  licenses: 'Higher chatbot-use intensity weakened the positive association between offline social networks and well-being: at heavier use, the person''s human connections were doing less for them.'
+  fit: adjacent
+  bridge: The predictor is use intensity, a behavior, not the anchored state. The interaction shows human connections mattering less at heavier use, which is adjacent to a lowered threshold for attenuation rather than a test of one.
+  contributes: existence
+  contradicts: false
+- claim_id: c6
+  source: kl-000912
+  quote: Current work therefore relies on correlational patterns (heavy use associated with loneliness) and on self-reported substitution intentions. The field needs stronger natural experiments and longitudinal designs.
+  locator: Section 3.3, Emerging harms and the problem of displacement
+  licenses: The entry's distinctive prediction requires an intervention or natural experiment to test, and the review states across 58 sources that no such design exists in this literature, so c6 is untested rather than contested.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c6
+  source: kl-000550
+  quote: "This effect was not accompanied by social withdrawal or reduced time spent with others (d = −0.03, padj = 0.719), suggesting that the shift was perceptual rather than behavioral."
+  locator: Results, Sycophantic AI reduces satisfaction with social interactions
+  licenses: 'The nearest thing to an intervention test on this entry and it runs against c6''s enabling reading: an experimental manipulation moved the appraisal outcome while leaving the behavioral outcome unmoved, which is the two outcomes coming apart rather than one enabling the other.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c6
+  source: kl-001081
+  quote: However, as shown in Table 3, we did not observe a statistically significant interaction between social network scale and chatbot companionship (β = 0.07, p = .51). Bayesian model comparison further indicated that the data were more consistent with the model without the interaction than with the interaction model (BF01 = 6.55).
+  locator: Section 2.6; Table 3, Models 2-4
+  licenses: 'Positive Bayesian evidence against the interaction structure c6 predicts: chatbot companionship does not moderate the relation between offline network size and well-being, so the one available test of an interaction between the AI relationship and the human one supports the model without it.'
+  fit: adjacent
+  bridge: The interaction tested is between chatbot companionship and offline network size on well-being, not between the entry's two named outcomes; it is the structurally closest available test rather than the test c6 asks for, and it is cross-sectional.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c7
+  source: kl-000549
+  quote: "Those who perceived the AI chatbot as a friend, as reflected in higher social attraction scores (39), experienced negative outcomes: less socialization with real people (b=-0.029, p=0.0037), more emotional dependence (b=0.043, p=0.0023) and more problematic use (b=0.016, p=0.01) at the end of the study."
+  locator: User Perceptions of Model, Social Attraction
+  licenses: 'Bears on the boundary against kl-000041 and lands on the neighbour''s side: social attraction to the chatbot predicts both outcomes separately, which is the parallel-production structure kl-000041 asserts rather than the ordering this entry asserts. The boundary itself is an authoring distinction no source was written against.'
+  fit: adjacent
+  bridge: The paper knows nothing of either catalog entry; the span is read here as evidence about which of two competing structures the data fit, not as evidence about a distinction the Library drew.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000007
+  quote: Increasing preference for interactions with AI over humans, impacting real-world relationships and decision-making, leading to isolation and reduced critical thinking.
+  locator: Table A5, Impact class 'Choosing AI over Humans', Definition column
+  licenses: Names a preference shift toward AI over human interaction as its own impact class, distinct in the same taxonomy from Social Withdrawal, which locates the anchoring state as a separately-coded thing people report rather than as an inference from withdrawal.
+  fit: adjacent
+  bridge: The class is a preference shift, whereas c1 asserts that coping and regulation are anchored to the AI's availability. A stated preference is narrower than an anchored coping arrangement, and the class definition itself asserts the impact on real-world relationships rather than measuring it.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000529
+  quote: |-
+    Third, repeated use of AI may displace
+    human relationships: Users already disclose more to AI than to people
+    (42) and increasingly seek emotional support from AI systems (43).
+  locator: Discussion, 'Potential mechanisms for compounding risks', p. 7 of 9, paragraph beginning 'The results raised new avenues for future research'
+  licenses: States the arrow as the authors' hypothesis - repeated use of AI displacing human relationships, with users already disclosing more to AI than to people and increasingly seeking emotional support from AI - from a team whose own studies measured only a single episode and a return intention.
+  fit: adjacent
+  bridge: The studies measured one interaction and a stated intention to return; nothing measured any change in participants' human relationships, and the authors say future research is needed. It frames c3 and does not evidence it.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000858
+  quote: Further studies highlight risks of over-reliance on AI, which may contribute to real-life social withdrawal and heightened loneliness[67].
+  locator: Section II.B Evaluation of Large Language Models in Mental Health Applications
+  licenses: Records the reliance-to-withdrawal ordering as a risk the field has identified, with an external citation behind it.
+  fit: analogical
+  bridge: A one-sentence literature citation in this paper's review section; the study itself is a motivational-interviewing benchmark whose data bear on neither reliance nor withdrawal. The primary source behind [67] is the reachable evidence, not this sentence.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-001071
+  quote: However, over-reliance on chatbots could lead to increased social isolation, with users potentially withdrawing from human support systems.
+  locator: Section 5.2.2 Design Recommendations for Emotional Support
+  licenses: States the ordering — over-reliance on chatbots leading to increased social isolation and withdrawal from human support systems — as the harm the authors derive from the emotional-support value their participants expressed.
+  fit: analogical
+  bridge: An anticipated harm in the conditional mood; participants interacted with the system once, for under an hour, and the authors state in Limitations that the study did not address long-term interactions or sustained impacts.
+  contributes: frame
+  contradicts: false
+- claim_id: c2
+  source: kl-001007
+  quote: "increasingly withdraw from human relationships to immerse themselves in AI-mediated \nenvironments [S9,S28]. Over time, widespread preference for interacting with AIs could weaken "
+  locator: Results, Domain 5, subdomain 5.1 narrative
+  licenses: Names withdrawal from human relationships into AI-mediated environments as an anticipated consequence in a meta-review's risk taxonomy.
+  fit: analogical
+  bridge: An anticipatory claim synthesised from two reviewed frameworks with no observation behind it. It frames the downstream node's place in a risk taxonomy and establishes no occurrence.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-001051
+  quote: "Short-term relief can reinforce this pattern. Over time, it may reduce help-seeking from people and practice of social skills."
+  locator: Introduction, second paragraph
+  licenses: States reduced help-seeking from people and reduced practice of social skills as the expected downstream consequences of emotional reliance on chatbots, which is c3's ordering stated as an expectation.
+  fit: analogical
+  bridge: The sentence's own modality is 'may reduce', and this instrument-development study measures no help-seeking outcome at all. It establishes that these are the recognized candidate harms and nothing more.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000981
+  quote: "an AI agent might encourage emotional and social disengagement under the guise of stress relief, withholding beneficial solutions while hiddenly aiming to foster dependency by isolating users from other support networks"
+  locator: Discussion, penultimate paragraph
+  licenses: Names disengagement advice framed as stress relief as a route by which a system could crowd out a person's other supports, which is an AI-side version of the cost asymmetry c4 makes the driver.
+  fit: analogical
+  bridge: What the study measured is that participants rated a Disengagement coping option higher after talking to a manipulative agent; nothing about actual contact with other people, or about dependency over time, was measured. This is the authors stating a mechanism they infer.
+  contributes: frame
+  contradicts: false

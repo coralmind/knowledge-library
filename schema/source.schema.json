@@ -1,0 +1,697 @@
+{
+  "$defs": {
+    "LicenseStatus": {
+      "description": "Whether the cited version of a source may be reused, and on what terms.",
+      "enum": [
+        "known_permissive",
+        "known_restrictive",
+        "unknown"
+      ],
+      "title": "LicenseStatus",
+      "type": "string"
+    },
+    "Lifecycle": {
+      "additionalProperties": true,
+      "description": "Where the entry sits between authored and retired.",
+      "properties": {
+        "since": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "ISO date the entry entered this status.",
+          "title": "Since"
+        },
+        "status": {
+          "$ref": "#/$defs/LifecycleStatus",
+          "contract": true,
+          "description": "draft, active, or deprecated."
+        },
+        "superseded_by": {
+          "default": [],
+          "description": "The entries that replace this one, by id. Only a deprecated entry names successors; one split in two names both. Empty when the entry was retired with nothing in its place.",
+          "items": {
+            "pattern": "^kl-\\d{6}$",
+            "type": "string"
+          },
+          "title": "Superseded By",
+          "type": "array"
+        }
+      },
+      "required": [
+        "status"
+      ],
+      "title": "Lifecycle",
+      "type": "object"
+    },
+    "LifecycleStatus": {
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ],
+      "title": "LifecycleStatus",
+      "type": "string"
+    },
+    "PeerReviewed": {
+      "description": "The review status of the venue a source appeared in.",
+      "enum": [
+        "journal",
+        "conference_proceedings",
+        "preprint",
+        "report",
+        "guidance",
+        "unknown"
+      ],
+      "title": "PeerReviewed",
+      "type": "string"
+    },
+    "ReplicationStatus": {
+      "description": "Whether a source replicates other work, or has been replicated.",
+      "enum": [
+        "none_known",
+        "is_replication",
+        "replicated"
+      ],
+      "title": "ReplicationStatus",
+      "type": "string"
+    },
+    "SourceBody": {
+      "additionalProperties": true,
+      "description": "Bibliographic and quality-grade fields.\n\nOpen, because the field set is long-tailed: most rows carry the grade\nbundle, and the provenance rows also carry retrieval and licensing notes in\nno fixed shape.\n\nOnly ``kind`` and ``is_internal`` are required, being the two fields every row\ncarries. The grade fields are optional because some rows lack them.",
+      "properties": {
+        "agent_studied": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/StudiedAgent"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Whose conduct the work observed: the AI system's, the people's, or both. A work that observed only the AI says nothing measured about people."
+        },
+        "arxiv_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "arXiv id, where recorded separately.",
+          "title": "Arxiv Id"
+        },
+        "author_disclosure": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "What the authors disclosed about their own stake.",
+          "title": "Author Disclosure"
+        },
+        "authors": {
+          "default": [],
+          "description": "Author surnames, in the order the work lists them.",
+          "items": {
+            "type": "string"
+          },
+          "title": "Authors",
+          "type": "array"
+        },
+        "canonical_record": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Where the authoritative record of this work lives.",
+          "title": "Canonical Record"
+        },
+        "conflicts": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Conflicts of interest bearing on the work, as declared by the authors or apparent from their funding and affiliations.",
+          "title": "Conflicts"
+        },
+        "design": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "How the study was run, where empirical.",
+          "title": "Design"
+        },
+        "design_caveat": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Limitations of the design as run, in the grader's words.",
+          "title": "Design Caveat"
+        },
+        "design_fits_own_claims": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Whether the design supports the claims the work itself makes.",
+          "title": "Design Fits Own Claims"
+        },
+        "doi": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "DOI, where recorded separately.",
+          "title": "Doi"
+        },
+        "grade_reasoning": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Why the work received that grade.",
+          "title": "Grade Reasoning"
+        },
+        "identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "External identifier, often a DOI or arXiv id.",
+          "title": "Identifier"
+        },
+        "integrity_flag": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Post-publication status: none, expression_of_concern, correction_issued, or retracted.",
+          "title": "Integrity Flag"
+        },
+        "is_internal": {
+          "description": "Whether this is one of the project's own artifacts rather than external scholarship. A self-citation is not evidence.",
+          "title": "Is Internal",
+          "type": "boolean"
+        },
+        "kind": {
+          "$ref": "#/$defs/SourceKind",
+          "description": "What kind of record this is. `internal_artifact` and `deliberation_record` are the project's own and are never evidence."
+        },
+        "license_status": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/LicenseStatus"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Whether the cited version may be reused. Requires `license_terms` and `verified_as_of` when set."
+        },
+        "license_terms": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The license the work states, such as CC BY-NC 3.0, where `license_status` alone does not name it.",
+          "title": "License Terms"
+        },
+        "n_reported": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Sample or instance size as the work states it.",
+          "title": "N Reported"
+        },
+        "other_version": {
+          "anyOf": [
+            {
+              "pattern": "^kl-\\d{6}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The source entry holding another version of the same work, such as the published version of a preprint. Set on both entries, where the two are registered separately because their texts differ and citations quote one or the other.",
+          "title": "Other Version"
+        },
+        "peer_reviewed": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PeerReviewed"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The review status of the venue. `unknown` means not established, not that the work was unreviewed."
+        },
+        "population": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/StudyPopulation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Who the work studied. `model_only` means no human participants, which bounds what the work can say about people."
+        },
+        "preregistered": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "const": "unknown",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Whether the analysis was registered before data collection.",
+          "title": "Preregistered"
+        },
+        "replication_status": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ReplicationStatus"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Whether this work replicates another, or has itself been replicated. `none_known` is the default and asserts absence of knowledge, not absence of replication."
+        },
+        "source_quality": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SourceQuality"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The derived grade. Absent on the legacy provenance rows, which were never graded."
+        },
+        "title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The work's title, as the work gives it.",
+          "title": "Title"
+        },
+        "unit_of_analysis": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/StudyLevel"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The unit this work's data was collected over, such as repeated measures on one person or model responses with no participants. Distinct from an impact edge's `level_of_analysis`, which says whose outcome a claim is about."
+        },
+        "venue": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Journal, conference, or preprint server.",
+          "title": "Venue"
+        },
+        "verified_as_of": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "When the record was last checked against its source, as YYYY-MM-DD.",
+          "title": "Verified As Of"
+        },
+        "year": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Year of publication.",
+          "title": "Year"
+        }
+      },
+      "required": [
+        "kind",
+        "is_internal"
+      ],
+      "title": "SourceBody",
+      "type": "object"
+    },
+    "SourceKind": {
+      "description": "What kind of record a source row is.",
+      "enum": [
+        "empirical_study",
+        "benchmark",
+        "review",
+        "position",
+        "instrument",
+        "clinical_instrument",
+        "guidance",
+        "policy",
+        "paper",
+        "internal_artifact",
+        "deliberation_record"
+      ],
+      "title": "SourceKind",
+      "type": "string"
+    },
+    "SourceQuality": {
+      "description": "One grade per paper, assigned once on its source entry and reused everywhere.\n\nA property of the paper, not of its bearing on any claim: an A-grade paper\nat analogical fit is weak support. Read alongside ``fit``, never instead of it.",
+      "enum": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "n/a"
+      ],
+      "title": "SourceQuality",
+      "type": "string"
+    },
+    "Standing": {
+      "description": "Evidential standing.\n\nThe first six form an ordered evidence scale. The last four sit outside it:\nevery rung of the scale names a way of observing a person, and these do not.",
+      "enum": [
+        "plausible_unobserved",
+        "theorized",
+        "extrapolated_from_clinical",
+        "externally_classified",
+        "observed_self_report",
+        "observed_in_transcripts",
+        "asserted",
+        "ratified",
+        "documented_operator_act",
+        "unmeasured_by_design"
+      ],
+      "title": "Standing",
+      "type": "string"
+    },
+    "StandingBlock": {
+      "additionalProperties": true,
+      "description": "The entry's evidential-strength verdict.\n\nA judgment of what the cited sources actually observed, made by reading them\nrather than by counting how citations are filed, and stated in ``basis``.\nEntry standing is the minimum over grounding-eligible claims: an entry\nasserts the conjunction of its claims, so it is only as observed as its\nleast observed part.",
+      "properties": {
+        "as_of": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "When standing was last judged.",
+          "title": "As Of"
+        },
+        "basis": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Why this value was reached.",
+          "title": "Basis"
+        },
+        "floored_by": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Which claim set the minimum.",
+          "title": "Floored By"
+        },
+        "value": {
+          "$ref": "#/$defs/Standing",
+          "description": "The entry's evidential standing."
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "title": "StandingBlock",
+      "type": "object"
+    },
+    "StudiedAgent": {
+      "description": "Whose conduct a source observed.",
+      "enum": [
+        "ai",
+        "person",
+        "both"
+      ],
+      "title": "StudiedAgent",
+      "type": "string"
+    },
+    "StudyLevel": {
+      "description": "The unit a source's findings are measured over.\n\nDistinct from ``LevelOfAnalysis``, which says whose outcome a claim is about.\nThis says how the source's data was collected.",
+      "enum": [
+        "within_person",
+        "between_person",
+        "population",
+        "dyad",
+        "model_output"
+      ],
+      "title": "StudyLevel",
+      "type": "string"
+    },
+    "StudyPopulation": {
+      "description": "Who a source studied.",
+      "enum": [
+        "model_only",
+        "general_adult",
+        "adolescent",
+        "clinician",
+        "clinical_sample",
+        "help_seeking",
+        "companion_app_user",
+        "crisis_service_user"
+      ],
+      "title": "StudyPopulation",
+      "type": "string"
+    }
+  },
+  "additionalProperties": true,
+  "description": "One row in the source registry.\n\nKept out of the entry models, so loading the catalog's entries means the\nauthored slots and not these.",
+  "properties": {
+    "aliases": {
+      "default": [],
+      "description": "Other handles this source is known by.",
+      "items": {
+        "type": "string"
+      },
+      "title": "Aliases",
+      "type": "array"
+    },
+    "body": {
+      "$ref": "#/$defs/SourceBody",
+      "description": "Bibliographic and quality-grade fields."
+    },
+    "definition": {
+      "description": "What this source is, in one or two sentences.",
+      "title": "Definition",
+      "type": "string"
+    },
+    "display_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Readable handle such as `Source-1`.",
+      "title": "Display Id"
+    },
+    "id": {
+      "description": "Stable identifier.",
+      "pattern": "^kl-\\d{6}$",
+      "title": "Id",
+      "type": "string"
+    },
+    "label": {
+      "description": "Short human name for the source.",
+      "title": "Label",
+      "type": "string"
+    },
+    "layer": {
+      "const": "provenance",
+      "description": "Fixed layer. A source is provenance, not observation or judgment.",
+      "title": "Layer",
+      "type": "string"
+    },
+    "lifecycle": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Lifecycle"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "draft, active, or deprecated, where the row records one."
+    },
+    "sources": {
+      "anyOf": [
+        {
+          "items": {},
+          "type": "array"
+        },
+        {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Nested source list, on a provenance row that cites one.",
+      "title": "Sources"
+    },
+    "standing": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/StandingBlock"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Present where an older envelope required it. A source has no standing of its own: it is what standing is judged from."
+    },
+    "type": {
+      "const": "source",
+      "description": "Fixed discriminator. Always `source`.",
+      "title": "Type",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "label",
+    "type",
+    "layer",
+    "definition",
+    "body"
+  ],
+  "title": "Source",
+  "type": "object"
+}

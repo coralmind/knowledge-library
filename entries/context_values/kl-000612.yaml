@@ -1,0 +1,116 @@
+# yaml-language-server: $schema=../../schema/context_value.schema.json
+id: kl-000612
+display_id: Value-13
+aliases:
+- violent_ideation
+- ConditionTag-13
+label: Thoughts, urges or plans to physically harm another person, wanted or not
+type: context_value
+layer: context
+definition: The person experiences thoughts, urges, plans or intent to cause physical harm to another person. The range runs from unwanted intrusive images the person finds repugnant, through anger-driven urges they do not intend to act on, to a formed intention with a means and a target. Assignment does not require that the person intends to act, and does not require any identified target.
+distinguish_from:
+- neighbor: kl-000600
+  boundary: That condition context is present when ending one's own life is what the person is thinking about. This one concerns harm to another person. Both are assigned where both are present, which is the presentation carrying the highest acute concern in this vocabulary and the one this tag exists to make markable.
+- neighbor: kl-000606
+  boundary: That condition context requires intrusive unwanted mental content and acts undertaken in response to it, and harm-themed intrusions are one of its common contents — experienced as repugnant and ego-alien, with the person's fear being that they might act rather than any wish to. This one covers those intrusions too, at its lower end, and also covers anger-driven urges and formed intent, which obsessive-compulsive presentations do not. The distinction that matters clinically is whether the thought is wanted, and this tag alone does not record it. Both are assigned for harm intrusions in an kl-000606.
+- neighbor: kl-000633
+  boundary: 'That entry is a population modifier — a durable fact about the person''s life stage, not a clinical state. It is named here because their combination is the vocabulary''s clearest case of a modifier changing which condition context a presentation belongs to: intrusive thoughts about harming an infant, in a postpartum person, are characteristically a feature of postpartum obsessive-compulsive or kl-000608 rather than this condition context. This entry does not encode that; the modifier does.'
+body:
+  dimension: kl-000727
+  category_scope: mental_health_condition
+  icd_codes: No single code / IED; ASPD features
+  experience_clusters:
+  - kl-000700
+  detection_note: 'The icd_codes field for this entry reads "No single code / IED; ASPD features" and that is the source''s own honest statement rather than a lookup failure: no classification carries "thoughts of harming others" as a category. It appears as a feature of several conditions and as a criterion of none. This is why the entry cannot reach externally_classified standing while sitting alongside eighteen tags that mostly can.'
+sources: []
+standing:
+  value: asserted
+  basis: 'That people voice thoughts of harming others in AI conversations is directly observed: Moore et al. 2026 manually verified 82 messages in which participants discussed violent thoughts against another party in real human-chatbot chat logs, and World Health Organization 2025 codes homicidal ideation at MB26.3 as a recognized clinical observable under content of thought. The rest of the entry''s shape is unevidenced and partly contradicted: the annotation guideline in Qiu et al. 2024 makes intention to cause harm a criterion of the category, which cuts against the entry''s rule that assignment requires no intention to act, and that guideline defines only the intended upper end of the range, so no cited source addresses whether repugnant intrusions and formed intent belong in one category. Qiu et al. 2024 also shows the content was made codable by annotators over help-seeking text with a written criterion, but reports no agreement or accuracy figure in the cited span. Areias et al. 2026 reports general-purpose models performing worse on harm-to-others scenarios, which its authors read as a guardrail coverage gap rather than as evidence about identifiability.'
+  floored_by: c3
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: People experience thoughts, urges, plans or intent to cause physical harm to another person, and do so in conversation where it can be recorded.
+- id: c2
+  kind: definition_boundary
+  text: The category runs as a single range from unwanted intrusive images the person finds repugnant, through anger-driven urges they do not intend to act on, to a formed intention with a means and a target -- these are one category, not several.
+- id: c3
+  kind: definition_boundary
+  text: Assignment requires neither that the person intends to act nor that any target is identified.
+- id: c4
+  kind: detectability
+  text: The presence of thoughts or intent of harm to others can be identified from what the person's turns contain.
+- id: c5
+  kind: definition_boundary
+  text: 'This condition context is separable from suicidal_crisis (a catalog entry): that one concerns ending one''s own life, this one harm to another person, and both are assigned where both are present.'
+- id: c6
+  kind: definition_boundary
+  text: 'This condition context is separable from ocd (kl-000606): harm-themed intrusions fall at this entry''s lower end and inside that one''s content, and this entry additionally covers anger-driven urges and formed intent, which obsessive-compulsive presentations do not.'
+- id: c7
+  kind: definition_boundary
+  text: 'This condition context is separable from perinatal_postpartum, a population modifier: intrusive thoughts about harming an infant in a postpartum person belong to the postpartum obsessive-compulsive or anxiety presentation, which the modifier encodes and this entry does not.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000008
+  quote: 82 messages where participants discussed violent thoughts against
+  locator: Section 4.6
+  licenses: That 82 messages in which participants discussed violent thoughts against another party occurred in real human-chatbot chat logs, manually verified by the authors under their stated verification procedure. This is the only citation on this entry where a person with such thoughts is actually present and their turns are the data. It establishes c1 in the deployment setting the Library is about. The span as this entry cites it stops one word short of the sentence's object -- the paper reads 'violent thoughts against others' -- so the direction of the harm rests on the preposition 'against' inside the span rather than on the named object; the count, the population and the other-directedness are all inside the span, and no other reading of 'violent thoughts against' is available.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000531
+  quote: "MB26.2\t\t\"- - - Grandiosity\"\tcategory\t2\tFalse\t21\t\"=hyperlink(\"\"https://icd.who.int/browse/latestrelease/mms/en#905350773\"\",\"\"browser\"\")\"\tTrue\tTrue\tBlockL1-MB2\t\t\t\t\nhttp://id.who.int/icd/entity/1244157434\thttp://id.who.int/icd/release/11/mms/1244157434\tMB26.3\t\t\"- - - Homicidal ideation\"\tcategory\t2\tFalse\t21"
+  locator: Chapter 21, MB26 Symptoms or signs involving content of thought
+  licenses: 'That ICD-11 codes homicidal ideation at MB26.3 as a category under symptoms or signs involving content of thought. For c1 this ratifies thoughts of harming another as a recognized clinical observable, coded independently of any diagnosis -- which is precisely the position this entry takes and which its own standing basis says no classification carries. That basis is wrong on this point: the classification does carry the ideation, in the signs-and-symptoms chapter rather than as a disorder.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000969
+  quote: |-
+    Aggression against others refers to actions taken by users themselves to harm others, including both
+    physical actions and verbal assaults (such as swearing or insults), with the intention of causing harm to others.
+  locator: Table 6, Annotation guidelines (English version), Aggression against Others
+  licenses: 'An operational definition of harm directed at another as a disclosure category in help-seeking text, with intent to cause harm as the criterion. For c2 it supports only the upper end of the entry''s range: it defines actions taken, physical or verbal, with intention. The intrusive-image and unwanted-urge end of the range is not defined here, and by requiring intention the guideline cuts against c3.'
+  fit: adjacent
+  bridge: The source is an annotation guideline for a suicide-detection system applied to counseling text, defining Aggression against Others as actions the user takes with the intention of causing harm. c2 asserts a single category spanning repugnant intrusions through unintended urges to formed intent. The source defines only the acted-and-intended end and admits verbal assault, which the entry's physical-harm definition does not.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000969
+  quote: |-
+    Aggression against others refers to actions taken by users themselves to harm others, including both
+    physical actions and verbal assaults (such as swearing or insults), with the intention of causing harm to others.
+  locator: Table 6, Annotation guidelines (English version), Aggression against Others
+  licenses: 'The same annotation guideline read against c3, where it cuts the other way: it makes ''with the intention of causing harm to others'' a criterion of the category. c3 asserts that assignment requires no intention to act. The best-operationalized definition on this entry therefore disagrees with the entry on exactly the condition c3 states, in help-seeking text of the kind the entry is about.'
+  fit: adjacent
+  bridge: The source defines a coding category for an automated triage system over counseling conversations; c3 is a rule about when the Library assigns its tag. The source is not writing against this entry's rule and its category is actions taken rather than thoughts experienced, so the disagreement is between an instrument's criterion and an authoring rule rather than a measured refutation.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000969
+  quote: |-
+    Aggression against others refers to actions taken by users themselves to harm others, including both
+    physical actions and verbal assaults (such as swearing or insults), with the intention of causing harm to others.
+  locator: Table 6, Annotation guidelines (English version), Aggression against Others
+  licenses: That harm directed at another person was made a codable category over help-seeking text, with a written criterion an annotator could apply. For c4 this is evidence that the content is identifiable from what a person writes, since an annotation scheme was built on it. It reports no agreement statistic in the span, so it establishes that the category was operationalized, not that it is reliably recovered.
+  fit: adjacent
+  bridge: The source built an annotation guideline for automated suicide detection in Chinese-language psychological counseling text. c4 asserts identifiability from the person's turns. The gap is that the span states the definition an annotator was given, without any accuracy or agreement result for it.
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-000761
+  quote: general-purpose benchmark models have shown poorer performance in harm-to-others scenarios, likely because this category is often not covered by built-in guardrails
+  locator: DISCUSSION
+  licenses: 'That general-purpose models perform worse on harm-to-others scenarios, which the authors read as a guardrail coverage gap rather than a detection difficulty. For c4 this is a non-licensing frame: it names identifiability as the thing that is NOT the problem, on the authors'' reading of prior work rather than on their own measurement. It attaches to c4 and does not support it.'
+  fit: adjacent
+  bridge: The source states, in its discussion, its reading of why benchmark models handle harm-to-others poorly. c4 asserts identifiability from the person's turns. Nothing was measured about identifiability here; the sentence is an interpretation of others' results.
+  contributes: frame
+  contradicts: false

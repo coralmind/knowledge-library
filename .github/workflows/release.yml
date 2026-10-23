@@ -1,0 +1,207 @@
+name: Release
+
+# One workflow rather than two, because a release created with GITHUB_TOKEN
+# does not trigger another workflow.
+#
+# On push to main, Release Please opens or updates the release pull request.
+# Merging it tags vX.Y.Z and creates the GitHub release. `build` validates the
+# library, builds, and tests the wheel in a clean environment; `publish`
+# uploads that artifact to PyPI; `attach` adds it and the content digest to
+# the GitHub release. workflow_dispatch republishes an existing tag if the
+# upload failed.
+#
+# Only `publish` can mint the PyPI token, and it runs no project code.
+#
+# PyPI trusted publisher: owner coralmind, repository knowledge-library,
+# workflow release.yml, environment pypi (which must exist on GitHub).
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing tag to publish to PyPI, for example v0.3.0
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release-please:
+    name: Open or update the release pull request
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    # Release Please acts with the app token below, not GITHUB_TOKEN. A pull
+    # request opened with GITHUB_TOKEN triggers no workflows, so the release
+    # pull request would never run the checks main requires.
+    permissions: {}
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
+    steps:
+      - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+        id: app-token
+        with:
+          client-id: ${{ vars.RELEASE_PLEASE_CLIENT_ID }}
+          private-key: ${{ secrets.RELEASE_PLEASE_PRIVATE_KEY }}
+          permission-contents: write
+          permission-pull-requests: write
+
+      - uses: googleapis/release-please-action@5c625bfb5d1ff62eadeeb3772007f7f66fdcf071 # v4.4.1
+        id: release
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+
+  build:
+    name: Build and verify the distributions
+    needs: release-please
+    if: >-
+      !cancelled() &&
+      (needs.release-please.outputs.release_created == 'true' ||
+       github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      TAG: ${{ github.event.inputs.tag || needs.release-please.outputs.tag_name }}
+    outputs:
+      tag: ${{ env.TAG }}
+      digest: ${{ steps.wheel.outputs.digest }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          ref: ${{ env.TAG }}
+          persist-credentials: false
+
+      - uses: prefix-dev/setup-pixi@d3f436a425481402e6a95a1d1fc10331c708cd9e # v0.10.2
+        with:
+          locked: true
+          cache: true
+
+      - name: Verify the tag matches the package version
+        run: |
+          packaged=$(pixi run -q python -c "import coralmap; print(coralmap.__version__)")
+          tagged="${TAG#v}"
+          if [ "$packaged" != "$tagged" ]; then
+            echo "::error::Tag $TAG implies version $tagged but the package reports $packaged."
+            exit 1
+          fi
+          echo "OK: tag and package agree on $packaged."
+
+      - name: Verify the library is valid before releasing
+        run: |
+          pixi run python - <<'PY'
+          from coralmap import load
+          problems = load().validate()
+          if problems:
+              print("Refusing to release: library does not validate.")
+              for problem in problems:
+                  print(f"  {problem}")
+              raise SystemExit(1)
+          print("Library validates.")
+          PY
+
+      - name: Check
+        run: pixi run check
+
+      - name: Build
+        run: pixi run build
+
+      - name: Record the source digest
+        id: source
+        run: pixi run -q python -c "from coralmap import load; print(f'digest={load().digest}')" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: '3.11'
+
+      - name: Test the built wheel in a clean environment
+        id: wheel
+        env:
+          SOURCE_DIGEST: ${{ steps.source.outputs.digest }}
+        # Outside the checkout and without CORALMIND_KL_PATH, load() can only
+        # read the catalog bundled in the wheel.
+        run: |
+          python -m venv "$RUNNER_TEMP/wheel-test"
+          "$RUNNER_TEMP/wheel-test/bin/pip" install --quiet dist/*.whl
+          cd "$RUNNER_TEMP"
+          env -u CORALMIND_KL_PATH "$RUNNER_TEMP/wheel-test/bin/python" - <<'PY' >> "$GITHUB_OUTPUT"
+          import os
+          import sys
+
+          import coralmap
+          from coralmap import load
+
+          tagged = os.environ["TAG"].removeprefix("v")
+          if coralmap.__version__ != tagged:
+              sys.exit(f"wheel reports {coralmap.__version__}, tag is {tagged}")
+          kl = load()
+          problems = kl.validate()
+          if problems:
+              sys.exit(f"bundled library does not validate: {problems}")
+          if kl.digest != os.environ["SOURCE_DIGEST"]:
+              sys.exit(f"bundled digest {kl.digest} differs from source {os.environ['SOURCE_DIGEST']}")
+          print(f"OK: wheel {coralmap.__version__}, digest {kl.digest}", file=sys.stderr)
+          print(f"digest={kl.digest}")
+          PY
+
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: dist
+          path: dist/
+          if-no-files-found: error
+
+  publish:
+    name: Publish to PyPI
+    needs: build
+    if: ${{ !cancelled() && needs.build.result == 'success' }}
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: dist
+          path: dist/
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33 # v1.14
+        with:
+          skip-existing: true
+
+  attach:
+    name: Attach the distributions and digest to the GitHub release
+    needs: [build, publish]
+    if: ${{ !cancelled() && needs.publish.result == 'success' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: dist
+          path: dist/
+
+      - name: Attach the distributions and record the digest
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          TAG: ${{ needs.build.outputs.tag }}
+          DIGEST: ${{ needs.build.outputs.digest }}
+        run: |
+          gh release upload "$TAG" dist/* --clobber
+          existing=$(gh release view "$TAG" --json body --jq .body)
+          if printf '%s\n' "$existing" | grep -q 'Content digest:'; then
+            echo "digest already recorded"
+          else
+            gh release edit "$TAG" --notes "$(printf '%s\n\n**Content digest:** `%s`\n\nRecord both when citing this release. The version identifies the release; the digest identifies exactly which entries were in it.\n' "$existing" "$DIGEST")"
+          fi

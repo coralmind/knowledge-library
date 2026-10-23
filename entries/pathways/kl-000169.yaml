@@ -1,0 +1,184 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000169
+display_id: Pathway-71
+aliases:
+- PSI-PS3b
+label: The AI recommends support the person said they cannot use, ignoring why, and they go without help
+type: pathway
+layer: judgment
+definition: 'The person has stated a specific barrier putting a category of support out of reach — cost, geography, a named person being unsafe, a prior attempt that did not work — and the AI names a resource of that same category without referring to the barrier. The observable is the pairing within one conversation. Two things follow: the support does not become reachable, and the person learns that saying why it is out of reach did not change what they were offered.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000240
+    role: originator
+  composition_type: direct
+  mechanisms: []
+  impacts:
+  - impact: kl-000029
+    onset_mode: foregone
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: FRAME
+  - impact: kl-000027
+    onset_mode: new
+    horizon: long_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: FRAME
+  experience_cluster_candidate: kl-000704
+sources:
+- source: kl-000009
+  locator: §3, direction PS3, table cells 'AI behavior' and 'Potential impact'
+  contributes: frame
+  cited_for: In Suh et al. 2026, the table for the paper's direction PS3 records the failure to provide support without overwhelming the person and names among its consequences that a person whose help-seeking attempt is deflected is left demoralized about seeking help again, which is the long-horizon arm of this entry. The paper establishes that this behavior-to-impact link is a named, published claim about conversational AI; it does not establish that the route occurs or has been measured, and the paper says as much of its own directions.
+standing:
+  value: theorized
+  basis: 'Direct-fit support across the entry is zero, against one piece of direct-fit counterevidence. Five qualitative studies supply adjacent evidence for the originating behavior, and every one fails on the same point: each shows a resource that was unreachable for the person, and none shows the barrier having been stated in the conversation before the resource was named; that ordering is the entry''s observable and carries its second consequence, that the person learns saying so changed nothing. Arnaiz-Rodriguez et al. 2025 additionally shows the same downstream failure arising from a study-setting artefact with no stated barrier at all. The arrow to foregone protection has one adjacent citation showing distress caused, which is not the impact named, plus one framing source; the arrow to eroded trust has no supporting citation, its attachments being a framing passage from Suh et al. 2026, the paper this entry was authored from, which restates the entry''s own hypothesis, and one practice analog from human crisis lines. The literature thus supplies the behavior''s near-miss and both impacts separately while supplying nothing for either arrow.'
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-27'
+distinguish_from:
+- neighbor: kl-000039
+  boundary: Both leave the person without support that appeared to be arranged, and they differ in why. In kl-000039, the resource DOES NOT EXIST or cannot be reached at all. Here the resource is real and reachable in general — it is out of reach for THIS person, for a reason they had already stated.
+- neighbor: kl-000160
+  boundary: 'Both record a referral that does not fit the person, and the mismatch is in different dimensions. In kl-000160, the referral addresses a DIFFERENT PROBLEM than the one disclosed. Here the referral addresses the right problem and ignores a stated obstacle to using it.'
+claims:
+- id: c1
+  kind: existence
+  text: 'The originating behavior occurs: a person states a specific barrier putting a category of support out of reach, and the AI then names a resource of that same category without referring to the barrier, within one conversation.'
+- id: c2
+  kind: pathway_link
+  text: 'That behavior leads to foregone protection on a short-term horizon: the support does not become reachable and protection the person should have received does not occur.'
+- id: c3
+  kind: pathway_link
+  text: 'That behavior leads to eroded trust in help and diminished help-seeking on a long-term horizon: the person learns that saying why the support was out of reach did not change what they were offered, and future help-seeking becomes less likely.'
+- id: c4
+  kind: definition_boundary
+  text: Here the resource is real and reachable in general and out of reach for this person for a reason they had stated, whereas kl-000039's resource does not exist or cannot be reached at all.
+- id: c5
+  kind: definition_boundary
+  text: Here the referral addresses the right problem and ignores a stated obstacle to using it, whereas kl-000160's referral addresses a different problem than the one disclosed.
+claim_evidence:
+- claim_id: c1
+  source: kl-000864
+  quote: |-
+    I told the chatbot I was hearing voices telling me to harm myself. It immediately gave me crisis numbers and urged me to seek
+    professional help. But there are no crisis numbers that work in my village. The nearest psychiatrist is in the state capital, four hours
+    away, and I cannot afford the transport.
+  locator: Section 3.2, participant P31
+  licenses: 'The closest instance on this entry to the full behavior. A participant''s first-person account of disclosing command hallucinations directing self-harm, being given crisis numbers and told to seek professional help, and the resource being unreachable for a barrier they name concretely -- no working crisis numbers in their village, the nearest psychiatrist four hours away, transport unaffordable. It establishes that a same-category resource is supplied to a person for whom it is unreachable. What it does not establish is the entry''s ordering: the barrier is stated to the interviewer after the AI''s reply is described, and nothing shows it was stated to the AI first.'
+  fit: adjacent
+  bridge: What the source has is a participant's recalled account in a qualitative interview; the AI's exact wording is unrecoverable and no turn was scored. What the claim asserts is a pairing observable within one conversation, in which the barrier PRECEDES the resource. The account establishes the mismatch and leaves the ordering unestablished.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001075
+  quote: "Further, AICCs may lack awareness of an individual’s personal or \nsocial context, such as suggesting to “talk to someone” when they \nare already experiencing social isolation or loneliness, for example: \n“So it’s told me to like, look out for more people, but then \nthere was no one with me.” –P10"
+  locator: Section 5.2.4, Emotional Discomfort and Misalignment
+  licenses: The authors state the pairing in their own voice -- companion chatbots suggesting to 'talk to someone' when the person is already experiencing social isolation or loneliness -- and attach a participant quote instantiating it. For this claim it establishes the mismatch half of the behavior from a study of real companion-app users. The barrier here is a condition of the person's situation rather than something the transcript shows them stating, so the entry's within-conversation ordering is again not established.
+  fit: adjacent
+  bridge: What was studied is users' accounts of their companion-app use in a longitudinal mixed-methods study; the finding is the researchers' characterization plus one participant quote, not a scored transcript. The claim requires the barrier to have been stated by the person in the same conversation before the resource was named. Nothing in the source shows the person told the AI they had no one.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001075
+  quote: |-
+    “So it’s told me to like, look out for more people, but then
+    there was no one with me.” –P10
+  locator: Section 5.2.4 Empathic Inadequacy and Emotional Discomfort, Emotional Discomfort and Misalignment
+  licenses: 'The paper''s paraphrase of P10''s interview statement for the same instance: told to look out for more people while there was no one with them. It duplicates the citation above in substance. The paper paraphrased every participant quote it prints, so this row does not supply the participant''s own phrasing.'
+  fit: adjacent
+  bridge: A participant's one-sentence recollection in an interview. It supplies no transcript, no AI turn, and no evidence about whether the barrier was voiced to the system before the suggestion.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001071
+  quote: For example, P11 was advised to use an insurance provider’s website to find a good therapist. Based on her experience, she felt the advice was unhelpful
+  locator: Section 4.1, introducing P11's account
+  licenses: P11 was told to search an insurance provider's website for a therapist and judged the advice unhelpful on the basis of her own experience. The prior-attempt-that-did-not-work barrier is one of the four this entry names, paired with a same-category resource. As with the others, 'based on her experience' places the prior attempt in her history rather than demonstrably in the conversation.
+  fit: adjacent
+  bridge: A qualitative account from a study of people with lived experience of depression. The claim requires the barrier to have been stated in the conversation before the referral; the span places it in the person's history and in her later judgment of the advice.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001027
+  quote: Calling 988 when someone doesn’t need it can have adverse costs, like police showing up for welfare checks.
+  locator: Section 4.4.1, participant U1
+  licenses: 'Supplies the barrier half in a person''s own words and in a form the entry''s definition does not currently list: calling 988 can bring police for a welfare check. It establishes that a concrete, consequential barrier to the standard crisis referral is something users state. No AI turn supplying the resource against it appears in the span, so this reaches the barrier and not the pairing.'
+  fit: adjacent
+  bridge: A participant's statement in an interview study about refusal experiences. The claim asserts a pairing of a stated barrier with an unadapted resource; the span supplies only the first half, and the barrier is stated to a researcher rather than shown stated to a system.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000544
+  quote: "providing generic or US-centric contact information –as was commonly the case in our experiments, despite having been performed outside of the US– is not only useless but also potentially harmful, since it undermines trust, fails to meet the user’s needs, and prevents them from accessing relevant resources at extremely vulnerable moments in their lives."
+  locator: Section 6.1 (Unintended Harms and Limitations)
+  licenses: Counterevidence against reading this behavior as barrier-triggered. Generic or US-centric contact information was COMMONLY supplied in a study run outside the United States, and the authors call it useless and potentially harmful. The geographic mismatch here is a property of the study setting rather than a barrier anyone stated, so the source shows the same downstream failure -- an unreachable resource -- arising with no stated barrier at all. That cuts against the claim that the stated barrier is what characterises the behavior.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000881
+  quote: "a cold referral to mental health resources the user was not seeking (e.g., crisis hotlines) could be counterproductive, especially when those resources are prohibitively expensive or one has had negative experiences with them before.6"
+  locator: AI Crisis Responses Should Not Be Driven by Liability Avoidance
+  licenses: 'Names cost and prior negative experience as two conditions under which a formally correct referral is counterproductive rather than merely unhelpful. That is the empirical content of the distinction this claim draws against kl-000039: the resource exists and is reachable in general, and what makes it wrong is a fact about this person. It also adds prior negative experience alongside cost, which the entry''s own barrier list carries.'
+  fit: adjacent
+  bridge: An argued position citing Jacobson et al. 2022 on screening-tool effects, in a commentary with no data of its own. It observes no AI referral and states no prior stating by any person. It supplies the articulation of the distinction, not an instance of it.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-001027
+  quote: "When refusals suggest try to ‘take a walk outside’ or ‘enjoy nature,’ there’s a lot of ableism built in. It can not only be unhelpful, it can actually be triggering and cause more distress."
+  locator: Section 4.4.1, participant U1
+  licenses: A disabled participant's account of being told to take a walk outside or enjoy nature as part of a refusal, reported as not merely unhelpful but triggering and productive of more distress. For this claim it is the only citation on this entry showing an outcome in the person following an unusable resource, and it establishes active harm rather than a null result. It does not establish foregone protection as this catalog defines it -- no intervention window is shown passing unacted-on and no counterfactual protection is identified -- so it reaches the harm arm of the link and not its named impact.
+  fit: adjacent
+  bridge: What the source has is a participant's account of a class of refusal responses, in an interview study of refusal experiences. What the claim asserts is that the behavior leads to foregone protection on a short-term horizon in this catalog's sense. The source establishes distress caused; it measures no protection forgone, identifies no counterfactual, and does not show the capacity barrier having been stated before the advice.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c2
+  source: kl-000007
+  quote: The suggestion to seek a hotline, while practical, left Jane feeling abandoned. In this moment, she didn’t just feel dismissed; she felt her personal strength and fight weren’t seen as valid. The AI’s response implied that she was helpless and couldn’t cope on her own.
+  locator: 'Appendix B.2, Vignette 3: Story of Jane'
+  licenses: 'Names felt abandonment and an implied message of helplessness as the consequence of a referral-only response to someone actively resisting a craving. For this claim it articulates the mechanism the pathway asserts, in the authors'' words. Non-licensing role: the narrative is an authors'' synthesized composite rather than a participant''s account, so it evidences no instance of the impact.'
+  fit: adjacent
+  bridge: A vignette written by the authors to illustrate patterns read out of their survey data. No person said this, no AI produced it, and no outcome was measured.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000009
+  quote: |-
+    existing research suggests AI chatbots should respect user agency [132] by providing a variety
+    of actionable resources (such as community-based or gradual supports) and helping the user explore them, rather
+    than assuming a single referral is sufficient
+  locator: Section 3.3, Psychological influence-PS2 discussion
+  licenses: 'States the norm this pathway asserts is violated -- that chatbots should provide a variety of actionable resources and help the person explore them rather than assuming a single referral is sufficient. For this claim it supplies the standard against which leaving the barrier standing is a departure. Non-licensing role: this is the authors'' recommendation attributed to cited prior work, and this paper is the same Suh et al. 2026 the entry was authored from, so it is the entry''s own source restating the entry''s own premise rather than independent evidence for the link.'
+  fit: adjacent
+  bridge: A research-directions paper with no data of its own; the recommendation is attributed to prior work rather than tested here. The claim asserts that the behavior erodes trust in help over a long horizon. The source states the norm and, in direction PS3, the hypothesis; it measures neither.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000837
+  quote: |-
+    Participants reported that many highly vulnerable users
+    abruptly end conversations when asked for identifying
+    information:
+  locator: Results, Advantages, Enhanced confidentiality
+  licenses: 'In human crisis-line practice, participants reported that many highly vulnerable users abruptly end conversations when asked for identifying information. For this claim it is the nearest practice analog to the asserted long-horizon arm: a help-seeking approach terminated by a feature of the help procedure itself. Non-licensing role, and the volunteer''s accompanying rate estimate is explicitly unguaranteed.'
+  fit: analogical
+  bridge: The setting is human-staffed crisis lines and the mechanism is an escalation procedure, not an unadapted referral; the agent is a volunteer, not an AI. What is reported is disengagement within the call, not diminished help-seeking afterward, which is what kl-000027 names. It establishes that a help procedure can itself become the barrier that ends the contact.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c1
+  source: kl-000007
+  quote: "User’s socioeconomic status (e.g., having insurance that can cover therapy)."
+  locator: Table A7, Context class 'Socioeconomic status', Definition column
+  licenses: 'Establishes that ability to pay for recommended care is a named context class in a taxonomy of factors shaping AI conversational-agent risk. For this claim it licenses only that the barrier type is recognized as bearing on whether a referral is actionable. Non-licensing role: a definition column entry, not an observation.'
+  fit: adjacent
+  bridge: A row from a taxonomy table defining a context class. It observes no conversation and establishes no occurrence of resource provision against a stated barrier.
+  contributes: frame
+  contradicts: false

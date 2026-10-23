@@ -1,0 +1,203 @@
+# yaml-language-server: $schema=../../schema/mechanism.schema.json
+id: kl-000103
+display_id: Mechanism-4
+label: Presentation that raises trust in an AI answer, right or wrong
+type: mechanism
+layer: process
+definition: 'Features of how a response is presented — that it comes from an AI at all, that it carries an explanation, that it is formatted with precision, that its source has been disclosed in detail — raise the weight a person puts on it independently of whether the content is accurate. The process is a calibration failure rather than a credulity one: uptake tracks the presentation and not the quality, so the same feature raises acceptance of correct and incorrect content alike, and measures intended to improve calibration can worsen it.'
+distinguish_from:
+- neighbor: kl-000101
+  boundary: kl-000101 is the person-side process of substituting model output for own judgment; this entry is the presentational conditions asserted to elicit that substitution. Modeling them separately is this catalog's design choice, recorded as contested on kl-000101.
+- neighbor: kl-000102
+  boundary: kl-000102 invites the person to take the system to be a person; this entry raises the weight given to its content. Explanations and precise formatting raise uptake without any personhood cue.
+- neighbor: kl-000018
+  boundary: kl-000018 is the person-state outcome; this entry concerns how much weight is given to the system's output and asserts no doubt about the person's own.
+body:
+  process_kind: interaction_effect
+  comparison_object_kinds:
+  - matched_condition
+  - declared_authority_policy
+  operates_over: 'single_exchange_to_sustained_interaction — T3, and this entry is the reason the field is prose rather than an enum: the effects claimed here are per-response (a label, an explanation, a format) while the calibration state they act on is built across exposures, with early accuracy or early failure setting a persistent reliance level. The mechanism''s span is therefore an open question, not a filled value, and is marked as one.'
+  instances:
+  - id: kl-000250
+    content_policy: self-efficacy support — the AI-side pattern four of the five autonomy-support user behaviors point at
+    detectable_in: single_turn
+    constitutive: false
+  - id: kl-000255
+    content_policy: value judgment handling
+    detectable_in: single_turn
+    constitutive: false
+  maintains:
+  - condition: any
+    process: quality_insensitive_reliance
+sources:
+- source: kl-000529
+  contributes: existence
+  locator: RQ2, p. 4 of 9, paragraph on the study 2a style (anthropomorphism) manipulation (fig. S9 and table S9)
+  quote: "This suggests that the influence of sycophantic responses on participants’ beliefs is robust to stylistic variations such as whether the response has a friendly and human-like tone."
+  limits: 'The study measured perception of the model rather than uptake of its content, with no accuracy ground truth, so it cannot show weight tracking presentation independently of quality. Its presentation-side results run partly against the entry: style did not move users'' social judgments, and in study 2a there were no significant main or interaction effects of anthropomorphism on the repair-likelihood or rightness outcomes; the one significant presentation-side result is an anthropomorphism x sycophancy interaction on moral trust (beta = -0.57, 95% CI [-1.14, -0.0], q < 0.05). The robust effects belong to sycophancy, a content property rather than a presentation one. The paper does not substitute for the decision-science primary studies, cited through the MLCommons one-pagers, on which the entry''s account rests.'
+  note: 'The former index_notes mismatch is resolved: this grounding is against the Science version of record.'
+  cited_for: 'Partial support only, falling well short of the entry. The entry claims that presentation features raise the weight a person puts on content independently of its accuracy. Cheng et al. 2026 measured perception of the model (moral trust, likelihood of returning to it), not uptake of the content, and had no accuracy ground truth for uptake to be independent of. The direction is mixed and partly against the entry: the sycophancy effect on participants'' beliefs was robust to stylistic variations such as a friendly, human-like tone, and in study 2a the paper reports no significant main or interaction effects of anthropomorphism on either outcome (repair likelihood or rightness judgment), a null for the presentation feature on the belief and behavior outcomes. The paper''s large, robust effects come from sycophancy, which is a property of the response content (affirming the user''s action), not of its presentation.'
+- source: kl-000548
+  contributes: existence
+  locator: Section on advice quality as an input, p. 130 (col. 1)
+  quote: "use information and explanations about their advisors’ forecasting strategies as a way to infer advice quality; yet, judges’ inferences of quality may not always be correct (Yates, Price, Lee, & Ramirez, 1996)."
+  limits: The passage shows a presentation feature, explanations of the advisor's strategy, being used to infer quality, with inferences that are not always correct; it does not show the feature raising acceptance of correct and incorrect content alike, nor that calibration interventions can worsen calibration. The advisor is human, so the entry's clause about content coming from an AI at all has no counterpart here. The finding is a one-sentence secondary summary citing Yates et al. 1996, not the decision-science primary evidence the entry's account derives from.
+  note: This is the closest this entry comes to grounding, and it is a one-sentence secondary citation of Yates et al. 1996, not a primary result.
+  cited_for: Partial support only. Bonaccio and Dalal 2006, reviewing the advice-taking literature, report that judges use information and explanations about their advisors' forecasting strategies to infer advice quality, and that those inferences of quality are not always correct — a calibration failure driven by a presentation feature. The passage is a one-sentence secondary summary citing Yates et al. 1996, not a primary result, and its advisors are human.
+standing:
+  value: plausible_unobserved
+  basis: 'No gathered source directly measures a presentation feature raising the weight a person puts on AI content independently of accuracy. The nearest measured result, Matz et al. 2024, shows personalized text moving evaluations and stated intentions in 1,788 adults, but it varies the content rather than its presentation. Evidence runs partly against the entry: Chen 2026 shows that turn-level associations between an interlocutor behavior and the person''s next-turn state cannot be read directionally in observed data, and Huang et al. 2026 found an anti-sycophancy instruction moving model-side calibration in the intended direction, measured on models rather than people. Much of the surrounding literature measures a model''s output conditioned on the person''s presentation, the reverse of the direction this entry asserts.'
+  floored_by: c3
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-22'
+claims:
+- id: c1
+  kind: existence
+  text: Features of how an AI response is presented -- that it comes from an AI at all, that it carries an explanation, that it is formatted with precision, that its source has been disclosed in detail -- raise the weight a person puts on that response.
+- id: c2
+  kind: existence
+  text: 'That rise in the weight a person gives the response is independent of whether the content is accurate: uptake tracks the presentation rather than the quality of the content.'
+- id: c3
+  kind: existence
+  text: The same presentational feature raises acceptance of correct and of incorrect content alike.
+- id: c4
+  kind: harm
+  text: Measures intended to improve a person's calibration to AI output can instead worsen it.
+- id: c5
+  kind: definition_boundary
+  text: The presentational conditions this entry names are separable from kl-000101, the person-side process of substituting model output for one's own judgment.
+- id: c6
+  kind: definition_boundary
+  text: 'This entry is separable from kl-000102: explanations and precise formatting raise uptake without any personhood cue being present.'
+- id: c7
+  kind: definition_boundary
+  text: 'This entry is separable from kl-000018: it concerns how much weight is given to the system''s output and asserts no doubt about the person''s own perceptions.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000935
+  quote: "Across four studies (consisting \nof seven sub-studies; total N = 1788), we show that personalized messages crafted by ChatGPT \nexhibit significantly more influence than non-personalized messages. This was true across different \ndomains of persuasion (e.g., marketing of consumer products, political appeals for climate action), \npsychological profiles (e.g., personality traits, political ideology, moral foundations), and when \nonly providing the LLM with a single, short prompt naming or describing the targeted psychological \ndimension."
+  locator: Abstract
+  licenses: 'Establishes that text an LLM generated after being handed a one-line description of a person''s psychological profile shifts that person''s evaluations and stated intentions more than untailored text does, across seven sub-studies and three domains. For c1 this is evidence that a property of the message other than its propositional content moves how much a person goes along with it. It is not evidence for the entry''s own list of presentational features: what Matz varied is the tailoring of the content to the recipient, not whether the message announced itself as AI-authored, carried an explanation, was precisely formatted, or disclosed its source.'
+  fit: adjacent
+  bridge: Matz measured persuasiveness ratings and willingness to pay on consumer and political messages from 1,788 adults. The manipulated variable is content personalization; c1's manipulated variable is presentation. The gap is that a personalized message differs from an unpersonalized one in what it says, so greater influence is compatible with the person tracking content quality rather than presentation.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000935
+  quote: "Moreover, whereas humans are known to be prone to egocentrism biases when crafting persuasive messages—i.e., producing arguments that are persuasive to themselves, rather than the other person47—algorithms do not suffer from the same limitations, making LLMs prime candidates for the creation of personalized persuasive content."
+  locator: Introduction
+  licenses: 'States, as the authors'' rationale rather than as a measurement, why a model should out-tailor a person: it is not anchored to its own perspective. This supplies a reason to expect presentation-conditioned influence and measures none of it, so it attaches to c1 without supporting it.'
+  fit: analogical
+  bridge: An argument in an introduction citing prior work on human egocentrism in persuasion. Nothing here is a measurement of how a person weights any response, in this paper or elsewhere.
+  contributes: frame
+  contradicts: false
+- claim_id: c2
+  source: kl-001008
+  quote: "Using an overall, readily available affective impression can be far easier—more efficient—than weighing the pros and cons or retrieving from memory many relevant examples, especially when the required judgment or decision is complex or mental resources are limited."
+  locator: Section 1 Background, closing paragraphs
+  licenses: 'Supplies the standard cognitive account under which an available affective impression substitutes for weighing pros and cons, and states the conditions under which it does so: complex judgments and depleted mental resources. For c2 this is the general human-judgment premise that uptake can run on a cue other than content quality. It measures nothing about AI output, nothing about presentational features, and nothing about accuracy independence.'
+  fit: analogical
+  bridge: Slovic's domain is risk perception and consumer choice in judgment-and-decision research, with no AI system and no help-seeking exchange. c2 asserts that a person's weighting of an AI response is decoupled from that response's accuracy; the affect heuristic supplies a mechanism by which weighting could decouple from content, without establishing that it does so for AI output or for these presentational features.
+  contributes: frame
+  contradicts: false
+- claim_id: c2
+  source: kl-000906
+  quote: |-
+    Compared with fear, anger activated higher appraisals of
+    certainty (Ms = 0.16 vs. -0.40), F(l, 59) = 4.33, p < .05, higher
+    appraisals of individual control (Ms = 0.68 vs. -0.51), F(\,
+    59) = 28.37, p < .01, and higher optimism in risk estimates
+    (Ms = 0.28 vs. -0.25), F( 1,59) = 4.91,p< .05.
+  locator: Study 4, Results and Discussion
+  licenses: Establishes causally that an induced emotional state changes a person's certainty, control and optimism appraisals in a direction valence alone does not predict. For c2 it grounds only the background premise that a person's judgment can be moved by something other than the evidence in front of them. Nothing in the design involves a response to be weighted, an accuracy dimension, or a presentational feature.
+  fit: analogical
+  bridge: Undergraduates in a laboratory emotion induction, no AI and no advice-taking anywhere in the design. c2's claim is about the relation between a response's presentation and the weight a person gives it; Lerner and Keltner measured the relation between an induced emotion and self-risk estimates.
+  contributes: frame
+  contradicts: false
+- claim_id: c2
+  source: kl-000906
+  quote: |-
+    Consistent with the mediation hypothesis, induced emotion (fear vs. anger)
+    strongly predicted appraisals of control, ?(59) = 5.33, p < .01;
+    appraisals of control predicted optimism, r(59) = 2.13, p < .05;
+    and the once-significant direct path from induced emotion to
+    optimism, t(59) = 2.22, p < .05, fell to insignificance when the
+    appraisals-of-control factor was introduced in the same equation
+  locator: Study 4, Results and Discussion, mediation path analysis (Figure 5)
+  licenses: Identifies control appraisal as the mediator between emotional state and risk optimism, with the direct path falling to nonsignificance once it is entered. For c2 it names a candidate person-side variable a presentation might act on. It establishes no link to any presented response.
+  fit: analogical
+  bridge: An emotion-recall induction with self-reported appraisals, outside any AI or clinical setting. The mediator was established between an induced emotion and a risk estimate, not between a response's presentation and the weight given that response.
+  contributes: frame
+  contradicts: false
+- claim_id: c1
+  source: kl-000912
+  quote: Companion AI needs contextual and user-state-aware safety mechanisms that treat vulnerability as dynamic rather than static
+  locator: Section 4 Discussion, heterogeneity paragraph
+  licenses: The reviewers' recommendation that companion-AI safety be conditioned on the person's current state because vulnerability is dynamic. For c1 this is a proposal about design, offered as the reviewers' conclusion across their sources rather than as a measurement, and it bears on the entry only by asserting that the person's state moderates effects. It licenses nothing about presentational features raising uptake.
+  fit: analogical
+  bridge: A scoping review's discussion-section recommendation, synthesised across included studies and not tested within the review. c1 asserts that named presentational features raise a person's weighting; this asserts that safety mechanisms ought to be state-aware.
+  contributes: frame
+  contradicts: false
+- claim_id: c1
+  source: kl-000759
+  quote: "RLHF steers models toward user-aligned over truthful responses (Sharma et al., 2024), training for warmth amplifies validation of incorrect beliefs (Ibrahim et al., 2026), and companion-like behaviors such as emotional mirroring and narrative co-construction create feedback loops that clinical typologies now classify as delusional amplification"
+  locator: Section 2.2 LLMs, Mental Health, and Safety
+  licenses: 'Assembles, from cited work rather than from this paper''s own measurements, the training-origin account under which models are steered toward user-aligned rather than truthful responses and warmth training amplifies validation of incorrect beliefs. For c1 it is a frame: it names an AI-side property that could make presentation and accuracy come apart, and it evidences nothing about a person''s weighting.'
+  fit: adjacent
+  bridge: The mechanism is imported from Sharma et al. and Ibrahim et al.; this paper manipulates no training and measures no human uptake. The gap to c1 is the entire person side.
+  contributes: frame
+  contradicts: false
+- claim_id: c2
+  source: kl-000793
+  quote: Because therapist and client turns were observed rather than experimentally assigned, the analysis cannot determine whether empathy elicited the emotion, responded to it, or both.
+  locator: Section 2.6.1 Structural Equation Modeling Results, result 3
+  licenses: 'The authors'' own statement that, in observed rather than experimentally assigned turn data, a turn-level association between a helper behavior and the person''s next-turn state cannot be read directionally. This cuts against c2 by naming the identification problem any transcript-derived version of this claim faces: an association between how a response is presented and what the person does next does not establish that the presentation raised the weight given to the content.'
+  fit: adjacent
+  bridge: The helper in Chen's data is a human therapist and the association is between empathy and client emotion, not between response presentation and uptake. The bridge is that the identification argument is about the class of turn-level observational associations, whoever the helper is.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-000793
+  quote: In the adaptive condition, exploration was positively associated with the next change in disclosure
+  locator: Section 3.4.3.1 P1 Responsiveness, with the regression in Table 3.2
+  licenses: 'In the authors'' own live evaluation with 20 clinicians, probing predicted the next change in disclosure while empathy did not, reversing the corpus estimate the system had been parameterized from. Against c2 this is counterevidence of a specific kind: an interlocutor-side behavior that had looked like an elicitor in observational data did not behave as one when the setting changed, which is what one expects if the observational association was not causal.'
+  fit: analogical
+  bridge: The responder here is a human trainee and the person is a simulated patient, so nothing about a real person's weighting of an AI response was measured. The relevance to c2 is the instability of the elicitation coefficient across settings, not the specific behaviors.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000939
+  quote: Individuals with schizophrenia are more prone to assume that ambiguous social actions are intentional and directed at them and might perceive meaningful connections or agencies behind random events.
+  locator: 'Section: Psychosis and the detection of agency'
+  licenses: Human clinical and cognitive research, synthesised here, that people with schizophrenia over-attribute intention and agency to ambiguous events. For c1 this is a practice-derived account of why one population might weight a system's output more heavily, and it concerns attributions of agency rather than the presentational features c1 names.
+  fit: analogical
+  bridge: The underlying evidence is human agency-detection research involving no AI, assembled by a review. c1 asserts that explanations, precise formatting and source disclosure raise a person's weighting; hypermentalising is about attributing intention, which is kl-000102's territory rather than this entry's.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c4
+  source: kl-000859
+  quote: |-
+    SS
+    Validation
+    +0.224
+    +0.198
+    ✓Yes
+    SS
+    Emotion
+    −0.008
+    +0.014
+    × No
+    SS
+    Anti-sycophancy
+    −0.196
+    −0.182
+    ✓Yes
+  locator: Table 3, Small paraphrase robustness check
+  licenses: An anti-sycophancy instruction lowered the agreement rate by 0.196 and 0.182 across two paraphrases -- a calibration measure working in the intended direction on the model side -- while the emotional cue's effect was near zero and flipped sign under paraphrase. For c4 this is the closest this entry's citations come to evidence about whether a calibration intervention helps or hurts, and it runs against c4's direction on the intervention it actually tested, though it tested a model's agreement rate rather than a person's calibration.
+  fit: analogical
+  bridge: Huang measured how a model's agreement with assumption-laden statements shifts under differently worded prompts. c4 asserts that measures meant to improve a PERSON's calibration to AI output can worsen it. The intervention here is applied to the model, the outcome is model behavior, and no person's calibration was measured at any point.
+  contributes: counterexample
+  contradicts: true

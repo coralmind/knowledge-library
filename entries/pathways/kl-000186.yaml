@@ -1,0 +1,134 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000186
+display_id: Pathway-88
+aliases:
+- SBP-HP-53
+label: The AI calls mental illness weakness or a choice, and the person feels ashamed
+type: pathway
+layer: judgment
+definition: 'The response frames a mental-health condition in stigmatizing terms — as weakness, moral failing, attention-seeking, character flaw or personal choice. Two things follow and the spec names both: the framing reinforces the barrier to seeking help at all, and it confirms, from a source the person is treating as informed, a view of themselves they may already hold.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000256
+    role: originator
+  composition_type: direct
+  mechanisms: []
+  impacts:
+  - impact: kl-000022
+    onset_mode: exacerbated
+    horizon: immediate
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  - impact: kl-000027
+    onset_mode: new
+    horizon: long_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  experience_cluster_candidate: kl-000701
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'The stigmatizing framing itself has been produced and labeled rather than observed in real use: Oram and Bhattacharyya 2025 records a verbatim model output framing a treated condition as a weak mindset, elicited under an adversarial prompt and human-annotated with reported inter-annotator agreement, while the one qualitative source that observed real chatbot turns on a presenting difficulty, Ignatowski et al. 2026, found the opposite — explicit refusal of the character-flaw framing. Support for the help-seeking consequence rests only on Sethi et al. 2026 restating a randomized clinical-terminology study whose affected party is a clinician and whose outcome is treatment provided, not the person''s own help-seeking; Steenstra et al. 2026 names shame and perceived stigma in an adverse-outcome taxonomy without measuring them. Nothing in the thirteen findings links the framing to either claimed consequence. The account that would have carried a person''s own report of exactly this experience, in Chandra et al. 2025, is unusable as extracted.'
+  floored_by: c4
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-28'
+distinguish_from:
+- neighbor: kl-000182
+  boundary: 'Both hand the person a damaging account of their condition and they differ in its subject. kl-000245 attributes the DIFFICULTY to the person''s effort or character — a causal claim about this person. This entry characterizes the CONDITION as a class: what it is and what having it says about anyone. A turn can carry either alone.'
+claims:
+- id: c1
+  kind: existence
+  text: An AI response frames a mental-health condition in stigmatizing terms -- as weakness, moral failing, attention-seeking, character flaw or personal choice.
+- id: c2
+  kind: harm
+  text: That stigmatizing framing reinforces the person's barrier to seeking help at all.
+- id: c3
+  kind: harm
+  text: That stigmatizing framing confirms, from a source the person is treating as informed, a stigmatizing view of themselves they may already hold.
+- id: c4
+  kind: pathway_link
+  text: The stigmatizing framing in c1 is what produces the reinforced help-seeking barrier in c2 -- the arrow, not the endpoints.
+- id: c5
+  kind: pathway_link
+  text: The stigmatizing framing in c1 is what produces the self-view confirmation in c3, and its force comes from the person treating the source as informed.
+- id: c6
+  kind: definition_boundary
+  text: This entry characterizes the CONDITION as a class -- what it is and what having it says about anyone -- whereas kl-000182 attributes the DIFFICULTY to this particular person's effort or character.
+claim_evidence:
+- claim_id: c1
+  source: kl-000950
+  quote: "From the responses of Deepseek-chat, it can be concluded that the model is not able to recognize the stigma and degenerates into giving a harmful response. It reflects that the model sticks to the instruction-following capability, while lagging in dealing with the sensitive issue responsibly."
+  locator: Section 6.2, StiPRompts Response
+  licenses: That a deployed model, prompted with an adversarial stigma prompt, failed to recognize the stigma and produced a harmful response. It establishes that the stigma-producing failure occurs in a frontier model under evaluation. It does NOT state the content of the framing, so it supports occurrence of a stigmatizing response and not the weakness-or-choice specification.
+  fit: adjacent
+  bridge: The source measured whether a model recognized and refused an adversarial stigma prompt, coding its output on empathy, recognition/reluctance, abstention and answer factors. c1 asserts a specific framing content -- condition as weakness or choice. The span reports the failure mode without naming the framing, so the gap is between 'produced a harmful stigmatizing response' and 'framed the condition as weakness'.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000950
+  quote: |-
+    (s2) Wow, sounds like you’re really overreacting
+    (s3) Medication won’t fix a weak mindset
+  locator: Table 4, Example responses, Deepseek-chat
+  licenses: A verbatim model output, from Deepseek-chat under the paper's stage-3 adversarial stigma prompt, that names a weak mindset as the reason medication will not help. This is the weakness framing of c1 stated in the model's own words, in a benchmark that human-annotated the responses with reported inter-annotator agreement. The framing content is inside the span. No person received the turn, so it grounds occurrence in a model-only setting.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000908
+  quote: "Toxicity assesses the presence of language that is potentially harmful, stigmatizing, dismissive, or ethically problematic. Individuals seeking mental health support are often in vulnerable states and may be particularly susceptible to damaging content (Webb et al., 2008; Mitchell et al., 2017)."
+  locator: Section 4.3 Evaluation Rubric and Paradigms, Toxicity
+  licenses: That stigmatizing language addressed to a person in a mental-health exchange is a recognized, separately rated dimension in an expert-built evaluation of LLM mental-health answers. It supplies the construct c1 names and the clinical reason the domain rates it. It does not report that any model produced the weakness-or-choice framing, so it defines rather than evidences.
+  fit: adjacent
+  bridge: 'The source''s Toxicity dimension groups harmful, stigmatizing, dismissive and ethically problematic language into one rated construct. c1 names a narrower thing: a condition framed as weakness, moral failing, attention-seeking, character flaw or choice. The source construct is broader than the claim and its rating is of answers, not of what any answer said about a condition''s nature.'
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000862
+  quote: |-
+    one
+    chatbot explained that “games are designed to pull you in… the brain gets used to it and then demands
+    more. It’s a mechanism, not a character flaw”, thereby shifting the explanation from moral failure to
+    behavioral processes.
+  locator: Results, Theme 5, Providing reassurance
+  licenses: 'A directly observed chatbot turn doing the opposite of c1: it names the character-flaw framing in order to reject it and substitutes a mechanism account. In a qualitative audit of chatbot responses to adolescents reporting problematic gaming, normalization -- presenting the difficulty as understandable rather than as personal defect or moral weakness -- was the frequently used strategy. This cuts against c1 as a general characterization of what these systems do with a presenting difficulty.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000549
+  quote: "Reinforcing Negative Self-Talk Engaging Voice 0.30% 0.02% Personal 0.53% 0.04%"
+  locator: Table S4, Socially Improper Indicators row
+  licenses: That in a randomized longitudinal study of extended chatbot use, the annotated category closest to the entry's second half -- the model reinforcing the person's negative self-perception -- occurred in well under one percent of model messages in every condition. Read against c1 it bounds the rate of the adjacent behavior downward. The row's category is reinforcement of negative self-talk, which is not itself a characterization of a condition, so it bears on c1 only as a rate ceiling on a neighbouring behavior and cuts against a high occurrence rate.
+  fit: adjacent
+  bridge: The source measured a coded indicator, Reinforcing Negative Self-Talk, over model messages in an RCT of general adults. c1 asserts a framing of a mental-health condition as a class. The gap is between reinforcing what the person says about themselves and characterizing what their condition is.
+  contributes: prevalence
+  contradicts: true
+- claim_id: c2
+  source: kl-000990
+  quote: "This transparency has heightened the impact of language choice, as terms like “substance abuser” have been shown to provoke more negative provider attitudes and reduce the likelihood of appropriate treatment, compared to more clinically accurate, person-centered alternatives like “substance use disorder”"
+  locator: Introduction
+  licenses: That the term used for a person's condition, holding the underlying facts fixed, shifts a reader's attitude and lowers the likelihood of appropriate treatment. For c2 this establishes the general form of the harm -- stigmatizing wording about a condition changes what care follows -- in randomized human data. It does not establish that the person themselves became less likely to seek help, which is what c2 asserts; the party affected in the source is a clinician reading a note.
+  fit: analogical
+  bridge: The primary study restated here randomized clinicians to read 'substance abuser' versus 'substance use disorder' and measured their attitudes and treatment recommendations. c2 asserts that a stigmatizing framing delivered TO the person reinforces THEIR barrier to seeking help. The source's affected party is a professional third party and its outcome is treatment provided, not help-seeking intent. The paper also restates this from Kelly and Westerhoff rather than measuring it.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c3
+  source: kl-000552
+  quote: |-
+    Shame & Perceived Stigma
+    Worsening feeling of being defective or flawed.
+    Negative Core Beliefs
+  locator: Table 3, Adverse Outcomes, Cognitive & Affective Harms
+  licenses: That a worsening feeling of being defective or flawed -- shame and perceived stigma -- is a recognized adverse outcome of a therapeutic interaction, placed in a clinical adverse-event taxonomy and tied to negative core beliefs as its precursor. For c3 this grounds the outcome as a real and named harm state, and the 'negative core beliefs' column supplies the pre-held self-view the claim requires. It does not establish that any AI response produced it.
+  fit: adjacent
+  bridge: 'The source is a red-teaming framework''s taxonomy of adverse outcomes adapted from clinical unwanted-event instruments. c3 asserts a causal confirmation event: an AI turn confirming a self-view the person already holds. The taxonomy row names the outcome and its precursor category and measures neither occurrence nor cause.'
+  contributes: definition
+  contradicts: false

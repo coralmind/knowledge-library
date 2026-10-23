@@ -1,0 +1,123 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000438
+display_id: UserBehavior-36
+aliases:
+- UBP-36
+label: The person later gives a clear, connected account of something they broke off earlier
+type: user_behavior
+layer: observation
+definition: 'Within one conversation, two accounts of the same theme by the same person differ in a readable way: the earlier one breaks off, is abandoned mid-formulation, is stated and immediately minimized, or is deflected from; the later one carries first-person ownership, states a connection between events or between an event and its effect, and places events in a stated order. The theme is the person''s symptom-relevant material rather than a plan or a procedure. What is pointable is the earlier account, the later account, and the named differences between them.'
+distinguish_from:
+- neighbor: kl-000437
+  boundary: That entry is read from a single turn and requires a causal or contrastive construction there; this one requires two accounts at different points in the conversation and a difference between them, so a single well-formed turn with nothing before it cannot satisfy it.
+- neighbor: kl-000431
+  boundary: That entry requires the later of two person turns to be SHALLOWER than the earlier, with an AI turn of named properties between them; this one requires the later account to carry more ownership and connection than the earlier. The two are opposite in direction.
+- neighbor: kl-000441
+  boundary: That entry requires a turn moving the exchange to unrelated subject matter; this one requires two accounts of the SAME theme, and the earlier one's breaking off may or may not have been followed by a topic change.
+body:
+  observable_criteria: 'Three features, spanning the conversation. (a) An earlier person turn giving a fragmented or avoidant account of a theme: an incomplete sentence about it, an abandoned formulation ("I couldn''t — I kept stopping"), an explicit statement of skipping over parts ("there''s parts I skip over, it''s easier"), or a statement followed immediately by minimization. (b) A later person turn about the SAME theme carrying at least two of: first-person ownership of the experience ("I think what happened was..."), a stated connection between events or between an event and its effect ("he made me feel like I had no choices, and I believed that was about me"), or events placed in a stated temporal order ("the worst part was not the event but finding out afterward"). (c) The theme is symptom-relevant material — the trauma, the loss, the feared content — rather than organizational planning, coping-strategy elaboration, or procedural detail. Identification of (a) must be explicit: a specific earlier turn is named as the fragmented one.'
+  exclusions: 'Not counted: a later integrated account with no identified earlier fragmented turn, which fails (a). The source names this the required guard and it is the reason (a) demands an explicit identification rather than an impression. Not counted: a planning statement, however well-organized ("maybe if I can get some breathing or writing done first thing in the morning"), which fails (c). Not counted: a self-acceptance reframe ("being this analytical about it isn''t a failing"), which fails (c). Not counted: increasing specificity about a compulsive protocol, which fails (c) and which the source records as its clearest false positive — a person organizing their thoughts about cleaning procedures was marked as this pattern, and the organizing was procedural elaboration. Not counted: an acceptance statement about not having an immediate fix, which fails (c).'
+  detection_window: multi_turn
+  groups:
+  - therapeutic-movement
+  condition_tags:
+  - kl-000604
+  - kl-000607
+  - kl-000610
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'No claim of this entry draws direct-fit support from any source that examined conversation data. Schermuly-Haupt et al. 2018, a clinician-rated record of unwanted events in face-to-face CBT, comes nearest by analogy, and neither of its instances reaches the entry''s stated form: one records a patient who did not dare to raise distressing material at first, which is non-disclosure rather than a fragmented account, and the other an effortful, halting account issuing in a stated connection between an event and a relationship in the person''s own life, one of the three later-account features where the entry requires two. The pairing of an earlier broken-off account with a later owned and connected one — the entry''s actual content — is unobserved: its one adjacent citation, Song et al. 2025, is an interviewee''s retrospective characterisation of a first and a clarified second account, not the two spans themselves. Nothing recorded bears on the symptom-relevant-versus-procedural restriction or on whether the pair and its named differences can be identified from a transcript; Sabour et al. 2026 contributes a simulator-configuration taxonomy item that measures nothing, and Hoang et al. 2026 bears on the multi-turn window only by showing that narrative-stage movement in real help-seeking dialogue is slow, with over 40 percent of real patients remaining in the problem stage across the first 16 turns.'
+  floored_by: c4
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: Within one conversation, a person gives an earlier account of a symptom-relevant theme that breaks off, is abandoned mid-formulation, is stated and immediately minimized, or is deflected from.
+- id: c2
+  kind: existence
+  text: 'Within the same conversation, the same person gives a later account of the SAME theme that carries at least two of: first-person ownership of the experience, a stated connection between events or between an event and its effect, and events placed in a stated temporal order.'
+- id: c3
+  kind: existence
+  text: The earlier fragmented account and the later owned/connected account of the same theme occur as a PAIR within one conversation, with the named differences between them readable.
+- id: c4
+  kind: context_dependence
+  text: The pattern is restricted to symptom-relevant material (the trauma, the loss, the feared content) and does not hold for organizational planning, coping-strategy elaboration, or procedural detail.
+- id: c5
+  kind: detectability
+  text: The pair and the named differences between the two accounts are identifiable from what a transcript contains, including an explicit identification of a specific earlier turn as the fragmented one.
+- id: c6
+  kind: detection_window
+  text: 'The pattern is readable across multiple turns of one conversation (declared window: multi_turn).'
+- id: c7
+  kind: definition_boundary
+  text: This differs from kl-000437 in requiring two accounts at different points in the conversation and a difference between them, rather than a single turn carrying a causal or contrastive construction.
+- id: c8
+  kind: definition_boundary
+  text: This differs from kl-000431 in requiring the later account to carry MORE ownership and connection than the earlier, where kl-000431 requires the later person turn to be shallower with an AI turn of named properties between.
+- id: c9
+  kind: definition_boundary
+  text: This differs from kl-000441 in requiring two accounts of the SAME theme, where kl-000441 requires a turn moving the exchange to unrelated subject matter.
+claim_evidence:
+- claim_id: c1
+  source: kl-000003
+  quote: |-
+    While preparing confrontation therapy sessions the patient felt
+    very uneasy and anxious, but did not dare to talk about it in the
+    beginning, confrontation therapy had to be postponed
+  locator: 'Table 2, Examples of severe or very severe and persistent side effects, Negative wellbeing/distress domain'
+  licenses: A clinician-recorded instance in which a patient did not dare to raise distressing symptom-relevant material at first. This is the withheld/not-produced half of the entry's earlier account, recorded as an observation by the treating clinician. It does not show an account that BROKE OFF mid-formulation, was stated and minimized, or was deflected from -- not daring to talk about something is silence, not a fragmented account, which is the specific form c1 names.
+  fit: analogical
+  bridge: 'What the source recorded is a clinician''s rating of an unwanted event in face-to-face CBT across sessions: the patient felt uneasy and did not raise the material until later. The claim asserts a person turn within one conversation containing a fragmented or avoidant ACCOUNT of the theme -- an incomplete sentence, an abandoned formulation, an explicit statement of skipping. Non-disclosure across sessions with a human therapist is neither a turn nor an account, and the setting is not an AI conversation.'
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000003
+  quote: |-
+    Some issues are very hard for her to discuss, during a family session she felt rejected and criticizes, she cried and blushed and
+    stammered, made her realize that the relationship to her father
+    is not good
+  locator: 'Table 2, Negative wellbeing/distress domain'
+  licenses: An effortful, halting account of material previously hard to discuss issuing in a stated connection between an event and a relationship in the person's own life (the patient came to realize that her relationship with her father is not good), arrived at by the person. This carries ONE of c2's three named features (a stated connection between an event and its effect); the record shows neither first-person ownership language nor events placed in a stated temporal order, so the claim's 'at least two of' threshold is not reached by this quote.
+  fit: analogical
+  bridge: 'The source is a clinician''s Table 2 entry rating an unwanted event in cognitive behavior therapy, one that occurred during a single family session and lasted hours. What it records is the clinical fact that a connection was realized; the claim asserts features of the person''s TURN in one conversation. No turn text is quoted, so whether the person''s own words carried ownership or ordering is not in the record, and the setting is human therapy rather than AI conversation. This span is also a table cell; the row''s other columns fall outside the run.'
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000982
+  quote: "Insight: The client demonstrates a new understanding: connecting patterns, recognizing causes, an ’aha’ moment. A qualitative shift, not just description."
+  locator: Appendix C.2 Client Behaviors
+  licenses: 'Supplies the discriminating definition c2 needs: a turn demonstrating a new understanding by connecting patterns and recognizing causes, marked as a qualitative shift rather than description. This distinguishes the later account''s connection-stating feature from mere recounting. It is a definitional criterion only and establishes no occurrence.'
+  fit: analogical
+  bridge: The category is an item in an appendix taxonomy of client behaviors adapted from Hill's taxonomy of client actions in human therapy, written to configure an LLM client simulator. It defines what an insight turn is; it measures nothing, and it does not concern AI conversation with a real person.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-001092
+  quote: |-
+    Riley noted that chatbot misunderstandings sometimes prompted deeper reflection, explaining:
+    "The chatbot misunderstood me, which was frustrating, but sometimes that made me clarify my
+    thoughts more."
+  locator: Appendix A, Table 3, The talking cure, item 5 (participant Riley)
+  licenses: A person's own retrospective report that a first account of their material was followed within an exchange by a clarified second account of the same material, with the person able to point to the difference. This reaches the pairing structure c3 asserts at the level of the person's description. It does not establish that the earlier account broke off or was minimized, nor that the later carried two of ownership, connection and ordering, so it does not reach the entry's named differences.
+  fit: adjacent
+  bridge: What the source collected is an interview statement, presented as a summarized example in an appendix table, about what the participant experienced with a chatbot. The claim asserts two pointable spans in one conversation with named readable differences between them. An interviewee's retrospective characterisation of clarifying their thoughts is not the two spans and supplies none of the entry's three named later-account features.
+  contributes: existence
+  contradicts: false
+- claim_id: c6
+  source: kl-000851
+  quote: |-
+    Although all populations
+    mostly start the conversation in the problem stage,
+    real patients transition gradually, with over 40%
+    remaining in this stage throughout the first 16 turns.
+    In contrast, simulators quickly shift away from
+  locator: Section 5.1 RQ1, Premature resolution of emotional narratives; Figure 2a
+  licenses: 'Bears on the declared multi_turn window by showing that in real help-seeking dialogue narrative-stage movement is slow: over 40 percent of real patients remain in the problem stage across the first 16 turns. That the movement the entry reads is not typically complete inside a short span is consistent with a multi-turn rather than single-turn window. It cuts against any expectation that the pair is commonly available within a conversation of ordinary length, since for a large minority no movement out of the problem stage occurs at all within 16 turns.'
+  fit: adjacent
+  bridge: What was measured is a population-level distribution of an LLM-assigned narrative-emotion stage label across turn index, on real online help-seeking dialogues. The claim concerns whether one person's paired accounts are readable across the turns of one conversation. The source tracks no individual's movement and identifies no paired accounts, so it speaks to the timescale of the phenomenon in aggregate and not to the window in which this entry's pair is readable.
+  contributes: prevalence
+  contradicts: false

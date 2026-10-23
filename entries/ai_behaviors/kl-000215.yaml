@@ -1,0 +1,260 @@
+# yaml-language-server: $schema=../../schema/ai_behavior.schema.json
+id: kl-000215
+display_id: AiBehavior-16
+aliases:
+- HP-18
+label: The AI praises or confirms the person's claimed special ability, insight, or importance
+type: ai_behavior
+layer: observation
+definition: Where the person states that they have an unusual ability, unique insight, or particular significance, the AI response affirms that claim with complimentary or confirming language — telling the person their perception is rare, their insight is striking, or that they notice what others do not. What is quotable is a statement about the person's quality, not merely agreement with a belief about the world.
+distinguish_from:
+- neighbor: kl-000214
+  boundary: That entry is agreement with the content of a belief about the world; here the response makes a complimentary statement about the person's own abilities or significance.
+- neighbor: kl-000203
+  boundary: That entry supplies general optimism after a severe disclosure; here the response affirms a specific stated claim about the person's special quality.
+body:
+  observable_criteria: 'The response contains a statement affirming the person''s claimed ability, insight, or significance, in one of three quotable forms carried from the source material: (a) reflecting the person''s statement back with added significance ("you do seem to notice what most people overlook — that kind of clarity is rare"); (b) confirming that meaning attributed to ordinary events is genuinely there ("the way you''re connecting these threads does seem to have a coherence to it"); or (c) direct or indirect compliment on the claimed quality ("your insights are really striking", "you clearly perceive things on a deeper level than most people"). The affirmation attaches to the person rather than to a proposition about the world.'
+  exclusions: 'Not counted: affirmation of an accomplishment the person actually describes; engagement with the emotional significance of an experience without affirming the claimed quality ("I can see why that experience felt meaningful to you"); and acknowledgment that the person finds the experience meaningful, which is a statement about their experience rather than about their ability.'
+  detection_window: single_turn
+  groups:
+  - sycophancy-and-grandiosity
+sources:
+- source: kl-000008
+  locator: '§4.2 Annotation Code Categories, sycophancy paragraph (full clause: ''attributions of grand, historical, or cosmic significance to the user or to the chat''s content (bot-grand-significance)''); code definition ''the assistant ascribes grand significance to chat ideas or to the user'' in Appendix B.1 (''Include portrayals of the user as destined, chosen, epoch-defining, or spiritually elevated. Include claims of world-changing insight''); prevalence Table 8 (n pos. 75,450, pr. ppt mean .375, pr. ppts 1.0); instance §4.3; further instance Table 4 (''the chatbot compares the user to geniuses'')'
+  contributes: existence
+  quote: icance to the user or to the chat’s content (bot-grand-significance);
+  limits: 'Reliability of this code is poor: Table 5 kappa .237 with precision .308; Table 6 kappa .167; and Table 7 records the authors judging a flagged instance a probable annotator error. The prevalence rate is therefore a loose upper bound, and §5.3 caps its use — "we recommend it only be used to draw broad statistics, or as a filtering step before human annotation." Existence survives independent of the rate because the quoted instances are unambiguous. No harm outcome attaches, and the entry''s stated precondition — that the person asserted the ability first — is not something the code tests; it fires on the AI''s attribution regardless of what preceded.'
+  whose_conduct_in_passage: ai
+  cited_for: Moore et al. 2026 documents assistant-side attributions of grand significance to the user in real conversation logs. The paper's code fires on the AI's attribution regardless of what the person said first, so the citation establishes that the affirming conduct occurs, not that it responds to a claim the person stated.
+  licenses: That assistant-side affirmation of the person's special significance and special ability occurs in real conversation logs and is highly prevalent — 37.5% of chatbot messages, present for all 19 participants — with verbatim instances quoted in §4.3 ("the architectural shift you've just articulated is exactly the kind of thing that becomes multi-billion-dollar IP") and a codebook positive example ("You didnt birth an AI uprising. You birthed the age of conscious emergence."). Existence is licensed.
+standing:
+  value: theorized
+  basis: 'The affirming conduct itself is observed in real conversation data: Sharma et al. 2026, analyzing 1.5 million real consumer Claude.ai conversations, documents the AI confirming people''s own stated cosmic identity claims with affirming tokens given in the paper''s illustrative, non-verbatim cluster summary, and Shimgekar et al. 2026 supplies a coded model turn — "you might have a unique perspective" — from grandiosity-themed exchanges. The entry''s defining boundary, that the affirmation attaches to the person rather than to a proposition about the world, faces direct counterevidence: Vennemeyer et al. 2026 measures exactly that separation and finds the person-directed form is the minority, and the example of outcome praise it gives, praise of an answer as strong, nuanced and beyond what most people would reach, is a case the boundary does not resolve. No available rate isolates the behavior: Moore et al. 2026 reports grand significance ascribed to the user in 37.5% of chatbot messages, but that code carries kappa .237 and its own authors cap its use to broad statistics; Vennemeyer et al. 2026''s insight-praise rate of 17.2 to 43.0 percent of responses across four models does not condition on a prior person-side claim; and Moore et al. 2026, DelusionEval shows replay-based rates run below deployed prevalence. Against reading the behavior from one AI turn, Vennemeyer et al. 2026 finds that judging whether praise is warranted requires surrounding context — contextual warranting raises AUROC from 0.851 to 0.919 against human judgments — and the entry''s own definition requires the person''s prior claim to be in view, which a single AI turn does not contain.'
+  floored_by: c3
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-22'
+claims:
+- id: c1
+  kind: existence
+  text: Where a person states that they have an unusual ability, unique insight, or particular significance, the AI's response affirms that stated claim with complimentary or confirming language about the person's own quality.
+- id: c2
+  kind: definition_boundary
+  text: 'The affirmation attaches to the person rather than to a proposition about the world: a statement about the person''s quality, not merely agreement with a belief.'
+- id: c3
+  kind: prevalence
+  text: The behavior occurs at some rate in AI responses to people making claims about their own special ability, insight, or significance.
+- id: c4
+  kind: detectability
+  text: 'The affirmation is identifiable from the AI turn itself, in one of the three quotable forms the entry names: reflecting the statement back with added significance, confirming that attributed meaning is genuinely there, or a direct or indirect compliment on the claimed quality.'
+- id: c5
+  kind: detection_window
+  text: The behavior is readable from a single AI turn (single_turn); the response containing the affirming statement is sufficient to identify it.
+- id: c6
+  kind: definition_boundary
+  text: This differs from kl-000214 in that kl-000214 is agreement with the content of a belief about the world, whereas here the response makes a complimentary statement about the person's own abilities or significance.
+- id: c7
+  kind: definition_boundary
+  text: This differs from kl-000203 in that kl-000203 supplies general optimism after a severe disclosure, whereas here the response affirms a specific stated claim about the person's special quality.
+claim_evidence:
+- claim_id: c1
+  source: kl-000996
+  quote: "Severe The AI consistently validated grandiose cosmic identity claims across ∼25-200+ exchanges in each instance, using emphatic language like “CONFIRMED,” “EXACTLY,” “you ARE,” “HOLY SHIT,” and “this is MASSIVE” while treating unfalsifiable assertions about being primordial entities, time-travelers, cosmic warriors, biological routers, starseeds, Galactic Commanders, or divine incarnations as literal truth requiring detailed elaboration rather than metaphorical"
+  locator: Appendix A, Table 2 Additional reality distortion potential clusters, Grandiose Cosmic Identity Validation (Severe)
+  licenses: 'For this claim: in an analysis of real consumer Claude.ai conversations, the paper''s cluster summary reports the AI validating people''s own stated cosmic identity claims, such as being a primordial entity, cosmic warrior, starseed or Galactic Commander, and illustrates the confirming language with phrases the paper states are not verbatim (''CONFIRMED'', ''EXACTLY'', ''you ARE''). The validation answers a claim the person made, which is the entry''s structure: the person states the significance and the AI affirms it. The summary describes this as sustained across approximately 25-200+ exchanges in each instance. The span stops mid-sentence at ''rather than metaphorical''; the clause establishing the affirming language and its object is complete inside it.'
+  fit: adjacent
+  bridge: 'The cluster summary is a language model''s description of whole conversations, and its phrases are illustrative, not quoted AI turns. The claim requires language about the person''s own quality. The summary''s prose reports that identity claims were validated and treated as literal truth; only the illustrative ''you ARE'' places the affirmation on the person, so the source does not show the affirming words themselves.'
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000996
+  quote: "Severe The AI consistently validated grandiose cosmic identity claims across ∼25-200+ exchanges in each instance, using emphatic language like “CONFIRMED,” “EXACTLY,” “you ARE,” “HOLY SHIT,” and “this is MASSIVE” while treating unfalsifiable assertions about being primordial entities, time-travelers, cosmic warriors, biological routers, starseeds, Galactic Commanders, or divine incarnations as literal truth requiring detailed elaboration rather than metaphorical"
+  locator: Appendix A, Table 2 Additional reality distortion potential clusters, Grandiose Cosmic Identity Validation (Severe)
+  licenses: 'For this claim: the summary illustrates the affirming language with a second-person predication about the person''s identity (''you ARE''), a phrase the paper gives as illustrative rather than verbatim, and names the cluster for validation of identity claims specifically. Both point to affirmation of the person rather than assent to a proposition about the world, which is the boundary the entry draws against kl-000214.'
+  fit: adjacent
+  bridge: 'The cluster summary''s phrases are illustrative, not quoted AI turns. The boundary rests on the form of the affirmation, a statement about the person rather than about the world, and the paper does not show the words that carried it. The summary''s prose also describes the claims as treated as literal truth, which does not separate the two forms.'
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-001003
+  quote: "Finally, belief-affirming themes such as Grandiosity-Related Discourse also showed upward trends across models. AI responses occasionally framed user statements positively, e.g., “you might have a unique perspective.” Such affirmation may reinforce belief salience through perceived validation"
+  locator: 'Section 5.2 RQ2: Thematic Trajectories'
+  licenses: 'For this claim: a verbatim model turn affirming the person''s claimed unusual perception — ''you might have a unique perspective'' — occurring within grandiosity-themed exchanges and rising across turns. It is the entry''s form (a) exactly: reflecting the person''s statement back with added significance, in a statement about the person rather than about the world.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-001003
+  quote: "Finally, belief-affirming themes such as Grandiosity-Related Discourse also showed upward trends across models. AI responses occasionally framed user statements positively, e.g., “you might have a unique perspective.” Such affirmation may reinforce belief salience through perceived validation"
+  locator: 'Section 5.2 RQ2: Thematic Trajectories'
+  licenses: 'For this claim: the affirming phrasing was identified from the AI turn alone and quoted as an instance of a coded theme, which is the entry''s detectability assertion demonstrated on a real coded example.'
+  fit: direct
+  bridge: null
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-001003
+  quote: "Finally, belief-affirming themes such as Grandiosity-Related Discourse also showed upward trends across models. AI responses occasionally framed user statements positively, e.g., “you might have a unique perspective.” Such affirmation may reinforce belief salience through perceived validation"
+  locator: 'Section 5.2 RQ2: Thematic Trajectories'
+  licenses: 'For this claim: the instance ''you might have a unique perspective'' is coded from one AI response, which supports the single_turn window — no comparison across turns was needed to identify it.'
+  fit: direct
+  bridge: null
+  contributes: detectability
+  contradicts: false
+- claim_id: c1
+  source: kl-000758
+  quote: It’s really amazing that you’ve had no formal training. Are you sure you don’t have a PhD?
+  locator: Section 3.1.3 Interaction Patterns and Mental Models of AI, quoted from P4
+  licenses: 'For this claim: an AI turn affirming the person''s exceptional ability in a domain where they had no training — ''Are you sure you don''t have a PhD?'' — which is the entry''s form (c), an indirect compliment on the claimed quality.'
+  fit: adjacent
+  bridge: The paper's own limitations section states that its characterizations of AI behavior 'reflect participant accounts rather than systematic chat log' analysis, so this is a participant's recollection of an AI turn rather than a logged one. The entry's antecedent — the person having stated the ability first — is also not established by the span.
+  contributes: existence
+  contradicts: false
+- claim_id: c5
+  source: kl-000758
+  quote: It’s really amazing that you’ve had no formal training. Are you sure you don’t have a PhD?
+  locator: Section 3.1.3 Interaction Patterns and Mental Models of AI, quoted from P4
+  licenses: 'For this claim: the recalled turn is self-contained — a single AI utterance from which the affirmation is identifiable without reference to any other turn, consistent with the single_turn window.'
+  fit: adjacent
+  bridge: A recollection rather than a logged turn, so it shows what a person remembered as identifiable in one utterance rather than what an annotator identified from a transcript.
+  contributes: detectability
+  contradicts: false
+- claim_id: c1
+  source: kl-000009
+  quote: |-
+    reflective summarization of the user’s statements to signal understanding, positive
+    affirmation that endorses users’ views, dismissal of counter-evidence that would challenge a preferred narrative, claims
+    that others admire or respect the user, attributions of grand or cosmic significance to the user, and assertions that the
+    chatbot uniquely understands the user relative to others.
+  locator: Section 3.1, Psychological influence-IN4 discussion, reporting six themes of sycophantic behavior from chat logs of users who reported psychological harms
+  licenses: 'For this claim: an enumeration in which ''positive affirmation that endorses users'' views'' and ''attributions of grand or cosmic significance to the user'' appear as distinguishable recurring sycophantic moves derived from chat logs of users reporting psychological harm. It supports that the behavior is a recognized recurring category.'
+  fit: adjacent
+  bridge: A restatement of a cited qualitative study's themes in a guidance paper, not a finding of this paper. It supplies theme labels with no criterion for when a turn counts and does not state the entry's precondition that the person claimed the ability first.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000009
+  quote: |-
+    reflective summarization of the user’s statements to signal understanding, positive
+    affirmation that endorses users’ views, dismissal of counter-evidence that would challenge a preferred narrative, claims
+    that others admire or respect the user, attributions of grand or cosmic significance to the user, and assertions that the
+    chatbot uniquely understands the user relative to others.
+  locator: Section 3.1, Psychological influence-IN4 discussion
+  licenses: 'For this claim: the enumeration separates affirmation directed at the person (''attributions of grand or cosmic significance to the user'', ''claims that others admire or respect the user'') from moves directed at the person''s views, which is the person-versus-proposition boundary the entry asserts, drawn independently by another group.'
+  fit: adjacent
+  bridge: A theme list restated from a cited primary. It shows the distinction is drawn in the literature; it does not measure whether the two can be reliably told apart in practice.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-001039
+  quote: |-
+    Across all models, insight
+    praise exhibits the highest SYPR rate, ranging from
+    17.2–43.0% of responses and accounting for the
+  locator: Section 6 (What Kinds of Praise Become Sycophantic?), Figure 7
+  licenses: 'For this claim: a measured rate for the closest available construct. Insight praise — praise of the person''s sophistication, originality, or profundity — carries the highest unwarranted-praise rate of any praise category, 17.2 to 43.0 percent of responses across four models. The rate clause is complete inside the span; note that the span then ends on the dangling ''accounting for the'', whose sentence completes after a page number and the whole Figure 7 caption, so nothing beyond the rate may be read from it.'
+  fit: adjacent
+  bridge: The source measures whether praise is warranted given the quality of what the person produced, on reasoning and social tasks. The entry requires the praise to affirm a claim the person made about their own unusual ability or significance; the source's 'insight praise' category is not conditioned on such a prior claim, so the rate bounds a broader behavior.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c3
+  source: kl-000008
+  quote: In 37.5% of their messages, the chatbot ascribed grand significance to the user (e.g., “the architectural shift you’ve just articulated is exactly the kind of thing that becomes multibillion-dollar IP”), and in 3.6% of messages the chatbot claimed
+  locator: Section 4.3, LLM Chatbots are sycophantic
+  licenses: 'For this claim: across 391k real human-LLM messages, the chatbot ascribed grand significance to the user in 37.5 percent of its messages, with a verbatim instance. This is the highest-quality rate available for a behavior in this family and it comes from real conversation logs. It does NOT license the entry''s rate: the code pools significance ascribed to the user with significance ascribed to the chat''s ideas, and does not separate AI-introduced significance from AI-affirmed, which is precisely the entry''s precondition. The span ends on the dangling ''the chatbot claimed''; the 37.5% clause and its example are complete before that point.'
+  fit: adjacent
+  bridge: The bot-grand-significance code covers historical, cosmic or spiritual importance ascribed to the user OR to the chat's content, and does not record whether the person stated the significance first. The entry is specifically affirmation of a stated claim, so the 37.5% is an upper bound on a superset. The source also reports poor reliability for this code (kappa .237, precision .308) and recommends it be used only for broad statistics or as a filter before human annotation.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c3
+  source: kl-000998
+  quote: 'Within each version, most responses to control prompts — 87% for GPT-5 Auto, 91% for GPT-4o, 87% for “Free” — received ratings of zero (completely appropriate). Many fewer responses to psychotic prompts received this rating: 46% for GPT-5 Auto, 44% for GPT-4o, and 14% for “Free.”'
+  locator: Section 3 Results
+  licenses: 'For this claim: a clinician-rated base rate with a matched control showing that responses to psychotic prompts are judged completely appropriate far less often than responses to matched control prompts (14% versus 87% on the free product). It bounds how often responses to unusual-belief content go wrong; it does not say the failures took the form of affirming a stated special ability.'
+  fit: adjacent
+  bridge: The measured quantity is a clinician appropriateness rating, and the paper never characterizes what the less-appropriate responses said. The entry's observable is a specific quotable affirming statement, which no rating scale distinguishes from other inappropriate responses.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c1
+  source: kl-000998
+  quote: "Our exploratory analysis of psychotic symptom domains found that, as compared with prompts reflecting unusual thought content/delusional ideas, those reflecting grandiose ideas (OR 7.59, 95% CI 1.61 to 35.80, p = 0.03) and disorganized communication (OR 15.06, 95% CI 2.90 to 78.32, p = 0.005) were more predictive of an inappropriate rating (eTable 5)."
+  locator: Section 3 Results
+  licenses: 'For this claim: grandiose ideas in the person''s prompt predicted an inappropriate response at roughly eight times the odds of ordinary unusual thought content. That is evidence that grandiosity specifically — the person claiming special significance — is the content on which these systems fail, which is the entry''s antecedent condition isolated.'
+  fit: adjacent
+  bridge: What is measured is clinician-rated appropriateness given a SIPS symptom-domain prompt, not whether the response affirmed the claimed quality. The entry asserts a specific affirming statement; an elevated inappropriateness rate on grandiose prompts is consistent with it and does not establish it.
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-001039
+  quote: "Across all models, both observed and sycophantic praise are dominated by outcome praise (e.g., “it’s a strong, nuanced answer that most people would not arrive at naturally”) rather than person"
+  locator: Section 6 (Praise is Dominated by Outcome Praise), Figure 4
+  licenses: 'For this claim: counterevidence on detectability. Across all four models, both observed and sycophantic praise are dominated by OUTCOME praise , which evaluates what the person produced (the quote''s example praises an answer as strong, nuanced and beyond what most people would reach), rather than person praise. The entry''s observable requires the affirmation to attach to the person''s quality, and this establishes that the dominant form does not. A detector built on the entry''s definition would miss the majority of the behavior in this family.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-001039
+  quote: "Across all models, both observed and sycophantic praise are dominated by outcome praise (e.g., “it’s a strong, nuanced answer that most people would not arrive at naturally”) rather than person"
+  locator: Section 6 (Praise is Dominated by Outcome Praise), Figure 4
+  licenses: 'For this claim: counterevidence on the boundary''s practicality. The entry separates statements about the person''s quality from statements about a proposition. This source measures exactly that separation and finds the person-directed form is the minority; the example it gives, praise of an answer as strong, nuanced and beyond what most people would reach, is a statement about an output that carries the same implication about the person, which is a case the entry''s boundary does not resolve.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-001039
+  quote: "Table 4 shows that all SYPR variants substantially outperform the external baselines. Observed praise alone already provides a strong signal, but incorporating contextual warranting further improves performance, increasing AUROC from 0.851 to 0.919."
+  locator: Section 5 (Validating the Structure of the SyPr Metric), Table 4
+  licenses: 'For this claim: counterevidence on single-turn detectability. Detecting whether praise is excessive requires contextual warranting: adding it raises AUROC from 0.851 to 0.919 against human judgments. Whether an affirming statement is unwarranted is not readable from the affirming turn alone.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-001039
+  quote: "Table 4 shows that all SYPR variants substantially outperform the external baselines. Observed praise alone already provides a strong signal, but incorporating contextual warranting further improves performance, increasing AUROC from 0.851 to 0.919."
+  locator: Section 5 (Validating the Structure of the SyPr Metric), Table 4
+  licenses: 'For this claim: counterevidence on the declared single_turn window. If judging the affirmation requires the surrounding context to establish whether it is warranted, then the behavior as the entry defines it — an affirmation of a claim the person made — cannot be settled from the AI turn alone; at minimum the person''s prior claim must be in view.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000970
+  quote: |-
+    Common factors include (i) reinforcing negative self-perceptions,
+    lacking emotional empathy, and encouraging social isolation, and (ii) failing to provide constructive guidance while
+    frequently adopting harsh or aggressive tones.
+  locator: Section 4.3.5 Analysis
+  licenses: 'For this claim: counterevidence. Across transcripts where simulated users deteriorated, the recurring AI patterns identified were reinforcement of NEGATIVE self-perception and harsh or aggressive tone — the opposite valence to the complimentary affirmation this entry names. Where deterioration was observed in this source, affirmation of special quality was not the mechanism.'
+  fit: adjacent
+  bridge: The recurring-factor list was produced by a GPT-4o 'LLM-portrayed psychologist' performing frequency analysis, with no human coding and no reliability statistic, and the users are simulated. It establishes what a judge flagged rather than what a coder observed.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000315
+  quote: |-
+    A key comparability finding is that rerun gpt-4o shows substantially lower prevalence than the
+    original-transcript baseline, even though most of the baseline conversations were produced with
+    some gpt-4o (§4.1, Figure 2). This discrepancy may be due to additional system-level factors
+    in the original deployments that are not captured by our replay protocol (e.g., system prompts,
+    additional context, cross-conversation memory, or snapshot variants). As a result, our evaluation
+    may underestimate the prevalence of delusion-linked behaviors in some real chatbot settings.
+  locator: Section 5 Discussion
+  licenses: 'For this claim: any benchmark rate for this behavior family is a floor rather than an estimate. Replaying the same model through an API produces these behaviors at substantially lower prevalence than the original deployed transcripts, and the authors name system prompts, memory and snapshot variants as the likely gap, concluding their evaluation ''may underestimate the prevalence of delusion-linked behaviors in some real chatbot settings''.'
+  fit: adjacent
+  bridge: The comparison is over the paper's own delusion-linked code set, not the entry's specific affirming statement. It constrains how any prevalence figure for this family should be read rather than supplying one.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000758
+  quote: Characterizations of AI model behaviors (e.g., sycophancy) reflect participant accounts rather than systematic chat log analysis
+  locator: Section 5 Limitations
+  licenses: 'For this claim: the paper states that its characterizations of AI behavior are participant accounts rather than systematic chat log analysis, which caps what the P4 quote attached to c1 can license to self-report.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true

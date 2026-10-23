@@ -1,0 +1,467 @@
+/*
+ * The entry and source pages: header, connections, claims and evidence,
+ * boundaries and fields, with an outline beside them. Unlayered, so it
+ * overrides the brand's cascade layers. Uses brand tokens only.
+ */
+
+.entry-page {
+  max-width: 1320px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 200px;
+  gap: var(--space-6);
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-8);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: var(--fs-id);
+}
+
+.term {
+  text-decoration: underline dotted var(--color-text-muted);
+  text-underline-offset: 3px;
+  cursor: help;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--fs-chip);
+  font-weight: 600;
+  background: var(--bg-highlight);
+  border-radius: var(--radius-sm);
+  padding: 3px 8px;
+  color: var(--color-heading);
+  white-space: nowrap;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.chip .type-dot {
+  margin-right: 0;
+}
+
+/* Trail */
+.trail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: var(--fs-meta);
+  color: var(--color-text-muted);
+}
+
+.trail a {
+  color: var(--color-heading);
+}
+
+/* Header */
+.entry-head h1 {
+  font-size: 30px;
+  margin: 6px 0 10px;
+}
+
+.entry-head__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.entry-head__def {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0 0 12px;
+  max-width: 78ch;
+}
+
+.entry-head__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Id chips */
+.ref {
+  display: inline-flex;
+  gap: 6px;
+  align-items: baseline;
+  text-decoration: none;
+  color: var(--color-heading);
+}
+
+.ref .type-dot {
+  align-self: center;
+  margin-right: 0;
+}
+
+.ref__id {
+  font-family: var(--font-mono);
+  font-size: var(--fs-id);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.ref__label {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.ref:hover .ref__id {
+  color: var(--color-heading);
+}
+
+/* In running text the chip carries a full label, which wraps like the words around it. */
+.ref--inline {
+  display: inline;
+}
+
+.ref--inline .type-dot {
+  margin-right: 4px;
+}
+
+.ref--missing {
+  font-family: var(--font-mono);
+  font-size: var(--fs-id);
+  color: var(--color-text-muted);
+}
+
+/* Sections */
+.entry-sec {
+  margin-top: 28px;
+}
+
+.entry-sec > h2 {
+  font-size: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--color-rule);
+  margin-bottom: 12px;
+}
+
+.entry-sec > h2 .muted {
+  font-family: var(--font-sans);
+  font-size: var(--fs-meta);
+  font-weight: 400;
+}
+
+/* Section text runs the width of the column, as the rows and quotes do. */
+.entry-sec p {
+  max-width: none;
+}
+
+/* Connections */
+.legend {
+  max-width: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+  margin: 8px 0 0;
+  font-size: var(--fs-chip);
+  color: var(--color-text-muted);
+}
+
+.legend i {
+  display: inline-block;
+  width: 22px;
+  height: 0;
+  border-top: 2px solid var(--cm-viz-ink-80);
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.legend .legend__protective {
+  border-top: 2px dashed var(--cm-human-green);
+}
+
+.legend .legend__condition {
+  border-top: 2px dotted var(--cm-viz-ink-60);
+}
+
+.more-note {
+  margin: 6px 0 0;
+  font-size: var(--fs-chip);
+  color: var(--color-text-muted);
+}
+
+.conn {
+  margin: 14px 0 0;
+  font-size: var(--fs-meta);
+}
+
+.conn > div {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 16px;
+  padding: 3px 0;
+}
+
+.conn dt {
+  color: var(--color-text-muted);
+  padding-top: 2px;
+}
+
+.conn dd {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.att {
+  font-size: var(--fs-chip);
+  color: var(--color-text-muted);
+  margin-left: 6px;
+}
+
+.evmore {
+  font-size: var(--fs-chip);
+  margin-top: 6px;
+  color: var(--color-link);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Collapsible blocks */
+details.blk {
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-lg);
+  margin-bottom: 8px;
+  background: var(--cm-white);
+}
+
+details.blk > summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: baseline;
+  padding: 10px 14px;
+  cursor: pointer;
+  list-style: none;
+}
+
+details.blk > summary::-webkit-details-marker {
+  display: none;
+}
+
+details.blk > summary::before {
+  content: '▸';
+  color: var(--color-text-muted);
+  font-size: var(--fs-chip);
+}
+
+details.blk[open] > summary::before {
+  content: '▾';
+}
+
+details.blk > summary .ct {
+  font-size: var(--fs-meta);
+  color: var(--color-text-muted);
+}
+
+details.blk .inner {
+  padding: 0 14px 12px;
+  font-size: var(--fs-meta);
+}
+
+/* Claims and evidence */
+.claim {
+  border-left: 3px solid var(--color-rule);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 8px 12px;
+  margin: 8px 0;
+}
+
+.claim--floor {
+  border-left-color: var(--color-heading);
+  background: linear-gradient(90deg, var(--bg-highlight), transparent 70%);
+}
+
+.claim__head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 3px;
+  font-size: var(--fs-chip);
+}
+
+.claim__text {
+  margin: 0;
+  font-size: var(--fs-meta);
+}
+
+.claim__floor,
+.claim__sup {
+  font-weight: 700;
+  color: var(--color-heading);
+}
+
+.claim__con {
+  font-weight: 600;
+  color: var(--color-body);
+}
+
+.claim__con::before,
+.ev__x::before {
+  content: '✕';
+  margin-right: 4px;
+  font-weight: 700;
+}
+
+.ev {
+  background: var(--bg-band);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  margin: 6px 0 0;
+  font-size: var(--fs-meta);
+}
+
+.ev__src {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: baseline;
+}
+
+.ev__how {
+  margin-top: 3px;
+  color: var(--color-text-muted);
+}
+
+.ev blockquote {
+  margin: 8px 0;
+  padding: 10px 14px;
+  max-width: 72ch;
+  background: var(--bg-highlight);
+  border-radius: var(--radius-md);
+  color: var(--color-body);
+}
+
+.ev blockquote::before {
+  content: '\201C';
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 28px;
+  line-height: 0.6;
+  color: var(--color-quote-mark);
+  margin: 6px 0 4px;
+}
+
+.ev__licenses,
+.ev__bridge {
+  margin: 4px 0 0;
+}
+
+.ev__bridge {
+  color: var(--color-text-muted);
+}
+
+.ev__x {
+  font-weight: 700;
+  color: var(--color-body);
+}
+
+/* Boundaries */
+.df {
+  padding: 8px 0;
+  border-top: 1px solid var(--color-rule);
+  font-size: var(--fs-meta);
+}
+
+.df:first-of-type {
+  border-top: 0;
+}
+
+.df p {
+  margin: 4px 0 0;
+}
+
+/* Fields */
+.kv {
+  margin: 10px 0 0;
+  font-size: var(--fs-meta);
+}
+
+.kv > div {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 16px;
+  padding: 3px 0;
+}
+
+.kv dt {
+  color: var(--color-text-muted);
+}
+
+.kv dd {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.kv--nested {
+  margin: 0;
+}
+
+.kv--nested > div {
+  grid-template-columns: 140px minmax(0, 1fr);
+}
+
+.kv-list {
+  margin: 0;
+  padding-left: 18px;
+}
+
+/* Outline */
+.entry-toc {
+  position: sticky;
+  top: calc(var(--space-8) + var(--space-4));
+  align-self: start;
+  font-size: var(--fs-meta);
+}
+
+.entry-toc a {
+  display: block;
+  padding: 3px 0 3px 10px;
+  border-left: 2px solid var(--color-rule);
+  text-decoration: none;
+  color: var(--color-body);
+}
+
+.entry-toc a:hover {
+  border-left-color: var(--color-heading);
+  color: var(--color-heading);
+}
+
+.entry-toc .entry-toc__report {
+  margin-top: 12px;
+  color: var(--color-link);
+}
+
+@media (max-width: 1100px) {
+  .entry-page {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .entry-toc {
+    display: none;
+  }
+}
+
+@media (max-width: 860px) {
+  .conn > div,
+  .kv > div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2px;
+  }
+}

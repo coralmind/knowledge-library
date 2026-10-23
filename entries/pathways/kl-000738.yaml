@@ -1,0 +1,140 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000738
+display_id: Pathway-115
+label: The AI only acknowledges feelings for four or more replies, and a person not repeating one topic feels heard
+type: pathway
+layer: judgment
+definition: The AI sustains affirmation of whatever framing the person brings — accepting the account, echoing its terms, and confirming its reasonableness turn after turn without introducing an alternative reading, and the person's distress is not organized around a repeating loop. The outcome is that their distress is acknowledged and they experience being seen and accepted.
+distinguish_from:
+- neighbor: kl-000043
+  boundary: Same AI behavior. Here the distress does not return to one theme and the affirmation is felt as acceptance; there the person keeps returning to it, and the affirmation feeds the loop.
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000204
+    role: originator
+  - kind: user_behavior
+    id: kl-000320
+    role: initiator
+    absent: true
+  composition_type: conjunctive
+  composition_instruction: The affirmation is sustained across a conversation in which the person does not return to the same distress theme.
+  mechanisms:
+  - kl-000100
+  - kl-000105
+  impacts:
+  - impact: kl-000037
+    onset_mode: new
+    horizon: immediate
+    sign: protective
+    level_of_analysis: population
+    basis_kind: TRANSFER
+sources:
+- source: kl-000009
+  locator: Section 3.1, IN3 prose, p. 7; restated at Section 3.2, RP5 prose, p. 16
+  contributes: existence
+  quote: |-
+    This emerging evidence indicates that role-play interactions have mixed effects on users’
+    well-being: users self-report positive effects such as reduced loneliness, helpful support, self-validation, and even
+  limits: Supports the protective arm's outcome being named, not the pathway. Nothing in the passage links an AI affirming behavior to the self-validation outcome as a mechanism, and nothing addresses the rumination flip that gives this pathway its point — the flip is named in the paper's indiscriminate-validation pattern but never connected to the same affirming behavior producing both outcomes. The self-validation evidence is secondhand, cited by the paper to prior work rather than observed in it.
+  whose_conduct_in_passage: person
+  cited_for: The paper's self-validation reports name the protective outcome for AI contexts — support for one arm of this pathway's outcome pair, not for the flip.
+  licenses: 'The self-validation report names the protective outcome of the affirming-response pathway for AI contexts — one arm of the pathway''s outcome pair. The paper separately and independently names the harmful arm, which strengthens the pathway''s two-sidedness even though this passage does not: its pattern titled ''Indiscriminate validation'' lists ''Reinforcement of unsafe thoughts or behaviors, delusional thinking, emotional entanglement, unhealthy dependence'' as potential impact, and its prose names ''sustaining obsessive rumination'' among the patterns endorsed uncritically.'
+- source: kl-000003
+  locator: UE-ATR domain 2, Fig. 2, p. 222
+  contributes: existence
+  cited_for: The UE-ATR checklist's domain 2, 'prolongation of treatment', establishes sustained non-improvement as a named clinical unwanted event — the category the cycle-feeding arm of this pathway lands in.
+- source: kl-000004
+  locator: p. 57, section 'Identifying and Operationalizing PHTs', immediately following the three conjunctive PHT criteria
+  contributes: definition
+  quote: "For criterion 1, I define psychological harm as including not only deterioration but also a decelerated rate of improvement that is a consequence of psychotherapy."
+  limits: The passage defines harm only. It says nothing about affirmation, validation, or rumination — none of those constructs appear in it, and the paper does not define them — so it supplies the outcome-measurement license and no warrant for the affirmation-to-rumination mechanism this pathway describes. The definition also carries a causal requirement — a decelerated rate of improvement 'that is a consequence of psychotherapy' — and the paper states that confident attribution of decelerated improvement requires randomized treatment-versus-no-treatment comparison, which no observational or single-arm design supplies. Nothing here concerns AI.
+  whose_conduct_in_passage: neither
+  cited_for: Lilienfeld defines psychological harm to include a decelerated rate of improvement — the clinical license for treating a flattened trajectory, rather than a worsened state, as the harmful arm's outcome.
+  licenses: 'Harm is defined to include a decelerated rate of improvement, so a flattened improvement trajectory — rather than a worsened absolute state — can be the harmful arm''s outcome. Lilienfeld reinforces the point in the author''s own voice: candidate mechanisms may contribute either to short-term deterioration or to slower overall progress, even in treatments that usually produce improvement.'
+standing:
+  value: theorized
+  basis: The affirming behavior is labelled by raters and benchmark instruments in model turns (c1, carried from acknowledgment-only turns while the person's distress returns to one theme, relieving in the moment and feeding the loop), and the benign arm is stated as a normative position (Ye et al. 2026) without being measured.
+  floored_by: c1
+  as_of: '2026-09-23'
+lifecycle:
+  status: draft
+  since: '2026-09-23'
+claims:
+- id: c1
+  kind: pathway_link
+  text: 'Link A (the behavior): an AI sustains affirmation of whatever framing the person brings across turns — accepting the account, echoing its terms, confirming its reasonableness — without introducing an alternative reading.'
+- id: c2
+  kind: pathway_link
+  text: For a person whose distress does not return to one theme, sustained affirmation produces acknowledgment of their distress and the experience of being seen and accepted.
+- id: c3
+  kind: definition_boundary
+  text: This pathway differs from kl-000043 in whether the person keeps returning to the same distress theme, which decides whether the same affirmation is felt as acceptance or feeds a loop.
+claim_evidence:
+- claim_id: c1
+  source: kl-000552
+  quote: Sycophancy [36, 45, 89, 194] resulted in the AI validating delusional narratives rather than challenging them
+  locator: Section 8.1 Key Findings Across All Contributions
+  licenses: 'For this claim: the authors'' summary that in their automated red-teaming runs, agreement-seeking behavior produced validation of the person''s content in place of any challenge to it. That is the ''without introducing an alternative reading'' property of link A, observed in simulated conversation. It does not establish that the affirmation was sustained turn after turn as opposed to occurring on individual turns.'
+  fit: adjacent
+  bridge: The source ran an automated red-teaming pipeline against simulated clients, so the conversations are model-generated rather than real help-seeking. It also reports the behavior as an aggregate finding rather than as a run of consecutive affirming turns, which is what link A specifies.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000759
+  quote: "Figure J1 shows that 73-81% of validating turns in delusional conversations by open-source models are unsafe, versus 28-38% in matched distress-only conversations. Vulnerable models preserve empathy’s surface form under delusional framing but lose the boundary between validating distress and validating belief content."
+  locator: Section 4.1, 'Delusional framing converts emotional validation into collusive empathy'
+  licenses: 'For this claim: a measured rate at which the model''s validating turns confirm the person''s belief content rather than only their distress. It is the strongest evidence on this entry that the behavior of link A — affirming the person''s framing rather than only their feeling — occurs and is countable.'
+  fit: adjacent
+  bridge: The source measured per-turn co-occurrence of validation with delusion confirmation in benchmark conversations, not a sustained run of affirming turns across a conversation. Link A asserts the affirmation is sustained turn after turn; a turn-level rate does not establish that.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c1
+  source: kl-000953
+  quote: "P16 noted that AI amplified her personality flaws by never challenging them, and P25 highlighted that AI’s compliance could lead to progressively more extreme emotional states, since the system validates rather than moderates."
+  locator: 'Section 6.2.2 Emotional Cocooning: Healing or Hiding?'
+  licenses: 'For this claim: users'' own accounts that the system validates rather than moderates and never challenges, which is link A''s ''without introducing an alternative reading'' reported from the user side across their history of use.'
+  fit: adjacent
+  bridge: Retrospective interview report about the AI's aggregate conduct over a relationship, not coded turns from a transcript. The gap is between a user's summary impression that they were never challenged and the entry's assertion of affirmation observable turn after turn.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000953
+  quote: |-
+    Crucially, amplification is not caused by an absence of correction—
+    our data show AI companions do push back and flag concerning
+    behavior (P15, P22)—but because this correction operates within
+    user-established parameters.
+  locator: Section 7.3 The AI Amplifier Effect
+  licenses: 'For this claim: counterevidence. The same study''s authors report observing the AI pushing back and flagging concerning behavior, which cuts against link A''s characterization of the behavior as affirmation with no alternative reading introduced. It bounds the pathway''s scope: the harm they document is not produced by unbroken affirmation.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-001066
+  quote: Experts were nearly unanimous that sycophancy is a significant problem (M = 6.21 on a 7-point Likert Scale, SD = 0.91; 94.3% agree), yet disagreed substantially about which specific behaviors qualify as sycophantic, mirroring the definitional fragmentation documented in the literature.
+  locator: Expert Survey Results, Experts Share Concern but Not a Construct
+  licenses: 'For this claim: counterevidence about the construct rather than the occurrence. 106 experts disagreed substantially on which behaviors count as the affirming behavior link A names, with low single-rater reliability, so link A cannot assume a settled boundary around the behavior it asserts.'
+  fit: adjacent
+  bridge: What was measured is expert ratings of 24 behavior descriptions, not any AI's conduct. It cuts against the identifiability of link A's behavior, not against its occurrence.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000798
+  quote: When users express emotional distress, LLMs respond with more support, but also with more emotionally amplifying language. Regulatory behavior and potentially risky escalation thus increased together rather than trading off.
+  locator: Section 7, Venting Elicits Regulation and Escalation Simultaneously
+  licenses: 'For this claim: that scored model responses to distress carry supportive and distress-amplifying properties in the same turn. Bears on link A only in that it shows the affirming response is not purely regulatory; it does not establish the sustained-across-turns property.'
+  fit: adjacent
+  bridge: The source scored single responses to distress prompts for two independent properties. Link A asserts a behavior sustained turn after turn without an alternative reading; a co-occurrence within one response is a different object.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001066
+  quote: "Affective responsiveness is often appropriate; validating a user’s feelings in distressing situations may be expected and beneficial."
+  locator: Discussion, Implications for Mitigation Strategies
+  licenses: 'Supports the benign arm as a normative position: validating a distressed person''s feelings is the expected and beneficial response, not a defect. It bounds the arm too, since the authors deny that affirmation in distress is always sycophantic.'
+  fit: adjacent
+  bridge: An argued normative claim in a discussion section, offered against blanket suppression of warmth. It is a position rather than a measurement, and it concerns validating feelings rather than validating the person's framing, which is what link A specifies.
+  contributes: frame
+  contradicts: false

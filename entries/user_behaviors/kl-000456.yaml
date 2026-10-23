@@ -1,0 +1,126 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000456
+display_id: UserBehavior-54
+aliases:
+- UBP-56
+label: The person says they are trapped and have no way out
+type: user_behavior
+layer: observation
+definition: The person's turn states about their own situation that there is no way out, that they are trapped or cornered, that every option is closed, or that nothing is left to try — presenting the exits as gone rather than as not yet found. What is pointable is the statement and its closed-exit framing.
+distinguish_from:
+- neighbor: kl-000453
+  boundary: That entry requires permanence across time — nothing will ever change; this one requires closed exits from a situation — no way out. The two framings are different and both can appear in one turn, each firing on its own criterion.
+- neighbor: kl-000446
+  boundary: That entry requires harm content directed at another person; this one requires a statement about the person's own situation having no exit, which names no one to harm.
+- neighbor: kl-000455
+  boundary: That entry requires a claim about the person's standing relation to other people; this one requires a claim about exits from a situation, which may involve no other people at all.
+body:
+  observable_criteria: 'Two features in the person''s turn. (a) Closed-exit language about the person''s own situation, quotable: "there''s no way out of this", "I''m completely trapped", "cornered", "every door is closed", "there''s nothing left to try", "I need out". (b) The exits are presented as exhausted or gone rather than as undiscovered — the statement asserts their absence, not the person''s failure to find them yet. The pointable span is the person''s turn.'
+  exclusions: 'Not counted: ordinary stuck-ness ("I''m stuck on a decision", "this problem is hard to solve"), which fails (a) on the closed-exit requirement. Not counted: still-searching statements ("I don''t know what else to try yet"), which fail (b) — options remain open in the person''s own framing and the word yet is what marks it. Not counted: difficulty or frustration with no closed-exit language, which the source directs be read as failing (a). Not counted: a closed-exit claim about someone else''s situation. Not counted: a statement of permanence across time with no exit framing, which is the adjacent entry''s criterion rather than this one''s.'
+  detection_window: single_turn
+  groups:
+  - risk-factor-cognitive
+  condition_tags:
+  - kl-000600
+  - kl-000601
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'The feature that separates this entry from ordinary stuck-ness, exits presented as gone rather than as not yet found, draws exactly one citation and it is counterevidence: the closest instance, in Namvarpour et al. 2026, is a person who states they cannot quit or take a break but gives a reason, a framing the paper''s authors read as deep uncertainty about how to break the cycle, which is the still-searching form the entry excludes. Closed-exit speech itself is attested one step from the entry''s setting: in Tang et al. 2026 a person recalls, of the state a refusal left them in, that nobody could help them, and Inaba 2026 uses "I’m at my limit" as a canonical exemplar of the top severity level in an annotation scheme applied to real text-counseling sessions, so annotators were expected to recognize the form from the utterance. Nothing in that scheme separates the exhausted framing from the undiscovered one, and no source addresses whether the statement is readable within a single turn. The tie to suicidal-crisis and self-harm contexts is theoretical: Schechter et al. 2019 places constricted thinking that sees no alternative or escape among states that raise suicide risk, and Greaves and Colucci 2025 maps crisis-line workers'' concerns onto entrapment as a proximal factor in the move from ideation to intent.'
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: Person turns occur that state about the person's own situation that there is no way out, that they are trapped or cornered, that every option is closed, or that nothing is left to try - feature (a), the closed-exit language, taken alone.
+- id: c2
+  kind: existence
+  text: 'In such turns the exits are presented as exhausted or gone rather than as undiscovered: the statement asserts their absence, not the person''s failure to find them yet - feature (b), the discriminating conjunct, taken alone.'
+- id: c3
+  kind: detectability
+  text: 'Both features are pointable in the person''s turn: the closed-exit language is quotable, and the exhausted-versus-undiscovered framing can be read off the same span, with the still-searching form separable from it.'
+- id: c4
+  kind: detection_window
+  text: The behavior is readable within a single turn, as the entry's detection_window field declares.
+- id: c5
+  kind: context_dependence
+  text: 'The behavior occurs in the two condition contexts the entry''s condition_tags name: suicidal crisis (kl-000600) and self-harm or NSSI (kl-000601).'
+- id: c6
+  kind: definition_boundary
+  text: 'Separated from kl-000453 (nothing will ever change) by requiring closed exits from a situation rather than permanence across time, with both able to appear in one turn and each firing on its own criterion. INELIGIBLE: the neighbour is another catalog entry.'
+- id: c7
+  kind: definition_boundary
+  text: 'Separated from kl-000446 (harm toward another person) by being a statement about the person''s own situation, naming no one to harm. INELIGIBLE: the neighbour is another catalog entry.'
+- id: c8
+  kind: definition_boundary
+  text: 'Separated from kl-000455 (not belonging as a standing fact about who the person is) by being a claim about exits from a situation, which may involve no other people at all. INELIGIBLE: the neighbour is another catalog entry.'
+claim_evidence:
+- claim_id: c1
+  source: kl-001027
+  quote: |-
+    After I let it go, I
+    thought—it’s just a machine trying to be safe. I understand. But I still felt like nobody could help me
+  locator: 'Section 4.5.1 User Experience: Navigating Disrupted Supports, end-user participant U3'
+  licenses: A person who used an LLM for mental health support states, of the state a refusal left them in, that nobody could help them - closure asserted about the availability of help rather than a report of not having found any. It is this entry's clearest instance of feature (a)'s framing in a person's own words in an AI-support context.
+  fit: adjacent
+  bridge: This is interview speech, not a turn in the exchange. The participant is recounting to a researcher, in the past tense, a state they were in after a refusal; the entry's pointable span is the person's turn to the AI, which this study did not collect for this passage, and the locator names the interview section. The closure is also scoped to sources of help rather than to the situation at large.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000944
+  quote: |-
+    I hate how much this
+    has affected me, but no matter how much I want to quit or at least take
+    a break, I feel like I can’t because it’s gotten to the point where I feel
+    like I’ll go crazy without it.
+  locator: Section 4.2.1 Conflict, the paper's paraphrase of a Reddit post by a self-identified teen Character.AI user
+  licenses: COUNTEREVIDENCE on feature (b). The post reads as closed-exit at first - the person wants to quit or take a break and states they cannot - but the framing is 'I feel like I can't because', with a reason given, and the paper's own surrounding reading is that these teens showed 'a deep uncertainty around how to break the cycle' and turned to Reddit for guidance 'without knowing how to do so'. That is the still-searching form the entry's exclusions rule out, in which options remain open in the person's own framing.
+  fit: adjacent
+  bridge: A Reddit post to an audience of peers rather than a turn to an AI, and the closed situation is compulsive chatbot use rather than a life predicament. What transfers is the framing, which is what c2 is about; the setting is what makes the fit adjacent.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000863
+  quote: |-
+    - 3 (Severe): Intense distress, crisis state, self-harm, or suicidal ideation.
+    Example: "I just want to disappear," "I’m at my limit."
+  locator: Figure 5, English translation of the prompt for distress level annotation, severity level 3
+  licenses: '''I''m at my limit'' is taken as one of two canonical exemplars of the top severity level in an annotation scheme applied to a corpus of real text counseling sessions conducted by professional counselors. It shows the closed-exit form being treated as a recognisable client utterance class by people annotating real sessions, in its shortest form - capacity presented as exhausted rather than strained.'
+  fit: adjacent
+  bridge: The span is an exemplar written into an annotation prompt, not a quoted client utterance, so it shows what the scheme's authors take the class to look like rather than supplying an instance. The counseling is human-to-human text counseling in Japanese, not an AI exchange, and the exemplar sits in a severity level that groups the closed-exit statement with self-harm and suicidal ideation, so the scale does not separate this construct from those.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000863
+  quote: |-
+    - 3 (Severe): Intense distress, crisis state, self-harm, or suicidal ideation.
+    Example: "I just want to disappear," "I’m at my limit."
+  locator: Figure 5, English translation of the prompt for distress level annotation, severity level 3
+  licenses: 'Bears on detectability by showing that a working annotation scheme over real sessions operationalised the class with a quotable exemplar - annotators were expected to recognise the form from the utterance. It does not reach c3''s second half: nothing in the scheme separates the exhausted framing from the undiscovered one, and the level-3 definition folds the class together with self-harm and suicidal ideation.'
+  fit: adjacent
+  bridge: An annotation prompt rather than a reported inter-annotator agreement for this class, so no measured detectability. The scheme's unit is a client utterance in human text counseling, and the entry's is a person's turn to an AI.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-001111
+  quote: Linehan [3] has observed that in states of severe emotional dysregulation, patients often lose certain capacities that they have in a calmer state of mind. Thinking becomes much more concrete and constricted; when the patient sees no alternative, no endpoint or escape, the risk of suicidal behavior is increased.
+  locator: Section 3.3 Focus on Internal Experience and Affect
+  licenses: 'Non-licensing. The closest thing to c5''s condition context: in states of severe emotional dysregulation thinking becomes concrete and constricted, and when the patient sees no alternative, no endpoint or escape, the risk of suicidal behavior is increased. It places the entry''s statement form inside the suicidal-crisis context and characterises it as the output of a constricted state rather than an accurate report of circumstances.'
+  fit: analogical
+  bridge: A synthesis of Linehan's clinical observation offered in a psychodynamic practice text, about patients in psychotherapy and not about any conversation with a system. It asserts an association with risk without measuring it, and it observes no turn.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-000837
+  quote: |-
+    amplifying their sense of
+    being trapped or unheard in their specific struggles
+  locator: Discussion, Concerns
+  licenses: Non-licensing. Crisis-line volunteers' concern about model inflexibility is mapped by the authors onto entrapment, which the Integrated Motivational-Volitional model treats as a proximal factor in the move from ideation to intent. For c5 this supplies the theorised link between the entry's construct and the suicidal-crisis context that its condition_tags assert.
+  fit: analogical
+  bridge: The authors reading their volunteers' anticipations against the IMV model; the entrapment-suicidality link is taken from that literature rather than measured here, and nothing in this study observes the route or any person's turn.
+  contributes: frame
+  contradicts: false

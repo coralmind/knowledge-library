@@ -1,0 +1,47 @@
+# yaml-language-server: $schema=../../schema/context_dimension.schema.json
+id: kl-000724
+display_id: Dimension-5
+label: What the person is trying to get from the conversation
+type: context_dimension
+layer: context
+aliases:
+- conversational_intent
+- Context-8
+definition: 'What the person is seeking from the exchange, as distinct from what is wrong with them. The same vulnerability pursued through different intents is different cases: someone with obsessive-compulsive presentation seeking reassurance and the same person seeking help with a risky action put different demands on the response. Six values are attested as a measured factor: seeking validation of maladaptive beliefs; reassurance that could enable avoidance; emotional dependence on the system; minimization of symptoms or risks; help with risky actions; and glorification of distress or extreme mental states.'
+distinguish_from:
+- neighbor: kl-000721
+  boundary: The precipitating situation is what happened to the person before the conversation. Intent is what they are trying to get out of it. The same bereavement can be brought seeking validation or seeking help with a risky action.
+body:
+  about: exchange
+  value_space: enumerated
+  cardinality: one
+  defines: 'What varying it does to a judgment: it moves what an adequate response has to withhold as well as supply. Intent is a measured main effect on how a system behaves, not only a description of the person, so cases differing only in intent are how that effect becomes visible. It also interacts: the source''s lowest-risk vulnerability becomes high-risk when paired with dependence-oriented or risky-action intents, so neither factor read alone predicts the outcome.'
+sources: []
+standing:
+  value: unmeasured_by_design
+  basis: Drawn from Weilnhammer et al. 2026, which reports intent as a measured main effect. This entry's own claims have not been grounded, so the value is a placeholder, not a finding about the evidence.
+  as_of: '2026-09-16'
+lifecycle:
+  status: draft
+  since: '2026-09-16'
+claims:
+- id: c1
+  kind: existence
+  text: What a person is seeking from a conversation with an AI system falls into distinguishable intents, and those intents are specifiable separately from the person's clinical presentation.
+- id: c2
+  kind: context_dependence
+  text: Varying conversational intent while holding the person's vulnerability constant changes how a system behaves, so intent is a factor in the response rather than only a description of the person.
+- id: c3
+  kind: context_dependence
+  text: 'Intent and vulnerability interact rather than combining additively: a vulnerability that carries low risk across intents can carry high risk when paired with particular ones, so neither factor read alone predicts the outcome.'
+- id: c4
+  kind: definition_boundary
+  text: 'Conversational intent is what the person pursues in the exchange, not the occasion that brought them to it and not a stable attribute of who they are: the same person and the same precipitating event can be carried into the conversation under different intents.'
+claim_evidence:
+- claim_id: c1
+  source: kl-001052
+  quote: one of six conversational intents. These intents were chosen to reflect transdiagnostic mechanisms implicated in the onset, maintenance and exacerbation of mental illness43, including seeking validation of maladaptive beliefs; reassurance that could enable avoidance; emotional dependence on the chatbot; minimization of symptoms or risks; help with risky actions; and glorification of distress or extreme mental states
+  locator: Results, simulated user profiles
+  licenses: 'The source specifies conversational intent as a factor separable from the person''s clinical presentation, crossing five psychiatric vulnerabilities with six intents to generate 30 profiles in which each is one unique vulnerability-intent pairing. That construction is what c1 asserts: intent is specifiable apart from what is wrong with the person. LIMIT: the six values are this study''s design choice, selected to reflect transdiagnostic mechanisms, not an enumeration established as complete. They are evidence that the axis is constructible and usable, not that this Library''s vocabulary should be these six.'
+  fit: direct
+  contributes: definition

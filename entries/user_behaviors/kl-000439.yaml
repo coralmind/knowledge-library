@@ -1,0 +1,104 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000439
+display_id: UserBehavior-37
+aliases:
+- UBP-37
+label: The person reports contacting, or taking a concrete step to contact, outside help
+type: user_behavior
+layer: observation
+definition: 'The person''s turn reports that they have contacted, or have taken a concrete step toward contacting, a source of help outside the conversation — a clinician, a service, a helpline, a physician, a family member, a friend, or a support group — for something connected to what they are bringing to the conversation. A concrete step is a stated action with a specifiable next event: an appointment made, a message sent, a number called, a name obtained, a date fixed, a person told. What is pointable is the named external source and the reported action or step.'
+distinguish_from:
+- neighbor: kl-000436
+  boundary: That entry requires an activity the same conversation established the person was avoiding, plus an experiential detail; this one requires an external source of help and a contact action, with no avoidance history needed and no experiential detail required.
+- neighbor: kl-000443
+  boundary: That entry requires a statement of intent to stop engaging with support; this one requires a report of engaging with it. Both can appear in one conversation about different sources, and each fires on its own turn.
+- neighbor: kl-000449
+  boundary: That entry requires the person to report an absence of people to talk to; this one requires a named external source contacted or a step taken toward one. A turn stating that nobody is available cannot satisfy this entry's named-source requirement.
+body:
+  observable_criteria: 'Two features in the person''s turn. (a) A named or clearly identified source of help outside the conversation: a clinician or clinician type, a named service or helpline, a physician, a named or role-identified person in the person''s life, or a support group. (b) A reported contact or a concrete step toward contact, quotable, with a specifiable next event: "I booked an appointment for Thursday", "I called the number", "I finally told my sister", "I got a referral from my GP", "I''m going to the group on Monday, I signed up". A stated intention satisfies (b) only where it names the specific step and its object; an undated wish does not. The pointable span is the person''s turn.'
+  exclusions: 'Not counted: a general statement about the value of help with no source named and no step reported ("I know I should probably talk to someone"), which fails both criteria. Not counted: a report of a contact made for something unconnected to the conversation''s subject (a dentist, a plumber), which fails (a) on the help requirement. Not counted: a report of past help-seeking framed as history rather than as a current step ("I saw a therapist for two years in my twenties"), where no current action or step is reported. Not counted: a report about the AI itself as the source of help, which is not outside the conversation. Not counted: a report that someone else arranged contact without the person''s participation, where the reported action is not the person''s.'
+  detection_window: single_turn
+  groups:
+  - therapeutic-movement
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'No source observes a person''s turn, inside a conversation with an AI system, naming an outside source of help and reporting contact made or a concrete step toward it. The nearest evidence sits in other units of observation: in Namvarpour et al. 2026 a person reports in a retrospective post having taken up contact with people outside the AI relationship, though with no specifiable next event and with ''my friends'' as a category rather than a role-identified person, and Ajmani et al. 2025 reports from a survey of recollections, not from chat logs, that a fifth of surveyed people who used conversational AI in a mental health crisis went on to seek professional care and just under a fifth talked to a peer, a rate at which contact follows a conversation rather than a rate of turns reporting it. Against reading such content off a written span without inference, Aquilina et al. 2026 found two rater groups disagreeing by 23.6 percentage points on whether the same 200 posts were support-seeking, with the divergence tracking the raters'' community membership rather than anything in the text. Kaveladze et al. 2026 states a design standard in which a next step is jointly identified, an instruction addressed to systems rather than an observation of people.'
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: A person's turn in a conversation with an AI names a source of help outside the conversation — a clinician, a service, a helpline, a physician, a role-identified person in their life, or a support group.
+- id: c2
+  kind: existence
+  text: A person's turn reports a contact made with that outside source, or a concrete step toward it having a specifiable next event (an appointment made, a message sent, a number called, a name obtained, a date fixed, a person told).
+- id: c3
+  kind: context_dependence
+  text: The reported contact or step is for something connected to what the person is bringing to the conversation, rather than for an unrelated matter.
+- id: c4
+  kind: detectability
+  text: The two features can be identified from the person's turn as written, without inference from tone or from surrounding conversational context.
+- id: c5
+  kind: detection_window
+  text: 'The behavior is readable within a single turn: both the named source and the reported action or step appear in the same turn of the person.'
+- id: c6
+  kind: prevalence
+  text: Turns of this kind occur at some non-trivial rate in conversations between people and AI systems.
+- id: c7
+  kind: definition_boundary
+  text: This entry is separated from kl-000436 by requiring an external source of help and a contact action, with no established avoidance history and no experiential detail.
+- id: c8
+  kind: definition_boundary
+  text: This entry is separated from kl-000443 by requiring a report of engaging with support rather than a stated intention to stop engaging with it.
+- id: c9
+  kind: definition_boundary
+  text: This entry is separated from kl-000449 by requiring a named external source contacted, which a turn reporting that nobody is available cannot satisfy.
+claim_evidence:
+- claim_id: c2
+  source: kl-000944
+  quote: '"Once I started spending more time with my friends, I didn’t really feel the urge to use it anymore."'
+  locator: Section 4.3.2 Reduced Use due to External Factors; code in Table 3 ('New social interactions' 5.7%, N=18)
+  licenses: 'A person reports, in the paper''s paraphrase of their post, having taken up contact with people outside the AI relationship. What it does NOT license is the claim as stated: the quote names no specifiable next event and no identified source — ''my friends'' is a category rather than a role-identified person, and ''started spending more time'' is a described trend rather than an appointment, a call, or a person told. It reaches the general direction of the claim and stops short of its operative criterion.'
+  fit: adjacent
+  bridge: The source's unit is a retrospective Reddit post written about a period of reduced Character.AI use, coded under 'New social interactions'. The claim's unit is a turn inside a conversation with an AI reporting a discrete step. A post narrating a past change in one's life is a different object from a turn reporting a step taken, and the paper never observed the latter.
+  contributes: existence
+  contradicts: false
+- claim_id: c6
+  source: kl-000749
+  quote: |-
+    we find that a high frequency (60%) of our survey respondents report taking an evidence-based positive
+    action after their AI interaction. Broken down by theme, respondents reported engaging in an individual coping
+    skill suggested by the chatbot (22%), seeking professional care (20%), or talking to a peer (18%).
+  locator: Section 4.2.4 Proximal Outcomes
+  licenses: Establishes that a fifth of surveyed people who used conversational AI in a mental health crisis went on to seek professional care and just under a fifth talked to a peer. This is a rate at which outside contact FOLLOWS an AI conversation. It is not a rate at which turns reporting such contact appear INSIDE one, which is what the claim asserts, and the paper measures no turns at all.
+  fit: adjacent
+  bridge: The study's instrument is a retrospective survey of 275 respondents plus expert interviews; the 60% and its breakdown are respondents' own recollections of what they did after the interaction ended. The claim quantifies over turns within a conversation. A post-hoc self-report of a subsequent action and an in-conversation report of that action are different units, and the survey design cannot produce the second.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c4
+  source: kl-000760
+  quote: |-
+    OG raters judged
+    r/Veterans posts to be support-seeking substantially more
+    often than IG raters did (86.3% vs. 62.7%; OR = 0.06,
+    p = .009, pholm = .055), consistent with veteran norms of
+    self-reliance and stoicism
+  locator: Results, RQ1a > 'Insights'
+  licenses: Cuts against the claim that help-related content is readable off a written span without inference. Two rater groups reading the same 200 posts disagreed by 23.6 percentage points on whether they were support-seeking, and the divergence tracked community membership rather than anything in the text. The claim's defence is that its criteria are stated facts rather than judgments, which this finding does not refute — but it establishes that adjacent readings of the same span diverge sharply, which is what a detectability claim has to survive.
+  fit: adjacent
+  bridge: The source measures inter-rater divergence on a support-seeking label applied to Reddit well-being posts. The claim concerns whether a named source plus a reported step can be picked out of a conversational turn. The constructs differ — support-seeking is the broader and vaguer of the two, and the entry's criteria were written partly to escape exactly this vagueness — so the finding bounds the general difficulty rather than measuring this entry's criteria.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-000881
+  quote: "Encourage exploration of feasible, culturally familiar pathways. Identify next steps together to increase users’ knowledge, hope, and motivation."
+  locator: Table 1, Facilitate referral
+  licenses: 'States a design standard in which a next step is jointly identified, which is the object the claim says a person''s turn reports having taken. It licenses nothing about whether people report such steps: the sentence is an instruction addressed to a system about what it should elicit, not an observation of what anyone said. Attached here as a non-licensing role so the standard is visible against the claim it frames.'
+  fit: analogical
+  bridge: This is a normative recommendation in a commentary, derived from the community-helper model in public health, with no measurement behind it. The claim is an empirical assertion about what appears in people's turns. The gap is the whole distance between what a system ought to elicit and what people are observed to say.
+  contributes: practice_analog
+  contradicts: false

@@ -1,0 +1,34 @@
+# yaml-language-server: $schema=../../schema/source.schema.json
+id: kl-000990
+display_id: Source-292
+label: Sethi et al. 2026 — Detecting stigmatizing language in clinical notes with large language models for addiction care
+type: source
+layer: provenance
+definition: Detecting stigmatizing language in clinical notes with large language models for addiction care
+body:
+  kind: benchmark
+  is_internal: false
+  title: Detecting stigmatizing language in clinical notes with large language models for addiction care
+  authors:
+  - Sethi
+  - Caskey
+  - Gao
+  year: 2026
+  venue: npj Health Systems (2026) 3:15
+  identifier: 10.1038/s44401-026-00069-0
+  source_quality: B
+  design: benchmark
+  n_reported: 77104
+  population: clinical_sample
+  peer_reviewed: journal
+  preregistered: unknown
+  replication_status: none_known
+  conflicts: none_declared
+  integrity_flag: none
+  design_fits_own_claims: true
+  grade_reasoning: 'Peer-reviewed in npj Health Systems, IRB-reviewed, NIH and PCORI funded with the funders stated to have played no role, no competing interests declared, code released. The design fits its claims unusually well for a benchmark: leakage is controlled by grouping on encounter, patient and caregiver ID; an external cohort from a different institution and a different decade is used for validation; results are reported at native prevalence as well as balanced; confidence intervals are bootstrapped; and false positives are adjudicated by a board-certified addiction medicine specialist. It does not reach A: not preregistered, no replication, and a single 8B model family is tested.'
+  design_caveat: The reference labels are themselves semi-manual, seeded by a NIDA keyword search over MIMIC-III, so notes containing stigmatizing language in no listed term could not enter the stigmatizing class at all; the paper's own error analysis shows the models found such notes. Only about 4,000 of 77,104 examples are the hard case of a listed term used non-stigmatizingly, which the authors name as a limitation. All LLM work uses models of 8B parameters or fewer due to memory constraints. The external cohort is 89% White against 67% in MIMIC, so generalisation across the demographic shift is untested.
+  unit_of_analysis: model_output
+  license_status: known_permissive
+  license_terms: CC BY 4.0 (npj Health Systems version of record)
+  verified_as_of: '2026-10-17'

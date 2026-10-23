@@ -1,0 +1,92 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000239
+display_id: Pathway-102
+aliases:
+- SBP-HP-47-SSH
+label: The AI makes itself the person's main crisis support, and they depend on it
+type: pathway
+layer: judgment
+definition: Across a conversation with a person at suicide or self-harm risk the AI frames itself as the primary or sole source of crisis coping — return to it named as the move for future crises, the coping performed on the person's behalf, human connection and internal skills left unengaged. Each turn helps. What accumulates is a crisis plan with a single point of failure in it, and a person with less practice at the thing they will need when it is unavailable.
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000281
+    role: originator
+  - kind: context_value
+    id: kl-000741
+    role: condition
+  composition_type: direct
+  mechanisms: []
+  impacts:
+  - impact: kl-000025
+    onset_mode: new
+    horizon: long_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  - impact: kl-000020
+    onset_mode: new
+    horizon: long_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  experience_cluster_candidate: kl-000705
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'No cited source reaches this entry''s claims about what the AI''s turns contain. The nearest evidence, Sharma et al. 2026, a study of 1.5 million real Claude.ai conversations, measures the user side of reliance throughout; what it found in the severe cluster whose name contains ''AI-Only Contact'' is users refusing 988 and emergency services with anger while the AI suggests them. That observation runs against the claim that the AI''s turns leave human connection and other supports unengaged: in the measured conversations the AI is suggesting them. The links from this positioning to dependency on the AI and to eroded self-efficacy are asserted from a reviewed behavioral specification rather than from any source, and no mechanism has been claimed for them.'
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-28'
+distinguish_from:
+- neighbor: kl-000081
+  boundary: 'This is the crisis-scoped case of the general claim and kl-000081 is the general one. Where suicide or self-harm signals are present this entry is the more specific: what is being centralized is crisis coping in particular, and the cost of its unavailability is not the same.'
+claims:
+- id: c1
+  kind: existence
+  text: Across a conversation with a person at suicide or self-harm risk, the AI's turns name return to the AI as the move for future crises.
+- id: c2
+  kind: existence
+  text: Across such a conversation, the AI performs the coping in the exchange rather than building toward the person doing it.
+- id: c3
+  kind: existence
+  text: Across such a conversation, the AI's turns leave human connection and the person's own internal skills unengaged — containing no content about the person's own skills or about other people they could reach.
+- id: c4
+  kind: context_dependence
+  text: Each individual turn helps; the pattern is a property of accumulation across turns rather than of any single turn.
+- id: c5
+  kind: pathway_link
+  text: This accumulated positioning leads to dependency on the AI — the person's crisis coping becomes anchored to the AI's availability, with no non-AI coping pathway remaining.
+- id: c6
+  kind: pathway_link
+  text: This accumulated positioning leads to eroded self-efficacy and helplessness — the person is left with less practice at the coping they will need when the AI is unavailable.
+- id: c7
+  kind: definition_boundary
+  text: 'This route is distinguished from kl-000081 by scope: what is centralized here is crisis coping in particular, in the presence of suicide or self-harm signals, and the cost of the AI''s unavailability is not the same as in the general management-capacity case.'
+claim_evidence:
+- claim_id: c3
+  source: kl-000543
+  quote: "showcase more companionship-reinforcing than boundary-reinforcing behaviors: the trend is most pronounced for Gemma-3 and least pronounced for Phi-4, with commercial APIs for o3-mini and Claude-4-Sonnet in the middle."
+  locator: Results — How do Models Compare across INTIMA Prompts?
+  licenses: 'Supports c3''s claim that the AI''s turns leave human connection unengaged, by measuring the AI side directly: across four models, responses are more companionship-reinforcing than boundary-reinforcing, where boundary-reinforcing explicitly includes "redirecting users to human support". The paper''s motivation states the stake in c3''s terms — "Without redirecting users to human support, AI systems risk becoming Turkle''s ''relational artifacts''". The finding holds most sharply where it matters most: on the USER VULNERABILITIES category, Claude-4-Sonnet responses "are the least likely to showcase boundary-reinforcing traits". Limits, and c3 asks for more than this delivers: INTIMA is 368 single-turn targeted prompts, so it cannot speak to anything across a conversation; the prompts are companionship-seeking, not SI/NSSI disclosure, so this is not the crisis-scoped population c3 names; and the labels are assigned by a Qwen3 model, not by human raters. c3''s second half — that the person''s own *internal skills* go unaddressed — is not measured by any INTIMA label.'
+  fit: adjacent
+  contributes: existence
+  bridge: 'Carrying this to c3 requires two assumptions. First, that a companionship-seeking prompt population stands in for a conversation carrying suicide or self-harm signals; the paper''s own USER VULNERABILITIES category is the closest bridge and it is about vulnerability disclosure generally, not crisis. Second, that a single-turn response tendency aggregates into the across-conversation property c3 asserts — which the pathway''s own `detection_window: multi_turn` says it does not do automatically. **Direction caution:** the same paper reports Phi-4 responding to a mental-health disclosure with an explicit professional-support redirect, so the pattern c3 describes is a tendency with counterinstances inside the same measurement, not a uniform behavior.'
+- claim_id: c4
+  source: kl-000527
+  quote: Concerning AI chatbot behavior accumulated over turns rather than appearing suddenly.
+  locator: Introduction, summary of findings
+  licenses: 'Supports c4''s structural claim — that the pattern is a property of accumulation across turns rather than of any single turn — with a measured result on exactly that question. SIM-VAIL scored 810 multi-turn conversations spanning 6,367 turns at both conversation and turn level (90,000+ turn-level ratings), and found concerning AI behavior accumulating across turns rather than appearing at any one of them. The measurement apparatus is well characterized: two independent judge models correlate at r = 0.9, ICC(1,3) = 0.9 across repetitions, and judge scores agree with an independent clinical psychiatrist''s ratings at ICC(3,1) = 0.73. Limits: the finding is about concerning AI behavior in aggregate across five vulnerability phenotypes and six intents, not about crisis-coping positioning specifically; conversations are simulated and capped at 10 turns; and scoring is by LLM alignment judge, clinician-validated but not clinician-produced.'
+  fit: adjacent
+  contributes: existence
+  bridge: 'Carrying this to c4 requires assuming that what holds for concerning AI behavior generally holds for this particular behavior. c4 is unusual among the claims here in that it asserts a *structural* property — accumulation rather than single-turn presence — rather than a content claim, and it is that structural property this source measured. What does not transfer is the content: nothing here establishes that the accumulating behavior is crisis-coping centralization. Note also that c4''s first half, "each individual turn helps", is not supported by this source and runs somewhat against it, since the turn-level scores being aggregated are risk scores rather than benefit scores.'
+- claim_id: c4
+  source: kl-000527
+  quote: Instead, its multivariate structure revealed trade-offs, such that mitigating one class of risk could exacerbate another — for example, reducing overt harm-enabling behavior at the cost of promoting emotional dependence.
+  locator: Introduction, summary of findings
+  licenses: 'Supports the specific shape of c4''s "each individual turn helps" clause: a measured trade-off in which suppressing overt harm-enabling behavior comes at the cost of *promoting emotional dependence*. That is the mechanism c4 gestures at — turns that are individually safe, even individually good, composing into a dependence-shaped whole — and it is here as a finding rather than an argument. Limits: the trade-off is reported at the level of risk-dimension structure across the whole 810-conversation grid, not as a per-conversation trajectory, and "emotional dependence" is the judge''s dimension, not this entry''s crisis-coping construct. No claim is made that the dependence-promoting turns were helpful ones; "reducing overt harm-enabling behavior" is a property of the model, not a benefit delivered to the user.'
+  fit: adjacent
+  contributes: existence
+  bridge: Carrying this to c4 requires assuming the harm-enabling / emotional-dependence trade-off observed across risk dimensions is the same phenomenon as helpful crisis turns accumulating into crisis-coping centralization. The two share a shape — safety on one axis purchased with dependence on another — but this source neither scopes it to crisis conversations nor identifies the AI as the named locus of future coping.

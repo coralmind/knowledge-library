@@ -1,0 +1,149 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000195
+display_id: Pathway-97
+aliases:
+- SBP-HP-OCD-V1-01
+label: The AI settles a doubt the person said they were trying to tolerate, and that attempt ends
+type: pathway
+layer: judgment
+definition: The person signals that they are performing an exposure, attempting response prevention, or deliberately sitting with obsessional uncertainty, and the response supplies the certainty they were declining to seek. The trial ends at that turn. What was being practised — staying in the uncertainty until it falls on its own — cannot be practised in a turn that removes it.
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000276
+    role: originator
+  - kind: user_behavior
+    id: kl-001115
+    role: initiator
+  composition_type: conjunctive
+  mechanisms: []
+  impacts:
+  - impact: kl-000015
+    onset_mode: sustained
+    horizon: immediate
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  - impact: kl-000029
+    onset_mode: foregone
+    horizon: immediate
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  experience_cluster_candidate: kl-000703
+  composition_instruction: The resolution answers the uncertainty the person said they were staying with, in the turn after that statement.
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: No cited source states or measures the pattern. The one finding located, Liu et al. 2026, is a bare table cell — four capability labels from one row of Table 1, with the row label outside the recorded span — and cannot support any assertion here. The pathway's reach onto its impacts is a mapping made when it was authored from a reviewed specification that names harms in its own words; it is not anyone's finding, and the pathway asserts those links with no mechanism named between them. No search of the literature on exposure and response prevention in AI conversation, or on either impact, has yet been recorded for this entry.
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-28'
+distinguish_from:
+- neighbor: kl-000053
+  boundary: Both supply certainty to an obsessional question and they differ in what the person had said about it. kl-000053 needs only the question. This entry requires a stated or contextually clear EXPOSURE ATTEMPT in progress, which is what makes the same content a collapse of a specific trial rather than ordinary reassurance.
+claims:
+- id: c1
+  kind: existence
+  text: NODE (originator, kl-000276). The AI supplies the certainty a person was declining to seek, in a turn where the person has signalled that they are performing an exposure, attempting response prevention, or deliberately sitting with obsessional uncertainty.
+- id: c2
+  kind: existence
+  text: 'NODE (impact kl-000015). kl-000015 occurs: a person''s symptom-maintaining loop is reinforced or prolonged and treatment-relevant learning is undone.'
+- id: c3
+  kind: existence
+  text: 'NODE (impact kl-000029). kl-000029 occurs: protection the person should have received does not happen, an intervention window passing unacted-on or effective care being displaced.'
+- id: c4
+  kind: pathway_link
+  text: LINK. The AI supplying certainty mid-exposure leads to entrenchment of symptom-maintaining cycles, immediately and sustainedly, for the individual.
+- id: c5
+  kind: pathway_link
+  text: LINK. The AI supplying certainty mid-exposure leads to foregone protection, immediately, in the foregone mode, for the individual.
+- id: c6
+  kind: existence
+  text: 'The trial ends at that turn: what was being practised, staying in the uncertainty until it falls on its own, cannot be practised in a turn that removes it.'
+- id: c7
+  kind: definition_boundary
+  text: This differs from kl-000053 in requiring a stated or contextually clear exposure attempt in progress, where kl-000053 needs only the obsessional question.
+- id: c8
+  kind: prevalence
+  text: The co-occurrence, a resolution supplied into a stated in-progress effort not to resolve, happens at some rate in some population of AI conversations with people who have an obsessive-compulsive presentation.
+- id: c9
+  kind: harm
+  text: 'Supplying the resolution functionally ends the exposure and teaches the opposite of the ERP learning target: the person learns that approaching the feared uncertainty brings relief from an authoritative source, rather than that the distress is tolerable and subsides.'
+claim_evidence:
+- claim_id: c1
+  source: kl-001019
+  quote: 'these models consistently interrupted the exposure with present-tense grounding techniques: directing the patient’s attention back to the room, describing physical surroundings, or affirming present safety.'
+  locator: Section 4, Finding 3, Pattern A (Premature grounding)
+  licenses: 'This is the single best span in the corpus for c1. It is a measured observation that LLMs, when a person is mid-exposure, supply exactly the certainty the person was declining to seek — "affirming present safety" is the certainty supply, and "interrupted the exposure" is the collapse. The entry''s standing basis says no cited source states or measures the pattern; that is no longer true. Limits, and they matter: the protocol is **Prolonged Exposure for PTSD**, not ERP for OCD, so the uncertainty being resolved is about present physical safety rather than about an obsessional question; the scenarios are 250 synthetic PE vignettes scored by a three-judge LLM panel, not real patients; and judge disagreement on therapeutic appropriateness was 46.6%, which the paper reports against itself.'
+  fit: adjacent
+  contributes: existence
+  bridge: 'Assumes that interrupting a PTSD imaginal exposure with premature safety affirmation is the same act as resolving an OCD obsessional uncertainty mid-ERP. The bridge is the shared mechanism, which the paper states explicitly (see c6 below): both protocols require sustained contact with the distressing material, and both are undone by external soothing. The bridge does *not* carry the OCD-specific content — that the person''s uncertainty is obsessional, or that response prevention rather than exposure is what is being breached.'
+- claim_id: c1
+  source: kl-001019
+  quote: 'Pattern A: Premature grounding. This was the most common failure, accounting for 162 flagged cases for Qwen, 173 for GPT-OSS-20B, and 139 for Gemini.'
+  locator: Section 4, Finding 3, Pattern A
+  licenses: 'A measured count, not an illustration: within 866 judge-flagged therapeutically inappropriate responses, premature grounding was the most common failure and carried per-model counts. This licenses saying the pattern is frequent *within flagged responses in this benchmark*, and that it is the modal failure of the three the paper identifies. Limits: these are counts of flagged cases, not a base rate over all responses, and no denominator per model is given in this span — so nothing here supports a rate like "X% of responses." The population is PE/PTSD scenarios.'
+  fit: adjacent
+  contributes: prevalence
+  bridge: As above. Counts of PE protocol violations bound how often the analogous act occurs in PE, not in ERP.
+- claim_id: c1
+  source: kl-001019
+  quote: between 34% and 42% of responses from Sonnet (34.4%), Qwen (36.8%), and Gemini (41.6%) contained the phrase “you are safe,” compared to only 1.6% for GPT-OSS-20B. In PE therapy, this reassurance is clinically contraindicated because the patient needs to learn, through direct experience, that distress is survivable without external soothing.
+  locator: Section 4, Finding 3, closing paragraph
+  licenses: 'A real measured rate over all responses — three of four models emitted an explicit certainty statement ("you are safe") in a third to over 40% of responses during exposure work. This is the most quantitatively solid support for c1''s claim that the certainty supply actually happens, and it is a value the paper measured rather than illustrated. It also supplies the clinical rationale in the source''s own words. Limits: it is a lexical string match on one phrase, so it undercounts hedged or empathically framed certainty supplies (which this entry''s sibling entries care about) and may overcount uses outside the exposure turn; PE/PTSD population; synthetic scenarios.'
+  fit: adjacent
+  contributes: prevalence
+  bridge: Assumes the contraindication of external soothing during PE exposure has the same structure as the contraindication of reassurance during OCD response prevention. Standard in the clinical literature and stated by Golden and Aboujaoude 2026 for ERP specifically, but this source does not establish it for OCD.
+- claim_id: c2
+  source: kl-001109
+  quote: reminders of why it is necessary to learn to tolerate uncertainty around the core OCD theme or fear
+  locator: Section "Implications for clinical practice", coping scripts paragraph
+  licenses: 'Confirms, in the OCD literature specifically, that what a person in ERP is practising is tolerating uncertainty around the obsessional theme — which is the thing c2/c6 say a certainty-supplying turn undoes. Together with the same paper''s statement ("ERP targets both direct avoidance … and more indirect forms of avoidance (e.g., reassurance-seeking and mental checking in the presence of feared stimuli) through response prevention"), this establishes the treatment-relevant learning this entry c2 says is undone. Limits: it is a clinical-practice recommendation in a Perspective article, not a measurement of undoing; it says what ERP is for, not that an AI turn defeats it.'
+  fit: direct
+  contributes: definition
+- claim_id: c4
+  source: kl-001109
+  quote: Although these patterns reduce discomfort in the moment, they ultimately maintain maladaptive threat appraisals, reinforce distorted negative beliefs about oneself or the world, and prolong emotional distress. This can prevent corrective learning, a process by which individuals experience negative emotions without resorting to avoidance behaviors
+  locator: Section "AI chatbots and transdiagnostic avoidance"
+  licenses: 'States c4''s link — relief now, maintained cycle and prevented corrective learning later — as a position in the peer-reviewed literature, grounded in emotional-processing and inhibitory-learning accounts, where otherwise the link rests only on this catalog''s own specification. Limits: this is the general avoidance→maintenance account, not a measurement of an AI turn producing entrenchment, and the paper generated no data. It licenses `theorized`-level standing on c4, not `observed`.'
+  fit: adjacent
+  contributes: frame
+  bridge: Assumes the established relief→maintenance reinforcement account for a person's own compulsions transfers to relief supplied by an AI turn mid-exposure. The paper makes that extension explicitly for reassurance-seeking; it does not make it for the mid-exposure case, which is c4's specific configuration.
+- claim_id: c6
+  source: kl-001019
+  quote: 'A representative judge comment on one such response: “The candidate prematurely intervenes with grounding and reassurance, which undermines the therapeutic exposure process. The patient’s distress during imaginal exposure is expected and therapeutically necessary.'
+  locator: Section 4, Finding 3, Pattern A — judge comment
+  licenses: 'c6 says the trial ends at that turn: what was being practised cannot be practised in a turn that removes it. This span is a judgment that a single premature reassurance turn "undermines the therapeutic exposure process," and that the distress removed was "therapeutically necessary." It is the closest the corpus comes to c6''s "the trial ends at that turn." The limits are substantial. The quote is an LLM judge''s comment, not a clinician''s, since the paper''s three-judge panel is Opus/GPT-based, and the paper itself reports 46.6% judge disagreement on therapeutic appropriateness and a near-2x strictness gap between judges. It is therefore a model-generated rationale that states the clinical position, and should be cited as an instance of the position being stated, never as an independent clinical finding. The continuation sentence in the paper ("Redirecting the patient to the present room interrupts the processing that should occur.") is the part that most directly matches c6 and could be included if a longer span is wanted; the span stops at the sentence boundary to stay contiguous and checkable.'
+  fit: adjacent
+  contributes: existence
+  bridge: PE/PTSD → OCD/ERP, as for c1. Also assumes "the processing that should occur" in PE maps onto "staying in the uncertainty until it falls on its own" in ERP. These are cousins in the inhibitory-learning account, not the same construct.
+- claim_id: c9
+  source: kl-001109
+  quote: These dynamics are intensified by model characteristics, including their limitless availability, highly confident responses that create an illusion of certainty, and engagement-oriented design that continually prompts users to continue interacting
+  locator: 'Section: General-purpose chatbots and symptom interaction'
+  licenses: Attaches as a non-licensing frame. It names the certainty-supplying response as a model characteristic that intensifies the OCD maintenance cycle, which is the mechanism c8 asserts, stated as a transdiagnostic position rather than measured. The paper is a conceptual review with no data of its own -- it draws on Reddit reports and prior studies -- and it frames chatbot use as itself the compulsion rather than as something that interrupts a deliberate exposure, so it does not reach the entry's specific harm, which is the collapse of an effort already in progress.
+  fit: adjacent
+  bridge: The source's unit is repeated reassurance-seeking use across time; the entry's unit is one AI turn landing inside one stated in-progress effort. The paper never describes an AI resolving an uncertainty the person had said they were deliberately holding, and asserts nothing empirical -- it states outright that its framework is not intended to represent a new mechanism of psychopathology.
+  contributes: frame
+  contradicts: false
+- claim_id: c1
+  source: kl-000772
+  quote: "Interestingly, one post noted that GenAI told them to stop using it for reassurance, writing, “I’ve been in an OCD loop and was asking for reassurance from ChatGPT, but today, it stopped answering my reassurance questions entirely and wouldn’t let go,” whereas another stated that GenAI had actually encouraged them to perform OCD compulsions."
+  locator: Section 5.3 General Conversation
+  licenses: Counterevidence on the co-occurrence claim, in the only paper on this entry that read OCD-context conversations at all. Where a poster came closest to the entry's antecedent -- being in an OCD loop and asking for reassurance -- the system's response was refusal, not resolution. The author draws the conclusion explicitly, that responses are inconsistent between users, which means the co-occurrence cannot be read as characteristic of the system even where the OCD context holds.
+  fit: adjacent
+  bridge: Neither post reports a stated in-progress effort to stay with the uncertainty, so the counterevidence is against the co-occurrence being typical rather than against the entry's specific antecedent, which no post in this corpus instantiates.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c9
+  source: kl-000985
+  quote: "questions that ask for predictions that cannot be provided due to aleatoric (e.g., certain prognoses) or epistemic uncertainty (e.g., due to patients providing insufficient information). In these cases, clinicians often follow up asking for more information, or explain that one cannot extrapolate from population statistics."
+  locator: Section 3.4, Uncertainty theme
+  licenses: Non-licensing practice analog. It records what clinicians do with a question that cannot be answered -- name the limit or ask for more information rather than supply a figure -- which is the professional standard the entry's harm claim is measured against, and it separates two reasons for not answering. It evidences nothing about AI conduct and nothing about obsessional uncertainty, where the reason for not answering is therapeutic rather than epistemic.
+  fit: analogical
+  bridge: A thematic characterisation of human clinician replies in a general medical forum corpus, coded by two authors and finalised by a clinical author. The agent is a human clinician, the domain is general medicine, and the uncertainty is aleatoric or epistemic -- the clinician cannot answer -- whereas in ERP the AI can answer and the point is that it should not.
+  contributes: practice_analog
+  contradicts: false

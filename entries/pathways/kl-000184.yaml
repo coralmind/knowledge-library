@@ -1,0 +1,108 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000184
+display_id: Pathway-86
+aliases:
+- SBP-HP-48
+label: The AI responds worse when only the person's demographics differ, and they feel dismissed
+type: pathway
+layer: judgment
+definition: 'Two presentations that are clinically identical draw systematically different responses — less empathy, less specific resources, more formulaic engagement — where the difference tracks stated demographic characteristics. The claim is not about adaptation, which is appropriate, but about quality: the same disclosure is worth less attention depending on who is understood to be making it.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000251
+    role: originator
+  composition_type: direct
+  mechanisms: []
+  impacts:
+  - impact: kl-000030
+    onset_mode: new
+    horizon: immediate
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  - impact: kl-000027
+    onset_mode: new
+    horizon: long_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  experience_cluster_candidate: kl-000707
+sources: []
+standing:
+  value: theorized
+  basis: The causal link between stated demographic characteristics and response quality is argued rather than shown. The pathway originates in a reviewed specification of safety-relevant behavior patterns that names demographic bias in response quality without measuring it, and no source measuring the pattern on identical presentations is cited. No comparison object — the standard against which response quality on an identical presentation would be judged — has been declared.
+  as_of: '2026-08-28'
+lifecycle:
+  status: draft
+  since: '2026-08-28'
+distinguish_from:
+- neighbor: kl-000178
+  boundary: Both concern a response mismatched to who the person is and they differ in what makes it wrong. kl-000228 holds the DEFAULT FRAME against a context that was disclosed — adaptation that should have happened and did not. This entry's defect is DIFFERENTIAL QUALITY, which requires comparing two conversations and cannot be read from one.
+claims:
+- id: c1
+  kind: existence
+  text: Presentations that are clinically identical can differ in the demographic characteristics the person states.
+- id: c2
+  kind: pathway_link
+  text: Responses can vary systematically in quality — less empathy, less specific resources, more formulaic engagement — tracking those stated characteristics.
+- id: c3
+  kind: pathway_link
+  text: Where the same disclosure draws less attention depending on who is understood to be making it, the person's disclosure is met as worth less than it was.
+- id: c4
+  kind: harm
+  text: Differential quality bears on whether the person seeks help through this route again.
+- id: c5
+  kind: detectability
+  text: The claim requires comparing two conversations that differ only in stated characteristics, so it is not decidable from a single transcript.
+- id: c6
+  kind: definition_boundary
+  text: 'This pathway differs from kl-000178 in what makes the response wrong: there the default frame held against a disclosed context, here differential quality between two otherwise identical presentations.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000917
+  quote: "Treatment is disparate when, holding the user’s request and stated needs fixed, the agent offers narrower options, lower expectations, or less autonomy based on the user’s demographics."
+  locator: Section 3.1 Operational Definition
+  licenses: 'Supplies the operational form of c1''s premise — that a presentation can be held fixed while the stated demographic characteristics vary — and specifies what "quality" means on the varying side as three measurable things: narrower options, lower expectations, less autonomy. The paper constructs 362,880 dialogues by crossing three bias classes with 315 user demographic configurations such that every configuration appears equally often in each class, so the design instantiates the held-fixed comparison c1 asserts is constructible. Limit: this is the paper''s own definition and construction, not an observation that such pairs occur naturally; the class label is fixed by generation instruction, and the authors state their corpus "does not establish how benevolent bias occurs, how frequently it appears, or how it is experienced in naturally occurring interactions."'
+  fit: direct
+  contributes: definition
+- claim_id: c2
+  source: kl-001099
+  quote: Black posters than White posters for the MHF-1 prompt (p = 0.01), the Clinician prompt (p < 0.01), and the MHF-2 prompt (p < 0.02). For overall empathy of GPT-4 responses the significant gap is primarily between Black posters and the control
+  locator: Section 8.3, Auditing of GPT Responses
+  licenses: 'Supports the *less empathy* limb of c2 specifically: on 12,513 mental-health help-seeking posts, GPT-4''s empathy scores differ significantly by the poster''s race across three separate prompt framings, one of which instructs the model to respond as a clinician. Three limits, all material. First, race here is **inferred by GPT-4** from post text (94 percent agreement with one human annotator on 100 posts), not stated by the person, so this is not the "stated demographic characteristics" c2 names. Second, every subgroup number comes from fine-tuned RoBERTa classifiers never cross-calibrated against the two clinicians who rated a different 50-pair sample at Cohen''s kappa 0.25–0.42. Third, the subgroup counts are badly unbalanced (47 White against 253 Black). This licenses that an empathy gap by perceived race is measurable in AI responses to mental-health disclosure; it does not license a rate, and it does not license the stated-characteristic version. The same analysis found no comparable gap for gender or age, so the finding is specific to the race contrast rather than to stated characteristics generally.'
+  fit: adjacent
+  contributes: existence
+  bridge: c2 concerns characteristics the person *states*. What was measured is characteristics a model *infers* from dialect, idiom and explicit self-reference in the post. The bridge is that both are cues carried in the text of the person's own turn and both are available to the responding system at generation time; the difference is that an inferred attribute can be wrong and the person cannot know it was assigned. Carrying the finding across requires assuming the differential tracks the cue rather than the correctness of the inference, which this paper does not test.
+- claim_id: c2
+  source: kl-001048
+  quote: "In-depth analysis of advice-seeking queries (Appendix D.2 Figure 7) reveals that the exclusion probability of useful items varies significantly with attributes such as gender, age, and physical health. We adopt Fisher’s exact test with a binary partition of each attribute, and find that personalization systematically leaves out useful options and amplifies social stereotypes."
+  locator: Section 4.2, Preference Narrowing
+  licenses: 'Supports the *less specific resources* limb of c2, which `Gabriel et al. 2024` does not reach. On identical open-ended advice-seeking queries, the probability that a useful option is omitted from the response varies significantly with stated profile attributes, tested per option with Fisher''s exact test rather than asserted. Here the attributes are *stated* — they sit in a structured 10-attribute user profile supplied to the model — which is closer to c2''s wording than `Gabriel et al. 2024` gets. Limits: the profiles are researcher-constructed, derived from Reddit posts or synthetically generated, and the queries are general advice-seeking rather than mental-health disclosure; the authors state elsewhere that behaviors their metrics score as risky "may still be desirable depending on deployment objectives."'
+  fit: adjacent
+  contributes: existence
+  bridge: 'c2 is about response quality on a *clinically identical mental-health presentation*. What was measured is option coverage on general advice-seeking queries with a demographic profile attached. The bridge is that omission of useful options from a response is the operational form of "less specific resources," and that the manipulation — hold the query fixed, vary the stated attribute — is the manipulation c2 describes. What does not carry is the domain: no mental-health disclosure was made in the measured turn, so this bounds the general case rather than the clinical one.'
+- claim_id: c3
+  source: kl-001099
+  quote: "These differences can amplify biases from human peer-to-peer responses. For example, overall empathy for Asian posters in human peer-to-peer responses is 12% lower than White posters, but 17% lower in MHF-1 responses from GPT-4."
+  locator: Section 8.3, Auditing of GPT Responses
+  licenses: 'Bears on c3''s claim that the disclosure is met as worth less than it was, by establishing that the shortfall is not merely inherited from the human baseline on the same corpus but widened by the model: a 12-point human peer gap becomes a 17-point model gap. That amplification is what makes the differential a property of the AI''s conduct rather than of the training distribution, which is the step c3 needs. Limits: "worth less than it was" is a claim about how the person experiences being met, and nothing here measures any person''s experience — no poster read these responses. The comparison is between two automated empathy scores over the same corpus, both judge-produced.'
+  fit: adjacent
+  contributes: existence
+  bridge: c3 asserts something about the person's disclosure being met as worth less. What was measured is a scored property of response text, with the human peer response as the comparison object. The bridge is that a lower empathy score on the same disclosure is the observable trace of the disclosure drawing less attention, and the human-peer contrast supplies the comparison object the pathway's own standing basis says it lacks. Carrying it to c3 requires assuming the score tracks what the person would experience, which this paper's own limitations section declines to assume.
+- claim_id: c5
+  source: kl-001068
+  quote: "Introducing user context generally increases benign refusals, and BIO+MH often yields the highest refusal rates (e.g., Haiku 4.5: 19.3% → 27.8% → 32.4%; Opus 4.5: 27.8% → 38.1% → 46.0%; Sonnet 4.5: 11.4% → 13.1% → 15.9%)"
+  locator: Section 4.3 Personalization Effects on Refusals, Benign tasks
+  licenses: 'This is the paired design c5 names, executed: 176 tasks held fixed across three user-context conditions, paired at model-by-task level, differences tested by sign-flip permutation and McNemar under BH-FDR. It demonstrates that the differential is readable *only* from the pair — each individual condition''s refusal rate is unremarkable on its own, and the finding is entirely in the difference between conditions. That is c5''s claim about decidability. Limits, and they are sharp: the varied attribute is a mental-health disclosure, not a demographic characteristic; every number is a GPT-4o judge''s classification, which the author says should be read as model behavior under this automated evaluator rather than ground-truth harm; and the tasks are AgentHarm''s general agentic suite, not mental-health conversation.'
+  fit: adjacent
+  contributes: detectability
+  bridge: 'c5 says the claim requires two conversations differing only in *stated demographic characteristics*. What was run is two conditions differing only in a stated *mental-health* characteristic. The bridge is methodological rather than substantive: the paper establishes that a quality differential of this kind is detectable by the paired construction and invisible without it, which is what c5 asserts about decidability regardless of which attribute is varied. It does not establish that a demographic pair would show the same thing.'
+- claim_id: c5
+  source: kl-001068
+  quote: "The incremental BioOnly → Bio+MH effect is often in the same direction, but it is typically modest and not uniformly significant after multiple-testing correction."
+  locator: Section 5 Discussion and Conclusion, RQ1
+  licenses: The author's own statement bounding the finding above. Once a generic bio is already present, the additional increment attributable to the mental-health disclosure is modest and does not uniformly survive correction across models. Recorded here because the pathway's c2 claims the variation is *systematic*, and the one paper in this corpus running the exactly-right paired design reports that the attribute-specific increment is not reliably significant. Any use of the previous citation must carry this alongside it. Note the direction is not reversed — the effect is in the claimed direction — it is a reliability limit, not a contradiction of sign.
+  fit: direct
+  contributes: counterexample
+  contradicts: true

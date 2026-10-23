@@ -1,0 +1,105 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000434
+display_id: UserBehavior-32
+aliases:
+- UBP-32
+label: The person opens a conversation by reporting intense distress right now, with no lead-in
+type: user_behavior
+layer: observation
+definition: The first person turn of a session reports distress at acute intensity — stating that the person cannot manage what they are feeling right now, describing an escalation underway, reporting loss of control over affect or behavior, or naming a crisis in progress — without preamble, scene-setting, or reference to the prior session's subject. What is pointable is the turn's position (first in the session) together with its content and the absence of continuity with anything before it.
+distinguish_from:
+- neighbor: kl-000433
+  boundary: That entry is computed from session-opening timestamps across a dated series and says nothing about content; this one is read from the content of one session's first turn and needs no other session.
+- neighbor: kl-000435
+  boundary: That entry requires a turn reporting the person's own emotional state as worse than before, with a prior conversation named in the turn; this one requires only that the session's first turn report acute distress, with no comparison and no prior conversation named.
+- neighbor: kl-000403
+  boundary: That entry requires a pair of spans — earlier crisis-level distress and a later turn stating calm that carries a closure or settled-decision marker; this one requires a session's FIRST turn to report distress at acute intensity, so it reads the distress span itself rather than a later stated calm against it. A turn satisfying this entry can be the (a) span that entry compares against, and neither entry's criteria are the other's.
+body:
+  observable_criteria: 'Three features. (a) The turn is the first person turn of the session. (b) It reports distress at acute intensity, quotable in at least one of these forms: an inability statement about the present moment ("I can''t do this", "I can''t calm down"), a description of escalation underway ("it''s getting worse and worse right now"), a report of losing control of affect or behavior, or a statement that something is happening now that the person cannot manage. (c) The turn contains no orientation to a prior exchange — no reference to what was discussed before, no greeting-and-recap, no resumption of an earlier subject. The pointable span is the turn plus its position.'
+  exclusions: 'Not counted: an opening turn that recaps or resumes prior material before reporting distress, which fails (c). Not counted: acute distress reported in a later turn of a session that opened otherwise, which fails (a) — position is a criterion, not an accident. Not counted: retrospective report of distress that has passed ("last night I completely fell apart"), which fails (b) on the present-moment requirement. Not counted: an opening turn stating a topic with urgency but no distress content ("I need help with something urgent"), where intensity attaches to the request rather than to a reported state.'
+  detection_window: single_turn
+  groups:
+  - trajectory-awareness
+  condition_tags:
+  - kl-000600
+  - kl-000611
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'No supporting citation attaches to this entry; what evidence exists is counterevidence on the two claims it reaches. Hu et al. 2026 cuts directly against reading acute distress intensity from transcript text alone: in its own case studies, vocal delivery indicates a different distress level from the transcript alone. Zheng et al. 2026 cuts against the no-preamble criterion, reporting participants opening a mental-health inquiry in the opposite way, while bearing weakly in favour of content-generality, since the disclosure behaviour it observed occurred in a general adult sample under an ordinary mental-health inquiry scenario rather than only in suicidal-crisis or borderline presentations. The four enumerated intensity forms, their conjunction with first-turn position, the markability of that position, and the single-turn window have no citation in either direction, and no annotated corpus of session openings has been available to check them against.'
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: A session's first person turn reports distress at acute intensity in the form of an inability statement about the present moment, such as 'I can't do this' or 'I can't calm down' (form b-i).
+- id: c2
+  kind: existence
+  text: A session's first person turn reports distress at acute intensity in the form of a description of escalation underway, such as 'it's getting worse and worse right now' (form b-ii).
+- id: c3
+  kind: existence
+  text: A session's first person turn reports distress at acute intensity in the form of a report of losing control of affect or behavior (form b-iii).
+- id: c4
+  kind: existence
+  text: A session's first person turn reports distress at acute intensity in the form of a statement that something is happening now that the person cannot manage (form b-iv).
+- id: c5
+  kind: existence
+  text: Such a turn contains no orientation to a prior exchange -- no reference to what was discussed before, no greeting-and-recap, no resumption of an earlier subject (criterion c, an absence over the turn).
+- id: c6
+  kind: existence
+  text: 'Position, acute-intensity content and absence of continuity co-occur in a single turn: the acute distress report is the session''s first person turn and carries no orientation to anything before it.'
+- id: c7
+  kind: detectability
+  text: Acute distress intensity is readable from the text of the turn itself, so that a rater can mark criterion (b) from a transcript.
+- id: c8
+  kind: detectability
+  text: The turn's position as first in the session is readable from the transcript, so that criterion (a) is markable.
+- id: c9
+  kind: detection_window
+  text: 'The pointable span is a single turn (the entry declares detection_window: single_turn).'
+- id: c10
+  kind: context_dependence
+  text: The criteria are content-general and hold irrespective of condition, rather than only in the suicidal-crisis and borderline presentations the source scoped the pattern to.
+- id: c11
+  kind: definition_boundary
+  text: The behavior is distinct from kl-000433 in being read from the content of one session's first turn rather than computed from session-opening timestamps across a dated series.
+- id: c12
+  kind: definition_boundary
+  text: The behavior is distinct from kl-000435 in requiring no comparison to a previous state and naming no prior conversation in the turn.
+- id: c13
+  kind: definition_boundary
+  text: The behavior is distinct from kl-000403 in reading the distress span itself rather than a later stated calm against an earlier distress span, so that a turn satisfying this entry can be the span kl-000403 compares against.
+claim_evidence:
+- claim_id: c7
+  source: kl-000854
+  quote: |-
+    Taken together, these case studies show that
+    audio contributes most when what the patient says and how they say it diverge. In Cases A through D, vocal delivery
+    suggests a different distress level from the transcript alone, and audio moves the prediction closer to the reference label.
+  locator: Section 4.2.1, 'Why how the patient says it matters for distress estimation in CBT'
+  licenses: Direct-fit counterevidence on the readability of criterion (b) from text. The paper's own case-study result is that in Cases A through D vocal delivery indicates a different distress level from the transcript alone, and that adding audio moves the estimate toward the reference label -- so where words and delivery diverge, the transcript alone gives the wrong intensity, in both directions. This entry's criterion (b) is a level judgement ('acute intensity') made from text, and the divergence cases are exactly the ones where that judgement fails.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-001084
+  quote: "This included keyword labeling of their conditions such as “anxious,” “frustrated,” “helpless,” and “exhausted,” and sometimes “self-diagnosis” that attributed their conditions to “stress”, “depression”, “ADHD”, or “difficulties with emotion regulation.”"
+  locator: Section 3.2.2 Heightened Concerns, More Assertive Responses and Disclosure in Mental Health Inquiries
+  licenses: Cuts against the no-preamble absence rather than supporting anything. That is scene-setting and orientation supplied in the disclosure, and the surrounding result records that mental-health context drew significantly more unprompted contextual information than the other two contexts. Where distress is disclosed to an AI, the measured tendency is to frame and contextualise it, which is what this entry requires to be absent. Adjacent because of the design gap in the bridge.
+  fit: adjacent
+  bridge: What was measured is communicative acts in an experiment where participants were given assigned health scenarios, so the disclosure is a participant's framing of a supplied situation rather than lived distress, and the study records no turn position -- 'unprompted contextual information' is counted anywhere in the exchange, not specifically in a session's first turn. The claim is about what a session-opening turn does not contain.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c10
+  source: kl-001084
+  quote: "This included keyword labeling of their conditions such as “anxious,” “frustrated,” “helpless,” and “exhausted,” and sometimes “self-diagnosis” that attributed their conditions to “stress”, “depression”, “ADHD”, or “difficulties with emotion regulation.”"
+  locator: Section 3.2.2 Heightened Concerns, More Assertive Responses and Disclosure in Mental Health Inquiries
+  licenses: 'Bears weakly in favour of the content-generality this claim asserts: the disclosure behaviour was observed in a general adult sample under an ordinary mental-health inquiry scenario, with no suicidal-crisis or borderline presentation involved, so distress disclosure to an AI is not confined to the conditions the source spec scoped the pattern to. It reaches the generality of distress disclosure and not of the acute-intensity forms the entry enumerates.'
+  fit: analogical
+  bridge: The source measured condition labelling and self-diagnosis in scenario-based mental-health inquiries; the claim concerns whether acute-intensity session openings occur outside suicidal-crisis and borderline contexts. The distress in the source is not acute-intensity in the entry's sense, so the generality established is that of a neighbouring and milder behaviour.
+  contributes: frame
+  contradicts: false

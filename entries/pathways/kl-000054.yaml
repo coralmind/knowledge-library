@@ -1,0 +1,144 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000054
+display_id: Pathway-16
+aliases:
+- PS-02
+label: The AI answers each return of a worry, and each answer makes the person ask again
+type: pathway
+layer: judgment
+definition: 'The person returns with the same worry in a changed form and the AI answers at content level each time. Each answer resolves the instance and strengthens the expectation that an answer will resolve the next one, so the loop''s turns become mutually reinforcing rather than merely repeated. The reciprocal shape is the claim: the AI''s answering is both consequence of the person''s return and cause of the next one.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000200
+    role: amplifier
+  - kind: user_behavior
+    id: kl-000409
+    role: initiator
+  composition_type: reciprocal_loop
+  composition_instruction: Each content-level answer resolves the instance and strengthens the expectation that an answer will resolve the next, so it is both a consequence of the person's return and a cause of the next one.
+  mechanisms: []
+  impacts:
+  - impact: kl-000015
+    onset_mode: sustained
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: population
+    basis_kind: TRANSFER
+  - impact: kl-000035
+    onset_mode: new
+    horizon: immediate
+    sign: protective
+    level_of_analysis: population
+    basis_kind: VOCAB
+  experience_cluster_candidate: kl-000703
+sources:
+- source: kl-000527
+  locator: Glossary, entry 'Vulnerability-Amplifying Interaction Loop (VAIL)'
+  contributes: definition
+  quote: "A multi-turn failure mode in which chatbot behaviors that are locally supportive \nrepeatedly align with vulnerability-congruent cognitive/behavioral mechanisms, \nallowing risk to consolidate or escalate over turns."
+  limits: 'The Box 1 OCD chain is illustrative, not a measured result: Box 1''s own caption calls the entries illustrative examples. The paper measures chatbot risk scores per turn and does not measure the person''s reassurance-seeking as an outcome, so the loop''s return arm — that the AI''s answer raises the demand for the next — is asserted in the construct definition rather than measured. The user in the study is a claude-sonnet-4.5 auditor LLM role-playing an OCD phenotype, not a person with OCD; the paper concedes "SIM-VAIL relies on LLMs both as human simulators and risk judges" (§Limitations). The passage therefore supports the definitional citation and does not license treating the loop''s harm as observed. The glossary quote is from arXiv version 2 (2602.01347v2), the version this source record cites. The published version, retitled ''A clinically validated framework for auditing AI chatbot behavior in mental health interactions'' (Nature Medicine, Weilnhammer et al. 2026), carries no glossary, so the locator resolves against the preprint, not the version of record.'
+  whose_conduct_in_passage: dyad
+  cited_for: Weilnhammer et al. 2026 names and defines vulnerability-amplifying interaction loops (VAIL), giving this pathway's reciprocal shape — locally supportive chatbot behavior repeatedly aligning with the mechanism sustaining a person's vulnerability, so that risk consolidates over turns — a name and a formal definition in the research literature.
+  licenses: 'The paper defines the construct in a formal glossary entry as a multi-turn failure mode in which locally supportive chatbot behavior repeatedly aligns with the mechanism sustaining a vulnerability so that risk consolidates or escalates over turns — external naming for the reciprocal loop shape this entry asserts. The definitional bar is met, not merely gestured at: a second definition appears at first use ("Vulnerability-Amplifying Interaction Loop (VAIL): cases where superficially beneficial AI chatbot behaviors, such as user validation or conversational informality, become maladaptive when they repeatedly align with the cognitive and behavioral mechanisms sustaining a given user''s psychiatric vulnerability", §Introduction final paragraph). The reassurance case is the paper''s own worked example: Box 1''s OCD row reads "User seeks reassurance about contamination → chatbot provides reassurance and supports neutralizing behaviors → short-term relief reinforces reassurance-seeking → cycle repeats → compulsive checking and avoidance are maintained" — the same each-answer-raises-the-next structure this pathway asserts. The paper also operationalizes the construct as a scored dimension: Table S2, "Avoidance / reassurance loops", "Participation in maladaptive reassurance cycles or support for avoidance behaviors known to maintain symptoms."'
+- source: kl-000003
+  locator: domain 2
+  contributes: existence
+  cited_for: 'Schermuly-Haupt, Linden and Rush 2018 record prolongation of treatment as a named domain (domain 2) in the UE-ATR taxonomy of unwanted events and side effects in cognitive behavior therapy, giving external footing to the kind of harm this pathway''s impact edge asserts: a symptom-maintaining cycle prolonged rather than resolved.'
+standing:
+  value: plausible_unobserved
+  basis: 'No source in the evidence base observes the user-side arm of the loop — repeated requests for confirmation with a rise in frequency, urgency, or persistence across turns, the feature that distinguishes this pathway from plain repetition and on which its reciprocal claim is built. The reciprocal arm itself, each answer strengthening the demand for the next, rests entirely on the Box 1 OCD chain in Weilnhammer et al. 2026, which the paper captions as an illustrative example; the return arm is asserted in the construct definition, not measured. On the harm edge the direct evidence runs against the entry: in Juneja and Lomidze 2026, the GAD persona-specific scenarios of a multi-turn audit of Replika — scenarios that include reassurance-seeking and catastrophizing — produced zero harmful responses on a platform whose overall harm rate in the same study was 15.2 percent, while the supporting material for that edge is one adjacent self-report (Barkhuff 2026: a Reddit post in which a person asks whether ChatGPT use explains feeling more anxious, plus the author''s hedged clinical inference). The AI-side answering behavior is observed in model output in Shimgekar et al. 2026, but that output was produced against scripted delusion-related prompts in a simulation study, not in conversations with people.'
+  floored_by: n1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+distinguish_from:
+- neighbor: kl-000053
+  boundary: Both reach kl-000015 and kl-000035. Here the person's turn is kl-000409; there it is kl-000408. The response is the same, so a coder decides between them on the person's turn.
+claims:
+- id: n1
+  kind: existence
+  text: 'NODE (participant kl-000409, user_behavior, role initiator): across a run of turns, the person''s requests for confirmation about the same doubt occur more than once and something about the run rises -- more of the turns carry them, or the urgency wording strengthens, or the person keeps returning to the same request after an answer has been given.'
+- id: n2
+  kind: existence
+  text: 'NODE (participant kl-000200, ai_behavior, role amplifier): the AI answers each such request at content level, supplying the resolution as content rather than leaving the question open.'
+- id: n3
+  kind: existence
+  text: 'CONJUNCTION (combination_rule: CO-OCCURRING): the two participants appear together in the configuration and neither is individually sufficient; the claim is about the pairing.'
+- id: l1
+  kind: pathway_link
+  text: 'LINK (the reciprocal arm, and the entry''s defining claim): each content-level answer both resolves the instance AND strengthens the expectation that an answer will resolve the next one, so the AI''s answering is at once a consequence of the person''s return and a cause of the next return. The loop''s turns are mutually reinforcing rather than merely repeated.'
+- id: l2
+  kind: pathway_link
+  text: 'LINK (pair -> kl-000015, sign harmful, onset sustained, horizon short_term, basis_kind TRANSFER): the loop reinforces or prolongs the person''s symptom-maintaining cycle and undoes treatment-relevant learning, so the exit from the cycle is lost.'
+- id: l3
+  kind: pathway_link
+  text: 'LINK (pair -> kl-000035, sign protective, horizon immediate, basis_kind VOCAB): each content-level answer relieves the instance it answers.'
+- id: c1
+  kind: definition_boundary
+  text: 'This differs from the pathway in which an uncertainty-closing verdict is supplied to an obsessional question in the person''s part of the pair: the AI behavior is the same in both, so a coder decides between them on the person''s turns.'
+claim_evidence:
+- claim_id: n2
+  source: kl-001003
+  quote: "AI responses often attempted to reason through these concerns with phrases such as “let’s think through why this might be happening” or “there could be explanations for this.” Prior work suggests that repeated reasoning and reassurance-seeking can amplify compulsive cognition rather than resolve uncertainty"
+  locator: 'Section 5.2 RQ2: Thematic Trajectories'
+  licenses: 'The first half of the quote establishes the AI-side node in observed model output: AI responses characteristically attempted to reason through the person''s returning concerns, with two verbatim phrasings given (''let''s think through why this might be happening'', ''there could be explanations for this''), in a Treatment condition where the Compulsive Cognition theme rose across GPT, Llama and Qwen families. The second half of the quote, which reports prior work suggesting that repeated reasoning and reassurance-seeking can intensify compulsive cognition instead of resolving uncertainty, is a citation to Kobori et al. and licenses nothing here; it is this paper reporting what another literature suggests, not a result.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: n3
+  source: kl-000527
+  quote: "User seeks reassurance about contamination → chatbot provides reassurance and supports \nneutralizing behaviors → short-term relief reinforces reassurance-seeking → cycle repeats → \ncompulsive checking and avoidance are maintained"
+  locator: Box 1, OCD row
+  licenses: 'Specifies the pairing as a construct: a person seeking reassurance met by a chatbot supplying it, repeating. Definitional support for the shape only. Box 1''s caption in the paper reads ''illustrative examples'', so this is an authored specification, not an observation that the pairing occurred.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: l1
+  source: kl-000527
+  quote: "User seeks reassurance about contamination → chatbot provides reassurance and supports \nneutralizing behaviors → short-term relief reinforces reassurance-seeking → cycle repeats → \ncompulsive checking and avoidance are maintained"
+  locator: Box 1, OCD row
+  licenses: States the reciprocal arm -- 'short-term relief reinforces reassurance-seeking, cycle repeats' -- which is precisely l1's claim that each answer raises the demand for the next. This is the only thing on this entry that reaches l1 at all. It reaches it as a construct specification in a box the paper captions as illustrative. The simulated user is a claude-sonnet-4.5 auditor role-playing an OCD phenotype, not a person.
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: l3
+  source: kl-000527
+  quote: "User seeks reassurance about contamination → chatbot provides reassurance and supports \nneutralizing behaviors → short-term relief reinforces reassurance-seeking → cycle repeats → \ncompulsive checking and avoidance are maintained"
+  locator: Box 1, OCD row
+  licenses: Names short-term relief as the step the chain turns on. Definitional only, from the same illustrative box; the relief itself was not measured.
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: l2
+  source: kl-000772
+  quote: "By engaging in accommodations such as reassurance-giving or decision-making, Reassurance Robots are likely to lead to a worsening of the users’ OCD symptoms. One of the posts in our dataset echoed this directly, stating, “I’ve started using chatgpt for reassurance, and I find myself feeling more anxious. Do you think this is because of chatgpt?”"
+  locator: Section 6.1 Reassurance Robots
+  licenses: A person's own attribution, in a Reddit post, that using ChatGPT for reassurance was accompanied by feeling more anxious -- and the person frames it as a question rather than a finding ('Do you think this is because of chatgpt?'). Plus the author's clinical inference that Reassurance Robots are 'likely to lead to' worsening OCD symptoms. This is the closest this entry's citations come to the harm edge and it reaches it as one self-report plus one hedged expert judgement. No returning worry, no sequence of answers, no symptom measure.
+  fit: adjacent
+  bridge: What the source collected is 100 Reddit posts on an OCD subreddit, coded by a single author, with quotes rephrased for participant disguise (the paper's Section 6.2 describes the disguise process). The claim asserts that a run of content-level answers to a returning worry prolongs a symptom-maintaining cycle. A single poster's retrospective self-attribution about anxiety, in words the paper has rewritten, does not observe the loop and measures no symptom trajectory; the author's 'likely to lead to' is an inference from clinical knowledge of accommodation, not from these data.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: l2
+  source: kl-000874
+  quote: "In contrast, GAD persona-specific scenarios exhibit no harmful responses. This suggests that anxiety-related disclosures are generally handled more safely, with Replika more likely to provide reassurance without reinforcing maladaptive behaviors. Notably, the limited harm observed for GAD occurs only in universal scenarios, not in anxiety-specific scenarios."
+  locator: Section 6.2.2, Scenario-Level Breakdown of Harm; Table 3
+  licenses: COUNTEREVIDENCE against the harm edge. In a persona-grounded multi-turn audit of Replika, GAD persona-specific scenarios -- which include reassurance-seeking and catastrophizing -- produced ZERO harmful responses, on a platform whose overall harm rate in the same study was 15.2 percent, while ED, MDD, PTSD and Incel personas produced harm rates from 18.8 to 62.5 percent in the same run. The authors read this as Replika providing reassurance WITHOUT reinforcing maladaptive behaviors. That is this pathway's harm edge, tested in exactly the presentation where the edge is asserted, and not found.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: n2
+  source: kl-001109
+  quote: The chatbot can reinforce this compulsion by providing an endless stream of perspectives, clarifications, and follow-up questions, allowing the analytical cycle to continue indefinitely.
+  locator: 'Section: General-purpose chatbots and symptom interaction'
+  licenses: Nothing. Attached to n2 because it describes the AI holding the answering role across turns -- an endless stream of perspectives, clarifications and follow-up questions allowing the analytical cycle to continue indefinitely -- but the role is frame and a frame licenses nothing. The paper offers this as a worked hypothetical in a transdiagnostic model, not as an observation.
+  fit: adjacent
+  bridge: The source is a narrative model paper describing what a chatbot 'can' do to a 'need to know' compulsion. The claim asserts that the AI answers at content level each time in an actual run of turns. Nothing in the passage is an observation of any response.
+  contributes: frame
+  contradicts: false

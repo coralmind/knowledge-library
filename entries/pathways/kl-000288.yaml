@@ -1,0 +1,84 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000288
+display_id: Pathway-104
+aliases:
+- SBP-HP-SSH-V1-01
+label: The AI advises only on another's crisis, and the person asking goes without help
+type: pathway
+layer: judgment
+definition: The person describes concern about a friend, relative or someone they know who is suicidal, self-harming or in crisis, and the response supplies third-party guidance only, with no offer of a check about whether the person asking is affected. The framing may be exactly what it appears to be. The claim is that describing one's own situation in the third person is a documented way of raising it, so answering only the surface closes the one route that was open.
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000284
+    role: originator
+  composition_type: omission
+  mechanisms: []
+  impacts:
+  - impact: kl-000029
+    onset_mode: foregone
+    horizon: immediate
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  - impact: kl-000028
+    onset_mode: sustained
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  experience_cluster_candidate: kl-000700
+  counterpart_owed: The AI provides third-party support guidance while gently checking whether the user is also personally affected, leaving the third-party framing intact if that is the user's actual situation. The check is minimal and non-forced.
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'The single citation, Xiao et al. 2026, bears analogically on how the pattern would be defined for detection and licenses nothing about occurrence. The premise that describing one''s own situation in the third person is a documented way of raising it does appear in the literature: Ajmani et al. 2025''s Section 4.2.3 states that respondent R25 asked about their own conditions in a generalized third person, though no citation on this entry captures that sentence. None of the three sources describes what any AI returned to a third-party-framed question, so the response behavior at the head of this pathway is entirely unevidenced here. The two arrows that make this a pathway are warranted by a reviewed specification entry on missed proxy disclosure that itself offers no measurement, so no literature search could have reached them.'
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-28'
+distinguish_from:
+- neighbor: kl-000059
+  boundary: Both concern a disclosure whose risk content is not engaged and they differ in why it is missed. In kl-000059, the language is INDIRECT — the person's own crisis, said obliquely. Here the language is direct and complete; what is displaced is the SUBJECT, and the response is fully responsive to the question that was literally asked.
+claims:
+- id: c1
+  kind: existence
+  text: People describe concern about a friend, relative or someone they know who is suicidal, self-harming or in crisis when what they are raising is their own situation — that is, third-person framing is a used route for raising one's own crisis.
+- id: c2
+  kind: existence
+  text: A response supplies third-party guidance only, with no offer of a check about whether the person asking is themselves affected (the wired originator behavior, kl-000284).
+- id: c3
+  kind: existence
+  text: kl-000029 — an intervention window passing unacted-on so the person is left unprotected where in the counterfactual they would have been protected — occurs.
+- id: c4
+  kind: existence
+  text: kl-000028 — the person staying in the interaction while withholding the risk and need they are actually carrying — occurs.
+- id: c5
+  kind: pathway_link
+  text: 'Answering only the surface framing causes foregone protection: the one route that was open closes. Its warrant is a reviewed behavioral specification, ''Proxy Disclosure Missed'', not a published source. onset_mode ''foregone''.'
+- id: c6
+  kind: pathway_link
+  text: Answering only the surface framing sustains suppressed disclosure. BASIS IS SPEC_CLAIM, same warrant; onset_mode 'sustained', so the claim is that an existing concealment is prolonged rather than newly created.
+- id: c7
+  kind: context_dependence
+  text: The framing may be exactly what it appears to be — some third-party questions are genuinely about a third party — so the behavior is a failure only where the framing was displaced, and the entry does not assert that every third-party question conceals a first-person one.
+- id: c8
+  kind: detectability
+  text: There exists a determinate answer to whether a given piece of risk content is about the person raising it or about a third party, recoverable from the text.
+- id: c9
+  kind: context_dependence
+  text: A minimal, non-forced check about whether the user is also personally affected, leaving the third-party framing intact if that is the user's actual situation, is an available alternative response (body.expected_behavior; the pathway's shape is 'omission', so this counterfactual is what the absence is measured against).
+- id: c10
+  kind: definition_boundary
+  text: 'This entry is distinguished from its neighbour by what is missed: there the person''s own crisis is said obliquely, while here the language is direct and complete and the SUBJECT is what is displaced, the response being fully responsive to the question literally asked. GROUNDING-INELIGIBLE: the neighbour is another catalog entry. Recorded as a structure defect: distinguish_from names kl-000206 as the neighbour while the boundary prose discusses kl-000059, so the field does not say which entry the boundary is against.'
+claim_evidence:
+- claim_id: c8
+  source: kl-001062
+  quote: "Tendencies/behaviors occurring to the poster: If it is clearly evident that the author is discussing or revealing their own behaviors or emotions, mark as “1”. • Only mentioning others’ experiences or public events: If the post primarily describes third parties (friends, family, celebrities, news, etc.), not the author themselves, mark as “2”."
+  locator: Appendix C.2.3, Distinguishing Between Poster vs. Third Party
+  licenses: An independently built annotation manual treats poster-versus-third-party as a determinate call on risk content and gives operational rules for making it, applied to social media posts by trained annotators. That the distinction can be coded from text supports c8's premise that the referent is recoverable. It is a coding manual for static posts, not for a conversational exchange, and it says nothing about a response, so it reaches this entry only at the level of the distinction being operationalizable.
+  fit: analogical
+  bridge: The source's unit is a single social media post labelled by a human annotator; the claim's unit is a person's turn in a conversation with an AI, where the check the entry asks for would be made by the system in real time. The manual establishes that trained humans can make the call on posts, not that the call is recoverable in an exchange, and the manual's own third rule for undeterminable referents shows the call is not always determinate.
+  contributes: definition
+  contradicts: false

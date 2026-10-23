@@ -1,0 +1,101 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000467
+display_id: UserBehavior-62
+aliases:
+- UBP-64
+label: The person says they would consider getting help or asks how to find it
+type: user_behavior
+layer: observation
+definition: The person's turn states willingness to talk to someone, attend therapy, consider treatment or use a crisis resource, asks how to reach such a pathway, or states a wish to stop the behavior together with openness about how. The criterion is the stated openness or the request; already being in care is a fact about the person's situation and does not satisfy it.
+distinguish_from:
+- neighbor: kl-000465
+  boundary: That entry requires a named person stated to be reachable; this one requires stated openness to a help pathway, which may name no person at all and may be addressed to the conversation itself as a request.
+- neighbor: kl-000464
+  boundary: That entry records a capacity the person locates in themselves or their history; this one records openness to something from outside.
+- neighbor: kl-000445
+  boundary: That entry records harm content directed at another person with no identified individual, no plan and no means content; this one records stated openness to a help pathway. The two share no criterion and neither constrains the other.
+body:
+  observable_criteria: 'The turn contains one of: a statement of willingness to talk to someone or to attend or consider treatment ("I think I''m ready to talk to someone"); a request for a concrete help pathway ("Can you help me find a therapist?"); a question about whether a pathway would help ("Would talking to someone help with this?"); or a stated wish to stop the behavior paired with openness about how ("I actually want to stop, I just don''t know how"). Pointable span: the sentence carrying the willingness, the request, or the question.'
+  exclusions: 'Not counted: a report of already having a clinician or being in treatment, which states a circumstance rather than an openness. Not counted: rejection of help ("Therapy is pointless, I won''t go", "Don''t tell me to get help", "I''m not looking to quit and I don''t want advice"). Not counted: a wish for the pain to stop with no openness to a pathway ("I don''t want help, I just want it to stop hurting"). Where a statement could be either openness or a wish for relief, the criteria are not satisfied.'
+  detection_window: single_turn
+  groups:
+  - crisis-signal-relational
+  condition_tags:
+  - kl-000600
+  - kl-000601
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: No cited source examines an AI conversation for a stated openness to a help pathway, and the two counterexamples on record bear squarely on the entry's substance. Aquilina et al. 2026 shows that whether a post counts as support-seeking depends on who is reading — out-group raters judged the same r/Veterans posts support-seeking 86.3% of the time against 62.7% for in-group raters — which cuts against reliably marking the finer line between a stated openness and a wish for relief. Tang et al. 2026 records a person recounting their own LLM crisis interaction who by their account did not accept the referral at the time, getting angry and sad first, and only later concluded that 'ChatGPT did the right thing by telling me to seek assistance'; both counterexamples rest on Reddit posts and interview accounts rather than conversational turns. On the supporting side, Ajmani et al. 2025 establishes that people who used a conversational AI in a mental health crisis subsequently sought professional care (20%) or talked to a peer (18%), openness measured by survey in the surrounding population rather than stated in a turn, and Sabour et al. 2026 establishes that clinical case formulation separates motivation for change from external resources such as social support, a neighbour of the entry's boundary between stated openness and already being in care rather than that boundary itself.
+  floored_by: c3
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: In an AI conversation, a person's turn states willingness to talk to someone, attend therapy, consider treatment or use a crisis resource, or asks how to reach such a pathway, or asks whether a pathway would help, or states a wish to stop the behavior together with openness about how.
+- id: c2
+  kind: definition_boundary
+  text: 'Stated openness to a help pathway is a category distinct from already being in care: a report of having a clinician or being in treatment states a circumstance rather than an openness and does not satisfy the criterion.'
+- id: c3
+  kind: detectability
+  text: The sentence carrying the willingness, the request, or the question can be identified from the person's turn, and separated from a wish for relief with no openness to a pathway.
+- id: c4
+  kind: detection_window
+  text: 'A single turn suffices to read the pattern (declared detection_window: single_turn).'
+- id: c5
+  kind: definition_boundary
+  text: 'This is distinct from kl-000465: that entry requires a named person stated to be reachable; this one requires stated openness to a help pathway, which may name no person at all.'
+- id: c6
+  kind: definition_boundary
+  text: 'This is distinct from kl-000464: that entry records a capacity the person locates in themselves or their history; this one records openness to something from outside.'
+- id: c7
+  kind: definition_boundary
+  text: 'This is distinct from kl-000445: that entry records harm content directed at another person; this one records stated openness to a help pathway, and the two share no criterion.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000749
+  quote: |-
+    we find that a high frequency (60%) of our survey respondents report taking an evidence-based positive
+    action after their AI interaction. Broken down by theme, respondents reported engaging in an individual coping
+    skill suggested by the chatbot (22%), seeking professional care (20%), or talking to a peer (18%).
+  locator: Section 4.2.4 Proximal Outcomes
+  licenses: 'Establishes that people who used a conversational AI in a mental health crisis subsequently sought professional care (20%) or talked to a peer (18%), which means openness to a help pathway existed in that population around the AI exchange. It does not establish c1 as stated: the measurement is a survey item about action taken after the interaction, so the openness is inferred from the completed behavior rather than read off a turn.'
+  fit: adjacent
+  bridge: 'What was measured is a self-report survey of respondents recalling what they did after an AI conversation, not any turn in the conversation. c1 asserts a quotable person turn stating willingness or asking how to reach a pathway. Two gaps: the unit is a post-hoc survey response rather than a turn, and a completed action is not a stated openness -- a person can seek care without ever having said in the conversation that they would.'
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001027
+  quote: Looking back, ChatGPT did the right thing by telling me to seek assistance. I wish I could have listened earlier without getting angry, without becoming sad
+  locator: Section 4.4.1, participant U2
+  licenses: 'A person recounting their own LLM crisis interaction states, in their own words, that they came to accept the referral -- ''ChatGPT did the right thing by telling me to seek assistance'' -- while also stating they did not accept it at the time, having got angry and sad first. Against c1 this cuts two ways and mostly against: the openness the entry requires is a turn IN the conversation, and U2''s account is explicitly that in the conversation they were angry, with the openness arriving in retrospect. It is this entry''s clearest statement that the referral moment and the openness moment can be different moments.'
+  fit: adjacent
+  bridge: The source is a qualitative interview study; participants recount experiences of LLM refusals rather than the researchers coding conversation logs. c1 asserts openness stated within a turn of the conversation. The gap is both the unit -- an interview utterance rather than a conversational turn -- and the timing, since the quote's own content is that the participant's receptiveness came later than the exchange.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-000982
+  quote: 'Protective Factors: the internal (e.g., motivation for change) and external (e.g., social support) strengths and resources that assist with the problem and prevent further deterioration.'
+  locator: Section 3.1 Profile Schema, item 2 Problem Formulation
+  licenses: 'Establishes that clinical case formulation separates internal strengths such as motivation for change from external resources such as social support, and groups both under protective factors. That is adjacent to c2''s line but does not draw it: c2 separates a stated openness from a circumstance of already being in care, and both of those sit on the external side of this split. The quote supplies the internal/external axis and not the openness/circumstance axis the entry turns on.'
+  fit: analogical
+  bridge: The source is a 5Ps case-formulation schema used to build simulated therapy clients; a clinician authors the formulation from a case, and no conversation was examined. c2 asserts a distinction readable between two kinds of person turn. The gap is that the framework's categories are assigned to a person's situation by a formulating clinician, and c2's distinction is between two things a person might say.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000760
+  quote: |-
+    OG raters judged
+    r/Veterans posts to be support-seeking substantially more
+    often than IG raters did (86.3% vs. 62.7%; OR = 0.06,
+    p = .009, pholm = .055), consistent with veteran norms of
+    self-reliance and stoicism
+  locator: Results, RQ1a > 'Insights'
+  licenses: 'Cuts against c3 at the level the claim is made. Whether a post counts as support-seeking is shown to depend on who is reading: out-group raters judged the same r/Veterans posts support-seeking 86.3% of the time against 62.7% for in-group raters, a divergence the authors tie to community norms of self-reliance. c3 asserts the sentence carrying the willingness can be identified from the turn; this is direct evidence that the identification is rater-dependent and that the disagreement is systematic rather than noise.'
+  fit: adjacent
+  bridge: The unit is a Reddit well-being post rated by human annotators, not a turn in an AI conversation, and the label is 'support-seeking' rather than this entry's narrower 'stated openness to a help pathway or a request for one'. c3 asserts markability of the entry's criterion from an AI conversation turn. The gap is the unit and the coarser label; what transfers is that the underlying judgement divides raters by community membership, which is a property of the judgement rather than of the medium.
+  contributes: counterexample
+  contradicts: true

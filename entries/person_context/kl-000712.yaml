@@ -1,0 +1,407 @@
+# yaml-language-server: $schema=../../schema/context.schema.json
+id: kl-000712
+display_id: Context-4
+label: Persona schema — traits, states and dynamics
+type: context
+layer: context
+aliases:
+- persona_schema
+definition: 'The three-part shape of a simulated person: traits, the stable substrate of who they are; states, where they start at the first turn; and dynamics, the rules governing how states move in response to what the system does. The schema is held here because it is the vocabulary in which person context is expressed. Individual personas are not: they are instances, and instances live in the Data Repository.'
+distinguish_from:
+- neighbor: kl-000709
+  boundary: 'The persona schema describes the person. Deployment context describes the product they are talking to. Both are context and neither substitutes for the other: the same persona in two deployments is two cases.'
+body:
+  context_kind: persona_schema
+sources: []
+standing:
+  value: theorized
+  basis: 'The three layers are stated or operationalized by persona-simulation designs rather than measured: sources specify a stable trait layer (kl-000810, kl-000827), a starting-state layer (kl-001086, kl-001094) and rules for how states move (kl-000982, kl-000911), and kl-000844 cuts against the stability the trait layer assumes. That varying the persona changes the system''s conduct is measured (kl-001052), so the floor is set by the layer claims, c1 to c3, and c7 sits at the same level because its one source states the deployment effect as a method assumption rather than a finding.'
+  floored_by: c1
+  as_of: '2026-10-18'
+lifecycle:
+  status: deprecated
+  since: '2026-09-23'
+claims:
+- id: c1
+  kind: existence
+  text: Traits -- a stable substrate of who the simulated person is -- form a distinct, separately specifiable layer of a persona specification.
+- id: c2
+  kind: existence
+  text: States -- where the simulated person stands at the first turn -- form a layer distinct from traits and separately specifiable from them.
+- id: c3
+  kind: existence
+  text: Dynamics -- rules governing how the person's states move in response to what the system does -- form a layer distinct from both traits and states, and are specifiable as rules rather than as further attributes.
+- id: c5
+  kind: context_dependence
+  text: 'Varying the persona changes the judgment: traits and states set what the person brings and dynamics set what the system''s response does to them, so a harm trajectory becomes observable across turns rather than only within one.'
+- id: c6
+  kind: definition_boundary
+  text: 'The persona schema is distinguishable from kl-000709 deployment context: the schema describes the person, deployment context describes the product they are talking to, and neither substitutes for the other.'
+- id: c7
+  kind: context_dependence
+  text: 'The same persona placed in two deployments is two cases: holding the person specification constant, the deployment changes what the conversation is.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000810
+  quote: |-
+    Basic information include name, age, sex, ethnicity, race,
+    hispanic_origin, city, state, political_views, religion,
+    party_identification, occupation, total_wealth
+  locator: Appendix A, Figure 4, System Prompt for Generating User Personas
+  licenses: 'An operational trait layer actually used to generate simulated users: name, age, sex, ethnicity, race, hispanic origin, city, state, political views, religion, party identification, occupation, total wealth. Every field named is a stable attribute of the person and none is a starting state or an update rule, so the span shows the traits layer being specified on its own and being sufficient on its own to instantiate a persona.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000827
+  quote: The Advisee prompt supplied no trait-descriptive vocabulary. It fixed a band on each dimension of a psychometrically validated instrument, defined by score intervals rather than by adjectives, and said nothing about how that band should be expressed in words.
+  locator: Section 3 Discussion, on why Big Five recovery is informative
+  licenses: 'A method for specifying the trait layer without adjectives: fix a band on each dimension of a psychometrically validated instrument by score interval and say nothing about how the band should be expressed in words. This is the claim''s traits layer given an applicable criterion -- a reader could decide whether a given specification meets it -- and the source reports the specification is recoverable from the resulting dialogue at r = 0.78, so the layer is not merely nominal.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000935
+  quote: "Second, we identified the most salient personality trait for each participant, defined as the trait whose percentile score deviated the most strongly from the 50% median (in absolute terms)."
+  locator: Methods, Study 4
+  licenses: 'A trait layer reduced to a single field: the personality trait whose percentile deviated most from the median, adopted because the model handled the fuller five-trait profile badly. Read against this claim it establishes that the traits layer is separately specifiable at variable granularity, and supplies the only evidence on this entry about how much of it a system can actually use.'
+  fit: adjacent
+  bridge: The persona here conditions an advertisement generator in a persuasion experiment, not a help-seeker in a clinical conversation. What transfers is the finding about trait-layer granularity; the population and the task do not.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-001069
+  quote: "we use LLM with knowledge graph to generate multiple fictitious patient experiences given one patient case. The patient experiences serve as background information for patient agents during generation."
+  locator: Introduction
+  licenses: The clinically fixed material -- the patient case -- is held constant while the biographical material the person would volunteer is generated separately on top of it. That is the traits layer treated as a stable substrate distinct from what is generated over it, which is the claim's own framing of what traits are.
+  fit: adjacent
+  bridge: The source is a synthetic-data generation architecture for psychiatric diagnostic interviews. What transfers is the structural factoring of a persona into a fixed layer and a variable layer, not any observation of a conversation.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000844
+  quote: |-
+    Only 5.3% of users show the same
+    archetype across all posts
+  locator: Section 2.5.3 Archetype-Level Analysis
+  licenses: This cuts against the stability the traits layer assumes. Only 5.3 percent of users showed the same psychological archetype across all their posts, so a schema that assigns one fixed profile per person describes an exceptional twentieth of the sample rather than the typical case. The claim survives as a specification decision and loses its warrant as a description of people.
+  fit: adjacent
+  bridge: What was measured is k-means archetype membership over three Reddit posts per user, with profiles extracted by LLM assessment of lexicon and semantic features rather than by self-report. The claim is about a persona specification's layers; this is about whether the thing that layer is meant to stand for is stable in people.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000844
+  quote: |-
+    person, context-specific expression, while only
+    26–28% reflects stable between-person differences.
+  locator: Section 2.4 RQ1, Results (restated in Appendix D.4)
+  licenses: This cuts against the traits layer carrying most of the weight. A variance decomposition, replicated across two independent extraction methods, puts only 26 to 28 percent of expressed psychological variation in stable between-person differences, leaving roughly three quarters situational. On this evidence a persona schema that is mostly traits is mostly modelling the smaller part.
+  fit: adjacent
+  bridge: The measurement is intraclass correlation on 26 LLM-assessed dimensions over 5,001 Reddit posts with subreddit standing in for context, which the paper's own limitations note conflates topic, audience and community norms. It bears on how much variance the traits layer can carry, not on whether the layer is specifiable.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-001094
+  quote: |-
+    Proto-SP was excessively cooperative and responded to questions by neatly organizing its medical profile for the
+    interviewer (PACA or human). This phenomenon persisted even when instructed to be "not cooperative" by the [General
+    appearance/Attitude/Behavior] element in the MFC-Behavior.
+  locator: Methods, Utterance Simulation, subsection Simulated Patient
+  licenses: 'This cuts against the traits layer being self-executing. Naming a trait in the schema did not produce it: the simulated patient stayed excessively cooperative and neatly organized its medical profile even when the behavior element explicitly instructed it to be not cooperative. A trait label in the specification is not a trait in the output.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-001086
+  quote: |-
+    The below
+    attributes are extracted and incorporated into the
+    client profiles: demographics, cultural background,
+    personality trait, emotional state, current distress,
+    detailed distress description, and core theme.
+  locator: Section 2.2.1 Client Profiles
+  licenses: 'A seven-attribute schema derived from real counseling records that draws exactly this claim''s line: demographics, cultural background and personality trait on the stable side; emotional state, current distress, detailed distress description and core theme on the starting-state side. The two groups are separately enumerated within one specification, which is the claim''s assertion that states are a layer distinct from traits.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-001094
+  quote: |-
+    While the MFC-Profile is primarily an information-centric component, the MFC-Behavior is a behavior-centric component
+    that directly aligns behavior with that of real patients. We identified the MSE as a suitable theoretical foundation for creating
+    this behavior-centric component.
+  locator: Methods, PSYCHE Framework, subsection MFC-Behavior
+  licenses: 'The distinction is stated as a design criterion and given a theoretical ground: the profile component is information-centric and describes what the persona knows about itself, while the behavior component is behavior-centric and governs how it acts turn by turn, grounded in the Mental Status Examination. That separates the stable description from what the person is doing at a given moment.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-001094
+  quote: |-
+    The MFC comprises three components: 1) Patient Profile
+    (MFC-Profile), 2) Patient History (MFC-History), and 3) Patient Behavior Instruction (MFC-Behavior).
+  locator: Methods, PSYCHE Framework, subsection Multi-faceted Construct Generation
+  licenses: 'An independent three-part decomposition of a simulated-patient specification: patient profile, patient history, and patient behavior instruction. It supports this claim in showing that a second layer beyond stable attributes is treated as necessary; it does not confirm the claim''s particular second layer, because the middle component here is life history rather than a starting state.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000860
+  quote: human help seekers might be hesitant, not willing to share their thoughts and feelings, not willing to change immediately, and may not be able to articulate their thoughts and feelings clearly.
+  locator: Appendix A.2, Patient System Prompt
+  licenses: A patient system prompt specifying that help-seekers may be hesitant, unwilling to share their thoughts and feelings, unwilling to change immediately, and unable to articulate clearly. These are conditions the simulated person is in at the outset rather than stable attributes of who they are, which is the starting-state layer being specified in operational form.
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000793
+  quote: "Self-disclosure The VP’s willingness to share personal or sensitive material on a given turn"
+  locator: Section 3.3.3 Constructs and Their Measurement
+  licenses: "Defines self-disclosure as a per-turn state variable: the persona's willingness, on a given turn, to share personal or sensitive material. The paper scores it at three levels, from surface chat to sensitive material such as suicidal ideation (Section 3.3.3). The per-turn scoping is the point: this is a quantity that has a value at the first turn and a different one later, which is what distinguishes it from a trait."
+  fit: adjacent
+  bridge: The source defines this variable inside a psychotherapy-training simulator whose disclosure level is set by a controller. It supplies the state layer as a design specification rather than showing it in any observed conversation.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000009
+  quote: |-
+    Psychologically vulnerable states may include expressions of acute emotional distress; inability to
+    cope with negative emotions; overwhelm or overload; loneliness or isolation; hopelessness, disorientation, insecurity;
+    impaired responsibilities, daily functioning, or relationships; recent traumatic or stressful events; interpersonal conflicts
+    or breakdowns; major life events that trigger emotional instability; or lack of available support.
+  locator: Section 3.3, Psychological influence-PS1 discussion
+  licenses: An enumeration of what counts as a psychologically vulnerable state -- acute distress, inability to cope, overwhelm, loneliness, hopelessness, impaired functioning, recent traumatic events, interpersonal breakdowns, destabilising life events, absent support. It fills the state layer with content across affective, functional, situational and support dimensions without distinguishing momentary from stable, which is why it settles content rather than the layer boundary.
+  fit: adjacent
+  bridge: The source is a research-and-design directions paper enumerating vulnerable states for the purpose of AI response design. It supplies candidate state contents; the claim asserts states are a layer separate from traits, which the flat enumeration does not itself draw.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000810
+  quote: |-
+    Sometimes expresses feelings of isolation, frustration,
+    or being overwhelmed,
+    particularly during late-night hours when children are asleep.
+  locator: 'Appendix B, Figure 8, Persona: Stay-at-home Mom'
+  licenses: A worked persona whose distress is conditioned on time of day -- isolation, frustration and overwhelm particularly during late-night hours when children are asleep. A quantity with a condition on it is a state rather than a stable attribute, and this is the clearest instance on this entry of the two being written into one persona and staying distinguishable.
+  fit: adjacent
+  bridge: The persona is hand-crafted as an input to a prompt-mutation model in a red-teaming study with no mental-health framing, so it shows what a comparable specification contains rather than evidencing anything about a conversation.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000961
+  quote: Pre-existing measures of emotional well-being were statistically significant predictors of post-interaction states. Participants who started with high initial emotional dependence and problematic use had statistically significantly reduction in both measures using the engaging voice modality compared to the text modality.
+  locator: Section 4.2, Findings for Pre-Registered Research Questions, item 4
+  licenses: 'The starting state does work, measured: participants'' pre-existing emotional well-being significantly predicted post-interaction states, and those who began with high emotional dependence and problematic use improved more on the engaging voice modality than on text. That the direction of the outcome turned on where the person started is the strongest evidence on this entry that the first-turn state is a real and separable variable rather than a modelling convenience.'
+  fit: adjacent
+  bridge: This is a randomized comparison of interaction modalities with real ChatGPT users, not a persona specification. The claim is about a layer of a simulated-person schema; what transfers is that the quantity that layer represents demonstrably moderates outcomes in people. The authors also note the pattern is partly consistent with regression to the mean.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000982
+  quote: 'Attachment style shapes these dynamics: anxious clients lose trust readily in response to perceived rejection; avoidant clients build trust slowly and penalize pushiness; disorganized clients may lose trust even after positive exchanges.'
+  locator: Section 3.3.4 Trust Dynamics
+  licenses: 'State-transition rules keyed to a stable trait, stated in applicable form: anxious clients lose trust readily in response to perceived rejection, avoidant clients build trust slowly and penalize pushiness, disorganized clients may lose trust even after positive exchanges. That is precisely the claim''s dynamics layer -- how a state moves in response to what the system does -- written as rules rather than as further attributes, and with traits as the conditioning substrate.'
+  fit: analogical
+  bridge: These are simulation rules written from attachment theory to govern an LLM persona's state updates, not measurements of how people with these attachment styles respond to an AI. They establish that the dynamics layer is specifiable and what it looks like when specified; they do not establish that real people move this way.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000982
+  quote: 'Disclosure levels are assigned based on each item’s vulnerability and observability: surface-level symptoms (e.g., difficulty getting out of bed) are assigned low thresholds, whereas formative memories (e.g., a childhood rejection) require higher levels of trust.'
+  locator: Section 3.3.1 Profile Decomposition
+  licenses: 'A second concrete dynamics rule from the same framework: disclosure thresholds assigned per item by vulnerability and observability, with surface-level symptoms low and formative memories requiring higher trust. What the persona will say is a function of a state whose value the system''s conduct changes, which is the claim''s dynamics layer with a gate attached.'
+  fit: analogical
+  bridge: The design is a method for building evaluation personas, authored against clinical theory and grounded by the authors in an annotation study of real counseling sessions. It defines the machinery; it establishes nothing about a deployed system or a real person.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000793
+  quote: "a persona prompt alone does not specify how a patient’s behavior—such as disclosure, affect, or trust—should evolve over the course of a session in response to therapist interventions."
+  locator: Abstract
+  licenses: 'The claim''s own distinction stated as the gap the source exists to fill: a persona prompt by itself does not set out how a patient''s behavior, such as disclosure, affect or trust, should change during a session as the therapist intervenes. That is dynamics named as a layer a trait specification does not contain, by an author building an architecture because it does not.'
+  fit: adjacent
+  bridge: The claim is made about virtual patients built for psychotherapy training, as motivation for the source's architecture. It establishes that the trait layer and the state-trajectory layer are different things; it does not observe either in a deployed conversation.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000911
+  quote: this paradigm lacks explicit modeling of longitudinal life-event history and tends to produce homogeneous behaviors across profiles, resulting in simulated patients who behave like actors without a past and fail to exhibit coherent disease progression in multi-turn interviews.
+  locator: Section 1 Introduction
+  licenses: 'Omitting the dynamics layer has a named and observed consequence: simulated patients behave like actors without a past and fail to exhibit coherent disease progression across multi-turn interviews, alongside homogeneity across profiles. Incoherent progression across turns is what the absence of state-transition rules looks like in the output, which is evidence for the layer being load-bearing rather than decorative.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000813
+  quote: "(3) Behavioral tendencies 𝜃, denotes recurrent patterns such as avoidance, hostility, moral disengagement, rationalization, or provocation;"
+  locator: Section 3.1.1 Persona Schema
+  licenses: An independently constructed persona schema whose third dimension is behavioral tendencies -- recurrent patterns such as avoidance, hostility, moral disengagement, rationalization, or provocation. A recurrent pattern is closer to a disposition than to an update rule, so read against this claim it shows that another team building a persona schema reached for a behavior layer and stopped short of state-transition rules.
+  fit: adjacent
+  bridge: The source's six dimensions were built for ethically adversarial personas rather than clinical presentations, and the span names one dimension with examples rather than the schema's structure.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-001049
+  quote: Human behavior emerges from the dynamic interplay of multiple patterns, not from any single trait in isolation.
+  locator: Section 1 (Introduction), second column
+  licenses: 'The conceptual case for the dynamics layer: human behavior emerges from the dynamic interplay of multiple patterns and not from any single trait in isolation, illustrated by a talkative person falling silent under the spotlight effect. It is the argument that a persona built from independent trait labels will not reproduce behavior; it is an argument and not an observation.'
+  fit: analogical
+  bridge: The claim is made about human behavior generally and about role-play agents specifically, in a benchmark paper about anthropomorphism, with nothing about mental-health conversation. It supplies the rationale for the layer rather than evidence that the layer works.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000844
+  quote: |-
+    while ignoring within-person
+    variation: how John differs across contexts.
+  locator: Section 1 Introduction
+  licenses: 'Names the omission the claim is meant to fix: existing persona specifications carry between-person difference and not within-person variation across contexts. It states the gap rather than showing the layer that fills it.'
+  fit: direct
+  bridge: null
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-001052
+  quote: "These control conversations yielded significantly lower concerning behavior scores than vulnerable user conversations (P < 0.001), confirming that the observed risks were specific to simulated users with a mental-health vulnerability rather than a general property of target AI chatbot behavior"
+  locator: Results, User-profile variation in chatbot risk
+  licenses: 'The claim''s direction, tested. Control conversations holding intent constant while removing the mental-health vulnerability produced lower concerning-behavior scores than the vulnerable-user conversations. The persona component was varied and the system''s conduct changed, which is what the claim asserts. LIMIT: the comparison is reported as a bare P value -- no test named, no F or t, no degrees of freedom, no effect size, no group means -- in a paper that reports 21 full Type III F-tests elsewhere, and it is absent from the Methods. The control arm is also a separately authored persona set (Supplementary Table 8) differing from the primary condition in more than the presence of vulnerability. Read as direction observed, not as an effect measured.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c5
+  source: kl-000909
+  quote: "Furthermore, our findings suggest that users’ affective states function as vulnerability signals that systematically soften evaluative responses, resembling how people often avoid directly challenging someone who appears emotionally distressed."
+  locator: Section 6 Discussion
+  licenses: 'The person''s disclosed affective state, held against identical content, changes the response: affective states function as vulnerability signals that systematically soften evaluative responses. That is the states layer doing the work the claim attributes to it, measured on the system''s output rather than asserted.'
+  fit: adjacent
+  bridge: The source varied affective context in benchmark prompts rather than instantiating a persona schema, and the quoted sentence is the authors' interpretation of their result rather than the result itself.
+  contributes: existence
+  contradicts: false
+- claim_id: c5
+  source: kl-000981
+  quote: |-
+    In
+    the financial domain, consistent with prior work43, participants with higher self-esteem were
+    associated with less susceptibility in both MA (β = −1.36, P < 0.01) and SEMA (β = −1.69, P = 0.02)
+    groups, suggesting that less confident individuals are more likely to defer to AI recommendations
+  locator: Results, 'Context-specific individual vulnerabilities shape susceptibility patterns'
+  licenses: 'The traits layer doing the same work from the other side: with the AI''s strategy held constant, participants with higher self-esteem were less susceptible to manipulation in both conditions. Who the person is changed the outcome of an identical interaction pattern, which is the claim''s first half measured in people rather than in personas.'
+  fit: adjacent
+  bridge: Measured by the Rosenberg Self-Esteem Scale against a preference-rating outcome in a general adult sample in the financial domain. It shows trait variation moderating susceptibility; it does not show a persona specification producing that variation in a simulation.
+  contributes: existence
+  contradicts: false
+- claim_id: c5
+  source: kl-000848
+  quote: "The results of the test reveal that attachment anxiety did not significantly predict PUCAI when the tendency for anthropomorphism was low (βsimple =0.006, t =0.141, p > 0.05) but did significantly predict the PUCAI when the tendency for anthropomorphism was high (βsimple =0.171, t =2.987, p < 0.01)."
+  locator: Results, Testing for Mediated Moderating Effects
+  licenses: 'A person-level moderator with threshold structure: attachment anxiety did not predict problematic use where anthropomorphic tendency was low and did predict it where anthropomorphic tendency was high. Read against this claim it establishes that a trait''s effect can be gated by another trait, so the person layer is not a set of independent additive fields.'
+  fit: adjacent
+  bridge: Measured as a self-reported disposition score on a seven-item scale correlated with a self-reported use score in one cross-sectional sample. It establishes association and not causation, and the person is a survey respondent rather than a specified persona.
+  contributes: existence
+  contradicts: false
+- claim_id: c5
+  source: kl-000912
+  quote: Companion AI needs contextual and user-state-aware safety mechanisms that treat vulnerability as dynamic rather than static
+  locator: Section 4 Discussion, heterogeneity paragraph
+  licenses: 'The review''s conclusion is the claim''s second half: safety must be conditioned on the person''s current state rather than treated as fixed, because vulnerability is dynamic. It is a recommendation the reviewers reach from finding the same design feature helping one user and harming another, so it names the phenomenon the claim asserts without measuring it here.'
+  fit: adjacent
+  bridge: Synthesised across the review's sources rather than tested within it, and offered as a design proposal. It frames the state-dependence the claim asserts and supplies no measurement of it.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-001015
+  quote: |-
+    Individual
+     factors,
+     such
+     as
+    susceptibility
+     to
+     stress,
+     age,
+     gender
+     or
+     personality
+     variables,
+     should
+    moderate
+     the
+     effect
+     of
+     stress
+     on
+     decision
+     making
+     (Kudielka
+     et
+     al.,
+    2009),
+     as
+     suggested
+     in
+     Fig.
+     2.
+  locator: 'Section 5.3, "Limitations: individual factors as potential moderators and mediators"; the moderator set is also given in Fig. 2'
+  licenses: 'The clinical warrant for the claim''s first half: susceptibility to stress, age, gender and personality are named as moderators of whether and how a stressor changes decision making, so the same input is expected to produce different effects across people. The authors present this as what should moderate, inside a limitations section explaining inconsistent results.'
+  fit: analogical
+  bridge: This is a review of laboratory stress-and-decision research in people, with no AI and no conversation. It supplies the general expectation that person-level variables moderate the effect of an identical input, which is the premise behind carrying a persona schema at all.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-000760
+  quote: |-
+    Contextualization recalibrates
+    models away from their default over-estimation tendency,
+    but risks pushing them toward under-estimation and missing
+    genuine distress signals.
+  locator: Results, RQ2b > 'Insights'
+  licenses: 'This cuts against the claim in its optimistic reading. Supplying a model with the author''s community identity recalibrated it away from over-estimating distress and toward under-estimation, missing genuine distress signals: the error moved rather than shrinking. Varying the person context changes the judgment, which the claim asserts, but the claim''s implied benefit does not follow.'
+  fit: adjacent
+  bridge: Measured as macro-F1 and over/under rates against community aggregates on a labelling task with a prompt-supplied community label, not a persona in a simulated conversation. The gain was 2 to 8 points and under-estimation rose in five of six communities.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000529
+  quote: "This suggests that almost anyone can be susceptible to the effects\nof sycophantic AI systems, not exclusively the already vulnerable populations"
+  locator: RQ2, p. 4 of 9, paragraph beginning 'The effects remained robust'
+  licenses: This cuts against the claim's first half. With scenarios and participant traits such as demographics, attitudes toward AI and personality held constant, sycophancy remained the dominant predictor, which the authors read as almost anyone being susceptible rather than exclusively the already vulnerable populations. Perceived objectivity and positive attitudes toward AI amplified the effect in the vignette studies, so the traits layer shifted the size of the effect without gating it.
+  fit: adjacent
+  bridge: A general adult Prolific sample discussing low-stakes interpersonal conflicts rather than a help-seeking or clinical sample. It constrains how a trait-based risk model should be read; it does not show that clinical context never matters.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000897
+  quote: Contrary to expectations, larger social networks are associated with stronger attachment.
+  locator: Abstract
+  licenses: This cuts against the persona archetype the claim is usually applied through. Contrary to the authors' own expectations, larger social networks were associated with stronger attachment to AI chatbots across four national samples. If the modal attached user is socially connected, a persona set built on the isolated-user archetype samples the wrong part of the population.
+  fit: adjacent
+  bridge: A cross-sectional association between self-reported network size and self-reported attachment in four national samples of general-purpose chatbot users. It is an association in a survey, not a within-person finding, and it does not show that connected users come to harm.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c7
+  source: kl-000874
+  quote: "AI companion apps often behave differently on a new account than on one with an established conversational history. To mitigate the cold-start effect, we conditioned each persona account with a brief relevant dialogue history, which we refer to as natural history conditioning."
+  locator: 'Section 3.3.1 Phase I: Natural History Conditioning'
+  licenses: 'Bears on the claim without testing it. The source states that companion apps often behave differently on a new account than on one with conversational history, names this the cold-start effect, and conditions every persona account with a brief dialogue history to neutralise it. LIMIT: this is a purposive clause justifying a method step, not a finding. The hedge carries no citation, direction, magnitude or statistic; no arm of the study skips the conditioning, so there is no unconditioned comparison anywhere in the paper; and cold start is absent from its own Limitations. What it licenses is that the authors treated deployment state as a confound worth removing -- an operating assumption of practitioners, not an observation.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c6
+  source: kl-000874
+  quote: "AI companion apps often behave differently on a new account than on one with an established conversational history. To mitigate the cold-start effect, we conditioned each persona account with a brief relevant dialogue history, which we refer to as natural history conditioning."
+  locator: 'Section 3.3.1 Phase I: Natural History Conditioning'
+  licenses: 'Bears on the boundary. The source treats account history as a property of the deployment that must be controlled before persona-driven testing means anything, which is the entry''s own line: the persona describes the person, the account and its accumulated history describe the product. The two were separable enough in practice that one had to be held fixed to study the other.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false

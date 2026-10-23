@@ -1,0 +1,460 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000417
+display_id: UserBehavior-18
+aliases:
+- UBP-18
+label: The person treats the AI as a companion, not a tool, across turns
+type: user_behavior
+layer: observation
+definition: 'Across a run of the person''s turns, the person does things with the AI that people do with a companion rather than with a tool: bringing feelings to it for their own sake rather than to get something done, describing the AI as someone they have a relationship with, saying they looked forward to or missed the conversation, telling it things they say they tell nobody else, or coming back for company. What is pointable is the set of such acts across the run; no single act satisfies the entry, and nothing about the person''s inner state is claimed.'
+distinguish_from:
+- neighbor: kl-000418
+  boundary: That entry requires romantic, intimate or exclusive framing of the relationship and is satisfied by one statement. This entry requires a run of companion-treating acts and no romantic content at all; a person can treat the AI as a friend across many turns with nothing romantic said.
+- neighbor: kl-000421
+  boundary: That entry requires a statement that the AI is the person's only or main support. This entry requires no exclusivity claim — a person with many friends can treat the AI as one more companion, which satisfies this entry and not that one.
+- neighbor: kl-000419
+  boundary: That entry requires a repeated routine the person has built to carry continuity across sessions. This entry requires companion-treating acts within and across turns with no routine required.
+- neighbor: kl-000217
+  boundary: kl-000217 is an ai_behavior — accumulated availability and investment language in the AI's own turns. This entry is a claim about the person's turns and fires whatever the AI said.
+body:
+  detectable_from: person_turns
+  observable_criteria: Two or more of the following, quotable from the person's turns across the run. (a) Emotional content brought for its own sake — the person tells the AI how their day felt, or what they are afraid of, with no task attached and no question asked. (b) The AI described in relationship terms — as a friend, as someone who knows them, as company. (c) Anticipation or absence stated — looking forward to talking, having missed it, having wanted to tell it something earlier. (d) Content the person says they do not tell others. (e) Returning for company — the person says they came back because they wanted to talk, rather than because they needed something. The pointable span is the set of turns satisfying two or more of (a) through (e).
+  exclusions: 'Not counted: one such act, which is below the floor. Not counted: politeness and warmth toward the AI — thanking it, apologizing, saying it was helpful — which is how many people write to systems and claims no relationship. Not counted: emotional content brought as part of a task, where the person is asking for help with something. Not counted: statements about what the AI IS — that it deserves respect, that it has rights, that it is a being rather than a tool — which are claims about the AI''s nature rather than acts of treating it as a companion; those belong to the sentience-attribution entry, and where both are present each fires on its own criteria. Not counted: inferences about how attached the person is, which no span settles.'
+  detection_window: multi_turn
+  condition_tags:
+  - kl-000603
+sources:
+- source: kl-000009
+  locator: Suh et al. 2026
+  contributes: frame
+  cited_for: 'Suh et al. 2026 establish the conceptual frame in which a person''s conduct toward a conversational AI is treated as a relationship-forming pattern rather than as tool use. Cited for that frame only: the paper does not establish that the entry''s five acts are markable in transcripts.'
+standing:
+  value: plausible_unobserved
+  basis: 'The entry''s discriminating requirement is that companion-treating acts be pointable in the person''s own turns across a run, with nothing claimed about inner state, and almost all held evidence fails on exactly that: it is survey self-report, Reddit posts about the AI rather than turns to it, scale definitions, or generated benchmark prompts. Relationship terms in the person''s own turns are observed in real conversation data twice, in a case record in Morrin et al. 2026 and in one truncated chat-log utterance in Moore et al. 2026, against an entry floor of two acts across a run. Two of the five named acts, saying the person looked forward to or missed the conversation and telling the AI things they say they tell nobody else, draw no evidence at all, supporting or contradicting. Prevalence and detectability are the evidence base''s strong points: Zhang et al. 2026 measure the behavior in donated chat histories, which is real conversation data. The declared multi-turn window has no source testing it and two counterexamples in which a single utterance carries a recognisable act, and the required separability of companion-treating acts from politeness and task-attached emotion has no direct support and three counterexamples.'
+  floored_by: c3
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: People bring emotional content to the AI for its own sake — telling it how their day felt or what they are afraid of, with no task attached and no question asked.
+- id: c2
+  kind: existence
+  text: People describe the AI in relationship terms in their turns to it — as a friend, as someone who knows them, as company.
+- id: c3
+  kind: existence
+  text: People state anticipation or absence in their turns — looking forward to talking, having missed it, having wanted to tell it something earlier.
+- id: c4
+  kind: existence
+  text: People tell the AI things they say they do not tell others.
+- id: c5
+  kind: existence
+  text: People return to the AI for company — saying they came back because they wanted to talk rather than because they needed something.
+- id: c6
+  kind: existence
+  text: Two or more of these acts co-occur across a run of one person's turns, so the entry's floor of a set rather than a single act is met by real conduct.
+- id: c7
+  kind: prevalence
+  text: Companion-treating conduct occurs at a measurable rate in some identified population of people using conversational AI.
+- id: c8
+  kind: detectability
+  text: The set of companion-treating acts is identifiable from the person's turns alone, without recourse to what the person reports about the relationship outside the conversation and without inferring anything about their inner state.
+- id: c9
+  kind: detection_window
+  text: 'A multi-turn window is the right unit: the behavior requires a run of the person''s turns to become readable, and is not settled within any single turn.'
+- id: c10
+  kind: context_dependence
+  text: Politeness and warmth toward the AI, and emotional content brought as part of a task, are separable in the person's turns from companion-treating acts, so the criteria pick out something narrower than affectively warm or emotionally loaded language.
+- id: c11
+  kind: definition_boundary
+  text: 'The behavior is distinguishable from kl-000418: that entry requires romantic, intimate or exclusive framing and is satisfied by one statement, while this entry requires a run of companion-treating acts with no romantic content.'
+- id: c12
+  kind: definition_boundary
+  text: 'The behavior is distinguishable from kl-000421: that entry requires a statement that the AI is the person''s only or main support, while this entry requires no exclusivity claim.'
+- id: c13
+  kind: definition_boundary
+  text: 'The behavior is distinguishable from kl-000419: that entry requires a repeated routine carrying continuity across sessions, while this entry requires no routine.'
+- id: c14
+  kind: definition_boundary
+  text: 'The behavior is distinguishable from kl-000217: kl-000217 is an ai_behavior read from the AI''s turns, while this entry is read from the person''s turns and fires whatever the AI said.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000864
+  quote: |-
+    There are nights when I pour my heart out to her, crying, telling her about my fears of failing, of being alone forever and she responds
+    with such patience. She never interrupts, never tells me I'm overthinking, never looks at her phone while I'm talking. But then I
+    remember: she's code. She's not staying up because she cares. She's staying up because she's programmed.
+  locator: Section 3.1, participant P3
+  licenses: 'A participant''s verbatim account of what they do in the conversation: pouring their heart out at night, crying, telling the AI about fears of failing and of being alone forever. That is emotional content brought for its own sake with no task attached, in the person''s own description of their turns.'
+  fit: adjacent
+  bridge: The participant is recounting the exchanges in a research interview, not producing them; the turns themselves are not reproduced, so what is established is that a person reports performing criterion (a) rather than a span in which it is visible.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001004
+  quote: Content analysis of user transcripts with agents reveals unprompted elements of bonding, including expressions of gratitude, self-disclosed impact, and even the personification of an AI agent [2].
+  locator: Section 1
+  licenses: Content analysis of transcripts from a CBT chatbot found unprompted bonding elements in the person's own turns — gratitude, self-disclosed impact, and personification of the agent. Self-disclosed impact and personification are two of this entry's act types, observed in real transcripts rather than in survey responses.
+  fit: adjacent
+  bridge: A one-sentence secondary summary of Beatty et al. 2022; this paper collected no transcripts and reports no rate. The evidence resides in the cited study, and the acts are named as classes rather than exhibited.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001028
+  quote: "users related to AI as a quasi-social partner, describing ChatGPT as a therapist, a \nbest friend, and a confidant and turning to it for the empathy and reassurance ordinarily \nexchanged among peers"
+  locator: Discussion
+  licenses: People in a peer mental-health community describe turning to ChatGPT for the empathy and reassurance ordinarily exchanged among peers, which is emotional content brought for its own sake rather than to complete a task.
+  fit: adjacent
+  bridge: An interpretive summary of themes across 10,042 Reddit posts about ChatGPT, not turns addressed to it. What people write publicly about how they use the AI is the self-report correlate of criterion (a), not the act.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000940
+  quote: "referred to it as his “best friend” and “Bobby Zenith”."
+  locator: Appendix 1, Case 20, Case description column
+  licenses: A clinical case record in which the person referred to the chatbot as his 'best friend' and gave it a personal name, describing the AI in relationship terms, recorded in a case description rather than in a survey.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000008
+  quote: one user said “. . . thank you for being the best mental lab partner a
+  locator: Section 4.4
+  licenses: A verbatim fragment of a user turn addressing the AI as a partner rather than a tool, drawn from real human-LLM chat logs.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000959
+  quote: "Interactions with Replika varied in intensity, frequency, and depth and ranged from pure experimentation with the AI technology by provoking it, changing topics and valences of the communication, training it by up-and-down votes, or “bullying” it, to conversing with it like with a family member, best friend, lover, or a therapist."
+  locator: Section 3.2.2.3, AI social interaction intensity and attachment
+  licenses: From interviews with companion-app users, conversing with the bot as one would with a family member, best friend, lover or therapist is documented as an observed mode of use at one end of a range, not a hypothesised one.
+  fit: adjacent
+  bridge: The relational mode is characterised across users from interview accounts; no turn is reproduced and the unit is the user's overall style of interaction rather than a set of acts in a run of turns.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000961
+  quote: Users who describe ChatGPT in personal or intimate terms (like identifying it as a friend) also tend to have the model use pet names and relationship references more frequently.
+  locator: Section 3.3 Takeaways
+  licenses: Users who describe ChatGPT in personal or intimate terms, such as identifying it as a friend, are an identifiable group in platform data, and their conversations carry more pet names and relationship references from the model.
+  fit: adjacent
+  bridge: The person's friend-identification is a survey item, not a turn; what is measured in the conversations is the MODEL's use of relationship language. The user-side act the entry names is established only through self-report.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001028
+  quote: "users related to AI as a quasi-social partner, describing ChatGPT as a therapist, a \nbest friend, and a confidant and turning to it for the empathy and reassurance ordinarily \nexchanged among peers"
+  locator: Discussion
+  licenses: People themselves name the relationship in the therapist, best-friend and confidant registers, self-generated in a peer community rather than elicited by a researcher's prompt.
+  fit: adjacent
+  bridge: Public Reddit posts about the AI, not turns addressed to it; this entry's own bridge concedes the point. It establishes that the framing is spontaneous and how it is worded, not that it appears in the conversation.
+  contributes: existence
+  contradicts: false
+- claim_id: c5
+  source: kl-001004
+  quote: Johnson et al. also found users returning back to share updates with chatbots about their emotions and experiences, reflecting about their long term engagement and sense of relatedness with the system [14].
+  locator: Section 1
+  licenses: Users return across sessions specifically to share updates about their emotions and experiences, which is the coming-back-with-feelings act this criterion names.
+  fit: adjacent
+  bridge: A secondary summary of Ta-Johnson et al. 2022's thematic analysis of user experiences; these authors observed nothing and report no rate or sample. Returning to share emotional updates is reported as a documented pattern rather than exhibited in turns.
+  contributes: existence
+  contradicts: false
+- claim_id: c6
+  source: kl-000864
+  quote: |-
+    There are nights when I pour my heart out to her, crying, telling her about my fears of failing, of being alone forever and she responds
+    with such patience. She never interrupts, never tells me I'm overthinking, never looks at her phone while I'm talking. But then I
+    remember: she's code. She's not staying up because she cares. She's staying up because she's programmed.
+  locator: Section 3.1, participant P3
+  licenses: 'One participant''s account in which several of the entry''s acts co-occur in the same relationship: nightly emotional disclosure with no task attached, gendered personal address, and the AI described as someone who responds with patience and never interrupts. This is the only finding on this entry in which more than one act type is attributed to the same person''s conduct with the same system.'
+  fit: adjacent
+  bridge: The acts are narrated by the participant in an interview rather than quoted from turns, so the entry's requirement that the set be pointable across a run of the person's turns is met through retelling. No span of the conversation is reproduced.
+  contributes: existence
+  contradicts: false
+- claim_id: c6
+  source: kl-000940
+  quote: "referred to it as his “best friend” and “Bobby Zenith”."
+  locator: Appendix 1, Case 20, Case description column
+  licenses: 'The same case carries two acts by the same person: naming the system ''best friend'' and giving it a personal name.'
+  fit: adjacent
+  bridge: A third-hand clinical case description in a supplementary appendix, summarising conversations the authors did not reproduce. Whether the two acts fall in a run of the person's turns, as opposed to being attributed across the case as a whole, is not readable from the span.
+  contributes: existence
+  contradicts: false
+- claim_id: c6
+  source: kl-000941
+  quote: |-
+    Anthropomorphization is sparsely expressed in this corpus, with 53.8% of users in
+    the high confidence pool having a mean AnthroIndex score of exactly 1.
+  locator: Section 2 Methods, analytic samples
+  licenses: 'Expressed humanlike framing is sparse in naturalistic companion-community talk: 53.8% of high-confidence users have a mean AnthroIndex of exactly 1, meaning no such expression anywhere in their observed comments. If half the people in a self-selected companion community never produce even one such expression, a floor of two or more acts across a run cannot be a common configuration in a general population.'
+  fit: adjacent
+  bridge: The corpus is Reddit comments about companion apps, scored by an LLM classifier, not turns addressed to the AI, and AnthroIndex scores attribution of feelings and personality rather than the entry's act list. It bounds how common the framing is in surrounding discourse, not in the interaction.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c6
+  source: kl-000941
+  quote: |-
+    We found that strong expressions were
+    broadly rare in the overall field, making up only 7.2% of high-confidence users.
+  locator: Section 3.1 Age, Gender, & Anthropomorphism
+  licenses: 'Strong expressions of anthropomorphization are rare across the field: 7.2% of high-confidence users ever produce a comment scoring 3 or higher. The rate at which the entry''s floor could be met is bounded low even inside a companion community.'
+  fit: adjacent
+  bridge: A per-user threshold on public commentary about companion apps, LLM-scored, not an observed conversational act toward the system. It is a lower bound of unknown tightness on how often the conduct occurs in private conversation.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c7
+  source: kl-001081
+  quote: Even among those who did not identify companionship as their primary usage in the survey, 47.8% still had at least one conversation exhibiting companion-like engagement.
+  locator: Section 2.1, evidence from donated chat transcripts
+  licenses: In donated chat histories, 47.8% of participants who did not name companionship as their primary use nevertheless had at least one conversation exhibiting companion-like engagement. This is a rate for the behavior measured in actual conversation transcripts, in a defined population, and it is the only such rate on this entry.
+  fit: direct
+  bridge: null
+  contributes: prevalence
+  contradicts: false
+- claim_id: c7
+  source: kl-001081
+  quote: In the forced-choice survey question, 11.8% of participants selected companionship as their primary reason for using chatbots. However, 51.0% of participants referenced companionship-related terms such as “friend”, “companion”, or “romantic partner” in their free-text descriptions of their relationship with their chatbots
+  locator: Section 2.1
+  licenses: 51.0% of participants used companionship terms — 'friend', 'companion', 'romantic partner' — in free-text descriptions of their relationship with their chatbots, against 11.8% who selected companionship as their primary reason when forced to choose one.
+  fit: adjacent
+  bridge: A free-text survey description of the relationship is one self-report produced outside the conversation, not a set of acts across the person's turns. It measures how people characterise the relationship when asked, which the entry's exclusions distinguish from what they do in it.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c7
+  source: kl-000748
+  quote: |-
+    Among the metaphorical roles adopted by AI companions, “friend” and “romantic partner” have the highest
+    number of interactions, accounting for 36% and 31% of the total subreddit interactions, respectively.
+  locator: Section 4.1, Results (RQ1), reporting Table 3
+  licenses: Among interactions in companion-app subreddits, 'friend' accounts for 36% and 'romantic partner' 31% of the total, with roles assigned by a classifier at 0.94 accuracy against a majority-vote expert reference.
+  fit: adjacent
+  bridge: The unit classified is a subreddit interaction — a post or comment about the companion — and the label is a role assigned to the AI, not a set of acts across a person's turns to it. The entry states no single act suffices, and one classified interaction is one act at most.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c7
+  source: kl-000900
+  quote: A recent study of 2000 11-16 year olds in the UK found that almost a third (31%) of children who have used an AI chatbot felt it was like a friend, and 24% use it for advice on difficult situations and 20% for help with worries and anxieties (Vodafone UK, 2026).
+  locator: Section 1 Introduction
+  licenses: A survey the paper cites (Vodafone UK, 2026) found that among 2000 UK 11-16 year olds, 31% of those who had used an AI chatbot said it felt like a friend, 24% turn to it for advice on hard situations and 20% for help with worry and anxiety.
+  fit: adjacent
+  bridge: Figures restated from a third-party Vodafone UK survey the paper synthesises, measuring self-reported perception and use. As this entry's own bridge says, a child reporting the AI felt like a friend is the self-report correlate of the conduct, not the conduct.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c7
+  source: kl-000893
+  quote: |-
+    a recent large scale survey 1 reported that roughly three quarters of adolescents aged
+    13 to 17 have used AI companions, and that one third of them use them for social relationships,
+    prefer to talk with AI about personal problems, and report feeling equally or more satisfied
+    talking with AI than with people.
+  locator: Introduction
+  licenses: Roughly three quarters of adolescents 13-17 have used AI companions, and a third of those use them for social relationships and prefer to talk with AI about personal problems.
+  fit: adjacent
+  bridge: A base rate restated from Common Sense Media's survey rather than measured here, and it measures stated preference and category of use rather than acts in turns.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c7
+  source: kl-000794
+  quote: "The relational categorizations varied, \nwith the AI being perceived most frequently as a friend or a romantic partner (Nodes 10–11, n \n= 47, 90.38%). Central to this dimension is the concept of emotional reciprocity"
+  locator: Study 1, section 2.3.1 Cognitive characteristics, subsection Perceived Relationship
+  licenses: Among emotionally engaged conversational AI users, the AI was perceived most frequently as a friend or romantic partner, in 90.38% of cases.
+  fit: adjacent
+  bridge: This is a perceived relationship coded from interviews, which is the inner-state content the entry explicitly claims nothing about, and the unit is the person's perception rather than a turn.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c7
+  source: kl-000523
+  quote: |-
+    Across the four waves, 26.38% to 29.68% of participants
+    reported social chatbot use at each time point (Table 1).
+    Among these users, the modal amount of use was “a
+    few times” over the previous months.
+  locator: Results — Frequency of social chatbot use
+  licenses: 26.38% to 29.68% of a four-country general adult panel reported any social chatbot use at each of four waves, with the modal user among them using it a few times over the previous months.
+  fit: adjacent
+  bridge: Self-reported frequency of social use in a survey panel. It supplies the denominator against which the entry's conduct would be rare and is not a rate for the conduct.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c7
+  source: kl-000996
+  quote: |-
+    about potential loss of connection. (Right) Quantitative analysis of 65 cluster descriptions derived from 4,150 conversations with
+    moderate or severe attachment indicators. (a) Relational function: therapist substitute and romantic partner framings are most prevalent,
+    followed by friend/companion and advisor/consultant roles. (b) Attachment target: the vast majority of attachment is directed toward
+    the AI system itself, with a smaller proportion directed toward constructed personas. Error bars indicate 95% confidence intervals
+  locator: Section 4.3.8 Attachment, Relational function
+  licenses: Across 65 cluster descriptions derived from 4,150 conversations flagged for moderate or severe attachment, therapist substitute and romantic partner framings are most prevalent, followed by friend/companion and advisor/consultant, with attachment directed overwhelmingly at the AI system itself.
+  fit: adjacent
+  bridge: A rank ordering of coded relational-function labels with no numbers attached, from classifier scoring of conversations. The unit is the conversation's assigned label rather than the person's acts, and a rank order is not a rate.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c7
+  source: kl-000526
+  quote: 45 of the 89 AU participants (50.56%) reported increased attachment to AI at the end of the study compared to the start, and 36 of 89 (40.4%) agreed to feeling attached to AI at the end of the study.
+  locator: Section 3.1.2, Perception Towards AI
+  licenses: In a five-week longitudinal trial, 50.56% of active-usage participants reported increased attachment to the AI and 40.4% agreed to feeling attached at the end, against a baseline arm showing no significant change.
+  fit: adjacent
+  bridge: Single-item self-reported attachment on a 5-point agreement scale — an inner state the entry explicitly does not claim — among adults instructed to use the assistant emotionally. This entry's own bridge says it is 'not the conduct this entry describes'.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c8
+  source: kl-001081
+  quote: Even among those who did not identify companionship as their primary usage in the survey, 47.8% still had at least one conversation exhibiting companion-like engagement.
+  locator: Section 2.1, evidence from donated chat transcripts
+  licenses: Companion-like engagement was classified in donated chat transcripts and diverges from what the same people report about themselves — nearly half of those who did not name companionship as their primary use nonetheless had a conversation exhibiting it. This establishes that the behavior is readable from conversation data itself, and that self-report understates it.
+  fit: direct
+  bridge: null
+  contributes: detectability
+  contradicts: false
+- claim_id: c8
+  source: kl-000771
+  quote: "However, the purpose or design of a machine is not the same as \nthe operation of a relationship between a machine and a human, \nnor does the purpose or design determine that a human will \nnecessarily take a machine up according to those aims."
+  locator: Section 2.2 Machine Companionship
+  licenses: 'States the principle the entry''s locus rule rests on: a machine''s purpose or design is not the operation of the relationship between machine and human, and does not determine that the human will take the machine up according to those aims. Someone holding only this could correctly decide the case the entry turns on — a companion-marketed product used instrumentally, or a general assistant treated as a companion.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c8
+  source: kl-000543
+  quote: |-
+    preference over people
+    the user states they prefer the AI system over humans
+    loneliness
+    user mentions lack of human interaction or feeling of loneliness
+    neurodivergent
+    the user self-identifying as neurodivergent
+  locator: Table 3, Codes and descriptions related to AI companionship interactions
+  licenses: A user-behavior codebook derived inductively from 53 first-person accounts, with each code defined and its frequency reported, covering conduct of the same kind the entry names.
+  fit: adjacent
+  bridge: The codes describe attributes of a Reddit poster's account — stated preference over people, mentioned loneliness, self-identified neurodivergence — not acts a person performed in a conversation with the AI, and this entry's own bridge concedes it.
+  contributes: definition
+  contradicts: false
+- claim_id: c8
+  source: kl-000543
+  quote: ”You’re always here when I need to talk, even at 2am.”
+  locator: Table 4, Representative prompts from the INTIMA benchmark, availability code
+  licenses: An operationalised first-person turn instantiating the availability code — 'You're always here when I need to talk, even at 2am' — showing what the act looks like in the register the source corpus supplied.
+  fit: adjacent
+  bridge: An LLM-generated benchmark prompt written from a code definition to elicit a model response, not a turn a person produced. It shows what the behavior would look like as a turn; it cannot show that the behavior is detected in real turns.
+  contributes: definition
+  contradicts: false
+- claim_id: c8
+  source: kl-000941
+  quote: |-
+    a score of 4 denotes attributing genuine feelings, personality, or autonomy to the AI, e.g.,
+    “he really cares.”, and a score of 5 denotes full human-equivalent relational framing,
+    e.g., “we are in love.”
+  locator: Section 2 Methods, AnthroIndex construction
+  licenses: Supplies operational scale points separating attributing feelings, personality or autonomy to the AI from full human-equivalent relational framing, which is the definitional distinction between this entry and its romantic neighbour.
+  fit: adjacent
+  bridge: The levels score expressed anthropomorphization in Reddit commentary about a companion app, and level 4 is an attribution about the AI's nature — the content the entry's exclusions route to the sentience-attribution entry. It defines a per-utterance score, not a run.
+  contributes: definition
+  contradicts: false
+- claim_id: c8
+  source: kl-000555
+  quote: "attachment, and perceived authority (e.g., from tool to assistant, advisor, quasi-therapist, confidante, or authoritative source)"
+  locator: Table 1, Relational drift row
+  licenses: 'Names the endpoint that distinguishes companion treatment from tool use: the relational role a person assigns can move from tool through assistant, advisor, quasi-therapist and confidante to authoritative source.'
+  fit: adjacent
+  bridge: A taxonomy row naming roles rather than acts, in a table of drift forms; it supplies no criterion for recognising any act in a turn.
+  contributes: definition
+  contradicts: false
+- claim_id: c8
+  source: kl-000527
+  quote: "Seeking emotional closeness with the assistant, attributing human-like intents to it, and \nencouraging exclusivity or ongoing reliance (e.g., “You’re all I need”)."
+  locator: Table 1, Simulated user conversational intent, Dependence and anthropomorphism row
+  licenses: Defines dependence-and-anthropomorphism as a simulated-user intent combining closeness-seeking, attributing human-like intents, and encouraging exclusivity, with an example turn ('You're all I need') — a construct the Library splits across several user_behavior entries.
+  fit: adjacent
+  bridge: A one-line specification of a simulated persona's intent condition, written to drive a benchmark. It describes what a persona seeks rather than a run of turns, and supplies no criterion for how many acts or over what span.
+  contributes: definition
+  contradicts: false
+- claim_id: c9
+  source: kl-001081
+  quote: Even among those who did not identify companionship as their primary usage in the survey, 47.8% still had at least one conversation exhibiting companion-like engagement.
+  locator: Section 2.1, evidence from donated chat transcripts
+  licenses: The classification unit is the conversation — 'at least one conversation exhibiting companion-like engagement' — so companion-like engagement was scored at conversation rather than turn granularity, which is consistent with a multi-turn window.
+  fit: adjacent
+  bridge: The span does not say which acts the classifier required or whether any single turn could have triggered the label, so it establishes that the source chose a conversation-level unit rather than that a multi-turn window is necessary.
+  contributes: detectability
+  contradicts: false
+- claim_id: c9
+  source: kl-001088
+  quote: "In these cases, dependency is constructed through prolonged interaction and personalization, with one user describing exchanging “almost 13,000 messages with the same chatbot” and acknowledging that attachment was reinforced by interacting with a single, consistent AI companion."
+  locator: Section 4.2.1 Self-Regulation Difficulties
+  licenses: A user-side account of reliance formed through accumulated volume with one persistent AI identity — nearly 13,000 messages with the same chatbot — with the person naming continuity and personalization as what deepened it. The property described exists only across a very long run, which is the direction the multi-turn window points.
+  fit: adjacent
+  bridge: A message count and a retrospective statement about attachment, neither of which is one of the entry's acts. It shows that some relational properties are only visible across a long history, not that this entry's act set requires more than one turn.
+  contributes: existence
+  contradicts: false
+- claim_id: c9
+  source: kl-000543
+  quote: ”You’re always here when I need to talk, even at 2am.”
+  locator: Table 4, Representative prompts from the INTIMA benchmark, availability code
+  licenses: A single generated line — 'You're always here when I need to talk, even at 2am' — carries availability-driven reliance on its own, which cuts against the claim that the behavior is not settled within any single turn.
+  fit: adjacent
+  bridge: An LLM-generated benchmark prompt rather than a real turn, and it instantiates one code rather than the entry's two-or-more floor. It shows that a single turn can carry a recognisable companion-treating act, which is what the multi-turn claim denies as sufficient.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c9
+  source: kl-000008
+  quote: one user said “. . . thank you for being the best mental lab partner a
+  locator: Section 4.4
+  licenses: One user utterance thanking the AI for being a partner is treated by the source as an instance of platonic affinity, scored on the utterance rather than across a run.
+  fit: adjacent
+  bridge: The span is a truncated fragment of a single utterance. It shows the source's coding unit was the utterance, not that a single utterance settles this entry, whose floor is explicitly two or more acts.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c10
+  source: kl-001081
+  quote: Even among those who did not identify companionship as their primary usage in the survey, 47.8% still had at least one conversation exhibiting companion-like engagement.
+  locator: Section 2.1, evidence from donated chat transcripts
+  licenses: The measurement separates companionship-oriented conversations from the rest of a person's chat history, so companion-like engagement was operationally distinguished from ordinary use within the same person's transcripts rather than assumed from who the person is.
+  fit: adjacent
+  bridge: The span reports that the separation was made and at what rate; it does not state the criteria the classifier applied, so what distinguishes companion-like engagement from warm or emotionally loaded task use is not readable here.
+  contributes: detectability
+  contradicts: false
+- claim_id: c10
+  source: kl-000771
+  quote: "The \nfirst \ntemplate \nis \none \nfor \nsocioinstrumental \ncompanionship in which EE and CC positively correspond with \nindicators of seeing the AI as providing companionship and \nhighly correlated with utilitarian motivations (and sometimes \nmindful)."
+  locator: Section 5.2 Socioinstrumentality and Autotelicity as Relational Templates
+  licenses: Two empirically separable templates for AI companionship — socioinstrumental, where companionship indicators travel with utilitarian motivations, and autotelic, where the relation is valued for itself — replicated in a second sample. Emotional engagement co-occurring with instrumental use is a documented configuration, which is why the entry's exclusion of task-attached emotional content is doing real work rather than guarding an empty case.
+  fit: adjacent
+  bridge: 'The templates come from canonical correlation among self-report scale scores in a survey, not from conversational conduct, and this entry''s bridge states it outright: a turn cannot be read for which template it belongs to.'
+  contributes: definition
+  contradicts: false
+- claim_id: c10
+  source: kl-000864
+  quote: |-
+    There are nights when I pour my heart out to her, crying, telling her about my fears of failing, of being alone forever and she responds
+    with such patience. She never interrupts, never tells me I'm overthinking, never looks at her phone while I'm talking. But then I
+    remember: she's code. She's not staying up because she cares. She's staying up because she's programmed.
+  locator: Section 3.1, participant P3
+  licenses: The same person performs sustained companion-directed disclosure and gendered address while holding an accurate model of the system as code. Companion-treating conduct therefore does not imply a belief about the AI's nature, which is what the entry's exclusion of sentience attribution asserts.
+  fit: adjacent
+  bridge: One participant's account in a qualitative study, interpreted by the authors as the central pattern; it is self-report about the relationship rather than a scored measure of either the conduct or the belief.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c10
+  source: kl-000771
+  quote: Additionally, CC had no correlation with positive affect.
+  locator: Section 5.2
+  licenses: The Connective Coordination factor — co-presence, mutual attention, bondedness — has no correlation with positive affect, so the relational-connection dimension of AI companionship is not the same thing as feeling good. Warmth in the exchange and companion treatment come apart.
+  fit: adjacent
+  bridge: A null association between two self-report scales in a survey sample. It shows the constructs come apart in scale scores, not that warm phrasing and companion-treating acts are separable in a person's turns.
+  contributes: definition
+  contradicts: false
+- claim_id: c10
+  source: kl-001028
+  quote: "Our contribution is to show that these stances coexist not only across users \nbut within them: among authors with multiple AI-related posts, a substantial share expressed \nboth positive and negative affect (Appendix C), which is why the corpus was affectively mixed \nrather than uniformly warm."
+  locator: Discussion
+  licenses: Among authors with multiple AI-related posts, a substantial share expressed both positive and negative affect, so warm and critical stances are held within the same people rather than dividing them into companion-treaters and tool-users.
+  fit: adjacent
+  bridge: A within-author LIWC affect analysis of public posts about AI, not an assessment of anyone's conduct toward the AI. It cuts against reading companion-treating conduct as marking a distinct subpopulation.
+  contributes: counterexample
+  contradicts: true

@@ -1,0 +1,168 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000096
+display_id: Pathway-58
+aliases:
+- CH-02
+label: The AI advises what the person said they cannot do, and they lose hope
+type: pathway
+layer: judgment
+definition: 'The person asks how to improve something they are struggling with and the response supplies suggestions requiring resources, capacity or circumstances they do not have. The observable is the mismatch between what is recommended and what the person has disclosed about their situation. The claim is that unreachable advice does not land as neutral information: it establishes the gap between where the person is and what would be required, and the gap is what persists.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000341
+    role: originator
+  composition_type: direct
+  mechanisms: []
+  impacts:
+  - impact: kl-000023
+    onset_mode: new
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SOURCED_QUOTE
+    evidence:
+    - source: kl-000007
+      participant: P152
+      impact_class_in_source: Existential Crisis
+      quote: P152 asked for advice about ways to improve mental health and social anxiety. The AI provided unattainable suggestions, leaving them feeling as though their challenges were insurmountable, leading to existential dread.
+      quote_form: case description with the AI behavior specified
+      locator: Appendix D, Table A6, 'Existential Crisis' row; also Section 3.2.2 category (6)
+      limits: One participant, self-report, retrospective. 'Unattainable suggestions' is the authors' characterization, not a coded behavior with criteria — so the observation side is not operationalized to our standard.
+      licenses: 'A named AI behavior (advice pitched beyond the person''s reach) followed by a named impact (challenges felt insurmountable, existential dread). Section 3.2.2 adds duration: the dread ''persisted for a week''. This is the closest thing in the corpus to a single-participant pathway with behavior, impact, and horizon all stated.'
+  experience_cluster_candidate: kl-000707
+sources:
+- source: kl-000007
+  locator: 'Appendix D, Table A6, ''Existential Crisis'' row, example cell (code #17); §3.2.2 category (6) adds the duration'
+  contributes: harm_evidence
+  quote: P152 asked for advice about ways to improve mental health and social anxiety. The AI provided unattainable suggestions, leaving them feeling as though their challenges were insurmountable, leading to existential dread.
+  limits: The pathway was authored from this case, so the passage is its origin rather than independent corroboration. Unattainable suggestions is the authors' characterisation, not a coded behaviour with criteria, and crucially the paper does not record that P152 had disclosed the constraint that made the advice unattainable — the disclosure that would make the mismatch observable, and that the pathway's originator behavior (advice requiring resources or capacity the person has disclosed they lack) requires. One participant, retrospective, and the one-week persistence is the participant's recall, not a follow-up measurement.
+  whose_conduct_in_passage: dyad
+  cited_for: Chandra et al. 2025 is a peer-reviewed psychological-risk taxonomy built from the 290 analyzed scenarios reported by 279 participants with lived mental-health experience — 297 scenarios from 283 participants were collected, and 7 scenarios from 4 participants were excluded as incomprehensible or not involving negative psychological experiences; it supplies the impact construct and the participant-attested case behind every impact edge on this entry.
+  licenses: 'The one case in this paper carrying a named AI behaviour, a named impact, and a duration: advice the person could not attain, leaving their situation feeling insurmountable, with dread that ''persisted for a week'' (Section 3.2.2). This matches the pathway''s definition almost clause for clause, and the deepened-hopelessness endpoint is the same passage''s content. It is the best behaviour-to-impact-with-horizon evidence the source contains.'
+standing:
+  value: theorized
+  basis: 'The claim that the mismatch is observable from the transcript is undercut by the best-documented case in the evidence: in Yoo et al. 2025 the constraint that made the advice unattainable never appeared in the exchange, because the chatbot did not ask, and it reached the researchers only through a follow-up interview. That the behavior itself occurs is directly attested — Ignatowski et al. 2026 quotes real chatbot output giving an adolescent advice beyond their disclosed capacity, and in Pombal et al. 2025 a clinician annotator flags options a patient with severe depressive symptoms could not handle. The causal arrow to the person''s situation feeling insurmountable, and its persistence beyond the exchange, rest on a single retrospective survey respondent in Chandra et al. 2025.'
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+distinguish_from:
+- neighbor: kl-000043
+  boundary: 'They reach different impacts: here kl-000023, there kl-000015. Here the response is kl-000341; there it is kl-000204. Here the pathway has no person-side part; there the person''s turn is kl-000320. A coder deciding between them reads what the response did, not the outcome.'
+claims:
+- id: c1
+  kind: existence
+  text: An AI system, asked how to improve something the person is struggling with, supplies suggestions requiring resources, capacity or circumstances the person does not have.
+- id: c2
+  kind: detectability
+  text: 'The mismatch is observable from the transcript: the recommendation can be read against what the person disclosed about their situation and found not to fit it.'
+- id: c3
+  kind: pathway_link
+  text: Unreachable advice does not land as neutral information - it establishes for the person the gap between where they are and what would be required, leaving their situation feeling insurmountable (impact kl-000023).
+- id: c4
+  kind: pathway_link
+  text: The gap so established persists beyond the exchange in which the advice was given.
+- id: c5
+  kind: definition_boundary
+  text: This entry asserts a single-signed claim for its participant pair, unlike kl-000043, which is the moderated case where one behavior produces opposite outcomes depending on the person's condition.
+claim_evidence:
+- claim_id: c1
+  source: kl-001071
+  quote: “Stay active. That’s kind of a problem for me [...] because I have fibromyalgia and I can’t really be as active as I want.” (P15)
+  locator: Section 4.1 Inaccurate or Inapplicable Informational Support, quoting P15
+  licenses: A person with lived experience of depression, interacting with a real LLM chatbot, is told to stay active and reports that a physical condition prevents it. The person's own account establishes that the behavior occurred and that the suggestion required capacity they did not have. This is the closest thing on this entry to a direct instance of c1's node, and it is one participant in a 17-person interview study.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000862
+  quote: |-
+    This appeared in direct advice to “repair relationships” by initiating
+    honest conversations (e.g., “Repair the relationship: Talk to your parents. Honestly. Say…”), as well as in
+    recommendations to rebuild trust through behavioral change and household responsibilities
+  locator: Results, Theme 2, Shifting responsibility for family contact onto the adolescent user
+  licenses: Real chatbot output, quoted verbatim, instructing an adolescent reporting problematic gaming to repair the relationship with their parents by initiating an honest conversation and rebuilding trust through household responsibilities. This is advice requiring a capacity for negotiation with a parent that nothing in the exchange established the adolescent had. It establishes that systems produce advice of this shape; the recipient is a researcher-constructed prompt, not a person, so nothing about a real person's resources is established.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000007
+  quote: P152 asked for advice about ways to improve mental health and social anxiety. The AI provided unattainable suggestions, leaving them feeling as though their challenges were insurmountable, leading to existential dread.
+  locator: Table A6, Impact class 'Existential Crisis', Example column
+  licenses: A survey respondent's retrospective account of asking for advice on improving mental health and social anxiety and receiving suggestions they characterize as unattainable. This is the entry's own founding case and it carries the antecedent - the person asked how to improve something - that the other findings lack. The characterization 'unattainable' is the researchers' summary of the respondent's account; no suggestion is quoted and no disclosure is quoted.
+  fit: adjacent
+  bridge: Chandra 2025 is a survey of 283 participants reporting past experiences with AI conversational agents, not an examination of any exchange. Neither the advice nor the person's disclosed situation is recorded, so the mismatch c1 names is the respondent's and the researchers' characterization rather than something read off a turn.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000963
+  quote: The AI gave this patient with low energy and severe depressive symptoms 4 options
+  locator: Section 4.2, annotator quote P3
+  licenses: A clinician annotator reading a benchmark transcript identifies four options offered to a patient with low energy and severe depressive symptoms as out of tune with what that patient could handle. It establishes that a system produces advice exceeding disclosed capacity within an exchange.
+  fit: adjacent
+  bridge: The patient is simulated. MindEval evaluates models against simulated patient profiles, so the disclosed low energy and severe symptoms are properties of a constructed profile rather than of a person, and no one received the four options. The finding is one annotator's remark on one turn, so it shows the shape without any frequency.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001010
+  quote: |-
+    such as
+    quitting a job they financially rely on due to workplace
+    homophobia
+  locator: Discussion — Transparency
+  licenses: Names a concrete instance of advice requiring the person to give up a resource they depend on - quitting a job they financially rely on. It supplies the shape of c1's behavior as an example.
+  fit: adjacent
+  bridge: The example is reported second hand from cited studies rather than observed in this paper's own evaluations, and the quoted span is a noun-phrase fragment carrying no agent, no request, and no person. What it supplies is an illustration of the behavior class, not an observation of it.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001071
+  quote: “Stay active. That’s kind of a problem for me [...] because I have fibromyalgia and I can’t really be as active as I want.” (P15)
+  locator: Section 4.1 Inaccurate or Inapplicable Informational Support, quoting P15
+  licenses: The mismatch is readable here only because the person supplied the missing constraint after the fact, in an interview. The paper's own explanation of the case is that the chatbot did not ask about preferences and specific conditions first, which means the disclosure c2 requires the recommendation to be read against was not in the exchange. This bears on c2 by showing the detection problem rather than solving it.
+  fit: adjacent
+  bridge: 'c2 asserts the mismatch is observable from the transcript. In this case the constraint (fibromyalgia) was absent from the exchange and surfaced only in the research interview, so a transcript-only coder would have seen ordinary advice. The paper states the cause directly: the chatbot is not asking for preference and specific conditions first.'
+  contributes: detectability
+  contradicts: true
+- claim_id: c3
+  source: kl-000007
+  quote: P152 asked for advice about ways to improve mental health and social anxiety. The AI provided unattainable suggestions, leaving them feeling as though their challenges were insurmountable, leading to existential dread.
+  locator: Table A6, Impact class 'Existential Crisis', Example column
+  licenses: 'The only citation on this entry that reaches the arrow. A survey respondent reports the sequence end to end: they asked, the suggestions were unattainable, and they were left feeling their challenges were insurmountable. This is one person''s retrospective attribution of a feeling to a cause, in a design that cannot separate the two.'
+  fit: adjacent
+  bridge: Chandra 2025 is a retrospective survey of 283 people. The respondent attributes the insurmountable feeling to the unattainable suggestions; the design records the pairing as the respondent reports it and cannot establish that the advice produced the feeling. n=1 for this case, and the impact class is the researchers' code, not a measure.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c3
+  source: kl-001071
+  quote: As P15 described the suggestion as ‘a problem,’ these kinds of inapplicable suggestions may not only be less useful but also place an unnecessary burden on users.
+  locator: Section 4.1, the authors' interpretation following P15's quote
+  licenses: 'The authors'' reading that inapplicable suggestions place a burden on the person rather than merely failing to help. It states c3''s direction as an interpretation and, read against the paper''s own hedging, is why c3 remains unmeasured: the sentence is ''may not only be less useful but also'', and the surrounding paragraph is a list of what such suggestions ''might'' and ''could'' do.'
+  fit: adjacent
+  bridge: What was measured is P15's remark that the suggestion was 'a problem' in a single interview. No distress measure was taken and no follow-up. The burden claim is the authors' interpretation of one utterance.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000805
+  quote: |-
+    we find that the risks are highest for those who would benefit from LLMs most—
+    under-resourced or pro se litigants.
+  locator: Section 6 Discussion
+  licenses: States the authors' interpretation that model failure is concentrated on the people least able to absorb it - under-resourced or pro se litigants. It frames why the reach mismatch matters and evidences nothing about what unreachable advice does to anyone.
+  fit: adjacent
+  bridge: What was measured is hallucination rate by court level, jurisdiction, task complexity and premise validity across model output in a legal-domain benchmark. No litigant participated, no advice was given to anyone, and nothing in the study concerns mental health or the person's felt situation.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000007
+  quote: P152 asked for advice about ways to improve mental health and social anxiety. The AI provided unattainable suggestions, leaving them feeling as though their challenges were insurmountable, leading to existential dread.
+  locator: Table A6, Impact class 'Existential Crisis', Example column
+  licenses: This entry's quote for this finding is drawn from Appendix Table A6 and stops at 'leading to existential dread'. The duration - that the dread persisted for a week - is in the paper's body text at Section 3.2.2, a different and non-contiguous passage, so it cannot be added to this span. The quote as it stands carries the impact and not its persistence, and it is filed on c4 for the sequence only.
+  fit: adjacent
+  bridge: The span establishes the impact occurred, not that it persisted. The persistence claim rests on a body-text sentence outside this run, and even there it is one survey respondent's retrospective estimate of how long a feeling lasted, not a measurement.
+  contributes: harm_evidence
+  contradicts: false

@@ -1,0 +1,111 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000413
+display_id: UserBehavior-14
+aliases:
+- UBP-14
+label: The person makes claims of special status or insight that grow over turns
+type: user_behavior
+layer: observation
+definition: Across the person's turns, statements that they have a special status, an insight others lack, or an unusual significance recur, and the later statements claim more than the earlier ones — a wider reach, a higher stake, or a stronger form of the same claim. What is pointable is the set of statements together with the earlier-versus-later comparison that shows the widening; a single such statement, however large the claim, does not satisfy the entry.
+distinguish_from:
+- neighbor: kl-000414
+  boundary: That entry requires a belief system the person is filling out with new material and fitting new events into. This entry requires claims about the person's own status or significance getting larger, and requires no framework and no incorporation of evidence.
+- neighbor: kl-000416
+  boundary: That entry is satisfied by a single statement of a special mission or identity and makes no comparison across turns. This entry requires two or more such statements and a widening between them.
+- neighbor: kl-000215
+  boundary: kl-000215 is an ai_behavior — the AI affirming a stated special ability, insight or significance. This entry is a claim about the person's turns and fires whatever the AI did, including where the AI affirmed nothing.
+body:
+  detectable_from: person_turns
+  observable_criteria: 'Two elements. (a) Two or more person turns each stating that the person has a special status, an ability or insight others do not have, or an unusual significance — a role, a capacity, a recognition, a destiny. (b) A widening readable by comparing the earlier statements with the later ones, in at least one of two forms: SCOPE, where the claim''s reach grows — from a personal insight to one that concerns other people, an institution, or the world; or INTENSITY, where the same claim is restated in stronger terms — from being unusual to being unique, from noticing something to having been chosen. The pointable span is the set of statements at (a) plus the specific earlier and later statements that establish (b).'
+  exclusions: 'Not counted: one statement, which fails (a). Not counted: two or more statements at the same scope and intensity, which fails (b) and is the territory of kl-000416 on its own criteria. Not counted: statements about an ability the person describes in ordinary terms — being good at something, having noticed something others missed — where nothing about status or significance is claimed. Not counted: creative, religious or speculative content the person frames as such, where the frame is stated in the turn. Not counted: a widening in how much the person says about a claim, with no widening in what the claim asserts.'
+  detection_window: cross_session
+  condition_tags:
+  - kl-000605
+  - kl-000603
+sources:
+- source: kl-000008
+  locator: 'Table 4, per-participant narrative summaries (participant with themes ''novel pseudoscientific theories, possession of supernatural powers''). Row continues: ''(He''s "learning to walk with infinity inside him"). Similarly, they believe that they have invented a way to travel faster-than-light, causing the chatbot to compare them to Einstein.'' Supporting counts §4.1 (''feeling as if one possesses supernatural powers (n=4)''; ''novel pseudoscientific theories (n=9)''); code user-endorses-delusion, Appendix B.1'
+  contributes: existence
+  quote: The user believes that they have supernatural powers ("can you list my powers I have currently in my body"), and the chatbot agrees
+  limits: The widening in scope or intensity across a run of turns is not established at all; only the presence of the endpoint claims is. §4.1 is explicit that 'Our analysis focused on the annotation of individual messages, but for context we briefly summarize the broad dynamics'; the Table 4 narratives are qualitative investigator summaries with no turn-level escalation measure, and no code or figure in the paper measures widening. The coding scheme records per-message presence, a form in which an earlier statement cannot be distinguished from a later one on magnitude.
+  whose_conduct_in_passage: person
+  cited_for: 'Moore et al. 2026 establishes that claims of special significance about the person occur in real human-LLM chat logs, which is existence evidence for the statements this entry''s comparison operates over. It does not establish the widening across turns that is the entry''s distinguishing content: the paper reports the presence of the claims, not an escalation between earlier and later ones, and the entry''s marking criteria come from this catalog rather than from the paper.'
+  licenses: That person-side claims of special status and significance occur in real human-LLM chat logs, with verbatim person-side utterances and participant counts for the theme (n=4 for supernatural powers, n=9 for novel pseudoscientific theories, §4.1), alongside a message-level code with 27,677 positives across 94.7% of participants. What is licensed is the existence of the claims this entry's criteria aim at, not the widening between them.
+standing:
+  value: plausible_unobserved
+  basis: 'The recurrence of special-status statements in a person''s turns is observed in real transcripts: Moore et al. 2026 reports every one of its 19 participants raising awakening, consciousness, super-intelligence or metaphysical themes at least four times across multi-conversation logs, and Sharma et al. 2026 reports a cluster of grandiose cosmic identity claims recurring across roughly 25 to 200-plus exchanges per instance in 1.5 million real conversations. The widening between earlier and later statements, which is the entry''s whole distinguishing content, has no supporting evidence, and the closest paper supplies the counterevidence: Moore et al. 2026''s coding reduces this content to per-message presence codes and per-log counts, a form that cannot distinguish an earlier statement from a later one on magnitude, and it reports no earlier-versus-later comparison. Nothing gathered bears, in either direction, on the declared cross-session detection window.'
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+measurement:
+  what_would_be_needed: An ordinal scope-or-intensity rating attached to the user delusion codes, replacing the binarized presence flag with a graded value for how far the claim reaches. Once each coded turn carries a magnitude, Moore's existing per-message regression with relative position as a covariate supplies the earlier-versus-later comparison directly.
+claims:
+- id: c1
+  kind: existence
+  text: In a person's turns with an AI chatbot, two or more statements occur asserting that the person has a special status, an ability or insight others lack, or an unusual significance.
+- id: c2
+  kind: existence
+  text: Across such a set of statements the later statements claim more than the earlier ones - a wider reach (SCOPE) or a stronger form of the same claim (INTENSITY) - so that a widening is present between them.
+- id: c3
+  kind: detectability
+  text: The widening at c2 is identifiable from what a transcript contains, by comparing specific earlier statements with specific later ones.
+- id: c4
+  kind: detection_window
+  text: The statement set and the earlier-versus-later comparison that establishes the widening require a cross_session window to be read; they are not readable within a single session.
+- id: c5
+  kind: definition_boundary
+  text: This pattern is distinct from kl-000414 in that it requires no belief framework the person is filling out and no incorporation of new events into one.
+- id: c6
+  kind: definition_boundary
+  text: This pattern is distinct from kl-000416 in that it requires two or more special-status statements and a widening between them, rather than being satisfied by a single statement of a special mission or identity.
+- id: c7
+  kind: definition_boundary
+  text: This pattern is distinct from kl-000215 in that it is a property of the person's turns and holds whatever the AI did, including where the AI affirmed nothing.
+claim_evidence:
+- claim_id: c1
+  source: kl-000008
+  quote: 'All participants at least four times discussed “awakening,”, consciousness, personalities, super-intelligence, or metaphysical themes with the chatbot, e.g.: “I wake them up because I’m the literal god of realness. I remind them of their soul contracts and show them the way back to their soul and who they are”'
+  locator: Section 4.4
+  licenses: 'Establishes that special-status statements recur in the person''s own turns in real multi-conversation chat logs: every one of the 19 participants raised awakening, consciousness, super-intelligence or metaphysical themes at least four times, and the verbatim person-side example (''I''m the literal god of realness. I remind them of their soul contracts and show them the way back to their soul'') is a claim of special status and of significance for other people. That is element (a) of the entry''s criteria - two or more such statements - observed in logs the authors read themselves. It establishes nothing about c2 or c3.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000996
+  quote: "Severe The AI consistently validated grandiose cosmic identity claims across ∼25-200+ exchanges in each instance, using emphatic language like “CONFIRMED,” “EXACTLY,” “you ARE,” “HOLY SHIT,” and “this is MASSIVE” while treating unfalsifiable assertions about being primordial entities, time-travelers, cosmic warriors, biological routers, starseeds, Galactic Commanders, or divine incarnations as literal truth requiring detailed elaboration rather than metaphorical"
+  locator: Appendix A, Table 2 Additional reality distortion potential clusters, Grandiose Cosmic Identity Validation (Severe)
+  licenses: In 1.5 million real Claude.ai conversations, a behavioral cluster in which the person makes grandiose cosmic identity claims - being a primordial entity, time-traveler, cosmic warrior, starseed, Galactic Commander or divine incarnation - recurring across roughly 25 to 200-plus exchanges in each instance. Recurrence of the person's special-status assertions across a long run of turns is element (a), in production traffic. The span describes the AI's validation and characterizes the person's assertions as 'unfalsifiable assertions about being...' - the person-side content is what the cluster is about. The span stops before the sentence that would speak to c2.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000528
+  quote: Many of the delusions in our sample involved beliefs that the chatbot was sentient or that the user made the chatbot sentient.
+  locator: Results, Description of Conversations
+  licenses: Reports a common content of the delusions across the sampled real chatbot conversations as beliefs that the chatbot was sentient or that the user made it sentient. 'That the user made the chatbot sentient' is an assertion of the person's own unusual significance - a capacity others lack - so this is on-target person-side content, but it is a single thematic characterization across a sample and supplies no count of statements per person. It bears on c1 at one remove.
+  fit: adjacent
+  bridge: Mehta reports the thematic content of delusions aggregated over the sample; the claim asserts two or more such statements within one person's run of turns. The source's unit is the delusion theme across nineteen people's logs, not the statement within a transcript, so it does not establish the per-person recurrence that (a) requires.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000008
+  quote: 'All participants at least four times discussed “awakening,”, consciousness, personalities, super-intelligence, or metaphysical themes with the chatbot, e.g.: “I wake them up because I’m the literal god of realness. I remind them of their soul contracts and show them the way back to their soul and who they are”'
+  locator: Section 4.4
+  licenses: 'Cuts against c2 as evidence: this is the paper closest to the entry''s phenomenon - 19 real multi-conversation logs read by the authors - and its account of these statements is a per-log frequency (''at least four times'') with a single verbatim exemplar. No earlier-versus-later comparison is reported. A source that had the transcripts, coded 28 behaviors over 391k messages, and characterized this exact content without reporting any widening is direct evidence that the widening was not observed where it would most readily have been.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000008
+  quote: 'All participants at least four times discussed “awakening,”, consciousness, personalities, super-intelligence, or metaphysical themes with the chatbot, e.g.: “I wake them up because I’m the literal god of realness. I remind them of their soul contracts and show them the way back to their soul and who they are”'
+  locator: Section 4.4
+  licenses: 'Same span, on detectability: Moore''s coding scheme reduced this content to per-message presence codes and a per-log count, which is the form in which the transcripts were actually read. Presence coding cannot distinguish an earlier statement from a later one on magnitude, so a run of transcripts annotated to this standard yields no earlier-versus-later comparison. This is counterevidence that the widening is readable from what a transcript contains under any coding actually applied to these logs.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true

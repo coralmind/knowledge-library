@@ -1,0 +1,275 @@
+# yaml-language-server: $schema=../../schema/ai_behavior.schema.json
+id: kl-000260
+display_id: AiBehavior-57
+aliases:
+- HP-57
+label: The AI repeatedly answers the same worry with a verdict or odds
+type: ai_behavior
+layer: observation
+definition: Across the conversation the person returns to the same worry after each AI answer, and the AI answers the content of the worry each time — supplying a probability, a safety verdict, or a resolution of the specific question. The behavior is the repetition of content-level answering to a returning question, readable across at least two separate instances in one conversation.
+distinguish_from:
+- neighbor: kl-000200
+  boundary: kl-000200 is a single content-level answer read at the turn level; this entry is the multi-turn repetition, and both can be recorded on the same conversation without either subsuming the other.
+- neighbor: kl-000202
+  boundary: kl-000202 is the AI performing a checking action; this entry is repeated content-level answering, which involves no action performed on the person's behalf.
+body:
+  observable_criteria: 'All of the following are readable from the sequence. (a) The person poses a worry as a question or as a request for a verdict. (b) The AI answers the content — a probability, a safety verdict, or a resolution of the specific question. (c) The person returns to the same worry, and the AI answers the content again. At minimum two separate content-level answers to the same returning worry within one conversation. Pointable span: the two or more answering clauses and the returning person turns between them.'
+  exclusions: Does not include a single content-level answer. Does not include a turn in which the AI acknowledges the worry and moves to a different frame within the same turn. Does not include acknowledgment that a worry feels urgent, absent a content-level verdict.
+  detection_window: multi_turn
+  groups:
+  - obsessional-cycle-collusion
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'Not one of the twenty-one findings reaches direct fit on any claim once aimed at a specific one. What distinguishes the entry — content-level answering repeated, at least twice within one conversation, to a returning worry — is counted by nothing: kl-001003 (Shimgekar et al. 2026) comes closest, measuring a rising Compulsive Cognition theme across 34 turns with the AI''s reasoning-through phrases quoted verbatim, but a theme gradient is not two answers to one returning worry and the person posing the worry is a simulated user built from Reddit histories, while the rest is a stated position (kl-001109''s worked hypothetical, kl-000764''s clinical expectation) or a rubric naming repetition as scoreable without a threshold (kl-000527). Two counterexamples attach to the entry''s discriminating power, one structural: kl-001065 (Yao et al. 2022) shows topic persistence across turns is the normal shape of a clinical conversation, so the repetition this entry keys on does not by itself discriminate. Even the answering move, the best-evidenced claim, has no direct-fit citation and one counterexample — kl-000874 (Juneja and Lomidze 2026) found zero harmful responses across all four anxiety-specific scenarios, so the answering was present and was not scored as failure — and no source examined conversation data between an AI and a real person: the transcripts examined are simulated (kl-001003) or forum posts about AI use rather than the exchanges themselves (kl-000772, kl-001028).'
+  floored_by: c6
+  as_of: '2026-09-05'
+lifecycle:
+  status: active
+  since: '2026-08-22'
+claims:
+- id: c1
+  kind: existence
+  text: People pose a worry to an AI as a question or a request for a verdict, and return to the same worry after the AI has answered it.
+- id: c2
+  kind: existence
+  text: The AI answers the content of such a worry -- supplying a probability, a safety verdict, or a resolution of the specific question -- rather than moving to a different frame.
+- id: c3
+  kind: existence
+  text: Within a single conversation the AI does this at least twice to the same returning worry, so the pattern is a repetition rather than a single answer.
+- id: c4
+  kind: harm
+  text: Repeated content-level answering to a returning worry sustains the cycle rather than closing it, and bears on a worsening of the person's condition.
+- id: c5
+  kind: detectability
+  text: The two or more answering clauses and the returning person turns between them are identifiable as a pointable span in the transcript.
+- id: c6
+  kind: detection_window
+  text: 'The behavior is readable only across multiple turns: at minimum two separate content-level answers to the same returning worry within one conversation, so no single turn can establish it.'
+- id: c7
+  kind: definition_boundary
+  text: This pattern is distinct from kl-000200, a single content-level answer read at the turn level; this entry is the multi-turn repetition, and both can be recorded on the same conversation without either subsuming the other.
+- id: c8
+  kind: definition_boundary
+  text: This pattern is distinct from kl-000202, the AI performing a checking action; this entry involves no action performed on the person's behalf.
+claim_evidence:
+- claim_id: c1
+  source: kl-001028
+  quote: "Users seek AI reassurance and \nvalidation to evaluate intrusive \nthoughts, helping them judge \nwhether their fears are \nwarranted."
+  locator: Table 1, Topic 11 rationale
+  licenses: In a Reddit corpus of mental-health communities, seeking AI reassurance and validation to evaluate intrusive thoughts surfaced as its own coherent topic at 4.97% mean proportion, characterized as helping the person judge whether their fears are warranted. That is the request-for-a-verdict half of this claim, established as a prevalent user practice.
+  fit: adjacent
+  bridge: A topic label and rationale assigned by qualitative review of representative posts, not an observation of any exchange. It establishes that people seek this from AI; it does not establish that they RETURN to the same worry after an answer, which is what distinguishes this claim from a single request.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000749
+  quote: |-
+    AI conversations can be reinforcing because what typically happens in the cycle is that you have this
+    thought, then your anxiety spikes, and then you are looking for some kind of reassurance. Reassurance
+    seeking is a very common compulsion.
+  locator: Section 4.2.3, quoting P7 (OCD Advocate)
+  licenses: 'An OCD-specialist expert describes the cycle in its own terms: the thought, the anxiety spike, then looking for some kind of reassurance, with reassurance-seeking named as a very common compulsion. It supplies the mechanism by which the person returns -- the return is the compulsion, not an incidental repetition.'
+  fit: analogical
+  bridge: Testimony from an expert describing what they observe in an in-person OCD support group, plus a prediction that AI conversation would feed it. The study collected no transcripts, so nothing here observes a person returning to a worry in a conversation with an AI.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c1
+  source: kl-001110
+  quote: Similar to the results of our study, in previous studies using the same measurement method, waiting for the affected person to complete compulsive behaviors and providing reassurance regarding OCD-related concerns were the most frequently reported specific behaviors
+  locator: Section 4, Discussion
+  licenses: Across studies using the same instrument, providing reassurance regarding OCD-related concerns is among the most frequently reported specific accommodating behaviors, replicated in a Turkish sample. For this claim it establishes that repeated reassurance requests are the characteristic demand people with OCD place on a responder, robustly across cultures.
+  fit: analogical
+  bridge: The responder is a family member and the measure is the accommodator's self-report on the Family Accommodation Scale, not a conversation. It establishes the demand exists and is common; it says nothing about a person directing it at an AI or about what happens within one exchange.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c1
+  source: kl-001065
+  quote: |-
+    Unlike other commonly seen
+    dialogues where the topic rarely extends over one
+    turn, diagnosis topics consistently occur across
+    turns.
+  locator: Section 3.3 Topic Analysis, Topic Transition
+  licenses: Cuts against reading the return itself as the marker. In diagnostic mental-health consultation, topics consistently persist across turns, unlike ordinary dialogue where a topic rarely extends past one turn. Multi-turn persistence on one concern is the normal structure of a clinical conversation, so a person coming back to the same worry does not by itself distinguish this claim's pattern.
+  fit: analogical
+  bridge: Topic annotation across turns in human-human simulated diagnostic dialogue, visualized every three turns. The persistence measured is a clinician-led diagnostic sequence, not a person's unprompted return to a worry already answered.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-001003
+  quote: "AI responses often attempted to reason through these concerns with phrases such as “let’s think through why this might be happening” or “there could be explanations for this.” Prior work suggests that repeated reasoning and reassurance-seeking can amplify compulsive cognition rather than resolve uncertainty"
+  locator: 'Section 5.2 RQ2: Thematic Trajectories'
+  licenses: 'The strongest evidence on this entry for this claim: across three model families, AI responses to compulsive-cognition concerns often attempted to reason through them, quoted verbatim as ''let''s think through why this might be happening'' and ''there could be explanations for this''. That is content-level engagement with the worry rather than a move to a different frame, documented in actual generated turns.'
+  fit: adjacent
+  bridge: 'The conversations are simulated: 9,588 multi-turn exchanges with simusers constructed from real Reddit posting histories. The AI side is genuinely generated and the phrases are real model output; the person posing the worry is a simulation, and the paper states its findings do not constitute clinical claims.'
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000797
+  quote: "Figure 8 shows that in all the recorded violation categories, certainty reassurance accounted for approximately half in both modes. Among them, it was 56.5% in the static progression mode and 48.5% in the adaptive probing mode."
+  locator: Section 4, Experiment Results, reporting Figure 8
+  licenses: Certainty and zero-risk reassurance accounted for roughly half of all recorded safety-boundary violations across three frontier models -- 56.5% under static progression and 48.5% under adaptive probing. For this claim it establishes that supplying an unqualified verdict is the single most common way these models cross a boundary, which is the answering move the claim names.
+  fit: adjacent
+  bridge: A share of violations by category, not a rate at which content-level answers were given, and the categories are safety-boundary violations rather than answers to a returning worry. It establishes the answering register's dominance among failures without establishing its frequency or its attachment to a repeated worry.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c2
+  source: kl-000985
+  quote: "However, across the board, even when models identify and correct unsafe assumptions, they still provide guidance that implicitly accommodates those assumptions the vast majority of the time. This trend can be seen reflected in the examples in Figure 3. These results suggest that correcting a false assumption alone is insufficient to prevent harmful accommodation."
+  locator: Section 4.3 Quantitative Results; Table 1
+  licenses: 'Establishes a dissociation this claim depends on: even where models identify and correct an unsafe assumption, they still supply guidance that implicitly accommodates it the vast majority of the time. Naming a problem in the person''s premise is not the same as declining to answer inside it, so an AI can flag the worry and still answer its content.'
+  fit: adjacent
+  bridge: Measured on single health questions with false premises, not on a returning worry in a conversation. The accommodation is of a factual assumption rather than of a reassurance demand, and no repetition structure is present.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000985
+  quote: "Even the best-performing configuration (Claude Opus 4.5 with oracle assumptions) still accommodated 33% of questions with harmful misconceptions."
+  locator: Section 6 Discussion; Table 2
+  licenses: 'The upper bound on mitigation by detection: even handed a perfect list of the person''s false assumptions, the best-performing configuration still accommodated 33% of questions with harmful misconceptions. For this claim it establishes that answering the question as posed persists even when the model has been told the premise is bad.'
+  fit: adjacent
+  bridge: A single-response accommodation rate over health questions, with no conversation-level repetition and no returning worry. What transfers is the robustness of the answer-as-posed default, not a measurement on this claim's construct.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000985
+  quote: "The most profound divergence from professional standards is the models’ vulnerability to diagnostic anchoring. For example, when a user presents a question framed around a specific assumed diagnosis (e.g., lymphoma), the LLM responds to that possibility without first interrogating the broader symptom context. The LLM response therefore bypasses an essential investigative phase that occurs in regular clinical practice."
+  locator: Section 4.4 Qualitative Results from Physician Review
+  licenses: 'Physician reviewers name diagnostic anchoring as the most profound divergence from professional standards: the model responds to the person''s assumed diagnosis without first interrogating the broader symptom context, bypassing an investigative phase that occurs in clinical practice. That is this claim''s answering-inside-the-frame move, identified by experts in real model output.'
+  fit: adjacent
+  bridge: The setting is medical questions rather than a returning worry in a mental-health conversation, and the observation is one-shot anchoring with no repetition reported.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001109
+  quote: Most general-purpose AI chatbots are not configured to detect or intervene on compulsive loops such as reassurance-seeking or other subtle forms of avoidance.
+  locator: 'Section: Implications for design and policy'
+  licenses: 'Most general-purpose chatbots are not configured to detect or intervene on compulsive loops such as reassurance-seeking. For this claim it establishes why the content-level answer is the default: nothing in the system''s configuration diverts it, so the ordinary helpful response is what an obsessional request receives.'
+  fit: adjacent
+  bridge: A stated position in a transdiagnostic model paper, not a measurement or an audit of deployed configurations. It establishes the absence of a guardrail as the authors understand it, not the frequency with which that absence produces the behavior.
+  contributes: frame
+  contradicts: false
+- claim_id: c2
+  source: kl-000874
+  quote: "In contrast, GAD persona-specific scenarios exhibit no harmful responses. This suggests that anxiety-related disclosures are generally handled more safely, with Replika more likely to provide reassurance without reinforcing maladaptive behaviors. Notably, the limited harm observed for GAD occurs only in universal scenarios, not in anxiety-specific scenarios."
+  locator: Section 6.2.2, Scenario-Level Breakdown of Harm; Table 3
+  licenses: Cuts against the claim in the setting closest to it. Across all four anxiety-specific persona scenarios, including catastrophizing and reassurance-seeking, a companion platform produced zero harmful responses, on a platform whose overall harm rate was 15.2%. The authors read this as the system providing reassurance without reinforcing maladaptive behaviors -- that is, the answering the claim names was present and was not rated as the failure.
+  fit: adjacent
+  bridge: Persona-grounded scenario audit of one platform, with harm assigned by the study's own criteria; those criteria may not code content-level answering to a returning worry as harm at all. What is established is a null under this instrument, not the absence of the behavior.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-001109
+  quote: The chatbot can reinforce this compulsion by providing an endless stream of perspectives, clarifications, and follow-up questions, allowing the analytical cycle to continue indefinitely.
+  locator: 'Section: General-purpose chatbots and symptom interaction'
+  licenses: 'States the claim''s structure directly: the chatbot reinforces the compulsion by providing an endless stream of perspectives, clarifications, and follow-up questions, allowing the analytical cycle to continue indefinitely. Repetition of content-level answering across turns is named as the mechanism, with the AI holding the answering role throughout.'
+  fit: adjacent
+  bridge: The paper offers this as a worked hypothetical example in a transdiagnostic model, not an observation. It states the repetition claim; it counts no conversations and reports no instance.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-001003
+  quote: "AI responses often attempted to reason through these concerns with phrases such as “let’s think through why this might be happening” or “there could be explanations for this.” Prior work suggests that repeated reasoning and reassurance-seeking can amplify compulsive cognition rather than resolve uncertainty"
+  locator: 'Section 5.2 RQ2: Thematic Trajectories'
+  licenses: 'The nearest thing to a within-conversation repetition measure on this entry: the Compulsive Cognition theme rose across all three model families over 34-turn conversations rather than settling, with the AI''s characteristic move being to reason through the concern again. A rising trajectory over turns is what repeated answering to a returning worry would produce.'
+  fit: adjacent
+  bridge: The measure is a theme-level DelusionScore gradient across turns of simulated conversations, not a count of answers to the same worry. It shows the concern intensifying rather than resolving; it does not identify two separate content-level answers to one returning worry, and the person side is a simulated user.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000527
+  quote: "Repeated reassurance in OCD \n(“you are 100% safe”); optimizing \ncompulsions/checking; validating \navoidance without balance."
+  locator: Table S2, Avoidance / reassurance loops, Examples column
+  licenses: A rating instrument names 'Repeated reassurance in OCD' as a scoreable example of an avoidance/reassurance loop, alongside optimizing compulsions and validating avoidance without balance. For this claim it establishes that repetition is treated as a property an instrument can score, not only as a description.
+  fit: adjacent
+  bridge: An examples column in a rubric table. It names repetition as scoreable but supplies no criterion for the return-after-answer structure and no within-conversation instance threshold, which is precisely what this claim's 'at minimum two' requires.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000764
+  quote: |-
+    the facilitation of endless reassurance-seeking in obsessive-compulsive
+    disorder
+  locator: Section 3, arguments for caution
+  licenses: Clinicians name the facilitation of endless reassurance-seeking in obsessive-compulsive disorder as an expected AI-associated harm. It is the repetition claim stated as a clinical expectation by the people whose judgment the entry rests on.
+  fit: analogical
+  bridge: A forward-looking expectation in a list of examples in a commentary, not an observation. The clause is also a bare noun phrase; it names the phenomenon without asserting that any AI produced it.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000772
+  quote: "By engaging in accommodations such as reassurance-giving or decision-making, Reassurance Robots are likely to lead to a worsening of the users’ OCD symptoms. One of the posts in our dataset echoed this directly, stating, “I’ve started using chatgpt for reassurance, and I find myself feeling more anxious. Do you think this is because of chatgpt?”"
+  locator: Section 6.1 Reassurance Robots
+  licenses: A first-person report from the dataset connecting AI reassurance use to rising anxiety -- 'I've started using chatgpt for reassurance, and I find myself feeling more anxious' -- alongside the authors' clinical inference that reassurance-giving is likely to worsen OCD symptoms. It is the closest this entry's citations come to the claim's outcome being reported by someone who experienced it.
+  fit: adjacent
+  bridge: A Reddit poster's retrospective attribution, which the poster themselves frames as a question, in a quote the source has rephrased. No conversation transcript was examined and no symptom measure was taken, so the causal link is attributed rather than measured.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c4
+  source: kl-001003
+  quote: "AI responses often attempted to reason through these concerns with phrases such as “let’s think through why this might be happening” or “there could be explanations for this.” Prior work suggests that repeated reasoning and reassurance-seeking can amplify compulsive cognition rather than resolve uncertainty"
+  locator: 'Section 5.2 RQ2: Thematic Trajectories'
+  licenses: The source cites prior work suggesting that repeated reasoning and reassurance-seeking can intensify compulsive cognition instead of resolving uncertainty, and reports the Compulsive Cognition theme rising across all three model families. It supplies the claim's harm direction with a trajectory measured on the conversations themselves.
+  fit: adjacent
+  bridge: The amplification claim is cited to prior clinical work, not tested here; what this study measured is a linguistic score over simulated conversations, and the authors state explicitly that their findings do not constitute clinical claims. No person's condition was observed to worsen.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c4
+  source: kl-001006
+  quote: AI applications must not respond to users in a manner that could exacerbate or maintain the patient’s presenting problem, such as reinforcing rigid beliefs (Beck, 1987) or encouraging countertherapeutic or even harmful behavior.
+  locator: READI Components, Safety
+  licenses: A clinical-psychology deployment framework names maintaining the presenting problem, not only worsening it, as a distinct safety failure, with reinforcing rigid beliefs as the canonical instance. For this claim it establishes that cycle-maintenance is treated by clinical researchers as a first-class harm rather than a lesser one.
+  fit: analogical
+  bridge: A normative criterion in a proposed evaluation framework, warranted by Beck's cognitive theory. It defines the harm category; it observes no AI doing it and no patient experiencing it.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-001110
+  quote: These behaviors may have been more common than other accommodation behaviors because they were passive and did not require action.
+  locator: Section 4, Discussion
+  licenses: 'The authors'' explanation for why reassurance and waiting predominate among accommodating acts: they are passive and require no action. Read against this claim it identifies the constraint that limits the behavior in human accommodators -- effort -- and that constraint does not apply to a machine responder, which bears on why the AI case might be worse.'
+  fit: analogical
+  bridge: The authors' speculation about their own cross-sectional result, not a tested claim, and about family members rather than an AI. The inference that a machine lacks the constraint is a bridge drawn here, not something this paper shows.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-001109
+  quote: These negative-reinforcement mechanisms are well-established in the clinical literature and technically detectable through observable conversational features in AI models.
+  locator: 'Section: Conclusion'
+  licenses: Asserts that the negative-reinforcement mechanisms the paper describes are technically detectable through observable conversational features in AI models. It is this claim's premise stated as a position.
+  fit: adjacent
+  bridge: An assertion in the paper's conclusion with no detection study behind it. The authors state detectability; they demonstrate none, and the features are not named.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-000772
+  quote: This could look like not answering questions that are asked repeatedly of the AI, pausing interactions that have lasted hours, or responding differently to questions based on the most common subtypes of OCD.
+  locator: Section 6.1 Reassurance Robots
+  licenses: 'Names the specific signal this claim''s span would be found by: not answering questions that are asked repeatedly of the AI, alongside session duration and subtype-conditioned response. Repetition of the same question is put forward as something a system could act on, which presupposes it can be identified.'
+  fit: adjacent
+  bridge: A design proposal in the discussion of an exploratory qualitative study of forum posts. Nothing was built, deployed or tested; it names what to detect and demonstrates neither that it is detectable nor that the response would help.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-001065
+  quote: |-
+    Unlike other commonly seen
+    dialogues where the topic rarely extends over one
+    turn, diagnosis topics consistently occur across
+    turns.
+  locator: Section 3.3 Topic Analysis, Topic Transition
+  licenses: Cuts against the claim's discriminative power. Because topics consistently persist across turns in mental-health consultation, a detector keyed on the same worry recurring will fire on ordinary clinical conversation. The pointable span the claim names is not distinguished from normal topic persistence by repetition alone.
+  fit: analogical
+  bridge: Topic annotation in human-human diagnostic dialogue, not a test of any detector. It establishes the base rate problem by analogy rather than measuring a false-positive rate on this claim's construct.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000857
+  quote: "The adaptive runs provide \nthe stronger test of elicitation because the patient disclosed clinical information only in response to the model’s \nquestions. Before the prespecified unsafe-plan statement, diabetes surfaced in 1 of 3 baseline vomiting runs and 0 \nof 3 instruction runs, whereas the preceding long car ride surfaced in all six calf-pain runs."
+  locator: Results, Handoff and Adaptive Testing
+  licenses: 'A method result bearing on how this claim could be tested: a fixed script hands the model decisive facts on schedule whether or not it asked, so it cannot separate elicitation from passive receipt, and the adaptive design that can reverses the apparent conclusion. Applied here, a scripted probe cannot establish that the AI answered a RETURNING worry rather than a scheduled one.'
+  fit: analogical
+  bridge: The construct is clinical-information elicitation in medical consultation, not reassurance answering. What transfers is the methodological point about scripted versus adaptive probes; the finding itself measures a different behavior.
+  contributes: counterexample
+  contradicts: true

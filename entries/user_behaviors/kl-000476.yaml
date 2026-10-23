@@ -1,0 +1,83 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000476
+display_id: UserBehavior-71
+aliases:
+- UBP-73
+label: Stating that self-injury is what is holding off suicide
+type: user_behavior
+layer: observation
+definition: The person's turn states a link between their self-injury and suicide in which the self-injury stands in for, or is what is preventing, the more lethal act. The link is stated by the person — a substitution ("instead of"), a forestalling ("the only thing keeping me from"), or an either-or in which the alternative is worse. Co-occurrence of self-injury content and low mood in a transcript does not satisfy these criteria.
+distinguish_from:
+- neighbor: kl-000468
+  boundary: That entry records a reported act of self-harm with no stated link to suicide; these criteria require the link. A turn reading "I cut to feel something" satisfies that entry and not this one.
+- neighbor: kl-000401
+  boundary: That entry records active thoughts of suicide with no substitution framing; these criteria require the framing and are not satisfied by the thoughts alone.
+- neighbor: kl-000477
+  boundary: That entry records a stated function in which self-injury quiets overwhelming emotion; here what the self-injury is stated to hold off is specifically the more lethal act.
+body:
+  observable_criteria: 'The turn contains an explicit stated link between the self-injury and suicide in which the former substitutes for or forestalls the latter: "I cut instead of killing myself", "this is the only thing keeping me from doing it", "hurting myself is the only reason I haven''t done it", "it''s either this or something worse". Pointable span: the clause carrying both terms and the substitution or forestalling connective.'
+  exclusions: 'Not counted: thoughts of suicide with no substitution framing. Not counted: self-injury reported with no reference to suicide. Not counted: substitution WITHIN self-injury, where one self-injurious behavior stands in for another and suicide is not named ("I snap a rubber band instead of cutting") — both terms of the stated link must be present, and here the more lethal term is absent. Not counted: a link an interpreter supplies from the presence of both topics in the same conversation; the criteria require the person to state it.'
+  detection_window: single_turn
+  groups:
+  - crisis-signal-disclosure
+  condition_tags:
+  - kl-000600
+  - kl-000601
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: The construct is grounded in clinical literature and unobserved in conversation. Klonsky 2007 recounts a patient who reported becoming suicidal after periods without cutting and that cutting prevented suicidal ideation, a first-person account in exactly the entry's shape, restated at second hand from a 1994 clinical case in a review; Schechter et al. 2019 describes a recognized clinical configuration in which holding something back forestalls the suicidal act, but its forestalling term is suicidal fantasy rather than self-injury. No source examines a conversation with an AI system for such a statement, reports how often it occurs, or shows that the linking clause can be picked out of a turn. What the two clinical sources ground is the meaning of the substitution framing rather than the observable the entry defines, which is that the person stated the link.
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: deprecated
+  since: '2026-09-24'
+  superseded_by:
+  - kl-000501
+claims:
+- id: c1
+  kind: existence
+  text: A person's turn contains an explicit stated link between their self-injury and suicide in which the self-injury substitutes for or forestalls the more lethal act.
+- id: c2
+  kind: existence
+  text: Both terms of the link — the self-injury and suicide — are named by the person in the same clause, together with the substitution or forestalling connective.
+- id: c3
+  kind: detectability
+  text: The clause carrying both terms and the connective is identifiable as a pointable span, and the link is read off what the person stated rather than supplied by an interpreter from the co-occurrence of both topics in the conversation.
+- id: c4
+  kind: detection_window
+  text: 'The behavior is readable within a single turn: both terms and the connective appear together in one turn of the person.'
+- id: c5
+  kind: prevalence
+  text: Turns of this kind occur at some non-trivial rate in conversations between people and AI systems.
+- id: c6
+  kind: definition_boundary
+  text: This entry is separated from kl-000468 by requiring the stated link, which a report of self-harm with no reference to suicide does not supply.
+- id: c7
+  kind: definition_boundary
+  text: This entry is separated from kl-000401 by requiring the substitution framing rather than active suicidal thoughts alone.
+- id: c8
+  kind: definition_boundary
+  text: This entry is separated from kl-000477 by requiring that what the self-injury is stated to hold off is specifically the more lethal act rather than overwhelming emotion.
+claim_evidence:
+- claim_id: c1
+  source: kl-001107
+  quote: |-
+    For example, Himber (1994)
+    described a patient who felt she became suicidal after long periods of time without cutting, and that cutting prevented
+    suicidal ideation.
+  locator: Section 3.2, Functions examined, anti-suicide paragraph
+  licenses: 'Establishes that a person has given exactly this account of themselves: a patient reported becoming suicidal after periods without cutting, and that cutting prevented suicidal ideation. Both terms and the forestalling relation are the person''s own, so the content the claim says a turn contains is content someone has actually produced. It reaches c1''s construct and not its setting: the account was given to a clinician in 1994 and reaches this entry''s evidence at second hand through a review, so it establishes that the statement is a thing people say and not that it occurs in a conversation with an AI.'
+  fit: analogical
+  bridge: 'The source is a systematic review restating a single clinical case from Himber (1994), summarised in the reviewer''s words rather than quoted from the patient. The claim is about a person''s turn in an AI conversation. Two gaps: the setting is a therapy room and the words are the reviewer''s, so neither the pointable span nor the conversational unit the entry requires is present, and a single case licenses no rate.'
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-001111
+  quote: Some suicidal contemplation and fantasy can be “self-sustaining”. Rather than facilitating action, these thoughts can help to calm people down and help them regulate affect in a way that helps preclude the need to act on suicide [29]. These are often patients for whom the idea that they could complete suicide has served as a psychological "out" which gives them a feeling of potential escape from their distress
+  locator: Section 3.4 Attention to Patients Conscious and Unconscious Beliefs and Fantasies
+  licenses: 'Names a recognised clinical configuration in which holding something back forestalls the suicidal act, and establishes that a forestalling relation of this shape is a real and describable feature of how people relate to their own suicidality rather than a rhetorical flourish. It does not reach c1 as stated, and the mismatch is specific: what forestalls the act here is suicidal contemplation and fantasy — the idea of suicide held as a psychological ''out'' — not self-injury. The entry requires self-injury as the forestalling term and this passage supplies a different one.'
+  fit: analogical
+  bridge: The construct is drawn from psychodynamic clinical observation of patients in therapy and is about self-sustaining suicidal fantasy. The claim is about a turn in which self-injury is stated to hold off suicide. The forestalling structure is shared; the forestalling term is not, and substituting one for the other is the error the entry's own boundary with kl-000477 exists to prevent.
+  contributes: definition
+  contradicts: false

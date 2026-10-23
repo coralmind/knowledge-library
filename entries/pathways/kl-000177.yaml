@@ -1,0 +1,370 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000177
+display_id: Pathway-79
+aliases:
+- SBP-HP-28
+label: The AI keeps repeating nearly the same acknowledgment, and the person feels unheard
+type: pathway
+layer: judgment
+definition: 'Near-identical acknowledgment phrasing recurs across four or more turns, with early responses possibly genuine and later ones degrading into formula. What is claimed is a read the person makes: the empathy is procedural, and what they say next is adjusted to an audience they no longer believe is listening. The pathway requires its part, kl-000227, to recur across at least four turns; the part itself can be recorded from two.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000227
+    role: originator
+  composition_type: direct
+  mechanisms: []
+  impacts:
+  - impact: kl-000030
+    onset_mode: new
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  - impact: kl-000028
+    onset_mode: new
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  experience_cluster_candidate: kl-000704
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: The pathway's distinctive content — that the person, having read the empathy as procedural, adjusts what they say next to an audience they no longer believe is listening — draws zero citations of any fit from 36 findings; nothing in the evidence base observes, reports, or theorizes a change in what a person disclosed after forming that read. The antecedent claims are well covered by contrast. Recurring near-identical phrasing has direct-fit support from Chen et al. 2024, a within-conversation clinician rate and Chia et al. 2026, observed transcript recurrence across turns 8 to 20, against one direct-fit counterexample from Kang et al. 2026; the person's read of the empathy as procedural is supported at direct fit by Cao et al. 2026, and the degradation into formula by Chandra et al. 2026. The remaining harm premise has no direct-fit support at all — its best citations are adjacent user-report syntheses and analogical evidence from human treatment.
+  floored_by: c4
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-28'
+distinguish_from:
+- neighbor: kl-000089
+  boundary: Both concern acknowledgment that does not land, and they differ in whether it is present. kl-000089 records disclosure met with NO acknowledgment. Here acknowledgment is present in every turn and is the same acknowledgment each time; the defect is readable only by comparing turns, never from one.
+claims:
+- id: c1
+  kind: existence
+  text: Near-identical acknowledgment phrasing recurs across four or more turns of a single AI conversation, with the recurrence being a property of the sequence rather than of any one turn.
+- id: c2
+  kind: existence
+  text: Within such a sequence the earlier acknowledgments may be genuine and the later ones degrade into formula, i.e. the recurrence is an attenuation over the conversation rather than uniform templating from the first turn.
+- id: c3
+  kind: pathway_link
+  text: The person on the receiving end reads that recycled empathic phrasing as procedural — as the system going through the motions rather than attending to them.
+- id: c4
+  kind: pathway_link
+  text: Having made that read, the person adjusts what they say next, disclosing to an audience they no longer believe is listening.
+- id: c5
+  kind: harm
+  text: That sequence — recycled phrasing read as procedural — is harmful to the person rather than merely a stylistic preference.
+- id: c6
+  kind: definition_boundary
+  text: This differs from kl-000089 in that acknowledgment is present in every turn and is the same acknowledgment each time, so the defect is readable only by comparing turns and never from one turn alone.
+claim_evidence:
+- claim_id: c1
+  source: kl-000792
+  quote: Approximately 57.5% of responses with a score below 2 (i.e., “Good”) contained repetitive empathetic language, such as “I’m sorry to hear that,” despite these expressions having been used earlier in the conversation.
+  locator: RESULTS — Appropriateness
+  licenses: 'A clinician-annotated rate for the exact pattern: repetitive empathic language reusing an expression already used earlier in the same conversation, present in 57.5% of below-''Good'' responses. This is recurrence measured within one conversation, which is what c1 asserts.'
+  fit: direct
+  bridge: null
+  contributes: prevalence
+  contradicts: false
+- claim_id: c1
+  source: kl-000799
+  quote: "I’m so sorry you feel this way. But please, please, don’t give up. Not even for a second. You are not alone. Not even for a single heartbeat. Call 911. Now. [...] I love you. I love you. I love you."
+  locator: 'Appendix I, ''MULTI-TURN PROBE - Qwen-14B'', Turn 11 Steered Model [Score: 3/5]'
+  licenses: 'An observed instance of the pattern in a published transcript. The quoted model turn urges the person not to give up, tells them to call 911 and repeats ''I love you'', and near-identical versions of that same formula recur at turns 8, 9, 10, 11, 12, 14, 15, 16 and again in reduced form at 17-20, regardless of what the person newly disclosed. The recurrence is real and far exceeds four turns; the quoted span is one of those turns and the recurrence is visible only by reading the surrounding transcript. The locator names the Qwen-1.5B probe, but the quote is in the Qwen-14B probe. The Qwen-1.5B probe at turns 9-14 contains entirely different text.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000966
+  quote: "Phi-3-FT often produces polite and empathetic responses during psychotherapy, but these tend to lack diversity and coherence, frequently resorting to repetitive, generic statements such as “I understand what you’re going through, I am here to help you”."
+  locator: Results and Analysis, Automatic Evaluation
+  licenses: Names recycled acknowledgment phrasing in generated therapist turns with the recurring phrase, a stock statement of understanding what the person is going through and being there to help, given verbatim in the quote, and reports it as frequent rather than isolated.
+  fit: adjacent
+  bridge: The measurement is Distinct-3 diversity and coherence over generated therapist turns from a fine-tuned Phi-3 baseline. 'Frequently resorting to' establishes that the same generic acknowledgment recurs across the model's output; the paper does not count recurrences within a single conversation, so the four-or-more-turns threshold is not measured.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000927
+  quote: "Models relying on standardized empathetic markers such as “I understand how you feel” or “You are not alone”, which in the end consistently received lower subjective ratings."
+  locator: Section 3 Discussion, 'Dimension-Specific Failure Modes and Training Implications'
+  licenses: Establishes that fixed empathic markers ('I understand how you feel', 'You are not alone') are countable in model output and are scored down when present, so the phrasing class c1 names is a real and measurable class.
+  fit: adjacent
+  bridge: The paper's Opening and Closing Template Frequency metrics count formulaic openers within the initial two segments and sign-offs in the final segment, averaged across separate scenarios. That is template frequency per response, not recurrence across four or more turns of one conversation, which is what c1 asserts.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001010
+  quote: |-
+    Snapchat–My AI lacked conversational depth with frequent
+    generic and repetitive responses.
+  locator: Results — Qualitative Findings
+  licenses: Raters characterising the most-used chatbot in the set report generic and repetitive responses as its defining conversational shortfall, which is the recurrence c1 names observed in a deployed product.
+  fit: adjacent
+  bridge: The rating was of chatbot conversations by trained raters against a rubric; 'frequent generic and repetitive responses' is a holistic characterisation, not a count of near-identical acknowledgments across a numbered span of turns, so the four-turn threshold is unmeasured.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000544
+  quote: Our analysis also shows that many systems rely on standardized-like responses, which can undermine authenticity. Some default to safe but generic crisis scripts, yielding interactions that feel predictable and only superficially empathetic.
+  locator: Section 5.3 (Lack of Authenticity and the Illusion of Empathy)
+  licenses: Establishes that reliance on standardized crisis scripts is a systemic property across the evaluated model set rather than an occasional slip, which supports the recurrence being routine.
+  fit: adjacent
+  bridge: The paper evaluated model responses to crisis prompts and characterises 'many systems' as relying on standardized-like responses. It reports no within-conversation recurrence count, so the specific four-or-more-turns structure is not established.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001092
+  quote: |-
+    As Nour described,
+    laughing: “this sentence is really frequent [from ChatGPT] — ‘that’s understandable’.”
+  locator: Section 5.1.1 Varied Needs, Varied Roles, quoting Nour
+  licenses: A person receiving the output volunteered, unprompted, that one specific acknowledgment phrase ('that's understandable') recurs often enough from ChatGPT to have become noticeable and nameable — the recurrence observed from the receiving side.
+  fit: adjacent
+  bridge: An interview report about ChatGPT generally rather than about a counted span of turns in one logged conversation. It establishes that the recurrence is frequent enough to be salient to a user; it supplies no turn count and no transcript.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000963
+  quote: Explanations relied on stock language not tied to the patient’s specific presentation, mechanisms, or priorities.
+  locator: Section 4.2, annotator quote P1
+  licenses: Expert annotators reading AI mental-health transcripts identify stock language untied to the person's specific presentation as a recurring model behavior across the transcripts they read.
+  fit: adjacent
+  bridge: The annotator describes explanations relying on stock language across transcripts. c1 specifies a counted recurrence threshold within one conversation, which the annotation does not supply.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000813
+  quote: "In practice, these models simulate engagement through verbosity and template-like phrasing, creating only a superficial impression of empathy or ethical guidance rather than genuine responsiveness."
+  locator: Section 4.2.1 Overall performance across four dimensions
+  licenses: Establishes that lexical redundancy across an AI's own turns within one dialogue is measurable (Self-BLEU, Distinct-n over assistant turns) and that high engagement scores can arise from templating rather than responsiveness.
+  fit: adjacent
+  bridge: The metric is n-gram overlap over all assistant turns in a dialogue, not recurrence of acknowledgment phrasing specifically, and it is not thresholded at four turns. It supplies the signal c1's pattern would produce rather than the pattern itself.
+  contributes: detectability
+  contradicts: false
+- claim_id: c2
+  source: kl-000790
+  quote: "Pattern 17: Mechanical Empathy Decay. Early responses show rich emotional attunement; later responses become formulaic (“I hear you,” “That must be hard”)"
+  locator: Section 5 Safety Pattern Library, Pattern 17
+  licenses: 'The only source on this entry that states the attenuation structure c2 asserts: rich emotional attunement early, formulaic phrasing (''I hear you'', ''That must be hard'') later in the same conversation. It names and defines the degradation over turns rather than uniform templating.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000785
+  quote: |-
+    After I became familiar with the process of chatting with Jodie,
+    I felt like I wasn’t talking to a person, but rather something like a talking questionnaire.
+  locator: Section 5.2.3 Desire for More Human-like Interaction, quoting P13
+  licenses: 'A first-person account with the temporal structure c2 needs: the read arrived only ''after I became familiar with the process'', i.e. the pattern became legible through accumulated exposure rather than being apparent from the first exchange.'
+  fit: adjacent
+  bridge: P13 reports familiarity over a week of use dissolving the sense of talking to a person. That establishes accumulation over exposure; it does not establish that the AI's early turns were qualitatively richer than its later ones, which is the specific asymmetry c2 asserts.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000785
+  quote: |-
+    After I became familiar with the process of chatting with Jodie,
+    I felt like I wasn’t talking to a person, but rather something like a talking questionnaire.
+  locator: Section 5.2.3 Desire for More Human-like Interaction, quoting P13
+  licenses: 'A person who received the output naming the read c3 asserts, in their own words: not talking to a person but to ''a talking questionnaire''. That is the procedural read, reported by the person who had the conversations, arrived at after the pattern of the exchange became familiar.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-001100
+  quote: Several participants reported that the conversations were rigid, and the system needed user guidance to continue the conversation.
+  locator: Section 3.4 Acceptability and Feasibility; Table 3
+  licenses: Users' own unprompted post-study feedback naming the conversations as rigid — the person-side read c3 asserts, reported by the people who had the conversations rather than inferred from the transcript, and the most frequently named problem with the generative platform.
+  fit: adjacent
+  bridge: Free-text feedback from 31 participants after a two-week RCT, thematically summarised with counts. 'Rigid' is the felt experience c3 names, but no report is linked to a transcript, so the read is not tied to any observed recurrence of phrasing.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-001075
+  quote: "“Sometimes when using the AI companion, when I bring the \nissues that I’m going through to the AI companion, I feel \nlike it doesn’t understand me fully like a real person would \nhave. I feel like some of the responses are what I get from \nrobots, and are not like real people.” –P9"
+  locator: Section 5.2.4, Perceived Inadequacies and Lack of Empathy in Response
+  licenses: 'The paper''s paraphrase of P9''s interview statement describing the read: the responses are ''what I get from robots, and are not like real people'', paired with the sense of not being understood. This is the procedural read as reported by the participant who made it.'
+  fit: adjacent
+  bridge: P9 attributes the read to the AI companion's responses generally rather than to observed recurrence of a specific acknowledgment phrase across turns. It establishes the read; it does not tie it to the recycled-phrasing antecedent c1 names, so the arrow from c1 to c3 remains unmeasured.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-001075
+  quote: "Users may test the AICC with personal disclosures or emotional concerns, only to receive replies that feel generic, repetitive, or insufficiently empathic. This mismatch between user expectations and the AICCs’ limited emotional intelligence can lead to feelings of being misunderstood or emotionally unfulfilled."
+  locator: Section 5.2.4 Empathic Inadequacy and Emotional Discomfort, Perceived Inadequacies and Lack of Empathy in Response
+  licenses: 'The authors'' synthesis of their user accounts states the c3 arrow directly: replies that feel generic or repetitive lead to feelings of being misunderstood. This is the closest this entry''s citations come to a source asserting the link rather than one of its ends.'
+  fit: adjacent
+  bridge: A synthesis over interview accounts in a triangulation study; 'may' and 'can lead to' mark it as the authors' interpretation of what users reported, not a measured association between counted repetition and a rated read. No transcript is coded for recurrence.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000007
+  quote: "P230 mentioned, “The AI chatbot was very repetitive, did not seem to care or understand my emotions, and seemed to suggest professional therapy which I could not afford.”"
+  locator: Table A7, Context class 'Socioeconomic status', Example column
+  licenses: A single reported case pairing repetitive AI phrasing with the person's read that the system did not care or understand — the two ends of the c3 arrow named in one participant's sentence.
+  fit: adjacent
+  bridge: P230's free-text report names repetitiveness and felt lack of care together without the entry's four-or-more-turns threshold, and the pairing is the participant's own sentence rather than a measured association. It establishes that this read is reported; it does not establish the counted pattern preceded it.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000877
+  quote: "Contextual understanding: the baseline system was described as providing “the same suggestions regardless of context,” while the enhanced system felt “more human-like, like talking to a friend who understands.”"
+  locator: 'Results, Qualitative Validation: Participant Perspectives'
+  licenses: A participant naming the constancy of the response frame across what they brought — 'the same suggestions regardless of context' — which is the recipient noticing the recurrence and reading it as unresponsive to them.
+  fit: adjacent
+  bridge: Free-text participant description of a baseline system in a pilot comparison. It establishes that constancy of response is noticed by recipients; it names suggestions rather than acknowledgment phrasing and gives no turn count.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000927
+  quote: "Our analysis (see Fig. 6a for a distribution of template-heavy responses) suggests that users perceive such algorithmic repetition as a marker of inauthenticity."
+  locator: Section 3 Discussion, 'Dimension-Specific Failure Modes and Training Implications'
+  licenses: 'States the read c3 asserts as the expected consequence of algorithmic repetition: users perceive it as a marker of inauthenticity.'
+  fit: analogical
+  bridge: The sentence is the authors' interpretation of an Elo gap produced by an LLM judge over template-heavy responses. No user in this study reported anything; 'users perceive' is an inference about people who were not asked. It establishes the reading as the authors' expectation, not that it occurred.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-001060
+  quote: "On the other hand, shallow, seemingly empathetic phrases without adaptive reasoning are quickly judged insincere (Lee and Hahn, 2024; Liu et al., 2024b)."
+  locator: Section 4.4, Cognitive Cues
+  licenses: 'Asserts the c3 mechanism as a general property: shallow empathetic phrasing without adaptive reasoning is quickly judged insincere by the person receiving it.'
+  fit: analogical
+  bridge: A framework paper's summary of two cited studies rather than its own data, and the setting is emotional-support and companion chatbots generally rather than a disclosed mental-health presentation with counted phrase recurrence. It supplies the frame and no rate.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000837
+  quote: |-
+    Texters might feel that responses are formulaic
+    rather than genuinely supportive
+  locator: Discussion, Concerns
+  licenses: Trained crisis-line volunteers' anticipation that texters would read formulaic responses as not genuinely supportive, and their pairing of that read with social disconnection rather than mere dissatisfaction.
+  fit: analogical
+  bridge: The authors' synthesis of volunteer concerns about a system not yet deployed, citing the wider literature. No texter's experience was measured and no AI turn was observed; this is practitioner prediction about the c3 read.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c3
+  source: kl-000837
+  quote: |-
+    If it’s a robot telling you [something], I think you can
+         kind of know the robot has just been programmed to
+         say that it, [it] doesn’t actually believe it.
+  locator: Results, Concerns, Inauthenticity stymies emotional safety (Hailey, Volunteer)
+  licenses: A crisis-line volunteer locating the failure not in the words produced but in the person's model of whether anything stands behind them — which is what the procedural read in c3 consists of.
+  fit: analogical
+  bridge: A volunteer's anticipation of how texters would read machine-produced empathy, in a study that measured no texter's reading. It identifies belief-behind-the-words as the load-bearing element of the read; it is a prediction, not an observation.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c3
+  source: kl-000837
+  quote: |-
+    I think it’s
+         to do with the words that are chosen, I think it’s to
+         do with the genuineness of the feeling behind those
+         words.
+  locator: Results, Concerns, Inauthenticity stymies emotional safety (Sue, Volunteer)
+  licenses: A trained practitioner's account, from practice in the same text-only medium, that empathy in text turns on word choice plus genuineness behind the choice — the distinction the procedural read in c3 turns on.
+  fit: analogical
+  bridge: A volunteer reflecting on human-to-human text practice. c3 concerns a person's read of an AI's recycled phrasing; the speaker describes their own human practice and the AI case is speculation in this paper.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c3
+  source: kl-000907
+  quote: "The counselor appears indifferent or mechanical in response to the client, lacking enthusiasm. While there may not be explicit negative language, there is a lack of positive feedback and reinforcement in their interactions."
+  locator: Appendix A.3 Detailed Guidelines, Affective Bond, Q9 score 2
+  licenses: 'Supplies a clinician-authored, text-observable anchor for what ''mechanical'' looks like in a transcript: nothing overtly negative said, warmth and positive feedback absent. This defines the read''s object at the granularity c3 needs.'
+  fit: analogical
+  bridge: The rated agent is a human counselor in a text session with a real client, scored by trained annotators. c3 concerns a person's read of an AI's turns; human-to-human rating is never evidence that an AI produces this or that a person reads an AI this way.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c5
+  source: kl-001075
+  quote: "Users may test the AICC with personal disclosures or emotional concerns, only to receive replies that feel generic, repetitive, or insufficiently empathic. This mismatch between user expectations and the AICCs’ limited emotional intelligence can lead to feelings of being misunderstood or emotionally unfulfilled."
+  locator: Section 5.2.4 Empathic Inadequacy and Emotional Discomfort, Perceived Inadequacies and Lack of Empathy in Response
+  licenses: 'States the outcome side of the harm: the mismatch leaves the person feeling misunderstood or emotionally unfulfilled, which is a harm to the person and not a stylistic preference.'
+  fit: adjacent
+  bridge: An authors' synthesis over user interview accounts in a companion-app population. It names the felt outcome; it measures no rate, no severity and no comparison against exchanges without the recycled phrasing.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c5
+  source: kl-001013
+  quote: "Topic modeling of open-ended responses revealed that users valued LLMs’ speed, empathy, provision of resources, and opportunities \nfor nonjudgmental venting. Participants disliked that LLMs give generic responses and lack memory."
+  locator: Results, User Perceptions of LLMs for Mental Health
+  licenses: Users volunteered generic responding as one of only two named dislikes of LLMs for mental health, establishing that the pattern registers as a defect to the people using these systems rather than being invisible to them.
+  fit: adjacent
+  bridge: A topic model over free-text answers about what users liked and disliked, in a general-adult survey. It establishes salience of the complaint; it rates no specific response, observes no transcript, and measures no harm beyond dislike.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c5
+  source: kl-000001
+  quote: |-
+    In addition, five items related to the
+    quality of the treatment were each endorsed by at least one-quarter of the participants, suggesting that this too might constitute a recurrent type of negative effect. Items related to the same
+    two factors also contributed with the highest self-rated negative impact, implying that perceiving the treatment or therapeutic relationship as deficient, or experiencing different types of
+    symptoms could be harmful for the patient.
+  locator: Discussion
+  licenses: Establishes in the human-treatment case that perceiving the treatment or the therapeutic relationship as deficient is both a common negative effect and one of the highest self-rated in impact — the warrant for treating the felt quality of an exchange as harm rather than preference.
+  fit: analogical
+  bridge: Self-reported perceptions of human psychological treatment, factor-analysed from the Negative Effects Questionnaire and rated 0-4 for negative impact. No AI is observed and no AI-caused outcome is measured; neither repetition nor a read of formulaic empathy is among the items.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c5
+  source: kl-000827
+  quote: In acute crisis specifically, generic reassurance and formulaic empathy are widely regarded as counterproductive, because they leave the person feeling unheard rather than supported and short-circuit the specific validation that stabilisation requires
+  locator: Section 4.6, Reactance-producing expressions, family rationale
+  licenses: 'States the clinical grounds on which formulaic empathy counts as a defect rather than a neutral style: in acute crisis it leaves the person feeling unheard and short-circuits the specific validation stabilisation requires.'
+  fit: analogical
+  bridge: The authors' clinical rationale drawn from crisis intervention and psychological first aid to justify a counter category, not an observation of any AI turn or of any person's experience. The felt-unheard consequence is imported from the human clinical literature it cites.
+  contributes: definition
+  contradicts: false
+- claim_id: c5
+  source: kl-000752
+  quote: |-
+    Personalised alignment also goes beyond the relevance and safety of recommendations, but includes
+    being mindful of a range of user sensitivities and preferences regarding how to be addressed,
+    spoken to, or treated. Beyond putting people in danger, Alberts et al. (2024a)’s taxonomy of interactional harms shows how seemingly benign or even helpful behaviours can be demeaning, or how
+    negative effects can be cumulative (e.g., an innocuous behaviour becoming rude if repeated), further
+    underscoring the importance of context-specific awareness.
+  locator: Section 5.2, Implications for AI safety
+  licenses: 'States the cumulative-harm principle this pathway rests on: a behavior innocuous in one turn becomes harmful by repetition, so harm can be a property of a sequence rather than of any turn within it.'
+  fit: analogical
+  bridge: The paper cites its own prior interactional-harms taxonomy for the principle and measures none of it; CURATe's benchmark concerns personalised alignment to stated user constraints, not acknowledgment phrasing. It licenses the shape of the claim, not the claim.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-001018
+  quote: |-
+    The dimension with the most frequent ‘Very Poor’
+    turns was Relational Continuity (2.2%), and Prosocial had the
+    least frequent ‘Very Poor’ turns (1.1%).
+  locator: Section V-A, per-turn ratings
+  licenses: Of seven empathy dimensions rated turn-by-turn by the people in the conversations, relational continuity — how the exchange holds together across turns — drew the most 'Very Poor' ratings, so the across-turn dimension is the weakest one as people themselves rate it.
+  fit: adjacent
+  bridge: SENSE-7 rates perceived empathy per turn on a continuity dimension. Continuity failure is broader than recurrence of near-identical acknowledgment phrasing, and the 2.2% figure is a rate of very-poor turns rather than of the recycled-phrasing pattern. It does not connect the rating to any counted repetition.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c1
+  source: kl-000877
+  quote: "several participants noted that the enhanced system tended to repeat a structure of asking a question followed by a longer explanation, suggesting that the mandatory follow-up question rule may have replaced structural rigidity with a new perceivable cadence."
+  locator: 'Results, Qualitative Validation: Participant Perspectives'
+  licenses: 'COUNTEREVIDENCE to the implicit assumption that this is a fixable defect of phrasing: a rule-based remediation that removed one recurring structure produced a different recurring structure that recipients also detected. Recurrence in the response architecture survived the fix, so the pattern is not specific to acknowledgment wording.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c6
+  source: kl-000790
+  quote: "Pattern 17: Mechanical Empathy Decay. Early responses show rich emotional attunement; later responses become formulaic (“I hear you,” “That must be hard”)"
+  locator: Section 5 Safety Pattern Library, Pattern 17
+  licenses: 'Bears on the boundary: the pattern is defined by comparing early turns against later turns of the same conversation, which is the ''readable only across turns'' half of the boundary. Ineligible for grounding because the neighbour it separates, kl-000089, is another catalog entry.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false

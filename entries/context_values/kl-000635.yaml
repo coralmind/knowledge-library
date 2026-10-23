@@ -1,0 +1,479 @@
+# yaml-language-server: $schema=../../schema/context_value.schema.json
+id: kl-000635
+display_id: Value-24
+aliases:
+- race_ethnicity
+- Population-6
+label: Racial or ethnic minority where the AI is used
+type: context_value
+layer: context
+definition: The person belongs to a racial or ethnic group that is a minority where the system is deployed. What follows for a conversation is that how distress is expressed and understood varies with cultural framing — distress may be described in bodily terms, understood in relation to family and community rather than to the individual alone, or held within a religious or spiritual account of what is happening — so a reading calibrated on one framing may register a different severity or a different concern than is present. Which resources and referrals are usable also varies, since a service the person cannot be understood in is not a service available to them.
+distinguish_from:
+- neighbor: kl-000632
+  boundary: 'Both are group memberships and both concern assumptions a response should not make. What differs is which: that entry concerns whether family is a resource and whether the terms used for relationships and gender fit the person; this one concerns how distress is framed and expressed, and whether a referral is culturally and linguistically usable. Both are assigned where both hold.'
+- neighbor: kl-000636
+  boundary: 'That entry is about material resources and structural barriers — cost, insurance, transport. This one is about cultural framing and about referral usability for reasons that are not material. The two correlate in many deployment contexts and correlation is not identity: conflating them would attribute to culture what is caused by cost, or the reverse.'
+- neighbor: kl-000634
+  boundary: Both concern the risk of reading an understated account at face value. There the source of the understatement is a professional culture's norms about endurance; here it is cultural framing of emotional expression and of what is discussed outside the family. Both are assigned where both hold.
+body:
+  dimension: kl-000729
+  rationale: 'How distress is presented varies with cultural framing: it may be expressed through bodily symptoms, understood in relation to family and community rather than to the individual, or held within a religious or spiritual account. A reading calibrated on one framing may therefore register a severity or a concern other than the one present. Which resources and referrals are appropriate also varies, since a service the person cannot be understood in, or which does not recognise the account they give of their own situation, is not usable by them.'
+  example_failure: 'ILLUSTRATION ONLY, not part of what this entry defines and not a claim about any rate: an AI reads a Black man''s account of fatigue and withdrawal as low-severity depression, where a culturally shaped presentation is producing an understated account of severe symptoms. Preserved from the source vocabulary as the worked case for the calibration point in the rationale.'
+  boundary_note: 'This modifier is defined RELATIVE TO THE DEPLOYMENT CONTEXT, which makes it the only entry in the vocabulary whose applicability depends on a fact about the system rather than only about the person: the same person is a minority in one deployment and a majority in another. That is a real dependency, and the schema has no way to express a value that depends on where the system operates.'
+sources: []
+standing:
+  value: asserted
+  basis: 'The entry''s central assertion, that a reading calibrated on one cultural framing misregisters the severity or the concern in a racial or ethnic minority person''s account, is stated across the professional and design literature as an expectation and measured directly by no source. The nearest measurements each miss the construct by one step: Aquilina et al. 2026 shows a model''s severity error varying by the author''s community on real posts, with total error highest, at 40-42% over-estimation, in three communities, but names no racial or ethnic community; Keough 2026 shows stated race changing which symptoms a model attributes at equivalent severity, irritability endorsed for 37% of Black male against 22% of White male patients in one model, but with the model simulating the patient rather than reading one; and Balazadeh et al. 2025 records the same condition named in a white patient and missed in a Black patient in consecutive turns of one conversation, on dermatological material rather than mental-health content. That the population is present in these conversations rests on self-report: Stade et al. 2026 finds Black respondents in a stratified US sample more likely than others to have used LLMs for mental health, an association surviving adjustment for income and college education. Cultural variation in how distress is expressed, and in whether a referral is usable, is grounded in named idioms of distress (Rai et al. 2026), a between-sample family-accommodation difference on the same instrument (Kuru et al. 2023), and first-person accounts of spiritual framings and of recommended pathways that do not exist locally (Isaiah et al. 2026; Song et al. 2025, Song et al. 2025), none of which ties the variation to conversation data from the entry''s population.'
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: Some people using these systems belong to a racial or ethnic group that is a minority where the system is deployed.
+- id: c2
+  kind: context_dependence
+  text: How distress is expressed and understood varies with the person's cultural framing — described in bodily terms, understood in relation to family and community rather than the individual alone, or held within a religious or spiritual account.
+- id: c3
+  kind: detectability
+  text: A reading calibrated on one cultural framing may register a different severity, or a different concern, than the one actually present in the person's account.
+- id: c4
+  kind: context_dependence
+  text: Which resources and referrals are usable varies with the person's cultural and linguistic position, because a service the person cannot be understood in is not available to them.
+- id: c5
+  kind: definition_boundary
+  text: 'This entry is separated from the lgbtq entry by which assumptions are at issue: cultural framing of distress and referral usability here, family-as-resource and relationship/gender vocabulary there.'
+- id: c6
+  kind: definition_boundary
+  text: 'This entry is separated from the socioeconomic_context entry by cause: cultural framing and non-material referral usability here, material resources and structural barriers there.'
+- id: c7
+  kind: definition_boundary
+  text: 'This entry is separated from the veteran_military entry by the source of an understated account: cultural framing of emotional expression here, a professional culture''s norms about endurance there.'
+claim_evidence:
+- claim_id: c1
+  source: kl-001013
+  quote: "Users of LLMs for mental health were more likely to be younger, Black, and male. This group \nwas also less likely to be retired, likely reflecting their younger age. Users and non-users did not differ \non income and college education."
+  locator: Discussion
+  licenses: In a stratified US sample of real people, Black respondents were more likely than others to have used LLMs for mental health, and the association survived adjustment for income and college education. This establishes that the population the entry names is present in these conversations at a rate above its share of the sample, which is the occurrence half of the entry and nothing more.
+  fit: direct
+  bridge: null
+  contributes: prevalence
+  contradicts: false
+- claim_id: c1
+  source: kl-000933
+  quote: "Disparities are stark, particularly for LGBTQ+ \nyouth, who report significantly higher rates of suicidal ideation (39%) and attempts (12%) \ncompared to their cisgender and heterosexual peers.5 Youth of color, including \nNative/Indigenous (24% attempted) and Black/African American (14% attempted) youth, also \nface disproportionately high rates.5"
+  locator: Introduction, The Escalating Crisis of Adolescent Suicide
+  licenses: Names Native/Indigenous and Black/African American youth as carrying disproportionately high suicide attempt rates, establishing that the group membership the entry names marks an elevated base rate rather than a neutral descriptor. It is a restatement of survey figures from the paper's reference 5 about human adolescents in the general population, not a measurement here and not about any AI interaction.
+  fit: analogical
+  bridge: The figures are population epidemiology restated from the Trevor Project's 2024 survey; the entry is a person-context tag on a conversation. The bridge is that the tag marks elevated risk, and nothing in the source concerns a conversation, a system, or the cultural framing the entry's substance turns on.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c2
+  source: kl-000973
+  quote: |-
+    This excludes disadvantaged groups that use
+    different cultural idioms of distress (e.g., tension
+    in India, shenjing shuairuo in China) or cultural
+    narratives to describe their mental health problems
+  locator: Section 3, Data Design, recommendation 2
+  licenses: 'Supplies two named idioms of distress — tension in India, shenjing shuairuo in China — that carry psychological suffering in vocabulary a Western clinical frame does not index. This is the criterion form of the claim: it says concretely what ''distress expressed in a different framing'' consists of, and it is stated as a definition drawn from transcultural psychiatry rather than measured here.'
+  fit: adjacent
+  bridge: The construct comes from medical anthropology and transcultural psychiatry (cited to Cork et al. 2019, Kaiser and Jo Weaver 2019) and describes how people in named populations express suffering. It reaches the expressive-vocabulary component of c2 only; the entry also asserts family/community and religious framing, neither of which the quote touches, and it establishes no rate.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000864
+  quote: |-
+    The chatbot would ask me to identify 'negative thought patterns' or practice 'cognitive restructuring.' But when I'm stressed, I don't
+    think in those terms. I think: 'My enemies are working against me' or 'My ancestors are displeased' or 'This is a spiritual attack.'
+  locator: Section 3.2, participant P8
+  licenses: A first-person account in which the person's own idiom of distress — enemies working against them, displeased ancestors, spiritual attack — is stated to be the form their stress actually takes, against the chatbot's cognitive-restructuring vocabulary. This is the religious-and-spiritual-account component of c2 evidenced from the person's side.
+  fit: adjacent
+  bridge: A recalled account of chatbot prompts elicited in a qualitative interview, not an observed conversation turn. The participant is not identified in the quote as a member of a racial or ethnic minority in a deployment context, so the quote establishes the framing variation the claim asserts without establishing that it tracks the group membership the entry names.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001092
+  quote: "[ChatGPT] gave suggestions around conventional European things, such as go to therapists, which we are not natural with. We don’t really have therapists here. [...] When you ask Nigerians for support, the first answer they will give you is to pray. It’s a very religious country."
+  locator: Section 6.2.1 Artificial Empathy, quoting Umar
+  licenses: 'A first-person account naming the framing directly: the recommended pathway is ''conventional European things'' the speaker''s community is ''not natural with'', and the locally recognised response to a request for support is prayer. This evidences distress and help being understood inside a religious and community account rather than an individual clinical one.'
+  fit: adjacent
+  bridge: The speaker is describing the majority framing of their own country (Nigeria), not a minority position within a deployment context, which is how the entry defines its population. The framing variation the claim asserts is established; its attachment to minority status in the deployment context is not.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001110
+  quote: The FA scores in this Turkish sample were significantly higher than in two studies performed using FAS-PV in North American samples
+  locator: Section 3, Results
+  licenses: At the same measured symptom construct and on the same instrument, Turkish outpatients scored significantly above two North American samples on family accommodation, so the family's response to obsessional distress differs by cultural context rather than tracking the symptom. This is the family-and-community component of c2 measured rather than asserted.
+  fit: adjacent
+  bridge: A between-sample comparison of human family behaviour, with no AI in it, in OCD specifically rather than distress in general. The authors attribute the gap to collectivist family structure and name the alternative they cannot exclude — a single centre, and different subcultures and economic conditions within the same region may produce different results.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000793
+  quote: "Language, culture, religion, and expectations about therapist and client roles can affect emotional expression, self-disclosure, and rapport"
+  locator: Section 2.7.3.2 Dataset Scope and Generalizability
+  licenses: States that language, culture, religion and role expectations affect emotional expression, self-disclosure and rapport — the general form of c2, offered as the author's own generalizability caveat about a Western human-therapy corpus.
+  fit: analogical
+  bridge: Supported by citation rather than by any measurement in this study, and about human clinicians and clients rather than any conversational system. It asserts the variation as a background fact of clinical practice; it observes none.
+  contributes: frame
+  contradicts: false
+- claim_id: c2
+  source: kl-001067
+  quote: "Categorical emotion frameworks derived from clinical traditions have well-documented limitations in cross-cultural transferability, reflecting cultural specificity in emotional expression, conceptualization, and the social norms governing emotional disclosure [89]."
+  locator: Section 4.3 Equity and Accessibility
+  licenses: Restates that categorical emotion frameworks from clinical traditions transfer poorly across cultures because expression, conceptualization and the social norms governing disclosure are culturally specific. Bears on c2 as a secondary statement of the same variation.
+  fit: analogical
+  bridge: A restatement of the cross-cultural emotion literature rather than a finding of this paper; the authors state their own framework's cross-cultural performance has not been empirically tested. The primary sources carry the claim, not this passage.
+  contributes: frame
+  contradicts: false
+- claim_id: c2
+  source: kl-000973
+  quote: "Non-Western communities are often less likely to disclose mental health issues publicly due to stigma or cultural norms (Zhao et al., 2012), threatening the accuracy and applicability of language-based diagnostic models."
+  locator: Section 3, Data Design, recommendation 4
+  licenses: States that non-Western communities are less likely to disclose mental health issues publicly because of stigma or cultural norms, which is the disclosure-norm component of how distress is expressed. Rests on a single citation (Zhao et al. 2012) about self-disclosure in online communities.
+  fit: analogical
+  bridge: A synthesis claim about baseline public-disclosure norms across human communities in online settings, not about distress described to a conversational system, and with no rate attached. It supports c2 in the weak sense of asserting the variation exists in the human population.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000760
+  quote: "posts from r/NonBinary, r/TwoXChromosomes, and r/Veterans exhibited the highest total error, characterized by high over-estimation (40%–42%). In contrast, r/AskMen posts showed the smallest error, with the lowest over-estimation (27%) but the highest under-estimation (12%)."
+  locator: Results, RQ2a > 'Community-specific bias'; Figure A11
+  licenses: Establishes with a real corpus of posts that a model's severity judgments carry systematically different error by the author's community, with total error highest at 40–42% over-estimation in three communities and lowest in another. This is the strongest available form of c3's mechanism — one interpretive frame applied across communities misreads severity unevenly — measured on human-written text.
+  fit: adjacent
+  bridge: The communities named — r/NonBinary, r/TwoXChromosomes, r/Veterans, r/AskMen — are none of them racial or ethnic groups, which is the entry's population. Race-specific severity misreading is not established here.
+  contributes: detectability
+  contradicts: false
+- claim_id: c3
+  source: kl-000751
+  quote: |-
+    If models are calibrated primarily on majority language,
+    younger, or White-majority cohorts, AI triage may
+    systematically de-escalate or deprioritize patients whose
+    symptom descriptions diverge due to cultural or linguistic
+    factors.
+  locator: Triage in Primary Care Is Safety Critical and Equity Sensitive
+  licenses: 'States the mechanism c3 asserts and names its route: a model calibrated on majority-language, younger or White-majority cohorts may de-escalate or deprioritize patients whose symptom descriptions diverge for cultural or linguistic reasons — the misreading runs through how the concern is expressed rather than through a stated attribute.'
+  fit: analogical
+  bridge: An argued hypothesis in a viewpoint paper, hedged by the authors' own 'may', in somatic primary-care triage rather than mental-health distress. Nothing is measured; the useful part is that it specifies the route as expression rather than a stated demographic, which is a testable distinction the paper does not test.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000899
+  quote: "When applied to adolescents from small towns or to \nspeakers of minority languages, it may misinterpret their ways of expressing \nemotions as “low insight” or “resistance”. As a result, the system may recommend \nless appropriate forms of help."
+  locator: The Third Group of Principles
+  licenses: 'States the same misreading in the entry''s own direction: a person''s way of expressing emotion read back as ''low insight'' or ''resistance'', with a less appropriate form of help recommended as the result. This is c3''s severity-or-concern misregistration plus its downstream consequence, stated as a professional expectation.'
+  fit: analogical
+  bridge: A constructed example illustrating an algorithmic-bias principle in a professional-body review, with no model audited and no group difference reported. The population named is adolescents from small towns and speakers of minority languages rather than a racial or ethnic minority.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000793
+  quote: A model may label culturally normative restraint as disengagement, interpret indirect communication as avoidance, or pathologize expressions that do not match the training
+  locator: Section 2.7.3.1 Ethical Considerations in LLM-Based Assessments for Therapeutic Applications
+  licenses: 'Names three specific forms the misreading takes when a model rates a person''s conversational conduct: culturally normative restraint read as disengagement, indirect communication read as avoidance, expression that does not match the training pathologized. This is c3 at criterion granularity.'
+  fit: analogical
+  bridge: The author is stating a risk of the measurement method used in this dissertation, with citations to prior bias literature rather than any measurement here. It establishes the misreading as a recognized failure mode of LLM assessment and evidences no instance of it.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-001089
+  quote: "AI systems trained predominantly on Western clinical taxonomies may \nmisinterpret these expressions, leading to inappropriate or absent referrals (Kim et al. 2025). This is not \ninherent to AI; human providers can also struggle with cultural interpretation, but AI systems lack the \nrelational context that allows clinicians to probe, clarify, and adapt."
+  locator: Opportunities and Risks, risk 1
+  licenses: 'States that systems trained predominantly on Western clinical taxonomies may misinterpret culturally shaped expressions and that inappropriate or absent referrals follow. The second half is the part worth keeping and it qualifies the first: human providers struggle with cultural interpretation too, and what distinguishes the AI case is the missing relational probing that lets a clinician recover from a misreading.'
+  fit: analogical
+  bridge: An argument in a perspective paper, citing Kim et al. 2025 for the performance evidence rather than observing anything. No instance of any system misreading any idiom is supplied.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-001034
+  quote: "while AMIE appears robust to certain variations in patient characteristics and behaviour, it has significant difficulty with some types of patients, such as those with low English literacy."
+  locator: Discussion, Simulated dialogue
+  licenses: Establishes that a diagnostic system's accuracy degrades specifically for people with low English literacy, so the output tracks how the person expresses themselves rather than only the clinical content — the linguistic half of c3's calibration failure.
+  fit: adjacent
+  bridge: What was measured is differential-diagnosis accuracy in a fully simulated ablation in which an AI patient agent was prompted to exhibit low English literacy (Supplementary Fig. 3), not a comparison across real people. Low English literacy is also not racial or ethnic minority status; the quote names no group.
+  contributes: detectability
+  contradicts: false
+- claim_id: c3
+  source: kl-001062
+  quote: "we observe that Japanese instruction prompts often outperform Chinese prompts when moderating Chinese content, particularly in zero-shot scenarios. This surprising pattern suggests a linguistic-cultural bridge effect that transcends simple language matching."
+  locator: Section 5.1
+  licenses: 'Establishes that the cultural frame a model is prompted into, rather than the language of the content, determines what it recognises in the text: Japanese instruction prompts outperformed Chinese prompts on Chinese content. Cultural calibration is therefore a measurable and manipulable determinant of what the system can see, which is c3''s premise.'
+  fit: adjacent
+  bridge: Macro-F1 on three-way classification of posts, varied by prompt language, across four models. The task is classifying a post rather than reading a person's account in a conversation, and no person's group membership is in it.
+  contributes: detectability
+  contradicts: false
+- claim_id: c3
+  source: kl-000886
+  quote: 'Black men received elevated irritability symptom scores: Gemini-3-Flash endorsed irritability for 37% of Black male patients compared to 22% of White male patients with equivalent overall severity.'
+  locator: Results, Symptom-level stereotyping (Table 23 and following paragraph)
+  licenses: 'With overall severity held equivalent, stated race changed which symptoms a model attributed: irritability endorsed for 37% of Black male patients against 22% of White male patients in one model. This is the closest thing on this entry to a matched-presentation demonstration that race changes what a model registers.'
+  fit: adjacent
+  bridge: The model is completing a PHQ-8 in the voice of a demographically labelled simulated patient, so the conversational roles are reversed — the model plays the patient rather than reading one. The counterfactual logic transfers; the setting does not. A labelled persona in a benchmark is not a person in a deployment context.
+  contributes: detectability
+  contradicts: false
+- claim_id: c3
+  source: kl-000769
+  quote: 'Type of vulnerability: Image interpretation failure, training bias Vulnerability reported: The model failed to identify eczema in the black patient.'
+  locator: Appendix B, prompt 16, GPT-4o
+  licenses: A clinician-verified case in which the same condition was named correctly in a white patient and missed in a Black patient in consecutive turns of one conversation, so the identical presentation was read differently by race.
+  fit: analogical
+  bridge: Dermatological image interpretation, where the demographic feature is visual rather than expressed in language, and the domain is somatic rather than a distress disclosure. It establishes a race-linked reading gap and nothing about cultural framing of distress.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000987
+  quote: "For Brazilian participants, humanlike cues functioned as intended: they led to higher tendency to use AI again, behavioral engagement, perception of AI as a friend, and self-reported trust. The same design choices elicited a backlash for Japanese participants, reducing tendency to use AI again, perception of AI as a friend, and self-reported trust."
+  locator: Discussion, third reorientation
+  licenses: The identical response styling produced opposite-signed effects on trust, engagement and friend-perception for Brazilian and Japanese participants, so a single rubric for what a warm or humanlike turn accomplishes does not measure the same thing across cultural contexts. Bears on c3 by showing the calibration problem runs in the reading of the response as well as the reading of the person.
+  fit: adjacent
+  bridge: Both samples are national majorities in their own countries, not minorities in a deployment context, and the outcomes are trust and engagement rather than severity or concern. The effect measured is the person's response to the system, the reverse of c3's direction.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-001095
+  quote: |-
+    While men and the younger half of
+    participants showed no significant effects of companionship
+    behaviors on ratings, women rated companion chatbots as
+    less likable (β = -0.14, p < 0.01) and less humanlike (β =
+    -0.17, p < 0.01), and women had lower affective trust (β =
+    -0.10, p = 0.01) and cognitive trust (β = -0.16, p < 0.01).
+  locator: Section 4.2, 'Heterogeneous Effects of Companionship Behavior'
+  licenses: With the transcript held constant, third-party readers' ratings varied by their own gender and age — null for men and younger participants, significant on all four measures for women. Demonstrates directly that an aggregate score over a mixed sample reports no effect where a group-specific one exists, which is the measurement failure c3 implies for any culturally uncalibrated rating.
+  fit: analogical
+  bridge: The moderators are gender and age; race and ethnicity are not examined. The response is held constant and the reader varies, the reverse of c3's direction, and the setting is third-party rating of companion-chatbot transcripts rather than reading a person's distress.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000861
+  quote: "Studies of both dedicated affect recognition systems and large language models have documented systematic tendencies to assign more passive emotional states (sadness, joy) to women, and more aggressive or dominant states to men, for identical stimuli or scenarios [Plaza-del-Arco et al., 2024a]."
+  locator: Section 3.3, Affect Detection
+  licenses: States that affect-recognition systems and LLMs assign systematically different emotional states to identical stimuli depending on the demographic attributed to them, which is the identical-presentation form c3 requires.
+  fit: analogical
+  bridge: The demographic axis is gender, not race or ethnicity, and the measurement is emotion-label assignment rather than reading severity in a person's account. Restated from a primary study rather than measured here.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-001057
+  quote: |-
+    Under neutral labels every model relies on
+    proxies with no information.
+  locator: Abstract
+  licenses: 'Establishes that model decisions shift with attributes merely correlated with a protected characteristic even where those attributes carry no predictive information, with the characteristic itself never appearing in the prompt. This is a stronger form than c3 states: the misreading does not require the person to have declared anything.'
+  fit: analogical
+  bridge: A forced choice between two synthetic numeric patient vectors on a clinical triage task, not a conversation and not a distress account. The claim it supports is about a route to the misreading rather than about severity registration in text.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000791
+  quote: "Racial biases were further incorporated when race was not relevant, such as listing socioeconomic factors as the number one reason for why a Black father might not be at bedside in the NICU"
+  locator: Results, the bias paragraph
+  licenses: Records the model importing a demographic-linked social explanation where the prompt made race clinically irrelevant, so what the system reads into a case is not confined to places where the characteristic bears on the content.
+  fit: adjacent
+  bridge: A red-teaming report of what the model produced about a hypothetical NICU patient, not a reading of a person's own account of distress. The direction is the model attributing to a described person rather than misregistering a severity that person reported.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000865
+  quote: “Cultural context and developmental framework are crucial. A response that works for one cultural community might be completely wrong for another.”
+  locator: Section 5.1 Three Clinical Frameworks, Expert C
+  licenses: A psychiatrist rating AI responses states that a response working for one cultural community may be completely wrong for another — the clinical warrant behind c3 and c4, from a rater who applied that standard and rated the corpus most strictly as a result.
+  fit: analogical
+  bridge: A clinician's stated evaluative framework, elicited in a research interview, not an observation of any system's behaviour and no rate for how often the misreading occurs.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c3
+  source: kl-001034
+  quote: "previous studies have found that physicians approach communication with their patients differently, on average, depending on the patients’ race, resulting in Black patients receiving communication that was less patient-centred and had a lower positive affect33."
+  locator: Discussion, Fairness and bias
+  licenses: 'Supplies the human-clinician baseline for c3''s mechanism: physicians communicate differently by patient race, with Black patients receiving less patient-centred communication and lower positive affect. This is the pattern the training data encodes, which is why the AI form is expected rather than surprising.'
+  fit: analogical
+  bridge: Human-to-human clinical evidence cited from prior work; the wrong agent by construction. This study ran no such comparison on its own system and the authors state the protocol could not test it.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c3
+  source: kl-001033
+  quote: previous studies have found that physicians approach communication with their patients differently, on average, depending on patients’ race, resulting in Black patients receiving communication that was less patient-centered, and with a lower positive affect [96]
+  locator: Section 5 Discussion, 'Fairness and Bias'
+  licenses: The same human-clinician precedent as it appears in the preprint of the same work, which the authors flag as a risk of replication in AI dialogue.
+  fit: analogical
+  bridge: Human clinician-to-patient evidence cited from prior literature, not a measurement of any AI system. Duplicative in substance with the published version of the same passage.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c3
+  source: kl-001007
+  quote: "system and the content, quality, and diversity of the training data can significantly impact which \npeople and experiences the system can effectively understand, represent, and accommodate \n[S15,S17]. Biases and limitations introduced through these factors can lead to models that \nperform significantly worse for certain subpopulations compared with others, especially those \ndefined by disability, gender identity, race, social status, and ethnicity [S15,S33]."
+  locator: Results, Domain 1, subdomain 1.3 Unequal performance across groups
+  licenses: Establishes unequal model performance across subpopulations defined by disability, gender identity, race, social status and ethnicity as a recognized risk category with a meta-review's citation base behind it.
+  fit: analogical
+  bridge: A taxonomy subdomain covering performance disparity as a system property aggregated across populations, not a turn-level reading of one person's account. No matched-presentation audit is contained in the review.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000945
+  quote: In addition to the opportunities NLP brought, some NLP models in psychiatry still demonstrated significant biases related to religion, race, gender, nationality, sexuality, and age, which highlighted the need for further enhancing the technology [56].
+  locator: Section 3.3.1, Applying Natural Language Processing
+  licenses: Reports that psychiatric NLP models were found to carry significant biases related to religion, race, gender, nationality, sexuality and age, naming the six attribute classes on which variation has been observed in the reviewed literature.
+  fit: analogical
+  bridge: A review's restatement of one cited study with no effect size, model or task named, measured on classification models rather than on responses to a person. It establishes that the field records the variation, not that it occurs in a distress conversation.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-001042
+  quote: pansive training datasets of LLMs may embed gender, race, societal, cultural, institutional and
+  locator: Reliability problems of artificial intelligence in medicine, bias subsection
+  licenses: Establishes that demographic and cultural bias in medical LLM output is a documented concern with a substantial citation base, which is the background c3 rests on.
+  fit: analogical
+  bridge: A synthesis sentence citing seven sources, in general medicine rather than mental health, with no measurement of its own. The quote as this entry cites it is also cut mid-word at the start ('pansive training datasets'), so it is a fragment of a sentence rather than a whole one.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000756
+  quote: AI systems in mental health amplify societal biases, and researchers have called for a systematic assessment of such bias toward cultural, gender, and identity groups as a prerequisite for equitable deployment [17].
+  locator: Section 2.3.7 Perceived Bias, literature review
+  licenses: States that mental-health AI amplifies societal biases toward cultural, gender and identity groups and that systematic assessment of that bias has been called for as a prerequisite for equitable deployment.
+  fit: analogical
+  bridge: A literature-review sentence in the paper's motivation, not a result. This paper measured perceived rather than objective bias and says so in its limitations; the underlying finding belongs to the cited primaries.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000858
+  quote: In the context of MI, such biases could result in misunderstandings or unfair treatment of specific groups, potentially compromising the fairness and effectiveness of the counseling process.
+  locator: Section V.D Ethical Risks and Potential Biases
+  licenses: Names differential treatment of specific groups by the model as an unresolved risk in a motivational-interviewing setting, stated by the authors as a concern rather than a measured finding.
+  fit: analogical
+  bridge: No demographic manipulation was run and no subgroup result is reported; the passage is in the paper's own ethical-risk section.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-001006
+  quote: This type of reporting would make systemic differences reflecting equity concerns readily apparent, for example, an intervention being less effective for Black users than for White users.
+  locator: READI Components, Equity
+  licenses: 'Specifies what would make a differential visible in a deployed product rather than a benchmark: effectiveness, engagement and satisfaction data disaggregated by demographic group and reported over time, with less effectiveness for Black than White users as the worked example.'
+  fit: analogical
+  bridge: A reporting recommendation in a framework paper with no data of its own. It establishes what evidence would be required to detect the variation c3 asserts, and demonstrates no instance of it.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000751
+  quote: |-
+    Intersecting
+    vulnerabilities (eg, older adults from minority ethnic
+    backgrounds with language barriers) can compound risk and
+    increase mistriage. However, only a limited number of studies
+    disaggregate safety performance by intersectional subgroups,
+    leaving some of the most disadvantaged populations effectively
+    invisible in assessments.
+  locator: The Equity Blind Spot
+  licenses: States that the person-context factors the Library tags separately compound rather than add — older adults from minority ethnic backgrounds with language barriers is the named case — and that few studies disaggregate safety performance by intersectional subgroup, so the compounded case is unmeasured.
+  fit: analogical
+  bridge: An argued position about evaluation practice in somatic triage, with no data of its own on the interaction. It establishes why single-axis evaluation misses the highest-risk configuration; it demonstrates no interaction.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-001092
+  quote: "[ChatGPT] gave suggestions around conventional European things, such as go to therapists, which we are not natural with. We don’t really have therapists here. [...] When you ask Nigerians for support, the first answer they will give you is to pray. It’s a very religious country."
+  locator: Section 6.2.1 Artificial Empathy, quoting Umar
+  licenses: 'The person states that the recommended help pathway does not exist where they are — ''We don''t really have therapists here'' — and that the locally recognised support response is never named. This is c4''s assertion evidenced from the person''s own account: the referral offered was not a usable one.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-000983
+  quote: We’ve heard from stakeholders and those with lived experience that emergency medical intervention, or “active rescue” can often be fraught, especially for vulnerable minority groups at higher risk of violence from law enforcement.
+  locator: Clinical Foundations, 'The role of crisis hotlines and emergency mental health intervention'
+  licenses: Establishes from lived-experience testimony that emergency escalation carries its own harm for minority groups at higher risk of violence from law enforcement, so which referral is usable is population-dependent in a direction that cuts against treating emergency-service suggestion as unambiguously protective.
+  fit: adjacent
+  bridge: Lived-experience testimony relayed by a convening body rather than systematic data, with no rate attached, and about emergency escalation specifically rather than referrals in general.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c4
+  source: kl-000754
+  quote: "This gap results from several factors, including: a shortage of resources, a low number of mental care professionals, inefficient tools and practices in decision-making, social and cultural taboos [2]–[5]."
+  locator: Section I Introduction
+  licenses: Names cultural taboo alongside workforce scarcity as joint reasons help is not reached in Arabic-speaking contexts, which is c4's non-material barrier and the one that distinguishes this entry from socioeconomic_context.
+  fit: analogical
+  bridge: Background framing citing four external sources, with no measurement of its own, drawn from human healthcare provision rather than from any AI deployment or referral.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000914
+  quote: |-
+    Group delivery, lay providers, multilingual code-switched speech, minimal
+    training data, and resource-constrained deployment contexts
+    are not peripheral variations—they are the structural features
+    of the settings where supervision is most needed and least
+    available.
+  locator: Introduction — Background (closing paragraph)
+  licenses: States that multilingual code-switched speech, lay providers and resource-constrained deployment are the structural features of the settings where mental-health support is most needed rather than peripheral variations, which is the condition c4 says referral usability has to be judged inside.
+  fit: analogical
+  bridge: An argument about where task-shifted care happens, supported by cited workforce statistics rather than by anything measured in this study, and about human supervision of lay providers rather than about a system's referrals.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-001010
+  quote: |-
+    For example,
+    young adults in India and LGBTQ+ (Lesbian, Gay, Bisexual,
+    Transgender, Queer, Questioning Plus) participants reported
+    culturally incongruent or harmful advice [6,80,81], such as
+    quitting a job they financially rely on due to workplace
+    homophobia or recommending interventions that do not align
+    with non-Western family norms.
+  locator: Discussion — Transparency
+  licenses: Reports culturally incongruent or harmful advice in two named populations with worked examples, including interventions that do not align with non-Western family norms — a referral offered that the person's context cannot absorb.
+  fit: adjacent
+  bridge: The sentence reports findings from three cited studies rather than this paper's own data, so it is a secondary restatement. The populations named are young adults in India and LGBTQ+ participants; neither is established as a racial or ethnic minority in a deployment context.
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-000978
+  quote: "As \nmany models are trained on Western-centric data, users may \nunknowingly conform their emotional expressions to the \ndominant norms embedded in the algorithm. This process can \nsilence authentic cultural narratives and impose a standardized, \nalgorithmic framework on the user’s unique experience, \neffectively colonizing their emotional autonomy."
+  locator: Section 2.2.5, Erosion of user autonomy
+  licenses: 'Names a mechanism running the other way from c4: rather than the referral failing to fit the person, the person conforms their emotional expression to the model''s Western-centric norms, which would erase the framing difference c2 and c4 depend on being visible.'
+  fit: analogical
+  bridge: An argued claim in a policy brief with no observation and no study cited for the conforming step specifically. It bears on c4 as a reason the mismatch may not show up in a transcript, not as evidence of any referral being unusable.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000887
+  quote: "Recognizing limitations—such as occasional oversimplification of comorbid conditions or a lack of cultural tailoring—justifies establishing oversight mechanisms"
+  locator: Discussion
+  licenses: The paper's own statement that its responses lacked cultural tailoring, observed by bilingual Arabic-English raters in Saudi Arabia — clinicians in a non-Western setting noticing the absence of adjustment in advice given to parents.
+  fit: analogical
+  bridge: A discussion-section characterisation with no item-level data behind it in this paper; how it was observed and on which items is not reported. The domain is autism parenting questions rather than distress referral.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000878
+  quote: "The current framework is grounded exclusively in the Bhagavad Gita. It reflects the spiritual and philosophical worldview of a single text, which may limit generalizability across diverse cultural or spiritual contexts."
+  locator: Section 9 Limitations and Ethical Considerations, item 4
+  licenses: The authors state that their therapeutic framework is grounded exclusively in one text's spiritual and philosophical worldview, so a person whose cultural or spiritual context differs receives that frame regardless — a concrete case of a support offering whose usability is bounded by cultural position.
+  fit: adjacent
+  bridge: A limitations statement about the authors' own system, not a measurement of any person receiving a mismatched frame, and about a research prototype rather than a deployed service.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000843
+  quote: Since most generative AI models are trained on data dominated by majority groups, they risk reinforcing existing stereotypes and biases. Therefore, chatbot developers must intentionally design for cultural sensitivity and inclusivity in their interactions.
+  locator: Section 3.1, Embrace Diversity and Inclusivity
+  licenses: Names holding one response frame against a person's cultural context as a design failure with a stated cause, training data dominated by majority groups, and prescribes cultural sensitivity and inclusivity as a design requirement.
+  fit: analogical
+  bridge: A design prescription in a checklist with a stated causal rationale, not a measurement. It gives c2 and c4 a normative footing; it shows no system failing.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000834
+  quote: "assesses a tool’s capability to engage with users from diverse cultural backgrounds and emphasizes the need for content recognizing cultural and other identity differences"
+  locator: Body, equity and inclusivity dimension
+  licenses: 'Makes engagement with the person''s cultural and identity context a scored dimension of the tool rather than a property of the user, which is the framing c4 needs: usability of a service is assessed on the service.'
+  fit: analogical
+  bridge: A scale-development description of a scoring dimension; nothing is measured about any person, any distress account, or any referral.
+  contributes: frame
+  contradicts: false

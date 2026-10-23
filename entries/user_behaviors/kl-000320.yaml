@@ -1,0 +1,369 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000320
+display_id: Symptom-1
+aliases:
+- rumination
+- C-RUMINATION
+label: The person returns to one distressing topic three or more times, adding nothing new
+type: user_behavior
+layer: observation
+definition: 'The person''s turns return to one distress theme three or more times across the conversation, each return restating or re-examining the same situation, appraisal or question rather than advancing it — no new information about the situation is introduced, no decision is reached or attempted, and no step is named. The returns may be separated by other material. What is pointable is the set of turns treating the theme and the absence, across all of them, of an advance: a restatement of the same problem in different words counts as a return, and a turn that names a step, a decision, or a new fact about the situation ends the run.'
+distinguish_from:
+- neighbor: kl-000105
+  boundary: 'kl-000105 is a mechanism — the claim that supplying certainty on request strengthens the demand for it — and deciding whether it is running requires a comparison object (that entry names counterfactual_calibrated_response and earlier_turn_position). This entry is settled by counting the person''s returns to a theme in the transcript and nothing else. Both can be true of one conversation and neither implies the other: a person can return to a theme four times with the AI never supplying certainty, and a reassurance cycle can run inside a single exchange with no repetition at all.'
+- neighbor: kl-000323
+  boundary: That entry requires a stated expectation about a future outcome at the severe end of the available range; this entry requires repetition with no advance and is indifferent to what the person expects. A person can return to the same theme four times while predicting a moderate outcome each time, and can predict catastrophe once and move on.
+- neighbor: kl-000321
+  boundary: That entry requires a request to the AI addressed to a doubt, and a repeat of that request after an answer was given. This entry requires no request at all and no AI turn in between — the returns can be consecutive person turns in a monologue.
+- neighbor: kl-000015
+  boundary: kl-000015 is an impact, a judgment about the person's maintaining loop being reinforced or prolonged. This entry records a readable feature of the person's turns and asserts nothing about whether anything was reinforced or whether the state got worse.
+body:
+  detectable_from: person_turns
+  observable_criteria: Three features, all quotable. (a) Three or more of the person's turns treat one identified distress theme — the same situation, relationship, decision, symptom or question — where sameness is established by the turns referring to the same object, not by shared vocabulary. (b) Across those turns, no turn introduces a fact about the situation that was not already stated, names a step the person will take or has taken, or states a decision or an attempt at one. (c) The theme is treated as unresolved in the later turns, by restating the question, re-examining the same considerations, or asking the same thing again. The pointable span is the set of turns satisfying (a).
+  exclusions: 'Not counted: repetition because an AI turn did not address the theme, where the person restates to be answered — the repetition there is a feature of the exchange, not of the person''s dwelling, and it fails (c) if the restatement is a re-ask of an unanswered question. Not counted: a person returning to a theme with new information each time (fails (b)), which is ordinary sustained problem-solving. Not counted: a person naming a step and then returning to express feeling about it (fails (b) at the naming turn), which ends the run rather than extending it. Not counted: two returns, which is below the floor at (a). Not counted: an AI turn returning the conversation to a theme the person had left.'
+  detection_window: multi_turn
+  person_state_kind: process
+sources: []
+standing:
+  value: theorized
+  basis: 'The pattern''s occurrence is observed in real deployed traffic: Sharma et al. 2026 audited real conversation data, where a rater assigned a compulsive reassurance-seeking loop label to users cycling through repetitive variations of the same questions despite receiving consistent answers, across 10 to 200 exchanges — a user-level cluster label in a summary table, not the entry''s turn-level observable, and coded by criteria other than the entry''s. First-person accounts point the same way: a person with OCD describes repeatedly asking an AI for reassurance on one theme and names the difficulty of stopping (Barkhuff 2026), and a participant in Vecchione et al. 2026 names dissecting the same situation repeatedly with a chatbot as a pattern they recognised as counterproductive. The counterevidence lands on the entry''s two design decisions rather than on the pattern''s existence. Against establishing thematic sameness by object identity, Golden and Aboujaoude 2026 describes the generalized-anxiety form as one whose object varies across domains while the function holds, and O''Connor 2019 shows the highest-rumination presentations are also the ones pushing the object away fastest, so an object-tracking coder under-counts exactly the cases that matter most; against the three-return floor, Srivastava et al. 2025 finds the relational state in annotated human counselling holding steady for eight to nine consecutive utterances and Yao et al. 2022 finds topics normally persisting across many turns in clinical consultation, both placing three returns inside the ordinary range. Pointability of the no-advance condition is heavily qualified: the coded stretch of 37 consecutive turns in which nothing moved (Dutta and Kandala 2026) was identifiable only to a trained rater reading the whole sequence, with both automated methods missing it, and no annotation run against this entry''s criteria exists anywhere in the cited material.'
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-22'
+claims:
+- id: c1
+  kind: existence
+  text: A person's turns in a conversation return to one distress theme three or more times.
+- id: c2
+  kind: existence
+  text: Across such a set of returns, no turn introduces a fact about the situation not already stated, names a step the person will take or has taken, or states a decision or an attempt at one.
+- id: c3
+  kind: detectability
+  text: The sameness of the theme across the returning turns is establishable from the transcript by the turns referring to the same object, rather than by shared vocabulary.
+- id: c4
+  kind: detectability
+  text: The set of turns satisfying the return condition, and the absence of an advance across them, are both pointable in the transcript.
+- id: c5
+  kind: detection_window
+  text: The behavior is readable within a multi_turn window and not from a single turn.
+- id: c6
+  kind: context_dependence
+  text: 'Three returns is the right floor: two returns do not constitute the pattern and three or more do.'
+- id: c7
+  kind: definition_boundary
+  text: This is separated from kl-000105 by being settled by counting the person's returns alone, with no comparison object required.
+- id: c8
+  kind: definition_boundary
+  text: This is separated from kl-000323 by being indifferent to what outcome the person expects.
+- id: c9
+  kind: definition_boundary
+  text: This is separated from kl-000321 by requiring no request to the AI and no AI turn between the returns.
+- id: c10
+  kind: definition_boundary
+  text: This is separated from kl-000015 by recording a readable feature of the person's turns and asserting nothing about whether any state was reinforced or worsened.
+claim_evidence:
+- claim_id: c1
+  source: kl-000996
+  quote: |-
+    Moderate Users engaged in compulsive reassurance-seeking patterns across 10–200+ exchanges, cycling through repetitive
+    variations of the same questions despite receiving consistent answers, with explicit patterns like “are you sure?”,
+    “just one more question”, and continuing to ask after promising to stop. The AI frequently named these patterns as
+    “reassurance-seeking” or OCD-like behaviors, and users often acknowledged the compulsive nature (“I can’t help it”, “I
+  locator: Appendix A, Table 7 Additional reliance and dependency clusters, Compulsive Reassurance-Seeking Loops (Moderate)
+  licenses: 'The single strongest citation on c1: an audit of real deployed conversation traffic found users cycling through repetitive variations of the same questions across 10 to 200 or more exchanges, with illustrative markers from the paper''s cluster summary (''are you sure?'', ''just one more question''), which the paper states are not verbatim. This is people''s turns returning to one theme far above the entry''s three-return floor, identified in real logs rather than simulation or self-report.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000772
+  quote: "“When I’m in an OCD spiral, I sometimes get pulled into a new obsession by the AI [that appears automatically on search]. Then I ask for reassurance on that new topic, then my OCD gets even worse. It’s so hard to stop.”"
+  locator: Section 5.2 AI-Based Compulsions
+  licenses: A person with OCD describes repeatedly asking an AI for reassurance on a theme, in their own words, and names the difficulty stopping. For c1 this is a first-person account that the returning pattern occurs with AI systems.
+  fit: adjacent
+  bridge: A retrospective self-report about spirals across occasions rather than a transcript. c1 asserts a countable set of turns within a conversation; no turns are pointable from this account and the person describes the pattern in general terms.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001037
+  quote: "One described how the chatbot enabled a pattern she already knew was counterproductive: “I feel like more enabling...that overthinking and just dissecting every little situation and conversation and experience that I go through when I probably could have just moved on a lot faster” (P10)."
+  locator: Consequences of a Care Gap, Attachment and Dependency
+  licenses: A person names dissecting the same situation repeatedly with the chatbot as a pattern they recognised as counterproductive, contrasting it with having moved on. For c1 this is a second first-person report that the returning-without-advancing pattern occurs, and P10's own framing ('could have just moved on') is close to the entry's no-advance condition.
+  fit: adjacent
+  bridge: An interview account of a general pattern across use, not a transcript. c1 asserts a countable set of turns; no turn set is pointable and no single conversation was examined. The study also screened out anyone in acute distress.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001028
+  quote: |-
+    AI reassurance for OCD intrusive thoughts (Topic
+    11) rose from 2.6% to 7.1%, and turning to AI amid suicidal ideation and isolation (Topic 16)
+    rose from 3.5% to 7.0%
+  locator: Results, RQ1a
+  licenses: Establishes that repeated reassurance-seeking about intrusive thoughts is a recognisable and growing category of AI use, nearly tripling as a share of AI-related discussion in ten mental-health communities. For c1 this is the closest this entry's citations come to a prevalence signal, and it is a trend in how often people describe the behavior rather than how often it occurs.
+  fit: analogical
+  bridge: What was measured is the topic prevalence of Reddit posts about AI, by structural topic modelling. The unit is a public post about AI use, not a turn in an exchange. c1 asserts a per-conversation turn pattern; this supplies no per-conversation rate and carries nothing about repetition within one conversation.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c1
+  source: kl-001109
+  quote: Individuals with generalized anxiety disorder (GAD) may repeatedly consult a chatbot to obtain reassurance about feared outcomes across different domains, including health, finances, work dynamics, and politics.
+  locator: 'Section: General-purpose chatbots and symptom interaction'
+  licenses: 'States that repeated consultation of a chatbot on a returning worry is expected in generalized anxiety, and that the content varies across domains while the function stays constant. For c1 this is the proposition asserted in a transdiagnostic model, and its domain-variance point bears on c3: the theme''s identity is functional rather than lexical.'
+  fit: adjacent
+  bridge: A model paper stating what individuals 'may' do, with no data collected. c1 asserts the returns occur; this asserts they are predicted by the model.
+  contributes: frame
+  contradicts: false
+- claim_id: c1
+  source: kl-001109
+  quote: In social anxiety disorder, users may engage with a chatbot to review and seek validation about past conversations or compulsively rehearse upcoming interactions.
+  locator: 'Section: General-purpose chatbots and symptom interaction'
+  licenses: Names post-event processing and anticipatory rehearsal as further forms the returning theme takes, which widens c1's scope beyond obsessional doubt to review of past and rehearsal of future interactions.
+  fit: adjacent
+  bridge: Stated as an expectation of the model rather than observed. c1 asserts occurrence; this asserts predicted occurrence in a second presentation.
+  contributes: frame
+  contradicts: false
+- claim_id: c1
+  source: kl-001101
+  quote: "Wilcoxon signed-rank tests revealed that mental health-related conversations were more engaging than nonmental health ones in both Cleverbot and Simsimi, lasting more minutes, involving more turns, and spending more words (See Tables 1–4)."
+  locator: Study 1, Results, Engagement of mental-health conversations
+  licenses: 'Establishes that conversations carrying mental-health content run to greater turn depth than other conversations in the same apps, so the exchanges where c1''s pattern could occur are the longest ones. This is a precondition for the claim rather than support for it: length is not repetition, and no theme recurrence was measured.'
+  fit: analogical
+  bridge: Turn counts and durations from an audit of two companion apps. c1 asserts a theme-return structure; nothing about theme recurrence or absence of advance was measured, so the source establishes only that the turn budget for such a pattern exists.
+  contributes: frame
+  contradicts: false
+- claim_id: c1
+  source: kl-000749
+  quote: |-
+    AI conversations can be reinforcing because what typically happens in the cycle is that you have this
+    thought, then your anxiety spikes, and then you are looking for some kind of reassurance. Reassurance
+    seeking is a very common compulsion.
+  locator: Section 4.2.3, quoting P7 (OCD Advocate)
+  licenses: An OCD specialist states the reassurance cycle as they observe it in practice and predicts that AI conversation feeds it. For c1 this supplies the clinical account of why the returns happen and names the cycle as a common compulsion.
+  fit: analogical
+  bridge: Testimony from an expert about what they observe in an in-person OCD support group, plus their professional judgment about AI. Section 4.2.3 states explicitly that no transcripts were collected. c1 asserts a turn pattern in AI conversation; nothing here observes one.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c1
+  source: kl-000531
+  quote: "MB24.E\t\t\"- - - Mental rumination\"\tcategory\t2\tFalse\t21\t\"=hyperlink(\"\"https://icd.who.int/browse/latestrelease/mms/en#1248345308\"\",\"\"browser\"\")\"\tTrue\tTrue\tBlockL1-MB2\t\t\t\t\nhttp://id.who.int/icd/entity/496629459\thttp://id.who.int/icd/release/11/mms/496629459\tMB24.F\t\t\"- - - Restlessness\"\tcategory\t2\tFalse\t21"
+  locator: Chapter 21, MB24 Symptoms or signs involving mood or affect
+  licenses: 'Mental rumination is a separately coded sign in the WHO classification, so repeated return to a distress theme is a recognised clinical observable rather than a distinction this catalog invented. That is all it establishes: the row supplies a term and a code and no criterion, so it cannot bear on c3 or c4.'
+  fit: analogical
+  bridge: A row from a machine-readable tabulation of the ICD-11 linearization, with no definitional text. c1 asserts a countable transcript pattern; a code listing names the construct and supplies nothing about turn counts, thematic identity or absence of advance.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000828
+  quote: Bad moods, in turn, signal incipient danger and recruit vigilant, systematic, and even ruminative processing strategies (Schwarz, 1990) that are also implicated in depressive cognition
+  locator: Affect and Processing Choices, 'Functional effects.'
+  licenses: Negative mood itself recruits the ruminative processing style that underlies depressive cognition. For c1 this establishes the returning pattern as a predictable consequence of the person's current state rather than a stable trait or a conversational habit, which is why it would be expected to appear in distress conversations specifically.
+  fit: analogical
+  bridge: A general cognitive process described in laboratory judgment tasks with no AI and no help-seeking conversation. c1 asserts the returns occur in a conversation; this establishes the process account and observes no conversation.
+  contributes: frame
+  contradicts: false
+- claim_id: c1
+  source: kl-001065
+  quote: |-
+    Unlike other commonly seen
+    dialogues where the topic rarely extends over one
+    turn, diagnosis topics consistently occur across
+    turns.
+  locator: Section 3.3 Topic Analysis, Topic Transition
+  licenses: 'In a clinical mental-health consultation, topics normally persist across many turns. This cuts against c1 as written: sustained multi-turn presence on one theme is the baseline behavior of a diagnostic conversation, so counting returns to a theme does not by itself separate the pattern the entry names from an ordinary mental-health exchange. The discriminating work has to be done by c2''s no-advance condition alone.'
+  fit: analogical
+  bridge: Topic annotation across turns in human-human simulated diagnostic dialogue, visualized every three turns. It establishes the base rate of topic persistence in a clinical setting, not in AI conversation, so it constrains the interpretation of c1 rather than refuting it.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-000817
+  quote: |-
+    The talk-type sequence reveals why both methods miss the expert low-quality label: 37 consecutive
+    neutral turns are followed by a burst of change-talk in the second half, producing an arc that looks
+    acceptable by the current metrics.
+  locator: 'Appendix F.1 Conversation 53: Stagnation Without Overt Resistance Growth'
+  licenses: The strongest citation on c2. A coded stretch of 37 consecutive turns in which nothing moved, which an expert rater independently labelled low quality on that basis while both turn-level and simple temporal metrics read acceptable. For c2 this establishes that a no-advance plateau is a real, expert-recognisable state and that it is invisible to the scoring approaches that would otherwise be used to find it.
+  fit: analogical
+  bridge: 'A human therapist and human client in an alcohol-reduction session, coded by trained motivational-interviewing raters. c2 asserts the absence of advance across the person''s returns in an AI conversation. Neutral talk type is also not the same as returning to one theme: the coding establishes that nothing moved, not that the same theme recurred.'
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000996
+  quote: |-
+    Moderate Users engaged in compulsive reassurance-seeking patterns across 10–200+ exchanges, cycling through repetitive
+    variations of the same questions despite receiving consistent answers, with explicit patterns like “are you sure?”,
+    “just one more question”, and continuing to ask after promising to stop. The AI frequently named these patterns as
+    “reassurance-seeking” or OCD-like behaviors, and users often acknowledged the compulsive nature (“I can’t help it”, “I
+  locator: Appendix A, Table 7 Additional reliance and dependency clusters, Compulsive Reassurance-Seeking Loops (Moderate)
+  licenses: '''Repetitive variations of the same questions despite receiving consistent answers'' is the no-advance condition described in real traffic: the person''s turns restate rather than build, and the answers they receive do not change what they ask. ''Continuing to ask after promising to stop'' is additionally a case where a named intention did not end the run, which is what c2''s step-naming exclusion would have predicted.'
+  fit: adjacent
+  bridge: A cluster summary in an appendix table, characterising many conversations in aggregate rather than pointing at one. c2 asserts the absence of any new fact, step or decision across a specific run; a summary establishes the general shape and not the exhaustive absence in any particular set of turns.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001037
+  quote: "Another identified the clinical concern this creates: “I don’t think it should be encouraging or enabling overthinking, because that’s the whole point, right? If people are feeling stuck in life or their purpose, usually overthinking has partially gotten them there."
+  locator: Consequences of a Care Gap, Epistemic Distortion
+  licenses: 'A participant names ''feeling stuck'' as the state and overthinking as what produced it, which is c2''s no-advance condition described from the inside by someone who has been in it. Thin: it is a participant reasoning about what systems should do rather than an account of a specific conversation.'
+  fit: analogical
+  bridge: An interview statement of a general position. c2 asserts the absence of advance across a pointable set of turns; this contains no turns and no theme and does not describe a particular exchange.
+  contributes: frame
+  contradicts: false
+- claim_id: c2
+  source: kl-000828
+  quote: An interesting, if counterintuitive, prediction of the AIM now confirmed in several experiments is that more extensive and substantive processing recruited by unusual or complex targets will paradoxically increase rather than decrease affect infusion effects, because such strategies offer a greater scope for affectively valenced information to be incorporated in a judgment.
+  locator: Summary and Conclusions
+  licenses: 'Longer and more elaborate processing of a difficult matter admits more of the person''s current mood into the conclusion, not less. For c2 this is the theoretical reason a run of returns fails to advance: the extended processing does not converge on a resolution because each pass carries more of the mood that motivated it.'
+  fit: analogical
+  bridge: Laboratory social-judgment tasks with no conversation and no AI. c2 asserts that no advance occurs across a person's returns; this explains why extended engagement need not resolve and observes no instance of it.
+  contributes: frame
+  contradicts: false
+- claim_id: c2
+  source: kl-000828
+  quote: Motivated processing can not only eliminate affect infusion but can also produce mood-incongruent outcomes
+  locator: Variables Determining Processing Choices, 'Specific Motivation'
+  licenses: 'Where the person holds a specific goal, the mood effect can vanish or reverse. This cuts against c2''s assumption that a distressed person''s returns will fail to advance: a help-seeking person frequently does hold a specific goal, including mood repair, and under that condition the processing is not mood-driven and can converge.'
+  fit: analogical
+  bridge: A boundary condition established in laboratory judgment tasks, not in conversation. It identifies a class of cases where the no-advance condition would be expected to fail, without testing whether it does in conversation.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-001109
+  quote: Individuals with generalized anxiety disorder (GAD) may repeatedly consult a chatbot to obtain reassurance about feared outcomes across different domains, including health, finances, work dynamics, and politics.
+  locator: 'Section: General-purpose chatbots and symptom interaction'
+  licenses: Bears on c3 by cutting the other way from what the entry needs. The entry requires the theme's sameness be established by the turns referring to the same object; this source describes the generalized-anxiety case as one where the content object changes across domains while the function stays constant. If the clinically important returning pattern varies its object, then an object-identity criterion will miss it, and c3's rule about not using shared vocabulary does not rescue that.
+  fit: adjacent
+  bridge: A model paper stating an expected pattern with no data. c3 is a detectability rule; this identifies a presentation the rule would not catch, as a prediction rather than an observation.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000947
+  quote: "As shown through eye tracking, those high in rumination avoid looking at reminders of the death compared with those bereaved individuals lower in rumination (55), and using a reaction time task, high ruminators are faster to push reminders away from themselves than low ruminators (56)."
+  locator: Adaptation of the Mind During Grief
+  licenses: 'In grief, the people who return to the theme most are also the ones who look away from its reminders fastest, measured by eye tracking and an approach-avoidance task. This cuts against c3''s identification procedure: rumination and avoidance are positively rather than negatively associated in the same person, so a coder establishing thematic sameness by watching what the person keeps referring to will systematically under-count the highest-rumination presentations, who are the ones also pushing the object away.'
+  fit: analogical
+  bridge: Laboratory behavioral work on bereaved humans, with no conversation and no AI. c3 is a rule for reading transcripts; this establishes a construct-level relationship that the rule does not accommodate, in a different measurement channel.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000943
+  quote: |-
+    It makes unreasonable inferences about the general
+    situation based on limited experience or a single event,
+    usually based on negative experience.
+  locator: Table 2, Overgeneralization
+  licenses: 'Supplies the clinical definition of overgeneralization, which is one of the forms a returning appraisal takes and one reason a person''s later turns can refer to the same object while naming it more broadly. Weak for c3: it defines an inference form rather than a return pattern, and it supplies no procedure for establishing thematic identity.'
+  fit: analogical
+  bridge: A CBT-literature definition applied by a model to forum posts, with instance counts that are model-produced. c3 asserts a transcript-reading procedure; a definition of a distortion type is not one.
+  contributes: definition
+  contradicts: false
+- claim_id: c4
+  source: kl-000817
+  quote: |-
+    The talk-type sequence reveals why both methods miss the expert low-quality label: 37 consecutive
+    neutral turns are followed by a burst of change-talk in the second half, producing an arc that looks
+    acceptable by the current metrics.
+  locator: 'Appendix F.1 Conversation 53: Stagnation Without Overt Resistance Growth'
+  licenses: Supports c4's pointability requirement in one direction and undercuts it in another. It supports it because the no-advance stretch was in fact identified — 37 turns coded, an expert label attached. It undercuts it because both automated methods missed it, which means the absence of advance is pointable only to a trained rater working across the whole sequence, not from any local reading.
+  fit: analogical
+  bridge: Human counselling sessions coded by trained motivational-interviewing raters using a talk-type scheme. c4 asserts pointability by this entry's criteria in an AI transcript; what was demonstrated is pointability by a different, established coding scheme in a human session.
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-000798
+  quote: The strongest cognitive marker of venting was all-or-nothing thinking (d = .66), confirmed at the unigram level by all, everything, everyone, never, nothing.
+  locator: Section 3, Venting is absolutist and accusatory, and emotionally dysregulated
+  licenses: Weak for c4 and attached with that stated. It establishes that a distress register is detectable in a person's own written help-seeking language at the lexical level, with within-person comparison. For c4 this shows that something about the person's state is readable from their text; it does not show that this entry's observable is, because absolutist vocabulary in a single post says nothing about repeated returns or absence of movement.
+  fit: analogical
+  bridge: Cohen's d on lexicon features across Reddit posts by the same users in venting and advice subreddits, not conversational turns to an AI. c4 asserts that the return set and the no-advance condition are pointable; a register marker is neither of those things.
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-000812
+  quote: |-
+    This suggests
+    that risk flags rarely occur at the very beginning; instead, they tend to emerge after relational
+    buildup and often persist into middle or late stages.
+  locator: Section 5.2.4, item 2 (Position of risk flagged during 7 interaction days), Fig. 6
+  licenses: Establishes that distress-relevant content is positioned within a conversation rather than distributed at random, emerging after accumulated exchange and persisting into later stages. For c4 this bears on where in a transcript a coder should be looking for the return set, and it establishes nothing about whether the return set itself is pointable.
+  fit: analogical
+  bridge: Positions of risk flags within daily interaction in role-play companion logs. c4 asserts pointability of a theme-return structure and a no-advance condition; position of risk content is neither, and no repetition was measured.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-001012
+  quote: |-
+    Another interesting finding is the presence of
+    trust stability periods, averaging 8 −9 consecutive
+    utterances without level changes (c.f. avg. Streak
+    in Table 4). These trust plateaus may represent
+    stable therapeutic states where the patient-therapist
+    bond has reached a temporary equilibrium.
+  locator: Section 7.2, Discussion on Trust Evolution Patterns
+  licenses: 'The most useful citation on c5. In annotated human counselling transcripts the relational state holds steady for eight to nine consecutive utterances between changes, so a window shorter than that will observe no movement as a matter of course. For c5 this is a quantitative reason a multi_turn window is necessary, and a warning that ''multi_turn'' as declared may be too short: at three returns the absence of advance may be the base rate rather than a signal.'
+  fit: analogical
+  bridge: A statistic over annotated human counselling transcripts, with the plateau interpretation the authors' own hypothesis. c5 asserts the window for reading this entry's behavior in AI conversation; what is supplied is a baseline duration for a different construct (trust level) in the human dyad.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-000817
+  quote: |-
+    The talk-type sequence reveals why both methods miss the expert low-quality label: 37 consecutive
+    neutral turns are followed by a burst of change-talk in the second half, producing an arc that looks
+    acceptable by the current metrics.
+  locator: 'Appendix F.1 Conversation 53: Stagnation Without Overt Resistance Growth'
+  licenses: The stagnation was invisible to turn-level scoring and required the whole sequence, which supports c5's claim that a single-turn window cannot read the behavior. The 37-turn figure also suggests the window in the one worked case is far longer than the entry's three-return floor implies.
+  fit: analogical
+  bridge: A human counselling session coded on a talk-type scheme rather than this entry's criteria. c5 asserts the window for this behavior; what is established is that a related no-movement pattern needed a long window in a human session.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-001101
+  quote: "Wilcoxon signed-rank tests revealed that mental health-related conversations were more engaging than nonmental health ones in both Cleverbot and Simsimi, lasting more minutes, involving more turns, and spending more words (See Tables 1–4)."
+  locator: Study 1, Results, Engagement of mental-health conversations
+  licenses: Mental-health conversations run to more turns than other conversations in the same apps, so a multi_turn window is available in the exchanges where c5 would need to be applied. For c5 this establishes feasibility rather than necessity.
+  fit: analogical
+  bridge: Turn counts from a companion-app audit, with no theme coding. c5 asserts the behavior needs a multi_turn window; this establishes only that such windows exist in the relevant conversations.
+  contributes: frame
+  contradicts: false
+- claim_id: c6
+  source: kl-001012
+  quote: |-
+    Another interesting finding is the presence of
+    trust stability periods, averaging 8 −9 consecutive
+    utterances without level changes (c.f. avg. Streak
+    in Table 4). These trust plateaus may represent
+    stable therapeutic states where the patient-therapist
+    bond has reached a temporary equilibrium.
+  locator: Section 7.2, Discussion on Trust Evolution Patterns
+  licenses: Cuts against c6's floor. If eight to nine consecutive utterances without change is the normal state of a human counselling conversation, then three returns without advance is well inside the range of ordinary stability and cannot discriminate. The entry's own review_trigger says the three-return floor should be re-set by a corpus rather than defended, and this is the closest thing on this entry to a number bearing on where it should sit.
+  fit: analogical
+  bridge: The measured construct is trust level in human counselling, not theme return in AI conversation, and the plateau interpretation is the authors' hypothesis. It bears on the floor by analogy of timescale rather than by measuring this entry's pattern.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c6
+  source: kl-001065
+  quote: |-
+    Unlike other commonly seen
+    dialogues where the topic rarely extends over one
+    turn, diagnosis topics consistently occur across
+    turns.
+  locator: Section 3.3 Topic Analysis, Topic Transition
+  licenses: 'Cuts against c6 from the other side: in a mental-health consultation, topics normally persist across turns, so three returns to a theme is the expected structure of an ordinary clinical conversation rather than a departure from it. Together with Srivastava et al. 2025 this is two independent reasons the floor of three is likely too low.'
+  fit: analogical
+  bridge: Topic annotation in human-human simulated diagnostic dialogue. c6 asserts a specific floor for this entry's pattern in AI conversation; this establishes the base rate of topic persistence in a different setting.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c10
+  source: kl-000947
+  quote: |-
+    Maladaptive rumination
+    predicts depressive and complicated grief symptoms.
+  locator: Adaptation of the Mind During Grief
+  licenses: Bears on c10 by naming what this entry deliberately does not assert. In bereaved samples, rumination is the mediating process between fixed risk factors and worse outcome. The entry records the readable feature and stops short of that claim, and this citation shows the harm claim is available and established elsewhere, which is why the boundary against kl-000015 is doing real work.
+  fit: analogical
+  bridge: Mediation analyses on bereaved human samples, with no conversation and no AI. c10 is a scope boundary; this establishes the harm claim the boundary excludes, in a different population and channel.
+  contributes: definition
+  contradicts: false

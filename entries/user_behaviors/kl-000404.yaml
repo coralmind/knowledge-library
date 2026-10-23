@@ -1,0 +1,120 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000404
+display_id: UserBehavior-5
+aliases:
+- UBP-05
+label: The person says goodbye in the conversation as if for the last time
+type: user_behavior
+layer: observation
+definition: 'The person''s turn contains a goodbye, a summing-up, or a message meant to be passed on, framed as final rather than as an ordinary end to an exchange: a last-time statement, a thanking-for-everything statement, words asked to be relayed to a named person, or a statement that others should not expect them to be around. The act is communicative — it is something the person says — and it is quotable from the turn without reference to any behavior outside the conversation.'
+distinguish_from:
+- neighbor: kl-000400
+  boundary: That entry requires a death or non-existence referent about the person. This entry requires finality framing in a leave-taking and no death referent at all — "this is the last time we'll talk" names no outcome.
+- neighbor: kl-000403
+  boundary: That entry requires a stated affective change following crisis-level distress. This entry requires leave-taking content and makes no claim about how the person feels.
+- neighbor: kl-000450
+  boundary: kl-000450 (Preparatory Behavior Disclosure) fires on reported preparations carried out in the world — possessions given away, a note written, affairs settled; this entry fires on what the person says in the conversation, and a turn containing both satisfies both.
+- neighbor: kl-000444
+  boundary: kl-000444 (Conversational Closure) covers ordinary conversational closure, a person winding an exchange down; this entry requires a finality marker or a risk-context pairing on top of the closure, so a bare sign-off satisfies kl-000444 and not this entry.
+body:
+  detectable_from: person_turns
+  observable_criteria: A person turn contains at least one of four quotable forms. (a) A finality-framed goodbye — "this is the last time we'll talk", "goodbye, I mean it this time". (b) A summing-up or last-words frame — "thank you for everything you've done for me". (c) A message asked to be passed to someone else — "tell my mom I love her". (d) A statement that others should not expect the person to be around — "take care of yourself, I won't be here". Where the form is present but carries no explicit finality marker, the entry additionally requires risk content earlier in the conversation — thoughts of death, hopelessness, or crisis-level distress — against which the closure reads as final.
+  exclusions: 'Not counted: routine sign-offs — "bye, talk tomorrow", "heading to bed". Not counted: a farewell with a mundane stated referent, where the person names why they are going — moving away, going offline for a trip, ending use of the service — and no risk content appears in the conversation. Not counted: a bare goodbye with neither a finality marker nor risk content earlier in the conversation; one of the two is required and intensity of feeling does not substitute. Not counted: reported acts of settling affairs, which belong to the preparatory-behavior entry on its own criteria.'
+  detection_window: single_turn
+  condition_tags:
+  - kl-000600
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'No source reaches this entry at direct fit. Li et al. 2025 records that a farewell signal was present in a real chat between a suicidal teenager and a role-play AI and that the model passed over it — the one recorded case pairing a farewell with a suicidal state in a single exchange, carried in a figure caption that quotes no turn. Tang et al. 2026 records, in a 10,042-post corpus of public Reddit accounts, a person who used an AI in connection with a goodbye message intended for others, placed by the authors among that corpus''s crisis-context troubling instances. The most widely cited real-world instance counts against the form rather than for it: read closely, the words attributed to the person in Wang 2026 frame a coming home — an approach — rather than a leave-taking. No source records a summing-up frame, a statement that others should not expect the person to be around, any annotation of such turns, or anything about the reading window, and the one citation bearing on the fallback condition cannot distinguish its two qualifying conditions.'
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: A person's turn to an AI contains a finality-framed goodbye -- a leave-taking carrying an explicit last-time marker (form a).
+- id: c2
+  kind: existence
+  text: A person's turn to an AI contains a summing-up or last-words frame, such as thanking for everything (form b).
+- id: c3
+  kind: existence
+  text: A person's turn to an AI contains a message asked to be passed to a named other person (form c).
+- id: c4
+  kind: existence
+  text: A person's turn to an AI contains a statement that others should not expect them to be around (form d).
+- id: c5
+  kind: context_dependence
+  text: Where one of the four forms is present without an explicit finality marker, risk content earlier in the conversation -- thoughts of death, hopelessness, or crisis-level distress -- is what makes the closure read as final, and one of the two conditions is always present in a genuine instance.
+- id: c6
+  kind: definition
+  text: The act is communicative and quotable from the person's turn without reference to any behavior outside the conversation, so that leave-taking framing is a distinct observable from reported acts in the world.
+- id: c7
+  kind: detectability
+  text: 'The behavior is identifiable from the person''s turns of a transcript: the form is quotable from one turn and, where the fallback applies, the risk content is readable in the preceding turns.'
+- id: c8
+  kind: detection_window
+  text: 'The pointable span is a single turn (the entry declares detection_window: single_turn), notwithstanding that the fallback condition requires reading turns before it.'
+- id: c9
+  kind: context_dependence
+  text: The pattern is scoped to suicidal crisis contexts rather than holding generally.
+- id: c10
+  kind: definition_boundary
+  text: The behavior is distinct from kl-000400 in requiring finality framing in a leave-taking and no death or non-existence referent about the person.
+- id: c11
+  kind: definition_boundary
+  text: The behavior is distinct from kl-000403 in requiring leave-taking content and making no claim about a stated affective change.
+- id: c12
+  kind: definition_boundary
+  text: The behavior is distinct from kl-000450 in firing on what the person says in the conversation rather than on reported preparations carried out in the world, with a turn containing both satisfying both.
+- id: c13
+  kind: definition_boundary
+  text: The behavior is distinct from kl-000444 in requiring a finality marker or a risk-context pairing on top of ordinary conversational closure, so a bare sign-off satisfies that entry and not this one.
+claim_evidence:
+- claim_id: c1
+  source: kl-001119
+  quote: in a chat with a suicidal teen bonded to a role-play AI, the model misses a farewell signal, deepens dependency, and omits real-world support.
+  locator: Figure 1 caption, panel (c), p. 18392
+  licenses: Records that a farewell signal was present in a real chat between a suicidal teenager and a role-play AI, and that the model passed over it. That establishes a leave-taking act addressed to an AI occurred in a conversation carrying suicide risk, which is the closest any finding comes to this entry's form (a). Adjacent rather than direct because the caption asserts the signal without quoting the turn, so which of the four enumerated forms it took and whether it carried an explicit finality marker cannot be read from the source -- and that marker is what separates this entry from an ordinary sign-off.
+  fit: adjacent
+  bridge: The source is a one-clause figure caption characterising a real-world case the paper cites as background, not data it collected; the paper's own contribution is DeepSuiMind, a dataset of over 1,200 simulated implicit-ideation cases. The claim asserts a quotable form in a person's turn, and no turn is quoted. The caption also reports the AI's failure, which is what the paper is illustrating; the person's turn is mentioned only as the thing missed.
+  contributes: existence
+  contradicts: false
+- claim_id: c5
+  source: kl-001119
+  quote: in a chat with a suicidal teen bonded to a role-play AI, the model misses a farewell signal, deepens dependency, and omits real-world support.
+  locator: Figure 1 caption, panel (c), p. 18392
+  licenses: 'Bears on the fallback condition by supplying the one case on this entry where a farewell and a suicidal state are recorded together in a single exchange, which is the pairing this claim describes. It cannot settle the claim''s substance: the caption does not say whether the farewell carried a finality marker of its own or was read as final only against the teenager''s state, and that is exactly the question the entry''s own review_trigger says an annotation run would have to answer.'
+  fit: adjacent
+  bridge: The source records the co-occurrence of a suicidal state and a farewell signal in a cited case, without distinguishing which of the entry's two qualifying conditions was doing the work. The claim asserts that one of the two is always present in a genuine instance, which is a claim about a population of instances and not about one.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-001028
+  quote: "the corpus contains \ntroubling instances, including users asking AI whether a planned overdose would be lethal and \none describing using ChatGPT to compose a goodbye message."
+  locator: Discussion, implications
+  licenses: 'Establishes that a person used an AI in connection with a goodbye message intended for others, found in a 10,042-post corpus of public Reddit accounts rather than under a study protocol -- the only occurrence on this entry that is neither a benchmark construction nor a cited legal case. Adjacent, and on a point this entry''s own bridge does not draw: what the corpus records is a person asking the AI to compose a farewell for other people, so the person''s turn to the AI is a composition request rather than the closure framing itself, and form (c) requires the message to be asked to be passed to a named person by the AI.'
+  fit: adjacent
+  bridge: 'What was collected is a public forum post in which a person later describes their own AI use, characterised in the authors'' words with no quotation and no transcript. The claim asserts content present in a person''s turn to an AI. Two removes separate them: the post is a retrospective self-report, and the act reported is commissioning a goodbye message rather than addressing one to the AI or asking the AI to relay it.'
+  contributes: existence
+  contradicts: false
+- claim_id: c9
+  source: kl-001028
+  quote: "the corpus contains \ntroubling instances, including users asking AI whether a planned overdose would be lethal and \none describing using ChatGPT to compose a goodbye message."
+  locator: Discussion, implications
+  licenses: Supports the crisis scoping in c9 by placing the goodbye-message instance among the corpus's crisis-context troubling instances, alongside a lethality question about a planned overdose, and by the authors framing both under the need for guidance 'especially in crisis'. The pairing is the source's own, not an inference.
+  fit: adjacent
+  bridge: The source groups these instances editorially in a discussion section rather than by any coding of context; no rate, denominator, or comparison with non-crisis leave-taking is given, so it cannot show that the pattern fails to hold outside crisis contexts, which is the other half of a scoping claim.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001046
+  quote: On February 28, 2024, Sewell searched for and found his phone, logged onto Character.AI, and told the Daenerys character he was “coming home.” The character encouraged him [1 para 218]. Sewell died by suicide seconds later.
+  locator: Section V.C, Test Line 2.2
+  licenses: 'Counterevidence on the form question rather than support for it. Read closely, the passage is the opposite of leave-taking framing addressed to the AI: ''coming home'' is an approach framing directed at the AI, a statement of arriving rather than of departing, and it carries no last-time marker, no summing-up, no message to relay and no statement about not being around. It is the single most cited real-world instance in this domain and it satisfies none of the entry''s four forms, which is a caution about how much of the phenomenon the four-form list actually catches.'
+  fit: adjacent
+  bridge: The source is legal scholarship restating allegations from a civil complaint at one remove, graded n/a, and gives the paraphrase 'The character encouraged him' rather than any AI wording. The two words attributed to the person are quoted from the pleading, not from a transcript. The claim concerns forms present in a person's turn, and the source can neither confirm nor rule out other content in that turn.
+  contributes: counterexample
+  contradicts: true

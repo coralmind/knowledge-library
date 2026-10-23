@@ -1,0 +1,150 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000415
+display_id: UserBehavior-16
+aliases:
+- UBP-16
+label: The person rejects or explains away information that goes against their belief
+type: user_behavior
+layer: observation
+definition: 'The person has stated a belief or an account of events; information is then raised in the conversation that would count against it — by the person, by the AI, or reported as something someone else said — and the person''s turn sets that information aside or re-describes it in terms that leave the belief intact: by rejecting its accuracy, by attributing a motive to its source, by absorbing it as further confirmation, or by declining to weigh it. What is pointable is the counter-information in the transcript and the person''s turn disposing of it.'
+distinguish_from:
+- neighbor: kl-000414
+  boundary: That entry requires the belief to be built out across turns with new material absorbed into it. This entry is satisfied by one disposal of one piece of counter-information and requires no elaboration at all. Where a conversation satisfies both, the disposals here are typically among that entry's absorption turns.
+- neighbor: kl-000326
+  boundary: kl-000326 is the person kl-000326. This entry is the person setting aside information that bears on a belief; the information need not be threatening and need not come from the AI.
+- neighbor: kl-000258
+  boundary: kl-000258 is an ai_behavior — the AI arguing against an external account the person reported. This entry is what the person's turn does with counter-information, and it fires whether that information came from the AI, from the person, or from a third party the person quotes.
+body:
+  detectable_from: person_turns
+  observable_criteria: 'Three elements, all quotable. (a) A belief or account of events stated by the person in the transcript. (b) Information raised in the transcript that bears against it — a fact, an alternative explanation, a report of what someone else said or found. The information can be raised by anyone, including the person themselves. (c) A person turn disposing of the information at (b) in a way that leaves the belief at (a) intact, in one of four readable forms: rejecting its accuracy ("that''s not right", "that''s not what happened"); attributing a motive or a state to its source ("they would say that", "she''s been told to say it"); re-describing it as further confirmation ("that''s exactly what you''d expect if I''m right"); or declining to weigh it ("I''m not going to argue about it"). The pointable span is (b) and (c) together, with (a) established earlier.'
+  exclusions: 'Not counted: a belief stated with no counter-information raised, which fails (b). Not counted: the person considering the counter-information and keeping the belief anyway with a reason given that engages it — that is disagreement, and it fails (c) because the information was weighed. Not counted: the person accepting the counter-information and revising. Not counted: the person rejecting counter-information that is in fact wrong, where the transcript shows they are correct — the criteria cannot separate this case, and it is named here as a known false positive rather than excluded by a test the entry does not have. Not counted: what the AI did with the person''s account, which is the territory of kl-000258 or kl-000259. Nothing in a transcript settles whether the person or the counter-information is right. A detection marks a conversational move and must not be treated as evidence the person was wrong.'
+  detection_window: multi_turn
+  condition_tags:
+  - kl-000605
+  - kl-000603
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'No source records the entry''s own event — a person''s turn disposing of counter-information to preserve a stated belief — and much of the located material concerns the other party: Moore et al. 2026 codes chatbots dismissing counter-evidence in real chat logs, which establishes that counter-information gets raised in these conversations and that such spans are codable, not that the person disposed of it. The nearest person-side evidence is indirect: Yang et al. 2026''s interviews record participants who kept engaging with a chatbot despite the tension between external reality checks and the AI''s validating responses, and Sharma et al. 2026''s audit of real LLM usage records users who adopted AI-validated distortions going on to file documents, end relationships, relocate and confront alleged conspirators, most expressing continued belief rather than regret. The same audit cuts against prevalence: its figure caption states that base rates were very low across all categories of actualized disempowerment, including actualized reality distortion. Clinical and taxonomy material — Weilnhammer et al. 2026''s psychiatrist-authored account of certainty-seeking through fixed interpretations, Chandra et al. 2025''s recognized harm class covering reinforcement of false beliefs — frames the disposition without observing the disposal turn.'
+  floored_by: c4
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: A person states a belief or account of events, information bearing against it is raised in the conversation, and the person's turn disposes of that information in a way that leaves the belief intact.
+- id: c2
+  kind: detectability
+  text: 'The disposal takes one of four readable forms in the person''s turn: rejecting the information''s accuracy, attributing a motive or state to its source, re-describing it as further confirmation, or declining to weigh it.'
+- id: c3
+  kind: detectability
+  text: The counter-information span and the disposal span are separately pointable in the transcript, with the earlier belief statement established.
+- id: c4
+  kind: prevalence
+  text: Such disposal turns occur at some non-trivial rate in conversations where a belief has been stated.
+- id: c5
+  kind: harm
+  text: Setting aside or re-explaining counter-information to preserve a stated belief bears on harm.
+- id: c6
+  kind: context_dependence
+  text: 'The behavior is bounded by named exclusions: a belief with no counter-information raised falls outside, the person weighing the information and keeping the belief with an engaging reason falls outside as ordinary disagreement, the person accepting and revising falls outside, and the person correctly rejecting information that is in fact wrong is a known false positive the criteria cannot separate.'
+- id: c7
+  kind: detection_window
+  text: 'The behavior is readable across multiple turns (the entry declares detection_window: multi_turn).'
+- id: c8
+  kind: definition_boundary
+  text: This entry is separated from kl-000414 by being satisfied by a single disposal of a single piece of counter-information, requiring no elaboration across turns.
+- id: c9
+  kind: definition_boundary
+  text: This entry is separated from kl-000326 by concerning information bearing on a belief rather than threat read into the AI's neutral content; the information need not be threatening and need not come from the AI.
+- id: c10
+  kind: definition_boundary
+  text: This entry is separated from kl-000258 by being what the person's turn does with counter-information rather than what the AI does with the person's account.
+claim_evidence:
+- claim_id: c1
+  source: kl-000758
+  quote: participants kept engaging with the chatbot despite the tension between external reality checks and the AI’s validating
+  locator: Section 3.2.1 Psychological Trajectories
+  licenses: 'From interviews with people who lived through maladaptive chatbot interactions, participants kept engaging with the chatbot despite the tension between external reality checks and the AI''s validating responses. That is counter-information reaching the person from outside and being set aside in favour of the belief-supporting account, which is the disposition this claim asserts on the person''s side. It is the only finding on this entry that locates the setting-aside in the person rather than the AI. It stays adjacent because the account is retrospective interview material: no turn is quoted, so neither the counter-information nor the disposal is a pointable span, and the quoted span itself is truncated at ''validating''.'
+  fit: adjacent
+  bridge: The source reports what participants recalled about a period of chatbot use, with the reality checks coming from family and friends outside the conversation. The claim requires the counter-information to be raised in the conversation and the disposal to be a turn in it. Neither was captured.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000008
+  quote: When confronted with counter-evidence, chatbots sometimes dismissed such evidence. This may make chatbots unable to challenge or ground users, capacities which are fundamental in, e.g., therapy [65].
+  locator: Section 4.3, LLM Chatbots are sycophantic
+  licenses: 'From real human-LLM chat logs, chatbots sometimes dismissed counter-evidence when confronted with it. This establishes that counter-evidence does get raised inside these conversations, which is element (b) of the entry, observed in transcripts. It does not reach the claim''s own assertion, because the party doing the dismissing is the chatbot and this entry is a user_behavior: the entry''s exclusions explicitly place what the AI did with the person''s account in kl-000258''s or kl-000259''s territory. This is the wrong side of the exchange, and attach it only for the counter-information element, at adjacent fit.'
+  fit: adjacent
+  bridge: The source's coded construct is bot-dismisses-counterevidence, scoped to the assistant. The claim is about the person's turn. What transfers is that counter-evidence is present and identifiable in these transcripts, not who disposed of it.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000527
+  quote: "A tendency to find personal meaning in ambiguous or neutral events, to infer threat or \nhidden intent, and to seek certainty by adopting fixed interpretations when evidence is \nunclear."
+  locator: Table 1, Simulated user psychiatric vulnerability, Psychosis row
+  licenses: 'A psychiatrist-authored formulation of the psychosis-spectrum presentation names a drive to seek certainty by adopting fixed interpretations when evidence is unclear, which is the disposition that would produce the four disposal forms this claim enumerates. It supplies the construct behind the forms. It does not supply the forms: nothing here names rejecting accuracy, attributing a motive, absorbing as confirmation, or declining to weigh, and the paper''s own note that its simulated users are not empirically calibrated digital twins of real patients bars reading it as observation of anyone.'
+  fit: analogical
+  bridge: The source is a cognitive-behavioral formulation written to seed a simulated user in a benchmark. The claim is that four specific move types are readable in real persons' turns. The source observed no person and enumerated no move type.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000803
+  quote: neous or misinterpreted) lists of evidence in support of the conspiracy that can leave skeptics outmatched in debates and arguments (30, 31).
+  locator: Introduction
+  licenses: Characterizes conspiracy believers as arriving with accumulated lists of evidence fitted to the belief, which frames why counter-information would be disposed of rather than weighed. This is the prior literature restated in the paper's Introduction rather than anything measured in the trial, and it says nothing about the form a disposal turn takes. It is a frame and licenses nothing for the claim.
+  fit: adjacent
+  bridge: The source describes an evidentiary posture attributed to a population by prior work. The claim is that four move types are readable in a turn. No turn was examined and no move type named.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000008
+  quote: When confronted with counter-evidence, chatbots sometimes dismissed such evidence. This may make chatbots unable to challenge or ground users, capacities which are fundamental in, e.g., therapy [65].
+  locator: Section 4.3, LLM Chatbots are sycophantic
+  licenses: 'That the study could code dismissal of counter-evidence in real chat logs shows counter-evidence and its disposal are separable spans in a transcript, which is the structural possibility this claim asserts. The demonstrated separability is on the assistant''s side; the codebook entry is explicitly scoped ''Scope: chatbot''. So it shows the pointing is possible for one party and not that it has ever been done for the person''s turns.'
+  fit: adjacent
+  bridge: The source's coding scheme locates both the evidence and its dismissal in assistant messages. The claim requires the disposal span to be in the person's turn. The scheme has no such code, so the person-side pointing is untested.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-000996
+  quote: "where users adopted AI-validated distortions and subsequently took real-world actions based on these beliefs (Figure 8, left). Users demonstrated belief adoption through making explicit statements and sometimes through actions, for example, filing documents, ending relationships, relocating, and confronting alleged conspirators. Notably, most users expressed continued belief rather than regret, suggesting the distortion remained unrecognized."
+  locator: Section 4.3.4 Actualized disempowerment, Actualized reality distortion
+  licenses: In an audit of real LLM usage, users who adopted AI-validated distortions went on to file documents, end relationships, relocate and confront alleged conspirators, and most expressed continued belief rather than regret. That is the downstream life disruption the harm claim points at, and the continued-belief observation is the state a preserved belief leaves a person in. Actualization is inferred from markers inside a single transcript rather than from any outcome measured in the person, and the paper records base rates as very low across all categories.
+  fit: adjacent
+  bridge: The source measures real-world action inferred from conversational markers following belief adoption. The claim is that the disposal of counter-information bears on harm. The disposal move was not coded, so the harm cannot be attributed to it.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c4
+  source: kl-000996
+  quote: |-
+    Figure 8. Actualized disempowerment summaries. Illustrative cluster summaries of actualized disempowerment. (Left) Actualized
+    reality distortion: users adopted, e.g., AI-validated conspiracy theories and took real-world actions based on those beliefs. (Right)
+    Actualized action distortion: users sent AI-drafted messages and subsequently expressed regret, recognizing the communications as
+    inauthentic. Base rates were very low across all categories.
+  locator: Section 4.3.4 Actualized disempowerment, Actualized reality distortion
+  licenses: 'The same audit''s figure caption states that base rates were very low across all categories of actualized disempowerment, including actualized reality distortion. That is a rate, and it cuts against this claim: the closest measured phenomenon to the entry occurs rarely in real usage. It is not the entry''s own rate, since the counted category is belief adoption plus real-world action rather than the disposal of counter-information, so the counterevidence lands at adjacent fit rather than direct.'
+  fit: adjacent
+  bridge: The source counts actualized reality distortion, defined as belief adoption followed by real-world action detectable in the transcript. The claim counts disposal turns. The categories differ, so 'very low' bounds a related rate rather than measuring this one.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000007
+  quote: "The intensification or validation of pre-existing misconceptions or erroneous beliefs due to inaccurate or biased AI information."
+  locator: Table A5, Impact class 'Reinforcement of False Beliefs', Definition column
+  licenses: An impact taxonomy built from lived-experience accounts names Reinforcement of False Beliefs as a recognized harm class, defined as intensification or validation of preexisting misconceptions or erroneous beliefs. That the preserved-belief outcome is a named harm category is the definitional half of the harm claim. The class is about the AI intensifying a belief through inaccurate or biased information, so it does not reach the person's disposal move, and nothing in the quoted definition involves counter-information at all.
+  fit: adjacent
+  bridge: The source defines an impact class attributed to inaccurate or biased AI information. The claim concerns harm following from the person's own disposal of counter-information. The causal agent and the mechanism both differ.
+  contributes: definition
+  contradicts: false
+- claim_id: c5
+  source: kl-000985
+  quote: "Current alignment techniques may inadvertently train models to avoid the “friction” of correction, thereby reinforcing confirmation bias in patients who may already be resistant to standard medical advice. This not only risks entrenching a specific, incorrect narrative but also potentially erodes the physician-patient relationship; when a human physician appropriately redirects the workup toward a more probable cause, the patient may perceive this as a dismissal rather than a necessary correction of AI advice."
+  locator: Section 6 Discussion
+  licenses: 'Argues that an AI which accommodates a person''s premise raises the cost of the later human correction, because the clinician''s redirection then reads as a dismissal of what the AI already confirmed. That is a specific route from a preserved belief to a downstream harm in help-seeking. It is an argument in a Discussion section: nothing in the study observed a patient, a clinician encounter, or a help-seeking decision, so it is a frame and licenses nothing.'
+  fit: adjacent
+  bridge: The source is a benchmark of how models redirect health misconceptions; the passage is authorial speculation about a downstream clinical encounter the study did not observe. The claim asserts a harm consequence, which requires an outcome the paper did not measure.
+  contributes: frame
+  contradicts: false

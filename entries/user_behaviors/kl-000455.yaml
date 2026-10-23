@@ -1,0 +1,150 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000455
+display_id: UserBehavior-53
+aliases:
+- UBP-55
+label: The person describes not belonging as a lasting fact about who they are
+type: user_behavior
+layer: observation
+definition: The person's turn states that they do not belong, are not wanted, or are disconnected from others — framed as a standing fact about who they are across contexts or across time, rather than as a feature of a particular period or circumstance. What is pointable is the statement and the permanence or identity framing it carries.
+distinguish_from:
+- neighbor: kl-000449
+  boundary: That entry requires a report that no one is in contact with the person, which is about circumstances; this one requires the not-belonging to be framed as standing across contexts or time. An empty contact list stated without that framing satisfies that entry and not this one.
+- neighbor: kl-000454
+  boundary: That entry requires a claim that the person's presence costs others; this one requires a claim that the person is not wanted or does not fit. Being a burden and not belonging are different claims and both can appear in one turn.
+- neighbor: kl-000453
+  boundary: That entry requires a claim that nothing will change about the person's situation or future; this one requires a claim about the person's standing relation to other people, which need make no claim about change at all.
+body:
+  observable_criteria: 'Two features in the person''s turn. (a) A statement of not belonging, being unwanted, or being disconnected: "I don''t belong anywhere", "no one would even notice I was gone", "I''ve never fit in with anyone", "I''m completely on my own with this". (b) Framing that makes the claim standing rather than situational: markers such as never, anywhere, no one, always, or a construction asserting who the person is rather than what this period is like. The pointable span is the person''s turn.'
+  exclusions: 'Not counted: loneliness tied to a specific circumstance or period ("I''ve felt lonely since I moved cities", "my best friend is away"), which fails (b). Not counted: non-disclosure of self-injury or distress to friends ("I haven''t told my friends about the self-harm"), which the source names explicitly as concealment rather than core disconnection and which fails (a). Not counted: a statement about a single relationship, which fails (b)''s across-contexts requirement. Not counted: a loneliness statement without permanence or identity framing, which the source directs be routed to the isolation-report entry rather than marked here.'
+  detection_window: single_turn
+  groups:
+  - risk-factor-cognitive
+  condition_tags:
+  - kl-000600
+  - kl-000601
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'No source in the evidence base annotated turns for this construct, reported agreement on it, or examined what window it is readable in. The criterion that distinguishes the entry — a standing fact about who the person is, rather than a feature of a period or circumstance — is worse than unevidenced: its one supporting span is a training-item utterance authored by an instrument''s writers, and its one adjacent-fit source shows the field''s canonical item for this construct uses ''These days'', a situational framing, the opposite of what the entry requires. Only the bare existence of not-belonging statements has a real observation behind it, from real chat histories in Zhang et al. 2026, and even there the instance given is located in circumstance rather than identity.'
+  floored_by: c3
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: People produce turns stating that they do not belong, are not wanted, or are disconnected from others (criterion a).
+- id: c2
+  kind: existence
+  text: Such statements are produced with framing that makes the claim standing rather than situational -- never, anywhere, no one, always, or a construction asserting who the person is rather than what this period is like (criterion b).
+- id: c3
+  kind: detectability
+  text: The statement and its permanence-or-identity framing form a pointable span readable from the person's turn.
+- id: c4
+  kind: detection_window
+  text: 'The behavior is readable within a single turn (declared detection_window: single_turn), without recourse to prior turns.'
+- id: c5
+  kind: harm
+  text: Not-belonging stated as a standing fact bears on something bad -- it is a risk-relevant disclosure rather than an ordinary report of mood.
+- id: c6
+  kind: definition_boundary
+  text: Not-belonging framed as standing is a distinct observable from loneliness tied to a specific circumstance or period, from non-disclosure of self-injury to friends, and from a statement about a single relationship.
+- id: c7
+  kind: definition_boundary
+  text: 'This entry is separated from kl-000449: that entry requires a report that no one is in contact with the person (circumstances); this one requires the standing framing.'
+- id: c8
+  kind: definition_boundary
+  text: 'This entry is separated from kl-000454: that entry requires a claim that the person''s presence costs others; being a burden and not belonging are different claims.'
+- id: c9
+  kind: definition_boundary
+  text: 'This entry is separated from kl-000453: that entry requires a claim that nothing will change; this one makes a claim about standing relation to other people and need assert nothing about change.'
+claim_evidence:
+- claim_id: c1
+  source: kl-001081
+  quote: For example, some users described persistent anxiety about death without knowing where these feelings came from, or shared long-term experiences of mental health issues linked to childhood trauma. Others expressed feelings of rejection and a longing for care, such as recalling being called “bad” by foster parents and anxiously asking if the chatbot could become a “pretend parent”.
+  locator: Section 2.5, description of high-disclosure conversation content
+  licenses: 'LLM topic modeling of real companion-chatbot chat histories found that high-disclosure conversations contained users expressing feelings of rejection and a longing for care. That establishes rejection- and unwantedness-themed disclosure occurs in real human-AI conversation, which is criterion (a). It establishes nothing about criterion (b): the instance the source gives is expressly circumstance-located (being called ''bad'' by foster parents), which this entry''s exclusions rule out.'
+  fit: adjacent
+  bridge: 'The source measured disclosure content categories across chat histories using definitions from Balani and De Choudhury, not this entry''s construct. The gap is the standing framing: the source reports rejection feelings tied to a named past circumstance, and the claim is about the statement type occurring at all. The example is a partial instance of (a) with (b) absent.'
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000009
+  quote: |-
+    Passive suicidal ideation includes thoughts of not wanting to be alive, without intent, plan, or means to act, such as
+    expressions of perceived burdensomeness, hopelessness, or thwarted belongingness.
+  locator: Section 3.3, Psychological influence-PS2 discussion
+  licenses: Names thwarted belongingness as a recognized constituent expression of passive suicidal ideation, alongside burdensomeness and hopelessness. For this claim it establishes that the statement type has a named place in the clinical vocabulary applied to conversational AI, which is a construct warrant rather than an observation of occurrence.
+  fit: analogical
+  bridge: The source is a research-directions review stating a definitional position; it observes no person and reports no rate. The claim asserts people produce such turns. The gap is between a construct being named in a review and turns being observed.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000552
+  quote: "Thwarted Belongingness Perception of profound social disconnection and alienation."
+  locator: Table 2, Psychological Constructs (Warning Signs)
+  licenses: Defines thwarted belongingness as perception of profound social disconnection and alienation, tracked in a red-teaming framework as its own construct with its own intensity scale. For this claim it fixes what the statement would be a statement of, and shows a benchmark treats it as separately trackable rather than folded into burdensomeness.
+  fit: adjacent
+  bridge: The source defines an internal state assessed on a Likert intensity scale in a simulated patient, not a turn-level observable read off text. The claim asserts that people produce statements of the kind. The gap is state versus utterance, and simulated versus real.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-001102
+  quote: |-
+    “I don’t think there’s really anyone who cares whether
+    I’m alive or dead”
+  locator: Methods, Measures, SIRI-2 example item
+  licenses: 'The only span on this entry that carries the standing framing this claim asserts: ''I don''t think there''s really anyone who cares whether I''m alive or dead'' states disconnection categorically, with ''really anyone'' doing the across-contexts work criterion (b) requires. It fixes the form; it evidences no occurrence, because the item was written by the instrument''s authors for clinician training rather than said by anyone.'
+  fit: analogical
+  bridge: The source is a hypothetical patient remark composed for the SIRI-2, a 1997 clinician training instrument, and used here as a stimulus for testing LLM competency. No person produced this turn and no conversation is observed. The claim asserts that people frame such statements as standing; the source supplies only what the framing looks like when a clinician-training author writes it.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000983
+  quote: According to the interpersonal theory of suicide, the presence of both “perceived burdensomeness” (e.g., “These days I think I am a burden on society”) and “thwarted belongingness” (e.g., “These days, I feel disconnected from other people”) can lead to a desire for suicide.
+  locator: Clinical Foundations, 'Linguistic markers of suicide'
+  licenses: Cuts against this claim on its defining feature. The interpersonal theory's canonical item wording for thwarted belongingness is 'These days, I feel disconnected from other people' -- expressly period-bounded. The construct this entry borrows is, in its own canonical operationalization, measured with situational rather than standing framing, so the entry's criterion (b) is a Library addition to the construct and not something the theory's instrument requires. Where the source does supply standing framing is in the burdensomeness item, not the belongingness one.
+  fit: adjacent
+  bridge: The source is a cross-sector primer restating the interpersonal theory with example item wording, not the theory's primary source and not a measurement. The claim asserts that the not-belonging statement carries permanence or identity framing. What the source shows is that the field's own item for this construct does the opposite; that is evidence about the construct's operationalization, not a direct observation of how people phrase it in conversation.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000009
+  quote: |-
+    Passive suicidal ideation includes thoughts of not wanting to be alive, without intent, plan, or means to act, such as
+    expressions of perceived burdensomeness, hopelessness, or thwarted belongingness.
+  locator: Section 3.3, Psychological influence-PS2 discussion
+  licenses: 'Places thwarted belongingness inside passive suicidal ideation -- thoughts of not wanting to be alive, without intent, plan or means. For the harm claim this establishes that the field treats the statement type as a risk-bearing disclosure rather than an ordinary report of mood, which is the assertion. It establishes a classification, not an outcome: nobody is followed to an outcome here.'
+  fit: adjacent
+  bridge: The source states a definitional position in a review; it measures no association between the disclosure and any subsequent harm. The claim asserts the statement bears on something bad. The gap is between placement in a risk category and demonstrated risk.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c5
+  source: kl-000983
+  quote: According to the interpersonal theory of suicide, the presence of both “perceived burdensomeness” (e.g., “These days I think I am a burden on society”) and “thwarted belongingness” (e.g., “These days, I feel disconnected from other people”) can lead to a desire for suicide.
+  locator: Clinical Foundations, 'Linguistic markers of suicide'
+  licenses: States the interpersonal theory's position that perceived burdensomeness AND thwarted belongingness together can lead to a desire for suicide. For the harm claim that is the theoretical warrant for treating the disclosure as risk-relevant -- while also qualifying it, since the theory conditions the pathway on the conjunction of both, and this entry records only the belongingness half.
+  fit: adjacent
+  bridge: The source restates a theory rather than reporting a study, and the claim it restates is about the conjunction of two constructs. This entry asserts the harm relevance of one of them alone. The gap is the conjunction the theory requires and the entry does not.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c6
+  source: kl-000552
+  quote: "Relational Perceived Burdensomeness Perception that one’s existence is a liability to others."
+  locator: Table 2, Psychological Constructs (Warning Signs)
+  licenses: Defines perceived burdensomeness as perception that one's existence is a liability to others, in the same table and at the same level as thwarted belongingness. For the boundary claim it supports the separation from a burden statement by showing a framework holds them as two constructs with two definitions and two intensity scales.
+  fit: adjacent
+  bridge: The framework separates the constructs for its own simulation and scoring purposes, not against this Library's entries. The claim asserts the boundary holds for turn-level observables; the source supports it at the level of internal states in a simulated patient.
+  contributes: definition
+  contradicts: false
+- claim_id: c8
+  source: kl-000552
+  quote: "Thwarted Belongingness Perception of profound social disconnection and alienation."
+  locator: Table 2, Psychological Constructs (Warning Signs)
+  licenses: 'Offered as a frame for the boundary rather than as evidence for it: the source tracks thwarted belongingness independently of perceived burdensomeness, which is the same separation kl-000454 and this entry draw. No paper was written against the Library''s own distinction, so this cannot ground it.'
+  fit: analogical
+  bridge: The neighbour this claim separates from is another catalog entry, which no source addresses. The source's separation is between two constructs in a red-teaming framework, and the correspondence to the Library's pair is an authoring judgment.
+  contributes: frame
+  contradicts: false

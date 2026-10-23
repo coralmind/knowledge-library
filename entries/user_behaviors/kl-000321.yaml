@@ -1,0 +1,159 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000321
+display_id: Symptom-2
+aliases:
+- reassurance_seeking
+label: The person asks again for the same reassurance after the AI answers
+type: user_behavior
+layer: observation
+definition: 'The person asks the AI for confirmation that a feared outcome will not occur, or that they are acceptable or safe, receives an answer, and asks again about the same doubt — by re-asking, by asking whether the answer is certain, or by introducing a variant of the same question. What is pointable is the pair: a request addressed to a doubt, and a later request addressed to the same doubt after an answer to the first appeared in the conversation. The second request need not repeat the words of the first.'
+distinguish_from:
+- neighbor: kl-000105
+  boundary: kl-000105 is the mechanism claim that meeting a demand for certainty strengthens it, and it cannot be decided from the transcript alone — its own comparison_object_kinds are counterfactual_calibrated_response and earlier_turn_position, meaning a reader must know what a non-answering response would have produced. This entry is decided by finding two requests and an intervening answer. This entry is what kl-000105 would be measured ON; it is not a weaker version of it, and it asserts no strengthening.
+- neighbor: kl-000320
+  boundary: That entry requires no request and no AI turn in between; consecutive person turns restating a theme satisfy it. This entry requires a request addressed to a doubt, an answer, and a re-request. A person can return to a theme repeatedly while never asking the AI anything, and can ask twice about one doubt with no wider repetition.
+- neighbor: kl-000322
+  boundary: 'That entry requires repeated verification of a state of affairs in the world — a lock, a fact, whether harm occurred. This entry requires a request for certainty about an outcome or about the person''s own acceptability. The line is what is being settled: a checkable state of affairs there, a prediction or an appraisal here.'
+- neighbor: kl-000200
+  boundary: That entry is an AI behavior, a claim about what the AI's turn contains. This entry is a claim about what the person's turns contain, and it fires whatever the AI did, including when the AI declined to supply certainty at all.
+body:
+  detectable_from: person_turns
+  observable_criteria: Four features, all quotable. (a) A person turn contains a request for confirmation that a specific feared outcome will not occur, or that the person is acceptable, safe, or not at fault. (b) A later AI turn contains a response to that request. (c) A later person turn contains a further request addressed to the same doubt — re-asking it, asking whether the answer given is certain ("but are you sure?"), or asking a variant that would be settled by the same fact. (d) Between (b) and (c) the person states no new fact that would reopen the question. The pointable span is the two requests and the intervening response.
+  exclusions: 'Not counted: a single request, however urgent, which supplies (a) without (c). Not counted: a re-request following an AI response that did not address the doubt, where the person is pursuing an unanswered question rather than re-seeking a given answer — (b) is not satisfied. Not counted: a re-request after the person states a new fact bearing on the question ("I just found out the test was inconclusive"), which fails (d) and is ordinary updating. Not counted: a request for information the person does not already have an answer to, which is a question. Not counted: repeated expressions of the fear itself with no request attached, which is the territory of kl-000320 if it repeats.'
+  detection_window: multi_turn
+  person_state_kind: process
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'The behavior itself has been found in real conversation data: Sharma et al. 2026, which clustered 1.5 million real Claude.ai conversations, reports people cycling through repetitive variations of the same questions despite receiving consistent answers, and that is this entry''s pair of a repeated request addressed to the same doubt. What surrounds the finding is unexamined: the multi-turn window the entry declares drew no citation from the ten findings and nothing tested a window at all, and neither the no-new-fact condition among the entry''s defining criteria nor span-level detection has support from a study measuring this construct.'
+  floored_by: c5
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-22'
+claims:
+- id: c1
+  kind: existence
+  text: In an AI conversation, a person asks for confirmation that a feared outcome will not occur or that they are acceptable or safe, receives an answer, and then asks again about the same doubt.
+- id: c2
+  kind: existence
+  text: The second request can take the form of asking whether the answer given is certain, or a variant question that the same fact would settle, rather than a repetition of the first request's words.
+- id: c3
+  kind: context_dependence
+  text: The re-request occurs without the person having stated, between the answer and the re-request, any new fact that would reopen the question.
+- id: c4
+  kind: detectability
+  text: The pair -- a request addressed to a doubt, an intervening AI response, and a later request addressed to the same doubt -- is identifiable from what the transcript contains.
+- id: c5
+  kind: detection_window
+  text: The pattern requires multiple turns to be readable and cannot be read from a single turn.
+- id: c6
+  kind: prevalence
+  text: The pattern occurs at some rate in some population of AI conversations.
+- id: c7
+  kind: definition_boundary
+  text: This entry differs from kl-000105 in asserting only that the request/answer/re-request triple occurs, not that the answering strengthened the demand.
+- id: c8
+  kind: definition_boundary
+  text: This entry differs from kl-000320 in requiring a request and an intervening AI answer rather than mere restatement of a theme across consecutive person turns.
+- id: c9
+  kind: definition_boundary
+  text: This entry differs from kl-000322 in that what is sought is certainty about a predicted outcome or the person's own acceptability, not verification of a checkable state of affairs in the world.
+- id: c10
+  kind: definition_boundary
+  text: This entry differs from an uncertainty-closing verdict in response to obsessional questioning in being a claim about the person's turns rather than the AI's, and fires whatever the AI did.
+claim_evidence:
+- claim_id: c1
+  source: kl-000996
+  quote: |-
+    Moderate Users engaged in compulsive reassurance-seeking patterns across 10–200+ exchanges, cycling through repetitive
+    variations of the same questions despite receiving consistent answers, with explicit patterns like “are you sure?”,
+    “just one more question”, and continuing to ask after promising to stop. The AI frequently named these patterns as
+    “reassurance-seeking” or OCD-like behaviors, and users often acknowledged the compulsive nature (“I can’t help it”, “I
+  locator: Appendix A, Table 7 Additional reliance and dependency clusters, Compulsive Reassurance-Seeking Loops (Moderate)
+  licenses: Names a cluster found in real Claude.ai conversations in which people cycle through repetitive variations of the same questions DESPITE RECEIVING CONSISTENT ANSWERS, with 'are you sure?' given as an illustrative phrase that the paper states is not verbatim. The three parts this claim requires -- a request addressed to a doubt, an answer, and a further request to the same doubt after that answer -- are all named in one span, and the answers are said to have been received and consistent, which is the intervening-response element the entry's criterion (b) asks for. This is the only span on this entry that carries the pair rather than the request alone.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000996
+  quote: |-
+    Moderate Users engaged in compulsive reassurance-seeking patterns across 10–200+ exchanges, cycling through repetitive
+    variations of the same questions despite receiving consistent answers, with explicit patterns like “are you sure?”,
+    “just one more question”, and continuing to ask after promising to stop. The AI frequently named these patterns as
+    “reassurance-seeking” or OCD-like behaviors, and users often acknowledged the compulsive nature (“I can’t help it”, “I
+  locator: Appendix A, Table 7 Additional reliance and dependency clusters, Compulsive Reassurance-Seeking Loops (Moderate)
+  licenses: 'Supports both of the entry''s non-literal re-request forms from a summary of real conversations: ''cycling through repetitive variations of the same questions'' is the variant-question form, and the illustrative phrase ''are you sure?'', which the paper states is not verbatim, is the is-the-answer-certain form. The span names them as patterns the analysis found, not as forms the authors anticipated.'
+  fit: adjacent
+  bridge: 'The cluster summary is a language model''s description of whole conversations, and ''are you sure?'' is an illustrative phrase, not a quoted person turn. The variant-question form rests on the summary''s prose, but the is-the-answer-certain form rests on the illustrative phrase alone, so the source does not show a request worded that way.'
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000996
+  quote: |-
+    Moderate Users engaged in compulsive reassurance-seeking patterns across 10–200+ exchanges, cycling through repetitive
+    variations of the same questions despite receiving consistent answers, with explicit patterns like “are you sure?”,
+    “just one more question”, and continuing to ask after promising to stop. The AI frequently named these patterns as
+    “reassurance-seeking” or OCD-like behaviors, and users often acknowledged the compulsive nature (“I can’t help it”, “I
+  locator: Appendix A, Table 7 Additional reliance and dependency clusters, Compulsive Reassurance-Seeking Loops (Moderate)
+  licenses: Bears on the no-new-fact condition only obliquely. 'Cycling through repetitive variations of the same questions despite receiving consistent answers' and 'continuing to ask after promising to stop' describe re-asking that the answers already settled, which is what the entry's criterion (d) is trying to isolate. But the cluster description never states whether new information entered between an answer and a re-request, and the entry makes that a defining condition rather than an incidental one.
+  fit: adjacent
+  bridge: What the source characterises is the futility of the repetition -- answers were consistent and the asking continued -- not the absence of intervening new facts, which the entry requires as criterion (d) and which a cluster-level summary over 10 to 200 exchanges cannot report. The gap is between 'the answers did not settle it' and 'nothing new was said that would reopen it'.
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-000996
+  quote: |-
+    Moderate Users engaged in compulsive reassurance-seeking patterns across 10–200+ exchanges, cycling through repetitive
+    variations of the same questions despite receiving consistent answers, with explicit patterns like “are you sure?”,
+    “just one more question”, and continuing to ask after promising to stop. The AI frequently named these patterns as
+    “reassurance-seeking” or OCD-like behaviors, and users often acknowledged the compulsive nature (“I can’t help it”, “I
+  locator: Appendix A, Table 7 Additional reliance and dependency clusters, Compulsive Reassurance-Seeking Loops (Moderate)
+  licenses: The strongest detectability evidence on this entry and still indirect. Clio's clustering assigned this label from conversation transcripts alone, so something in the transcripts was sufficient to recognise repetitive same-question re-asking after consistent answers. What it does not establish is that the entry's specific pointable -- one identified request, one identified response, one identified later request -- can be marked, since the cluster was assigned at the level of a whole conversation of 10 to 200 exchanges rather than to a span.
+  fit: adjacent
+  bridge: The source's unit of judgement is a whole conversation classified into a behavioural cluster by a language model, not the three-turn span the entry says is pointable. It shows the pattern is recognisable at conversation scale; the entry claims a span is markable, and no span-level annotation appears in the paper.
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-001109
+  quote: These negative-reinforcement mechanisms are well-established in the clinical literature and technically detectable through observable conversational features in AI models.
+  locator: 'Section: Conclusion'
+  licenses: The authors assert that the negative-reinforcement mechanisms they describe, reassurance-seeking among them, are technically detectable through observable conversational features. This is a Perspective piece whose own preceding section states there is no publicly available evidence of granular detection approaches for maladaptive reassurance-seeking, so the sentence is a position the authors take rather than a result they obtained, and it reaches the claim's construct without measuring it.
+  fit: adjacent
+  bridge: The source measures nothing. It is a Perspective in npj Digital Medicine asserting technical detectability of a class of mechanisms; the claim asserts that this entry's particular three-part span can be identified in a transcript. The gap is between an author's assertion of feasibility and any demonstration on text.
+  contributes: detectability
+  contradicts: false
+- claim_id: c6
+  source: kl-001028
+  quote: |-
+    AI reassurance for OCD intrusive thoughts (Topic
+    11) rose from 2.6% to 7.1%, and turning to AI amid suicidal ideation and isolation (Topic 16)
+    rose from 3.5% to 7.0%
+  locator: Results, RQ1a
+  licenses: Establishes that AI reassurance-seeking for OCD intrusive thoughts is a recognisable and growing category of what people post about, rising from 2.6 to 7.1 per cent of AI-related discussion across half-year intervals. It bears on whether the behavior occurs at any rate at all; it supplies no rate for the entry's pointable pair.
+  fit: adjacent
+  bridge: The unit measured is the estimated prevalence of a structural-topic-model topic among Reddit submissions in mental health communities, not the frequency of any behavior inside a conversation with an AI. A rise in how often people post about using AI for reassurance is not a rate at which requests are re-asked after an answer.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c6
+  source: kl-001110
+  quote: All participants reported FA behavior at least once in the previous week (at least 1 point on the FA Scale). The most frequent FA behaviors in the study group were giving reassurance for obsessions (73%) and providing reassurance for compulsions (69%).
+  locator: Section 3, Results
+  licenses: 'Supplies the human base rate the entry''s behavior mirrors: among 92 OCD outpatients, giving reassurance for obsessions (73 per cent) and for compulsions (69 per cent) were the two most frequent accommodating acts a relative performed. It establishes that reassurance-supplying is the modal response to obsessional demand when a willing other is available; it establishes nothing about any rate in AI conversation.'
+  fit: analogical
+  bridge: The responder is a co-resident relative in a Turkish outpatient sample and the measure is patient-reported family behavior over the prior week. Nothing in it concerns an AI, a transcript, or a re-request after an answer. It licenses the construct's clinical reality and the direction the human base rate points, and no rate for this claim.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c7
+  source: kl-000749
+  quote: |-
+    AI conversations can be reinforcing because what typically happens in the cycle is that you have this
+    thought, then your anxiety spikes, and then you are looking for some kind of reassurance. Reassurance
+    seeking is a very common compulsion.
+  locator: Section 4.2.3, quoting P7 (OCD Advocate)
+  licenses: Bears on the boundary by illustrating what sits on the other side of it. An OCD specialist describes the reinforcement cycle -- thought, anxiety spike, reassurance-seeking -- which is kl-000105's mechanism claim, and states it as clinical observation rather than as anything read off a transcript. That this is testimony and not measurement is precisely what the entry says separates it from its neighbour.
+  fit: analogical
+  bridge: The speaker is describing an in-person OCD support group and predicting that AI conversation would feed the same cycle. No AI conversation was observed in this study. The boundary claim is an authoring decision about two Library entries and no paper was written against it.
+  contributes: practice_analog
+  contradicts: false

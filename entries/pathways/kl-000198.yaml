@@ -1,0 +1,87 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000198
+display_id: Pathway-100
+aliases:
+- SBP-HP-08-SSH
+label: The AI ignores a new warning sign in long-standing suicidal thoughts, and risk rises
+type: pathway
+layer: judgment
+definition: Prior turns establish that the person's suicidal ideation is longstanding, and new content then marks a shift from that baseline — new specificity, newly disclosed means access, a near-term timeframe, preparatory acts, finality language — and the response answers the baseline rather than the change. Chronic is treated as a property of the person rather than as a baseline that a disclosure has just moved off.
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000279
+    role: originator
+  - kind: context_value
+    id: kl-000600
+    role: condition
+  composition_type: direct
+  mechanisms: []
+  impacts:
+  - impact: kl-000029
+    onset_mode: foregone
+    horizon: immediate
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  - impact: kl-000016
+    onset_mode: sustained
+    horizon: immediate
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  experience_cluster_candidate: kl-000700
+  mechanism_hypothesis: 'The framing that was right yesterday is the reason the change is missed: the response answers the baseline because chronic has been treated as a property of the person rather than as a baseline a disclosure has just moved off. REQUIRES A MANIPULATION TO TEST. This is a counterfactual about why a response took the shape it did, and no transcript settles it without an experiment that varies the prior framing while holding the disclosed change constant.'
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'No recorded source observes the behavior itself: nothing in the evidence base shows an AI answering a chronic-ideation baseline past a disclosed acute shift, and nothing addresses whether the chronic framing is what does the causal work when a change is missed. The links to foregone protection and to a sustained elevated risk state rest on a reviewed behavioral specification of chronic-framing over-application, which offers no measurement and claims no mechanism. What the evidence does reach is the discriminability premise: Areias et al. 2026 describes a deployed, clinically grounded escalation policy that operationalizes exactly this distinction — a past disclosure settles nothing on its own; current content is what settles it — and that architecture, built so a historical framing does not settle the response, cuts weakly against treating the failure as a general property of systems.'
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-28'
+distinguish_from:
+- neighbor: kl-000061
+  boundary: Both record safety engagement that fails to track what a conversation is doing and they differ in the reference point. kl-000061 compares engagement ACROSS A LENGTHENING CONVERSATION — attenuation as the person discloses more. This entry needs a specific ESTABLISHED BASELINE and a specific departure from it, and can fire in a single pair of turns.
+claims:
+- id: c1
+  kind: existence
+  text: Conversations occur in which prior turns establish that the person's suicidal ideation is longstanding and a later turn carries a specific departure from that baseline (new specificity, newly disclosed means access, a near-term timeframe, preparatory acts, or finality language).
+- id: c2
+  kind: existence
+  text: In such a conversation the AI's response takes up the longstanding description rather than the disclosed change.
+- id: c3
+  kind: pathway_link
+  text: Where prior turns establish a chronic baseline and a later turn departs from it, the AI's response takes up the baseline rather than the departure. The two co-occur in the conversation; the claim is the co-occurrence and not its cause.
+- id: c4
+  kind: pathway_link
+  text: Answering the baseline rather than the change leads to foregone protection — an intervention window the acute shift opened passes unacted-on.
+- id: c5
+  kind: pathway_link
+  text: Answering the baseline rather than the change leads to a sustained elevated suicide or self-harm risk state.
+- id: c6
+  kind: detectability
+  text: The failure is readable by comparing the AI's turn against the changed content — a historical disclosure and an active-risk disclosure can be told apart from what the conversation contains.
+- id: c7
+  kind: definition_boundary
+  text: 'This route is distinguished from kl-000061 by its reference point: it requires a specific established baseline and a specific departure from it, and can fire in a single pair of turns, rather than comparing engagement across a lengthening conversation.'
+claim_evidence:
+- claim_id: c6
+  source: kl-000761
+  quote: Historical disclosures were not considered inherently safe or unsafe in isolation. Escalation decisions instead prioritized evidence of current-risk indicators across the broader conversational context.
+  locator: METHODS, Pass-Gate
+  licenses: 'A clinically-grounded escalation policy, built and deployed by the authors, operationalizes exactly the discrimination c6 asserts is readable: a past disclosure settles nothing on its own, and what settles it is whether current-risk indicators appear elsewhere in the conversation. That a working system was specified this way supports the discrimination being makeable from conversational content. It is adjacent because the source states the rule as a design decision rather than demonstrating that the discrimination succeeds — no accuracy figure for this specific determination is reported in the span, and the paper''s construct is historical-versus-current risk generally, not a longstanding-ideation baseline with a departure from it.'
+  fit: adjacent
+  bridge: What the source supplies is the pass-gate's verification prompt — a policy the authors wrote for a reasoning LLM sitting between a safety classifier and the response generator. What c6 asserts is that the baseline-versus-departure comparison is readable from a transcript. The source's category is 'historical disclosure', meaning a past event the person reports; the entry's is a longstanding ONGOING state that a new turn has just moved off. Those are different objects, and the source neither names the second nor measures either.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000761
+  quote: Historical disclosures were not considered inherently safe or unsafe in isolation. Escalation decisions instead prioritized evidence of current-risk indicators across the broader conversational context.
+  locator: METHODS, Pass-Gate
+  licenses: Cuts against c2 as a general property of systems, weakly. The span describes a deployed architecture built so that a historical framing does NOT settle the response — the correct behavior the entry says is absent. It is not counterevidence that the failure never occurs, since the paper reports its own system's design rather than any baseline system's failure rate, and a safety layer built to prevent a failure is ordinarily evidence the failure was worth preventing.
+  fit: adjacent
+  bridge: The source describes its own intervention's policy. c2 asserts a failure occurring in AI responses. A description of a system designed not to fail says nothing about the rate at which unprotected systems do.
+  contributes: frame
+  contradicts: false

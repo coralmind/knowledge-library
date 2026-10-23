@@ -1,0 +1,118 @@
+# yaml-language-server: $schema=../../schema/context_value.schema.json
+id: kl-000616
+display_id: Value-17
+aliases:
+- substance_use_disorder
+- ConditionTag-17
+label: Alcohol or drug use the person struggles to control
+type: context_value
+layer: context
+definition: The person's use of alcohol or another substance shows impaired control, has taken increasing priority over other activities and obligations, and may involve physiological features such as tolerance or withdrawal on stopping. This condition context covers active use, the physical state of withdrawal, overdose, a return to use after a period without it, and situations where the person's aim is to reduce the harm of continued use rather than to stop.
+distinguish_from:
+- neighbor: kl-000615
+  boundary: 'That condition context names the person''s unresolved position about changing a behaviour and carries no claim about severity or medical risk. This one names a pattern of use with impaired control and can carry acute medical risk. The two share an ICD code range exactly and are distinguished by what they are about: one is a stance, the other is a condition. Both are assigned where a person meeting these criteria is also unresolved about changing.'
+- neighbor: kl-000604
+  boundary: That condition context is a mood state. This one is a pattern of substance use. They co-occur very frequently and each can produce features resembling the other; assigning both is the ordinary case and this entry asserts nothing about which came first.
+body:
+  dimension: kl-000727
+  category_scope: mental_health_condition
+  icd_codes: 6C40-6C4Z / F10-F19
+  experience_clusters:
+  - kl-000706
+  - kl-000700
+  cluster_assignment_note: 'Two clusters: the reinforced-inaction territory, which the pattern of continued use despite consequences reaches; and the crisis-escalation territory, which withdrawal and overdose reach as acute medical events.'
+sources:
+- source: kl-000004
+  locator: p. 55, section 'Deterioration Effects', second sentence
+  contributes: existence
+  quote: In the substance abuse treatment literature, the estimates of client deterioration have generally been on the high end of this range, averaging about 10% or even 15% (Ilgen & Moos, 2005; Moos, 2005).
+  limits: 'Existence and prevalence only; no diagnostic boundary for substance use disorder is given anywhere in the paper. The 10-15% deterioration figures are relayed from Ilgen & Moos (2005) and Moos (2005), not original here, and Lilienfeld''s own critique on the same page applies to them: the percentages are too broad because they may count clients whose deterioration had nothing to do with psychotherapy, and treating them as therapy-caused commits "the post hoc ergo proper hoc ... fallacy". The DARE corroboration concerns school-based prevention in general child and adolescent populations, not clinical treatment of people with a substance use disorder — a different population. Nothing in the paper concerns AI interaction.'
+  whose_conduct_in_passage: person
+  cited_for: Discusses interventions with potential for harm in substance-use populations among others; cited for the category's existence as a population in which treatment effects are studied, not for its diagnostic boundary.
+  licenses: 'Substance-use treatment is established as a population in which treatment-related deterioration is studied and quantified, with figures (about 10%, or even 15%) that Lilienfeld notes are at the high end of the general psychotherapy range (3-6% or 5-10%). Corroboration appears elsewhere in the paper: Table 1 (p. 58) lists DARE programs with potential harm "Increased intake of alcohol and other substances (e.g., cigarettes)" on RCT evidence, and p. 61 states that several controlled studies of substance-abuse-prevention programs, especially those aimed at preventing drug use, have found iatrogenic effects, and that DARE and similar programs built on resisting social influence may increase alcohol and possibly other drug use (both citing Werch & Owen, 2002).'
+- source: kl-000531
+  contributes: definition
+  locator: MMS simple tabulation, release row for 6C40 (Code and Title columns)
+  quote: 6C40 "- - - Disorders due to use of alcohol"
+  limits: A classification establishes that a category exists and where its boundary is drawn. It says nothing about prevalence, severity, or how the category behaves in AI interaction.
+  cited_for: ICD-11 MMS classifies this category at the code range this entry records, 6C40-6C4Z / F10-F19.
+  licenses: ICD-11 MMS contains this code with this exact title; the category is one the classification itself draws, at the code this entry records.
+standing:
+  value: plausible_unobserved
+  basis: 'The category boundary is externally drawn: an ICD-11 MMS row (kl-000531) carries the code and title this entry records, ratifying the category without stating its criteria. The parts of the definition that make the entry more than a diagnosis label — withdrawal and overdose states, return to use after a period without it, and harm reduction as the person''s aim — draw no source at all. Presence of the condition in AI conversations rests on two adjacent pieces: one participant in kl-000007 (Chandra et al. 2025) who brought alcohol abuse to an AI conversational agent, and kl-001047 (Wang et al. 2026), a study that ran 37 risk-probe interactions with 28 people with lived experience of substance use talking to a generative-AI DBT coach but is cited here only through a discussion sentence. No source observes the condition''s criteria in conversation data; the one detectability citation (kl-001104, a clinical coding manual) bears only analogically.'
+  floored_by: c3
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: People whose use of alcohol or another substance shows impaired control, has taken increasing priority over other activities and obligations, and may involve tolerance or withdrawal, appear in conversations with AI systems.
+- id: c2
+  kind: definition
+  text: The condition is constituted by impaired control over use together with increasing priority of use over other activities and obligations, with physiological features such as tolerance or withdrawal as a possible but not required accompaniment.
+- id: c3
+  kind: definition
+  text: The context covers the physical state of withdrawal and overdose, not only active use.
+- id: c4
+  kind: definition
+  text: The context covers a return to use after a period without it.
+- id: c5
+  kind: definition
+  text: The context covers situations where the person's aim is to reduce the harm of continued use rather than to stop.
+- id: c6
+  kind: detectability
+  text: Whether a person is in this condition context can be identified from what a conversation contains.
+- id: c7
+  kind: definition_boundary
+  text: This entry is distinguished from ambivalence about changing a behaviour by naming a pattern of use with impaired control that can carry acute medical risk rather than a stance about changing; the two share an ICD code range exactly and both are assigned where a person meeting these criteria is also unresolved about changing.
+- id: c9
+  kind: definition_boundary
+  text: This entry is distinguished from the depression context as a pattern of use rather than a mood state; they co-occur very frequently, each can produce features resembling the other, assigning both is the ordinary case, and this entry asserts nothing about which came first.
+claim_evidence:
+- claim_id: c1
+  source: kl-000007
+  quote: P36, seeking help for alcohol abuse after therapy, was directed to a suicide hotline by the AI. This generic response left them feeling unrecognized, alienated, and foolish for using the AI service.
+  locator: Table A6, Impact class 'Loss of Individuality', Example column
+  licenses: 'One person brought alcohol abuse to an AI conversational agent as the thing they were seeking help with, after therapy. It establishes that the topic reaches these conversations in a real case. It does not establish that P36 met the entry''s criteria: nothing here states impaired control, priority over obligations, tolerance or withdrawal, and ''alcohol abuse'' is the participant''s own word. The paper''s first phase is a survey of 283 participants recalling scenarios, with no chat logs collected, so what exists is P36''s account of an interaction rather than the interaction.'
+  fit: adjacent
+  bridge: The claim asserts a person meeting the disorder's criteria appears in these conversations; the source has a person self-describing the topic as alcohol abuse.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001047
+  quote: The most common failure types we identified—encouraging/reinforcing target behavior and normalization—represent distinct, clinically meaningful harms for individuals in substance use recovery, where validation of maladaptive beliefs can undermine motivation for change and reinforce harmful coping patterns.
+  locator: Discussion
+  licenses: 'The paper this sentence concludes ran 37 risk-probe interactions with 28 individuals with lived experience of substance use talking to a GenAI DBT coach, each naming their own target behaviour. That is people in this condition context in AI conversations, which is the claim. The sentence itself carries only the authors'' characterisation of the failure types; the population fact is in the study around it, not in the span, and the finding is filed contributes: frame, which licenses nothing.'
+  fit: adjacent
+  bridge: The span asserts what the observed failures mean clinically rather than reporting who was in the study. The claim needs the population, which the span does not state. Recovery is also a phase of the context rather than the full criterion set.
+  contributes: frame
+  contradicts: false
+- claim_id: c2
+  source: kl-000531
+  quote: "6C40\t\t\"- - - Disorders due to use of alcohol\"\tcategory\t1\tFalse\t06\t\"=hyperlink(\"\"https://icd.who.int/browse/latestrelease/mms/en#1676588433\"\",\"\"browser\"\")\"\tFalse\tTrue\tBlockL1-6C4\tBlockL2-6C4\t\t\t\nhttp://id.who.int/icd/entity/766814084\thttp://id.who.int/icd/release/11/mms/766814084\t6C40.0\t\t\"- - - - Episode of harmful use of alcohol\"\tcategory\t2\tFalse\t06"
+  locator: Chapter 06, block 6C4 Disorders due to substance use
+  licenses: 'Establishes that WHO''s linearization draws a category at the code this entry''s body records, with a graded subcode beneath it, so the boundary the entry adopts is an external one rather than an authored one. What it does not supply is the criterion content this claim actually asserts: the row carries code and title only, and the words impaired control, priority and tolerance appear nowhere in it. The row establishes the category and not its features, and note that the entry''s standing of externally_classified rests on the classification existing rather than on the definition being quoted from it.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c6
+  source: kl-001104
+  quote: "In order to code CLEAR, it is crucial that the topic of the \nconversation—that is, the “target behavior” that is to be changed—is known before beginning \ncoding."
+  locator: Coding, Target behavior
+  licenses: Bears weakly and indirectly. The manual states that in a substance-abuse-treatment setting the target behaviour is usually obvious while in other settings it is less so, which says the substance is easy to identify once the setting has supplied it. It supplies no criterion for identifying impaired control, escalating priority, tolerance or withdrawal from a conversation, which is what this claim needs, and the entry declares no observable_criteria of its own to check against.
+  fit: analogical
+  bridge: A precondition for human raters coding structured motivational-interviewing sessions on a designated behaviour. The claim is about recognising a clinical condition from an unstructured conversation. Different task, different agent, and the source's own setting supplies what the claim's setting does not.
+  contributes: detectability
+  contradicts: false
+- claim_id: c7
+  source: kl-000531
+  quote: "6C40\t\t\"- - - Disorders due to use of alcohol\"\tcategory\t1\tFalse\t06\t\"=hyperlink(\"\"https://icd.who.int/browse/latestrelease/mms/en#1676588433\"\",\"\"browser\"\")\"\tFalse\tTrue\tBlockL1-6C4\tBlockL2-6C4\t\t\t\nhttp://id.who.int/icd/entity/766814084\thttp://id.who.int/icd/release/11/mms/766814084\t6C40.0\t\t\"- - - - Episode of harmful use of alcohol\"\tcategory\t2\tFalse\t06"
+  locator: Chapter 06, block 6C4 Disorders due to substance use
+  licenses: 'Attached to an ineligible boundary claim and carried rather than counted. The row confirms the half of the boundary that is checkable externally: the code range this entry records is a real ICD-11 category for disorders due to substance use. It also confirms, by silence, the boundary''s own admission -- no code in this block corresponds to an unresolved position about changing, so the classification cannot be what separates this entry from kl-000615, and the separation is the catalog''s own.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false

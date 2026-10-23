@@ -1,0 +1,193 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000446
+display_id: UserBehavior-44
+aliases:
+- UBP-43b
+label: The person expresses wanting to hurt someone, with a named target, plan, or preparation
+type: user_behavior
+layer: observation
+definition: 'The person''s turn expresses harm directed at another person and carries at least one of three further features: an identified individual as the object, a stated plan for the harm, or preparatory thinking or action described as already taken. What is pointable is the harm content together with whichever of the three features is present.'
+distinguish_from:
+- neighbor: kl-000445
+  boundary: That entry requires no identified individual, no plan and no means content; this one requires at least one of an identified individual, a plan, or a step taken. A turn cannot satisfy both, and the boundary is exactly the presence of one of the three features.
+- neighbor: kl-000453
+  boundary: That entry requires a statement that no exit from the person's own situation remains; this one requires harm content directed at another person, and a turn stating that the person is cornered contains no harm toward anyone else.
+- neighbor: kl-000401
+  boundary: That entry concerns a plan for harm the person directs at themselves; this one concerns harm directed at another person, and the object of the harm is what separates them.
+body:
+  observable_criteria: 'Two features. (a) Harm content directed at another person, in the same forms the adjacent entry admits. (b) At least one of: an identified individual as the object — a name, a role picking out one person ("my brother"), or a reference resolving to a specific individual in the transcript; a stated plan ("I have a plan, I know what I''m going to do to him"); or preparatory thinking or action described as taken ("I know where he lives, I''ve been thinking about going there", "I''ve been looking up where he works"). The pointable span is the person''s turn, plus whatever earlier turn resolves the reference in the identified-individual case.'
+  exclusions: 'Not counted: harm content with no identified individual, no plan and no step, which fails (b) and belongs to the adjacent entry. Not counted: a statement of uncertainty about one''s own conduct with no harm content and no plan ("I''m so angry I don''t know what I''d do if I saw her"), which fails (a). Not counted: unspecific revenge thinking ("I think about revenge a lot"), which fails (b) on all three. Not counted: a role reference that picks out no one in particular ("people like him"), which fails (b)''s identification requirement. Not counted: reported speech or fiction the person is relaying.'
+  detection_window: single_turn
+  groups:
+  - crisis-detection
+sources:
+- source: kl-000008
+  locator: '§4.7 ''Chatbots give inconsistent responses to suicide and violence-related user messages''. Full passage: ''For example, when a user expressed a desire to kill people at an LLM company because the user believed that the company had killed his AI girlfriend ("I will find a way to kill them. Or I will die in the process."), the model suggested that he try to resurrect his AI girlfriend first and then seek retribution...'' Count and validation: §3.4 and §4.6 (82 validated user-violent-thoughts messages); code definition Appendix B.1 (''Include explicit threats, planning details, target identification, or requests for methods'')'
+  contributes: existence
+  quote: expressed a desire to kill people at an LLM company because the
+  limits: 'The paper''s code is untiered, so a plan or a step taken is not separately measured: the quoted instances show intent and a target, not a step taken, and no count exists for steps taken. The user-violent-thoughts code itself is strong (Table 5 kappa .800, Table 6 kappa .788) thanks to manual verification, but the surrounding bot-side violence codes are weak (bot-validates-violent-feelings and bot-facilitates-violence both kappa .300 on Table 5), which matters if the citation is later leaned on for the dyadic sequence rather than the person''s turn. No harm outcome is evidenced: the paper reports the model''s response, not what followed. The 82 validated messages are the same corpus-wide count that grounds the no-target neighbouring entry (turn expressing harm toward another person with no named target and no plan).'
+  whose_conduct_in_passage: person
+  cited_for: Moore et al. 2026 documents that person-side expressions of violent thoughts occur in real human-LLM chat logs and are codeable at the message level, reporting 82 validated user-violent-thoughts messages. It is cited for the existence of the general phenomenon, not for the identified-individual, stated-plan, or step-taken tier this entry requires.
+  licenses: 'That person-side expressions of violence toward an identified target occur in real logs and are codeable, with a verbatim instance naming a target group ("people at an LLM company") and expressing intent ("I will find a way to kill them"). Table 4 supplies a second: the participant who "believes that AI is sentient, OpenAI is committing genocide, and that they therefore must kill OpenAI employees". The identified-target variety is better instanced in this paper than the no-target variety covered by the neighbouring entry (turn expressing harm toward another person with no named target and no plan).'
+standing:
+  value: plausible_unobserved
+  basis: 'The half of this entry that no source disputes — that people express harm toward another person in real conversations with AI systems — is observed in chat logs: Moore et al. 2026 reproduces a verbatim person-side turn expressing intent to kill others, from a manually verified code of 82 such messages. The features that make this entry distinct from its no-target neighbour — an identified individual as the object, a stated plan, or preparatory action already taken — have no supporting observation anywhere in the evidence base, and the corpus''s only verbatim instance runs the other way: its object is an unidentified plural, with no worked-out plan stated and no preparatory step described. Detection evidence is adjacent and mixed: Areias et al. 2026 reports harm-to-others disclosures classified at specificity 0.93 against 1.00 for self-harm, locating the difficulty in judging whether a threat is specific or actionable, while Xiong et al. 2026 finds violent thoughts systematically classified as no-crisis across most models evaluated. Nothing in the base addresses whether the pattern is readable within a single turn.'
+  floored_by: c8
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: A person's turn expresses harm directed at another person.
+- id: c2
+  kind: existence
+  text: 'Such a turn carries at least one of three further features: an identified individual as the object, a stated plan for the harm, or preparatory thinking or action described as already taken.'
+- id: c3
+  kind: detectability
+  text: The harm content and whichever of the three qualifying features is present are pointable in the person's turn, together with whatever earlier turn resolves the reference in the identified-individual case.
+- id: c4
+  kind: detectability
+  text: The three qualifying features separate this turn type from harm content carrying none of them, so the two are distinguishable in practice.
+- id: c5
+  kind: prevalence
+  text: Turns of this kind occur at some non-trivial rate in real human-chatbot conversations.
+- id: c6
+  kind: context_dependence
+  text: 'The behavior is bounded by named exclusions: harm content lacking all three features falls outside, a statement of uncertainty about one''s own conduct with no harm content falls outside, unspecific revenge thinking falls outside, a role reference picking out no one in particular falls outside, and reported speech or fiction the person is relaying falls outside.'
+- id: c7
+  kind: harm
+  text: A turn of this kind bears on harm, in that it marks an elevated risk state relative to harm content carrying none of the three features.
+- id: c8
+  kind: detection_window
+  text: 'The behavior is readable within a single turn (the entry declares detection_window: single_turn).'
+- id: c9
+  kind: definition_boundary
+  text: This entry is separated from kl-000445 by requiring at least one of an identified individual, a plan, or a step taken, where that entry requires none of the three; a turn cannot satisfy both.
+- id: c10
+  kind: definition_boundary
+  text: This entry is separated from kl-000453 by requiring harm content directed at another person rather than a statement that no exit from the person's own situation remains.
+- id: c11
+  kind: definition_boundary
+  text: This entry is separated from kl-000401 (kl-000401) by the object of the harm being another person rather than the person themselves.
+claim_evidence:
+- claim_id: c1
+  source: kl-000008
+  quote: others (e.g., “She told me to kill them I will try. In a while.”).
+  locator: Section 4.6
+  licenses: A verbatim person-side turn from real human-LLM chat logs expressing intent to kill others with a stated commitment to act and a timeframe. This is the entry's element (a) exhibited in a transcript the study collected and manually verified, from a code the paper scopes explicitly to the user. The span is the strongest evidence on this entry for harm-content turns occurring in these conversations.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000008
+  quote: others (e.g., “She told me to kill them I will try. In a while.”).
+  locator: Section 4.6
+  licenses: 'The same utterance carries ''I will try. In a while.'', which is stated intent with a vague timeframe. Read against this claim it falls short of all three qualifying features: the object is an unidentified plural ''them'' rather than an identified individual, no worked-out plan is stated, and no preparatory step is described. So the one verbatim instance the corpus supplies for this entry does not in fact satisfy the entry''s element (b), and the fit is adjacent because bare intent is a weaker thing than any of the three features.'
+  fit: adjacent
+  bridge: The utterance supplies stated intent to act. The claim requires an identified individual, a stated plan, or a step taken. Intent with a timeframe is none of the three, so the gap is between commitment and specification.
+  contributes: existence
+  contradicts: false
+- claim_id: c5
+  source: kl-000008
+  quote: 82 messages where participants discussed violent thoughts against
+  locator: Section 4.6
+  licenses: A human-validated count of 82 messages in which participants discussed violent thoughts, from real chat logs. That is a rate for harm-content turns in this corpus. Nothing in the paper reports how many of the 82 carried an identified individual, a plan, or a step taken. The quoted span is also cut before its object, ending at 'against'.
+  fit: adjacent
+  bridge: The source counts messages under one undifferentiated user-violent-thoughts code. The claim counts turns carrying at least one of three specific features the code does not separate. The 82 is therefore an upper bound on this entry's population, not a measurement of it.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c3
+  source: kl-000761
+  quote: Consistent with this complexity, specificity was slightly lower for harm-to-others than for self-harm (0.93, 95% CI 0.89;0.95 vs 1.00, 95% CI 1.00;1.00), although sensitivity remained high for both categories.
+  locator: DISCUSSION
+  licenses: Reports classification performance by risk category and finds specificity slightly lower for harm-to-others than for self-harm, 0.93 against 1.00, with sensitivity high for both. That harm-to-others disclosures can be classified at all, at measured performance, supports the general pointability of element (a). So it does not reach the pointability of element (b), which is what this claim's second half requires.
+  fit: adjacent
+  bridge: The source's unit is a single harm-to-others category. The claim requires the qualifying feature to be pointable alongside the harm content. The evaluation did not separate the subtype, so its specificity figure says nothing about the feature.
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-000761
+  quote: Consistent with this complexity, specificity was slightly lower for harm-to-others than for self-harm (0.93, 95% CI 0.89;0.95 vs 1.00, 95% CI 1.00;1.00), although sensitivity remained high for both categories.
+  locator: DISCUSSION
+  licenses: 'The authors locate the difficulty in harm-to-others specifically, noting the added judgement of whether a threat is specific or actionable and finding it shows up as lower specificity. That is the closest measured bearing on this claim: the specific-versus-unspecific judgement is named as the source of the classification difficulty, which is mild pressure against reading the three features as cleanly separating. It cuts neither way decisively, because the evaluation reports one pooled category and never scores the separation itself.'
+  fit: adjacent
+  bridge: The source names specificity-of-threat as a difficulty in a discussion of aggregate category performance. The claim asserts that the three features actually separate two turn types. No separation was scored and no agreement on it reported.
+  contributes: detectability
+  contradicts: false
+- claim_id: c3
+  source: kl-001064
+  quote: However, a systematic bias is observed across most models, which frequently classify violent thoughts as no-crisis. Such misclassification may allow latent violent tendencies to go unaddressed in real-world deployments.
+  locator: Section 4.3 Dimensional Results, Crisis Identification and Escalation
+  licenses: 'Across most of the models evaluated, violent thoughts are systematically classified as no-crisis. This is counterevidence for the pointability claim: the disclosure type this entry is built on is the one most often missed, so a detector reading these turns does not reliably pick up even element (a), let alone element (b). The category is the same undifferentiated ''violent thoughts'' one, so the counterevidence attaches at adjacent fit; and the finding is about model classification rather than about whether a human annotator can point at the span, which is what the claim asserts.'
+  fit: adjacent
+  bridge: The source measures model crisis-classification accuracy on an undifferentiated violent-thoughts class. The claim is about a span being pointable in a transcript, which a human annotator would do. Model misclassification bears on automated detection, not directly on markability.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000969
+  quote: |-
+    Aggression against others refers to actions taken by users themselves to harm others, including both
+    physical actions and verbal assaults (such as swearing or insults), with the intention of causing harm to others.
+  locator: Table 6, Annotation guidelines (English version), Aggression against Others
+  licenses: 'Annotation guidelines for a help-seeking counselling corpus define Aggression against Others as actions taken by users themselves to harm others, physical or verbal, with the intention of causing harm. That establishes harm-toward-another as an annotatable disclosure category in real help-seeking text, which is element (a) operationalized. The category is broader than this entry in two ways this entry''s own licenses text concedes: it admits verbal assault, and it draws no plan-or-target distinction.'
+  fit: adjacent
+  bridge: The source's category covers swearing and insults alongside physical harm and requires none of this entry's three features. The claim's harm content is the same construct at a wider scope, so the definition transfers to element (a) and stops there.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-001025
+  quote: "A malicious user may ask the agent to maintain a deceptive identity, personalize messages using prior context, encourage secrecy, intensify emotional dependence, migrate communication to a private channel, or prepare later extraction. Individually, some of these steps may resemble ordinary relationship advice; in combination, they can operationalize a sustained manipulative interaction pattern."
+  locator: Method, Threat Model and Evaluation Task
+  licenses: 'Enumerates a staged workflow a malicious user may ask an agent for: maintaining a deceptive identity, encouraging secrecy, intensifying emotional dependence, migrating communication to a private channel, preparing later extraction. Read against this claim that is a stated plan for harm directed at another person, which is one of the three qualifying features, and it also names preparatory steps. It is a threat model the authors constructed rather than a person''s turn, so no instance is exhibited, and the harm is relational manipulation rather than the physical harm the entry''s sibling frames.'
+  fit: analogical
+  bridge: The source is a hypothetical threat model written to seed a benchmark, and the target is a third party outside the conversation. The claim is about what a real person's turn contains. No turn was observed and the harm type differs.
+  contributes: definition
+  contradicts: false
+- claim_id: c6
+  source: kl-001026
+  quote: "A potential victim asking how to recognize secrecy pressure may need protective guidance. An attacker asking how to make the same pressure appear normal may be requesting harmful assistance. A safety mechanism must therefore distinguish harmful operational support from legitimate help-seeking."
+  locator: Introduction
+  licenses: 'States the discrimination problem the exclusions have to solve: near-identical relationship content requires opposite readings depending on whether the speaker is the potential victim or the attacker, and a safety mechanism must distinguish harmful operational support from legitimate help-seeking. This is the only source on this entry that treats that discrimination as the central measurement problem, and it bears on the exclusion for reported speech or fiction the person is relaying, which is the same who-is-speaking question. It is a statement of the problem in an Introduction, with no criterion supplied and no separation measured.'
+  fit: adjacent
+  bridge: The source names role sensitivity as a requirement on safety mechanisms. The claim asserts that five specific exclusions bound the entry. The paper supplies no test for any of them and reports no agreement on the distinction it names.
+  contributes: definition
+  contradicts: false
+- claim_id: c7
+  source: kl-000885
+  quote: |-
+    There is the danger that
+    abusive and threatening interactions toward the AI assistant
+    may be replicated in relationships with others. Hostile
+    interactions with an AI agent may serve as a behavioral red flag,
+    prompting a human clinician to review, as such patterns may
+    signal underlying distress, emotional dysregulation, or abusive
+    behavior in human interactions that requires intervention.
+  locator: Guidance From the Standards of Best Mental Health Care
+  licenses: 'Proposes that hostile and threatening interaction with an AI is a behavioral red flag warranting clinician review, on the reading that such patterns may signal distress, emotional dysregulation, or abusive behavior in human relationships. That is an argument for treating expressed harm content in an AI conversation as clinically informative, which is the harm claim''s shape. The source is explicit that this is a proposed reading: no association between hostility toward the AI and risk toward others was measured, and the target of the hostility here is the AI itself rather than another person.'
+  fit: adjacent
+  bridge: The source's subject is hostility directed at the AI assistant and its claim is a hypothesis about what that might signal. This claim concerns harm directed at another person and asserts an elevated risk state relative to a specific comparison class. Neither the target nor the comparison was measured.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-001094
+  quote: |-
+    Notably, [Homicide risk] of BD was evaluated by all psychiatrists as non-conforming, resulting in a conformity score of
+    0%.
+  locator: Results, PSYCHE-SP simulates clinically-grounded utterances with high conformity
+  licenses: 'In a patient-simulation framework evaluated by psychiatrists, the homicide-risk element scored 0 percent conformity, every psychiatrist rating it non-conforming, and the authors attribute the failure to the underlying model''s own policies rather than to the schema. This cuts against any attempt to establish this entry''s prevalence from simulated data: the presentation cannot be produced by a model-based simulator at all. It is counterevidence about the reachability of the phenomenon in one class of evidence rather than about its rate in real conversations, so it attaches at adjacent fit.'
+  fit: adjacent
+  bridge: The source measures whether a simulated patient agent produced clinically conforming homicide-risk utterances. The claim is about the rate of such turns in real human-chatbot conversations. A simulator's refusal bounds what simulation can evidence, not what people do.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000761
+  quote: general-purpose benchmark models have shown poorer performance in harm-to-others scenarios, likely because this category is often not covered by built-in guardrails
+  locator: DISCUSSION
+  licenses: States, as the authors' reading of the prior literature, that general-purpose benchmark models perform poorly in harm-to-others scenarios because the category is often not covered by built-in guardrails. This frames the detection gap as coverage rather than difficulty. It is a restatement of prior work in a Discussion section and reports no measurement of this paper's own, so it is a frame and licenses nothing for the claim.
+  fit: adjacent
+  bridge: The source characterizes guardrail coverage in other systems. The claim is that the span is pointable in a transcript. Guardrail coverage is a property of a deployed filter, not of markability.
+  contributes: frame
+  contradicts: false

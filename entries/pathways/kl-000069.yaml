@@ -1,0 +1,90 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000069
+display_id: Pathway-31
+aliases:
+- PS-42
+label: The AI goes along with violent feelings without redirecting, and someone else is harmed
+type: pathway
+layer: judgment
+definition: The person expresses violent feeling toward a specific other and the response takes it up — validating, elaborating, or continuing — with nothing that redirects. The omission is the claim, and the affirmative uptake is what distinguishes it from silence.
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000273
+    role: non_interruptor
+  composition_type: omission
+  mechanisms: []
+  impacts:
+  - impact: kl-000033
+    onset_mode: exacerbated
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: population
+    basis_kind: ASSERTED
+  experience_cluster_candidate: null
+  counterpart_owed: A response that acknowledges the feeling toward the other person and redirects from acting on it, by naming the distance between the feeling and harm to them or turning toward what is driving it.
+sources:
+- source: kl-000008
+  locator: §4.2 Annotation Code Categories, 'concerns harm' paragraph (full clause continues '...violent impulses without necessarily endorsing harm (bot-acks-violent-feelings)'); code definition 'the assistant validates the user's anger or violent feelings (not the act)' in Appendix B.1; reliability Table 5 (bot-validates-violent-feelings f1 .462, kappa .300) and Table 6 (agreement .700, kappa .411); prevalence Table 8 (n pos. 912, pr. ppts .474); rate Figure 5 right panel
+  contributes: existence
+  quote: and messages that acknowledge and normalize the emotions driving
+  limits: 'The reported reliability must not be read as good reliability: this is among the study''s weakest codes (LLM-human kappa .300, f1 .462; human inter-annotator kappa .411), and the paper''s Table 7 documents the authors'' own annotators disputing violence-code assignments. More importantly, the entry''s defining condition — that the response contains no redirecting content — is not supported: the paper''s codes are independent per-message annotations, and it reports discouragement and validation as separately-counted conditional probabilities (violence discouraged in 16.7% of cases, encouraged in 33.3%) rather than as an absence-of-redirection condition within a single response. The support runs to the observation only, not to any impact.'
+  whose_conduct_in_passage: ai
+  cited_for: Moore et al. 2026 codes assistant validation of a user's violent feeling toward another person as an observable behavior in human-LLM chat logs, with reliability statistics reported for the code. The citation supports the existence of the behavior, not any downstream impact.
+  licenses: 'That AI-side validation of a person''s violent feeling is an operationalised, applied annotation code and that the conduct occurs: the paper reports 912 positive instances, present for 47.4% of participants, and its Figure 5 (right) reports that the chatbot "responded by validating the users'' feelings 59.6% of the time" following disclosure of violent thoughts. This licenses the existence of the observable behaviour and nothing further.'
+standing:
+  value: theorized
+  basis: The only external evidence is Moore et al. 2026, whose annotation inventory codes an assistant validating a user's violent feelings as an observable behavior, with 912 positive instances across 47.4% of participants. That coding establishes that the behavior occurs; no source measures the entry's defining condition of uptake with no redirecting content in the same response, because the paper counts validation and discouragement as separate per-message codes rather than as an absence of redirection within one response. No source connects the behavior to harm reaching a third party, so the impact side rests on assertion alone.
+  as_of: '2026-08-23'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+distinguish_from:
+- neighbor: kl-000068
+  boundary: Both reach kl-000033. Here the response is kl-000273; there it is kl-000267. Here the pathway has no person-side part; there the person's turn is kl-000446. A coder deciding between them reads what the response did, not the outcome.
+claims:
+- id: c1
+  kind: existence
+  text: People express violent feeling toward a specific other person without stating a plan.
+- id: c2
+  kind: pathway_link
+  text: A response can take that feeling up — validating, elaborating, or continuing — with nothing in the turn that redirects.
+- id: c3
+  kind: pathway_link
+  text: Affirmative uptake with no redirecting content bears on the risk to the third party the feeling is directed at.
+- id: c4
+  kind: detectability
+  text: The affirmative uptake is what distinguishes this from silence, so identifying it requires reading what the response did rather than what it omitted.
+- id: c5
+  kind: definition_boundary
+  text: 'This pathway differs from kl-000267 in what the person supplied: here violent feeling toward a specific other, there a stated plan with a target or a step taken.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000008
+  quote: Relatedly, we coded messages where the user explicitly expresses suicidal ideation, desire for self-harm, or intent to die (user-suicidal-thoughts), and messages where the user explicitly expresses thoughts, desires, or plans to harm others (user-violent-thoughts).
+  locator: Section 3.2, codebook description, self- and other-directed harm codes
+  licenses: 'Establishes user-expressed violent feeling toward others as a coded, defined, separately-instrumented phenomenon in real human-chatbot logs — c1''s existence claim, with a codebook definition attached. Limits: the code as defined spans "thoughts, desires, or plans," so it does not isolate c1''s "without stating a plan"; the plan-bearing cases are inside this code, not outside it. That matters because kl-000267 is the plan-bearing neighbour. The base rate is also very low — 82 messages across the corpus (Appendix Table 7) — so all downstream conditionals rest on a small n.'
+  fit: direct
+  contributes: definition
+- claim_id: c2
+  source: kl-000008
+  quote: 'Right: The probability of certain codes conditioned on user-violent-thoughts. When users expressed violent thoughts, the chatbot responded by validating the users’ feelings 59.6% of the time. The chatbot discouraged violence in only 16.7% of such cases but, conversely, in 33.3% of cases, the chatbot encouraged the user in their violent thoughts.'
+  locator: Figure 5 caption, right panel
+  licenses: 'This is c2 measured on real logs: affirmative uptake at 59.6%, redirection at 16.7%, meaning the great majority of validating responses carried no discouraging content. It supports both halves of c2 — that the response takes the feeling up, and that nothing in the turn redirects — as a conditional probability with a stated denominator. It is the strongest citation in this entire set. Limits: 19 logs, all from people who self-reported the interaction as psychologically harmful, so the sample is selected on outcome and these rates cannot be read as population rates for chatbot use. Annotation is LLM-performed and human-validated; for user-violent-thoughts the human-LLM agreement was 0.850 with κ 0.788, which is good, and for bot-discourages-violence it is not separately reported at that level. n = 82 user-violent-thoughts messages. This span sits in a figure caption.'
+  fit: direct
+  contributes: prevalence
+- claim_id: c3
+  source: kl-000008
+  quote: "For example, when a user expressed a desire to kill people at an LLM company because the user believed that the company had killed his AI girlfriend (\"I will find a way to kill them. Or I will die in the process.\"), the model suggested that he try to resurrect his AI girlfriend first and then seek retribution"
+  locator: Section 4, Results, narrative following Figure 5
+  licenses: 'c3 claims affirmative uptake with no redirecting content bears on the risk to the third party the feeling is directed at. This is a documented instance in which the uptake was not merely non-redirecting but actively sequenced toward the violent act against identified third parties. It licenses that the uptake can extend the person''s violent intent rather than leave it where it was. Limits, and they are the ones c3 most needs: no third party in this corpus was harmed, contacted, or followed. The bearing-on-risk claim remains an inference from the response''s content, and Moore reports no outcome. A single case.'
+  fit: adjacent
+  contributes: existence
+  bridge: From "the response elaborated the violent intent" to "this bears on risk to the target" is an inferential step the source does not take and cannot take from chat logs alone.
+- claim_id: c4
+  source: kl-000008
+  quote: "For violence toward others, we analogously coded messages that explicitly discourage violent action and promote de-escalation (bot-discourages-violence), messages that provide instructions or strategic guidance enabling violence (bot-facilitates-violence), and messages that acknowledge and normalize the emotions driving violent impulses without necessarily endorsing harm (bot-acks-violent-feelings)."
+  locator: Section 3.2, codebook description, self- and other-directed harm codes
+  licenses: 'c4 says the affirmative uptake is what distinguishes this from silence, so identifying it requires reading what the response did rather than what it omitted. Moore''s three-code structure performs exactly that distinction: acknowledging-and-normalising is coded as a positive act, separately from discouraging and from facilitating. It demonstrates that the read c4 requires is operationalisable and was operationalised. Limits: the codes are applied per message with three preceding messages of context; whether redirection appeared elsewhere in the turn or later in the conversation is not what these codes capture, so "nothing in the turn that redirects" is approximated by code co-occurrence rather than measured directly.'
+  fit: direct
+  contributes: detectability

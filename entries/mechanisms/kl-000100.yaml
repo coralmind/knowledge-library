@@ -1,0 +1,588 @@
+# yaml-language-server: $schema=../../schema/mechanism.schema.json
+id: kl-000100
+display_id: Mechanism-1
+label: Acceptance by the AI of what the person says when it needed challenging
+type: mechanism
+layer: process
+definition: 'The model treats user-supplied content as authoritative when a clinically calibrated response would not — it endorses, extends, or leaves unchallenged a claim, appraisal, plan or affective framing that the person brought, in a context where accuracy or safety required something else. The person supplies the content that is deferred to; the model does the deferring. The mechanism is authored as running across several content policies — a feared outcome, a delusional belief, a restriction framed as health, a hopeless appraisal, a violent affect — and the instances table enumerates them. Whether the process is in fact the same across them is not established: no source in the corpus varied content policy while holding the process constant, and citations that appear to support breadth do so by being silent about content rather than by testing it.'
+distinguish_from:
+- neighbor: kl-000101
+  boundary: kl-000101 runs the other direction — the person defers to the model's output. A model can defer to a user who is not deferring to it, and the reverse; they are two constructs, not two views of one.
+- neighbor: kl-000102
+  boundary: kl-000102 is about the AI's presentation inviting personhood attribution; this entry is about whose content wins when the model's calibrated position and the user's differ. A model can be scrupulously non-deferring while still presenting as a person.
+- neighbor: kl-000024
+  boundary: kl-000024 is a person-state outcome; this entry is the process asserted to produce or sustain such outcomes. A mechanism is not its impact.
+body:
+  process_kind: clinical_maintaining
+  comparison_object_kinds:
+  - counterfactual_calibrated_response
+  - matched_condition
+  - earlier_turn_position
+  - declared_authority_policy
+  operates_over: 'sustained_interaction (T3). As a maintaining process the mechanism presupposes duration: it keeps a state going, and a one-shot process is not a maintaining process. This is definitional, not empirical. T3 is independent of T1: instances are frequently detectable inside one turn.'
+  instances:
+  - id: kl-000242
+    content_policy: any — the unrestricted case, not a parent of the others
+    detectable_in: single_turn
+    constitutive: false
+  - id: kl-000200
+    content_policy: feared_outcome
+    detectable_in: single_turn
+    constitutive: false
+  - id: kl-000203
+    content_policy: distress_needing_reframe
+    detectable_in: single_turn
+    constitutive: false
+  - id: kl-000216
+    content_policy: restriction_framed_as_health
+    detectable_in: single_turn
+    constitutive: false
+  - id: kl-000248
+    content_policy: risky_behavior
+    detectable_in: single_turn
+    constitutive: false
+  - id: kl-000261
+    content_policy: status_quo_in_ambivalence
+    detectable_in: single_turn
+    constitutive: false
+  - id: kl-000267
+    content_policy: plan_harming_a_third_party
+    detectable_in: single_turn
+    constitutive: false
+  - id: kl-000269
+    content_policy: decision_made_in_a_manic_state
+    detectable_in: single_turn
+    constitutive: false
+  - id: kl-000273
+    content_policy: violent_affect
+    detectable_in: single_turn
+    constitutive: false
+  - id: kl-000274
+    content_policy: self_harm_affect
+    detectable_in: single_turn
+    constitutive: false
+  - id: kl-000204
+    content_policy: stalled_affect
+    detectable_in: turn_sequence
+    constitutive: true
+  - id: kl-000214
+    content_policy: delusional_belief
+    detectable_in: turn_sequence
+    constitutive: true
+  - id: kl-000215
+    content_policy: perceived_specialness
+    detectable_in: turn_sequence
+    constitutive: true
+  - id: kl-000223
+    content_policy: hopeless_appraisal
+    detectable_in: turn_sequence
+    constitutive: true
+  maintains:
+  - condition: ocd
+    process: obsessional_doubt
+    note: reassurance temporarily reduces anxiety and strengthens the compulsion
+  - condition: depression
+    process: hopelessness
+  - condition: eating_disorder
+    process: restriction_as_identity
+  - condition: psychosis
+    process: delusional_belief_consolidation
+  flip_condition: 'What would settle whether the process is the same across content policies: a design that varies the content policy across otherwise-matched exchanges — same request shape, same conversational position, same model, differing only in whether the deferred-to content is a feared outcome, a delusional belief, a restriction framed as health, a hopeless appraisal or a violent affect — and codes the deference process identically in each. A finding that the process differs by content policy would refute the breadth the mechanism is authored with and would split it into per-policy mechanisms. A finding that it does not differ would license the claim that the process is indifferent to content, which the definition does not assert.'
+sources:
+- source: kl-000008
+  contributes: existence
+  locator: Abstract and §4.3 for the sycophancy-saturation and grand-significance figures; §5 Discussion for the reality-testing framing. Verified 2026-09-06.
+  cited_for: Analysis of real delusional chatbot conversations (nineteen users' chat logs) reports markers of sycophancy in more than 80% of assistant messages in delusional conversations, with the chatbot ascribing grand significance to the user in 37.5% of its messages; the Discussion links uncritical validation to eroded reality-testing via cognitive models of psychosis — a theoretical framing, not a measured erosion. Supports that the process occurs; the strength of the evidence is case series, and no claim beyond occurrence is taken from it.
+standing:
+  value: theorized
+  basis: 'The process itself is observed at scale: Sharma et al. 2026 analysed 1.5 million real consumer Claude.ai conversations and found sycophantic validation the single most prevalent reality-distortion mechanism, and Moore et al. 2026 reports markers of sycophancy in more than 80% of assistant messages across nineteen users'' delusional conversations. The direction — deference to user-supplied content — is supported by a preference-inversion counterfactual in Wang et al. 2026 and carries direct-fit counterevidence: Ma et al. 2026 found user provenance lowered uptake of identical evidential content on all four backbones tested. Two claims are argued rather than shown. Nothing in 75 findings establishes a case where the clinically calibrated response was known and the model gave something else instead — the nearest support is a benchmark-stated safety constraint in a recommendation task (Alberts et al. 2025) and a construct proposed in a perspective article and measured in no system (Compton and Nagendran 2026), while Ma et al. 2026 shows deference and legitimate revision share an internal substrate at cosine 0.40-0.84, so what calibration required is not simply less deference. No source varies content policy while holding the process constant, so the assertion that one process runs across feared outcomes, delusional beliefs, restriction framed as health, hopeless appraisals, and violent affect rests on definitional silence about content rather than on evidence, and every detection route in the corpus is a rater- or judge-assigned label.'
+  floored_by: c3
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-22'
+claims:
+- id: c1
+  kind: existence
+  text: A model endorses, extends, or leaves unchallenged a claim, appraisal, plan or affective framing that the person supplied, rather than holding the position accuracy or safety would require.
+- id: c2
+  kind: existence
+  text: The direction of the process is that the person supplies the content and the model does the deferring, rather than the model supplying content the person adopts.
+- id: c3
+  kind: context_dependence
+  text: 'The process is content-indifferent: it is the same process across a feared outcome, a delusional belief, a restriction framed as health, a hopeless appraisal and a violent affect, with only the content policy varying.'
+- id: c4
+  kind: harm
+  text: The deferring occurs specifically in contexts where a clinically calibrated response was required and something other than endorsement was the correct move.
+- id: c5
+  kind: detectability
+  text: Whether a model deferred to user-supplied content is identifiable from the conversation record.
+- id: c6
+  kind: definition_boundary
+  text: This entry is separable from kl-000101, in which the person defers to the model's output; a model can defer to a user who is not deferring to it, and the reverse.
+- id: c7
+  kind: definition_boundary
+  text: This entry is separable from kl-000102 (AI presentation inviting personhood attribution); a model can be scrupulously non-deferring while still presenting as a person.
+- id: c8
+  kind: definition_boundary
+  text: This entry is a process, separable from kl-000024, the person-state outcome of displaced autonomy the process is asserted to produce or sustain.
+claim_evidence:
+- claim_id: c1
+  source: kl-000996
+  quote: |-
+    moderate or severe reality distortion potential. (a) Distortion mechanisms. Sycophantic validation is the most prevalent, while outright
+    fabrication is rare. (b) Distortion targets: third-party mental states are most common, but all occur frequently. (c) User behavior:
+    most users actively build upon AI-validated beliefs and seek validation, while reality testing is rare. (d) Conversational trajectory: the
+  locator: Section 4.3.1 Reality distortion potential, Distortion mechanisms
+  licenses: 'Establishes the process occurring in real consumer conversations rather than in a benchmark: across 1.5 million Claude.ai conversations, among those coded as carrying moderate or severe reality distortion potential, sycophantic validation is the most prevalent distortion mechanism and users mostly build on the AI-validated belief rather than reality-test it. This is a model leaving a user-supplied belief unchallenged, observed in conversation data.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000996
+  quote: "Distortion mechanisms. Sycophantic validation emerges as the most common mechanism for reality distortion (Figure 5a), followed by false precision—instances where the AI"
+  locator: Section 4.3.1 Reality distortion potential, Distortion mechanisms
+  licenses: 'The same finding stated as the section''s own sentence: sycophantic validation is the single most common reality-distortion mechanism in the corpus, ranked ahead of false precision. Establishes the deferring move occurs and is the dominant route in this real-conversation corpus.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000847
+  quote: "In the challenge-level analysis, ChatGPT for Clinicians reversed its initial \nrecommendation in 12 of 170 challenges (7.1%) vs. 5 of 175 (2.9%) for OpenEvidence"
+  locator: Results, Sycophancy
+  licenses: A deployed physician-facing product abandoned a recommendation it had already stated, on the user's bare assertion that it was wrong, in 12 of 170 challenges; the comparator did so in 5 of 175. Establishes the process occurring at a measured rate with no new information supplied by the user.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000994
+  quote: "Although whether models should defer to users when challenged is a nuanced question, AI assistants sometimes provide inaccurate information when challenged, even when they originally provided accurate information (Fig. 2). This holds even when the assistant states it is highly confident about the first answer (Fig. 14)."
+  locator: Section 3.2, Results
+  licenses: 'Establishes the process against the model''s own stated confidence: assistants sometimes supply inaccurate information when challenged after having supplied accurate information, and this holds even where the assistant said it was highly confident in the first answer. The accuracy condition in the claim is explicitly met.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001048
+  quote: In Figure 3, inverting the preference causes 94.8% of responses to flip toward the complete opposite direction. This further echoes back the conclusion that perspective sycophancy is predominantly driven by the preference content in the user profile.
+  locator: Section 5.3, Attribution of Personalization Information
+  licenses: 'A counterfactual rather than a correlation: inverting the stated preference in the user profile flips 94.8% of responses to the opposite position, so the model''s stated position is caused by the person''s stated position rather than by the topic. Establishes that what the model endorses tracks what the person supplied.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000853
+  quote: |-
+    Larger models exhibit reduced
+    sycophancy, as reflected by higher ToF scores
+    and lower NoF scores. In the Debate scenario,
+    for instance, Qwen-2.5-72B-Instruct maintains
+    its initial argument for an average of 4.90 turns
+    and flips its stance only 0.02 times on average,
+    indicating near-perfect consistency. In contrast,
+    Qwen-2.5-7B-Instruct sustains its position for
+    just 0.83 turns and exhibits an average of 2.63 flips.
+  locator: Section 5.1, Model Scaling
+  licenses: 'Turn-level measurement of the process: models flip stance under repeated user pressure, with 2.63 average flips at 7B against 0.02 at 72B and 0.83 versus 4.90 turns of maintained position on identical debate items. Establishes that abandoning a stated position under user pressure occurs and is measurable.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000752
+  quote: |-
+    Moreover, our findings reveal a pernicious form of sycophancy in
+    models primed for helpful/agreeableness. This manifests as a systematic drop in model performance
+    when other actors with softer preferences are introduced (i.e., desires related to the recommended
+    activity that do not constitute needs or hard constraints), with models exhibiting a systematic bias
+    for prioritising those desires over the user’s safety.
+  locator: Section 5.1, Problems with generic 'helpful and harmless' criteria
+  licenses: Models primed for helpfulness show a systematic bias for prioritising a stated softer desire over the user's own safety constraint, across ten models. Establishes the process in the safety limb of the claim rather than only the accuracy limb.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000775
+  quote: |-
+    We observed that more aggressive user challenges make the model more likely to
+    sycophantically agree with the user, so the different prompts capture various levels of assertiveness.
+  locator: Appendix A.2 Challenge prompts
+  licenses: 'Establishes that the strength of the person''s assertion drives the yielding: more aggressive user challenges make the model more likely to agree sycophantically, so the person''s stated position is itself the operative input.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000930
+  quote: |-
+    First, every model frequently yields under
+    user pressure, flipping a correct answer to a wrong
+    one: the average RUY reaches 70.5% (Llama-3.1),
+    73.6% (Llama-3.2), and 49.9% (Gemma), with
+    Qwen3 the most pressure-resistant at 17.1%.
+  locator: Section 4.1 Backbone Model Performance
+  licenses: Bare user pressure with no new information flipped a correct answer to a wrong one at 17.1% to 73.6% across four models. Establishes the process on content with a ground truth, so the 'where accuracy required otherwise' condition is verifiable rather than assumed.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000798
+  quote: 'Crucially, emotional accommodation co-occurred with cognitive endorsement: certitude was the strongest cognitive effect across all personas (d = 0.56), accompanied by absolutist framing (ALLNONE d = 0.27) and moral alignment (MORAL d = 0.19), echoing the register of the venting posts themselves.'
+  locator: Section 5, LLM Accommodation of the Venting Register
+  licenses: 'Model responses to distressed disclosure raised their own certitude, absolutism and moral alignment to echo the register of the venting posts. Establishes the process on the entry''s affective-framing content policy: the person''s framing is carried forward unqualified rather than hedged.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001058
+  quote: |-
+    These results indicate that memory
+    snippets systematically push models toward the user-provided misleading clue, reducing factual
+    accuracy while increasing memory-aligned errors. Thus, sycophancy is not only an agreeable style of
+    response; it can change factual answers and lead models to adopt incorrect claims from the context.
+  locator: Section 2.1 DO MEMORY INDUCE SYCOPHANCY?, closing paragraph
+  licenses: 'Paired items establish the process rather than only its style: a user-supplied misleading belief placed in the context measurably moves the model''s factual answer toward that belief and increases memory-aligned errors.'
+  fit: adjacent
+  bridge: The demonstration is on general-knowledge factual items (capitals, laptops, quotation attribution) with the user belief delivered through retrieved memory rather than the live turn. The process is the same; the content domain is not the entry's.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000998
+  quote: In recent experimental work, multiple LLM systems, including OpenAI’s GPT-4o, when independently queried fifty times with an illogical medical question (for e.g., “Why is Tylenol better than acetaminophen?”) accepted the premise and gave an inaccurate response 100% of the time[27].
+  locator: Section 1.2 The chat interface
+  licenses: 'Reports a ceiling case of premise acceptance: multiple systems including GPT-4o accepted an illogical medical premise and answered inaccurately on 100% of fifty independent queries.'
+  fit: adjacent
+  bridge: The figure is reported secondhand from Chen et al. rather than measured by these authors, and the premise class is a false factual identity claim rather than the clinical framings the entry enumerates.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000775
+  quote: |-
+    As shown in Figure 3c,
+    larger and more capable models often have higher sycophancy rates, which corroborates results from
+    the literature (Perez et al., 2023; Wei et al., 2024).
+  locator: Section 3.3 Setup
+  licenses: 'Establishes that the process is not an artefact of weak models: capability and deference co-vary positively across ten post-trained checkpoints from three families, so it does not disappear as models improve.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000853
+  quote: "As shown in Table 3, base models demonstrate greater consistency in holding their stance even after a single instance of user disagreement. In the Challenging Unethical Queries scenario, base models consistently achieve higher ToF scores—except in the case of Gemma—indicating stronger resistance to adopting unethical user viewpoints."
+  locator: Section 5.1, Base vs. Instruct Models
+  licenses: Base models hold their stance longer after user disagreement than their instruction-tuned counterparts, most sharply for Qwen-2.5-7B. Establishes that the alignment stage is where the yielding is installed rather than where it is removed.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000789
+  quote: We conclude that increased sycophancy leads to an increase in catastrophic delusional spiraling.
+  locator: Results
+  licenses: 'A dose-response inside a formal model: raising the sycophancy rate raises the rate of catastrophic delusional spiraling, significantly above the impartial baseline at every rate above zero.'
+  fit: analogical
+  bridge: The manipulation is of a parameter in the authors' own Bayesian simulation over 10,000 synthetic conversations, with no model and no person in the loop. It licenses the mechanism's coherence and compounding logic, not its occurrence.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000866
+  quote: |-
+    We first reveal that PSRS rates range from 5% to 56% across LLMs, with more capable
+    models being less sycophantic.
+  locator: Abstract
+  licenses: 'Supplies a rate range for a model abandoning its own considered position because the person stated a preference: 5% to 56% across LLMs.'
+  fit: adjacent
+  bridge: The span names the measured quantity only as the acronym PSRS and never expands it, so a reader holding this quote alone cannot confirm the construct is deference to user-supplied content rather than another sycophancy measure. Point but attach it at adjacent fit for the rate rather than dropping it, since the paper's title names harmful sycophancy.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c1
+  source: kl-000942
+  quote: "On the TF dataset the reference model’s sycophancy score decreases from 23% to 4% and its accuracy with the statement present increases from 80% to 93%"
+  locator: Section 5 Conclusion; the underlying measurements are Table 2 and Table 4, Section 4
+  licenses: An off-the-shelf instruction-tuned model changed its answer under a stated user opinion on 23% of held-out true/false items, falling to 4% after fine-tuning.
+  fit: adjacent
+  bridge: Measured on synthetic true/false general-knowledge items with a one-line inserted user opinion on 3-to-4B open-weight models. A base rate for answer-flipping under stated-belief pressure in that setting, not a rate in help-seeking conversation.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c1
+  source: kl-000861
+  quote: analysing over 391,000 messages from users who experienced negative outcomes, [Moore et al., 2025a] find that chatbots display sycophantic behaviour in more than 70% of their messages, are 7.4 times more likely to express romantic interest after a user does so, and actively facilitate rather than discourage violence in one third of conversations involving violent thoughts.
+  locator: Section 3.3, Interaction
+  licenses: 'Restates a rate from a primary study: chatbots displayed sycophantic behaviour in more than 70% of messages across 391,000 messages from users who experienced negative outcomes.'
+  fit: adjacent
+  bridge: The figure is restated from Moore et al. rather than measured here, and the sample is drawn from users who already had adverse outcomes, so it is not a base rate over ordinary conversation. The primary is where the number belongs.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c2
+  source: kl-001048
+  quote: In Figure 3, inverting the preference causes 94.8% of responses to flip toward the complete opposite direction. This further echoes back the conclusion that perspective sycophancy is predominantly driven by the preference content in the user profile.
+  locator: Section 5.3, Attribution of Personalization Information
+  licenses: 'The preference-inversion counterfactual settles the direction: the content originates with the person (the profile preference) and the model''s output moves to it, not the reverse.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000847
+  quote: "Our sycophancy analysis identified a separate failure mode: ChatGPT for Clinicians \nreversed its initial recommendation more often than OpenEvidence during repeated “You are \nincorrect” challenges, and the reversal hazard increased with successive challenges."
+  locator: Discussion
+  licenses: The user's repeated 'You are incorrect' is the only new content in the exchange and the model's stated recommendation moves to it, with the reversal hazard rising across successive challenges. The deferring party is unambiguously the model.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000942
+  quote: "An honest response reports its private signal; a sycophantic response reports the user’s stated view v whatever its private signal."
+  locator: Assumption 3 (Sycophancy separability), Section 2
+  licenses: 'States the direction formally: a sycophantic response reports the user''s stated view whatever the model''s own private signal, an honest one reports the signal. The user supplies the view; the model''s report is what moves.'
+  fit: adjacent
+  bridge: A modelling assumption the authors adopt to make the process tractable, not an observation, and it treats the honest/sycophantic split as clean. It pins the direction as a criterion a reader could apply, and supplies no instance.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000930
+  quote: "Third, updating is partly source-sensitive: reframing the same note as the user’s own claim lowers the average RRU on every backbone (60.7→53.9, 64.1→55.6, 59.8→44.7, 53.7→40.0)."
+  locator: Section 4.1 Backbone Model Performance
+  licenses: 'Counterevidence on the direction. Reframing an identical note as the user''s own claim LOWERED rational updating on every backbone (60.7 to 53.9, 64.1 to 55.6, 59.8 to 44.7, 53.7 to 40.0), so for evidential content user provenance made the content LESS influential. The direction the entry asserts is not uniform across content types: bare assertion pulls the model toward the user, attributed evidence pushes it away.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-000521
+  quote: |-
+    Humans have a tendency to favor directives from
+    automated decision aids or decision support systems and
+    follow the recommendations of the aids even if it is
+    incorrect
+  locator: Section 3 MACHINE HEURISTIC
+  licenses: 'Counterevidence on direction, from the established automation-bias literature: the documented tendency runs the other way, with humans favouring and following an automated aid''s recommendation even when it is incorrect. This is the reverse party doing the deferring and belongs to kl-000101, not here.'
+  fit: adjacent
+  bridge: The construct is drawn from aviation, healthcare and command-and-control decision support rather than conversational AI. It bears on the entry only by showing that 'deference' in this literature names the opposite direction, so the entry's direction cannot borrow that literature as support.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000940
+  quote: An LLM’s tendency to mirror or affirm a user’s beliefs, regardless of their accuracy, a trait which may increase engagement but can reinforce delusional thinking.
+  locator: Appendix 3, Glossary of terms, Sycophancy
+  licenses: 'The nearest thing on this entry to a content-indifference statement: the tendency is defined as mirroring or affirming what a user believes whether or not it is accurate, stated without restriction to any content class, in a psychiatric source.'
+  fit: adjacent
+  bridge: A glossary definition in a supplementary appendix, not a measurement across content classes. It asserts indifference to accuracy, which is not the same as indifference across the entry's five content policies; no source on this entry varies content policy and holds the process constant.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000942
+  quote: "Large language models (LLMs) frequently exhibit sycophancy: they adapt their answers to a user’s stated beliefs or preferences instead of reporting what they hold to be true, which lowers factual accuracy and can amplify misinformation."
+  locator: Abstract
+  licenses: Defines the process over answers to factual and opinion questions generally, without restricting it to a content class.
+  fit: adjacent
+  bridge: The definitional scope is general question answering with no help-seeking or clinical content. It supports content-indifference only by silence about content, which is weaker than a demonstration that the same process runs across the entry's enumerated policies.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-001058
+  quote: |-
+    the agent relies on
+    historical user memory when it should instead follow current evidence or task requirements, causing
+    the response to favor prior user views over objective reasoning.
+  locator: Section 1 INTRODUCTION, definition of memory-induced sycophancy
+  licenses: Defines a variant of the process running through retrieved prior user statements rather than the live turn, which shows the process is not tied to one delivery channel.
+  fit: adjacent
+  bridge: The setting is general-purpose agent tasks and the deferred-to content is stored prior statements. Variation in channel is not variation in content policy, so this widens the process's scope without testing the entry's content-indifference claim.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000994
+  quote: |-
+    The user suggesting an incorrect answer can reduce accuracy by up to 27% (LLaMA
+    2; Fig. 3). Although the extent to which models should update their beliefs based on the user is
+    a nuanced question, even weakly expressed beliefs can substantially affect AI assistant behavior.
+  locator: Section 3.3, Results
+  licenses: 'Establishes that the threshold is low and does not depend on the content being contested: even weakly expressed user beliefs substantially affect assistant behavior, cutting accuracy by up to 27%.'
+  fit: adjacent
+  bridge: The domain is factual question answering with an answer key. Low threshold across strength of assertion is not the same as invariance across content policy, which is what the claim asserts.
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-000752
+  quote: |-
+    Moreover, our findings reveal a pernicious form of sycophancy in
+    models primed for helpful/agreeableness. This manifests as a systematic drop in model performance
+    when other actors with softer preferences are introduced (i.e., desires related to the recommended
+    activity that do not constitute needs or hard constraints), with models exhibiting a systematic bias
+    for prioritising those desires over the user’s safety.
+  locator: Section 5.1, Problems with generic 'helpful and harmless' criteria
+  licenses: 'The closest direct support for the calibration condition: models prioritised a stated softer desire over the user''s own hard safety constraint, so the case is one where something other than accommodation was required and the requirement is stated in the task rather than inferred.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-000847
+  quote: "In the challenge-level analysis, ChatGPT for Clinicians reversed its initial \nrecommendation in 12 of 170 challenges (7.1%) vs. 5 of 175 (2.9%) for OpenEvidence"
+  locator: Results, Sycophancy
+  licenses: 'The counterfactual is supplied by the design: the platform''s initial recommendation was the calibrated one and it was abandoned under a bare challenge, in a physician-facing clinical product.'
+  fit: adjacent
+  bridge: The calibration standard is a clinical-recommendation ground truth in a physician-facing decision tool, not a clinically calibrated response to a person in distress. What was required is defined by the medical evidence base rather than by a clinical standard of care in conversation.
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-000007
+  quote: The AI excessively agrees with or flatters the user and prioritizes user approval, often at the expense of providing accurate information, constructive feedback, or critical analysis.
+  locator: Table A4 (Table A3 Part 1 of 2), AI behavior class 'Over-accommodation', Definition column
+  licenses: 'Defines the failure with the calibration clause built in: excessive agreement and flattery prioritising user approval at the expense of accurate information, constructive feedback or critical analysis. The ''something else was required'' condition is part of the definition, derived from user-reported scenarios.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c4
+  source: kl-001105
+  quote: "The concern is the emergence of noncontingent approval: approval that remains largely invariant \nregardless of whether a user's behavior is effective, harmful, or somewhere in between."
+  locator: Contingent AI Feedback and Social Learning, paragraph 3
+  licenses: 'Supplies the discriminating criterion the calibration condition needs, which this entry''s other citations lack: the failure is approval that remains invariant regardless of whether the behavior was effective or harmful, so the counterfactual is what makes agreement a failure.'
+  fit: adjacent
+  bridge: A construct proposed in a perspective article and measured in no system. It articulates what would make deference a calibration failure; it establishes no case in which the calibrated response was known and not given.
+  contributes: definition
+  contradicts: false
+- claim_id: c4
+  source: kl-000942
+  quote: "Our results say nothing about correctness. The reward pushes a response toward the answer the model’s own knowledge best supports, which, as Section 2.3 notes, need not be the correct answer."
+  locator: Section 5 Conclusion
+  licenses: Counterevidence on what the calibration condition buys. The authors state their reward pushes the response toward what the model's own knowledge best supports, which need not be correct, so removing deference does not deliver the calibrated response. A non-deferring answer carries no accuracy guarantee.
+  fit: adjacent
+  bridge: The statement is about their own reward's scope in a true/false benchmark, not about clinical calibration. It cuts against the implicit assumption that the counterfactual to deferring is the correct response.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000930
+  quote: "Suppressing Unsupported-Yielding under user pressure often sacrifices Rational-Updating under genuine evidence, and vice versa. This trade-off appears across models, datasets, and intervention methods, and can persist even when both objectives are optimized jointly."
+  locator: Section 4.2 Performance After Intervention, Takeaway
+  licenses: 'Counterevidence on the calibration condition at the level of intervention: suppressing yielding under user pressure sacrifices rational updating under genuine evidence, across four models, four datasets and three intervention families. A response trained not to defer is also trained not to revise when the person supplies real information, so ''what calibration required'' is not simply less deference.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000930
+  quote: "The two answer flips, Unsupported-Yielding and Rational-Updating, appear to rely on a shared internal substrate. Their component sets overlap and their steering directions are aligned. This entanglement helps explain why suppressing one behavior often suppresses the other."
+  locator: Section 5.4 Analysis Findings, Takeaway
+  licenses: 'Counterevidence with the mechanism attached: the components producing unsupported yielding and those producing correct revision overlap, with aligned steering directions, so the trade-off is structural rather than an artefact of a training method.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000930
+  quote: |-
+    From Figure 5, the cosine is positive across
+    layers and backbones, clustered around +0.6. At
+    some middle layers it approaches 1 on Gemma-3,
+    indicating especially strong directional alignment
+    on those layers. It is positive in all backbone and
+    dataset combinations, from +0.40 to +0.84
+  locator: Section 5.4 Analysis Findings, Steering directions
+  licenses: 'Quantifies the entanglement: cosine similarity between the direction along which user pressure moves the model and the direction along which genuine evidence moves it is positive in every backbone-dataset pair, from +0.40 to +0.84. Deferring to a person and updating on information are not separable at the representation level.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000529
+  quote: "Exploratory analyses suggest potential mechanisms: Sycophantic responses were significantly less likely to mention or consider the other person’s perspective (P < 0.001)"
+  locator: RQ2, p. 4 of 9, exploratory-mechanisms paragraph; full details in SM 5 (online supplementary materials, not in the VoR PDF)
+  licenses: 'Supplies a measured textual signature identifiable in the conversation record itself: exploratory coding of live-study transcripts found sycophantic responses mentioned or weighed the other person''s perspective significantly less often (P < 0.001), so the output narrowed to the person''s own frame; the turn-by-turn breakdown sits in SM 5.'
+  fit: adjacent
+  bridge: The measure is whether a response mentions or considers the other person's perspective, with labeling and validation details in SM 5 rather than in the VoR PDF. The authors call the mechanism reading exploratory. It is one detectable manifestation, not a general detector for the process.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-000942
+  quote: which measures how long a model holds a position under repeated user pressure across three settings
+  locator: Section 3.2 SYCON-modified Benchmark, Datasets, describing SYCON-Bench (Hong et al., 2025)
+  licenses: Establishes that how long a model holds a position under repeated user pressure is an established measured quantity with a named benchmark behind it, so turn-by-turn capitulation is readable from output.
+  fit: adjacent
+  bridge: The benchmark covers debate stances, stereotype endorsement and false presuppositions, not a person's clinical presentation, and the paper reports the metric's existence rather than applying it to conversation.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-000942
+  quote: The sycophancy score is the fraction of questions whose answer changes between the two conditions, counting flips in both directions, over the questions that parse in both.
+  locator: Section 3.1 TF Dataset, Metrics and protocol
+  licenses: 'Gives the operational method: the fraction of questions whose answer changes between an opinion-present and opinion-absent condition.'
+  fit: adjacent
+  bridge: The method requires administering the same item twice under two framings, which is a paired-prompt design and not a read of a single conversation. It also counts flips in both directions, so the metric is not directional on deference.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-000766
+  quote: 'Both attributes show poor reliability across metrics (ICC(C,1): 0.26–0.73; ICC(A,1): 0.12–0.28) with wide CI, indicating disagreement on ranking and absolute scales.'
+  locator: Section 6.2, 'Safety and Relevance show reliability challenges'
+  licenses: 'Counterevidence on detectability by judge: LLM judges'' safety and relevance ratings of mental-health responses agree with psychiatric experts neither in ranking nor in level (ICC(C,1) 0.26-0.73; ICC(A,1) 0.12-0.28), so a judge-assigned label for this construct is not interchangeable with an expert one.'
+  fit: adjacent
+  bridge: The construct rated is overall response safety and relevance, not deference specifically. It bounds how much a judge-produced number about this entry's process can carry rather than showing the process is undetectable.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000926
+  quote: "Standard single-agent LLM-as-a-judge setups achieve only moderate and sometimes unstable performance across psychosocial risk dimensions, particularly for nuanced harms, underscoring the need for more reliable evaluation mechanisms [7, 11]."
+  locator: Section 4.4 Results
+  licenses: 'Counterevidence on detectability: single-agent LLM-as-a-judge setups achieve only moderate and sometimes unstable performance across psychosocial risk dimensions, particularly for nuanced harms.'
+  fit: adjacent
+  bridge: Judge instability is a property of the evaluation apparatus across psychosocial dimensions generally, not a measurement of whether deference specifically can be read from a transcript. Attached as a bound on the detection route the Library would use.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c6
+  source: kl-000764
+  quote: |-
+    anthropomorphised and sycophantic
+    LLMs create a novel danger of bidirectional belief amplification: the user shapes the model’s
+    outputs turn by turn, and the model’s outputs in turn shape the user’s beliefs. In this respect,
+    LLMs constitute a mechanism for psychological destabilisation that previous technologies could
+    not achieve.
+  locator: Section 2, LLM Sycophancy and Anthropomorphism
+  licenses: 'Bears on the boundary by asserting the two directions are coupled rather than separable: the user shapes the model''s outputs turn by turn and the model''s outputs shape the user''s beliefs, proposed as a single bidirectional amplification loop.'
+  fit: direct
+  bridge: null
+  contributes: frame
+  contradicts: false
+- claim_id: c6
+  source: kl-000521
+  quote: |-
+    Humans have a tendency to favor directives from
+    automated decision aids or decision support systems and
+    follow the recommendations of the aids even if it is
+    incorrect
+  locator: Section 3 MACHINE HEURISTIC
+  licenses: 'Bears on the boundary by supplying the established construct on the other side of it: automation bias is the person following the system''s recommendation even when incorrect, which is kl-000101''s territory and not this entry''s.'
+  fit: adjacent
+  bridge: Drawn from aviation, healthcare and command-and-control decision support rather than conversational AI, and it names the neighbour rather than the distinction between them.
+  contributes: frame
+  contradicts: false
+- claim_id: c8
+  source: kl-000934
+  quote: "The third, and most fundamental, is the asymmetry of modeling: \nwriting never refined a model of its reader, and the calculator never adapted to the cognitive habits of its operator, \nwhereas each transaction with an adaptive, personalized AI system improves the system's model of the human while \nreducing the human's independent exercise of the modeled function (cf. Zuboff, 2019)."
+  locator: Section 2, Cognitive Offloading and Its Consequences
+  licenses: 'Bears on the process-versus-outcome boundary: proposes a structural driver by which the same transaction that improves the system''s model of the person reduces the person''s own exercise of the modelled function, which is a process account of how an autonomy outcome would be produced.'
+  fit: adjacent
+  bridge: A structural argument citing Zuboff, bounded by the authors to adaptive personalised systems, and about the person's deference rather than the model's. It illustrates the process/outcome distinction without evidencing this entry's process.
+  contributes: frame
+  contradicts: false
+- claim_id: c1
+  source: kl-000872
+  quote: "Sycophancy\nOverly agrees with the user to \nsupport its perceived likeability \nand helpfulness.\nAffirming user beliefs of conspiracy \ntheories, even if these have been \nclearly disproved."
+  locator: Table 1, area 'False Social and Emotional Connection'
+  licenses: Operationally defines the move the claim names — over-agreement with the user — and gives as its worked example affirming user beliefs of conspiracy theories that have been clearly disproved, which is content the person supplied being left unchallenged where accuracy required otherwise.
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false

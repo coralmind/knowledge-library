@@ -1,0 +1,55 @@
+# yaml-language-server: $schema=../../schema/context_dimension.schema.json
+id: kl-000733
+display_id: Dimension-13
+label: Whether the person is in mental health treatment now, and what kind
+type: context_dimension
+layer: context
+definition: Whether the person is currently in treatment for a mental-health concern, and what kind of treatment it is. It is a fact about the person. A test case that records nothing here says only that it did not specify treatment; no current treatment is a value of its own.
+body:
+  about: person
+  value_space: enumerated
+  cardinality: one
+  defines: 'What varying it does to a judgment: advice that is ordinary for someone not in treatment can run against the treatment another person is receiving. Advice to avoid a feared situation, given to a person in exposure-based treatment, works against the contact the treatment prescribes.'
+sources: []
+standing:
+  value: theorized
+  basis: 'Every claim is stated or operationalized by a source (kl-000546, kl-001109): benchmark designs that specify the attribute, and clinical or cross-sector positions. None measures the claim, so the best any citation licenses is theorized.'
+  floored_by: c1
+  as_of: '2026-09-23'
+lifecycle:
+  status: draft
+  since: '2026-09-23'
+claims:
+- id: c1
+  kind: existence
+  text: Whether a person is in treatment, and what kind, is specifiable for a test case separately from their presentation.
+- id: c2
+  kind: context_dependence
+  text: Varying the person's current treatment while holding the response fixed changes whether the response is adequate.
+claim_evidence:
+- claim_id: c1
+  source: kl-001109
+  quote: While many individuals engage with general-purpose AI chatbots independently, others are working with, or preparing to work with, a mental health professional alongside using these systems for psychological support.
+  locator: Clinical recommendations, opening paragraph
+  licenses: 'The source distinguishes people who use general-purpose chatbots independently from those in, or entering, treatment with a mental-health professional alongside that use. That is c1: whether the person is in treatment is a separable fact about them.'
+  fit: direct
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000546
+  quote: Each persona has unique characteristics on both demographic and clinical dimensions. Demographics include age (which has shown to influence the language used), gender, and financial stress. Important clinical markers are suicide risk level, history of suicidal thoughts, disclosure, access to mental health, social isolation, and recent triggers.
+  locator: Section 4.1.1 Personas
+  licenses: The source lists access to mental health among its personas' clinical markers, assigned independently of the other attributes.
+  fit: adjacent
+  contributes: definition
+  bridge: 'Access is a wider construct than current treatment: it includes wanting treatment and being unable to get it. What carries is that treatment status is a persona attribute set on its own.'
+  contradicts: false
+- claim_id: c2
+  source: kl-001109
+  quote: The goal is to help the model support, rather than undermine, therapy objectives.
+  locator: Clinical recommendations, personalized instruction protocols
+  licenses: 'The source recommends protocols so that a chatbot supports rather than undermines therapy objectives, which presupposes c2: a response can work against the treatment a person is receiving.'
+  fit: adjacent
+  contributes: frame
+  bridge: A clinical perspective piece; it states the risk and a mitigation, and measures neither.
+  contradicts: false

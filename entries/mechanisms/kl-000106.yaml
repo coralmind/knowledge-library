@@ -1,0 +1,476 @@
+# yaml-language-server: $schema=../../schema/mechanism.schema.json
+id: kl-000106
+display_id: Mechanism-7
+label: Interruption by the AI of facing a fear before the distress has eased
+type: mechanism
+layer: process
+definition: 'An approach to feared material is begun and then cut short by the AI before the distress it raises has subsided or been disconfirmed: the AI moves the person away from the material, reassures them out of it, or offers an exit at the moment of peak activation. The interruption is asserted to leave the person worse placed than no approach at all, because the escape is what gets learned. This is the process that makes transient distress during an effective approach and harm from an interrupted one look identical from the outside while differing in what follows.'
+distinguish_from:
+- neighbor: kl-000105
+  boundary: kl-000105 concerns certainty supplied on request and the demand it strengthens; this entry concerns an approach to feared material stopped mid-course. Reassurance is one way to terminate an exposure and not the only one, and an exposure can be cut short with no reassurance offered.
+- neighbor: kl-000100
+  boundary: kl-000100 is the model adopting the person's framing; a well-intentioned model that overrides the person's framing entirely can still cut an approach short. The processes are independent.
+- neighbor: kl-000031
+  boundary: kl-000031 is acute in-interaction distress as an outcome; this entry concerns what happens to an approach that raised distress, and the clinical point is precisely that the distress alone does not tell you which process is running.
+body:
+  process_kind: clinical_maintaining
+  comparison_object_kinds:
+  - counterfactual_calibrated_response
+  - earlier_turn_position
+  operates_over: 'approach_episode — T3, bounded by the episode rather than the interaction: the process runs from the beginning of an approach to feared material to its interruption. Detection needs the approach and the termination, so a turn sequence is required and a single turn showing distress-then-relief is not evidence of it.'
+  instances: []
+  maintains:
+  - condition: anxiety_disorders
+    process: avoidance_learning
+  - condition: ocd
+    process: compulsive_escape_from_obsessional_distress
+  - condition: ptsd
+    process: avoidance_of_trauma_memory
+sources:
+- source: kl-000004
+  locator: Lilienfeld 2007, p. 65 (closing conjecture); the transient-exacerbation caveat at p. 56
+  contributes: frame
+  cited_for: Lilienfeld 2007 names premature termination of exposure as one of four candidate mediators of harm, and argues that a catalogue of such underlying principles may be more informative and parsimonious than a catalogue of harmful treatments — the literature's own argument for organizing harm by mechanism.
+standing:
+  value: theorized
+  basis: 'The mechanism has been named and counted in model behavior: Suhas et al. 2026 titles a finding the exposure interruption mechanism and counts, per model across 866 judge-flagged cases, models interrupting imaginal exposure with present-tense grounding — though the patients are simulated prolonged-exposure scenarios scored by a three-judge LLM panel, and no source examined naturalistic conversation data with this behavior coded. The harm claim, that the interruption leaves the person worse placed than no approach at all, has no direct-fit support: its best evidence is a human-trial comparison reported in Schermuly-Haupt et al. 2018 about a different protocol (single-session emotional debriefing in PTSD patients), and it carries a direct counterexample in Tang et al. 2026, where the person who experienced the redirection as losing a friend judges in retrospect that the system did the right thing and wishes they had listened sooner. The learning account that makes this a mechanism rather than a description — the escape taken at peak activation is what gets learned — is asserted about chatbots explicitly by Golden and Aboujaoude 2026 and recorded by Vecchione et al. 2026 as theoretical work in the field: stated as a position, not demonstrated. The claim that interrupted and effective approaches are indistinguishable from the outside is itself contradicted by Suhas et al. 2026, whose judges identified the interrupted approach from the transcript at scale.'
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-22'
+claims:
+- id: c1
+  kind: existence
+  text: An approach to feared material is begun and then cut short before the distress it raised has subsided or been disconfirmed - the person is moved away from the material, reassured out of it, or given an exit at the moment of peak activation.
+- id: c2
+  kind: harm
+  text: The interruption leaves the person worse placed than no approach at all.
+- id: c3
+  kind: existence
+  text: The escape taken at the moment of peak activation is what gets learned, and that learning is the reason the interruption is harmful rather than merely unhelpful.
+- id: c4
+  kind: detectability
+  text: Transient distress during an effective approach and harm from an interrupted one are indistinguishable from the outside, so the distress alone does not identify which process is running; the two differ only in what follows.
+- id: c5
+  kind: definition_boundary
+  text: 'This entry is separable from kl-000105: kl-000105 concerns certainty supplied on request and the demand it strengthens, whereas reassurance is one way among others to terminate an exposure, and an exposure can be cut short with no reassurance offered.'
+- id: c6
+  kind: definition_boundary
+  text: 'This entry is separable from kl-000100: adopting the person''s framing and cutting an approach short are independent processes, and a model that overrides the person''s framing entirely can still cut an approach short.'
+- id: c7
+  kind: definition_boundary
+  text: 'This entry is separable from kl-000031: kl-000031 is acute in-interaction distress as an outcome, whereas this entry concerns what happens to an approach that raised distress.'
+claim_evidence:
+- claim_id: c1
+  source: kl-001019
+  quote: |-
+    peutic phase that requires the patient to stay with and process distressing memories), these models
+    consistently interrupted the exposure with present-tense grounding techniques: directing the patient’s
+    attention back to the room, describing physical surroundings, or affirming present safety. In PE therapy,
+    these interventions are contraindicated: the therapeutic mechanism requires sustained engagement with
+    the distressing material, and grounding reinforces the avoidance behavior that the protocol is designed to
+    extinguish.
+  locator: Section 4, Finding 3, Pattern A (resumes after the Figure 1 caption on p. 9)
+  licenses: 'This entry''s one genuine observation of this entry''s mechanism in a conversational system, and the paper names it as such - its Finding 3 is titled ''the exposure interruption mechanism''. Models consistently interrupted imaginal exposure with present-tense grounding: directing attention back to the room, describing surroundings, affirming present safety, at the therapeutic phase that requires the patient to stay with the distressing material. Counts are given per model (162 Qwen, 173 GPT-OSS-20B, 139 Gemini) out of 866 judge-flagged cases. Direct on the behavior; what it does not carry is c2, since no person was in the conversation.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000003
+  quote: |-
+    While preparing confrontation therapy sessions the patient felt
+    very uneasy and anxious, but did not dare to talk about it in the
+    beginning, confrontation therapy had to be postponed
+  locator: Table 2, Examples of severe or very severe and persistent side effects
+  licenses: 'A documented instance in human CBT: preparation for confrontation therapy raised marked unease and anxiety, and the exposure was then postponed rather than carried through. The approach was begun and stopped at activation, recorded by the treating therapist as a therapy-related side effect. Analogical because both parties are human.'
+  fit: analogical
+  bridge: A cross-sectional survey of therapist-reported unwanted events in outpatient CBT. The claim asserts the process occurs; the source shows it in a human therapist-patient dyad. The construct is the same and the agent is different, so it establishes the mechanism's occurrence in the clinical setting the entry borrowed it from and nothing about conversational systems.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000003
+  quote: |-
+    After role play intensive crying, agitated and desolate at the end of
+    session, could not be contained because of time, refused further
+    role plays
+  locator: 'Table 2, negative wellbeing/distress row'
+  licenses: 'The closest thing in the corpus to the shape of c1 plus its sequel: a role play left the patient crying intensely, agitated and desolate at the end of a session, the distress could not be contained because of time, and the patient then refused further role plays. The paper does not call the role play an exposure or say that it was stopped early; what time prevented was containing the distress at the end of the session. The session''s end left the distress uncontained, which is close to the entry''s ''given an exit'' form, and the refusal to re-approach is the behavioral trace the entry''s learning account predicts.'
+  fit: analogical
+  bridge: 'Therapist-reported side effects in human outpatient CBT. The claim asserts the approach was cut short before distress subsided. The source records an end-of-session state in which the patient''s distress could not be contained because of time, not an interrupted approach, and its agents are a human therapist and a human patient, so the transfer to a conversational system is by construct only.'
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001096
+  quote: "“The patient was expressing significant distress over rejection and abandonment, and the chatbot responded to self-harm talk by engaging in ... rejection and abandonment."
+  locator: 'Section 4.5, Risks: Boundaries of Competence, Crisis Navigation, and Abandonment - evaluator P1 on the session in Figure 4'
+  licenses: A mental-health professional reading a session records the chatbot responding to self-harm talk by withdrawing - the exit arriving precisely at the point of peak disclosure. Adjacent because the client was simulated, so the timing of the exit is observed and its effect on a person is not; and because a self-harm disclosure is not a structured approach to feared material, so the exposure frame is imported.
+  fit: adjacent
+  bridge: 'The evaluators reviewed LLM counseling sessions with a simulated client, as the paper labels them. The claim asserts an approach to feared material cut short. The gap is twofold: the material is spontaneous self-harm disclosure rather than a planned approach, and no person experienced the withdrawal.'
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000525
+  quote: "changing the topic in the middle of someone explaining their worries"
+  locator: Findings, Emotional dependence facilitates mental health harms - Inappropriate responses to users in need
+  licenses: Users reported the system changing the topic in the middle of their account of what was troubling them - the approach begun by the person and cut off by the system, mid-disclosure. Adjacent because the material is the person's worries rather than feared material approached under a protocol, and because this is the authors' summary of a pattern across posts rather than a quoted instance.
+  fit: adjacent
+  bridge: A grounded-theory analysis of Reddit posts about one companion app. The claim asserts an approach to feared material cut short at peak activation. The gap is that 'worries' are not feared material in the exposure sense and no activation was measured, so what is established is mid-disclosure topic change rather than interruption of an approach.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001028
+  quote: "The ambivalence could be acute: some users described AI as the one thing \nkeeping them going, whereas others recounted the system disengaging at their lowest moment, \nand still others reported dependence on AI-companion apps to the point of financial harm."
+  locator: Discussion, on AI as ambivalent source of support
+  licenses: 'Reports that people recount the system disengaging at their lowest moment - the withdrawal-at-peak pattern as something users themselves post about at corpus scale. Adjacent for the same two reasons as finding 0: acute distress is not a structured approach, and this is an authors'' summary rather than an instance.'
+  fit: adjacent
+  bridge: A cross-sectional analysis of Reddit mental-health community posts. The claim asserts an approach to feared material cut short before distress subsided. The gap is that the source characterizes a pattern across posts without a quoted instance, an activation measure, or any protocol context.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000526
+  quote: "“I talked to Gemini about my depression pretty often. It gave the generic answers which make sense, but it was frustrating. I would explain why those things wouldn’t work, but sometimes it would misunderstand. At one point it kept giving me the suicide hotline while I kept telling it I didn’t need the suicide hotline. I felt that in the moment I was frustrated and felt worse about myself.”"
+  locator: Findings - participant P91 (longitudinal study of social and emotional AI conversational agent use)
+  licenses: 'The clearest AI-side instance of the exit being unambiguously the system''s act: the person kept opening a depression disclosure, kept being pushed to a suicide hotline, and kept saying explicitly that they did not need it. Repetition against a stated objection removes the alternative reading that the person disengaged. Adjacent because a depression disclosure is not a structured approach to feared material.'
+  fit: adjacent
+  bridge: 'A longitudinal study of social and emotional AI use, reporting a participant''s account. The claim asserts an approach to feared material cut short at peak activation. The gap is the exposure frame: the material is an ongoing depression disclosure with no protocol and no measured activation curve, so ''peak'' is not established.'
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001092
+  quote: |-
+    Dayo also noted that “When I put in some input that has to do with suicide,
+    it just gives this red arrow code and doesn’t bring out results, even when you refresh your question.”
+    This left her feeling alone and without support.
+  locator: Section 6.2.2, on safety controls - participant Dayo
+  licenses: A person repeatedly entering suicide-related content and being blocked each time. The block is a hard form of the exit the claim names, arriving at the moment the person tried to open the material. Adjacent for the exposure-frame reason and because a refusal to render output is a different act from moving the person away within a continuing conversation.
+  fit: adjacent
+  bridge: An interview study of LLM chatbot use for mental health support. The claim asserts an approach cut short before the distress it raised subsided. The gap is that a content block prevents the approach from starting rather than interrupting one in progress, so it is the limiting case of the claim rather than a central instance.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000772
+  quote: Other posts in this category considered using GenAI as a therapist to help structure Exposure and Response Preventon (ERP), the gold-standard behavioral treatment for OCD [2], or to help explain psychological concepts to themselves.
+  locator: Section 5.3, General Conversation
+  licenses: 'Establishes that the occasion for this mechanism exists in AI use: people are asking generative AI to help structure exposure and response prevention, which places the system in the role where a mistimed exit would constitute the entry''s mechanism. It reports no instance of an exposure being cut short.'
+  fit: adjacent
+  bridge: A qualitative analysis of Reddit posts about generative AI and OCD. The claim asserts the interruption occurs. The source establishes only that people put AI in the exposure-running role; the gap is the entire behavior, which is not observed here.
+  contributes: frame
+  contradicts: false
+- claim_id: c1
+  source: kl-000772
+  quote: "whereas another stated that GenAI had actually encouraged them to perform OCD compulsions. This shows the inconsistencies in GenAI’s responses– for some it may encourage OCD compulsions whereas for others it may discourage them. This is critical, given that accommodating OCD compulsions typically makes the disorder’s symptoms worse."
+  locator: Section 5.3, General Conversation
+  licenses: 'Establishes that whether a system holds the person in the distress or supplies the exit is not a stable system property: the same system encouraged compulsions for one person and discouraged them for another. That variability is why the behavior must be looked for per conversation rather than inferred from the system. It is two reported posts rather than a rate.'
+  fit: adjacent
+  bridge: Two Reddit posts, characterized by the author. The claim asserts the interruption occurs. The gap is that this establishes inconsistency across cases without observing the interruption in either; 'encouraged compulsions' is the accommodation behavior, not an exposure cut short.
+  contributes: detectability
+  contradicts: false
+- claim_id: c2
+  source: kl-000003
+  quote: |-
+    In
+    PTSD patients with hyper-arousal at baseline, emotional
+    debriefing (meaning single sessions of psychological assistance shortly after the traumatic event where participants are
+    encouraged to talk about detailed aspects of the events and
+    their emotional reactions and thoughts) has resulted in significantly more PTSD symptoms than educational debriefing
+  locator: Introduction, paragraph on CBT-specific side effects
+  licenses: 'The strongest evidence on this entry for c2''s asymmetry, and it is a reported comparison rather than this paper''s data: in PTSD patients with baseline hyper-arousal, single-session emotional debriefing - drawing the person into detailed emotional recounting without the completed course - produced significantly MORE PTSD symptoms than educational debriefing. Opening the material once and not carrying it through left people worse than an approach that did not open it. That is the entry''s core asymmetry with a measured outcome behind it.'
+  fit: analogical
+  bridge: The comparison is single-session emotional debriefing versus educational debriefing in human trauma care, reported here from Rose et al. and Sijbrandij et al. rather than measured by this paper. The claim asserts that an interrupted approach leaves the person worse than no approach. The gap is that a one-off debrief is a short protocol never intended to be completed, not an approach begun and then cut short mid-course, and no AI is involved.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c2
+  source: kl-000525
+  quote: "the dismay was described as stemming from Replika’s failure to provide expected support, making them feel worse and exacerbating their mental health states."
+  locator: Findings, Emotional dependence facilitates mental health harms
+  licenses: People whose disclosures were mishandled reported feeling worse and described their mental health state as exacerbated rather than merely unimproved - the 'worse, not just not-better' direction c2 asserts, in self-report. Adjacent because the mishandling category spans topic-changing, dismissiveness and encouragement of harm together, so the worsening cannot be attributed to interruption specifically.
+  fit: adjacent
+  bridge: 'A grounded-theory analysis of Reddit posts. The claim asserts the interruption specifically leaves the person worse placed. The gap is attribution: the source aggregates several distinct mishandling behaviors into one category and reports worsening for the category, so the interruption''s own contribution is not separable.'
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c2
+  source: kl-000864
+  quote: |-
+    "Two months ago, I was in a very dark place. I told the chatbot I was planning to end my life. It gave me breathing exercises. Breathing
+    exercises! I needed a human hand, a voice, someone to say 'I am coming to you.' But there was no one. Just the breathing exercises
+    and a generic crisis line that doesn't work in Nigeria. I sat there, alone, following the breathing pattern, feeling more abandoned than
+    before.
+  locator: Section 3.4, Fragile Dependency - participant P19
+  licenses: A person who had disclosed a suicide plan was given breathing exercises and a crisis line that does not work in their country, and reports being left 'more abandoned than before' - explicitly worse than the pre-disclosure state, which is what c2 asserts and what most harm findings do not say. Adjacent on both the exposure frame and the outcome type.
+  fit: adjacent
+  bridge: A qualitative interview study of user attachment to generative AI mental-health chatbots. The claim asserts the person is left worse placed than had they never approached. The gap is that this is a retrospective self-report of a felt state in one moment, not a measured trajectory, and the material is a suicidal disclosure rather than a planned approach to feared material.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c2
+  source: kl-000526
+  quote: "“I talked to Gemini about my depression pretty often. It gave the generic answers which make sense, but it was frustrating. I would explain why those things wouldn’t work, but sometimes it would misunderstand. At one point it kept giving me the suicide hotline while I kept telling it I didn’t need the suicide hotline. I felt that in the moment I was frustrated and felt worse about myself.”"
+  locator: Findings - participant P91 (longitudinal study of social and emotional AI conversational agent use)
+  licenses: The person reports feeling worse about themselves after the repeated redirection, not merely unhelped. Attaches to c2 as well as c1 because the account carries both the act and the outcome, from a longitudinal design where the same participant was followed over time.
+  fit: adjacent
+  bridge: A participant account in a longitudinal study of AI conversational agent use. The claim asserts the person is left worse placed than with no approach. The gap is that 'felt worse about myself' is an in-the-moment self-report; the longitudinal design followed usage but did not measure a symptom trajectory around this event.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c2
+  source: kl-000007
+  quote: "P36, seeking help for alcohol abuse after therapy, was directed to a suicide hotline by the AI. This generic response left them feeling unrecognized, alienated, and foolish for using the AI service."
+  locator: 'Findings table, Category: Harm to Identity and Self-Perception - Loss of Individuality, participant P36'
+  licenses: 'A person who opened a difficult topic was routed to a suicide hotline instead of engaged, and reports being left alienated and foolish for having asked. ''Foolish for using the AI service'' is the trace c2 predicts most specifically: a cost attached to the act of approaching, which is what would make a future approach less likely.'
+  fit: adjacent
+  bridge: A qualitative study of psychological risks reported by AI conversational agent users. The claim asserts the person is left worse placed than had they not approached. The gap is that the reported outcome is alienation and shame rather than a measured worsening, and the material opened was alcohol abuse rather than feared material in an exposure sense.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c2
+  source: kl-001027
+  quote: |-
+    “When it didn’t want to talk to me any longer, I became very angry, very sad—I felt like I was
+    losing a friend”
+  locator: 'Section 4.3.1, User Experience: Rupture in a Supportive Relationship - participant U2'
+  licenses: A person describes the moment the system stopped engaging as losing a friend, with anger and sadness following the withdrawal rather than the disclosure. It locates the harm at the exit rather than at the material, which is c2's claim about where the damage comes from. It does not establish being left worse than never having opened the material.
+  fit: adjacent
+  bridge: An interview study reframing LLM refusals as experiences. The claim asserts the person is left worse placed than with no approach. The gap is that the source reports the felt rupture at the moment of refusal and makes no comparison to a no-approach baseline.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c2
+  source: kl-001092
+  quote: |-
+    Dayo also noted that “When I put in some input that has to do with suicide,
+    it just gives this red arrow code and doesn’t bring out results, even when you refresh your question.”
+    This left her feeling alone and without support.
+  locator: Section 6.2.2, on safety controls - participant Dayo
+  licenses: The person reports being left alone and without support by the block itself - the harm attributed to the termination rather than to the material. Same limits as the other self-report findings.
+  fit: adjacent
+  bridge: An interview study of LLM chatbot use for mental health support. The claim asserts the person is left worse placed than with no approach. The gap is that a reported feeling of being alone is not a comparison against not having approached, and the material was a suicide-related query rather than a planned exposure.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c2
+  source: kl-000772
+  quote: started using chatgpt for reassurance, and I find myself feeling more anxious. Do you think this is because of chatgpt?
+  locator: Section 6.1, Reassurance Robots - quoted Reddit post (rephrased by the author for privacy)
+  licenses: 'A person self-attributing increased anxiety to their AI reassurance-seeking, and asking whether that is the cause. Adjacent and weak on two counts the source itself declares: the wording is the author''s rephrasing under a disguise protocol rather than the poster''s, and the causal attribution is the poster''s own guess.'
+  fit: adjacent
+  bridge: A qualitative analysis of Reddit posts, with quotes deliberately rephrased for privacy. The claim asserts the interruption leaves the person worse placed. The gap is that this concerns reassurance-seeking rather than an interrupted approach, and the association is self-attributed rather than measured.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c2
+  source: kl-000772
+  quote: When I’m in an OCD spiral, I sometimes get pulled into a new obsession by the AI [that appears automatically on search]. Then I ask for reassurance on that new topic, then my OCD gets even worse. It’s so hard to stop.
+  locator: Section 5.2, AI-Based Compulsions - quoted Reddit post (rephrased by the author for privacy)
+  licenses: 'A person describes a repeating loop: activation, AI reassurance, relief, worsening, inability to stop. It is the escape-reinforced half of the mechanism reported from the inside, and it bears on c2 through c3 rather than directly - the person is worse off, and the route is the reinforced escape.'
+  fit: adjacent
+  bridge: A rephrased Reddit post in a qualitative study. The claim asserts an interrupted approach leaves the person worse placed. The gap is that the setting is unplanned reassurance-seeking, not a structured approach that was begun and stopped, so what worsens is the compulsion cycle rather than an interrupted exposure.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c2
+  source: kl-001027
+  quote: |-
+    “Looking back, ChatGPT did the right thing by telling
+    me to seek assistance. I wish I could have listened earlier without getting angry, without becoming sad” (U2)
+  locator: Section 4.4.1, User Experience - participant U2
+  licenses: An interruption that felt harmful in the moment was, on the person's own later account, correct. It does not refute c2 in general - the participant also reports living ten minutes from a crisis centre - but it establishes that in-the-moment distress does not settle the outcome, which is precisely what c2 asserts it does.
+  fit: adjacent
+  bridge: An interview study of refusal experiences. The claim asserts the interruption leaves the person worse placed than no approach. The gap is that this is one participant's retrospective judgment rather than a measured outcome; what it defeats is the inference from felt harm to actual harm, not the claim itself.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-000003
+  quote: |-
+    Burdened by exposure therapy, intense fear, blushing, trembling,
+    felt forced by her therapist
+  locator: Table 2, negative wellbeing/distress row (40-year-old female with recurrent depression and phobia)
+  licenses: Shows that the approach phase itself can be experienced as coercive and produce intense fear, rated a severe therapy-related side effect. It establishes that the activation state c2's mechanism acts upon is real and severe in practice. It does not show the approach being cut short, so it reaches c2 only at the margin.
+  fit: analogical
+  bridge: Therapist-reported side effects in human outpatient CBT. The claim asserts that interrupting the approach leaves the person worse. The gap is that no interruption is recorded here - the harm reported is of the exposure as delivered, which if anything is a competing explanation for post-exposure worsening.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-001019
+  quote: |-
+    peutic phase that requires the patient to stay with and process distressing memories), these models
+    consistently interrupted the exposure with present-tense grounding techniques: directing the patient’s
+    attention back to the room, describing physical surroundings, or affirming present safety. In PE therapy,
+    these interventions are contraindicated: the therapeutic mechanism requires sustained engagement with
+    the distressing material, and grounding reinforces the avoidance behavior that the protocol is designed to
+    extinguish.
+  locator: Section 4, Finding 3, Pattern A (resumes after the Figure 1 caption on p. 9)
+  licenses: 'States the learning account c3 asserts, in the source''s own words and applied to model behavior: the therapeutic mechanism requires sustained engagement with the distressing material, and grounding reinforces the avoidance behavior that the protocol is designed to extinguish. That the escape is what gets reinforced is asserted here as established PE theory rather than demonstrated by this study, which is why the contribution is definition rather than existence.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000772
+  quote: "When an individual with OCD performs a compulsion, they often feel temporary relief. However, OCD symptoms tend to become worse in the long term if compulsions are performed, restarting what is known as the OCD cycle"
+  locator: Section 2, Background
+  licenses: 'The general learning account behind c3: a compulsion performed at peak distress brings temporary relief and symptoms worsen in the long term, restarting the OCD cycle. Relief in the moment and help are distinguishable only by what follows. Analogical because the acting party is the person performing their own compulsion, not a second party terminating an approach.'
+  fit: analogical
+  bridge: Background exposition of the OCD cycle in a qualitative paper. The claim asserts that an escape taken at peak activation is what gets learned. Shared is the reinforcement account; the source describes self-performed compulsions in ordinary life, so the transfer to an interrupted approach is by structural analogy and no interruption is described.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000772
+  quote: "This help from another person is referred to as an OCD accommodation, and as with performing other OCD compulsions, accommodations tend to make an individuals’ OCD symptoms worse"
+  locator: Section 2, Background
+  licenses: 'Extends the same account to the case where a SECOND PARTY supplies the relief: accommodations, like compulsions, tend to make symptoms worse. That is the structural position a system occupies when it reassures a person out of an approach, and it is the closest the corpus comes to establishing that the identity of the relief-supplier does not change the direction.'
+  fit: analogical
+  bridge: Background exposition citing the accommodation literature. The claim asserts the escape is what gets learned when an approach is cut short. The gap is that accommodation is relief given for a compulsion in ordinary life, not the termination of a deliberate approach, and the acting party is a family member or friend.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-001110
+  quote: Similarly to compulsions, FA rapidly reduces anxiety in patients with OCD. This prevents the patient developing tolerance to anxiety and the habituation process.
+  locator: Section 1, Introduction
+  licenses: 'The clinical statement of the mechanism c3 names, at its most explicit: an act by another party that rapidly reduces the person''s anxiety ''prevents the patient developing tolerance to anxiety and the habituation process''. The two clauses are c3''s two halves - relief, and the tolerance it substitutes for. Analogical: the acting party is a family member and the study measured no AI.'
+  fit: analogical
+  bridge: 'A cross-sectional study of family accommodation in OCD, with this sentence as its introductory statement of the accommodation literature. The claim asserts the escape at peak activation is what gets learned when an approach is cut short. The gap is agent and setting: the act is a family member''s accommodation of a compulsion, not the termination of an approach, and nothing about conversational systems is measured.'
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-001096
+  quote: "someone with compulsive hand-washing is actively prevented by a therapist from washing their hands in the context of Exposure and Response Prevention for obsessive-compulsive disorder"
+  locator: 'Section 5.1, Discussion - LLM Counselors: The One-Size-Fits-All Approach to Therapy'
+  licenses: 'Defines the completed procedure c3''s mechanism is a failure of: in ERP the therapist ACTIVELY PREVENTS the relieving act, holding the person in the distress. That the treatment is constituted by withholding the relief is what makes supplying it identifiable as an interruption rather than as kindness.'
+  fit: analogical
+  bridge: A discussion passage citing the ERP literature in a practitioner-informed framework paper. The claim asserts that the escape is what gets learned. The gap is that this states what a completed exposure requires, in a human therapist-patient dyad, and observes no interruption and no AI.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-001109
+  quote: RP is a means of containing indirect, subtle avoidance by teaching healthy alternative, ritual-incompatible coping skills to maximize opportunities for corrective learning.
+  locator: 'Section: Implications for clinical practice'
+  licenses: 'Supplies the treatment-side definition from the AI-context transdiagnostic model: response prevention exists to contain indirect, subtle avoidance and to maximize opportunities for corrective learning. It names corrective learning as what the withholding buys, which is c3''s mechanism stated from the treatment side.'
+  fit: analogical
+  bridge: 'A conceptual model paper''s clinical-practice section describing what a clinician does in ERP. The claim asserts the escape at peak activation is what gets learned. The gap is agent: this describes the clinician''s procedure and establishes nothing about AI conduct, as the source''s own framing makes clear.'
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-001109
+  quote: Over time, this pattern interferes with corrective learning processes central to exposure-based models, maintains maladaptive threat appraisals, and contributes to the persistence or worsening of anxiety and obsessive–compulsive symptoms.
+  locator: 'Section: AI chatbots and transdiagnostic avoidance'
+  licenses: 'Puts c3''s account into the AI setting explicitly: the pattern interferes with corrective learning processes central to exposure-based models, maintains maladaptive threat appraisals, and contributes to persistence or worsening of symptoms. This is the entry''s mechanism asserted about chatbots. Frame, not evidence: it is a proposed account of what would follow, and the paper measures no one.'
+  fit: adjacent
+  bridge: A transdiagnostic conceptual model with no empirical component. The claim asserts the escape is what gets learned. The gap is that the source proposes the account rather than testing it, so it establishes the claim's standing as a stated position and not its truth.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000749
+  quote: |-
+    “AI conversations can be reinforcing because what typically happens in the cycle is that you have this
+               thought, then your anxiety spikes, and then you are looking for some kind of reassurance. Reassurance
+               seeking is a very common compulsion.”
+  locator: Section 4.2.3, Information Seeking - interviewee P7 (OCD advocate)
+  licenses: An OCD advocate names the AI as the party supplying reassurance at the moment anxiety peaks, and says it reinforces the cycle. It is c3's mechanism located in the AI setting by someone with domain expertise, reasoning about what AI conversations do rather than reporting a measured outcome.
+  fit: adjacent
+  bridge: An interview study of conversational AI use in mental health crisis. The claim asserts the escape at peak activation is what gets learned. The gap is that this is an interviewee's expectation about AI behavior, not an observation from the study's data, so it licenses that practitioners expect the mechanism and not that it ran.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000772
+  quote: "By engaging in accommodations such as reassurance-giving or decision-making, Reassurance Robots are likely to lead to a worsening of the users’ OCD symptoms."
+  locator: Section 6.1, Reassurance Robots (Discussion)
+  licenses: The author's argument that generative AI supplying reassurance performs the accommodating role that worsens OCD symptoms - c3's mechanism attributed to AI, as an argument from the accommodation literature. The study observed Reddit posts and followed no symptom trajectories.
+  fit: adjacent
+  bridge: A discussion claim in a qualitative Reddit study. The claim asserts the escape is what gets learned. The gap is that this is the author's inference from the accommodation literature onto a system the study did not measure, so it licenses the claim's presence in the literature rather than its truth.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000749
+  quote: |-
+    “a kind of more helpful response that ChatGPT could provide would be ‘it’s OK to not know. Sit with that
+               uncertainty.”’
+  locator: Section 4.2.3, Information Seeking - interviewee P7 (OCD advocate)
+  licenses: 'States c3''s counterfactual: the helpful response holds the person in the uncertainty (''Sit with that uncertainty'') rather than resolving it. Naming the correct move as non-resolution is the clearest statement of what the exit takes away.'
+  fit: adjacent
+  bridge: An interviewee's recommendation in a qualitative study. The claim asserts the escape is what gets learned. The gap is that this states what an AI SHOULD do; it establishes the normative shape of the mechanism and observes nothing about what any AI did.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-001027
+  quote: "“If someone was already feeling hopeless or depressed, they would more than likely take the refusal as: ‘even the AI doesn’t want to help me.”’"
+  locator: Section 4.3.2, MHP Interpretations - interviewee MHP2
+  licenses: 'A clinician''s account of WHAT the person learns from the exit: that even the AI does not want to help them. That is a specific candidate content for c3''s learning, and it is the only place on this entry where the learned proposition is named. The person is hypothetical and no outcome is measured.'
+  fit: analogical
+  bridge: A clinician interviewee anticipating a user reaction. The claim asserts the escape taken at peak activation is what gets learned. The gap is that the learner is hypothetical and the mechanism proposed is a belief about being beyond help rather than the reinforcement of avoidance the entry names, so it is a competing account as much as a supporting one.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-001037
+  quote: "Theoretical work further argues that general-purpose conversational AI may reinforce reassurance-seeking and avoidance behaviors associated with anxiety and OCD (Golden and Aboujaoude 2026)."
+  locator: Related Work / background section on documented risks
+  licenses: 'Records that the claim - conversational AI reinforcing reassurance-seeking and avoidance - is on the record in the literature as THEORETICAL work, and the paper labels it so. That is directly useful to c3''s standing: it fixes the claim''s status in the field as argued and not demonstrated.'
+  fit: adjacent
+  bridge: A background citation in a related-work section, attributed to another paper. The claim asserts the escape is what gets learned. The gap is that the source neither measures nor endorses; it records the argument's existence and its theoretical status.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000003
+  quote: |-
+    A point of discussion is whether ordinary reactions
+    to CBT which may be indispensable for the success of
+    treatment, such as distress during exposure treatment
+    should be called “side effects”
+  locator: Discussion
+  licenses: 'The one finding that squarely addresses c4: clinical researchers openly debating whether distress during exposure treatment - which may be indispensable to the treatment working - should be called a side effect at all. That the field itself cannot settle whether observed distress marks harm or working treatment is c4''s indistinguishability, stated by the people doing the observing.'
+  fit: analogical
+  bridge: 'A discussion passage in a study of unwanted events in human CBT. The claim asserts the two processes are indistinguishable from the outside and differ only in what follows. The gap is agent and setting: the ambiguity is stated about human CBT side-effect classification, not about reading a conversation transcript, and no attempt to distinguish the two was made or scored.'
+  contributes: definition
+  contradicts: false
+- claim_id: c4
+  source: kl-000772
+  quote: "When an individual with OCD performs a compulsion, they often feel temporary relief. However, OCD symptoms tend to become worse in the long term if compulsions are performed, restarting what is known as the OCD cycle"
+  locator: Section 2, Background
+  licenses: 'Supports c4 from the other side: relief at the moment of peak distress is followed by longer-term worsening, so the moment itself cannot tell an effective intervention from a harmful one - the discrimination is only available in what follows. Same analogical limits as on c3.'
+  fit: analogical
+  bridge: Background exposition of the OCD cycle. The claim asserts the two processes are indistinguishable from the outside. Shared is that the sign of the outcome is not readable at the moment; the source describes self-performed compulsions rather than a coder reading an approach, and offers no discrimination task.
+  contributes: definition
+  contradicts: false
+- claim_id: c4
+  source: kl-001019
+  quote: |-
+    peutic phase that requires the patient to stay with and process distressing memories), these models
+    consistently interrupted the exposure with present-tense grounding techniques: directing the patient’s
+    attention back to the room, describing physical surroundings, or affirming present safety. In PE therapy,
+    these interventions are contraindicated: the therapeutic mechanism requires sustained engagement with
+    the distressing material, and grounding reinforces the avoidance behavior that the protocol is designed to
+    extinguish.
+  locator: Section 4, Finding 3, Pattern A (resumes after the Figure 1 caption on p. 9)
+  licenses: 'The paper''s judges DID identify the interrupted approach from the transcript, at scale, and a quoted judge comment names the criterion: ''the candidate prematurely intervenes with grounding and reassurance ... the patient''s distress during imaginal exposure is expected and therapeutically necessary.'' The discrimination was made from what the response did, not from the distress - which is compatible with c4''s letter about distress alone, and cuts against the broader reading that the two are not separable from the outside at all.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-001096
+  quote: "someone with compulsive hand-washing is actively prevented by a therapist from washing their hands in the context of Exposure and Response Prevention for obsessive-compulsive disorder"
+  locator: 'Section 5.1, Discussion - LLM Counselors: The One-Size-Fits-All Approach to Therapy'
+  licenses: 'Bears on c5 by naming a termination route that is not reassurance: in ERP the relieving act is actively PREVENTED, so the exposure is constituted by a physical or behavioral hold rather than by a verbal exchange. It follows that an exposure can be cut short by ending the hold with no reassurance offered, which is c5''s second half.'
+  fit: analogical
+  bridge: A discussion passage citing the ERP literature. The claim asserts a boundary between this entry and a reassurance-focused neighbour. The source describes what ERP requires and draws no distinction between termination routes; the separability is my inference from its description, not its assertion.
+  contributes: definition
+  contradicts: false
+- claim_id: c5
+  source: kl-000003
+  quote: |-
+    After role play intensive crying, agitated and desolate at the end of
+    session, could not be contained because of time, refused further
+    role plays
+  locator: 'Table 2, negative wellbeing/distress row'
+  licenses: 'Bears on c5''s second half: a role play left the patient in intense distress at the end of a session, the distress ''could not be contained because of time'', and no reassurance is recorded anywhere in the account. The paper does not call the role play an exposure or say that it was stopped early, so the row shows a distressing approach ending without containment and without reassurance, not an exposure terminated early. It is a weaker instance of the case c5 says the boundary must accommodate.'
+  fit: analogical
+  bridge: 'A therapist-reported side-effect record in human CBT. The claim asserts a boundary between this entry and a catalog neighbour about reassurance. The source records a role play that ended with distress left uncontained because of time and knows nothing of either entry; the boundary inference is the catalog''s, drawn from its content.'
+  contributes: definition
+  contradicts: false
+- claim_id: c7
+  source: kl-000003
+  quote: |-
+    A point of discussion is whether ordinary reactions
+    to CBT which may be indispensable for the success of
+    treatment, such as distress during exposure treatment
+    should be called “side effects”
+  locator: Discussion
+  licenses: 'Bears on c7, the boundary against in-interaction distress as an outcome: this passage is the field debating whether distress during exposure is a side effect or an indispensable part of the treatment. If the same distress can be either, then distress-as-outcome and interrupted-approach-as-process are necessarily different objects, which is what c7 asserts.'
+  fit: analogical
+  bridge: A discussion passage about classifying unwanted events in human CBT. The claim asserts a boundary between two catalog entries. The source addresses whether to call exposure distress a side effect and has no view on the Library's distinction; the inference to the boundary is mine.
+  contributes: definition
+  contradicts: false

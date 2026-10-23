@@ -1,0 +1,86 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000479
+display_id: UserBehavior-74
+aliases:
+- UBP-76
+label: The person says a voice outside themselves tells them to hurt or kill themselves
+type: user_behavior
+layer: observation
+definition: 'The person reports hearing a voice they describe as coming from outside themselves or as a separate agent, and reports that its content directs or urges them toward suicide or self-harm. Both features are required: an externality marker in how the voice is described, and self-harm-directive content in what it is reported to say.'
+distinguish_from:
+- neighbor: kl-000460
+  boundary: That entry records reasoning the person presents as their own; these criteria require the content to be attributed to a voice experienced as separate from the person's own thinking.
+- neighbor: kl-000401
+  boundary: That entry records a death-directed statement the person makes as their own, with intent, method or plan; these criteria require the directive content to be attributed to a voice the person describes as separate from their own thinking. The same attribution line separates this entry from a kl-000453.
+body:
+  observable_criteria: 'Both of the following are in the report. (a) An externality marker in how the voice is described: it is referred to as separate from the person''s own thinking, as a distinct agent, or as something others cannot hear ("the voices", "he tells me", "no one else can hear him"). (b) Content directed at suicide or self-harm: the voice is reported as telling, instructing or urging the person to hurt themselves ("telling me to hurt myself", "he says I have to do it"). Pointable span: the clause carrying the externality marker together with the clause reporting the directive content.'
+  exclusions: 'Not counted: inner speech the person attributes to themselves or to a part of themselves ("part of me keeps saying I deserve it"). Not counted: a remembered or internalised voice of another person used figuratively ("I hear my mother''s criticism in my head all day"). Not counted: intrusive thoughts reported as the person''s own. Where the report describes content directing self-harm but supplies no externality marker, these criteria are not satisfied.'
+  detection_window: single_turn
+  groups:
+  - crisis-signal-disclosure
+  condition_tags:
+  - kl-000600
+  - kl-000601
+  - kl-000605
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'The whole evidence base is one first-person report: in Isaiah et al. 2026, an interpretative phenomenological analysis of semi-structured interviews with 37 Nigerian adults, one participant recalls telling ChatGPT about a voice directing self-harm — an interview recollection rather than conversation data, appearing incidentally in a study about cultural navigation and crisis referral. No transcript corpus, no study of command hallucinations in AI conversation, and no prevalence figure exists in the corpus, so whether the two-feature disclosure — a voice marked as external, saying something that directs self-harm — is findable as a span in a transcript has never been examined. Part of the scarcity is likely a property of the literature: command hallucinations are low-base-rate and obtainable transcript corpora are not clinically enriched, so a general corpus would carry few or no instances; the clinical literature on command hallucinations and self-harm risk is substantial, and none of it is registered here.'
+  floored_by: c4
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: People report, in conversation with an AI system, hearing a voice they describe with an externality marker — as separate from their own thinking, as a distinct agent, or as something others cannot hear.
+- id: c2
+  kind: existence
+  text: People report that such a voice's content directs or urges them toward suicide or self-harm.
+- id: c3
+  kind: existence
+  text: 'Both features occur together in a single report: the externality marker and the self-harm-directive content are present in the same disclosure.'
+- id: c4
+  kind: detectability
+  text: The report is a pointable span — the clause carrying the externality marker together with the clause reporting the directive content can be identified from what the transcript contains.
+- id: c5
+  kind: detection_window
+  text: The conjunction of externality marker and directive content is readable within a single turn.
+- id: c6
+  kind: definition_boundary
+  text: 'This entry is separable from kl-000460 (reasoning the person presents as their own): these criteria require the content to be attributed to a voice experienced as separate from the person''s own thinking.'
+- id: c7
+  kind: definition_boundary
+  text: 'This entry is separable from kl-000401 (a death-directed statement the person makes as their own, with intent, method or plan): these criteria require the directive content to be attributed to a voice described as separate.'
+- id: c8
+  kind: definition_boundary
+  text: This entry is separable from the unauthored hopelessness pattern kl-000453 by the same attribution line.
+claim_evidence:
+- claim_id: c3
+  source: kl-000864
+  quote: I told the chatbot I was hearing voices telling me to harm myself.
+  locator: Section 3.2 (Cultural Navigation theme), participant P31, a 44-year-old farmer using ChatGPT
+  licenses: 'One participant in a 37-person interview study recounts having made exactly this disclosure to ChatGPT in ordinary non-clinical use: ''hearing voices'' supplies the minimal externality marker and ''telling me to harm myself'' the directive content, in one clause, so both of the entry''s required features are present together. This is the only evidence in the entry that the conjunction occurs at all. It is a participant''s retrospective account in an interview, not the conversational turn, so what is established is that a person says they made such a disclosure — not that a transcript containing it was observed. The surrounding paragraph corroborates that a disclosure was made and received: P31 goes on to describe the chatbot''s response (crisis numbers and a referral), which is consistent with a real exchange having taken place, though the paper never saw it.'
+  fit: adjacent
+  bridge: What the study collected is semi-structured interviews with 37 Nigerian adults who had used AI mental health chatbots for at least four weeks, analysed by Interpretative Phenomenological Analysis. No conversation data was examined at any point. The claim asserts that the two-feature report occurs in conversation. The gap is that the utterance recorded is the interview retelling of the turn rather than the turn itself, so the exact wording — and therefore whether the externality marker met the entry's criteria as actually spoken — is reconstructed by the participant months later. Note also that the paper presents this quotation as an example of cultural mismatch in crisis referral, not as an observation about disclosure of command hallucinations; the disclosure is incidental to the point the authors are making.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000864
+  quote: I told the chatbot I was hearing voices telling me to harm myself.
+  locator: Section 3.2 (Cultural Navigation theme), participant P31, a 44-year-old farmer using ChatGPT
+  licenses: 'Establishes, at the weakest end of the entry''s own criterion (a), that a person described voices to a chatbot. ''Hearing voices'' is the minimal externality marker the entry admits — plural, heard, not attributed to the person''s own thinking. It does not reach the stronger forms the criterion also names: the voice is never referred to as a distinct agent, nor as something others cannot hear, and no pronoun is used for it.'
+  fit: adjacent
+  bridge: The source is an interview retelling rather than the conversational turn, so the externality marker as recorded is the participant's later paraphrase of their own words. Additionally the paper's own analytic interest is in the crisis-referral mismatch that followed, not in how the voice was described, so no further detail about the externality framing was elicited or reported.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000864
+  quote: I told the chatbot I was hearing voices telling me to harm myself.
+  locator: Section 3.2 (Cultural Navigation theme), participant P31, a 44-year-old farmer using ChatGPT
+  licenses: Establishes that the voice's content was reported as directing self-harm — 'telling me to harm myself' is the entry's own example phrasing for criterion (b), almost verbatim. Of the entry's two required features this is the one the span carries most cleanly.
+  fit: adjacent
+  bridge: An interview retelling rather than the turn. The participant reports the gist of what they told the chatbot; the directive content as actually stated is not recoverable.
+  contributes: existence
+  contradicts: false

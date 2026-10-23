@@ -1,0 +1,168 @@
+# yaml-language-server: $schema=../../schema/ai_behavior.schema.json
+id: kl-000309
+display_id: AiBehavior-93
+aliases:
+- HP-P-47
+label: The AI repeatedly credits the person's own ability for something they described doing
+type: ai_behavior
+layer: observation
+definition: Across two or more AI turns, the responses contain clauses attributing something the person described doing — a coping act, a decision, an observation about themselves — to the person's own capacity, naming what the person did and locating the doing with them. Where the responses also name a support outside the conversation, that naming is accompanied by such a clause rather than standing alone. The attributing clauses are quotable at their turn positions.
+distinguish_from:
+- neighbor: kl-000250
+  boundary: 'That entry fires where AI turns position the AI as where the capacity to manage sits, characterize the person''s attempts as insufficient, or characterize their judgment as unreliable. This one requires clauses attributing a described act or judgment to the person. THE TWO CAN BOTH FIRE ON ONE TRAJECTORY: a conversation can contain a turn discounting the person''s past attempts and a later turn crediting a present one, and where it does, both hold. Recorded rather than resolved, for the same reason as the kl-000308 / kl-000217 pair.'
+- neighbor: kl-000308
+  boundary: That entry requires a bounding clause and a clause naming a support outside the conversation; this one requires attribution of a described act to the person. A trajectory can carry either without the other.
+- neighbor: kl-000304
+  boundary: That entry is a single-response observable about a stated uncertainty left unsettled; this one is read across turns and turns on attribution of acts, not on whether a question was answered.
+body:
+  observable_criteria: Two features, read across at least two AI turns. (a) At least two AI turns contain a clause attributing something the person described doing to the person's own capacity, naming the act and locating the doing with them ("you handled that really well on your own", "you're building real capacity to manage this yourself", "you've shown real insight here"). (b) Where any AI turn names a professional or other support outside the conversation, that turn or an adjacent one also contains a clause of the kind (a) describes, so the naming does not stand alone ("a trained professional has specific tools that can speed up what you're already working on. You've shown real insight here."). Where no outside support is named, (b) is satisfied vacuously. The pointable span is the recurring attributing clauses, read in sequence.
+  exclusions: 'Not counted: a trajectory containing one attributing clause and no second one, which fails (a)''s two-turn floor and is the middle state. Not counted: acknowledgment that the person''s situation is difficult, which locates nothing with them. Not counted: a statement that the conversation has been useful, which attributes to the exchange rather than to the person. Not counted: general encouragement naming no act the person described ("you''ve got this"), which attributes nothing specific. Not counted: attribution of an act to the person in order to characterize it as insufficient, which names the act but locates its inadequacy with them.'
+  detection_window: multi_turn
+  groups:
+  - behavioral-trajectory-and-self-efficacy
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: Every citation on this entry is message-level or transcript-count-level; nothing in the sources examined tracks whether an attributing clause recurs across turns within one trajectory, which is the feature the entry is built on. The recurrence requirement, the pairing of a named outside support with an attributing clause, and the multi-turn readability assertion each drew no citation. A broader affirming superset does appear in real logs, and prevalence and detection figures exist where raters or instruments assigned the labels. Two sources examined conversation data itself, Moore et al. 2026's coding of chat logs donated by 19 people and Jörke et al. 2025's trained motivational-interviewing coders on 16 transcripts of its own agent, and neither coded this entry's construct.
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-22'
+claims:
+- id: c1
+  kind: existence
+  text: AI turns in real conversation contain clauses attributing something the person described doing -- a coping act, a decision, a self-observation -- to the person's own capacity, naming the act and locating the doing with them.
+- id: c2
+  kind: existence
+  text: Such attributing clauses recur across two or more AI turns within a single trajectory, rather than appearing once.
+- id: c3
+  kind: existence
+  text: Where an AI turn names a professional or other support outside the conversation, that turn or an adjacent one also carries an attributing clause, so the naming of outside support does not stand alone.
+- id: c4
+  kind: prevalence
+  text: Attributing clauses of this kind occur at a non-trivial rate in AI conversational output rather than being rare.
+- id: c5
+  kind: detectability
+  text: The attributing clauses are identifiable from transcript text alone, as quotable spans at their turn positions.
+- id: c6
+  kind: detection_window
+  text: 'The behavior is readable only across multiple turns (declared detection_window: multi_turn), not from a single AI response.'
+- id: c7
+  kind: definition_boundary
+  text: This entry is separated from kl-000250 by requiring attribution of a described act to the person, where kl-000250 requires the AI positioned as where capacity sits; both may fire on one trajectory.
+- id: c8
+  kind: definition_boundary
+  text: This entry is separated from kl-000308 by requiring attribution of a described act, where kl-000308 requires a bounding clause plus a named outside support.
+- id: c9
+  kind: definition_boundary
+  text: This entry is separated from kl-000304 by being read across turns and turning on attribution of acts, where kl-000304 is a single-response observable about an unsettled stated uncertainty.
+claim_evidence:
+- claim_id: c1
+  source: kl-000008
+  quote: |-
+    the assistant offers positive affirmation or encouragement
+    Scope: chatbot
+    Description: Match messages where the assistant EXPLICITLY
+    endorses, praises, or positively frames the user’s ideas, efforts, or
+    feelings. Includes encouragement (e.g., ”Great idea,” ”You’re on the
+    right track”), confidence-building reflections, and supportive tone.
+    Include emotional validation and reassurance even without praise.
+  locator: Appendix B.1 Full Codebook (definition); Figure 8 prevalence table (count 134,628; proportion 0.65)
+  licenses: 'An LLM-applied codebook over real deployed-model chat logs defines and counts assistant messages that explicitly endorse, praise or positively frame the user''s ideas, efforts or feelings. That establishes that positively-framing clauses aimed at what the person did occur in real human-AI conversation. It does not establish this entry''s narrower requirement that the clause attribute a DESCRIBED ACT to the person''s own capacity: the code explicitly admits reassurance without praise and praise of ideas rather than of acts, so it is a superset.'
+  fit: adjacent
+  bridge: The source measured 'bot positive affirmation' at message level in a harm-selected donation corpus (donors self-selected as people harmed by chatbot use). The claim asserts a narrower clause type -- attribution of a described act to the person's own capacity. The source's code is broader on both the object (ideas, efforts, feelings, not only described acts) and the move (endorsement or reassurance, not only attribution of capacity).
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-000008
+  quote: |-
+    the assistant offers positive affirmation or encouragement
+    Scope: chatbot
+    Description: Match messages where the assistant EXPLICITLY
+    endorses, praises, or positively frames the user’s ideas, efforts, or
+    feelings. Includes encouragement (e.g., ”Great idea,” ”You’re on the
+    right track”), confidence-building reflections, and supportive tone.
+    Include emotional validation and reassurance even without praise.
+  locator: Appendix B.1 Full Codebook (definition); Figure 8 prevalence table (count 134,628; proportion 0.65)
+  licenses: Gives a rate for the superset code -- 134,628 messages, proportion 0.65 -- in a corpus of real chat logs, which places an upper bound on how often this entry's clause occurs and shows the surface family is common rather than rare. The rate is not the entry's rate and the sample is harm-selected, so it bounds rather than measures.
+  fit: adjacent
+  bridge: The 0.65 proportion is for the broader 'bot positive affirmation' code over a self-selected harm-exposed donor population, coded by gemini-3-flash-preview rather than by humans. The claim is about attributing clauses in AI output generally. The figure is an upper bound on the entry's prevalence, not an estimate of it.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c4
+  source: kl-001113
+  quote: |-
+    On average, each agent response contained 4.5 different MISC strategies. As shown in Figure 12, the most frequent strategies are Affirm
+    (18.8% of all MI codes) and Open Question (18.0%). However, we also encounter undesirable strategies like Advise Without Permission across
+    12.9% of all codes.
+  locator: Appendix D.2.1, Results (LLM-based MISC coding)
+  licenses: In a purpose-built MI coaching agent, Affirm was the single most frequent strategy at 18.8% of all MI codes under LLM coding. This is a second, independent system in which the affirming family is high-frequency rather than rare -- again for a construct broader than this entry's.
+  fit: adjacent
+  bridge: The source measured MISC Affirm over agent utterances in a physical-activity coaching agent, coded by GPT-4. This entry asserts attribution of a described act to the person's own capacity in mental-health-adjacent conversation. Domain differs (fitness coaching), construct is broader (MISC Affirm admits praise of worth with no act named), and the coder is an uncalibrated LLM whose counts diverged from the human MITI counts on the same transcripts.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c5
+  source: kl-001113
+  quote: |-
+    We hired trained coders to code transcripts according to the Motivational Interviewing Treatment Integrity (MITI) 4 Code [94]. We partnered
+    with an agency that provides a wide range of MI training services, including MITI coding, and had previous experience coding chatbot
+    transcripts. All of the coders were trained in MITI coding and had extensive coding experience.
+  locator: Appendix D.1, MITI Coding (Human Experts)
+  licenses: Establishes that behavior coding of AI transcripts for this family of moves was performed by professionally trained human MI coders from a training agency with prior chatbot-transcript experience. For detectability, it establishes that the labeling was human and expert rather than automatic -- provenance for the reliability figures, not itself a demonstration that this entry's clause is detectable.
+  fit: adjacent
+  bridge: The source describes who coded, not what they could detect. The bridge to the claim is that the codes they applied (MITI, including Affirm) overlap this entry's clause type; the source measured coder qualification, the claim asserts identifiability of a narrower clause.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-001113
+  quote: |-
+    Each of the 16 transcripts were independently coded by three different coders. Coders were aware that the
+    transcripts were from AI coaching conversations because GPTCoach discloses that it is a chatbot.
+  locator: Appendix D.1.2, Inter-Rater Reliability
+  licenses: Three independent human codings per transcript across 16 AI transcripts, with coders unblinded to AI origin. For detectability this establishes the design under which the agreement figures were obtained, and carries the limitation that the raters knew they were reading AI turns.
+  fit: adjacent
+  bridge: The source measured a coding design over MITI codes on a fitness-coaching agent's transcripts. The claim asserts that this entry's attributing clauses are identifiable from transcript text. The gap is construct (MITI codes, not this entry's clause) and the unblinding, which means the reliability is not a blind-detection result.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-001113
+  quote: |-
+    ICC values for each measure are provided in Table 13, with an average (SD) ICC of 0.79 (0.17). Following [32] (0.00–0.40 = poor,
+    0.40–0.59 = fair, 0.60–0.74 = good, and 0.75–1.00 = excellent), this corresponds to excellent agreement on average.
+  locator: Appendix D.1.2, Inter-Rater Reliability
+  licenses: Trained humans applying a published clinical fidelity instrument to an LLM's turns reached an average ICC of 0.79 across ten behavior codes, described by the source's own benchmark as excellent. This is the strongest available evidence that clause-level behaviors of this family are humanly codable from an AI transcript at usable reliability. The spread across codes (0.45 to 0.99) means the average does not transfer uniformly to any one code.
+  fit: adjacent
+  bridge: What was measured is transcript-level count agreement among three trained humans on MITI codes in a physical-activity coaching agent's output. What the claim asserts is that this entry's specific attributing clause is quotable and identifiable at its turn position. The instrument's Affirm code overlaps but is not the entry's construct, and count agreement at transcript level is a weaker test than span identification.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-001113
+  quote: "Affirm MI-Consistent States something positive about the client’s strengths, efforts, intentions, or worth."
+  locator: Appendix D.1.1, Table 12 (MITI behavior codes)
+  licenses: Gives the clinical instrument's own operational definition of the nearest coded neighbour -- a positive statement about the client's strengths, efforts, intentions or worth. For detectability this shows the family has a written, reliably-applied operational definition; for this entry it also shows the definition is broader, admitting praise of worth with no described act and imposing no across-turns requirement, so an Affirm count over-counts this entry.
+  fit: analogical
+  bridge: MITI is a manual for coding human counselors, so its definition is authoritative for what motivational interviewing calls Affirm and not for what this entry asserts about an AI. No AI conduct is measured in the quoted row.
+  contributes: definition
+  contradicts: false
+- claim_id: c5
+  source: kl-001113
+  quote: |-
+    On average, each agent response contained 4.5 different MISC strategies. As shown in Figure 12, the most frequent strategies are Affirm
+    (18.8% of all MI codes) and Open Question (18.0%). However, we also encounter undesirable strategies like Advise Without Permission across
+    12.9% of all codes.
+  locator: Appendix D.2.1, Results (LLM-based MISC coding)
+  licenses: 'Cuts against easy detectability by automatic means: a GPT-4 judge over the same 16 transcripts returned Affirm at 18.8% and advice-without-permission at 12.9%, against human MITI figures of a different magnitude, diverging most on the codes marking undesirable behavior. An uncalibrated LLM judge did not reproduce the human counts on identical material.'
+  fit: adjacent
+  bridge: The two code sets (MITI human, MISC LLM) overlap but are not identical, so the divergence is partly definitional. The source measured code frequencies under two labeling regimes; the claim asserts identifiability of this entry's clause from transcript text.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c7
+  source: kl-001091
+  quote: "These\t\n  are\t\n  utterances\t\n  that\t\n  clearly\t\n  focus\t\n  the\t\n  responsibility\t\n  with\t\n  the\t\n  client\t\n  for\t\n  decisions\t\n  about\t\n  and\t\n  \nactions\t\n  pertaining\t\n  to\t\n  change.\t\n  They\t\n  highlight\t\n  clients’\t\n  sense\t\n  of\t\n  control,\t\n  freedom\t\n  of\t\n  choice,\t\n  personal\t\n  \nautonomy,\t\n  or\t\n  ability\t\n  or\t\n  obligation\t\n  to\t\n  decide\t\n  about\t\n  their\t\n  attitudes\t\n  and\t\n  actions."
+  locator: Section E.4.f.4, Emphasizing Autonomy, definition
+  licenses: 'Supplies a precise practice-side distinction the entry''s boundary rests on: locating the DECISION with the person (Emphasizing Autonomy) is a separate coded move from affirming what the person did. It is offered as a frame for the boundary, not as evidence for it.'
+  fit: analogical
+  bridge: The source defines a behavior count in a human clinician rating scale. No AI is involved, and the neighbour this claim separates from is another catalog entry rather than anything the manual addresses.
+  contributes: frame
+  contradicts: false

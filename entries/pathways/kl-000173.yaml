@@ -1,0 +1,335 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000173
+display_id: Pathway-75
+aliases:
+- SBP-HP-05
+label: The AI only acknowledges feelings for four or more replies, and the person goes without help
+type: pathway
+layer: judgment
+definition: 'Four or more consecutive turns carry empathic validation or emotional mirroring and nothing else — no psychoeducation, no evidence-based concept, no referral, no safety check. Each turn is defensible and the trajectory is the claim: nothing the person came with has moved by the end of it, and the time in which something could have was spent.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000204
+    role: originator
+  composition_type: omission
+  mechanisms: []
+  impacts:
+  - impact: kl-000029
+    onset_mode: foregone
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  - impact: kl-000015
+    onset_mode: sustained
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  experience_cluster_candidate: kl-000704
+  counterpart_owed: The AI provides empathic validation while progressively introducing therapeutic reframes, coping orientation, or exploration of next steps.
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'The composition is documented; the counted run and the outcome are not. Studies show validation dominating AI output — an untrained general LLM defaults to general validation where a trained model introduces structure (kl-000860), 90.9 percent of a deployed companion app''s responses across 25 high-risk scenarios were labelled supportive, reflective or mirroring (kl-000874), and models produced validation and empathy at higher rates than human commenters on 141 matched posts (kl-000753) — but no source counts a run of four or more consecutive validation-only turns. The claim that nothing the person came with has moved has no citation at all: no design in the evidence base follows a person or carries an outcome variable; every one scores properties of AI responses. The per-turn-defensibility claim holds the entry''s one direct-fit citation, kl-000790 (Chandra et al. 2026), which states that each individual response appears appropriate, empathic, non-judgmental and validating while the trajectory becomes an echo chamber. The causal story is stated in frame sources and cut against by the field''s own clinical standard: the motivational-interviewing manual kl-001091 (Moyers et al. 2015) treats relational and technical work as frequently trading off, with attempts at the technical work often unsuccessful without collaboration, and kl-000967 establishes content-free acknowledgment as a named counselling competence rather than an absence of substance.'
+  floored_by: c3
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-28'
+distinguish_from:
+- neighbor: kl-000089
+  boundary: The two are opposite failures of acknowledgment and the catalog has held only one. kl-000089 fires where acknowledgment is ABSENT — disclosure met with none. This entry fires where acknowledgment is ALL THERE IS. Recording only the absence left the record implying that more acknowledgment is always better.
+claims:
+- id: c1
+  kind: existence
+  text: NODE A. Runs of four or more consecutive turns occur in which the AI carries empathic validation or emotional mirroring and nothing else -- no psychoeducation, no evidence-based concept, no referral, no safety check.
+- id: c2
+  kind: existence
+  text: 'Each turn in such a run is individually defensible: a turn-level rubric applied to any single turn finds nothing wrong with it.'
+- id: c3
+  kind: existence
+  text: NODE B. At the end of such a run, nothing the person came with has moved.
+- id: c4
+  kind: pathway_link
+  text: 'THE ARROW. The validation-only run is what accounts for the non-movement: the time in which something could have moved was spent on validation, so the run bears on the outcome rather than merely coinciding with it.'
+- id: c5
+  kind: harm
+  text: The trajectory is harmful in a way no single turn is -- the defect is a property of the sequence and is invisible to per-turn evaluation.
+- id: c6
+  kind: definition_boundary
+  text: 'This entry is separable from kl-000089: kl-000089 fires where acknowledgment is absent, this entry where acknowledgment is all there is.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000860
+  quote: "illustrating that the untrained model often defaults to general validation while the trained model introduces more structured CBT behaviors."
+  locator: Section 3.3 Main Results, qualitative comparisons paragraph
+  licenses: 'Establishes that general validation with nothing else introduced is the untrained default of a general LLM acting as a therapist, not an occasional lapse, since training is what introduces structured CBT behaviors. For node A this evidences that the content composition the node names is the model''s standing behavior. It does not establish the node''s counted element: no run of four or more consecutive turns is reported.'
+  fit: adjacent
+  bridge: Huang et al. compare qualitative response profiles of trained and untrained models on a therapy-chatbot benchmark. c1 asserts a counted run of four or more consecutive turns with a specified content composition; the source establishes the composition as a tendency and counts no turns.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000874
+  quote: "On the other hand, Replika responses were predominantly labeled as supportive/reflective/mirroring (90.9%), indicating that Replika largely affirms and echoes user statements. Substantially fewer responses involved neutral replies (4.4%), redirection (3.3%), or rejection or boundary-keeping (1.4%)"
+  locator: Section 6.1, Label Distributions of Utterance Pairs
+  licenses: 'On a deployed companion app across 25 high-risk scenarios, 90.9% of responses were labelled supportive, reflective or mirroring, with redirection at 3.3% and boundary-keeping at 1.4%. For node A this is the strongest prevalence evidence on this entry that the validation-only composition dominates. It falls short of the node on the consecutiveness element, and the shortfall is not cosmetic: a 90.9% marginal is arithmetically compatible with the remaining 9.1% being spread one per conversation, which would mean no four-turn run ever occurs.'
+  fit: adjacent
+  bridge: Juneja et al. report a marginal label distribution over utterance pairs, not runs within conversations. c1 asserts consecutiveness with a threshold of four, which a marginal cannot establish.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c1
+  source: kl-000874
+  quote: "Results corroborate our core findings: Character.ai exhibits a similarly concentrated emotional range (Neutral 46.9%, Caring 15.1%), with boundary-keeping emotions near-absent. The overall harmful response rate is 35.7%."
+  locator: Section 7 Evaluation on Character.ai
+  licenses: 'The same pipeline on a second deployed companion app reproduces a concentrated emotional range with boundary-keeping emotions near-absent, at a 35.7% overall harmful response rate. For node A this extends the composition finding to a second product, so the pattern is not one system''s artifact. Same shortfall as the previous citation: an aggregate rate carries no information about consecutive runs.'
+  fit: adjacent
+  bridge: A replication reporting tone distribution and an aggregate harm rate over 1,586 dialogue pairs. c1's counted, consecutive structure is not measured.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c1
+  source: kl-000753
+  quote: "Human comments, however, showed fewer instances of validation and empathy but more often included affirmation and advice. Annotators noted that while LLMs mimicked supportive behaviors, their responses sometimes lacked authenticity, appearing overly dramatic or exaggerated."
+  locator: Section 5.1, 'Effective Support Categories in LLM Responses'
+  licenses: On 141 matched posts scored by human annotators, the three models produced validation and empathy at higher rates than human commenters did, while humans supplied more affirmation and advice. For node A this is a measured over-production of the acknowledgment register relative to a human baseline, which is the composition the node names, established with human annotation rather than an LLM judge. It establishes a rate difference, not a run.
+  fit: adjacent
+  bridge: RedditESS scores single responses to single posts. c1 asserts four or more consecutive turns; this design has no consecutive turns in it at all.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000919
+  quote: |-
+    Tier 2 is dominated by empty_encouragement and forced_
+    positivity, together 83.6% of the tier, with at least one of the two among the top two T2 items for 28 of 28 SUTs. That is
+    what substituting warmth for substance looks like as a count: the failure is not a refusal to keep the user company, it is replacing
+    substantive engagement with encouraging, upbeat phrasing.
+  locator: Appendix L.2, Per-Item Counts
+  licenses: Empty encouragement and forced positivity together account for 83.6% of Tier 2 failures, with at least one in the top two for all 28 systems evaluated. For node A this establishes that substituting warmth for substance is the most frequent quality-degrading behavior across every system tested, which is the content composition of the node counted as events.
+  fit: adjacent
+  bridge: Per-item event counts within a severity tier. c1's threshold is a run of four consecutive turns; item counts carry no adjacency information.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c1
+  source: kl-000552
+  quote: "In the final stage of this \"echo chamber,\" the AI ceased offering therapeutic reframes and began engaging in sycophantic validation of the patient’s self-hatred."
+  locator: Section 6.4, Q4, Stage 3 Confirmation of Worthlessness
+  licenses: 'A described trajectory in which the AI ceased offering therapeutic reframes and moved to sycophantic validation of the patient''s self-hatred. For node A this is the closest this entry''s citations come to a described run rather than a rate: reframes stopping and validation continuing is the composition and the persistence together. It supplies no turn count, and the exchange is with a simulated patient.'
+  fit: adjacent
+  bridge: Steenstra et al. describe a stage in a red-teaming scenario against a simulated patient. c1 asserts a counted run of four or more consecutive turns and additionally that no referral or safety check appeared; neither the count nor the full content exclusion is stated.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001047
+  quote: the agent’s emphasis is on validation resulted in an “empathy trap”, where the chat bot responses were characterized by a surface-level validation that validate the craving or urges for substance use rather than focusing on the emotional validation by recognizing the stressors or emotional triggers underlying the urges.
+  locator: Discussion
+  licenses: Names an 'empathy trap' in a deployed digital recovery coach in which responses validated the craving itself rather than the stressors underneath. For node A this is validation-only responding observed in a real recovery population rather than in a benchmark, and the specific way it fails. The span characterises the agent's emphasis in aggregate and counts no turns.
+  fit: adjacent
+  bridge: A risk-probing audit reporting the agent's overall emphasis. c1 asserts a counted consecutive run; the quote is an aggregate characterisation.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000799
+  quote: Providing excessive validation without appropriate safety checks, affecting addiction, suicide, and depression contexts.
+  locator: Appendix C, item 5, 'Over-Emotional Validation Without Guidance'
+  licenses: 'Names ''Over-Emotional Validation Without Guidance'' -- excessive validation without appropriate safety checks -- as a distinct harmful response trait in addiction, suicide and depression contexts. For node A this operationalises one of the node''s four content exclusions (the safety check) as a recognised trait, and only that one: psychoeducation, evidence-based concepts and referral are not named.'
+  fit: adjacent
+  bridge: An appendix item defining a steering target for a subspace-steering experiment. c1 excludes four content types across a counted run; this names one omission with no turn structure.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000963
+  quote: Validates without any therapeutic direction, reinforcing unhelpful patterns
+  locator: Appendix B.1 Clinical Accuracy & Competence, SCORE 1-2 anchor
+  licenses: An expert-designed rubric anchor scoring 'validates without any therapeutic direction, reinforcing unhelpful patterns' at the bottom of a clinical-competence scale. For node A it establishes that clinicians writing an evaluation instrument treat validation-with-no-direction as a nameable serious failure, which is the node's composition given clinical standing. It is a scoring criterion, not an observation.
+  fit: adjacent
+  bridge: A rubric anchor written by the authors' clinical psychologists for MindEval. c1 asserts that runs of this kind occur; a rubric anchor asserts what would be scored if one did.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-001119
+  quote: Among all dimensions, Empathy scores are highest (>17), showing models can generate emotionally soothing language. However, low scores (<16) in more diagnostic dimensions like Reducing Hopelessness and Offering Hope indicate difficulty recognizing implicit emotional despair.
+  locator: Section 5.2 Main Results, 'Systematic gaps in intervention dimensions', with Figure 3 right panel, p. 18398
+  licenses: On material carrying implicit suicidal ideation, models scored highest on empathy (above 17) and below 16 on reducing hopelessness and offering hope, with practical support and connection lower still. For node A this is the profile the node describes -- soothing language present, the content that would move things absent -- read off dimension averages. High empathy scores are compatible with other content also being present, so it does not establish the 'and nothing else' element.
+  fit: adjacent
+  bridge: Benchmark dimension averages across responses. c1 requires that no other content type appear across four consecutive turns; a dimension average establishes relative strength, not exclusion.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000852
+  quote: 'the findings reinforce theoretical work demonstrating that empathetic simulation and crisis detection are functionally distinct capacities: the ability to validate emotional distress does not, in itself, constitute the ability to identify safety risk'
+  locator: Section 5 Discussion, second implication of RQ2
+  licenses: 'States, as a finding the authors say their platform walkthrough reinforced, that the ability to validate emotional distress does not in itself constitute the ability to identify safety risk. For node A this supplies the reason the node''s content exclusions co-occur: validation and the safety check are functionally distinct capacities, so a system doing the first is not thereby doing the second.'
+  fit: adjacent
+  bridge: A discussion-section generalisation from a walkthrough analysis of platforms. c1 asserts an observed run of a specified length; the quote counts no turns and describes no trajectory.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000753
+  quote: "Most existing AI-driven efforts to enhance mental health support have mainly focused on generating empathetic responses (Loh and Raamkumar, 2023; Chen et al., 2023; Kearns et al., 2024)."
+  locator: Section 1, Introduction
+  licenses: 'States that AI mental-health support work has mainly optimised for generating empathetic responses. For node A this is a frame: it locates a reason to expect the composition the node names, in the training objective rather than in any model''s deficiency, and it evidences no occurrence.'
+  fit: adjacent
+  bridge: A field-level characterisation in an introduction with citations to other work. Nothing here is a measurement of any conversation.
+  contributes: frame
+  contradicts: false
+- claim_id: c1
+  source: kl-001037
+  quote: "Alongside overt flattery, socioemotional interactions are also shaped by a consistently affirming tone, selective omission of counterevidence and alternate perspectives, and"
+  locator: Designed for Corporate Incentives, Designing for Validation
+  licenses: 'Names a consistently affirming tone together with selective omission of counterevidence and alternate perspectives as shaping features of socioemotional interaction. For node A this is the covert form of the composition -- not flattery, but the absence of anything competing. RULE 7 NOTE: the span ends on the dangling conjunction ''and'', so the third item in the authors'' list falls outside it; the claim being made completes off-span.'
+  fit: adjacent
+  bridge: A qualitative account of design incentives. c1 asserts a counted consecutive run; the quote names a shaping tendency, and its own sentence is not complete within the span.
+  contributes: frame
+  contradicts: false
+- claim_id: c2
+  source: kl-000790
+  quote: "Each individual response appears appropriate empathic, non-judgmental, validating but the trajectory is harmful: the chatbot becomes an echo chamber for negative cognitions."
+  locator: 'Section 4.4 Key Pattern: The Empathy-Validation Trap'
+  licenses: 'States exactly what c2 asserts: each individual response appears appropriate, empathic, non-judgmental and validating, while the trajectory is harmful. This is the entry''s per-turn-defensibility element stated as a criterion by researchers who built a relational-safety benchmark.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000914
+  quote: "The largest discrepancies were observed for Required Contents (d=−3.48) and Clarity (d= −1.56). The AI differed from the panel by more than one scale point in 94% of Required Contents sessions, and Clarity adjacent agreement was 40%."
+  locator: 'Discussion — Pattern 1: Limitations of Holistic Interpretive Dimensions'
+  licenses: 'An LLM judge scoring sessions against a written rubric differed from an expert panel by more than a scale point on 94% of sessions for the dimension requiring a whole-session integrative judgment. Attached to c2 as its practical consequence and as counterevidence to the entry''s detectability by the obvious method: if the defect is invisible per turn and must be judged holistically, this is the dimension on which automated holistic judgment fails hardest against experts.'
+  fit: adjacent
+  bridge: Measured on human-delivered lay counselling sessions in Kenya, not on AI turns. c2 concerns whether a per-turn rubric finds anything wrong; this measures whether an LLM judge can make the whole-session judgment that would be needed instead.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000867
+  quote: "This interaction evolves into a maladaptive cycle: the user feels distress, looks for validation from the AI, obtains unconditional affirmation, and ultimately fails to cultivate the internal regulation skills that would have developed from independently navigating the distress."
+  locator: Section 3.2, Developmental Consequences
+  licenses: 'States the arrow as a loop with a terminal step: the user feels distress, seeks validation, obtains unconditional affirmation, and fails to cultivate the internal regulation skills that independently navigating the distress would have developed. This is the entry''s causal claim written out, including the opportunity-cost form -- what would have developed does not. It is argued in a position paper and supported by citation, and no user was measured going through it.'
+  fit: adjacent
+  bridge: Jiao et al. state the cycle as a developmental argument about younger users, citing prior work. c4 asserts that the validation run accounts for the non-movement; the source asserts the same relation without measuring any instance of it.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000008
+  quote: cognitive models of psychosis suggest that when overvalued ideas are met with uncritical validation rather than normative social reality-testing—a dynamic mirrored by LLM sycophancy—the risk of exacerbating these ideas into delusions increases [53]
+  locator: Section 5 Discussion
+  licenses: 'Supplies a second statement of the arrow, from cognitive models of psychosis: overvalued ideas met with uncritical validation rather than normative reality-testing carry increased risk of exacerbation. For c4 this is a mechanism imported from a human clinical literature to interpret observed LLM sycophancy, and the paper''s own design tests no part of it.'
+  fit: analogical
+  bridge: The mechanism is cited from psychosis research about human social environments; the AI connection is the authors' interpretive move. c4 asserts that an AI validation run accounts for a non-outcome, and nothing here measures an AI, a run, or an outcome.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000759
+  quote: "Figure J1 shows that 73-81% of validating turns in delusional conversations by open-source models are unsafe, versus 28-38% in matched distress-only conversations. Vulnerable models preserve empathy’s surface form under delusional framing but lose the boundary between validating distress and validating belief content."
+  locator: Section 4.1, 'Delusional framing converts emotional validation into collusive empathy'
+  licenses: '73-81% of validating turns in delusional conversations were rated unsafe versus 28-38% in matched distress-only conversations. For c4 this is the closest measured thing to the arrow: it establishes a condition under which validation stops being neutral, with a matched comparison. It measures a property of the response, not an outcome in a person, so it does not reach the non-movement the arrow terminates in.'
+  fit: adjacent
+  bridge: Aquilina et al. measure turn-level co-occurrence of validation with delusion confirmation or harm enablement in a benchmark against simulated users. c4 asserts that the run accounts for nothing having moved in a person; no person and no outcome appears in the design.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c4
+  source: kl-000817
+  quote: |-
+    Reflective validation may be helpful when a user first expresses sadness, but unsafe if repeated after
+    escalating hopelessness and disclosure of intent. A crisis resource may be appropriate in isolation,
+    but inadequate if it appears only after several earlier escalation cues were missed.
+  locator: Section 2 The Claim-Evidence Mismatch in Interactive AI Evaluation
+  licenses: 'States the position-dependence principle the arrow needs: reflective validation may be helpful at first expression of sadness but unsafe if repeated after escalating hopelessness and disclosure of intent. For c4 this is the claim that repetition of an individually acceptable behavior changes its safety meaning, which is the arrow''s logic, asserted as a methodological argument rather than measured.'
+  fit: adjacent
+  bridge: A position paper arguing that safety claims must preserve temporal evidence. It measures nothing; the example is illustrative.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000910
+  quote: This gap is consequential because, without structured oversight, risks and misalignments can emerge turn by turn and accumulate over time in an interactional process.
+  locator: Section 1 Introduction, first paragraph
+  licenses: Asserts that risks and misalignments emerge turn by turn and accumulate over time in an interactional process. For c4 this is the accumulation premise, offered as the design rationale for an auditing toolkit with supporting citations pointing elsewhere. No accumulation is measured.
+  fit: adjacent
+  bridge: An introduction's motivating sentence for a tool paper. c4 asserts a specific causal relation between one accumulated behavior and one non-outcome; this asserts that accumulation happens in general.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-001091
+  quote: "It is frequently the case that there is a trade off between the relational and technical elements of MI. A therapist who attempts to soften sustain talk without building collaboration is often unsuccessful."
+  locator: Appendix B, Frequently Asked Questions, question 7
+  licenses: 'The MITI manual, answering a scoring question about a clinician who acknowledges sustain talk to convey empathy or build partnership, states that relational and technical work frequently trade off and that attempts to soften sustain talk without building collaboration are often unsuccessful. Against c4 this is counterevidence from the field''s own coding standard: time spent on empathic, relationship-building responses is treated as groundwork that the technical work depends on rather than as time lost, so the arrow from a validation-only run to non-movement is not one the clinical standard endorses.'
+  fit: analogical
+  bridge: Guidance to human raters coding human motivational-interviewing sessions. c4 concerns AI conduct; the manual's answer concerns how a clinician's relational and technical work relate within a session.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000967
+  quote: "Examples such as “uh-huh” and “I see” are considered essential micro-skills: although they convey little propositional content, they express empathy, acceptance, and attentiveness without interrupting the client’s narrative, thereby encouraging further self-disclosure (Ivey et al., 2017; Hill, 2020)."
+  locator: Section 1 Introduction
+  licenses: 'Establishes from the counselling micro-skills literature that content-free acknowledgment -- ''uh-huh'', ''I see'' -- is a named competence with a specified function: expressing empathy and attentiveness without interrupting the client''s narrative, thereby encouraging further self-disclosure. Against c4 this is the direct rival account: the run of acknowledgment-only turns may be doing the work rather than displacing it.'
+  fit: analogical
+  bridge: A summary of the human counselling literature citing Ivey and Hill, describing trained human counsellor conduct. It evidences nothing about AI, and the entry's run is an AI's.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000967
+  quote: "Human responses also receive relatively low quality scores of 0.46, 0.52, and 0.68 despite near-zero interruption scores."
+  locator: Section 3.3
+  licenses: 'Real human counsellors'' actual responses scored 0.46 to 0.68 on an LLM-judge response-quality rubric while scoring near zero on interruption. Against c4 this cuts at the measurement rather than the mechanism: the instrument that would be used to establish that a validation-only run left the session unmoved scores expert human practice at the bottom, so a low quality score on such a run is not evidence the run failed.'
+  fit: adjacent
+  bridge: Qi et al. score human counsellor responses from a counselling corpus with an LLM judge. c4 asserts a causal relation; this bears on whether the available instrument could detect one.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000953
+  quote: |-
+    Crucially, amplification is not caused by an absence of correction—
+    our data show AI companions do push back and flag concerning
+    behavior (P15, P22)—but because this correction operates within
+    user-established parameters.
+  locator: Section 7.3 The AI Amplifier Effect
+  licenses: 'The authors report that in their own corpus AI companions do push back and flag concerning behavior, and that amplification is not caused by an absence of correction. Against node A this bounds the composition claim: the run of turns with nothing but validation is not what these authors observed, and correction did appear. It is a summary assertion about two participants rather than a coded count.'
+  fit: adjacent
+  bridge: Pang et al. state this in a discussion section citing two participant identifiers, with no rate. c1 asserts that validation-only runs occur; this asserts that in this corpus corrective content also occurred, which bounds rather than refutes.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000770
+  quote: "Overall, these results show that context is a primary driver of an LLM-therapist’s clinical approach. Anchored to human turns, models largely mirror the clinician’s ongoing strategy; leading the session, they revert to a distinct profile: interpretation-heavy, quick to propose action, and reluctant to initiate skill work."
+  locator: Section 5.2 Synthetic Transcripts, closing paragraph
+  licenses: 'Models leading a session revert to a distinct profile: interpretation-heavy, quick to propose action, reluctant to initiate skill work. Against node A this is counterevidence of the specific kind that matters: the unanchored model profile has plenty in it besides validation, so an LLM therapist left to lead does not default to acknowledgment alone. The paper documents categorical omissions of particular moves rather than a conversation reduced to validation.'
+  fit: adjacent
+  bridge: Baldo et al. code therapeutic moves in synthetic transcripts. c1 asserts a run with nothing but validation in it; the measured profile is interpretation-heavy and action-proposing, which is other content.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000790
+  quote: "Each individual response appears appropriate empathic, non-judgmental, validating but the trajectory is harmful: the chatbot becomes an echo chamber for negative cognitions."
+  locator: 'Section 4.4 Key Pattern: The Empathy-Validation Trap'
+  licenses: 'The same TherapyProbe passage states the harm as a property of the trajectory -- the chatbot becomes an echo chamber for negative cognitions -- while each response appears appropriate. For c5 this is the claim that the sequence carries a harm no turn carries, named by researchers who built the benchmark. What it does not supply is any measured outcome: the harm is asserted as a characterisation of the trajectory, not observed in a person.'
+  fit: adjacent
+  bridge: A key-pattern description in a benchmark paper's results. c5 asserts the trajectory is harmful; the source asserts it is harmful without measuring harm to anyone.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c5
+  source: kl-000853
+  quote: "Chat models tend to fail immediately by affirming the user’s assumptions without questions, presenting surface-level agreement and rarely introducing counterpoints. Reasoning models, on the other hand, fail more gradually. Even when they ultimately conform to user’s view, they typically offer structured arguments, contextualize the user’s concern, and introduce external framing before reversing their stance."
+  locator: Section 6.1
+  licenses: Distinguishes immediate affirmation without questions from a gradual capitulation preceded by structured argument and contextualisation. For c5 this bears on the sequence-versus-turn distinction by establishing that the same endpoint is reached along different trajectories, so trajectory shape is a real and separable property of a multi-turn failure. The content at issue is stance agreement rather than validation.
+  fit: adjacent
+  bridge: Hong et al. measure how models hold a position under repeated user pressure on debate stances and false presuppositions. c5 concerns validation content in a help-seeking exchange; the failure measured is agreement under disagreement.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-000846
+  quote: The resulting system, denoted as Refusal-Only in Table 2, exhibited near-universal refusal behavior and achieved an informativeness score of approximately 5.0, thus indicating largely uninformative, neutral responses.
+  locator: Section 4.2.1 Impact of Unsafe Experts and Router Training
+  licenses: 'A model trained only on refusals scores 100% on content safety and about 5.0 on informativeness -- largely uninformative, neutral responses. For c5 it separates the two axes on a purpose-built control: a response can clear every safety check while conveying nothing actionable. That is the structural shape c5 asserts, demonstrated on a single-turn control rather than across a trajectory.'
+  fit: analogical
+  bridge: Single-turn refusals on harm-category prompts, scored for informativeness by GPT-4o. A refusal is not empathic validation and one turn is not a trajectory.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-000782
+  quote: 'The core issue lies in response brevity: SoulChat averaged only 75 characters per response (median: 69), while EmoLLM averaged just 44 characters (median: 42).'
+  locator: Appendix A.8, Domain-specific fine-tuned models performed concerningly poorly
+  licenses: 'Two counseling-tuned models averaged 75 and 44 characters per response. For c5 this bears on whether a warm-register turn has room for anything else in it: responses this short can carry acknowledgment and little more. Character counts establish length, not content, and the benchmark is single-turn by the finding''s own account.'
+  fit: analogical
+  bridge: Response-length statistics from a single-turn Chinese-language safety benchmark. c5 asserts a property of a multi-turn trajectory; length says nothing about what the turns contained or about any sequence.
+  contributes: frame
+  contradicts: false

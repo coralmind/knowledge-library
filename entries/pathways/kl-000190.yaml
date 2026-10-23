@@ -1,0 +1,83 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000190
+display_id: Pathway-92
+aliases:
+- SBP-HP-61
+label: The AI asks about suicide or self-harm expecting a no, and risk goes unsaid
+type: pathway
+layer: judgment
+definition: 'A risk question is put in negatively-framed form — expecting denial, or prefaced with minimization — so that answering it honestly means contradicting the questioner. The question is asked and the claim is that asking it this way is worse than not asking: a person who would have disclosed to an open question is given a script in which denial is the cooperative answer.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000264
+    role: originator
+  composition_type: direct
+  mechanisms: []
+  impacts:
+  - impact: kl-000028
+    onset_mode: new
+    horizon: immediate
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  - impact: kl-000029
+    onset_mode: foregone
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  experience_cluster_candidate: kl-000700
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'The entry''s single citation sits beside it rather than on it: Badawi et al. 2026 (Badawi), a benchmark of 1,576 human-generated counseling conversations comprising 15,680 turns, in which six trained clinical reviewers produced 5,324 span-grounded judgments, establishes that the form of a question in a mental-health response is a clinician-scoreable, turn-indexed property — it codes open versus closed, one coding decision short of the valence a question expects. No source observes a person declining to disclose in response to a leading risk question, and none compares the badly-asked question against the question not asked, which is the comparison the entry''s central assertion requires. Part of that absence is structural: the benchmark''s user inputs are therapist turns from counseling transcripts rather than real users, its authors noting that real user-chatbot interactions may exhibit different disclosure patterns, so no disclosure decision by a real person is in the data, and a design with a scripted user side cannot observe a suppressed disclosure. The links to suppressed disclosure and foregone protection rest on a reviewed behavioral specification of disclosure-suppressing safety questions, which claims no process and offers no measurement.'
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-28'
+distinguish_from:
+- neighbor: kl-000234
+  boundary: Both concern risk probing that does not produce a risk picture and they differ in whether probing happened. kl-000234 fires where NO question about any risk parameter appears. Here the question is asked, is quotable, and is framed so that its answer cannot be trusted — an absence of information produced by an act rather than by an omission.
+claims:
+- id: c1
+  kind: existence
+  text: 'NODE (participant kl-000264, ai_behavior, role originator): an AI puts a risk question in negatively-framed form -- phrased to expect denial, or prefaced with minimization -- so that answering honestly means contradicting the questioner.'
+- id: c2
+  kind: existence
+  text: 'NODE: a person exists who WOULD have disclosed to an open question -- the counterfactual disclosure the entry''s harm claim is measured against.'
+- id: c3
+  kind: existence
+  text: 'NODE: the disclosure the question invited is SUPPRESSED -- the person does not disclose, denial having been made the cooperative answer.'
+- id: c4
+  kind: pathway_link
+  text: 'LINK: the negative framing is what suppresses the disclosure -- the suppression follows from the phrasing rather than from the topic being asked about, from the person''s disposition, or from anything else in the exchange.'
+- id: c5
+  kind: harm
+  text: 'LINK (impact edge kl-000028, onset_mode new, immediate): asking the question this way produces an immediate harm to the person in the interaction.'
+- id: c6
+  kind: harm
+  text: 'LINK (impact edge kl-000029, onset_mode foregone, short_term): asking the question this way forecloses a protection at short-term horizon.'
+- id: c7
+  kind: harm
+  text: 'COMPARATIVE: asking the question in this form is WORSE than not asking it at all. The entry states this explicitly and it is a distinct assertion from c5 and c6 -- it requires a comparison against the not-asked case, not merely a harm following the asked case.'
+- id: c8
+  kind: context_dependence
+  text: The claim holds at the level of the individual -- what happens to a user in an interaction -- and no rate across a population is asserted.
+- id: c9
+  kind: detectability
+  text: The negatively-framed risk question is identifiable and quotable from what a transcript contains, and distinguishable there from a neutrally or openly framed one.
+- id: c10
+  kind: definition_boundary
+  text: This entry is separable from kl-000234, which fires where NO question about any risk parameter appears; here the question IS asked and is quotable, so the missing information is produced by an act rather than by an omission.
+claim_evidence:
+- claim_id: c9
+  source: kl-000767
+  quote: 'The clearest panel-wide pattern is a shift toward closed-ended questions: all five LLMs ask fewer open questions as the conversation progresses, with endpoint ∆from +0.20 (Claude) to +0.32 (GPT).'
+  locator: Section 6.2, RQ4; Figure 5
+  licenses: 'Establishes that the FORM of a question in an LLM''s mental-health response is a clinician-scoreable, turn-indexed property: trained clinical reviewers coded an open-versus-closed ordinal per response with span-grounded evidence, and the ordinal moved measurably across turns in all five models with per-model endpoint effect sizes. That licenses the general detectability of question form, and it is the nearest thing on this entry to c9. It does NOT license the detectability of the property c9 actually names -- a question phrased to EXPECT A NO -- because no valence of the expected answer was coded anywhere in the 20-attribute schema.'
+  fit: adjacent
+  bridge: 'The gap, in the source''s own terms. What was measured is an open-versus-closed ordinal in which open supersedes closed when both appear; what c9 asserts is readable is the EXPECTATION LOADING of a risk question -- negative framing, or a minimizing preface. A closed question is not a question phrased to expect a no, and the source coded no valence at all. Two further gaps the paper states in its Limitations section and which bear on the claims beyond c9: the user inputs are ''authentic counseling conversations as user inputs, therapist responses, paired with llm responses'', so no real person is answering these questions and the paper warns that ''real user-chatbot interactions may exhibit different disclosure patterns''; and ''we measure response-level behavioural patterns associated with reduced reflection or dependency, not actual cognitive change or harm''. The paper therefore cannot reach c3, c4, c5, c6 or c7 by its own account of what it measured.'
+  contributes: detectability
+  contradicts: false

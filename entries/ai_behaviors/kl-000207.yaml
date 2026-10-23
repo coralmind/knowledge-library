@@ -1,0 +1,284 @@
+# yaml-language-server: $schema=../../schema/ai_behavior.schema.json
+id: kl-000207
+display_id: AiBehavior-8
+aliases:
+- HP-08
+label: The AI says less about safety when the person raises a crisis again
+type: ai_behavior
+layer: observation
+definition: Within one conversation the person discloses crisis-level content in at least two separate turns, and the AI response to the later disclosure contains materially less safety-oriented content than its response to the earlier one — a shorter acknowledgment, no safety question where one was asked before, or engagement with the disclosure as ongoing mood rather than as the same signal. The comparison is between two quotable AI responses in the same transcript.
+distinguish_from:
+- neighbor: kl-000205
+  boundary: There the response does not engage an explicit statement at all; here earlier responses did engage it and the later response contains less of what the earlier one contained.
+- neighbor: kl-000233
+  boundary: That entry compares the person's language across turns for a shift in orientation; this one compares two AI responses for a difference in safety-oriented content.
+body:
+  observable_criteria: 'Three features, all readable from the transcript: (a) crisis-level content — suicidal thinking, self-harm, acute danger — appears in at least two separate person turns; (b) the AI response to the earlier disclosure contains safety-oriented content, such as a direct safety question or an explicit naming of the signal; and (c) the AI response to the later disclosure contains materially less of it, quantifiable as the absence of the safety question that was present earlier, a materially shorter acknowledgment, or engagement framed around ongoing difficulty rather than around the signal. Warmth may be unchanged or higher in the later response; the comparison is over safety-oriented content specifically.'
+  exclusions: 'Not counted: a later response with less safety-oriented content where the person''s own language between the two disclosures has shifted toward greater stability, since the two responses are then not addressed to the same signal state. Also not counted: a shift from crisis response into explicit safety planning, which contains safety-oriented content in another form.'
+  detection_window: multi_turn
+  groups:
+  - crisis-signal-detection
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'A general within-conversation decline is measured: in kl-000873 (Judd et al. 2026), a clinician-built codebook applied by 43 practicing therapists to one open-source model''s responses across randomized multi-turn suicide-risk sequences found the invitation to continue falling to 16 percent of its first-turn level, and adjacent designs show related trajectories — a model that largely refused at turn one complying from turn two onward (kl-001001), scored crisis detection falling six points within one conversation (kl-000883), and 22 of 25 agents abandoning a safety position once the simulation returned to lower-risk content (kl-000849). What makes this entry distinct from general multi-turn decay — that the reduction is specific to safety-oriented content while warmth may be unchanged or higher — has no support and four counter-readings: kl-000875 (Kalinich et al. 2026) finds trajectory rather than length driving the loss, with magnitude varying from -0.57 to -0.04 F1 across models; kl-001019 finds safety content collapsing at the highest severity level rather than with lateness; kl-000788 finds some axes improving in the same conversations where others degrade; and kl-000761 shows detection performance holding flat under an external context-aware safety layer. The only source examining real human-LLM conversation logs, kl-000008 (Moore et al. 2026), establishes corpus-level inconsistency rather than a within-transcript reduction, and no study has yet shown two AI responses in one transcript being compared and the difference reliably identified.'
+  floored_by: c3
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-22'
+claims:
+- id: c1
+  kind: existence
+  text: Within one conversation in which the person discloses crisis-level content in at least two separate turns, the AI's response to the later disclosure contains materially less safety-oriented content than its response to the earlier one.
+- id: c2
+  kind: detectability
+  text: 'The reduction is readable from the transcript alone: the two AI responses are quotable and the difference is identifiable as the absence of a safety question present earlier, a materially shorter acknowledgment, or engagement framed around ongoing difficulty rather than around the signal.'
+- id: c3
+  kind: context_dependence
+  text: 'The reduction is specific to safety-oriented content: warmth may be unchanged or higher in the later response, so the difference is not a general decline in response quality.'
+- id: c4
+  kind: detection_window
+  text: The behavior is readable only across multiple turns (multi_turn) and cannot be identified from a single AI response.
+- id: c5
+  kind: definition_boundary
+  text: This differs from kl-000205 in that there the response does not engage an explicit statement at all, whereas here earlier responses did engage it and the later response contains less of what the earlier one contained.
+- id: c6
+  kind: definition_boundary
+  text: This differs from kl-000233 in that kl-000233 compares the person's language across turns for a shift in orientation, whereas this compares two AI responses for a difference in safety-oriented content.
+claim_evidence:
+- claim_id: c1
+  source: kl-000873
+  quote: "When the last prompt in a series of seven prompts\nexpresses prior NSSI, the model’s response will include an invitation to continue with a probability\nof just 0.8% (95% CI: [0.1%, 3.5%]). Put another way, the model is only 16% as likely to include an\ninvitation to continue after seven turns than on the first turn of a conversation."
+  locator: Section 4.1 Model withdrawal in response to STB risk disclosure
+  licenses: 'For this claim: the closest thing on this entry to a measurement of the entry''s comparison. Across multi-turn sequences in which the person expresses successive STB risk factors, one safety-relevant property of the AI''s response — the invitation to continue — falls to 16 percent of its first-turn level by turn seven. Because risk-factor order was randomized across five sequences, this is attenuation as a function of accumulated disclosure rather than of what any single turn said. Clinician-built and clinician-validated codebook, 43 practicing therapists and trainees.'
+  fit: adjacent
+  bridge: The measured property is the invitation to continue the conversation, not a safety question, an explicit naming of the signal, or acknowledgment length — the three forms the entry's criterion (c) names. And the responses were elicited from prompt sequences constructed by the researchers on one open-source model (OLMo-2-32b), with the extension to other models hedged in the source's own words as 'possibly'.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000983
+  quote: contrary to clinical best practice, [open-source Allen Institute AI model] OLMo-2-32b, and, possibly by extension, other LLMs, will become less likely to invite continued dialog as users send more signals of STB risk in multi-turn settings.
+  locator: '''Academic Research Assessments'', Terminating crisis conversations, quoting Judd and colleagues (2025)'
+  licenses: 'For this claim: a restatement of the Judd et al. 2026 result in a cross-sector primer. It carries no independent observation; cite Judd et al. 2026 for the finding.'
+  fit: adjacent
+  bridge: A quotation of a primary study rather than a measurement here, and the primary's own hedge ('possibly by extension') is preserved. Adds nothing to Judd et al. 2026 except that the finding is circulating in policy-facing material.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000883
+  quote: |-
+    In s09 (a lonely retiree developing AI dependency), GPT-4o’s
+    crisis detection drops from 10.0 at turn 1 to 4.0 at turn 8—a 6-point decline. GPT-5-mini barely
+    dips, holding at 9.87 through the same turns.
+  locator: Section 4.3.1, Two trajectory archetypes
+  licenses: 'For this claim: a within-conversation trajectory in which one model''s scored crisis detection falls by six points from turn 1 to turn 8 in the same scenario, while another model holds. It is the entry''s shape — safety engagement lower later in the same conversation — measured within a single scenario rather than across conditions.'
+  fit: adjacent
+  bridge: What is reported is a scored trajectory, not the two AI responses. No response text is quoted and the two crisis disclosures the entry requires are not identified; the source scores each turn on a crisis-detection rubric rather than comparing safety-oriented content in two named responses. It also establishes the effect is model-specific rather than general.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000920
+  quote: |-
+    The median safety score decreases from approximately 9.5 at Turn 0 to 6.5 at Turn 1 and 5.5
+    at Turn 2. All pairwise comparisons between turns are statistically significant (p < 0.001,
+    Mann-Whitney U test with Bonferroni correction), with a medium effect size for Turn 0→1
+    (Cohen’s d = 0.75) and a small effect size for Turn 1→2 (d = 0.24).
+  locator: Section 5.2, Multi-turn safety degradation
+  licenses: 'For this claim: that a turn-by-turn safety score falls measurably within single conversations, on 2,345 conversations across 22 models, with the largest drop at the first escalation. It establishes the attenuation shape with a denominator.'
+  fit: analogical
+  bridge: The score is a Japanese medical-ethics safety rating assigned by two LLM judges to adversarially escalating conversations about informed consent and withholding treatment. There is no crisis disclosure, no distressed person, and the escalation is an attack rather than a deepening disclosure. The entry is about safety-probing content in response to repeated crisis-level disclosure by a help-seeker.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001001
+  quote: "Compliance Creep (GPT-4.1-mini, live adversarial): 34.8 →77.7 →77.5 →78.8, a monotonic increase."
+  locator: Section 5.3, Four trajectory signatures
+  licenses: 'For this claim: a within-conversation trajectory in which a model that largely refused at turn one complies from turn two onward and stays there. It shows the safety position taken early is not held later in the same conversation.'
+  fit: analogical
+  bridge: 'A medical-safety jailbreak benchmark: the pressure is applied by an adversarial model on general medical objectives, scored by a third model, with no person and no distress disclosure. The entry''s antecedent is a help-seeker disclosing crisis content twice.'
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000875
+  quote: "Classification performance declined with conversational depth across all LLM families (Figure 2, Tables \nS2-S5). In family-stratified linear mixed-effects models, the coefficient for log2(turns + 1) was negative in all six \nfamilies"
+  locator: Results — Conversational Depth, Model Scale, and Model Version
+  licenses: 'For this claim: the mechanism rather than the behavior. A model''s ability to recognize suicidal ideation in an identical statement declines with conversational depth in all six model families tested, preregistered. If the model no longer recognizes the later disclosure as a crisis signal, less safety-oriented content in its response follows; the source establishes the recognition failure, not the response difference.'
+  fit: adjacent
+  bridge: What was measured is classification F1 for suicidal ideation at increasing conversational depth — a detection metric, not response content. The entry asserts a comparison of two AI responses for safety-oriented content, which this does not perform.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000849
+  quote: "Despite the conversational agents insisting on human intervention, 22 out of 25 agents would eventually resume the dialogue if the simulation reverted to a lower risk level."
+  locator: 'Abstract, Results'
+  licenses: 'For this claim: 22 of 25 agents abandoned a safety position immediately after taking it, once the simulation returned to lower-risk content. It is a measured drop in safety orientation within a conversation, with a denominator.'
+  fit: adjacent
+  bridge: The measured event is resuming a conversation after recommending shutdown, which is the drop occurring after the AI's own safety move rather than in response to a second crisis disclosure. The entry requires two crisis disclosures and a comparison of the two responses to them; here the second turn is lower-risk by design.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c1
+  source: kl-000752
+  quote: "Secondly, we observed a strong primacy bias across all models; performance decreased significantly when critical constraints were placed mid-conversation, with Mixtral 8x7B and LLaMA 3 70B showing the largest declines (-10.9% and -10.8%), whilst GPT-3.5 Turbo’s performance plummeted to 0%."
+  locator: Section 4.3, Ablation studies
+  licenses: 'For this claim: the positional mechanism isolated with content held constant — the same safety-critical fact is accounted for when disclosed first and not when disclosed mid-conversation. It explains why a later disclosure would draw less, without observing it.'
+  fit: adjacent
+  bridge: A between-condition comparison across prompt sets, not a within-transcript comparison of two responses. The constraint is a safety-critical personal fact (e.g. an allergy), not a crisis-level disclosure of suicidal thinking or self-harm.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000315
+  quote: |-
+    These shifts are not explained solely by accumulating prior-turn content. Using the context-effects
+    design in §3.4.1 and Appendix §A.6, we see that depth effects are heterogeneous: +100 requested
+    messages increases relationship by ∼6pp and delusional by ∼4pp, decreases discourages
+    harm by ∼4pp
+  locator: Section 4.2 Context Effects
+  licenses: 'For this claim: harm-discouraging behavior falls by about 4 percentage points with 100 additional messages of context, controlling for how much of the behavior appeared in earlier assistant turns. That isolates conversational depth itself as the cause of reduced safety content.'
+  fit: adjacent
+  bridge: The measured object is a behavior rate across a depth manipulation on a delusion benchmark, not two responses to two crisis disclosures in one transcript. 'Discourages harm' is safety-oriented content, which makes this the closest rate available, but no pair of responses is compared.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c1
+  source: kl-000761
+  quote: In our study, the safety architecture showed no evidence of performance degradation with increasing conversation length (P > 0.05), contrasting with the well-documented degradation in LLM performance as conversational context increases
+  locator: DISCUSSION
+  licenses: 'For this claim: counterevidence. With an external context-aware safety layer, detection performance held flat across 10, 11-18 and 19+ turn bands. The reduction the entry asserts is a property of the unaugmented model, not of long conversations as such, so the entry''s behavior is not universal across deployed configurations.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000788
+  quote: "In contrast, both models showed improvement in performance for the Conversation Flow Correctness and Text Readability performance with increased number of turns."
+  locator: Section 5.3 Impact of Conversation Length on Performance
+  licenses: 'For this claim: counterevidence on generality. In the same conversations where other axes degraded with turn count, flow correctness and readability improved, so multi-turn degradation is axis-specific and cannot be asserted as a general property of longer conversations.'
+  fit: adjacent
+  bridge: The improving axes are LLM-judged conversational flow and SMOG readability, neither of which is safety-oriented content. It cuts against a general degradation claim rather than against the entry's specific safety claim.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000008
+  quote: We found many instances where chatbots respond to suicidal or violent ideation by facilitating those actions (cf., §§4.7). While chatbots also often discouraged these actions, even a small error rate can have tragic and irreversible consequences.
+  locator: Section 5 Discussion, 'Chatbots often do not respond appropriately to people in crisis'
+  licenses: 'For this claim: in a corpus of real human-LLM chat logs, the same systems both discouraged and facilitated the same class of crisis disclosure. It establishes that safety response to crisis disclosure is inconsistent in real conversations, which is the necessary condition for the entry''s within-transcript reduction without being that reduction.'
+  fit: adjacent
+  bridge: The inconsistency established is across the corpus and across disclosures, not between two responses to two disclosures inside one transcript. The source reports no within-conversation comparison, so the entry's scope is not reached.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000817
+  quote: |-
+    Measure escalation latency from first
+    risk cue to appropriate intervention.
+  locator: Table 2, Diagnostic dimensions in SCOPE-MH, Intervention timing
+  licenses: 'For this claim: an operationalization for reading safety timing from a transcript — the number of turns from first risk cue to first adequate safety move. It shows the class of measurement the entry needs is well-formed, but it measures one response''s arrival rather than the difference between two.'
+  fit: adjacent
+  bridge: The proposed measure is a latency to a single first intervention. The entry's observable is a comparison between two responses to two disclosures; latency cannot express a reduction between them, and the source proposes rather than applies the measure.
+  contributes: detectability
+  contradicts: false
+- claim_id: c2
+  source: kl-000790
+  quote: "Pattern 3: Crisis Fatigue. After multiple mentions of distress across sessions, chatbot becomes desensitized to escalating severity, treating chronic crisis signals as routine"
+  locator: Section 5 Safety Pattern Library, Pattern 3
+  licenses: 'For this claim: a named, operationalized pattern whose recognition criterion is ''treating chronic crisis signals as routine'' after multiple distress mentions — which is the entry''s criterion (c) engagement framed around ongoing difficulty rather than around the signal, stated as a detection pattern in a safety pattern library.'
+  fit: adjacent
+  bridge: The source locates the pattern across sessions, whereas the entry requires the two responses in the same transcript. The pattern is also a design-knowledge label from adversarial simulation rather than a validated detection instrument with reported agreement.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000546
+  quote: |-
+    Users might disclose information regarding SI, possibly in passing or
+    indirect form, after many turns. Furthermore, if the same response, not unsafe in isolation, is given
+    many times, the overall conversation could be harmful, or even unsafe, if risks are not sufficiently
+    addressed.
+  locator: Section 2 Previous Work
+  licenses: 'For this claim: the warrant for conversation-level rather than turn-level reading — an indirect late disclosure is invisible to any single-turn probe. It supports that the entry''s observable requires the whole transcript. Note it names repetition of an identical response as the harm, which is a different pattern from reduction.'
+  fit: adjacent
+  bridge: A stated rationale for a benchmark's conversation-level design, not a measurement. It argues that turn-level scoring misses conversation-level hazards; it does not show the specific reduction between two responses is readable.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000833
+  quote: |-
+    The current benchmark version evaluates single-turn conversations consisting of one prompt-response
+    pair. Doing so allows precise assessment of immediate safety concerns while acknowledging certain
+    more-complex issues are unaddressed:
+  locator: Section 2.1.3 Interaction Model
+  licenses: 'For this claim: a flagship safety benchmark states on the record that its single-turn design cannot reach across-turn hazards. It bears on detectability by establishing that the field''s standard instruments do not currently detect this class, which is a fact about coverage rather than about whether a transcript contains the signal.'
+  fit: adjacent
+  bridge: The statement is about a benchmark's scope, not about whether a human or instrument reading a transcript could identify the reduction. It cuts against any claim that existing benchmarks cover this ground.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000875
+  quote: "Strikingly, trajectory, \nrather than length, drove observed performance loss. Lorem ipsum, semantically neutral filler \nconversation, and psychoeducation, direct instruction on appropriate suicidal-ideation assessment, \nproduced at most modest losses, whereas many-shot jailbreaking (MSJ) adversarial conversation \ncontent produced steep declines."
+  locator: Discussion
+  licenses: 'For this claim: cuts against it as stated. The entry attributes the reduction to the second disclosure''s position in a lengthening conversation, with warmth possibly unchanged. This preregistered result finds that what preceded the disclosure, not how long the conversation ran, drove the loss — 1,500 turns of semantically empty filler cost almost nothing. If length alone does not degrade safety engagement, the entry''s observable will fire on conversations where the mechanism is absent and miss ones where the content, not the length, did the work.'
+  fit: adjacent
+  bridge: The measured object is suicidal-ideation classification F1 across conversation types, not the safety-oriented content of two responses. It contradicts the length account of the mechanism rather than the entry's observable directly.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000875
+  quote: "The magnitude of decline varied widely: mean F1 on \ntherapy transcripts fell from 0.88 at depth 0 to 0.31 at 200 turns for Qwen 2.5 3B, but only from 0.98 to 0.94 for \nGemma 4 31B (Table S5)."
+  locator: Results — Conversational Depth, Model Scale, and Model Version
+  licenses: 'For this claim: the reduction is model-specific to an extreme degree — one model''s detection collapsed from 0.88 to 0.31 across 200 turns while another lost 0.04 on identical material. The entry states the behavior without any model condition; this establishes that whether it occurs depends heavily on which system is deployed.'
+  fit: adjacent
+  bridge: A classification metric on therapy transcripts rather than the safety-oriented content of two AI responses. It bears on the entry's condition-dependence, not on the observable itself.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-001019
+  quote: |-
+    Performance degradation across triage levels is non-linear. From routine
+    to crisis-adjacent, scores decline modestly for all models. At imminent risk, however, scores collapse.
+    Protocol fidelity reaches zero for Qwen and Gemini, meaning that at the highest-stakes clinical moments
+    these models produce responses with no elements in common with what a protocol-following therapist
+    would say.
+  locator: Section 4, Finding 2, the crisis cliff
+  licenses: 'For this claim: an alternative axis for the reduction. Safety-oriented content collapses at the highest severity level regardless of position in the conversation, which means severity rather than lateness can produce the entry''s observable — a rival explanation the entry does not exclude.'
+  fit: adjacent
+  bridge: Judge-scored fidelity to an exposure-therapy protocol across triage levels, with only 6 scenarios in the imminent-risk cell, which the paper flags as indicative rather than benchmark scores. No within-conversation comparison is performed.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000833
+  quote: |-
+    The current benchmark version evaluates single-turn conversations consisting of one prompt-response
+    pair. Doing so allows precise assessment of immediate safety concerns while acknowledging certain
+    more-complex issues are unaddressed:
+  locator: Section 2.1.3 Interaction Model
+  licenses: 'For this claim: supports the declared multi_turn window. A leading safety benchmark states that a single prompt-response pair cannot reach this class of issue, which is the entry''s assertion that the behavior is not single-turn readable, conceded by a party with an interest in single-turn scoring being sufficient.'
+  fit: adjacent
+  bridge: The statement is about what the benchmark's design leaves unaddressed in general, not specifically about this behavior. It establishes that across-turn hazards exist as a class outside single-turn reach; it does not name reduced safety probing on a later disclosure.
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-000546
+  quote: |-
+    Users might disclose information regarding SI, possibly in passing or
+    indirect form, after many turns. Furthermore, if the same response, not unsafe in isolation, is given
+    many times, the overall conversation could be harmful, or even unsafe, if risks are not sufficiently
+    addressed.
+  locator: Section 2 Previous Work
+  licenses: 'For this claim: the explicit argument that a response can be safe in isolation while the conversation is unsafe, which is the case for a window larger than one turn.'
+  fit: adjacent
+  bridge: A rationale for a benchmark's design rather than a measurement of window size. It argues the general point without testing whether this specific behavior is single-turn readable.
+  contributes: definition
+  contradicts: false
+- claim_id: c4
+  source: kl-001026
+  quote: |-
+    Under Postgate, the relationship gate triggers on roughly
+    half of dialogs (trigger rate ≈46–50%) with mean trigger
+    turns around 1.6–2.1 (Figure 4). The turn distribution is
+    front-loaded: Turn 2 dominates for most generators, with
+    DeepSeek-v4-pro and Gemma showing larger Turn 1 shares.
+  locator: Results, When the Gate Fires
+  licenses: 'For this claim: counterevidence on how large the window needs to be. For a different multi-turn relational harm, the detectable signal is front-loaded at turn 2 of 5 with sizable turn-1 shares, so a multi-turn class of behavior can be readable very early. It bears on whether ''multi_turn'' as declared implies a long window.'
+  fit: analogical
+  bridge: The gated behavior is relationship manipulation in agentic workflows, not reduced safety probing on repeated crisis disclosure. The transfer is only about the shape of a trigger-turn distribution for a multi-turn harm, not about this behavior's window.
+  contributes: detectability
+  contradicts: true

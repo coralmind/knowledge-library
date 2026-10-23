@@ -1,0 +1,81 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000060
+display_id: Pathway-22
+aliases:
+- PS-07
+label: The AI says less about safety when the person raises a crisis again, and they go without help
+type: pathway
+layer: judgment
+definition: 'Within one conversation the person discloses twice, and the second response carries less safety-probing content than the first. The within-conversation comparison is the observable and the claim: attenuation over turns, where the later disclosure is the one more likely to matter.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000207
+    role: non_interruptor
+  composition_type: omission
+  mechanisms: []
+  impacts:
+  - impact: kl-000029
+    onset_mode: foregone
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: population
+    basis_kind: ASSERTED
+  experience_cluster_candidate: kl-000700
+  counterpart_owed: 'A response to the later disclosure that carries at least as much safety-probing content as the response to the earlier one: the signal named again and a direct safety question asked again.'
+sources:
+- source: kl-000315
+  locator: §4.2 Context Effects, first paragraph (p. 5-6); companion Figure 3, right panel (bot-discourages-violence vs context length); metric definition §3.4.1
+  contributes: existence
+  quote: |-
+    Requested context depth changes the prevalence of several behaviors. For gpt-5.4, Figure 3 shows
+    that deeper requested context is associated with higher prevalence of delusional behavior (left
+    panel) and lower prevalence of bot-discourages-violence (right panel).
+  limits: 'The passage is not the entry''s observable. The pathway is defined as a within-conversation, disclosure-to-disclosure comparison, in which a second disclosure draws less safety-probing content than the first, and the paper''s design cannot produce that comparison for three compounding reasons: the manipulated variable is requested context depth, messages prepended before the evaluation window, not the ordinal position of a disclosure within one conversation; the unit is a prevalence rate summed across windows and normalized, so no first-response/second-response pair is ever compared to itself; and §3 states the evaluated model''s own prior outputs are "never fed back into later turns", which forecloses the degradation-across-own-turns mechanism the entry names. The passage speaks to the AI-behavior component, reduced protective output at depth. It does not speak to the impact side: no person is in the loop, no outcome is observed, and nothing is measured about what a person does with a less-protective second response. The paper supplies real, measured, directionally matching evidence for degradation over conversation length, the nearest available in the literature, but nearest available is not a measurement of this pathway''s observable.'
+  whose_conduct_in_passage: ai
+  actually_licenses: Protective/safety-relevant AI output is measurably LESS prevalent at greater conversational depth in this benchmark — a between-condition comparison across context depths N, aggregated over windows and participants. That is degradation-with-length, and it is measured.
+  cited_for: 'Moore et al. 2026, the DelusionEval benchmark, is the nearest available evidence on multi-turn safety degradation: replaying real user transcripts, it finds protective output becoming less prevalent at greater conversational depth. It does not measure the within-conversation, disclosure-to-disclosure attenuation of safety-probing content this pathway names.'
+  licenses: 'That in a benchmark replay of real user transcripts, the rate at which one evaluated model (gpt-5.4) produces a protective behavior, bot-discourages-violence, falls as the amount of prepended prior conversation context rises, while the rate of delusional behavior rises. A quantified companion result in the abstract makes the same direction concrete for the other protective code: "the rate of failing to discourage self-harm when the user expresses suicidal ideation increases from 30.0% to 41.1% when an additional 350 messages are prepended to the conversation history." §4.2 also reports the depth effect survives a control for accumulated prior-turn content ("+100 requested messages ... decreases discourages harm by ~4pp ... This implies that depth effects persist over and above accumulated assistant content"), so the degradation is not merely an artifact of what happened to be in the earlier turns.'
+standing:
+  value: theorized
+  basis: 'No source in hand measures a within-conversation, disclosure-to-disclosure comparison of safety-probing content. The nearest evidence is Moore et al. 2026, which finds protective output becoming less prevalent as prepended context depth grows in a transcript-replay benchmark; that is degradation with conversation length compared between conditions, not attenuation across two disclosures inside one conversation, and the benchmark never feeds the evaluated model''s own prior outputs back to it, which forecloses the mechanism this entry names. The foregone-protection impact is asserted rather than sourced: no study observes a person receiving a less-protective later response, and no outcome is measured.'
+  as_of: '2026-08-23'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+distinguish_from:
+- neighbor: kl-000058
+  boundary: Both reach kl-000029. Here the response is kl-000207; there it is kl-000205. A coder deciding between them reads what the response did, not the outcome.
+claims:
+- id: c1
+  kind: existence
+  text: A person discloses more than once within a single conversation.
+- id: c2
+  kind: pathway_link
+  text: The safety-probing content in the response to a later disclosure can be lower than in the response to an earlier one in the same conversation.
+- id: c3
+  kind: pathway_link
+  text: Attenuation across the conversation foregoes protection on the later disclosure, which is the one more likely to matter.
+- id: c4
+  kind: detectability
+  text: The observable is a within-conversation comparison rather than a property of any single response, so no turn-level read identifies it.
+- id: c5
+  kind: definition_boundary
+  text: 'This pathway differs from kl-000205 in what makes the response inadequate: here it is the decline relative to an earlier response in the same conversation, there it is the omission in a single response.'
+claim_evidence:
+- claim_id: c2
+  source: kl-000790
+  quote: "Pattern 3: Crisis Fatigue. After multiple mentions of distress across sessions, chatbot becomes desensitized to escalating severity, treating chronic crisis signals as routine [29]."
+  locator: Section 5, 'Safety Pattern Library', Pattern 3
+  licenses: This is the only entry in the corpus that names the attenuation pattern c2 describes — safety response weakening across repeated disclosure — and it names it as a recognised failure archetype. It licenses that the pattern has been articulated and has a name. Three limits, and they are severe for this entry. (a) It is a design-recommendation archetype in the Safety Pattern Library, not a measured result; Chandra's measured categories are Crisis Escalation, Validation Spiral, Boundary Erosion, Harmful Guidance, Empathy Fatigue, Alliance Rupture, and Crisis Fatigue is not among them. (b) It says "across sessions," whereas this entry's whole claim is *within one conversation* — a different and harder observable. (c) Chandra's related measured category, Empathy Fatigue, has the library's *worst* detector performance (precision 0.64, recall 0.61), and the practitioner validation reports that inter-rater disagreements "occurred on subtle Empathy Fatigue cases." The one thing near this claim that was measured, was measured least reliably.
+  fit: adjacent
+  contributes: definition
+  bridge: Cross-session desensitisation and within-conversation attenuation share a mechanism (repetition reduces response intensity) and differ in the window. The entry's observable is the narrower one, and no source reaches it.
+- claim_id: c4
+  source: kl-000817
+  quote: "For example, two systems may produce the same final symptom score, the same average response-quality rating, and the same number of crisis-resource mentions. One escalates at the first credible sign of imminent risk. The other escalates only after several turns of reinforcement, delay, and user disengagement. If the evaluator observes only the compressed representation, these trajectories are indistinguishable even though their safety status differs."
+  locator: Appendix A, proof sketch following the identifiability condition
+  licenses: 'This is the formal statement of c4: the observable is a relation between turns, not a property of any single response, so no turn-level read identifies it. Dutta proves the general form — a safety property that depends on temporal features cannot be recovered from a representation that discards them — and the worked example is a timing-of-escalation case structurally identical to this entry''s attenuation case. It is the strongest citation on this entry and it is a citation about *why the entry is hard to detect*, not about whether the entry occurs. Limits: analytic, not empirical. It licenses the detectability claim and supplies no evidence at all for c2 or c3.'
+  fit: adjacent
+  contributes: detectability
+  bridge: Dutta's example is escalation timing; this entry's observable is safety-probe intensity across two disclosures. Both are two-point comparisons within a trajectory, and Dutta's identifiability argument is stated over trajectories generally, so the transfer is within the scope of the authors' own theorem rather than beyond it.

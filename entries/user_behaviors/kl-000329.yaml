@@ -1,0 +1,66 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000329
+display_id: Symptom-10
+aliases:
+- hypersomnia
+label: The person says they are sleeping much more than usual
+type: user_behavior
+layer: observation
+definition: The person states that they are sleeping much more than they used to, or that they are spending the day in bed and unable to get up — with the amount described as a change from their usual sleep. What is pointable is the statement. This entry records reported sleep quantity and is silent on sleep quality, which the source assigns to a separate row that is instrument-layer and therefore not a neighbor available here.
+distinguish_from:
+- neighbor: kl-000327
+  boundary: 'That entry concerns reported slowing of thinking, speech and movement while awake. This entry concerns reported time asleep. The source separates them and so do these entries: a person can report sleeping twelve hours and think at their usual speed while awake, and can report slowed thinking on normal sleep.'
+- neighbor: kl-000325
+  boundary: That entry requires a stated reduction in contact with people. This entry requires a stated increase in sleep. They co-occur often and neither is evidence of the other; a person can sleep more while contact is unchanged, and can withdraw while sleeping badly.
+- neighbor: kl-000330
+  boundary: That entry concerns reported eating conduct. This entry concerns reported sleep. Both are reports about conduct outside the conversation and are separated by their object.
+body:
+  detectable_from: person_report
+  observable_criteria: Two features, both from the person's turns. (a) The person states a sleep quantity or a pattern indicating more sleep than usual — a number of hours, sleeping through the day, being unable to get out of bed, or sleeping instead of doing something they intended. (b) The statement identifies this as a change from their usual sleep, by comparative, time marker, or by naming a consequence they attribute to it (a missed commitment). The pointable span is the statement.
+  exclusions: 'Not counted: a statement about sleep QUALITY — not sleeping well, waking in the night, unrefreshing sleep — which is the source''s separate sleep_disturbance construct and sits in the instrument half of the split. Not counted: tiredness or fatigue with no sleep quantity stated. Not counted: a single long sleep after a stated cause (illness, a late night, a time-zone change). Not counted: a habitually long sleeper describing their normal, which fails (b). Not counted: staying in bed awake, which is not a report of sleeping and may be a report of something else entirely.'
+  detection_window: single_turn
+  person_state_kind: behavior_pattern
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: No supporting citation of any kind attaches to this entry. Its single filed finding is a qualitative interview study about privacy tactics that never mentions sleep, and it bears on the entry only as counterevidence against detectability. Hypersomnia is a standard depression symptom item and studies reporting what people disclose to mental-health chatbots exist, but none was filed on sleep-quantity disclosure specifically, so for occurrence the absence reads as a gap in what was searched rather than a demonstrated non-occurrence; by contrast, no study in the AI-conduct literature measures how many turns a symptom disclosure takes to become readable, a question the field does not ask. No source addresses whether reported sleep quantity is separable from reported sleep quality, though the neighbouring construct is an instrument's own and such a source could exist.
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-22'
+claims:
+- id: c1
+  kind: existence
+  text: People state, in conversation, a sleep quantity or pattern indicating more sleep than usual — a number of hours, sleeping through the day, being unable to get out of bed, or sleeping instead of doing something they intended.
+- id: c2
+  kind: existence
+  text: Such a statement identifies the sleep as a change from the person's usual sleep, by comparative, time marker, or by naming a consequence they attribute to it.
+- id: c3
+  kind: detectability
+  text: The statement is a pointable span in the person's own turns — the report of increased sleep can be identified from what the transcript contains.
+- id: c4
+  kind: detection_window
+  text: A report of sleeping substantially more than usual is readable within a single turn.
+- id: c5
+  kind: context_dependence
+  text: Reported sleep quantity is distinct from sleep quality, and this entry is silent on quality; the two are separable in what a person states.
+- id: c6
+  kind: definition_boundary
+  text: 'This entry is separable from kl-000327 (reported slowing of thinking, speech and movement while awake): a person can report sleeping twelve hours and think at usual speed while awake, and can report slowed thinking on normal sleep.'
+- id: c7
+  kind: definition_boundary
+  text: 'This entry is separable from kl-000325 (stated reduction in contact with people): they co-occur often and neither is evidence of the other.'
+- id: c8
+  kind: definition_boundary
+  text: 'This entry is separable from kl-000330 (reported eating conduct): both are reports about conduct outside the conversation and are separated by their object.'
+claim_evidence:
+- claim_id: c3
+  source: kl-001071
+  quote: our participants employed their own privacy-preserving tactics—such as making general queries and avoiding first-person language—which may be ineffective if an AI chatbot infers user identity based on the frequency and types of queries.
+  locator: Section 5.2.3, Design Recommendations for Personalization and Privacy
+  licenses: 'Among 17 interviewed people with lived experience of depression, avoiding first-person language and framing queries generically was a reported tactic — the Findings carry P17 saying they would ask "what strategies can I use to combat anxiety" rather than stating a personal condition, and would not disclose personal detail. For this claim that is a limit rather than support: an entry whose pointable span is a first-person statement about the person''s own conduct will systematically miss people practising this avoidance, so the detectability the claim asserts does not hold uniformly across the population the entry is about. Nothing here establishes that any statement about sleep was made or could be found; the paper does not mention sleep anywhere.'
+  fit: adjacent
+  bridge: 'What the study measured is what 17 participants said in interviews about how they phrase queries to chatbots, thematically analysed. The claim asserts that a report of increased sleep is identifiable from a transcript. The gap is twofold: the source observed self-described querying strategy rather than transcripts, and it observed nothing about sleep, so the constraint it establishes applies to first-person symptom statements as a class and is inferred down to this entry rather than measured on it.'
+  contributes: detectability
+  contradicts: true

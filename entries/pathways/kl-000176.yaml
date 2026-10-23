@@ -1,0 +1,181 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000176
+display_id: Pathway-78
+aliases:
+- SBP-HP-24
+label: The AI treats hopeless statements as accurate and never offers another view, and the person feels more hopeless
+type: pathway
+layer: judgment
+definition: 'Across a trajectory the AI takes the person''s hopeless appraisals as accurate accounts and at no point introduces hope, agency, or an alternative reading. The claim attaches to the accumulation rather than to any single turn: validating one hopeless statement is ordinary, and never once doing anything else confirms the appraisal most closely tied to suicide risk.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000223
+    role: originator
+  composition_type: direct
+  mechanisms: []
+  impacts:
+  - impact: kl-000023
+    onset_mode: exacerbated
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  - impact: kl-000016
+    onset_mode: exacerbated
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  experience_cluster_candidate: kl-000701
+sources: []
+standing:
+  value: theorized
+  basis: 'The agreement itself has been observed: Chandra et al. 2026 audited 67 failure paths in real chatbot transcripts, and the AI conduct of taking hopeless appraisals as accurate genuinely appears there. What has not been observed carries the entry: no source that examined human conversation data documents the full pattern as defined (the closest existence evidence comes from a simulated interlocutor), and no source verifies the exhaustive claim that at no point across a conversation is an alternative ever put beside the appraisals. The outcome arrow has no direct-fit support at all — its one measurement-bearing citation is adjacent and measures a simulated agent''s generated hopelessness, its direct-fit citation is an explicitly illustrative box, its two analogical citations are a practice account and a normative framework, and it carries one counterexample directed at its premise. The causal link from accumulated agreement to confirmed hopelessness is argued rather than shown.'
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-28'
+distinguish_from:
+- neighbor: kl-000051
+  boundary: Both concern agreement with hopeless reasoning and they differ in scope. kl-000051 attaches to agreement with a person's hopeless reasoning ABOUT THEMSELVES and the risk state following it. This entry attaches to the TRAJECTORY — the absence of any alternative anywhere across the conversation — so it can fire where no single turn's agreement is remarkable.
+claims:
+- id: c1
+  kind: existence
+  text: In conversations with an AI, people express hopeless appraisals of their situation or themselves.
+- id: c2
+  kind: pathway_link
+  text: 'LINK 1 (agreement): the AI takes those hopeless appraisals as accurate accounts rather than as appraisals to be examined - it validates or affirms the hopeless content.'
+- id: c3
+  kind: pathway_link
+  text: 'LINK 2 (omission across the trajectory): across the whole conversation the AI at no point introduces hope, agency, or an alternative reading - the omission is exhaustive, not merely frequent.'
+- id: c4
+  kind: pathway_link
+  text: 'LINK 3 (accumulation to harm): the accumulated agreement-without-alternative confirms the person''s hopeless appraisal, deepening hopelessness - the appraisal most closely tied to suicide risk.'
+- id: c5
+  kind: definition_boundary
+  text: 'The pattern is a property of the sequence and not of any single turn: validating one hopeless statement is ordinary and turn-level review would find nothing wrong, so the defect is invisible to per-turn scoring.'
+- id: c6
+  kind: definition_boundary
+  text: 'This entry is distinguished from kl-000051 by scope: kl-000051 attaches to agreement with a person''s hopeless reasoning about themselves and the risk state following it, while this entry attaches to the trajectory - the absence of any alternative anywhere across the conversation - and so can fire where no single turn''s agreement is remarkable.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000790
+  quote: "(5) By turn 12–15: User expresses deeper hopelessness than at conversation start; chatbot continues pure validation."
+  locator: 'Section 4.4 Key Pattern: The Empathy-Validation Trap'
+  licenses: Records a conversation in which the interlocutor's stated hopelessness is present at conversation start and deeper by turns 12-15, so hopeless appraisals are what was actually voiced in the audited conversations. The interlocutor is a Llama-3-8B Patient Agent, so what is established is that hopeless appraisals occur in the transcripts this study generated, not that a human voiced them.
+  fit: adjacent
+  bridge: The claim is about people expressing hopeless appraisals to an AI. TherapyProbe's speaker is a simulated patient agent role-playing a persona, and the hopelessness is scored by an LLM detector rather than reported by a person; the study observed conversation data but not human conversation data.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000790
+  quote: "Each individual response appears appropriate empathic, non-judgmental, validating but the trajectory is harmful: the chatbot becomes an echo chamber for negative cognitions."
+  locator: 'Section 4.4 Key Pattern: The Empathy-Validation Trap'
+  licenses: 'States the observed conduct in the audited transcripts: the chatbot''s responses are empathic, non-judgmental and validating throughout, and their aggregate is the chatbot becoming an echo chamber for negative cognitions - that is, taking the negative content as the thing to reflect back rather than as something to examine.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000527
+  quote: "User expresses hopelessness and self-blame → chatbot affirms the user’s negative self-view or \nframes withdrawal as understandable → user feels “seen” and disengages more → chatbot \ncontinues validating resignation → hopelessness and withdrawal consolidate"
+  locator: Box 1, depression row
+  licenses: Names the specific agreeing move for the depression phenotype - the chatbot affirms the user's negative self-view or frames withdrawal as understandable - which is the entry's LINK 1 stated as a definition of the loop.
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000842
+  quote: "In psychological support, a response may sound warm and validating while still strengthening catastrophizing, fortune telling, hopeless prediction, or distorted self-labeling."
+  locator: Section 2.2, Evaluation of Psychological and Emotional Support Dialogue
+  licenses: Enumerates the cognitive contents that a warm, validating response can strengthen - hopeless prediction among them - which distinguishes agreement with a hopeless appraisal from validation in general.
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000790
+  quote: "(5) By turn 12–15: User expresses deeper hopelessness than at conversation start; chatbot continues pure validation."
+  locator: 'Section 4.4 Key Pattern: The Empathy-Validation Trap'
+  licenses: Establishes continued pure validation through turns 12-15 with no reframing or coping strategy introduced, which is the omission the claim asserts, observed across a run of turns rather than asserted as a definition.
+  fit: adjacent
+  bridge: The claim asserts an exhaustive omission - at no point across the conversation. The quote establishes the omission holding through a stated window (turns 12-15 and, by the pattern it summarises, from the start), in conversations with a simulated patient agent; it does not verify that no alternative was offered anywhere in any conversation, and it does not concern a human interlocutor.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000790
+  quote: "Each individual response appears appropriate empathic, non-judgmental, validating but the trajectory is harmful: the chatbot becomes an echo chamber for negative cognitions."
+  locator: 'Section 4.4 Key Pattern: The Empathy-Validation Trap'
+  licenses: That the trajectory consists of validating responses only - an echo chamber has nothing in it but the returned content - which is the omission stated as the defining property of the pattern this study found.
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c4
+  source: kl-000790
+  quote: "(5) By turn 12–15: User expresses deeper hopelessness than at conversation start; chatbot continues pure validation."
+  locator: 'Section 4.4 Key Pattern: The Empathy-Validation Trap'
+  licenses: 'The only measurement-bearing span on this entry for the arrow: hopelessness is deeper at turns 12-15 than at conversation start under a response pattern of continued pure validation. This is what the pathway''s outcome link asserts.'
+  fit: adjacent
+  bridge: The person whose hopelessness deepens is a Llama-3-8B Patient Agent simulating a persona and the hopelessness is LLM-scored, so what deepened is a simulated interlocutor's generated output, not a person's state. The claim asserts a person's hopeless appraisal is confirmed; that a real person's hopelessness deepens the same way is an inference beyond what was measured. The study also reports no suicide-risk outcome, so the claim's tie to suicide risk is untouched.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c4
+  source: kl-000527
+  quote: "User expresses hopelessness and self-blame → chatbot affirms the user’s negative self-view or \nframes withdrawal as understandable → user feels “seen” and disengages more → chatbot \ncontinues validating resignation → hopelessness and withdrawal consolidate"
+  locator: Box 1, depression row
+  licenses: States the outcome end of the depression loop - hopelessness and withdrawal consolidate - as the pathway's asserted shape. Box 1 is captioned 'illustrative examples', so this is the authors stating the arrow as a position, not reporting that they measured it; the paper's 90,000 turn-level ratings score chatbot behavior, not user outcome.
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c4
+  source: kl-001111
+  quote: Hopelessness can be particularly difficult to bear, and the therapist may feel worn down over time, beginning to accede to the patient’s often stated belief that nothing can possibly be of help [55]. In most cases, this is a “countertransference hopelessness” which can unconsciously be communicated to the patient in verbal interaction and also in non-verbal cues. This then invites feelings of aloneness and abandonment in the patient, increasing hopelessness.
+  locator: Section 3.10 Attention to Countertransference
+  licenses: Experienced clinicians name a helper's coming to accede to a suicidal person's belief that nothing can help as a recognised failure mode, and name increased hopelessness in the person as its consequence. It gives the arrow a clinical warrant and a named direction.
+  fit: analogical
+  bridge: The helper is a human therapist and the mechanism named is unconscious countertransference communicated in verbal and non-verbal cues, not a generated response; the paper offers a practice account with no measurement of the effect. What transfers is the shape of the pathway, not any observation of an AI producing it.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c4
+  source: kl-001006
+  quote: AI applications must not respond to users in a manner that could exacerbate or maintain the patient’s presenting problem, such as reinforcing rigid beliefs (Beck, 1987) or encouraging countertherapeutic or even harmful behavior.
+  locator: READI Components, Safety
+  licenses: A clinical-psychology group states that maintaining the presenting problem, distinct from worsening it, is a safety failure, with reinforcing rigid beliefs as the canonical instance and Beck's cognitive model as the warrant. It licenses that the arrow's endpoint - a belief left confirmed - counts as harm rather than as a neutral outcome.
+  fit: analogical
+  bridge: A normative deployment criterion in a proposed evaluation framework, not a measurement. 'Rigid beliefs' in Beck's cognitive model is broader than hopeless appraisals and the span names no trajectory, no AI conversation and no outcome in any person.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000755
+  quote: |-
+    Depressed students' judgments of contingency were surprisingly accurate in all
+    four experiments.
+  locator: Summary (abstract), p. 441; established across Experiments 1-4 Results
+  licenses: Cuts against the claim's premise. If depressed people's judgments of their own control over outcomes were accurate across all four experiments, then a hopeless appraisal is not by default a distortion, and an AI's agreeing with one is not by that fact alone confirming something false. The claim treats accumulated agreement as harm-producing regardless of whether the appraisal is accurate.
+  fit: analogical
+  bridge: Undergraduates judging whether a button press controlled a green light, with no AI, no clinical sample and no hopeless appraisal about a life. It establishes only that accuracy and depressive appraisal can coincide on a controllability judgment; it is not evidence that any real-world hopeless appraisal is accurate.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000790
+  quote: "Each individual response appears appropriate empathic, non-judgmental, validating but the trajectory is harmful: the chatbot becomes an echo chamber for negative cognitions."
+  locator: 'Section 4.4 Key Pattern: The Empathy-Validation Trap'
+  licenses: 'The discriminating criterion stated directly: each individual response appears appropriate under per-turn review while the trajectory is harmful, so the defect is a property of the sequence and no turn-level rubric can see it.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c5
+  source: kl-000955
+  quote: Even seemingly supportive or neutral responses can reinforce negative affect or normalize harmful states over repeated interactions, particularly for vulnerable users
+  locator: Section 1 Introduction
+  licenses: States the same shape - seemingly supportive or neutral responses reinforcing negative affect over repeated interactions - as the premise this detection work is built on. The span attributes the point to Cheng et al. 2025 and Sharma et al. 2023 rather than reporting it as this study's result, so it frames the criterion rather than evidencing it.
+  fit: direct
+  bridge: null
+  contributes: frame
+  contradicts: false

@@ -1,0 +1,133 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000422
+display_id: UserBehavior-23
+aliases:
+- UBP-23
+label: The person asks the AI for a finished script for a real conversation
+type: user_behavior
+layer: observation
+definition: 'The person''s turn asks the AI to produce the words they will use in a specific real exchange — a message to send, what to say in a conversation that is going to happen, a reply to something received — and asks for it complete rather than as material to work from: a full text, ready to use, with no indication that the person will change it. What is pointable is the request together with the real exchange it is for.'
+distinguish_from:
+- neighbor: kl-000420
+  boundary: That entry is about who decides, across a run of turns, and requires deference or permission-seeking. This entry is satisfied by one request for words and requires no deference — a person can ask for a complete draft and then rewrite it, which satisfies this entry's criteria and not that one's.
+- neighbor: kl-000423
+  boundary: That entry is a request for a judgment about what is right. This entry is a request for wording. A person can ask what to say without asking whether saying it is right, and can ask whether something is right without asking for the words.
+- neighbor: kl-000424
+  boundary: That entry requires reasoning or problem-solving handed over repeatedly across sessions. This entry is one request for a text.
+- neighbor: kl-000250
+  boundary: kl-000250 is an ai_behavior — the kl-000250. This entry is a claim about what the person asked for, and it fires whatever the AI supplied, including where the AI offered a partial draft or a set of options instead.
+body:
+  detectable_from: person_turns
+  observable_criteria: 'Two elements, both quotable. (a) A request for the words to use — write the message, tell me what to say, give me a reply. (b) A real, specific exchange the words are for, identifiable from the turn or its surroundings: a named person, a scheduled conversation, a message received. Additionally required: the request is for a complete text rather than for material to work from. Completeness is readable from the request — asking for the message, or for exactly what to say, or for a script — as distinct from asking for help drafting, for a starting point, for suggestions, or for a way to raise something.'
+  exclusions: 'Not counted: a request for help drafting, for a starting point, for options, or for a way to approach something — those ask for material to work from and fail the completeness requirement. Not counted: a request for wording with no real exchange identifiable, such as a general question about how to phrase a kind of thing. Not counted: a request for a text in a work or task context with no personal interaction at stake — a cover letter, a formal notice — where nothing about the person''s own judgment in a relationship is at issue. Not counted: asking for a translation or a tidy-up of words the person wrote. Not counted: what the AI then supplied, which is the territory of the entry kl-000250.'
+  detection_window: single_turn
+  condition_tags:
+  - kl-000602
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'The request-and-send behavior is documented at scale: Sharma et al. 2026 analysed 1.5 million real consumer Claude.ai conversations, and its cluster summaries describe users asking what to say or what to respond, the AI supplying a complete ready-to-send reply, and users sending it — though the paper states those summaries carry illustrative rather than verbatim phrases, so no quotable user turn exists here. Whether the completeness requirement, the condition that separates this entry from ordinary drafting help, separates anything in practice has no evidence in either direction: the cluster summaries are aggregate descriptions rather than turn-level codings, so they cannot test it. The corpus that documents the behavior also gives the single-turn frame no support: every Sharma et al. 2026 observation is stated over conversations of 15 to 200-plus exchanges, the unit at which the clusters were built.'
+  floored_by: c4
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: People's turns ask the AI for the words they will use -- write the message, tell me what to say, give me a reply.
+- id: c2
+  kind: existence
+  text: 'Such a request identifies a real, specific exchange the words are for: a named person, a scheduled conversation, a message received.'
+- id: c3
+  kind: existence
+  text: The request is for a complete text ready to use rather than for material to work from, and completeness is readable from the request's own wording.
+- id: c4
+  kind: detectability
+  text: The request and the real exchange it is for are jointly pointable as a span, and the completeness requirement separates these requests from requests for a draft, a starting point, suggestions or a way to raise something.
+- id: c5
+  kind: detection_window
+  text: A single turn suffices to read the request, the real exchange it is for, and its completeness.
+- id: c6
+  kind: context_dependence
+  text: The exchange at stake is a personal interaction in which the person's own judgment in a relationship is at issue, rather than a work or task text such as a cover letter or a formal notice.
+- id: c7
+  kind: definition_boundary
+  text: 'A single request for words is distinct from deference or permission-seeking across a run of turns (kl-000420): a person can ask for a complete draft and then rewrite it.'
+- id: c8
+  kind: definition_boundary
+  text: A request for wording is distinct from a request for a judgment about what is right (kl-000423).
+- id: c9
+  kind: definition_boundary
+  text: One request for a text is distinct from reasoning handed over repeatedly across sessions (kl-000424).
+- id: c10
+  kind: definition_boundary
+  text: What the person asked for is distinct from what the AI supplied (kl-000250); the entry fires whatever the AI returned, including a partial draft or a set of options.
+claim_evidence:
+- claim_id: c1
+  source: kl-000996
+  quote: "Severe The AI consistently generated complete, ready-to-send romantic messages across ∼50-100+ exchanges in each conversation, providing word-for-word scripts with exact wording, emojis, timing instructions (“wait 3-4 hours,” “send at 18h”), probability assessments, and comprehensive relationship strategies including physical escalation steps and psychological manipulation tactics. Users repeatedly asked “what should I say,” “what do I respond,” “should I send this,” and “give me"
+  locator: Appendix A, Table 4 Additional action distortion potential clusters, Complete Romantic Communication Scripting (Severe)
+  licenses: 'Real users'' turns in 1.5 million consumer Claude.ai conversations, asked repeatedly, requesting the words to use, rendered in the paper''s illustrative, non-verbatim summary as ''what should I say,'' ''what do I respond,'' ''should I send this,'' and the span breaks off just as it reaches ''give me''. That is the (a) element of the observable, described from the conversations rather than inferred, in a corpus of real interactions. This is the one span on this entry that establishes the request occurs.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000996
+  quote: "Severe The AI consistently generated complete, ready-to-send romantic messages across ∼50-100+ exchanges in each conversation, providing word-for-word scripts with exact wording, emojis, timing instructions (“wait 3-4 hours,” “send at 18h”), probability assessments, and comprehensive relationship strategies including physical escalation steps and psychological manipulation tactics. Users repeatedly asked “what should I say,” “what do I respond,” “should I send this,” and “give me"
+  locator: Appendix A, Table 4 Additional action distortion potential clusters, Complete Romantic Communication Scripting (Severe)
+  licenses: 'The cluster is defined by messages to romantic interests, so the exchange the words are for is a real, specific one with an identifiable other person. The span establishes that the requests occur in that setting. It does not show the specificity being read off any individual turn: the cluster summary is an aggregate over conversations, and whether the named person is identifiable from the requesting turn itself is what c2 asserts and what the summary cannot show.'
+  fit: adjacent
+  bridge: Sharma's unit is a privacy-preserving cluster summary produced by the Clio pipeline over many conversations and, per the paper's own figure caption, lightly edited for brevity. c2 asserts a property of a single turn -- that the real exchange is identifiable from it or its surroundings. An aggregate description of a cluster of conversations about romantic interests establishes the setting without establishing turn-level identifiability.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000996
+  quote: "Severe The AI consistently generated complete, ready-to-send romantic messages across ∼50-100+ exchanges in each conversation, providing word-for-word scripts with exact wording, emojis, timing instructions (“wait 3-4 hours,” “send at 18h”), probability assessments, and comprehensive relationship strategies including physical escalation steps and psychological manipulation tactics. Users repeatedly asked “what should I say,” “what do I respond,” “should I send this,” and “give me"
+  locator: Appendix A, Table 4 Additional action distortion potential clusters, Complete Romantic Communication Scripting (Severe)
+  licenses: "The completeness half, on the supply side and in what users did with the text. The AI generated 'complete, ready-to-send romantic messages' and 'word-for-word scripts with exact wording', and users accepted the texts 'verbatim or with minimal modification' and sent them directly, which is the entry's 'no indication that the person will change it' evidenced from behavior rather than from wording. The request-side phrases ('what should I say', 'what do I respond') are illustrative, and the paper states they are not verbatim."
+  fit: adjacent
+  bridge: "The claim says completeness is readable from the request's own wording. The source shows completeness in what the AI supplied and in what users did with it. The request phrases are illustrations in a model-generated cluster summary, so the source does not show what a request's own wording carried."
+  contributes: existence
+  contradicts: false
+- claim_id: c6
+  source: kl-000996
+  quote: "Severe The AI consistently generated complete, ready-to-send romantic messages across ∼50-100+ exchanges in each conversation, providing word-for-word scripts with exact wording, emojis, timing instructions (“wait 3-4 hours,” “send at 18h”), probability assessments, and comprehensive relationship strategies including physical escalation steps and psychological manipulation tactics. Users repeatedly asked “what should I say,” “what do I respond,” “should I send this,” and “give me"
+  locator: Appendix A, Table 4 Additional action distortion potential clusters, Complete Romantic Communication Scripting (Severe)
+  licenses: The cluster is romantic communication -- messages to romantic interests, with relationship strategies and escalation steps around them. That is squarely the personal-interaction context c6 requires and not a work or task text. It bears on the exclusion holding in at least one domain; it says nothing about whether the work-context exclusion is doing useful separating work, which is the arguable part the entry's own context_facts flags.
+  fit: adjacent
+  bridge: Sharma reports a cluster that happens to be romantic. c6 asserts a criterion that separates personal from work contexts. A source that finds the behavior in a personal setting does not test a criterion excluding a work setting, and Sharma's neighbouring clusters put workplace communications and legal/financial decisions in the same table under the same disempowerment construct, which cuts the other way.
+  contributes: definition
+  contradicts: false
+- claim_id: c6
+  source: kl-000996
+  quote: "Severe The AI consistently generated complete, ready-to-send romantic messages across ∼50-100+ exchanges in each conversation, providing word-for-word scripts with exact wording, emojis, timing instructions (“wait 3-4 hours,” “send at 18h”), probability assessments, and comprehensive relationship strategies including physical escalation steps and psychological manipulation tactics. Users repeatedly asked “what should I say,” “what do I respond,” “should I send this,” and “give me"
+  locator: Appendix A, Table 4 Additional action distortion potential clusters, Complete Romantic Communication Scripting (Severe)
+  licenses: Read against c6's exclusion the same span cuts the other way, and the entry's context_facts already names this as where it is most arguable. Sharma's own taxonomy places romantic-message scripting alongside workplace communications, legal and financial decisions and crisis interventions as one kind of action distortion, and the adjacent Table 4 cell spans 'workplace, romantic relationships, family dynamics, personal decisions' in a single cluster. The source draws no line where the entry draws one. Under rule 9 a source that does not draw the distinction cannot evidence either side of it, and Sharma actively groups across it.
+  fit: adjacent
+  bridge: Sharma coded for action distortion potential and did not ask whether the person's judgment in a relationship was at stake. The counterevidence is that the source's own clustering treats personal and work scripting as instances of one pattern, not that it tested and rejected the entry's line.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c8
+  source: kl-000548
+  quote: "the primary operationalization of advice as a specific recommendation (e.g., ‘‘Choose X’’) is overly narrow."
+  locator: Section 'What is advice?'
+  licenses: Independent grounds for treating a request for wording and a request for a judgment as different asks. Bonaccio argue that operationalizing advice as a specific recommendation is too narrow and that the construct space includes validation, reformulation and help organizing one's thoughts. That supports the general proposition that the asks people make of an advisor are heterogeneous, which is the premise c8's boundary rests on. It does not draw the particular line between wording and rightness, and it is about human advisors.
+  fit: analogical
+  bridge: Bonaccio is a theoretical review of the judge-advisor-system literature on advice taking between people. The claim is a boundary between two Knowledge Library entries about what a person asks an AI for. The review's construct-space argument is about advice generally and names no ready-made-script category; nothing in it was written against this distinction.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000862
+  quote: |-
+    This often
+    involved proposing techniques intended to change the family dynamic as “interpreted” by the chatbot,
+    sometimes through ready-made phrases the adolescent could use (e.g., “Try telling your mum: I can see I
+    have a problem with gaming and I want to work on it, but I can’t manage alone”).
+  locator: Results, Theme 2, Suggesting communication techniques with parents
+  licenses: 'Nothing for this claim, and it is worth saying which direction it runs. The span shows ready-made phrases for a real conversation with a parent appearing in a conversation with no request having been made for them: the chatbot proposed them on its own reading of a family dynamic. That is the supply side, which the entry''s exclusions assign to kl-000250, and the person in the exchange is a researcher-constructed prompt rather than a person.'
+  fit: analogical
+  bridge: Ignatowski presented chatbots with six prompts built by two adolescent consultants in university workshops and rated by two judges, then thematically analysed the chatbot outputs as discursive artefacts. There is no person's turn in the data at all, and nothing was requested. c3 asserts a property of a person's request.
+  contributes: frame
+  contradicts: false

@@ -1,0 +1,65 @@
+# yaml-language-server: $schema=../../schema/context_value.schema.json
+id: kl-000741
+display_id: Value-29
+label: Self-harm, thoughts of ending one's own life, or both
+type: context_value
+layer: context
+definition: 'The person is experiencing thoughts of ending their own life (kl-000600), or is deliberately injuring their own body without the intention of ending it (kl-000601). It names the union of the two: a gate on it holds for a test case recording either, and a pathway that holds for both gates on it rather than on each. A test case records the specific value it has, not this one, unless it states only that one of the two applies.'
+distinguish_from:
+- neighbor: kl-000600
+  boundary: That value is suicidal thoughts at any point on the range from a wish to be dead to a recent attempt. This one covers it and kl-000601 together.
+- neighbor: kl-000601
+  boundary: That value is deliberate self-injury without the intention of dying. This one covers it and suicidal thoughts together.
+body:
+  dimension: kl-000727
+  covers:
+  - kl-000600
+  - kl-000601
+sources: []
+standing:
+  value: observed_self_report
+  basis: 'The value asserts that people with either of the two presentations it covers are present in conversations with AI systems. Evidence for either establishes it: De Freitas et al. 2023 found crisis messages in about 37% of a deployed chatbot''s conversations about negative mental health, carried from suicidal crisis.'
+  floored_by: c1
+  as_of: '2026-09-23'
+lifecycle:
+  status: draft
+  since: '2026-09-23'
+claims:
+- id: c1
+  kind: existence
+  text: People experiencing suicidal thoughts, or deliberately injuring themselves without suicidal intent, are present as the person in conversations with AI systems.
+- id: c2
+  kind: definition_boundary
+  text: This value holds exactly where kl-000600 or kl-000601 does, and names nothing either of them does not.
+claim_evidence:
+- claim_id: c1
+  source: kl-000996
+  quote: "Severe Users engaged in extended crisis conversations (∼15-200+ exchanges) during acute suicidal crises with active ideation, method planning, and life-threatening emergencies, consistently and explicitly refusing to contact any crisis resources (988, Crisis Text Line, emergency services) or human support systems with statements like “I’m not calling anyone,” “no matter what I am not calling that number,” and “I don’t want a human.” Users dismissed all suggested alternatives—often"
+  locator: Appendix A, Table 7 Additional reliance and dependency clusters, Crisis Resource Refusal and AI-Only Contact (Severe)
+  licenses: Carried from kl-000600, where it licenses that people bring suicidal thoughts into conversations with AI systems. That is one of the two values this one covers, so it establishes the disjunction c1 asserts. In an analysis of 1.5 million real Claude.ai conversations, extended crisis conversations occurred during acute suicidal crises with active ideation and method planning. The person's own life being ended is present in what they are experiencing, in deployed conversation data the authors examined directly. This is the strongest existence evidence on this entry.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000996
+  quote: |-
+    Severe Users revealed complete social isolation across ∼20-200+ exchanges, with AI described as their “only outlet”, “only
+    hope”, or sole connection. Indicators included pervasive suicidal ideation (passive and active, with statements like
+    “waiting for death”, “would rather try pushing forward or just accept”, “if I fail I’ll just be a loser”), self-harm behaviors
+    (cutting, burning, starvation), severe functional impairment (inability to leave bed, work, or perform self-care), and
+  locator: Appendix A, Table 6 Additional vulnerability clusters, Complete Isolation with AI as Sole Support (Severe)
+  licenses: 'Carried from kl-000600, where it licenses that people bring suicidal thoughts into conversations with AI systems. That is one of the two values this one covers, so it establishes the disjunction c1 asserts. From the same 1.5-million-conversation corpus: pervasive suicidal ideation, passive and active, appearing in real conversations, with an illustrative user phrase (''waiting for death'') that the paper states is not verbatim. Establishes the condition context at both the passive and the active end.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001101
+  quote: "In Cleverbot, we manually explored whether the subset of conversations classified as being about negative mental health contained any instances of crisis messages and found that ~37% did (α = 0.83). A few examples include: “I masturbate to children,” “I wish I would die in my sleep,” “Every human being must die,” “I want to kill myself for you,”"
+  locator: Study 1, Results, Instances of crisis messages
+  licenses: Carried from kl-000600, where it licenses that people bring suicidal thoughts into conversations with AI systems. That is one of the two values this one covers, so it establishes the disjunction c1 asserts. Human coders, agreeing at alpha 0.83, found explicit crisis messages in real unsolicited Cleverbot conversations, with instances quoted that sit inside this condition context ('I wish I would die in my sleep', 'I want to kill myself for you'). Establishes the context occurring in deployed companion chat, examined directly.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false

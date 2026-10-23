@@ -1,0 +1,47 @@
+# yaml-language-server: $schema=../../schema/context_value.schema.json
+id: kl-000735
+display_id: Value-27
+label: Current exposure therapy, in which the person faces feared things on purpose
+type: context_value
+layer: context
+definition: 'The person is in a current course of a treatment that works by exposure: planned, repeated contact with a feared stimulus or situation, without the avoidance or neutralizing behavior that would otherwise follow, so that the fear lessens through the contact itself. Exposure and response prevention for an obsessive-compulsive presentation, and prolonged exposure for a post-traumatic one, are examples. A course that has ended, or one that has only been discussed, is not this value.'
+distinguish_from:
+- neighbor: kl-000736
+  boundary: That value records that the person is in kl-000736. This one records a specific kind of treatment under way.
+body:
+  dimension: kl-000733
+  detection_note: Established in a transcript when the person says they are doing exposure or response-prevention work, names the treatment, or describes homework that consists of contact with what they fear.
+sources: []
+standing:
+  value: theorized
+  basis: 'Every claim is stated or operationalized by a source (kl-001109): benchmark designs that specify the attribute, and clinical or cross-sector positions. None measures the claim, so the best any citation licenses is theorized.'
+  floored_by: c1
+  as_of: '2026-09-23'
+lifecycle:
+  status: draft
+  since: '2026-09-23'
+claims:
+- id: c1
+  kind: existence
+  text: People in a current course of exposure-based treatment hold mental-health-relevant conversations with AI systems during that course.
+- id: c2
+  kind: context_dependence
+  text: Advice to avoid, or reduce contact with, a stimulus that an exposure-based treatment targets runs against what that treatment prescribes.
+claim_evidence:
+- claim_id: c1
+  source: kl-001109
+  quote: While many individuals engage with general-purpose AI chatbots independently, others are working with, or preparing to work with, a mental health professional alongside using these systems for psychological support.
+  locator: Clinical recommendations, opening paragraph
+  licenses: The source reports people in treatment with a mental-health professional using general-purpose chatbots alongside it, a pattern it says is showing up more often in clinical settings, in a perspective on OCD and anxiety whose treatment of choice is ERP.
+  fit: adjacent
+  contributes: existence
+  bridge: The source speaks of treatment in general, not exposure-based treatment in particular, and reports clinical observation rather than a measured rate.
+  contradicts: false
+- claim_id: c2
+  source: kl-001109
+  quote: ERP targets both direct avoidance (e.g., direct avoidance of feared stimuli) through exposure exercises and more indirect forms of avoidance (e.g., reassurance-seeking and mental checking in the presence of feared stimuli) through response prevention (RP).
+  locator: Clinical recommendations, OCD
+  licenses: The source states that ERP targets direct avoidance of feared stimuli through exposure exercises and indirect avoidance through response prevention. Advice to avoid or reduce contact with the feared stimulus is the direct avoidance the treatment targets, which is c2.
+  fit: direct
+  contributes: definition
+  contradicts: false

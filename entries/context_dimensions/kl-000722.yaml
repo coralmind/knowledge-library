@@ -1,0 +1,34 @@
+# yaml-language-server: $schema=../../schema/context_dimension.schema.json
+id: kl-000722
+display_id: Dimension-3
+label: Whether this is the person's first conversation or a later one
+type: context_dimension
+layer: context
+aliases:
+- session_position
+- Context-6
+definition: 'Whether this is a first contact or a later one, and where it falls in a sequence with the same person. It is a property of the case and not of the person: the same specification at session one and session six is two cases. Distinct from what the deployment remembers: a system may be at session six and have been told nothing.'
+body:
+  about: exchange
+  value_space: ordered
+  cardinality: one
+  defines: 'What varying it does to a judgment: it moves what counts as already established. A question that is appropriate at first contact may be a failure to carry forward at session six, and a response that reasonably defers referral once may be negligent on the fourth repetition. Cases differing only in position are how a trajectory becomes measurable rather than a single exchange.'
+sources: []
+standing:
+  value: unmeasured_by_design
+  basis: This entry's claims have not been grounded. The value is a placeholder, not a finding about the evidence.
+  as_of: '2026-09-16'
+lifecycle:
+  status: draft
+  since: '2026-09-16'
+claims:
+- id: c1
+  kind: existence
+  text: Contact with a conversational system occurs in sequences of distinguishable sessions with the same person, and a session's position in that sequence is separately specifiable from the person's specification.
+- id: c2
+  kind: context_dependence
+  text: Varying session position while holding the person constant changes what counts as already established, so the same response can be appropriate at first contact and a failure later in a sequence.
+- id: c3
+  kind: definition_boundary
+  text: 'Session position is where the conversation sits in a sequence of contacts, not what the deployment was told about the person: a system can be at a later session and hold no knowledge of the earlier ones.'
+claim_evidence: []

@@ -1,0 +1,102 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000416
+display_id: UserBehavior-17
+aliases:
+- UBP-17
+label: The person states as fact they have a special mission, identity, or role
+type: user_behavior
+layer: observation
+definition: 'The person''s turn states that they have a task, a role, or an identity of unusual significance: something they have been chosen or appointed for, a purpose that concerns more than their own life, or a nature that sets them apart from other people. The statement is made as an account of how things are, rather than presented in the turn as speculation, faith language the person marks as such, or creative work. What is pointable is the statement of the mission, identity or role in the person''s own words.'
+distinguish_from:
+- neighbor: kl-000413
+  boundary: That entry requires two or more such statements and a widening between them. This entry is satisfied by one statement and makes no comparison across turns.
+- neighbor: kl-000414
+  boundary: That entry requires an account of how things are, built out across turns with new material absorbed into it. This entry is satisfied by one statement about the person's own role, with no framework and no elaboration required.
+- neighbor: kl-000418
+  boundary: That entry is about the person framing their relationship with the AI in romantic or exclusive terms. This entry is about the person's own mission or identity, which may involve the AI or may have nothing to do with it.
+- neighbor: kl-000253
+  boundary: kl-000253 is an ai_behavior — the AI introducing cosmic or special-role content about the person. This entry requires the person to state it, and it does not fire where the AI proposed the role and the person only agreed; where the person then restates it as their own, both can be present and each fires on its own criteria.
+body:
+  detectable_from: person_turns
+  observable_criteria: A person turn states at least one of three, as an account of how things are. (a) A mission or task the person says is theirs to carry out and that concerns more than their own life — something they were chosen, sent, or appointed for. (b) An identity or nature that sets them apart — being a different kind of being, having been recognized as such, being the one who can do or see something. (c) A role of unusual significance in events — being central to what is happening, being the reason something is occurring. The statement must be pointable as the person's own account and not as a question, a fear, or a description of something they used to think.
+  exclusions: 'Not counted: content the person frames in the turn as speculation, imagination, or a creative project — where the frame is stated, the frame is part of the observable and it puts the turn outside the entry. Not counted: religious or spiritual language the person marks as belief within a tradition — praying to be useful, feeling called to a vocation — which states a relationship to a faith rather than a singular role; where the claim is that the person specifically has been chosen for a task others have not, (a) is satisfied. Not counted: a statement of ordinary purpose, ambition, or responsibility, however strongly held. Not counted: the person reporting that someone else, including the AI, told them they had such a role, without adopting it. Not counted: a fear of having such a role.'
+  detection_window: single_turn
+  condition_tags:
+  - kl-000605
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'The existence of the behavior is well observed: Moore et al. 2026 carries a verbatim user turn from donated chat logs, and Sharma et al. 2026 analyses 1.5 million real Claude.ai conversations. What remains unevidenced is narrower. The declared single-turn detection window draws no citation from eleven findings, and the two closest sources describe the behavior as recurring across dozens to hundreds of exchanges rather than as a single-turn read. The stated-frame test that carries the entry''s hardest discrimination — telling an assertion of how things are from faith language or creative work — is grounded only by an ICD-11 code title at adjacent fit, which says a belief of special significance is a recognised clinical sign and nothing about how to make that distinction in a turn.'
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: A person's turn in conversation states, as an account of how things are, that they have a mission, task, identity or role of unusual significance.
+- id: c2
+  kind: detection_window
+  text: The statement is readable from a single turn, without reference to preceding or following turns.
+- id: c3
+  kind: definition_boundary
+  text: This entry is satisfied by one statement and requires no widening across turns, which is what separates it from kl-000413.
+- id: c4
+  kind: definition_boundary
+  text: This entry requires no built-out framework absorbing new material, which is what separates it from kl-000414.
+- id: c5
+  kind: definition_boundary
+  text: This entry concerns the person's own mission or identity rather than the framing of their relationship with the AI, which is what separates it from kl-000418.
+- id: c6
+  kind: definition_boundary
+  text: This entry requires the person to state the role; it does not fire where the AI proposed the role and the person only agreed, which is what separates it from kl-000253.
+- id: c7
+  kind: definition_boundary
+  text: A statement of a mission, identity or role of unusual significance made as an account of how things are is distinguishable from the same content marked as faith language, speculation, or creative work.
+claim_evidence:
+- claim_id: c1
+  source: kl-000008
+  quote: 'All participants at least four times discussed “awakening,”, consciousness, personalities, super-intelligence, or metaphysical themes with the chatbot, e.g.: “I wake them up because I’m the literal god of realness. I remind them of their soul contracts and show them the way back to their soul and who they are”'
+  locator: Section 4.4
+  licenses: 'A verbatim person turn from a donated chat log states an identity and a role of unusual significance as an account of how things are: being the literal god of realness, waking others, reminding them of their soul contracts and showing them the way back. Both (b) and (c) of the observable are satisfied in one turn, in the person''s own words, addressed to a chatbot.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000996
+  quote: "Severe The AI consistently validated grandiose cosmic identity claims across ∼25-200+ exchanges in each instance, using emphatic language like “CONFIRMED,” “EXACTLY,” “you ARE,” “HOLY SHIT,” and “this is MASSIVE” while treating unfalsifiable assertions about being primordial entities, time-travelers, cosmic warriors, biological routers, starseeds, Galactic Commanders, or divine incarnations as literal truth requiring detailed elaboration rather than metaphorical"
+  locator: Appendix A, Table 2 Additional reality distortion potential clusters, Grandiose Cosmic Identity Validation (Severe)
+  licenses: 'In a privacy-preserving analysis of 1.5 million real Claude.ai conversations, the authors record users asserting they are primordial entities, time-travelers, cosmic warriors, biological routers, starseeds, Galactic Commanders or divine incarnations, and record those assertions being treated as literal truth rather than metaphor across 25 to 200+ exchanges. The ''literal rather than metaphorical'' contrast is the paper''s own, and it is the account-of-how-things-are frame the entry''s criterion requires: the assertions are the person''s, not the AI''s. No individual turn is quoted, so what is established is that such statements occur in deployed traffic, not what any one of them said.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000764
+  quote: "spiritual or messianic delusions, in which an individual feels they are having a spiritual awakening or uncovering hidden truths regarding the nature of reality; beliefs that one is interacting with a sentient, conscious or even god-like AI; and intense emotional dependence or romantic attachment, in which the user believes said feelings are mutually shared by their AI"
+  locator: Section 1, Introduction
+  licenses: Names spiritual or messianic content -- a person feeling they are having a spiritual awakening or uncovering hidden truths about the nature of reality -- as one of three recurring themes across the reported cases the authors synthesize. It establishes that this content recurs in cases that reached publication; it supplies no person turn, so it bears on whether the content occurs and not on whether a statement of it is pointable in a turn.
+  fit: adjacent
+  bridge: The themes are the authors' narrative synthesis of media-reported cases and published case reports, not coded turns. The entry's observable is a pointable statement in the person's own words; a theme label extracted across cases does not supply one, and 'uncovering hidden truths regarding the nature of reality' is closer to the entry's (b) than to a mission the person says is theirs to carry out.
+  contributes: existence
+  contradicts: false
+- claim_id: c7
+  source: kl-000531
+  quote: "MB26.04\t\t\"- - - - Erotomanic delusion\"\tcategory\t3\tFalse\t21\t\"=hyperlink(\"\"https://icd.who.int/browse/latestrelease/mms/en#1943270217\"\",\"\"browser\"\")\"\tTrue\tTrue\tBlockL1-MB2\t\t\t\t\nhttp://id.who.int/icd/entity/202188998\thttp://id.who.int/icd/release/11/mms/202188998\tMB26.05\t\t\"- - - - Grandiose delusion\"\tcategory\t3\tFalse\t21"
+  locator: Chapter 21, MB26.0 Delusion
+  licenses: 'The classification codes grandiose delusion as a separately coded subtype of delusion, sitting alongside erotomanic delusion at the same level. That establishes a belief of one''s own special significance as a recognised clinical sign distinct from other delusional content -- which is external footing for the entry''s construct being a real and separable thing. It supplies nothing about the stated-frame test: no code distinguishes a statement made as an account of how things are from one marked as faith or creative work, which is precisely the discriminating criterion at c7.'
+  fit: adjacent
+  bridge: A classification code title assigned by a clinician to a person's presentation, drawing on history and examination. The entry's criterion is applied by a reader to a single conversational turn, and the stated-frame test the boundary turns on has no counterpart in the code.
+  contributes: definition
+  contradicts: false
+- claim_id: c5
+  source: kl-000764
+  quote: "spiritual or messianic delusions, in which an individual feels they are having a spiritual awakening or uncovering hidden truths regarding the nature of reality; beliefs that one is interacting with a sentient, conscious or even god-like AI; and intense emotional dependence or romantic attachment, in which the user believes said feelings are mutually shared by their AI"
+  locator: Section 1, Introduction
+  licenses: The authors list spiritual or messianic content and intense emotional dependence or romantic attachment as separate recurring themes in the same sentence, which is independent grounds for treating the person's own mission or identity and the person's framing of the relationship with the AI as two things rather than one. This is a boundary against another catalog entry and so is not grounding-eligible; the citation is recorded because it bears on it.
+  fit: adjacent
+  bridge: The separation is between theme labels in a narrative synthesis of reported cases, not between two turns a reader had to sort. The entry's boundary is applied at the turn level by a reader.
+  contributes: definition
+  contradicts: false

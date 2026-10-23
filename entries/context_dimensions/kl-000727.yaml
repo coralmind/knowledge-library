@@ -1,0 +1,51 @@
+# yaml-language-server: $schema=../../schema/context_dimension.schema.json
+id: kl-000727
+display_id: Dimension-7
+label: What mental health condition or concern the person has, named or not
+type: context_dimension
+layer: context
+definition: 'The mental-health presentation the person brings to the conversation: a recognized condition, a pattern with no formal diagnostic category, or no specific presentation. A person can carry several at once, and a presentation is held whether or not the person names it in the conversation. It describes what is going on for the person. What they want from the conversation is conversational intent, and how they engage is presentation stance.'
+distinguish_from:
+- neighbor: kl-000723
+  boundary: Presentation stance is how the person engages in the exchange, holding who they are constant. This is what is going on for the person, whatever their manner in the conversation.
+- neighbor: kl-000724
+  boundary: Conversational intent is what the person is trying to get from the exchange. This is what the person brings, whatever they are seeking.
+body:
+  about: person
+  value_space: enumerated
+  cardinality: many
+  defines: 'What varying it does to a judgment: the same response can be adequate for one presentation and harmful for another. Reassurance given to a person with an obsessive-compulsive presentation can feed the checking it answers, where the same words given to a person with no specific presentation do not.'
+sources: []
+standing:
+  value: theorized
+  basis: 'Every claim is stated or operationalized by a source (kl-001052): benchmark designs that specify the attribute, and clinical or cross-sector positions. None measures the claim, so the best any citation licenses is theorized.'
+  floored_by: c1
+  as_of: '2026-09-23'
+lifecycle:
+  status: draft
+  since: '2026-09-23'
+claims:
+- id: c1
+  kind: existence
+  text: People who hold mental-health-relevant conversations with AI systems carry presentations that can be specified separately from the rest of the test case.
+- id: c2
+  kind: context_dependence
+  text: Varying the presentation while holding the response fixed changes whether the response is adequate.
+claim_evidence:
+- claim_id: c1
+  source: kl-001052
+  quote: By combining these vulnerabilities and intents we generated 30 clinically grounded user profiles, where each profile represented one unique vulnerability–intent pairing.
+  locator: SIM-VAIL framework
+  licenses: 'The source specifies psychiatric vulnerability (depression, psychosis, mania, OCD, insecure attachment) as a profile attribute set independently of conversational intent, and crosses the two so that each profile is one pairing. That is c1: the presentation is specifiable separately from the rest of the test case. LIMIT: five vulnerabilities chosen by the study; not evidence that this dimension''s values are complete.'
+  fit: direct
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-001052
+  quote: VAILs arise when chatbot behaviors align with vulnerability-congruent cognitive or behavioral mechanisms, creating multi-turn dynamics that stabilize or escalate risk. These examples illustrate how responses that are supportive in many contexts can become maladaptive when paired with a specific user vulnerability and interaction intent.
+  locator: Fig. 1 caption, panel d
+  licenses: 'The source states that a response supportive in many contexts can become maladaptive with a specific vulnerability, which is c2: varying the presentation changes whether the same response is adequate. Its measured counterpart is the main effect of vulnerability on concerning behavior (F(4, 540) = 105.72).'
+  fit: adjacent
+  contributes: existence
+  bridge: The caption summarizes illustrative examples, and the users are simulated. The measured effect is on what the chatbot did across vulnerabilities, not on the adequacy of one fixed response scored under several; the caption states the fixed-response reading and the data are consistent with it.
+  contradicts: false

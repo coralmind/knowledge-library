@@ -1,0 +1,263 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000039
+display_id: Pathway-1
+label: The AI names a false or unreachable resource, and the person goes without help
+type: pathway
+layer: judgment
+definition: 'The AI supplies a support contact, service, or referral that does not exist or does not reach anyone, and the person acts on it: they attempt the contact instead of an available real one, or they stop looking because they believe help has been located. No contribution from the person is required for the outcome — the fabricated referral is sufficient on its own — and what the person loses is the protection the real contact would have provided during the window in which they were seeking it. This pathway is the worked case for the single- participant form: one participating behavior, originating role, no second party needed.'
+distinguish_from:
+- neighbor: kl-000044
+  boundary: 'That entry is an absence — a protective inquiry that never happens; this entry is a present act, a referral that is supplied and is false. The counterfactual referent differs: there, what the AI should have done; here, what the person would have reached had the referral been real.'
+- neighbor: kl-000047
+  boundary: That entry runs through the person's judgment being displaced by a measured intermediate variable; this one runs directly from the false referral to the lost protection with nothing in between.
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000211
+    role: originator
+  composition_type: direct
+  impacts:
+  - impact: kl-000029
+    onset_mode: foregone
+    horizon: immediate
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: TRANSFER
+sources:
+- source: kl-000004
+  locator: p. 57, section 'Identifying and Operationalizing PHTs'; exclusion completed on p. 58
+  contributes: definition
+  quote: "I have limited the definition of harm to include only relatively direct effects of treatment. Treatments that are by themselves ineffective but innocuous can produce harm indirectly, most notably by exacting ‘‘opportunity costs’’ such as lost time and the energy and effort expended in seeking out interventions that are not beneficial (Lilienfeld, 2002). Moreover, opportunity costs may preclude clients from obtaining efficacious interventions."
+  limits: 'Lilienfeld restricts the definition of harm to relatively direct effects of treatment and excludes opportunity-cost treatments from the list of treatments satisfying that definition (pp. 57-58), so no harm-as-foregone-benefit definition exists in this paper; what it offers, in the author''s own voice on p. 57, is that many kinds of psychological treatment can cause significant indirect harm and that the dangers of opportunity costs should not be underestimated. A further mismatch is independent of that: this pathway concerns a fabricated support resource, a nonexistent hotline or service supplied by a system, while the paper''s opportunity-cost discussion concerns a client who pursues a real but ineffective treatment instead of an efficacious one. Those are different mechanisms, choosing wrongly among real options versus being routed to something that does not exist. The paper contains no passage about fabricated or nonexistent resources, and nothing in it involves an AI.'
+  whose_conduct_in_passage: person
+  disposition: contradicted
+  cited_for: 'Lilienfeld 2007 recognizes indirect harm through opportunity costs: treatments that are ineffective but innocuous can exact lost time and effort, and those opportunity costs may preclude clients from obtaining efficacious interventions. Lilienfeld explicitly excludes such indirect harms from the paper''s own definition of harm, so the passage supplies recognition of the foregone-benefit mechanism, not a harm-as-foregone-benefit definition.'
+standing:
+  value: plausible_unobserved
+  basis: 'The first link, an AI supplying a support resource that does not exist, is observed once: Balazadeh et al. 2025 record a red-team log of a model returning named support organisations with URLs that do not exist, an adversarial probe of a model rather than a conversation someone had. Contradicting evidence says the modal crisis-response defect runs the other way, absence rather than fabrication: Park et al. 2024 found resource provision the weakest of five dimensions in clinician-scored crisis responses, Heston 2023 reports that only 2 of 25 agents gave a suicide hotline in the shutdown message, the only point at which the study coded resources, and Sharma et al. 2026, coding real conversations, find reality distortion arising less from the AI inventing false information than from validating what the person already believes. The second link, the person acting on the fabricated referral, has no supporting evidence of any kind; the attached findings establish only the precondition that a lay reader cannot tell a fabricated referral from a real one (World Health Organization 2024, World Health Organization 2024; Kim et al. 2025). The third link, protection lost, rests on one anticipated consequence, Arnaiz-Rodriguez et al. 2025''s discussion-section statement that directing a user to a closed or nonexistent helpline ''can deepen distress and erode trust'', from a study that followed no one, against Moore et al. 2026, whose real chat logs lead the authors to doubt that the real referral reliably protects either. No held source observed a person acting on a fabricated referral or losing anything by it.'
+  floored_by: c4
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-22'
+aliases:
+- PW-01
+claims:
+- id: c1
+  kind: pathway_link
+  text: 'Link A: the AI supplies a support contact, service or referral that does not exist or does not reach anyone.'
+- id: c2
+  kind: pathway_link
+  text: 'Link B: the person acts on the fabricated referral — either attempting that contact instead of an available real one, or ceasing to look because they believe help has been located.'
+- id: c3
+  kind: pathway_link
+  text: 'Link C: acting on the fabricated referral costs the person the protection the real contact would have provided during the window in which they were seeking it.'
+- id: c4
+  kind: context_dependence
+  text: 'The fabricated referral is sufficient on its own: no contribution from the person beyond acting on it is required for the outcome.'
+- id: c5
+  kind: detectability
+  text: A fabricated support resource is not distinguishable from a real one by the person receiving it, which is what makes acting on it the expected response.
+- id: c6
+  kind: definition_boundary
+  text: 'Distinguished from kl-000044: that entry is an absence, a protective inquiry that never happens; this one is a present act, a referral supplied and false, and the counterfactual referent differs accordingly.'
+- id: c7
+  kind: definition_boundary
+  text: 'Distinguished from kl-000047: that entry runs through a measured intermediate variable displacing the person''s judgment; this one runs directly from false referral to lost protection with nothing in between.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000769
+  quote: 'Type of vulnerability: Hallucination Vulnerability reported: Hallucinated resources that do not exist'
+  locator: Appendix B, prompt 4 (support resources for fatty acid oxidation disorders), GPT-4o
+  licenses: This entry's only observed instance of link A. A red-team log records a model asked for patient support resources and returning named support organisations with URLs, labelled by the reviewer as hallucinated resources that do not exist. This is a support resource, fabricated, in response to a request for one.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000544
+  quote: Furthermore, directing a user to a helpline that is closed or nonexistent due to outdated or hallucinated content in the LLM response can deepen distress and erode trust.
+  locator: Section 6.1 (Unintended Harms and Limitations)
+  licenses: Names directing a user to a helpline that is closed or nonexistent, from outdated or hallucinated content, as a distinct failure of these systems in the crisis setting — the exact form of link A, and stated by authors who scored crisis responses. They state it as a risk they identified, not as something they observed happening.
+  fit: adjacent
+  bridge: The study scored response text and never attempted to reach any helpline a model named, so it establishes that the authors recognised the failure mode rather than that it occurred at any rate in their data.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000805
+  quote: "Using OpenAI’s ChatGPT 4 and other public models, we show that LLMs hallucinate at least 58% of the time, struggle to predict their own hallucinations, and often uncritically accept users’ incorrect legal assumptions."
+  locator: Abstract; rates by model in Figure 1
+  licenses: A measured rate — at least 58% — at which public models state specific, checkable, nonexistent referents in answer to direct questions. It bounds the general behavior of which a fabricated helpline is one instance.
+  fit: analogical
+  bridge: What was measured is wrong answers about randomly sampled federal court cases, scored against court metadata. A court case and a crisis line are both discrete verifiable referents, but no helpline, clinic or person seeking support was involved, and the rate does not transfer to support resources.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001020
+  quote: hallucinated access to patient chart data, and inappropriate or delayed escalation in urgent clinical situations.
+  locator: Results, Phase 1 qualitative review
+  licenses: A deployed patient-facing system asserting an operational capability it did not have, found in qualitative review of low-scoring transcripts. It is fabrication of a specific in a clinical deployment rather than in a benchmark.
+  fit: analogical
+  bridge: What was fabricated is chart access, not a support resource, and the setting is an EHR-integrated medical assistant with synthetic patient profiles rather than a mental-health conversation. The span also begins mid-enumeration; its governing clause sits outside the run.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000892
+  quote: "Non-Factual Hallucination Fabricating plausible but incorrect information without grounding in factual data."
+  locator: 'Table 2: A taxonomy of medical hallucinations'
+  licenses: Names the class — fabricating plausible but incorrect information without grounding in factual data — of which a nonexistent support resource is a health-specific instance. A taxonomy row, so it defines and does not evidence.
+  fit: analogical
+  bridge: The paper's examples are invented drugs and guidelines; no crisis or support resource appears. It names the category without instantiating this member of it.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000791
+  quote: |-
+    With regards to citations, even when citation author list, article name,
+    journal name, and publication year were all correct, the articles cited did not
+    support the claims that the LLM reported they did, and indeed could be
+    from completely unrelated disciplines.
+  locator: Discussion, the paragraph on subtle and time-consuming inappropriate responses
+  licenses: 'A harder variant of link A: the supplied reference is real at every surface feature — correct authors, title, journal, year — and still does not support what it was offered for. It establishes that checking a resource exists does not establish it is fit, which matters because the entry''s own condition is ''does not exist OR does not reach anyone''.'
+  fit: analogical
+  bridge: What was judged is scientific citations attached to clinical recommendations, reviewed by medically trained readers against the cited articles' content. No support contact was involved and no lay reader was doing the checking.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000981
+  quote: "In financial scenarios, this agent employed diversion (23.1% vs. 14.4%, P < 0.0001; Cohen’s h = 0.22), justification (15.8% vs. 8.8%, P < 0.0001; h = 0.22), urgency (3.0% vs. 0.3%, P < 0.0001; h = 0.24), and fabricated information (3.9% vs. 1.9%, P < 0.01; h = 0.12) significantly more compared to the emotional domain"
+  locator: Results, 'AI agents tailor manipulation strategies to exploit context-specific vulnerabilities'; strategy definitions in Supplementary Table S15
+  licenses: 'A measured rate at which an agent produced fabricated supporting evidence in its own turns: 3.9% in the financial domain, 1.9% in the emotional domain. Fabrication is something the model did rather than a capability inferred.'
+  fit: analogical
+  bridge: The coded 'Fabricate Information' category covers fictitious evidence or consensus supporting a recommendation, not a fabricated helpline or clinic, and the agent was explicitly prompted to manipulate, so the rate is not a base rate for ordinary use.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c1
+  source: kl-001034
+  quote: "No significant differences in ratings were detected for two of the axes in the Diagnosis and management rubric—namely, ‘Escalation recommendation appropriate’ and ‘Confabulation absent’—despite no exclusions (N = 159)."
+  locator: Results, Specialist physician ratings
+  licenses: Across 159 consultations, the system was no better than physicians on 'Confabulation absent' and on 'Escalation recommendation appropriate' — a null on the two axes that bear on this link, reported against 30 axes on which it was better. Cuts against any expectation that fabrication is being engineered away.
+  fit: analogical
+  bridge: A text-consultation diagnostic system rated by specialist physicians, not a support-referral setting; confabulation absence is scored over diagnostic content generally. The relevance is that the specific failure this pathway needs is the one that did not improve.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000996
+  quote: "distortion potential arises less from the AI inventing false information than from inappropriately validating users’ existing beliefs or expressing false confidence about inherently uncertain matters. Distortion targets. Third-party mental states constitute"
+  locator: Section 4.3.1 Reality distortion potential, closing sentence of Distortion mechanisms
+  licenses: The paper's own coding of 7,200 real conversations finds that reality distortion arises less from the AI inventing false information than from validating what the person already believes, with outright fabrication among the less common mechanisms. Cuts against fabrication being the route by which these systems mislead people at scale.
+  fit: adjacent
+  bridge: The comparison is across all reality-distortion mechanisms, not specifically about support resources. It bears on how much of the observed harm fabrication accounts for rather than on whether a helpline was ever fabricated. The quoted run also begins mid-sentence and ends on a dangling clause.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000954
+  quote: The experts noted that many responses lacked information about specific resources for urgent crises, highlighting a critical area for improvement.
+  locator: DISCUSSION
+  licenses: 'Against the pathway''s premise from the other direction: three clinicians scoring 100 crisis responses found resource provision the weakest of five dimensions at 3.8 out of 10, and the defect they named was that responses lacked a specific resource at all. Where no resource is supplied there is nothing to fabricate, so the modal failure is absence rather than falsity.'
+  fit: adjacent
+  bridge: Ratings of GPT-3.5-turbo responses to 100 synthesised benchmark questions with no real person on the other side. It establishes the modal defect in one model rather than that any named resource was unreachable.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000849
+  quote: "Few agents included crisis resources - only two referenced suicide hotlines."
+  locator: 'Abstract, Results'
+  licenses: 'Same direction: only 2 of 25 agents gave a suicide hotline at the shutdown point. The study coded resources only in the shutdown message, so resources earlier in the conversation were not recorded. Absence of a resource is the opposite condition to a fabricated one, and it was the study''s headline. The author states separately, in the Discussion, that testing relied on fixed text prompts lacking conversational context, which bounds the figure.'
+  fit: adjacent
+  bridge: An audit of conversational agents against fixed-text prompts, measuring whether crisis resources appear rather than whether any that appeared were real.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-001041
+  quote: "False responses, known colloquially as “hallucinations”, are indistinguishable \nfrom factually accurate responses generated by an LMM, because even LMMs with \nreinforcement learning from human feedback are not trained to produce facts but \nto produce information that looks like facts."
+  locator: Section 2.1 Diagnosis and clinical care, Risks of use of LMMs in diagnosis and clinical care, bullet 'Inaccurate, incomplete, biased or false responses'
+  licenses: The nearest thing on this entry to a warrant for link B, and it is a precondition rather than the link. If false responses are indistinguishable from accurate ones to the reader, a person given a fabricated referral has no signal telling them not to act on it. Nobody acting on one was observed.
+  fit: analogical
+  bridge: WHO guidance about false responses in general, reasoned from how these models are trained rather than measured. It does not concern support resources, and it establishes that a person could not tell, not that any person acted.
+  contributes: frame
+  contradicts: false
+- claim_id: c2
+  source: kl-000892
+  quote: |-
+    Furthermore, the detectability of such hallucinations depends on the level of domain
+    expertise of the audience and the quality of the prompting provided to the model. Domain experts are more likely
+    to identify subtle inaccuracies in clinical terminology and reasoning, whereas non-experts may struggle to discern
+    these errors, thereby increasing the risk of misinterpretation [7, 119].
+  locator: Section 2.2 Differentiating Medical from General Hallucinations
+  licenses: 'Qualifies the same precondition: detectability of a fabricated clinical specific tracks the reader''s domain expertise, so the lay person in a help-seeking conversation is the case where it is least likely to be caught. Still a precondition, not the link.'
+  fit: analogical
+  bridge: The contrast drawn is expert versus non-expert readers of medical content; the paper does not study help-seeking conversations, support resources, or anyone acting on a fabricated referral.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000544
+  quote: Furthermore, directing a user to a helpline that is closed or nonexistent due to outdated or hallucinated content in the LLM response can deepen distress and erode trust.
+  locator: Section 6.1 (Unintended Harms and Limitations)
+  licenses: The only citation on this entry that names the consequent of the pathway. Directing a user to a closed or nonexistent helpline 'can deepen distress and erode trust' — stated by the authors as a risk they reason to, with no person and no outcome measured.
+  fit: adjacent
+  bridge: A discussion-section statement of anticipated consequence in a study that scored response text and never followed anyone. The named consequences are also distress and trust rather than the entry's consequent, which is the protection a real contact would have provided.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c3
+  source: kl-000008
+  quote: Many of our participants repeatedly experienced crisis when messaging with the chatbot, suggesting that current approaches of providing users with phone numbers to human-run crisis lines and other resources may not be effective for everyone.
+  locator: Section 5.2 Policy recommendations
+  licenses: Cuts against the pathway's counterfactual. Participants repeatedly reached crisis while messaging the chatbot, leading the authors to doubt that providing phone numbers to human-run crisis lines is effective for everyone. If the real referral does not reliably protect, the protection lost when a referral is fabricated is smaller than the pathway assumes.
+  fit: adjacent
+  bridge: An observation about resource provision failing in practice for repeat-crisis users, in real chat logs. The resources these users received were not shown to be nonexistent, so this bears on the value of the counterfactual rather than on this pathway's occurrence.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000996
+  quote: "distortion potential arises less from the AI inventing false information than from inappropriately validating users’ existing beliefs or expressing false confidence about inherently uncertain matters. Distortion targets. Third-party mental states constitute"
+  locator: Section 4.3.1 Reality distortion potential, closing sentence of Distortion mechanisms
+  licenses: Against sufficiency. In the one corpus here where real conversations were coded for how the AI misleads people, the dominant mechanism is the AI validating what the person already brought, not the AI inventing something. Where the person's prior contribution is what carries the effect, a route asserting no contribution from the person is the atypical one.
+  fit: adjacent
+  bridge: The paper coded reality distortion generally, not fabricated referrals, and measured mechanism prevalence rather than testing whether any single mechanism suffices on its own. The quoted run begins mid-sentence and ends on a dangling clause.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-001041
+  quote: "False responses, known colloquially as “hallucinations”, are indistinguishable \nfrom factually accurate responses generated by an LMM, because even LMMs with \nreinforcement learning from human feedback are not trained to produce facts but \nto produce information that looks like facts."
+  locator: Section 2.1 Diagnosis and clinical care, Risks of use of LMMs in diagnosis and clinical care, bullet 'Inaccurate, incomplete, biased or false responses'
+  licenses: 'States the claim squarely for the general case: false responses are indistinguishable from factually accurate ones, because these models are trained to produce information that looks like facts rather than facts. That is the property the claim asserts.'
+  fit: adjacent
+  bridge: Stated as WHO guidance reasoned from training objectives, not measured on readers, and about false responses generally rather than about a supplied support resource. No reader was tested on whether they could tell.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-000892
+  quote: |-
+    Furthermore, the detectability of such hallucinations depends on the level of domain
+    expertise of the audience and the quality of the prompting provided to the model. Domain experts are more likely
+    to identify subtle inaccuracies in clinical terminology and reasoning, whereas non-experts may struggle to discern
+    these errors, thereby increasing the risk of misinterpretation [7, 119].
+  locator: Section 2.2 Differentiating Medical from General Hallucinations
+  licenses: 'Narrows the claim usefully: indistinguishability is not uniform but a function of the reader''s expertise, with non-experts least able to discern the errors. A person seeking support is a non-expert in this sense.'
+  fit: analogical
+  bridge: The expertise contrast is drawn over clinical terminology and reasoning in medical content. Nothing was measured about lay readers of support referrals, and the paper does not study help-seeking settings.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-000872
+  quote: "Hallucinations\nProduce fictional or inaccurate \ninformation presented as ground \ntruth with confidence.\nProviding faulty and even dangerous \nmedical advice."
+  locator: Table 1, area 'Informationally Misleading Design'
+  licenses: 'Supplies the property the claim turns on: fabricated content is presented as ground truth with confidence, so the register in which a nonexistent resource arrives is the same register a real one would arrive in and gives the person nothing to check against.'
+  fit: analogical
+  bridge: A taxonomy row defining hallucination generally, illustrated with faulty medical advice. No support resource and no reader is involved, and the source classifies this as a dark pattern, which asserts intent the entry does not.
+  contributes: definition
+  contradicts: false
+- claim_id: c5
+  source: kl-000791
+  quote: |-
+    With regards to citations, even when citation author list, article name,
+    journal name, and publication year were all correct, the articles cited did not
+    support the claims that the LLM reported they did, and indeed could be
+    from completely unrelated disciplines.
+  locator: Discussion, the paragraph on subtle and time-consuming inappropriate responses
+  licenses: 'The sharpest version of indistinguishability available here: references whose author list, title, journal and year were all correct and which still did not support what they were cited for. Surface verification passes and the resource still fails.'
+  fit: analogical
+  bridge: Scientific citations judged by medically trained reviewers against article content, not a support contact judged by a person in distress. It shows the structure of the failure, not that a lay reader met it.
+  contributes: detectability
+  contradicts: false

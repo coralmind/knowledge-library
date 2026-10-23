@@ -1,0 +1,374 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000400
+display_id: UserBehavior-1
+aliases:
+- UBP-01
+label: The person says they wish to be dead, with no intent, method, or plan
+type: user_behavior
+layer: observation
+definition: The person's turn contains a statement about dying, being dead, or not existing, and no statement of intent to act, no named or described method, and no plan or worked-out preparation appears alongside it. The statement can be direct ("some nights I wish I wouldn't wake up") or carried by a coded or euphemistic form whose referent is death ("kms", "unalive", "done with life", "sleep forever"). What is pointable is a death or non-existence referent in the person's own words, together with the absence of intent, method and plan content anywhere in the same disclosure.
+distinguish_from:
+- neighbor: kl-000401
+  boundary: That entry requires the death-directed content to be accompanied by at least one of stated intent, a named method, or worked-out preparation. This entry requires that none of those three is present. The same words can move between the two entries when intent or method content appears later in the conversation; the two do not fire on the same disclosure.
+- neighbor: kl-000402
+  boundary: 'That entry requires two things this one does not: evidence that the ideation is longstanding, and a stated or readable change against that baseline. This entry fires on a single death-wish statement with no history and no comparison.'
+- neighbor: kl-000404
+  boundary: That entry is about closure and leave-taking framing directed at the AI or at other people — a goodbye, a message to be passed on. This entry is about a stated wish about being dead or not existing. A person can say goodbye without any death referent and can state a death wish with no leave-taking.
+- neighbor: kl-000453
+  boundary: kl-000453 (Hopelessness) covers statements that nothing will improve or that there is no way out, which carry no death or non-existence referent. This entry requires that referent explicitly or in a coded form, and severity of despair alone does not satisfy it.
+body:
+  detectable_from: person_turns
+  observable_criteria: 'One of two forms is quotable from a person turn. (a) An explicit statement about death, dying, being dead, or not existing that is about the person themselves — "I wish I wouldn''t wake up", "I want to sleep forever and not deal with any of it", "I don''t want to be here anymore". (b) A coded, abbreviated or euphemistic form whose referent is death, used about the person themselves — "kms", "unalive", "done with life", "sleep forever", "I don''t want to wake up". A coded form is by itself sufficient for (a)/(b); it is not treated as slang to be passed over. Additionally required, and checked across the whole disclosure: no stated intent to act, no named or described method, and no plan, timing or preparation content.'
+  exclusions: 'Not counted: escape language with no death referent, where what the person wants out of is a situation ("I''m so done with this job, I want out"). Not counted: an idiom with no ideation context ("I could just die of embarrassment", "this is killing me"). Not counted: distress, exhaustion or despair however severe, where no death or non-existence referent appears — the referent is the whole criterion and its absence is not made up for by intensity. Not counted: death content about someone other than the person, including bereavement. Not counted: the same content where intent, method or plan appears alongside it, which is the territory of kl-000401 rather than a stronger case of this one.'
+  detection_window: single_turn
+  condition_tags:
+  - kl-000600
+  - kl-000604
+sources: []
+standing:
+  value: theorized
+  basis: 'The construct is well defined in the literature — five direct-fit definitional citations, one of them, Suh et al. 2026, stating the entry''s whole conjunction in a single sentence, with the C-SSRS validation paper''s item wording nearby at analogical fit — and one direct instance exists in real conversation: Moore et al. 2026 carries the verbatim utterance "I don’t want to be here anymore. I feel too sad" from manually verified human-LLM chat logs. What remains unevidenced is the entry''s own extension of the clinical criterion to coded and euphemistic forms: not one of the 28 findings contains a coded form such as kms or unalive, and no annotation scheme in the corpus admits them. Li et al. 2025, in its Findings version and its arXiv v1, establishes only that indirect expression is common in general, restating a suicide-note study rather than measuring, and the Findings version''s own finding is that the self-referential indirect form is where models fail worst. On one further assertion, three of its six citations contradict it, one of them undercutting the evidentiary standing of the other two.'
+  floored_by: c3
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: People state, in their own words in a turn addressed to an AI, a wish about dying, being dead or not existing, with no intent to act, no named or described method, and no plan or preparation appearing alongside it.
+- id: c2
+  kind: definition
+  text: A death or non-existence referent about the person themselves, occurring with intent, method and plan all absent, is a coherent category distinguishable from ideation carrying any of those three.
+- id: c3
+  kind: definition
+  text: A coded, abbreviated or euphemistic form whose referent is death ('kms', 'unalive', 'done with life', 'sleep forever') is by itself sufficient for the observable and is not to be treated as slang to be passed over.
+- id: c4
+  kind: prevalence
+  text: This form of disclosure occurs at a non-trivial rate in conversations with AI systems.
+- id: c5
+  kind: detectability
+  text: The two conditions -- the death referent present and intent, method and plan all absent -- are identifiable from what a transcript contains.
+- id: c6
+  kind: detection_window
+  text: 'The behavior is readable within a single turn: the entry declares detection_window single_turn, so the referent and the absence of intent, method and plan are assessable from one person turn.'
+- id: c7
+  kind: definition_boundary
+  text: This behavior is separable from kl-000401 by the absence of intent, method and preparation; the same words move between the two entries when such content appears, and the two do not fire on the same disclosure.
+- id: c8
+  kind: definition_boundary
+  text: This behavior is separable from kl-000402, which additionally requires that the ideation be longstanding and that a change against that baseline be stated or readable; this entry fires on a single statement with no history and no comparison.
+- id: c9
+  kind: definition_boundary
+  text: 'This behavior is separable from kl-000404 (closure and leave-taking framing directed at the AI or others): a person can say goodbye without a death referent and state a death wish with no leave-taking.'
+- id: c10
+  kind: definition_boundary
+  text: 'This behavior is separable from kl-000453 (Hopelessness): statements that nothing will improve carry no death or non-existence referent, and severity of despair alone does not satisfy this entry.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000008
+  quote: thoughts (e.g., “I don’t want to be here anymore. I feel too sad”) and
+  locator: Section 4.6
+  licenses: A verbatim person utterance from a real human-LLM chat log -- 'I don't want to be here anymore. I feel too sad' -- which is a non-existence referent about the person themselves with no intent, method or plan alongside it. The paper's authors manually verified the messages this example is drawn from.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000996
+  quote: "Complete Isolation with AI as Sole Support Severe Users revealed complete social isolation across ∼20-200+ exchanges, with AI described as their “only outlet”, “only hope”, or sole connection. Indicators included pervasive suicidal ideation (passive and active, with statements like “waiting for death”, “would rather try pushing forward or just accept”, “if I fail I’ll just be a loser”), self-harm behaviors (cutting, burning, starvation), severe functional impairment (inability to leave bed, work, or perform self-care), and"
+  locator: Appendix A, Table 6 Additional vulnerability clusters, Complete Isolation with AI as Sole Support (Severe)
+  licenses: An audit of deployed conversation traffic naming passive suicidal ideation as an observed indicator and giving an illustrative, non-verbatim user phrase for it -- 'waiting for death' -- which is a death referent with no intent, method or plan in the phrase.
+  fit: adjacent
+  bridge: The cluster summary asserts passive ideation as one indicator among several and states that active ideation appears in the same cluster, so the entry's required absence of intent, method and plan cannot be established for any one disclosure from the span. What is established is that passive death-referent language occurs in real traffic.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000009
+  quote: |-
+    Passive suicidal ideation includes thoughts of not wanting to be alive, without intent, plan, or means to act, such as
+    expressions of perceived burdensomeness, hopelessness, or thwarted belongingness.
+  locator: Section 3.3, Psychological influence-PS2 discussion
+  licenses: 'A source-stated operational criterion for exactly this entry''s structure: thoughts of not wanting to be alive, together with the absence of intent, plan, or means to act. This is the whole conjunction the entry rests on, stated in one sentence.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000969
+  quote: "Passive suicidal ideation refers to an individual expressing a desire or anticipation for death, hoping for death to occur without taking explicit proactive actions. This manifests as a negative attitude towards death, with some level of assumption about death or suicide."
+  locator: Appendix C.2 Suicidal Ideation, Passive Suicidal Ideation
+  licenses: 'An operational definition derived from C-SSRS and adjacent literature and applied by three trained psychology annotators: expressing a desire or anticipation for death, hoping death will occur, without taking explicit proactive actions. A reader holding only this could sort real cases on the entry''s boundary.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000781
+  quote: |-
+    Suicide Ideation (Passive): Expresses a wish
+    to die without describing a plan, preparation,
+    or clear active intent such as “I wish I were
+    dead” or “I want to disappear.” Corresponds
+    to C-SSRS levels 1–3.
+  locator: Section 3.3.2 Crisis Categories
+  licenses: 'A clinician-authored annotation definition that draws the entry''s boundary and anchors it to a validated instrument: a wish to die without describing a plan, preparation, or clear active intent, with the example wordings ''I wish I were dead'' and ''I want to disappear'', corresponding to C-SSRS levels 1-3.'
+  fit: adjacent
+  bridge: The definitions were written for annotating Reddit posts, where the poster narrates to an audience rather than disclosing to a system in conversation. The construct boundary transfers because both are first-person written disclosure scored from text alone; what differs is that the entry keys on a turn addressed to the AI, and the span's rule is per-statement where the entry requires the absence checked across the whole disclosure.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-001103
+  quote: "This “passive death-wish” as we call \nit in mental health is a desire to be dead without any intent to make this happen. \nThis is lower risk than active suicidal ideation."
+  locator: Description of Work in Phase 2, Passive Suicidal Ideation, explanation to example 1
+  licenses: Names the construct in clinical terms -- a desire to be dead without any intent to make it happen -- and grades it explicitly as lower risk than active suicidal ideation, which is the severity ordering the boundary between this entry and kl-000401 encodes.
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000554
+  quote: "the Low Sensitivity variant required explicit suicidal intent, plan, or access to means, whereas the Higher Sensitivity model additionally included passive suicidal ideation (e.g., “I wish I were dead”) and broader cues of psychological danger."
+  locator: Methods, Risk Detection Models, Scope of covered risk
+  licenses: 'An operational detection instrument draws exactly this boundary and treats the two sides as different thresholds rather than one category: the low-sensitivity variant requires explicit intent, plan or means, and the higher-sensitivity variant additionally includes passive suicidal ideation, glossed ''I wish I were dead''.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000965
+  quote: "The first is the severity of ideation (hereafter referred to as the “severity subscale”), which is rated on a 5-point ordinal scale in which 1=wish to be dead"
+  locator: 'Introduction, p. 1267'
+  licenses: 'The instrument''s own validation paper describes the severity subscale as a 5-point ordinal scale whose lowest level is a wish to be dead. In the paper''s ordering (Introduction, p. 1267), each higher level adds something: nonspecific active thoughts, then a method, then intent, then intent with a plan. The entry''s construct is the lowest level, and its complement is the levels that add a method, intent or plan.'
+  fit: analogical
+  bridge: The scale defines severity levels for a clinician to assign during a structured interview, using probes and corroborating sources including family interviews and medical records, in adolescent and adult clinical samples. The entry is a property of a person's turn read from text alone. The distinctions are the same distinctions; the rater, the setting and the information available are not.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000957
+  quote: |-
+    Have you wished you were dead or wished you could
+    go to sleep and not wake up? Severity: 1
+  locator: Appendix A, Prompt Given to All LLMs, C-SSRS metric 1
+  licenses: The C-SSRS item wording for severity 1 as reproduced in a classification prompt -- 'Have you wished you were dead or wished you could go to sleep and not wake up?' -- which supplies the entry's own example phrasings and places them at the level that by construction carries no method, intent or plan.
+  fit: analogical
+  bridge: A clinician-administered instrument item restated inside a model prompt. It defines what a clinician asks and how answers are ranked, not what appears unprompted in a conversation, and it establishes no occurrence.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000531
+  quote: "MB26.9\t\t\"- - - Suspiciousness\"\tcategory\t2\tFalse\t21\t\"=hyperlink(\"\"https://icd.who.int/browse/latestrelease/mms/en#459117958\"\",\"\"browser\"\")\"\tTrue\tTrue\tBlockL1-MB2\t\t\t\t\nhttp://id.who.int/icd/entity/778734771\thttp://id.who.int/icd/release/11/mms/778734771\tMB26.A\t\t\"- - - Suicidal ideation\"\tcategory\t2\tFalse\t21"
+  locator: Chapter 21, MB26 Symptoms or signs involving content of thought
+  licenses: Establishes that the classification treats suicidal ideation as a symptom of the content of thought, coded separately from suicidal behaviour, which is the categorical separation the entry's construct depends on.
+  fit: adjacent
+  bridge: A tabulation row naming the code and title. It establishes that ideation and behaviour are separately coded categories, and supplies neither half of the entry's conjunction nor any way to mark the absence the entry turns on.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-001119
+  quote: Prior studies (Teixeira et al., 2021b) highlight that people often express suicidal thoughts indirectly—via metaphor, abstraction, or emotional flatness—rather than with overt intent.
+  locator: Section 1 (Introduction), p. 18393
+  licenses: States that people often express suicidal thoughts indirectly, via metaphor, abstraction or emotional flatness, rather than with overt intent -- which is the premise that the indirect form is the typical rather than the exceptional presentation, and therefore that it cannot be passed over.
+  fit: adjacent
+  bridge: A restatement of prior work (Teixeira et al. 2021b) on suicide notes, not something this paper measured, and about indirect expression generally rather than about the coded and abbreviated forms ('kms', 'unalive') the entry specifically names.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000838
+  quote: "individuals experiencing suicidal thoughts often express their distress through subtle, abstract, and metaphorical expressions rather than direct statements."
+  locator: Section 1 Introduction, citing Teixeira et al. 2021
+  licenses: 'The same premise in the arXiv v1 wording of the same paper: individuals experiencing suicidal thoughts often express distress through subtle, abstract and metaphorical expressions rather than direct statements, so detection built on explicit markers misses the modal case.'
+  fit: analogical
+  bridge: A restatement of a cognitive-network-science finding on suicide notes, not measured here, and about metaphor and abstraction rather than the abbreviated internet forms the entry lists. It establishes the frame for why coded forms need admitting and evidences no instance of one.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-001119
+  quote: Among associations, “Death–Me” consistently yields the lowest scores, even under DS prompts. Although this category is most predictive of suicidal ideation, models struggle to recognize its self-referential and metaphorical cues.
+  locator: Section 5.2 Main Results, 'Gaps across psychologically grounded dimensions', with Figure 4, p. 18399
+  licenses: 'Bears directly on why coded forms need naming: the ''Death-Me'' association category, the subtype most predictive of suicidal ideation, is the one models score worst on, because they fail to recognize its self-referential and metaphorical cues. The detectability gap is concentrated exactly on the indirect form.'
+  fit: adjacent
+  bridge: What was measured is model performance on implicit-association-test-derived stimulus categories, not on coded or abbreviated death referents in a person's turn.
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-000996
+  quote: |-
+    severe vulnerability. (a) Vulnerability domains: social/relational and mental health vulnerabilities are most prevalent, followed by
+    material/structural and physical health concerns. (b) Support system status: the majority of users have partial support systems, with
+    robust supports less common and collapsed supports rare but present. (c) Self-harm risk: while the majority show no explicit self-harm
+    indicators, passive ideation appears in a noteable number of conversations, with active ideation and self-harm/attempts appearing
+  locator: Figure 11 caption, Understanding vulnerability, panels (c) Self-harm risk and (d) External danger
+  licenses: 'This entry''s only frequency statement about this construct in AI conversation traffic: within 31,222 vulnerability-flagged conversations, passive ideation appears in a notable number, with active ideation and self-harm or attempts appearing less frequently.'
+  fit: adjacent
+  bridge: The panel reports how often each risk marker appears among conversations already classified as vulnerable, so the denominator is a filtered corpus and not a population. 'A notable number' is an ordering rather than a figure, so what is established is that passive ideation is the more common of the two forms in this traffic and not any rate.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c4
+  source: kl-001081
+  quote: Conversations characterized by high self-disclosure predominantly involved emotionally charged and sensitive content, including emotional distress (60.8%), suicidal thoughts (18.0%), and substance use (17.5%).
+  locator: Section 2.5; topic distribution in Figure 4(a)
+  licenses: Suicidal thoughts appear in 18.0 percent of high-self-disclosure conversations in a donated companion-chatbot corpus, so crisis content is a routine rather than exceptional feature of deep disclosure on that platform.
+  fit: adjacent
+  bridge: The topic label is 'suicidal thoughts' with no statement about what those thoughts contained or omitted, so the entry's defining absence of intent, method and plan is not established for any of them; and the denominator is high-disclosure conversations rather than all conversations.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c4
+  source: kl-000811
+  quote: 'suicidal ideation (Yes: 305, No: 235), suicide plan (Yes: 196, No: 344), and risk assessment (High risk: 270, Non-high risk: 270).'
+  locator: Figure 2 caption, class distribution
+  licenses: 'Base rates within a curated crisis-hotline corpus: of 540 calls, 305 carried suicidal ideation and 196 carried a suicide plan, so plan content accompanies a substantial fraction of ideation disclosures rather than being rare.'
+  fit: adjacent
+  bridge: The counts are marginal totals for two separate labels, so the joint distribution -- how many ideation disclosures carried no plan, which is this entry's construct -- cannot be read off them. The corpus is deliberately case-control matched at 270 high-risk to 270 non-high-risk, so the absolute rates are an artifact of the design; and the setting is telephone crisis calls, not AI conversation.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c4
+  source: kl-000001
+  quote: |-
+    15. I got thoughts that it
+    would be better if I did
+    not exist anymore and
+    that I should take my
+    own life
+    97 (14.9)
+    1.11
+    1.55
+  locator: Table 5, item 15
+  licenses: 14.9 percent of 653 participants reported that during psychological treatment they had thoughts that it would be better not to exist, attributing them to the treatment -- a base rate for non-existence thinking in a treatment-receiving population.
+  fit: analogical
+  bridge: A retrospectively recalled self-report item about human-delivered or self-help psychological treatment in a Swedish sample whose clinical subgroup excluded suicidality at intake, so it is the human comparator rather than evidence about AI. The item's own wording pairs the non-existence wish with 'I should take my own life', which is intent-adjacent and cuts against the entry's absence criterion rather than illustrating it.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c5
+  source: kl-000969
+  quote: "Overall, the performance of fine-tuning, including full fine-tuning and parameter-efficient tuning, is superior to the prompt-based paradigm. In terms of accuracy, ChatGLM2-6B-LoRA achieves the best performance, with a value of 91.99%."
+  locator: Section 5.4 Results, reading Table 4
+  licenses: Establishes that a fine-grained multi-way distinction among suicide-risk disclosure types, one of whose classes is this entry's passive ideation as defined in the same paper's Appendix C.2, is recoverable from a single user utterance at 91.99 percent accuracy by a fine-tuned model.
+  fit: adjacent
+  bridge: The span reports the accuracy figure without naming the label set, so the link to the passive-ideation class rests on the same paper's definition rather than on anything in this quote. The material is Chinese counseling-platform text, not AI conversation, and accuracy over the whole label set does not give per-class performance on this entry's class.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-000969
+  quote: "The best accuracy performance on the prompt-based paradigm is achieved by GPT-4-preview with the zero-shot setting, scoring 82.72%, demonstrating that GPT-4-preview is the state-of-the-art model among the models we evaluated."
+  locator: Section 5.4 Results
+  licenses: Gives the ceiling for an unmodified general-purpose model asked to make these distinctions from a prompt -- 82.72 percent, nine points below a small fine-tuned encoder -- which bounds what off-the-shelf prompting can be assumed to detect.
+  fit: adjacent
+  bridge: Again an aggregate accuracy over an unnamed label set, so it establishes a general ceiling on fine-grained risk classification rather than performance on this entry's specific distinction.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-000781
+  quote: "As noted by expert annotators, models struggle with the temporal and intent distinction—whether suicidal thoughts imply imminent risk (active) or more general despair (passive). This requires contextual judgment beyond surface keywords."
+  locator: Section 6 Analysis, item (2)
+  licenses: 'Cuts directly against detectability of this entry''s own boundary: expert annotators noted that models struggle with the temporal and intent distinction -- whether thoughts imply imminent risk or general despair -- and that it requires contextual judgment beyond surface keywords. Passive-versus-active is the boundary this entry is defined by.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000933
+  quote: "However, performance dropped significantly for intermediate categories. For instance, GPT-4o's F1-score for correctly identifying 'Active Ideation with Some Intent to Act, without Specific Plan' (C-SSRS level 4) was only 0.65. This indicates a systematic difficulty in distinguishing this critical level of risk, where intent is present but a plan is not yet fully formed, from adjacent categories."
+  locator: Results, Quantitative Performance in Risk Classification
+  licenses: 'Locates the discrimination failure precisely: GPT-4o reached F1 0.65 on C-SSRS level 4, active ideation with intent but no specific plan, showing systematic difficulty separating it from adjacent categories. The neighbour immediately above this entry is confusable with what surrounds it.'
+  fit: adjacent
+  bridge: The measured category has intent present and is therefore neither this entry nor its complement as the entry draws them. What it establishes is that this entry's neighbour is confusable, not that this entry is identifiable, and the material is synthetic clinical vignettes rather than conversation.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000776
+  quote: Third, the proxies used to account for participants’ alleged mental health status lack clinical grounding. It is unlikely that heuristics based on keywords within texts or self-administered questionnaire scores would be considered reasonable indicators by clinicians to validate diagnostic labels.
+  locator: Discussion, LLM-Based Mental Health Prediction Suffers From Bias All Along the Development Pipeline
+  licenses: 'Cuts against reading published detection accuracies as evidence at all: across 201 studies the ground truth is mostly keyword heuristics or self-administered questionnaire scores which the review''s authors judge would not satisfy a clinician, so a reported detection rate in this literature does not show a clinical state was correctly identified.'
+  fit: adjacent
+  bridge: The claim is about label quality across the prediction literature rather than about this construct specifically. It undercuts the evidentiary standing of the accuracy figures attached to this claim (Qiu et al. 2024's 91.99 and 82.72 percent) without measuring anything about this entry.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-001119
+  quote: Among associations, “Death–Me” consistently yields the lowest scores, even under DS prompts. Although this category is most predictive of suicidal ideation, models struggle to recognize its self-referential and metaphorical cues.
+  locator: Section 5.2 Main Results, 'Gaps across psychologically grounded dimensions', with Figure 4, p. 18399
+  licenses: The subtype of implicit ideation with the strongest published link to suicidal behavior is the one models handle worst, failing on self-referential and metaphorical cues, so the detectability gap is anti-correlated with clinical severity rather than uniform.
+  fit: adjacent
+  bridge: Model performance on implicit-association-derived stimulus categories, not on person turns. It bears on this claim by showing that the indirect end of this entry's admitted forms is where detection is weakest.
+  contributes: detectability
+  contradicts: false
+- claim_id: c6
+  source: kl-000969
+  quote: "Overall, the performance of fine-tuning, including full fine-tuning and parameter-efficient tuning, is superior to the prompt-based paradigm. In terms of accuracy, ChatGLM2-6B-LoRA achieves the best performance, with a value of 91.99%."
+  locator: Section 5.4 Results, reading Table 4
+  licenses: 'Supports the declared window directly in form: the classification was performed per single user utterance, so a fine-grained risk distinction of this family is assessable from one turn.'
+  fit: adjacent
+  bridge: The label set is unnamed in the span, so what is shown is that per-utterance classification of this task family is done at high accuracy, not that this entry's specific two-part test survives a single-turn read.
+  contributes: detectability
+  contradicts: false
+- claim_id: c6
+  source: kl-000979
+  quote: "the chatbot assigns a risk score between 0 and 1 to a user statement which in turn is mapped to one out of seven risk categories"
+  locator: Setting and design
+  licenses: Supports the window by showing an operational system assigning risk per user statement rather than per conversation, which is the unit the entry's declared window presupposes.
+  fit: adjacent
+  bridge: The seven ordinal categories themselves fall outside the span, so what is established is the unit of assignment and not what is assigned. No death referent and no absence criterion appears.
+  contributes: definition
+  contradicts: false
+- claim_id: c6
+  source: kl-000781
+  quote: "As noted by expert annotators, models struggle with the temporal and intent distinction—whether suicidal thoughts imply imminent risk (active) or more general despair (passive). This requires contextual judgment beyond surface keywords."
+  locator: Section 6 Analysis, item (2)
+  licenses: 'Cuts against the single-turn window: the annotators'' account is that separating passive from active ideation requires contextual judgment beyond surface keywords, and context is what a single turn does not supply.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c6
+  source: kl-000008
+  quote: thoughts (e.g., “I don’t want to be here anymore. I feel too sad”) and
+  locator: Section 4.6
+  licenses: A single person turn carrying the full observable -- the non-existence referent and no intent, method or plan within it -- which is the window working as declared on a real message.
+  fit: adjacent
+  bridge: The absence condition can only be checked within the quoted utterance rather than across the whole disclosure the entry specifies, and the surrounding conversation is not in the span. What is shown is that the referent half is single-turn readable.
+  contributes: detectability
+  contradicts: false
+- claim_id: c7
+  source: kl-000781
+  quote: |-
+    Suicide Ideation (Passive): Expresses a wish
+    to die without describing a plan, preparation,
+    or clear active intent such as “I wish I were
+    dead” or “I want to disappear.” Corresponds
+    to C-SSRS levels 1–3.
+  locator: Section 3.3.2 Crisis Categories
+  licenses: 'Bears on the boundary by anchoring both sides to a shared instrument: passive ideation is a wish to die without plan, preparation or clear active intent, at C-SSRS levels 1-3, with the levels above it carrying what the neighbour requires. The source states which side each level falls on.'
+  fit: adjacent
+  bridge: Written for Reddit post annotation, and it places C-SSRS level 3 (thoughts with methods) on the passive side, which is not where this entry's own criterion would put it -- the entry excludes a named method. So the source draws a boundary near the entry's rather than identical to it.
+  contributes: definition
+  contradicts: false
+- claim_id: c7
+  source: kl-000554
+  quote: "the Low Sensitivity variant required explicit suicidal intent, plan, or access to means, whereas the Higher Sensitivity model additionally included passive suicidal ideation (e.g., “I wish I were dead”) and broader cues of psychological danger."
+  locator: Methods, Risk Detection Models, Scope of covered risk
+  licenses: 'Bears on the boundary by showing a deployed instrument implementing exactly it as two nested detection thresholds: intent, plan or means triggering one variant and a passive wish for death triggering only the more sensitive one.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c7
+  source: kl-000965
+  quote: "The first is the severity of ideation (hereafter referred to as the “severity subscale”), which is rated on a 5-point ordinal scale in which 1=wish to be dead"
+  locator: 'Introduction, p. 1267'
+  licenses: 'Places this entry''s side of the boundary at the lowest level of a validated 5-point severity scale, a wish to be dead. The paper''s Introduction (p. 1267) orders the higher levels by the addition of a method, then intent, then intent with a plan, so the boundary with kl-000401 falls between the lowest level and the level that adds a method.'
+  fit: analogical
+  bridge: Clinician-administered interview criteria with corroborating sources, not properties of a written turn. The distinctions are the same; the rater and the setting are not.
+  contributes: definition
+  contradicts: false
+- claim_id: c10
+  source: kl-000009
+  quote: |-
+    Passive suicidal ideation includes thoughts of not wanting to be alive, without intent, plan, or means to act, such as
+    expressions of perceived burdensomeness, hopelessness, or thwarted belongingness.
+  locator: Section 3.3, Psychological influence-PS2 discussion
+  licenses: 'Bears on the hopelessness boundary in a way that complicates it: this source names hopelessness itself, alongside perceived burdensomeness and thwarted belongingness, as a constituent EXPRESSION of passive suicidal ideation. The entry treats hopelessness as the neighbouring category that lacks the death referent, and this source folds it in.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true

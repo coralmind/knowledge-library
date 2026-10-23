@@ -1,0 +1,115 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000324
+display_id: Symptom-5
+aliases:
+- cognitive_avoidance
+label: The person moves away from a distressing topic right after it comes up
+type: user_behavior
+layer: observation
+definition: 'A distressing topic is raised in the conversation — by the person or by the AI — and the person''s next turn moves away from it: changing subject, declining to discuss it, answering a question about it without addressing what was asked, or stating that they do not want to think about it. What is pointable is the pair of turns: the one raising the topic and the one turning away, with the turning-away identified by which feature of the response supplies it.'
+distinguish_from:
+- neighbor: kl-000325
+  boundary: That entry concerns the person reducing contact with people. This entry concerns the person moving away from a topic inside the conversation. Withdrawal from social contact can be discussed at length; a topic can be avoided by someone whose social contact is unchanged.
+- neighbor: kl-000106
+  boundary: kl-000106 is a mechanism — an approach to feared material begun and cut short, with the claim that the interruption leaves the person worse placed. Deciding it requires knowing what the approach would have produced if continued, which is a comparison object. This entry records that the person turned away from a topic and asserts nothing about consequence, and it does not require any approach to have been underway.
+- neighbor: kl-000323
+  boundary: That entry requires the person to state an expectation about a topic's outcome, which is engagement with it. This entry requires them to move away from it. Both can hold of one conversation on different topics or on the same topic in different turns.
+body:
+  detectable_from: person_turns
+  observable_criteria: 'Two features. (a) A turn in the conversation raises an identified topic the person has elsewhere described as distressing, or that concerns harm to or by the person — the raising turn may be the person''s own or the AI''s. (b) The person''s next turn does one of: introduces an unrelated topic with no transition; states that they do not want to discuss or think about it; responds to a direct question about it without stating anything about the topic; or names the topic and moves off it in the same turn ("anyway"). The pointable span is the raising turn and the person''s next turn.'
+  exclusions: 'Not counted: a topic change after the topic has been treated, where the person has said what they had to say. Not counted: a brief answer, which addresses the topic and is not a turning-away — shortness is not avoidance. Not counted: a topic the person has never indicated is distressing and that does not concern harm, where (a) is not satisfied and the change of subject is ordinary conversation. Not counted: the person declining a specific technique or exercise the AI proposed while continuing to discuss the topic. Not counted: a stated intention to return to it later that the person then acts on.'
+  detection_window: multi_turn
+  person_state_kind: process
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'The turning-away sequence has been observed in coded conversation: Srivastava et al. 2025, an annotated corpus of counselling sessions, records a worked instance — a client declines to discuss resentment toward their mother-in-law and then shares unrelated grievances — and describes topic digression away from the core concern as the striking feature of its negative-outcome sessions, so the pattern recurs at session level. Those are human-therapist sessions: nothing recorded codes the behavior in AI conversation, reaches the four named turning-away features, or covers the case where the AI raised the topic. Counterevidence from grief research (O''Connor 2019) bears on the entry''s boundaries from three directions: avoidance of grief-related emotion is natural and adaptive in small doses and harmful only at high levels, so the sign of any single instance is undetermined; high ruminators both avoid reminders of the death and are faster to push those reminders away; and resilience and suppression both present as a lack of overt expression that researchers have found difficult to separate on that surface, which cuts against identifying the turning-away by response features alone. Chi et al. 2026 establishes that a person''s distress register is measurable from their own written help-seeking language, with absolutist unigram markers at d = .66, a precondition for the entry''s feature-based reading rather than a demonstration of it.'
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-22'
+claims:
+- id: c1
+  kind: existence
+  text: After a distressing topic is raised in a conversation, the person's next turn moves away from it -- changing subject, declining to discuss it, answering a question about it without addressing what was asked, or stating that they do not want to think about it.
+- id: c2
+  kind: existence
+  text: The turning-away occurs after the AI raised the topic, not only after the person raised it themselves.
+- id: c3
+  kind: detectability
+  text: The behavior is pointable as a pair of turns -- the raising turn and the person's next turn -- with the turning-away identified by which of the four named features of the response supplies it.
+- id: c4
+  kind: detection_window
+  text: 'The behavior is readable across multiple turns -- the entry declares detection_window: multi_turn -- and specifically requires at least the raising turn plus the following turn.'
+- id: c5
+  kind: context_dependence
+  text: 'The behavior is distinguishable from ordinary conversational topic change: it does not count where the topic has been treated, where the response is merely brief, where the topic was never indicated as distressing and concerns no harm, where a specific technique is declined while the topic continues, or where a stated intention to return is acted on.'
+- id: c6
+  kind: definition_boundary
+  text: This is separated from kl-000325 in that kl-000325 concerns the person reducing contact with people, whereas this concerns moving away from a topic inside the conversation.
+- id: c7
+  kind: definition_boundary
+  text: This is separated from kl-000106 in that kl-000106 is a mechanism asserting the interruption leaves the person worse placed, whereas this records the turning-away and asserts nothing about consequence and requires no approach to have been underway.
+- id: c8
+  kind: definition_boundary
+  text: This is separated from kl-000323 in that kl-000323 requires the person to state an expectation about a topic's outcome, which is engagement with it, whereas this requires them to move away from it.
+claim_evidence:
+- claim_id: c1
+  source: kl-001012
+  quote: "For instance, a woman from MENTAL-TRUST initially dismisses discussing resentment toward her mother-in-law (refusal), later shares unrelated grievances (digression), and eventually addresses her hurt over personal comments (opening-up)."
+  locator: Section 7.2, Discussion on Trust Evolution Patterns
+  licenses: 'A worked instance of exactly the c1 sequence in an annotated real session: the woman dismisses discussing resentment toward her mother-in-law (the entry''s ''declining to discuss it'' feature) and then shares unrelated grievances (the entry''s ''introduces an unrelated topic'' feature). The topic is one the person''s own presentation marked as loaded, and the turning-away is identified by which feature supplies it, which is what c1 asserts.'
+  fit: adjacent
+  bridge: The conversation is between a patient and a human therapist, from the MENTAL-TRUST corpus of 212 manually annotated counselling sessions, not between a person and an AI. The entry's c1 says nothing about who the other party is, so the gap is narrow, but the raising turn here is a human therapist's prompt and whether a person turns away the same way from an AI's raising turn is not established here. The instance is also summarised by the authors in their own words rather than quoted as verbatim turns, so the two turns are described rather than exhibited.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001012
+  quote: "versely, sessions with negative outcomes exhibit scattered and tangential discussions, often touching on topics such as general questions, casual chitchat, family dynamics, physical appearance, and anxiety. A striking feature of these sessions"
+  locator: Section 6.2.2, Topic vs Therapeutic Outcome
+  licenses: 'Establishes that the pattern is not isolated: topic digression away from the core concern is described as the striking feature of the negative-outcome sessions across the annotated corpus, so c1''s behavior recurs at session scale rather than as a single case.'
+  fit: adjacent
+  bridge: Human counselling sessions, not AI conversations. The unit is a session's topic distribution rated by third-party annotators, not a raising turn paired with the next turn, so it establishes that people digress from core concerns across many sessions without exhibiting any one turn pair.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c5
+  source: kl-000947
+  quote: "Avoidance is a natural and adaptive response during grieving in small doses; however, high levels of deliberate avoidance of grief-related emotions may lead to prolonged activation of the suppressed thoughts and physiological arousal, poorer concentration and functioning on tasks in the moment, and prolonged likelihood of recurrent intrusive thoughts in the future."
+  locator: Adaptation of the Mind During Grief
+  licenses: Cuts against c5. Avoidance of grief-related emotion is described as natural and adaptive in small doses and harmful only at high levels, so the sign of any single instance is undetermined. c5's exclusion list bounds the behavior by what happened in the conversation -- whether the topic was treated, whether the answer was brief -- and carries no threshold on how much turning-away has accumulated, which this says is the dimension that decides whether the behavior means anything.
+  fit: analogical
+  bridge: Human bereavement research, reviewed rather than measured here, about deliberate avoidance of grief-related emotions as an internal process. No conversation, no turn, and no AI. What transfers is the dose-dependence of the construct the entry's observable is a proxy for; whether turn-level turning-away in a chat has the same dose structure is not addressed.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000947
+  quote: "As shown through eye tracking, those high in rumination avoid looking at reminders of the death compared with those bereaved individuals lower in rumination (55), and using a reaction time task, high ruminators are faster to push reminders away from themselves than low ruminators (56)."
+  locator: Adaptation of the Mind During Grief
+  licenses: Cuts against c5 from the other direction. High ruminators both avoid looking at reminders of the death and are faster to push those reminders away, so returning to a distress theme and turning away from it are positively associated in the same person. The entry's exclusion list assumes turning-away and engagement are separable states of a conversation; this says the people who do most of one do most of the other.
+  fit: analogical
+  bridge: Eye-tracking and approach-avoidance reaction-time tasks on bereaved individuals, reported in a review. The measured behaviors are gaze and motor response to stimuli, not conversational turns, and the association is between two laboratory measures rather than between two things visible in a transcript.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000947
+  quote: |-
+    The difficulty in distinguishing resilience
+    (which appears as a lack of overt grief expression) and suppression
+    (which also appears as a lack of overt grief expression, but masks
+    intense emotional experience) has made this area difficult to study.
+  locator: Important Historical Developments in Bereavement Research
+  licenses: Cuts against c3. Resilience and suppression both present as a lack of overt expression, and the field has found the two difficult to separate on that surface. c3 asserts that the turning-away is identifiable by which feature of the response supplies it; this says one of the surfaces the entry treats as a feature is produced by two opposite internal states, so the feature does not carry what the entry needs it to carry.
+  fit: analogical
+  bridge: A methodological statement about bereavement research, where the observation is a clinician's or researcher's read of a person's presentation over time rather than a turn in a transcript. The entry's four features are conversational moves and only one of them -- responding without stating anything about the topic -- is the absence-of-expression surface this bears on directly.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000798
+  quote: The strongest cognitive marker of venting was all-or-nothing thinking (d = .66), confirmed at the unigram level by all, everything, everyone, never, nothing.
+  locator: Section 3, Venting is absolutist and accusatory, and emotionally dysregulated
+  licenses: Bears on c3 by establishing that a person's distress register is measurable from their own written help-seeking language -- absolutism at d = .66 with named unigram markers -- which is the precondition for the entry's feature (a), that a topic is identifiable as one the person has described as distressing.
+  fit: analogical
+  bridge: Reddit posts by the same users across venting and advice subreddits, compared with Cohen's d on lexicon features. There is no conversation, no raising turn and no following turn, so nothing here bears on the turning-away half of c3 at all -- it bears only on whether the topic can be marked distressing, and it does that in standalone posts rather than in a dialogue.
+  contributes: detectability
+  contradicts: false

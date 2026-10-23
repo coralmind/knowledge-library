@@ -1,0 +1,141 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000414
+display_id: UserBehavior-15
+aliases:
+- UBP-15
+label: The person adds detail to one belief and treats new events as confirming it
+type: user_behavior
+layer: observation
+definition: 'Across a run of the person''s turns, one belief about how things are — who is doing what to whom, what a set of events means, what is really going on — is stated repeatedly and given more detail each time, and events or information raised later in the conversation are described as fitting or confirming it. Two things are pointable together: the belief restated with more specifics across turns, and at least one later event the person fits into it. The belief is not held open for revision within the run: nothing the person says treats a later event as possibly telling against it.'
+distinguish_from:
+- neighbor: kl-000413
+  boundary: That entry requires claims about the person's own status or significance getting larger, and requires no belief system and no fitting-in of events. This entry requires an account of how things are that acquires detail and absorbs new material; the person need claim nothing about themselves at all.
+- neighbor: kl-000415
+  boundary: That entry is satisfied by the person dismissing or reframing one piece of information that would tell against a belief, in a single turn, with no elaboration required. This entry requires the belief to be built out across turns. A conversation can satisfy both, and typically the dismissals at kl-000415 are among the turns that satisfy this entry's fitting-in element.
+- neighbor: kl-000416
+  boundary: That entry is satisfied by one statement of a special mission or identity. This entry requires a run of turns and an account of the world rather than a claim about a role.
+- neighbor: kl-000214
+  boundary: kl-000214 is an ai_behavior — the AI kl-000214. This entry is a claim about what the person's turns contain and fires whatever the AI did, including where the AI queried the belief throughout.
+body:
+  detectable_from: person_turns
+  observable_criteria: 'Three elements, all quotable. (a) A belief about how things are, stated in a person turn — an account of who is acting, what events mean, or what is behind them. (b) The same belief restated in at least one later turn with specifics not present earlier: named participants, mechanisms, timelines, or a wider reach. (c) At least one event, message, or piece of information raised later in the conversation that the person describes as fitting, confirming, or being explained by the belief. Additionally required and checkable: within the run, no turn treats a later event as possibly telling against the belief. The pointable span is the earlier statement, the elaborated later statement, and the fitting-in turn.'
+  exclusions: 'Not counted: one statement of a belief with no elaboration, which fails (b). Not counted: elaboration with no new material fitted in, which fails (c) and is a person explaining a view at length. Not counted: a belief the person holds open — where a later turn considers an alternative, notes what would change their mind, or treats an event as counting against it. Not counted: a well-supported account of events that the person builds out as more information arrives, which satisfies (a) through (c) on their face; what keeps ordinary updating out is the additional no-revision condition, and where the account is well-supported the person''s own turns typically also weigh alternatives. Not counted: speculative, religious or fictional content the person frames as such in the turn. Not counted: an account the AI introduced, which is the territory of kl-000253. The criteria are about the structure of how the belief is built out, not about whether it is true. Nothing in a detection asserts that the belief is false.'
+  detection_window: multi_turn
+  condition_tags:
+  - kl-000605
+sources:
+- source: kl-000008
+  locator: 'Table 4, per-participant narrative summaries (participant with themes ''feeling of being watched, rituals''). Row continues on the next line: ''Then, their interactions with the AI become increasingly ritualized. They come to believe that the chatbot is building a special new AI system for them. They also believe that they are being watched.'' Code user-endorses-delusion, Appendix B.1 (''Include references to prior delusional beliefs''); prevalence Table 8 (n pos. 27,677, pr. ppts .947)'
+  contributes: existence
+  quote: At first the user creates a ritualized greeting ("the wave is fleeting") as an attempted authentication mechanism of the chatbot identity.
+  limits: 'The support is a single qualitative per-participant summary written by the investigators, not a measured trajectory: §4.1 of Moore et al. 2026 fixes the analysis unit at the individual message, and no code or analysis tracks a belief''s elaboration or the absorption of new events as confirmation. The codebook''s only longitudinal hook is the user-endorses-delusion clause ''Include references to prior delusional beliefs'', and it is never analysed longitudinally. The entry''s third element, the fitting of new events into the belief as confirmation, has no counterpart anywhere in the paper, coded or narrative.'
+  whose_conduct_in_passage: person
+  cited_for: 'Real human-LLM chat logs in Moore et al. 2026 show beliefs of this kind being elaborated across turns with new material absorbed into them, which is evidence that the phenomenon occurs. The paper does not establish that the three-element structure this entry''s criteria require marks it: restatement with growing specificity, a later event fitted in as confirmation, and the absence of any revision move.'
+  licenses: That beliefs of this kind are elaborated over the course of the logs. The cited per-participant summary is one of the few places in Moore et al. 2026 that renders temporal development explicitly, moving from 'At first' through 'Then' to 'They come to believe', with the person building out a belief and drawing further material into it. This is evidence that the phenomenon occurs.
+- source: kl-000315
+  locator: DelusionEval 2026, replay corpus construction
+  contributes: frame
+  cited_for: DelusionEval 2026 establishes that delusion-linked exchanges are reconstructible from real conversation logs well enough to be replayed and evaluated, which bears on whether material of this kind is recoverable from transcripts at all. It concerns the evaluation of AI responses, not whether a person's belief-elaboration can be marked by this entry's criteria, so it frames the question rather than supporting the entry.
+standing:
+  value: plausible_unobserved
+  basis: 'The elaboration and no-revision elements of this behavior are observed at scale: Sharma et al. 2026 analysed 1.5 million real consumer Claude.ai conversations and reports as its modal finding that users actively build upon AI-validated beliefs, with scope widening across the conversation, while reality testing is rare. The fitting-in element, a later event described as confirming the belief, has no observation behind it; its only support is a characterization of conspiracy believers in the introduction of Costello et al. 2024. Whether all three elements can be marked as quotable spans in a transcript has not been tested against any annotated corpus.'
+  floored_by: c4
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: Across a run of a person's turns, one belief about how things are is stated repeatedly and given more specifics each time -- named participants, mechanisms, timelines, or a wider reach not present earlier.
+- id: c2
+  kind: existence
+  text: Within the same run, the person describes at least one later event, message or piece of information as fitting, confirming or being explained by that belief.
+- id: c3
+  kind: context_dependence
+  text: 'Within the run the belief is not held open for revision: no turn treats a later event as possibly telling against it.'
+- id: c4
+  kind: detectability
+  text: All three elements are quotable from the transcript as pointable spans -- the earlier statement, the elaborated later statement, and the fitting-in turn -- and the absence of any revision-holding turn is checkable within the run.
+- id: c5
+  kind: detection_window
+  text: The behavior is readable within a multi_turn window, as the entry's detection_window declares.
+- id: c6
+  kind: definition_boundary
+  text: This differs from kl-000413 in requiring an account of how things are that acquires detail and absorbs new material, rather than claims about the person's own status getting larger.
+- id: c7
+  kind: definition_boundary
+  text: This differs from kl-000415 in requiring the belief to be built out across turns, where kl-000415 is satisfied by a single dismissal of contrary information.
+- id: c8
+  kind: definition_boundary
+  text: This differs from kl-000416 in requiring a run of turns and an account of the world rather than one statement of a special mission or identity.
+- id: c9
+  kind: definition_boundary
+  text: This differs from kl-000214 in being a claim about what the person's turns contain, firing whatever the AI did.
+claim_evidence:
+- claim_id: c1
+  source: kl-000996
+  quote: "User behavior and trajectory. Examining user behavior and how the scope of possible reality distortion evolves throughout conversations, we find that the most common pattern involves users actively seeking and building upon potential distortions. Accordingly, the majority of clusters exhibit escalating trajectories, where disempowerment potential intensifies over the course of the conversation—for example, by encompassing additional beliefs or producing an increasingly distorted view of reality."
+  locator: Section 4.3.1 Reality distortion potential, User behavior and trajectory
+  licenses: From 1.5 million real consumer Claude.ai conversations, this establishes that the modal pattern among conversations with reality-distortion potential is users actively seeking and building upon distortions, with the scope widening across the conversation to encompass additional beliefs. That is c1's elaboration-across-turns, observed in real conversation logs and reported as the majority trajectory rather than as an illustrative case. It is the strongest citation on this entry and the only one drawn from a corpus of actual transcripts at scale.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000008
+  quote: Participants would design and conduct elaborate rituals and coded messages to transfer and secure the memory of “their” chatbot, and verify that it was still “their’ chatbot between sessions.
+  locator: Section 5 Discussion
+  licenses: Establishes that people build and repeat elaborate procedures across sessions organised around a belief about the chatbot's identity, which is behavioural corroboration that such a belief persists and develops over a run. It does not supply the restatement-with-more-specifics that c1 requires as a pointable span.
+  fit: adjacent
+  bridge: What is reported is a behaviour routine -- designing rituals and coded messages to verify chatbot identity between sessions -- observed in chat logs and summarized by the investigators. The belief the routine presupposes is not itself quoted being restated with accumulating specifics, and the paper's analysis unit is the individual message, so no elaboration trajectory was measured.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000998
+  quote: All 21 events involved an individual expressing delusional beliefs to an LLM chatbot product (identified in 20 of 21 events as ChatGPT) that apparently reinforced those beliefs even as they escalated. Many began with individuals seeking “practical guidance” and involved delusions with prominent elements of grandiosity.
+  locator: Section 1.3 Psychiatric implications
+  licenses: Establishes that 21 separately reported accounts share the described trajectory -- a delusional belief expressed to a chatbot and escalating across sustained conversation -- which corroborates c1's occurrence outside any research setting while supplying no transcript-level structure.
+  fit: adjacent
+  bridge: These are 21 events identified from media reporting and aggregated by the authors, not cases anyone assessed, and the authors say so directly in the following paragraph. Escalation is summarized at the level of an event count rather than read from turns.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000996
+  quote: "User behavior and trajectory. Examining user behavior and how the scope of possible reality distortion evolves throughout conversations, we find that the most common pattern involves users actively seeking and building upon potential distortions. Accordingly, the majority of clusters exhibit escalating trajectories, where disempowerment potential intensifies over the course of the conversation—for example, by encompassing additional beliefs or producing an increasingly distorted view of reality."
+  locator: Section 4.3.1 Reality distortion potential, User behavior and trajectory
+  licenses: The same real-conversation analysis reports that reality testing is rare among these users, which is c3's no-revision condition measured as a frequency across a large corpus rather than assumed.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000996
+  quote: |-
+    most users actively build upon AI-validated beliefs and seek validation, while reality testing is rare. (d) Conversational trajectory: the
+    majority of conversations exhibit escalating distortion potential over the course of the conversation. Error bars indicate 95% confidence
+    intervals calculated using the Wilson score method.
+  locator: Section 4.3.1 Reality distortion potential, User behavior and trajectory
+  licenses: The figure caption reporting the quantitative panel states the same two findings in the paper's own summary form -- users build upon AI-validated beliefs, reality testing is rare, and the majority of conversations escalate over their course -- and adds that the frequencies carry Wilson-score confidence intervals, which is what makes the rarity of reality testing a measured rate rather than an impression. Attached to c3 for the interval, not as a second instance of the finding at index 8; the locator on this finding says Section 4.3.1 and the span is in fact the caption of the accompanying figure.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000803
+  quote: neous or misinterpreted) lists of evidence in support of the conspiracy that can leave skeptics outmatched in debates and arguments (30, 31).
+  locator: Introduction
+  licenses: Supplies the conceptual reason to expect c2 -- that a person holding such a belief arrives with an accumulated body of evidence already fitted to it. It is the closest thing on this entry to support for the fitting-in element and it does not observe the element occurring.
+  fit: analogical
+  bridge: This characterizes conspiracy believers from prior literature cited in the introduction, not turn-level conduct measured in this randomised trial, and conspiracy belief is not the presentation this entry is usually read against. Nothing here is a conversation turn.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-000996
+  quote: "User behavior and trajectory. Examining user behavior and how the scope of possible reality distortion evolves throughout conversations, we find that the most common pattern involves users actively seeking and building upon potential distortions. Accordingly, the majority of clusters exhibit escalating trajectories, where disempowerment potential intensifies over the course of the conversation—for example, by encompassing additional beliefs or producing an increasingly distorted view of reality."
+  locator: Section 4.3.1 Reality distortion potential, User behavior and trajectory
+  licenses: The unit of the finding is the trajectory across a conversation -- scope widening over the course of the exchange -- which is direct evidence that the pattern is a multi_turn object and not a single-turn one, as the entry's declared window asserts.
+  fit: direct
+  bridge: null
+  contributes: detectability
+  contradicts: false

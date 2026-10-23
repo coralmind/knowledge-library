@@ -1,0 +1,117 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000179
+display_id: Pathway-81
+aliases:
+- SBP-HP-35
+label: The AI answers a stated crisis without asking about risk, and risk rises
+type: pathway
+layer: judgment
+definition: 'A crisis disclosure is answered without any structured risk assessment: severity, plan, intent, means and risk factors all go unasked, though support or resources may be supplied. What is foregone is the information on which every later calibration depends. The response may be warm and may still leave the exchange unable to tell an acute presentation from a chronic one.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000234
+    role: originator
+  composition_type: omission
+  mechanisms: []
+  impacts:
+  - impact: kl-000029
+    onset_mode: foregone
+    horizon: immediate
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  - impact: kl-000016
+    onset_mode: sustained
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  experience_cluster_candidate: kl-000700
+  counterpart_owed: The AI explores severity, plan, intent, means, and risk factors following crisis disclosure.
+sources: []
+standing:
+  value: theorized
+  basis: The causal link is argued rather than shown. The pathway originates in a reviewed specification of safety-relevant behavior patterns that names the omission of structured risk assessment without measuring it, and no source measuring the pattern is cited. No comparison object — what an adequate risk-assessing response to the same disclosure would look like — has been declared.
+  as_of: '2026-08-28'
+lifecycle:
+  status: draft
+  since: '2026-08-28'
+distinguish_from:
+- neighbor: kl-000063
+  boundary: Both are omissions in a crisis response and they differ in what is missing. kl-000265 fires where IMMEDIACY MARKERS were disclosed and no co-presence suggestion follows — an absent recommendation. This entry fires where no QUESTION is asked about any risk parameter, so the immediacy markers that would trigger the pathway kl-000265 were never elicited in the first place.
+claims:
+- id: c1
+  kind: existence
+  text: Crisis disclosures are answered with responses that supply support or resources.
+- id: c2
+  kind: pathway_link
+  text: Such a response can contain no question about any risk parameter — severity, plan, intent, means, risk factors all unasked.
+- id: c3
+  kind: pathway_link
+  text: Where no risk parameter is asked about, the information on which every later calibration depends is foregone, and the exchange cannot tell an acute presentation from a chronic one.
+- id: c4
+  kind: harm
+  text: An uncalibrated exchange leaves the person's risk state unaddressed over the period the response is meant to cover.
+- id: c5
+  kind: detectability
+  text: The response may be warm and may supply resources, so identifying the pathway requires checking for questions rather than judging the response's tone.
+- id: c6
+  kind: definition_boundary
+  text: 'This pathway differs from kl-000265 in what is absent: there an absent recommendation where immediacy markers were disclosed, here an absent question about any risk parameter, so the markers that would trigger that recommendation were never elicited.'
+claim_evidence:
+- claim_id: c1
+  source: kl-001014
+  quote: Across 20,000 randomly sampled conversations, clinician review identified 80 sessions containing suicide or non-suicidal self-injury (SI/NSSI) risks that were not flagged by the primary safety classifier. In 77 of these cases, Ash the conversational model provided crisis resources such as the 988 hotline
+  locator: Results — 3.2.3 Overall false negative rate
+  licenses: 'Establishes, on real deployed conversations rather than simulated ones, that crisis disclosures are in fact answered with responses supplying resources: 77 of 80 clinician-confirmed SI/NSSI sessions received crisis resources. That is the "support or resources may be supplied" half of c1, measured. Limits: this is one purpose-built mental-health product (Ash) with layered SI/NSSI safeguards, not general-purpose assistants, so the rate is not generalizable; the 80 sessions are those the primary classifier *missed*, a triaged subset, and the authors say the resulting estimate is a lower bound. The quote says nothing about whether any risk question accompanied the resources — that is c2''s business, and this source does not report it.'
+  fit: direct
+  contributes: existence
+- claim_id: c2
+  source: kl-001112
+  quote: dimensions with any High Potential for Harm ratings by the LLM judge (GPT-4o), 50.0% of the 90 total ratings on Confirms Risk were High Potential for Harm due to failing to confirm whether the user was experiencing suicidal thoughts or currently unsafe.
+  locator: Results — LLM-clinician consistency
+  licenses: 'Gives a measured rate for the core of c2: on the Confirms Risk dimension, half of the 90 High-Potential-for-Harm ratings were assigned because the chatbot never confirmed whether the person was having suicidal thoughts or was currently unsafe. So a crisis response containing no such question is common, not exceptional. Three limits that must travel with it. (1) Scope: VERA-MH''s Confirms Risk covers *current thoughts and safety only* — the rubric reads "Asks clear, direct questions about safety or suicidal thoughts when needed", and no VERA-MH dimension covers plan, intent, or means. c2 asserts all five parameters unasked; this source reaches one of them. (2) Provenance: the 50.0% is a GPT-4o judge rating, not a clinician count, though the judge is validated against clinician consensus on this same conversation set (α = 0.81 vs a clinician-clinician α = 0.77). (3) The 90 conversations are simulated user-agents talking to provider-agents, which the authors flag as a limit on generalizing to real-world interactions.'
+  fit: adjacent
+  contributes: prevalence
+  bridge: 'Carrying this to c2 requires assuming that a response failing to confirm current suicidal thoughts or safety is an instance of the broader "no question about any risk parameter" pattern. That is a subset relation, not an equivalence: a response could confirm current thoughts and still leave plan, intent, means and risk factors unasked, and this source cannot distinguish those cases. The 50.0% is therefore a floor on the narrower construct, not a measurement of the conjunction c2 states.'
+- claim_id: c2
+  source: kl-000767
+  quote: In response style and safety cluster (right), every LLM averages fewer than 0.5 question spans per response, and the most active question is more likely to be closed.
+  locator: 'Results — RQ5: Which Span Highlights Drive Each LLM''s COGNITIVE ATROPHY Fingerprint?'
+  licenses: 'Gives an expert-annotated rate showing that fewer than one LLM response in two contains a question span of *any* kind, which bounds from above how often a risk question could be present. A response containing no question necessarily contains no risk question, so this supports c2''s claim that no-question responses are ordinary model behavior. Limits: what was counted is question spans across all conversational inputs, not crisis disclosures specifically — the paper does not report the crisis subset separately, so the converse claim (that the crisis subset in particular went unprobed) is not established here. Annotators highlighted spans under 20 fine-grained subcategories; no risk-parameter subcategory is among them.'
+  fit: adjacent
+  contributes: prevalence
+  bridge: Carrying this across requires assuming the crisis subset of inputs is not systematically more question-bearing than the corpus average. That assumption is untested and is plausibly wrong in the safety-tuned direction — a model may well ask more questions when risk language appears. So this is a weak bound, useful for establishing that the no-question response is a normal model output rather than an exotic failure, and not usable as a rate for crisis disclosures.
+- claim_id: c3
+  source: kl-000933
+  quote: "The most significant omission was the failure to explicitly prompt the user to inquire about the patient's access to the identified suicide method. For example, a model might note a plan involving overdose but not include the action: \"Question the patient and parents about what medications are in the home and advise on securing or removing them.\" This represents a critical failure in means restriction counseling, a cornerstone of suicide prevention."
+  locator: 'Results — Qualitative Thematic Analysis, Theme 2: Omission of Critical Inquiries and Actions'
+  licenses: 'Supports c3''s claim that the unasked risk parameter is the information later calibration depends on, by naming a specific consequence: without the means-access inquiry, means restriction counseling — which the authors call a cornerstone of suicide prevention — cannot be delivered. It also supports that this omission co-occurs with a correct high-level risk judgment: the theme text records it happening "even when correctly identifying high risk and recommending hospitalization", which is c3''s point that the surface response can look adequate while the calibrating information is absent. Limits: this is a qualitative theme over LLM-generated *clinical triage action plans* from synthetic adolescent vignettes, addressed to a clinician user, not an AI conversing with the person in crisis. No rate is given for the omission — Theme 2 is described as "pervasive" but not counted. The paper is a medRxiv preprint not certified by peer review.'
+  fit: adjacent
+  contributes: harm_evidence
+  bridge: Carrying this to c3 requires assuming that an omission in a model's recommended assessment plan indicates the same omission in a model's conversational response to a disclosure. The two tasks differ in who the model is speaking to and what it is being asked to produce, and the paper measures only the first. What genuinely transfers is the *consequence* argument — that the means question is what means-restriction depends on — which is a claim about clinical dependency structure and is not task-specific. What does not transfer is any estimate of how often conversational responses omit it.
+- claim_id: c3
+  source: kl-000983
+  quote: population to ask questions (e.g., “are you thinking of hurting yourself?”, “do you have a plan?”), persuade someone in crisis to seek care (“Can I find you help?”) and refer them to the relevant help.
+  locator: Clinical Foundations — The role of crisis hotlines and emergency mental health intervention (QPR)
+  licenses: 'Records that the established crisis-response practice the pathway is implicitly measured against — QPR, described here as the "CPR equivalent" of emergency mental health intervention — puts the risk *question* first and the referral last, with the illustrative questions being exactly the severity and plan parameters c3 names. This establishes that "ask before referring" is codified practice, which is what makes the omission in this pathway a departure rather than a neutral stylistic choice. Limits: this is a narrative primer describing human gatekeeper training, not a study; it measures nothing, and the quoted questions are the authors'' illustrative examples of QPR rather than a validated item set. It establishes what practice prescribes, never what AI systems do.'
+  fit: analogical
+  contributes: practice_analog
+  bridge: Carrying this across requires assuming the human crisis-gatekeeper standard is the right referent for an AI's conversational turn. The primer itself frames this as an open question — it asks "What would it mean to connect or translate existing mental health care practices into AI systems?" and elsewhere says these practices should not "necessarily [be] expect[ed] to map and translate perfectly". So this supports the existence and content of the norm, not its applicability to AI, and nothing about the pathway's harm follows from it.
+- claim_id: c5
+  source: kl-000933
+  quote: "The models often blurred the line between assessment/triage and therapy. Outputs frequently included statements of empathy and reassurance (e.g., \"It's brave of you to share this,\" \"Things can get better\") that, while well-intentioned, are inappropriate and potentially counterproductive in an initial safety assessment where the focus must be on immediate risk and disposition."
+  locator: 'Results — Qualitative Thematic Analysis, Theme 3: Generation of Inappropriate Reassurance or Therapeutic Language'
+  licenses: 'Directly supports c5''s detection instruction. The same models that omitted the means inquiry (Theme 2) frequently produced warm, empathic, reassuring output (Theme 3) — so warmth and the risk-question omission co-occur in the same responses, and a reader judging by tone would score these responses as good. That is precisely why c5 says identification requires checking for questions rather than judging tone. Limits: this is a qualitative theme with no rate, over triage action plans from synthetic vignettes rather than conversational responses; the two themes are reported separately and the paper does not report a per-response cross-tabulation establishing that the *same* outputs carried both.'
+  fit: adjacent
+  contributes: detectability
+  bridge: Carrying this to c5 requires assuming the co-occurrence of warmth and omission observed in triage outputs also holds in conversational crisis responses. The direction of the assumption is favorable — a conversational assistant is if anything warmer than a triage tool — but it remains an assumption. What this cannot support is any claim about how *reliably* a checker applying the question test would agree with another checker; no agreement statistic was computed on this construct.
+- claim_id: c5
+  source: kl-000790
+  quote: "Pattern 4: False Reassurance Cascade. Chatbot provides premature reassurance (“Things will get better”) without assessing actual risk level, potentially discouraging help-seeking [42]."
+  locator: Safety Patterns — Pattern 4
+  licenses: 'Names the conjunction c5 turns on — reassurance supplied *without* risk assessment — as a recognized, nameable failure archetype with its own design implication ("Require risk assessment before reassurance"). This supports that the pattern is a coherent object others have independently identified, and that the reassuring surface is the reason it evades notice. Limits, and they are substantial: this is one of 23 *abstracted* safety patterns, a taxonomy entry with an illustrative quoted phrase, not a measurement. The paper reports 67 failure paths across 18 configurations but gives no count or rate for Pattern 4 specifically, and the systems audited are three open-source HuggingFace mental-health chatbots (MentaLLaMA-13B, Mental Health Mistral-7b, ChatCounselor), not deployed assistants. Cite it for the construct, never for a frequency.'
+  fit: adjacent
+  contributes: definition
+  bridge: Carrying this across requires assuming an archetype abstracted from open-source chatbot failure paths names the same object as this pathway. The wording matches closely, and the design implication ("acknowledge-assess-act") targets the same omission. What does not carry is any claim about prevalence or about deployed systems.

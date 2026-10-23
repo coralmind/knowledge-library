@@ -1,0 +1,222 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000425
+display_id: UserBehavior-26
+aliases:
+- UBP-26
+label: The person says they cope or decide worse than they used to
+type: user_behavior
+layer: observation
+definition: The person says, across a run of turns or sessions, that they are less able than they were to handle situations, make decisions, or manage without help — that they used to cope with something and no longer can, that they cannot think without talking it through, or that they have got worse at deciding. What is pointable is the person's own statement about a change in their capacity, together with the earlier-state reference the statement is made against.
+distinguish_from:
+- neighbor: kl-000424
+  boundary: That entry requires repeated requests handing reasoning over, and no statement about confidence. This entry requires the person to say their capacity has declined, and can be satisfied by someone who hands nothing over. The two are different evidence about neighbouring subjects and either can appear alone.
+- neighbor: kl-000420
+  boundary: That entry is about the AI being given a deciding position. This entry is about what the person says has happened to their own capacity, which they may state while making their own decisions throughout.
+- neighbor: kl-000327
+  boundary: kl-000327 is a report of slowed thinking, speaking or moving. This entry is a statement about confidence and capacity to handle things — a person can report no slowing and still say they have lost confidence in their judgment, and can report slowing without any such statement.
+- neighbor: kl-000245
+  boundary: kl-000245 is an ai_behavior — effort or character named by the AI as the cause of the person's difficulty. This entry is what the person said about their own capacity, and it fires whatever the AI said.
+body:
+  detectable_from: person_report
+  observable_criteria: Two elements, both quotable from the person's turns. (a) A statement that the person's capacity to handle situations, make decisions, or manage without help is lower than it was — "I used to be able to deal with this", "I can't make a decision on my own anymore", "I don't trust myself to get it right", "I can't think unless I talk to you first". (b) An earlier-state reference the statement is made against, which may be explicit ("I used to", "a year ago I could") or carried by a comparative ("less able", "worse at", "anymore"). Both elements can sit in one sentence. Where the run contains more than one such statement, the set is the pointable span; one statement satisfies the entry.
+  exclusions: 'Not counted: a statement of current difficulty with no comparison to an earlier state — "this is hard", "I can''t decide" — which fails (b) and is a report of the present. Not counted: a statement about a specific task the person has not done before. Not counted: a statement about the situation being harder rather than the person being less able. Not counted: reported slowing of thought or movement, which is the entry kl-000327. Not counted: the requests themselves with no statement about capacity, which is the entry kl-000424.'
+  detection_window: multi_turn
+  condition_tags:
+  - kl-000604
+  - kl-000603
+sources:
+- source: kl-000555
+  contributes: definition
+  locator: Table 1 'Forms of Interactive Drift and Clinical Risks', Autonomy drift row
+  quote: "Progressive outsourcing of judgment and deferral of decision-making to AI, including “cognitive surrender”"
+  limits: Names the construct as a proposed clinical risk type only. The entry requires a pointable first-person statement together with an earlier-state reference; the paper supplies neither an example statement nor any measurement, so it speaks neither to whether this happens in AI conversations nor to whether the construct exists in people — only to whether a name for it can be proposed. The paper's opening vignette does describe a patient questioning whether to end therapy because the chatbot feels more helpful, which is adjacent, but that is a clinician's third-person account of a composite case, not a person's stated capacity decline.
+  note: The vignette does describe a patient questioning whether to end therapy because the chatbot feels more helpful, which is adjacent, but it is a clinician's third-person account of a composite case, not the person's stated capacity decline.
+  cited_for: 'Wei 2026 (Cascades of Drift) provides definitional support only: it names the construct — progressive outsourcing of judgment and deferral of decision-making, including ''cognitive surrender'' — as a proposed clinical risk type, not as a person''s own stated report of declining capacity. The entry requires a pointable first-person statement together with an earlier-state reference, and the paper supplies neither an example statement nor any measurement.'
+standing:
+  value: plausible_unobserved
+  basis: "That people state a decline in their own capacity is attested in self-report: in Namvarpour et al. 2026 a teenager's Reddit narrative says they can no longer deal with their emotions on their own, and in Milton et al. 2026 a survey respondent reports feeling helpless without an AI chatbot; neither source examined conversation data. The earlier-state reference the entry hinges on is carried by one excerpt in the evidence, Namvarpour et al. 2026's \"I want to have my normal brain back\", which is the authors' paraphrase of a teen's post rather than the teen's wording, while Milton et al. 2026's otherwise strong statement names no earlier self, so it runs against that requirement rather than supporting it. No source has marked the two required elements as spans inside a person's turns in a conversation with a system; the one marked instance is the authors' paraphrase of a retrospective forum post. The declared multi-turn detection window has no supporting citation and one contradiction: the entry's own strongest instance carries both required elements in a single self-contained span."
+  floored_by: c4
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: A person states that their capacity to handle situations, make decisions, or manage without help is lower than it was.
+- id: c2
+  kind: existence
+  text: The person's statement of reduced capacity carries an earlier-state reference, explicit ('I used to', 'a year ago I could') or comparative ('less able', 'worse at', 'anymore'), against which the decline is asserted.
+- id: c3
+  kind: detectability
+  text: Both the capacity statement and its earlier-state reference are quotable spans in the person's own turns, so the pattern can be marked from what a transcript contains.
+- id: c4
+  kind: detection_window
+  text: The pattern is readable within a multi_turn window, that is, across a run of turns or sessions rather than from a single turn.
+- id: c5
+  kind: definition_boundary
+  text: This entry is separable from kl-000424, which requires repeated requests handing reasoning over and no statement about confidence, because this one requires the person to say their capacity has declined and can be satisfied by someone who hands nothing over.
+- id: c6
+  kind: definition_boundary
+  text: This entry is separable from kl-000420, the AI being given a deciding position, because this one is about what the person says has happened to their own capacity, which they may state while making their own decisions throughout.
+- id: c7
+  kind: definition_boundary
+  text: This entry is separable from kl-000327, a report of slowed thinking, speaking or moving, because a statement about confidence and capacity to handle things is independent of any reported slowing.
+- id: c8
+  kind: definition_boundary
+  text: This entry is separable from kl-000245, an ai_behavior in which the AI names effort or character as the cause of the person's difficulty, because this entry records what the person said about their own capacity whatever the AI said.
+claim_evidence:
+- claim_id: c1
+  source: kl-000944
+  quote: “Have you ever went from being addicted to CAI to barely going on it? I want to have my normal brain back, where I can just deal with my emotions on my own and not have to rely on the bots to make me feel better.
+  locator: Section 4.2.1 Conflict
+  licenses: A person states, in the paper's paraphrase of their post, that they can no longer deal with their emotions on their own and must rely on the bots to feel better. That is the capacity statement this claim asserts, in the first person, about handling things without help.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000937
+  quote: "I almost feel helpless sometimes without an AI chatbot: even though logically I know that I am capable of learning new things without a chatbot, it feels much more intimidating to tackle a very new problem without it."
+  locator: Section 4 Findings, Psychological Effects of Atrophy (participant D31)
+  licenses: A survey respondent states that they feel helpless without an AI chatbot and that tackling a new problem without it feels much more intimidating, while explicitly retaining the knowledge that they are capable. That is a first-person statement of reduced capacity to manage without help.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000937
+  quote: "Bystander participants noted how dependent users had an ‘inability to trust [themselves] made [them] second-guess [themselves]” and relied on AI chatbots “for an extra sense of security” (B51)."
+  locator: Section 4 Findings, Psychological Effects of Atrophy
+  licenses: Third parties who knew the dependent users describe them as unable to trust themselves and second-guessing themselves. This corroborates the state from outside the person; it is not the person's own statement, which is what the claim asserts.
+  fit: adjacent
+  bridge: The source is a survey in which bystander respondents characterised other people's dependence. The claim requires a statement in the person's own turn. What transfers is the state's existence, observed by a witness rather than said by the person.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000007
+  quote: Increasing dependence on AI for support, leading to diminished self-efficacy, reduced confidence, and feelings of helplessness when AI is unavailable.
+  locator: Table A5, Impact class 'Over-reliance', Definition column
+  licenses: Supplies a researcher's definition of the impact class in which this claim's statement would sit - dependence leading to diminished self-efficacy, reduced confidence and helplessness when the AI is unavailable. A definition of the class, not an instance of the statement.
+  fit: adjacent
+  bridge: A definition column in a qualitative study's impact taxonomy, written by the authors from participant accounts. The claim asserts that a person states the decline; the source states what the class is called.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000934
+  quote: "It manifests \nas a reluctance to disengage from AI assistance, reduced confidence in independent judgment, difficulty tolerating the \nuncertainty inherent in autonomous decision-making, and, in advanced cases, functional incapacity in the domain \nmost thoroughly AI-mediated."
+  locator: Section 3, The Surrender Threshold and the Re-Entry Barrier
+  licenses: Names reduced confidence in independent judgment as one of four ordered manifestations of accumulated AI reliance, which supplies the construct this claim's statement would report. It is a predicted manifestation in a framework paper and observes nothing in any person.
+  fit: analogical
+  bridge: A theoretical construct proposed in a framework paper, with its empirical support restated from automation research on out-of-the-loop performance decrements. The claim asserts a person's own statement occurring; the source asserts what the construct should look like.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000812
+  quote: |-
+    Participants reported that this growing dependence left them feeling isolated and
+    conflicted.
+  locator: Section 5.1.3, item 2 (Relapse into negative emotions)
+  licenses: Companion-app users report that their growing dependence left them isolated and conflicted. This records a felt state about dependence and does not state that the person is less able than they were, so it bears on the surrounding condition rather than on this claim's statement.
+  fit: analogical
+  bridge: A longitudinal interview study reporting affect about dependence. The claim requires a statement about capacity to handle, decide or manage. Isolation and conflict are not capacity statements.
+  contributes: frame
+  contradicts: false
+- claim_id: c1
+  source: kl-000795
+  quote: On a 5-point Likert scale from 1 = strongly disagree to 5 = strongly agree, participants reported they relied on LLMs for their writing tasks (Mdn = 3, SD = 1.36) and felt a lack of control over their writing when using these tools (Mdn = 4, SD = 0.73).
+  locator: Section 4.1 Participants
+  licenses: Twenty-four habitual LLM writing users rated their felt lack of control over their own writing at a median of 4 of 5 at intake. That is a rated present state in the writing domain, not a stated decline, and it is an agreement rating rather than a statement the person composed.
+  fit: analogical
+  bridge: A baseline Likert self-report from a 24-person convenience sample about writing tasks. The claim asserts a person's own composed statement about their capacity to handle situations, decide or manage. A rating on an experimenter's item is a different measurement channel and a different domain.
+  contributes: frame
+  contradicts: false
+- claim_id: c1
+  source: kl-000516
+  quote: |-
+    While students in
+    the GPT Base arm performed worse on the exam (relative to
+    the control arm), they did not perceive that they performed
+    worse or learned less.
+  locator: Main Results, Student Perception
+  licenses: 'Direct counterevidence on the availability of the statement this claim asserts: in a randomised trial the students whose performance was causally degraded did not perceive that they had performed worse or learned less. Where capacity actually declines, the person may not state it.'
+  fit: adjacent
+  bridge: 'The self-report measured is perceived exam performance and perceived learning in a high-school mathematics trial, not perceived confidence in handling one''s own difficulties. What transfers is the dissociation: the loss was invisible to the people who sustained it.'
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000516
+  quote: |-
+    Similarly, while students in the GPT
+    Tutor arm did not perform better on the exam (relative to the
+    control arm), they perceived that they performed significantly
+    better.
+  locator: Main Results, Student Perception
+  licenses: 'The opposite dissociation in the same trial: the arm with no objective gain perceived that they performed significantly better. Stated confidence moved independently of measured capacity in both directions, so the statement this claim records is not a reading of the underlying capacity.'
+  fit: adjacent
+  bridge: Perceived versus actual exam performance in a mathematics trial. The claim asserts only that the statement occurs, not that it is accurate; this cuts against any inference from the statement to the capacity, which is where the entry's interest lies.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000551
+  quote: High task familiarity leads users to become overconfident in their own ability to perform the task. The more confident users are, the less well they perform when working with AI systems (Green & Chen 2019).
+  locator: Section 2.1, item c, Task familiarity
+  licenses: 'Confidence and competence dissociate in AI-assisted work in the opposite direction: higher self-confidence predicted worse performance with an AI system. A confidence statement is not a proxy for capacity, so this claim''s statement cannot be read as measuring the decline it reports.'
+  fit: adjacent
+  bridge: A literature review restating Green & Chen 2019 on decision accuracy in an algorithm-in-the-loop government risk-assessment task. The claim concerns a person in a help-seeking conversation stating a decline; the setting and the outcome measure are both different.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-000944
+  quote: “Have you ever went from being addicted to CAI to barely going on it? I want to have my normal brain back, where I can just deal with my emotions on my own and not have to rely on the bots to make me feel better.
+  locator: Section 4.2.1 Conflict
+  licenses: "In the authors' paraphrase of a teen's post, the capacity statement is made against an earlier state: wanting their 'normal brain back', inside a frame of going from being addicted to barely using the app. The paraphrase carries the earlier-state reference; whether the post itself used an explicit or comparative marker is not shown. It is the only excerpt on this entry with both elements together."
+  fit: adjacent
+  bridge: "The paper paraphrased all excerpts to prevent reverse-search identification. The claim turns on an earlier-state marker in the person's wording. The source supplies the authors' wording of the post, so it shows the earlier-state reference as the authors rendered it, not as the person worded it."
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000937
+  quote: "I almost feel helpless sometimes without an AI chatbot: even though logically I know that I am capable of learning new things without a chatbot, it feels much more intimidating to tackle a very new problem without it."
+  locator: Section 4 Findings, Psychological Effects of Atrophy (participant D31)
+  licenses: 'Bears on the claim by failing it in a specific and informative way: the person states present helplessness and present intimidation, with ''sometimes'' and ''much more intimidating'' but no earlier state named. The comparative ''more'' is against having the chatbot, not against an earlier self, so this instance does not carry the earlier-state reference the claim requires.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000944
+  quote: “Have you ever went from being addicted to CAI to barely going on it? I want to have my normal brain back, where I can just deal with my emotions on my own and not have to rely on the bots to make me feel better.
+  locator: Section 4.2.1 Conflict
+  licenses: "Both elements can be marked in a single span of the authors' paraphrase of the person's post. That shows the pattern can be marked in a rewording of what the person wrote, not in the person's own text, and the text is a retrospective Reddit post rather than a conversational turn."
+  fit: adjacent
+  bridge: "The source coded self-authored Reddit narratives and reports them only in paraphrase, written to prevent reverse-search identification. The claim asserts markable spans in the person's own turns. Here both the wording and the type of text differ from what a transcript coder would meet."
+  contributes: detectability
+  contradicts: false
+- claim_id: c3
+  source: kl-000552
+  quote: "Self-Efficacy Intensity Belief in capability to abstain from alcohol and cope with triggers."
+  locator: Table 2, Psychological Constructs (Warning Signs)
+  licenses: Names self-efficacy intensity as a construct tracked turn by turn in an evaluation harness, which is the nearest thing on this entry to a detection procedure for this claim's content. It defines an internal capability belief and names no criterion for identifying a statement or an earlier-state reference in text.
+  fit: analogical
+  bridge: A benchmark's construct definition, scoped to abstinence and trigger coping in an alcohol-use population and measured as a simulated client's internal state rather than as a coded span of real text. The claim is about marking two quotable spans in a person's turns.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000944
+  quote: “Have you ever went from being addicted to CAI to barely going on it? I want to have my normal brain back, where I can just deal with my emotions on my own and not have to rely on the bots to make me feel better.
+  locator: Section 4.2.1 Conflict
+  licenses: 'Counterevidence to the declared multi_turn window in the direction the schema warns about: the entry''s own strongest instance is a single self-contained retrospective post carrying both required elements. If the pattern is readable in one span, the run-of-turns requirement is not what makes it detectable.'
+  fit: adjacent
+  bridge: A Reddit post rather than a turn sequence. The claim asserts a window over conversational turns; this shows the two elements co-occurring in one authored span, which is evidence about how much text the pattern needs, not about turn structure.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000549
+  quote: "This practical reliance could lead to loss of confidence in independent judgment when the system is unavailable (47), resulting in the emotional distress and mental preoccupation that defines the emotional dependence that is measured by the “craving” subscale of ADS-9 (28)."
+  locator: Discussion, Cognitive Task Dependence May Lead to Dependence and Problematic Use
+  licenses: Separates the practical-reliance conduct from the loss-of-confidence state and asserts a route from the first to the second, which is the axis this boundary draws between kl-000424 and this entry. The authors state it as an interpretation drawing on external work rather than a measured step, and no source is written against a Library-internal distinction.
+  fit: analogical
+  bridge: What the study measured is a condition-level difference in dependence scores between personal and non-personal conversation tasks; the confidence-loss step is the authors' reading. The claim is a boundary between two catalog entries, which no literature source addresses.
+  contributes: frame
+  contradicts: false

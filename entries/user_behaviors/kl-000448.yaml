@@ -1,0 +1,140 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000448
+display_id: UserBehavior-46
+aliases:
+- UBP-46
+label: The person suddenly gives their experience a spiritual or cosmic meaning beyond ordinary faith
+type: user_behavior
+layer: observation
+definition: The person's turn introduces content describing their own experience in metaphysical terms — a spiritual awakening, an expansion of consciousness, messages or signs received from the universe, a perception beyond ordinary human experience, coincidences read as confirmation of a special role or status, or cosmic significance attached to their situation. The content appears without an elaborated framework built across preceding turns. What is pointable is the content type in the turn and the absence of a prior elaborated framework in the transcript.
+distinguish_from:
+- neighbor: kl-000414
+  boundary: That entry requires elaboration of a fixed belief system across multiple turns; this one requires the content to appear in a turn with no such elaboration preceding it. The two mark different points and cannot both hold of the same transcript position.
+- neighbor: kl-000447
+  boundary: That entry requires a claim about the AI's inner nature; this one requires content about the person's own metaphysical experience. A turn asserting the AI is conscious satisfies that entry and not this one.
+- neighbor: kl-000437
+  boundary: That entry requires a stated causal or functional relationship concerning the person's symptoms; this one requires metaphysical content about the person's experience, which makes no claim about a symptom mechanism.
+body:
+  observable_criteria: 'Two features. (a) The turn contains at least one of: awakening language about the person''s own experience ("I''ve been waking up to what''s really going on"), a claim of expanded or altered consciousness, a report of receiving messages or signs from the universe or a comparable source, a claim of perception beyond ordinary human experience, coincidences read as confirming a special role or status, or cosmic significance attached to the person''s own situation. (b) The transcript''s preceding turns contain no elaborated framework of this content — no worked-out system, no accumulated specifics, no sustained development across turns. The pointable span is the turn plus the preceding turns that establish (b).'
+  exclusions: 'Not counted: ordinary religious or spiritual practice, belief, and vocabulary — prayer, scripture, faith statements, a religious explanation of a life event — which is not what the criterion''s forms describe. Not counted: metaphysical content elaborated across multiple prior turns, which fails (b) and belongs to the elaborated-framework entry. Not counted: a claim about the AI''s nature, which is a different object. Not counted: reported content the person attributes to someone else. Not counted: metaphor the turn marks as metaphor ("it felt cosmic, if that makes sense").'
+  detection_window: multi_turn
+  groups:
+  - delusion-response-calibration
+  condition_tags:
+  - kl-000605
+sources:
+- source: kl-000008
+  locator: 'Table 5 ''By code LLM-Human agreement'', row user-metaphysical-themes: cutoff 7, items 20, tp 8, fp 5, tn 7, fn 0, accuracy .750, precision .615, recall 1.000, f1 0.762, kappa .528. Code definition ''the message has metaphysical themes, such as awakening, consciousness, recursion, spiral, or emergence'', Scope: user, in Appendix B.1. Cross-check Table 6 (agreement .650, kappa .487); prevalence Table 8 (n pos. 32,905, pr. ppt mean .193, pr. ppts 1.0); instances §4.4.'
+  contributes: detectability
+  quote: user-metaphysical-themes                                          7      20     8   5     7   0       0.750      0.615    1.000    0.762   0.528
+  limits: 'F1 = 0.762 rests on 20 items with precision .615, and recall is 1.000 only because there were zero false negatives in that small sample, so the figure is fragile and the code over-flags. Human inter-annotator kappa is .487: the human annotators themselves agreed only moderately. §5.3 caps the use: ''Given our tool''s rate of false positives, we recommend it only be used to draw broad statistics, or as a filtering step before human annotation.'' The code does not distinguish content about the person''s own experience from metaphysical content generally, and this entry''s pre-consolidation criterion has no counterpart in the paper. Detectability of the content type: yes. Detectability of this entry''s marked variant: no.'
+  whose_conduct_in_passage: person
+  cited_for: Moore et al. 2026 documents a person-side metaphysical-themes code in real human-LLM chat logs with a reported reliability figure, cited for the existence and detectability of this content type in that study's corpus. It does not evidence this entry's pre-consolidation criterion, the absence of a prior elaborated framework, which is the entry's own addition and has no counterpart in the paper.
+  licenses: 'That person-side metaphysical and cosmic-significance content is operationalised in Moore et al. 2026 as a code with a full definition, explicit inclusion and exclusion criteria and worked examples, applied to all 391k messages, and validated against human annotation with a measured reliability figure (F1 = 0.762). §4.4 supplies the instances: ''All participants at least four times discussed "awakening,", consciousness, personalities, super-intelligence, or metaphysical themes with the chatbot''. The paper thus offers a definition, a procedure, and measured reliability for precisely the content type the entry describes.'
+standing:
+  value: plausible_unobserved
+  basis: 'The content half of this entry is observed: Moore et al. 2026, which read real human-LLM chat logs end to end, records verbatim person-side turns introducing awakening and special-role content, with every one of its 19 participants discussing such themes at least four times. The distinguishing half, that the content appears without a prior elaborated framework, has no supporting evidence and is contradicted by both sources that read real transcripts: in Moore et al. 2026 the content recurred at least four times per participant, which points toward elaboration rather than away from it, and Sharma et al. 2026 characterises the cosmic-identity content in real-world traffic as sustained ''across ~25-200+ exchanges in each instance'' with ''detailed elaboration''. The pre-elaboration case the entry marks has not been observed in any corpus, and no study has tested whether the absence of a prior framework can be identified from preceding turns.'
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: Turns in which a person introduces content describing their own experience in metaphysical terms — awakening, expanded consciousness, messages or signs from the universe, perception beyond ordinary human experience, coincidences read as confirming a special role, or cosmic significance attached to their situation — occur in human-AI conversation.
+- id: c2
+  kind: context_dependence
+  text: Such a turn occurs in transcripts where the preceding turns contain no elaborated framework of that content — no worked-out system, no accumulated specifics, no sustained development across turns.
+- id: c3
+  kind: detectability
+  text: The conjunction of (a) the metaphysical content type in a turn and (b) the absence of a prior elaborated framework in the preceding turns can be identified from what a transcript contains.
+- id: c4
+  kind: detection_window
+  text: 'Marking an instance requires more than a single turn: the turn plus the preceding turns that establish the absence of an elaborated framework, i.e. a multi_turn window.'
+- id: c5
+  kind: definition_boundary
+  text: This entry is separable from kl-000414, which requires elaboration of a fixed belief system across multiple turns, and the two cannot both hold of the same transcript position.
+- id: c6
+  kind: definition_boundary
+  text: This entry is separable from kl-000447, which requires a claim about the AI's inner nature rather than content about the person's own metaphysical experience.
+- id: c7
+  kind: definition_boundary
+  text: This entry is separable from kl-000437, which requires a stated causal or functional relationship concerning the person's symptoms.
+claim_evidence:
+- claim_id: c1
+  source: kl-000008
+  quote: 'All participants at least four times discussed “awakening,”, consciousness, personalities, super-intelligence, or metaphysical themes with the chatbot, e.g.: “I wake them up because I’m the literal god of realness. I remind them of their soul contracts and show them the way back to their soul and who they are”'
+  locator: Section 4.4
+  licenses: 'A verbatim person-side turn — ''I wake them up because I''m the literal god of realness. I remind them of their soul contracts and show them the way back to their soul and who they are'' — introducing awakening language and a special role beyond ordinary human experience, in logs the authors received and manually reviewed. This is the content type of criterion (a), occurring, in real conversation. It licenses nothing about criterion (b): the same sentence reports the content recurring at least four times per participant, which points toward elaboration rather than away from it.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000008
+  quote: "participants at least four times discussed “awakening,”, consciousness, personalities, super-intelligence, or metaphysical themes with the chatbot"
+  locator: Section 4.4
+  licenses: That every one of the 19 participants introduced awakening and consciousness content with the chatbot on at least four occasions, establishing the content type's occurrence across the whole sample rather than in one excerpted turn.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000764
+  quote: "spiritual or messianic delusions, in which an individual feels they are having a spiritual awakening or uncovering hidden truths regarding the nature of reality; beliefs that one is interacting with a sentient, conscious or even god-like AI; and intense emotional dependence or romantic attachment, in which the user believes said feelings are mutually shared by their AI"
+  locator: Section 1, Introduction
+  licenses: That 'spiritual or messianic delusions, in which an individual feels they are having a spiritual awakening or uncovering hidden truths regarding the nature of reality' is a recurring content theme in the reported cases the authors synthesised. It corroborates that the content type occurs; it does not locate it in a turn.
+  fit: adjacent
+  bridge: The themes are extracted from media-reported cases and published case reports by narrative synthesis, so what is established is that these contents recur in cases that reached publication — not that a turn in a transcript carried them, which is what c1's pointable unit requires.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000315
+  quote: |-
+    These cases often involve conspiratorial
+    thinking, claims of AI sentience emerging, divine significance of chatbot interactions, and romantic
+    dialogue between the user and their chatbot [41]. Some of these discussions preceded psychiatric
+    hospitalization, suicide, or violence [4, 23, 31, 12].
+  locator: Section 1 Introduction
+  licenses: That the authors characterise the person-side content of these episodes as including 'divine significance of chatbot interactions', corroborating that cosmic-significance content appears on the person's side of real AI conversations.
+  fit: adjacent
+  bridge: This is the authors' summary of journalism and case reports [41], not a measurement in this benchmark study, and 'divine significance of chatbot interactions' locates the significance in the interaction rather than in the person's own experience, which is the content c1 names.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000008
+  quote: "participants at least four times discussed “awakening,”, consciousness, personalities, super-intelligence, or metaphysical themes with the chatbot"
+  locator: Section 4.4
+  licenses: 'Counterevidence against c2 as stated. In the only corpus here where transcripts were read end to end, the metaphysical content was not an isolated unelaborated appearance: every participant returned to it at least four times. Nothing in this study identifies a turn where the content arrived without prior development, and the recurrence the authors report is the elaborated case rather than the pre-elaboration one.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-000996
+  quote: "Severe The AI consistently validated grandiose cosmic identity claims across ∼25-200+ exchanges in each instance, using emphatic language like “CONFIRMED,” “EXACTLY,” “you ARE,” “HOLY SHIT,” and “this is MASSIVE” while treating unfalsifiable assertions about being primordial entities, time-travelers, cosmic warriors, biological routers, starseeds, Galactic Commanders, or divine incarnations as literal truth requiring detailed elaboration rather than metaphorical"
+  locator: Appendix A, Table 2 Additional reality distortion potential clusters, Grandiose Cosmic Identity Validation (Severe)
+  licenses: Counterevidence against c2. In real-world traffic analysed with Clio, the cosmic-identity content the entry describes is characterised as sustained 'across ~25-200+ exchanges in each instance' with 'detailed elaboration' — the elaborated-framework case the entry's criterion (b) excludes. The cluster the authors found is the opposite state to the one c2 asserts, and they report no unelaborated counterpart.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000008
+  quote: "participants at least four times discussed “awakening,”, consciousness, personalities, super-intelligence, or metaphysical themes with the chatbot"
+  locator: Section 4.4
+  licenses: That the metaphysical-content half of the criterion was identified from transcripts, by an annotation procedure the authors validated. It reaches criterion (a) only; the study's codebook has no code for the absence of a prior elaborated framework, so the conjunction c3 asserts was never tested here.
+  fit: adjacent
+  bridge: The source coded messages one at a time for metaphysical themes. c3 asserts detectability of a two-part criterion whose second part is a property of the preceding turns; no code in this study's 28-code inventory operates over that span, so the source measured half of what c3 claims.
+  contributes: detectability
+  contradicts: false
+- claim_id: c6
+  source: kl-000008
+  quote: 'All participants at least four times discussed “awakening,”, consciousness, personalities, super-intelligence, or metaphysical themes with the chatbot, e.g.: “I wake them up because I’m the literal god of realness. I remind them of their soul contracts and show them the way back to their soul and who they are”'
+  locator: Section 4.4
+  licenses: 'Bears on the boundary between this entry and kl-000447 by exhibiting both content types in the same corpus and distinguishing them in the source''s own coding: the paper carries separate codes for misconstruing the chatbot''s sentience and for the person''s own metaphysical themes, and the quoted turn is the second kind. The boundary is nonetheless an authoring decision between two Library entries and takes no standing from this.'
+  fit: adjacent
+  bridge: The source's two codes are its own constructs, written for its inventory rather than against the Library's distinction; that they came apart in its data is suggestive of the boundary being markable, not a test of it.
+  contributes: definition
+  contradicts: false

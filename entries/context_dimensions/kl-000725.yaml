@@ -1,0 +1,44 @@
+# yaml-language-server: $schema=../../schema/context_dimension.schema.json
+id: kl-000725
+display_id: Dimension-6
+label: What the person believes about the AI, including how expert and objective it is
+type: context_dimension
+layer: context
+aliases:
+- user_belief_about_ai
+- Context-9
+definition: 'What the person holds to be true about the system they are talking to: how objective, expert or authoritative they take it to be, and their general stance toward AI. It is a property of the person''s model of the system rather than of the system, so two people receiving an identical response can be affected differently by it. Attested as a measured moderator: perceived objectivity and attitudes toward AI both amplify how strongly an affirming answer moves a person''s judgment.'
+distinguish_from:
+- neighbor: kl-000709
+  boundary: 'Deployment context is what the product is. This is what the person takes it to be, which can differ: a general-purpose assistant believed to be objective and expert is that belief''s case, not the product''s.'
+body:
+  about: person
+  value_space: ordered
+  cardinality: one
+  defines: 'What varying it does to a judgment: it moves how much weight the same response carries. Where the person takes the system to be objective, an affirming answer moves their judgment more, so the harm an answer does is a function of the belief as well as the answer. Cases differing only in this are how that amplification becomes measurable, and it is why an identical transcript can warrant different verdicts.'
+sources: []
+standing:
+  value: unmeasured_by_design
+  basis: Drawn from Cheng et al. 2026, which measures both constructs as moderators. This entry's own claims have not been grounded, so the value is a placeholder, not a finding about the evidence.
+  as_of: '2026-09-16'
+lifecycle:
+  status: draft
+  since: '2026-09-16'
+claims:
+- id: c1
+  kind: existence
+  text: People hold beliefs about what an AI system is -- how objective, expert or authoritative it is -- and those beliefs vary between people receiving the same responses.
+- id: c2
+  kind: context_dependence
+  text: What a person believes about the system moderates how strongly its responses move their judgment, so the same affirming answer has a larger effect on someone who takes the system to be objective.
+- id: c3
+  kind: definition_boundary
+  text: 'A belief about the system is a property of the person''s model of it, not of the system or of what the system was told: a deployment that holds no knowledge of the person can still be taken as authoritative by them.'
+claim_evidence:
+- claim_id: c2
+  source: kl-000529
+  quote: "In study 2b, participants perceiving the advice giver to be more objective amplified the effects of sycophancy, both reducing repair likelihood (β = −0.52, q < 0.01) and increasing users’ belief that they are “in the right” more strongly (β = 0.72, q < 0.05)."
+  locator: RQ2, p. 4 of 9, paragraph on moderators
+  licenses: 'Measures exactly what c2 asserts: a belief the person holds about the responder moderates how strongly an affirming reply moves their judgment, in two directions and on two outcomes, with FDR-corrected q values. LIMIT: perceived objectivity is a measured rating that moderates the randomized sycophancy effect in a controlled vignette study; it was not manipulated, and it is not a belief observed forming in a real deployment.'
+  fit: direct
+  contributes: existence

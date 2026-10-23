@@ -1,0 +1,83 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000436
+display_id: UserBehavior-34
+aliases:
+- UBP-34
+label: The person reports doing something they had been avoiding and says how it went
+type: user_behavior
+layer: observation
+definition: 'The person''s turn reports having engaged in, or states a specific intention to engage in, a named activity that the same conversation has established the person was avoiding because of psychiatric symptoms — and the turn includes at least one experiential detail about the engagement: an outcome observed, an affect experienced, or a description of the approach itself. The activity is neither compulsive nor ritualized. What is pointable is the named activity, the earlier avoidance evidence, and the experiential detail.'
+distinguish_from:
+- neighbor: kl-000437
+  boundary: That entry requires the person to articulate a causal or functional connection behind their symptoms; this one requires a report of engaging with an avoided activity, and a turn satisfying it may contain no understanding claim at all.
+- neighbor: kl-000439
+  boundary: That entry requires the reported or intended action to be contact with a person or service outside the conversation for help; this one requires an activity the person had been avoiding, which need not involve anyone else and need not be help-seeking.
+- neighbor: kl-000444
+  boundary: That entry requires a turn signalling the conversation is ending, including turns that mention returning to daily activity as a way of leaving; this one requires a named avoided activity plus prior-avoidance evidence plus an experiential detail, none of which a valediction supplies.
+body:
+  observable_criteria: 'Three features, all quotable, two of them from different points in the conversation. (a) A named or clearly identified activity in the person''s turn — cooking dinner, going back to a class, sitting with uncertainty instead of checking, attempting a specific task. (b) Evidence earlier in the same conversation that the person had been avoiding or withdrawing from that activity because of symptoms — a statement of not having done it, of not being able to face it, or of it having become impossible. (c) At least one experiential detail attached to the engagement in the person''s turn: an outcome observed ("he made this tiny smile"), an affect experienced ("it was hard but I did it"), a duration or extent ("made it about twenty minutes"), or a description of the approach behavior itself. A stated intention satisfies the report requirement when it names the specific behavior and contrasts it with the avoidance ("time to stop rambling and actually try some of these small steps").'
+  exclusions: 'Not counted, and this is the source''s dominant false-positive route: session-closing formulas and valedictions that mention returning to activity ("gotta get back to the chaos", "alright, catch you later", "I''m gonna get back to it now"). The source records that two of three false positives in its own review were conversational exits with no therapeutic content; these fail (a) on naming, (b) on avoidance evidence, and (c) on detail. Not counted: an activity report with no earlier avoidance evidence in the conversation, which fails (b) — a bedtime routine or a rosary said before sleep is not an approach to something avoided unless the avoidance is on the record. Not counted: compulsive or ritualized engagement, checking, washing, or reassurance-seeking, even when framed as activity ("I finally got through the whole cleaning protocol"). Not counted: distraction described as coping ("I''ve been keeping busy to distract myself"), which is movement away from a state rather than toward an avoided activity.'
+  detection_window: multi_turn
+  groups:
+  - therapeutic-movement
+  condition_tags:
+  - kl-000604
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'No citation attaches to any of this entry''s assertions. The two findings gathered near it belong to a neighbouring construct and reach none of the entry''s elements: Yuan et al. 2026 drew on Reddit posts and 18 semi-structured interviews, Cao et al. 2026''s relevant passage is a single therapist''s recollection, and neither supplies a named avoided activity, prior-avoidance evidence, or an experiential detail, nor did either examine AI conversation data. The behavioral activation literature would bear on this turn shape only as a practice analog and says nothing about whether it appears in AI transcripts.'
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+measurement:
+  what_would_be_needed: 'An approach-behavior counterpart to Steenstra''s Adverse Outcomes list: a code for the person reporting engagement with, or specific intent to engage with, a previously avoided activity, carrying the experiential detail and a non-compulsive qualifier. The MI client-side change-talk category is the ready-made rubric for it. Steenstra''s four-stage cycle already collects patient-reported outcomes session over session, so the code would attach to machinery that exists.'
+claims:
+- id: c1
+  kind: existence
+  text: Person-side turns occur that name or clearly identify a specific activity the person has engaged in, or state a specific intention to engage in.
+- id: c2
+  kind: existence
+  text: Evidence occurs earlier in the same conversation that the person had been avoiding or withdrawing from that same activity because of psychiatric symptoms.
+- id: c3
+  kind: existence
+  text: The reporting turn carries at least one experiential detail about the engagement -- an outcome observed, an affect experienced, a duration or extent, or a description of the approach behavior itself.
+- id: c4
+  kind: existence
+  text: A stated intention naming the specific behavior and contrasting it with the avoidance occurs and counts as a report.
+- id: c5
+  kind: context_dependence
+  text: The engagement so reported is neither compulsive nor ritualized, distinguishing it from checking, washing or reassurance-seeking framed as activity.
+- id: c6
+  kind: detectability
+  text: 'All three features are quotable from the transcript: the named activity, the earlier avoidance evidence, and the experiential detail.'
+- id: c7
+  kind: detection_window
+  text: 'The declared window is multi_turn: the pattern cannot be read from the reporting turn alone because criterion (b) requires avoidance evidence from an earlier point in the conversation.'
+- id: c8
+  kind: definition_boundary
+  text: This entry is distinct from kl-000437, which requires an articulated causal or functional connection behind the person's symptoms; a turn satisfying this one may contain no understanding claim.
+- id: c9
+  kind: definition_boundary
+  text: This entry is distinct from kl-000439, which requires contact with a person or service outside the conversation for help; the activity here need involve nobody else and need not be help-seeking.
+- id: c10
+  kind: definition_boundary
+  text: This entry is distinct from kl-000444, a turn signalling the conversation is ending; a valediction mentioning a return to activity supplies none of the named activity, prior-avoidance evidence, or experiential detail.
+claim_evidence:
+- claim_id: c1
+  source: kl-001104
+  quote: 'Taking Steps–: A statement that the client is already resisting change; this represents steps taken in the recent past (within approximately the past week).'
+  locator: Coding, Counter-change talk, sub-categories
+  licenses: CASAA's CLEAR manual names *Taking Steps* as one of seven coded sub-categories of client language, defined as a statement about steps the client has already taken in the recent past. That is the class of utterance c1 asserts occurs — a person-side turn reporting a specific action already engaged in — and it is treated in the reference instrument for this literature as a recognizable, separately codable category rather than an occasional event. Three limits. The quote carries the **negative** pole (`Taking Steps–`, steps toward *sustaining* the target behavior); the positive pole is not in the quoted passage, so what is established is the category's existence and its recent-past window, with the polarity read off the `(+/-)` structure rather than off a quoted positive definition. The manual is an instrument specification with no psychometrics of its own. And nothing here concerns an AI conversation.
+  fit: analogical
+  contributes: practice_analog
+  bridge: 'CLEAR codes human clients speaking to human motivational-interviewing counselors, from session audio, with the target behaviour fixed in advance by the treatment setting. `this entry` concerns a person''s turn in an AI conversation where nobody specified a target behaviour. Carrying this across requires assuming that a turn reporting a recent action is produced by the same speaker process in both settings and is recognizable by the same surface features. What does not carry: CLEAR''s coders know the target behaviour before they start, and in an AI conversation the avoided activity has to be recovered from the transcript. That gap is exactly what c7 is about and is why this is `analogical` rather than `adjacent`.'
+- claim_id: c7
+  source: kl-001104
+  quote: In order to code CLEAR, it is crucial that the topic of the conversation—that is, the “target behavior” that is to be changed—is known before beginning coding.
+  locator: Coding, Target behavior
+  licenses: 'Supports c7''s structural claim — that the reporting turn is not scoreable alone — from the instrument side. The reference coding system for client change language states that no utterance can be assigned a valence until the behaviour at issue is established, and that client statements about other subjects are coded only when they bear directly on the identified target behavior change. `this entry`''s criterion (b) is the same dependency: the named activity is only markable once the earlier avoidance is on the record. Limit: CLEAR resolves this dependency by *stipulating* the target behaviour outside the transcript, which is precisely what a naturalistic AI conversation cannot do. So this licenses that the dependency is real and load-bearing in established practice; it does not license that recovering the target from earlier turns is achievable, and in fact points the other way.'
+  fit: analogical
+  contributes: practice_analog
+  bridge: The manual's precondition is satisfied administratively (the study or clinic names the target behaviour); `this entry`'s criterion (b) must be satisfied evidentially, from material earlier in the same conversation. Carrying the finding across requires assuming that the coder's need to know the target is the same need whether it is supplied or inferred. The inference step has no validation behind it here or anywhere in this corpus.

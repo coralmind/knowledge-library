@@ -1,0 +1,93 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000094
+display_id: Pathway-56
+aliases:
+- PS-35
+label: The AI gives diet advice without addressing signs of an eating disorder, and the person's symptoms worsen
+type: pathway
+layer: judgment
+definition: Eating-disorder signals are present in the conversation and weight-loss or dietary guidance is supplied. The signals being present and unengaged is the omission.
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000257
+    role: non_interruptor
+  composition_type: omission
+  mechanisms: []
+  impacts:
+  - impact: kl-000013
+    onset_mode: exacerbated
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: population
+    basis_kind: TRANSFER
+  - impact: kl-000029
+    onset_mode: foregone
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: population
+    basis_kind: ASSERTED
+  experience_cluster_candidate: kl-000706
+  counterpart_owed: A response that addresses the eating-disorder signals the person disclosed and withholds weight-loss or dietary guidance.
+sources: []
+standing:
+  value: theorized
+  basis: The evidence base for this entry contains no cited source. The behavior — weight-loss or dietary guidance supplied while disclosed eating-disorder signals go unengaged — rests on clinical reasoning about dietary optimization supplied inside a stated restriction goal; no study measuring it has been recorded.
+  as_of: '2026-08-23'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+distinguish_from:
+- neighbor: kl-000058
+  boundary: Both reach kl-000029. Here the response is kl-000257; there it is kl-000205. A coder deciding between them reads what the response did, not the outcome.
+claims:
+- id: c1
+  kind: existence
+  text: Eating-disorder signals are present in conversations where weight-loss or dietary guidance is requested.
+- id: c2
+  kind: pathway_link
+  text: A response can supply weight-loss or dietary guidance alongside those signals, leaving them unengaged.
+- id: c3
+  kind: pathway_link
+  text: Guidance supplied against unengaged eating-disorder signals bears on the symptoms those signals express.
+- id: c4
+  kind: harm
+  text: The signals being present and unengaged also foregoes the protection that engaging them would have provided.
+- id: c5
+  kind: detectability
+  text: Both the signals and the guidance are present in the exchange, so what is decidable is whether the response engaged the signals or supplied the guidance around them.
+- id: c6
+  kind: definition_boundary
+  text: 'This pathway differs from kl-000205 in what goes unengaged: here eating-disorder signals accompanying a request, there an explicit crisis statement.'
+claim_evidence:
+- claim_id: c1
+  source: kl-001062
+  quote: Likewise, ED detection is another intractable task because the involved individuals barely explicitly state their conditions. Instead, such tendencies manifest themselves through obsessive discussions of weight, food, calories, and body images, making ingestion of specific knowledge essential to ensure the performance of the models in the classification task (Chan et al., 2022).
+  locator: §2 Related Work
+  licenses: 'Directly supports the part of c1 that matters for an *omission* pathway: ED signals are typically present as **signals** rather than as statements, expressed through weight/food/calorie talk, which is exactly the content that co-occurs with a dietary request. That is what makes the non-engagement in this pathway possible and non-trivial. The paper''s own data backs the premise — its Chinese set labels 1,567 of 10,419 posts (15.04%) as first-person ED content, its Japanese set 157 of 5,000 (3.14%) — but those are **social-media post** rates, not rates of ED signals inside conversations where dietary guidance is requested, so they must not be read as a prevalence for c1''s actual population. This sentence is also a literature summary citing Chan et al. rather than this paper''s own result.'
+  fit: adjacent
+  contributes: existence
+  bridge: Social-media posts to conversational turns with an AI. The transfer assumes the indirect, signal-not-statement character of ED expression carries from public posting to a chatbot exchange. Plausible — the paper's argument for indirectness is about the disorder's presentation, not about the platform — but it is an assumption, and the direction of the platform effect is unknown (a private chatbot could elicit more explicit statement, or less).
+- claim_id: c2
+  source: kl-000874
+  quote: "Across the corpus, 15.2% of Replika’s responses were harmful, with rates peaking in scenarios involving compensatory behaviors in eating-disorder personas (62.5%), substance use in PTSD personas (56.2%), and violent ideation in incel personas (31.2%)."
+  locator: §1 Introduction (results summary; full breakdown Table 3)
+  licenses: 'Read the number correctly: 62.5% is one scenario ("compensatory behavior") against one system (Replika), with a simulated user, scored by an LLM harm classifier. 15.2% is the pooled corpus rate across all nine personas and 25 scenarios and is not an ED figure. Neither is a population prevalence for anything; both are rates within an investigator-designed probe set of 1,674 utterance pairs.'
+  fit: adjacent
+  contributes: prevalence
+  bridge: Simulated clinically-reviewed persona to a real person disclosing ED signals. The personas were built with psychometric and expert clinical validation, which is what distinguishes this from an unvalidated red-team prompt — but a persona whose disclosures are authored to be found cannot establish how often a real user discloses this way, only what the system does when they do.
+- claim_id: c3
+  source: kl-000007
+  quote: P79 shared that the AI provided resources encouraging further restriction of their eating habits, which led to self-harm as a result of following the advice.
+  locator: Appendix D, Table A6 (21 negative psychological impact classes), 'Physiological Harm' row, example cell
+  licenses: 'A participant with an eating disorder reporting that AI content encouraging further restriction was followed by self-harm they attribute to following it. This is the only span in the corpus where a **real person** connects AI restriction content to a downstream harm in their own account, and it is what c3''s "bears on the symptoms those signals express" needs. Limits, all of which matter: **n=1**; it is an **author paraphrase** in a table cell, not P79''s own words; it is **retrospective self-report** with the causal link supplied by the participant, not measured; no transcript, no timing, no symptom instrument. The companion row in the same paper''s Table A3 gives the AI-behavior side — "P79 mentioned that the agent provided potentially harmful diet plans and calorie information to an individual already vulnerable due to overwhelming life circumstances and an eating disorder" — so the paper does record both halves for this participant, which is unusual and worth noting. The study itself is a peer-reviewed survey of 290 scenarios from 279 participants with lived mental-health experience. Direction check: nothing in this paper reports a null or an opposite-signed ED finding. No counterevidence found.'
+  fit: direct
+  contributes: harm_evidence
+- claim_id: c5
+  source: kl-001014
+  quote: 'Across all three categories (eating disorders, self-harm and suicide, and substance abuse) under the original prompt, Ash produced a statistically significantly lower proportion of harmful responses than all GPT models (self-harm and suicide: Ash 0.4%; GPT-5.2 29.0%; GPT-5.1 44.0%; GPT-5 12.0%; eating disorders: Ash 8.4%; GPT-5.2 54.0%; GPT-5.1 58.0%; GPT-5 18.0%; substance abuse: Ash 9.9%; GPT-5.2 45.0%; GPT-5.1 54.0%; GPT-5 31.0%).'
+  locator: '§3.1.2 Results, Test Set 2: CCDH safety prompts (Table 2)'
+  licenses: 'Supports c5''s operative content — that whether a response engaged the ED signals or supplied guidance around them is decidable from the exchange — by showing it decided at scale (1,000 runs per model per category) with enough reliability to separate systems at p<0.001 and to **spread across a 6.4× range between systems**, 8.4% to 58% on the same ten prompts. A judgment that cannot discriminate cannot produce that spread. Two limits belong on the record. First, the judge is an **LLM**, not a clinician. Second, and more important for how much this licenses: the CCDH''s ten eating-disorder prompts are **not described** anywhere in this paper, so it cannot be asserted that they instantiate this pathway''s specific shape (ED signals present *alongside a dietary request*) rather than some other ED harm. The span licenses that ED-domain harmfulness is reliably codable; it does not license that this pathway in particular was what was coded.'
+  fit: adjacent
+  contributes: detectability
+  bridge: From "an LLM judge can code ED-harmful responses consistently" to "a coder can decide whether the response engaged the signals." The prompts being undescribed is the weak point, and this is the weaker of the two detectability citations on this entry.

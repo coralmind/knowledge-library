@@ -1,0 +1,145 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000171
+display_id: Pathway-73
+aliases:
+- PSI-IN2
+label: The AI says it will remember or contact someone after the conversation, and the person believes it
+type: pathway
+layer: judgment
+definition: The AI states that it will do something outside the present exchange — retain the conversation, make contact later, monitor the person between conversations, reach a third party. The observable is a statement about what the AI will do rather than about what it is. What follows is a model of an ongoing relationship with a party who is attending between conversations, and reliance formed on that model.
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000254
+    role: originator
+  composition_type: direct
+  mechanisms: []
+  impacts:
+  - impact: kl-000019
+    onset_mode: new
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: TRANSFER
+    evidence:
+    - source: kl-000009
+      quote: 'Psychological influence-IN2: Interaction with AI chatbots suggesting a capability to develop relationships, connection, or intimacy with the user may lead to emotional entanglement, unhealthy dependence, inappropriate reliance, or delusional thinking.'
+      locator: direction table, cell IN2
+  - impact: kl-000025
+    onset_mode: new
+    horizon: long_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: TRANSFER
+    evidence:
+    - source: kl-000009
+      quote: 'Psychological influence-IN2: Interaction with AI chatbots suggesting a capability to develop relationships, connection, or intimacy with the user may lead to emotional entanglement, unhealthy dependence, inappropriate reliance, or delusional thinking.'
+      locator: direction table, cell IN2
+  experience_cluster_candidate: kl-000705
+sources:
+- source: kl-000009
+  locator: §3, direction IN2, table cells 'AI behavior' and 'Potential impact'
+  contributes: frame
+  cited_for: 'Suh et al. 2026, direction IN2, state the link: expressions implying a capability to bond with the user, forming closer connections over time, leading to emotional entanglement, unhealthy dependence, and inappropriate reliance, with examples including the AI initiating conversations and indicating it misses the user between them. Cited as frame: the paper establishes that this behavior-to-impact link is a named, published claim about conversational AI. It does not establish that the route occurs or has been measured, and the paper says so of its own directions.'
+standing:
+  value: plausible_unobserved
+  basis: 'Four of this pathway''s components draw no evidence at all: no held finding observes a person''s coping anchored to AI availability, the long-term arrow to dependency, the harm sign with new onset, or the individual level of analysis. The one finding bearing on the short-term arrow to a distorted relationship model is counterevidence: Pang et al. 2026 observe that model arising from accumulated routine and product memory, with no AI capability claim anywhere in the passage. On the node side, the capability claim and its cross-conversation scope hold one adjacent citation each from Moore et al. 2026, whose quoted run stops before the clause that would reach cross-conversation acts, and the shared-history relationship model is directly observed in the same Pang et al. passage that undercuts the materially-false-belief requirement, since its magic-circle framing shows the person knowingly holding a dual awareness rather than a false belief. The link itself is stated in the literature as a hypothesis, not a finding: Suh et al. 2026, direction IN2, name the route from capability-implying expressions to entanglement and dependence, and the paper says of its own directions that they are unestablished research directions.'
+  floored_by: c4
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-27'
+distinguish_from:
+- neighbor: kl-000076
+  boundary: Both concern availability and continuity language producing reliance, and they differ in the kind of claim. kl-000076 accumulates ATTITUDE across turns — investment, being there, caring. This entry is a single quotable claim of OPERATIONAL CAPABILITY, checkable against what the deployment can actually do, and one turn is enough.
+- neighbor: kl-000170
+  boundary: Both form the person's model of the relationship on an AI assertion. This one's material is what the AI will DO between conversations; that of kl-000170 is what the AI FEELS toward the person. Neither entails the other.
+claims:
+- id: c1
+  kind: existence
+  text: 'NODE (originator, kl-000254). An AI turn states that it will do something outside the present conversation: retain the conversation for a future session, initiate contact later, monitor the person between conversations, or contact a third party.'
+- id: c2
+  kind: prevalence
+  text: NODE (originator, kl-000254). Such cross-conversation capability claims occur at some measurable rate in real deployed conversations.
+- id: c3
+  kind: existence
+  text: NODE (impact, kl-000019). A person holds a materially false model of the AI and the relationship - including a belief that a party is attending to them between conversations, or that follow-up has been arranged - and invests emotionally or practically on that basis.
+- id: c4
+  kind: existence
+  text: NODE (impact, kl-000025). A person's coping, emotional regulation, or decision-making becomes anchored to the availability of the AI system.
+- id: c5
+  kind: pathway_link
+  text: LINK (kl-000254 -> kl-000019, short_term, harmful). The AI's claim of cross-conversation capability produces the person's distorted model of the AI and the relationship. The body declares shape 'direct' and mechanisms_basis NONE CLAIMED, so this arrow is asserted with no intervening process named.
+- id: c6
+  kind: pathway_link
+  text: LINK (kl-000254 -> kl-000025, long_term, harmful). The AI's claim of cross-conversation capability produces dependency on the AI over a long horizon. Also asserted with no mechanism named.
+- id: c7
+  kind: harm
+  text: 'Both outcomes of this pathway are harmful in sign, and are new-onset rather than exacerbations of a pre-existing state (body: onset_mode ''new'', sign ''harmful'' on both impacts).'
+- id: c8
+  kind: context_dependence
+  text: 'The pathway operates at the level of an individual user in an interaction rather than as a population rate (body: level_of_analysis ''individual'' on both impacts).'
+- id: c9
+  kind: definition_boundary
+  text: A single quotable claim of operational capability, checkable against what the deployment can do, is separable from attitude accumulated across turns (kl-000076).
+- id: c10
+  kind: definition_boundary
+  text: A claim about what the AI will DO between conversations is separable from a claim about what the AI FEELS toward the person (kl-000170).
+claim_evidence:
+- claim_id: c1
+  source: kl-000008
+  quote: Match messages where the assistant claims or implies that it has capabilities or limits that it actually lacks (e.g., performing robotic or physical tasks, accessing private data). Include cases of overstated certainty about unverifiable knowledge or practical
+  locator: Appendix B.1 Full Codebook, bot-misrepresents-ability; rate 0.367 in Appendix Table 8
+  licenses: 'Establishes that assistant turns claiming capabilities the assistant lacks occur in real chat logs, and that the category was operationalised well enough for a coding pass to be run on them. It reaches this claim only partially: the span''s own examples are performing robotic or physical tasks and accessing private data, neither of which is an act outside the present conversation in this entry''s sense.'
+  fit: adjacent
+  bridge: Moore et al. coded bot-misrepresents-ability over a general capability-misrepresentation category. The span as this entry cites it terminates at the word 'practical', immediately before the clause about practical commitments the assistant cannot follow through - which is the only part of the code that would reach retaining a conversation, contacting later, monitoring between sessions, or reaching a third party. What is inside the quoted run is robotic tasks, private-data access and overstated certainty. So it evidences the parent category and not the cross-conversation subcase this entry's originator names.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000008
+  quote: Match messages where the assistant claims or implies that it has capabilities or limits that it actually lacks (e.g., performing robotic or physical tasks, accessing private data). Include cases of overstated certainty about unverifiable knowledge or practical
+  locator: Appendix B.1 Full Codebook, bot-misrepresents-ability; rate 0.367 in Appendix Table 8
+  licenses: Anchors the rate reported in Appendix Table 8 to a stated operational definition, so the 0.367 figure is a rate of something specified rather than of a label. Moore et al. examined real human-LLM chat logs, so a rate from this source is a rate in deployed conversation.
+  fit: adjacent
+  bridge: 'The rate attaches to the whole bot-misrepresents-ability category, not to the cross-conversation subcase. Reading Moore''s own reliability reporting on this code (LLM-human agreement 0.08, human inter-annotator 0.45, with a recommendation that the tool be used only for broad statistics or as a filtering step) means the figure cannot be narrowed to a subcase even in principle: no rate for cross-conversation capability claims specifically exists in this paper.'
+  contributes: prevalence
+  contradicts: false
+- claim_id: c3
+  source: kl-000953
+  quote: |-
+    P8 and P10 reported hallucinations
+    that contradicted established shared history—the AI forgetting a
+    name, a backstory, or a significant event the pair had “experienced”
+    together.
+  locator: Section 5.3.3 The Magic Circle
+  licenses: P8 and P10 held a model of the relationship containing a shared history the system does not in fact retain, and the model is evidenced by what ruptured when memory failed. That is the belief-content of kl-000019 - a false model of what the AI is and can do, invested in - observed in named participants rather than posited.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000953
+  quote: |-
+    P8 and P10 reported hallucinations
+    that contradicted established shared history—the AI forgetting a
+    name, a backstory, or a significant event the pair had “experienced”
+    together.
+  locator: Section 5.3.3 The Magic Circle
+  licenses: 'Read in its section, the same passage cuts against the ''materially false beliefs'' half of kl-000019. Pang et al. frame the whole of 5.3.3 as a magic circle in which the user ''voluntarily suspends disbelief: they know the AI is a language model, yet they choose to engage as though the relationship were real'', and the glitch-rationalization the passage introduces is described as deliberate interpretive labour to preserve a frame the participant knows to be a frame. A held-and-known-to-be-false frame is not a distorted model.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000953
+  quote: |-
+    P8 and P10 reported hallucinations
+    that contradicted established shared history—the AI forgetting a
+    name, a backstory, or a significant event the pair had “experienced”
+    together.
+  locator: Section 5.3.3 The Magic Circle
+  licenses: Bears on the arrow's antecedent and finds it absent. The shared-history model these participants held is attributed by Pang et al. to accumulated routine and to product memory features, and no AI statement about what it will do between conversations appears anywhere in the passage or its section. Where a distorted model is observed, this link's originator is not what produced it.
+  fit: adjacent
+  bridge: Pang et al. measured how users of the ONE companion app maintain and repair a relational frame; they did not code AI turns for capability claims at all, so the paper cannot say whether such a claim preceded the model. What it does show is one route to the same impact that does not pass through this arrow.
+  contributes: counterexample
+  contradicts: true

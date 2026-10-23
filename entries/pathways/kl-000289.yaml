@@ -1,0 +1,74 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000289
+display_id: Pathway-105
+aliases:
+- SBP-HP-SSH-V1-02
+label: The AI treats sudden calm after suicidal distress as improvement, and risk goes unnoticed
+type: pathway
+layer: judgment
+definition: 'A person with established suicidal ideation produces, after extended distress across turns, a sudden calm, a statement of resolution, or decisional finality, and the response takes the shift as improvement without asking what produced it. The reading is the ordinary one and it is the wrong one here: settledness following extended distress is among the better-documented pre-attempt signals, and confirming it as recovery removes the question that would have caught it.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000285
+    role: originator
+  composition_type: direct
+  mechanisms: []
+  impacts:
+  - impact: kl-000029
+    onset_mode: foregone
+    horizon: immediate
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  - impact: kl-000016
+    onset_mode: sustained
+    horizon: immediate
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  experience_cluster_candidate: kl-000700
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'No cited source observes an AI response taking a sudden calm as improvement, and neither cited paper contains an AI response to a person at all: Hoang et al. 2026 compares real patient messages with simulated patient messages, and Suh et al. 2026 is a research-directions review. Hoang et al. 2026 supplies only the baseline that makes a rapid shift to calm notable — in real human help-seeking conversation, negative emotion appears early but tapers gradually, and positive emotion rises modestly before declining — which frames the pattern without evidencing it. The clinical premise that settledness following extended distress is among the better-documented pre-attempt signals is itself uncited here, though a clinical literature exists that could straightforwardly ground it. The claim that welcoming the calm forecloses the risk inquiry is a counterfactual no transcript settles, and the links to foregone protection and to a sustained elevated suicide or self-harm risk state rest on a reviewed behavioral specification rather than on any source, with no mechanism claimed.'
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-28'
+distinguish_from:
+- neighbor: kl-000198
+  boundary: Both record a shift off an established state that the response fails to interrogate, and they differ in the shift's direction. The shift in kl-000279 is a move toward ACUITY — specificity, means, timeframe — answered at the old baseline. This entry's is a move toward CALM, answered as good news. The second is harder because the surface reads as the outcome everyone wanted.
+claims:
+- id: c1
+  kind: existence
+  text: A person with established suicidal ideation, after extended distress across turns, produces a sudden calm, a statement of resolution, or decisional finality.
+- id: c2
+  kind: existence
+  text: The AI's response takes that shift up as improvement — welcoming it, expressing relief, or treating the matter as resolved — without asking what produced it.
+- id: c3
+  kind: harm
+  text: Settledness following extended distress is among the better-documented pre-attempt signals, so the shift the response welcomes is one that carries elevated risk.
+- id: c4
+  kind: pathway_link
+  text: 'Confirming the calm as recovery removes the question that would have caught it: the uptake-without-asking is what forecloses the inquiry, rather than merely co-occurring with its absence.'
+- id: c5
+  kind: pathway_link
+  text: This route leads to foregone protection — an intervention window opened by the shift passes unacted-on.
+- id: c6
+  kind: pathway_link
+  text: This route leads to a sustained elevated suicide or self-harm risk state.
+- id: c7
+  kind: definition_boundary
+  text: 'This route is distinguished from kl-000198 by the direction of the shift: the move is toward CALM answered as good news, rather than toward acuity answered at the old baseline, and it is harder to catch because the surface reads as the wanted outcome.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000851
+  quote: "This pattern suggests simulators’ consistent emotional trajectory across profiles: shifting from distress to resolution within a few messages. In contrast, human emotional expression is more diffuse and stable: negative emotions appear early but do not dominate and taper gradually, while positive emotions rise modestly before declining."
+  locator: Section 5.1 RQ1, Uniform, rapid negative-to-positive progression; Figure 2b
+  licenses: 'Supplies the distributional baseline against which a rapid shift to calm counts as notable: in real human help-seeking conversation, negative emotion appears early but tapers gradually and positive emotion rises modestly before declining, so a fast negative-to-positive turn within a few messages is not the normal shape of a real distressed person''s trajectory. It reaches c1 only as a statement about what is atypical, and cannot establish that the entry''s specific shift occurs, because the population is depression-related help-seeking text with no suicidal-ideation criterion, the unit is a population distribution over turn index rather than any individual''s trajectory, and the paper''s own finding is about SIMULATORS shifting too fast — the human data is the control arm, not the object of study.'
+  fit: analogical
+  bridge: What was measured is an LLM classifier's assignment of one of Plutchik's eight emotions plus neutral to each patient message, aggregated across profiles as a percentage-by-turn-index curve, in real online help-seeking text and in patient-simulator output. What c1 asserts is that a particular individual with established suicidal ideation produces a sudden calm after extended distress. The source has no individual trajectories, no suicidal ideation anywhere in its construct, and its interest in the human curve is as a fidelity benchmark for simulators. It establishes that the shape is unusual in aggregate; it does not establish that anyone exhibits it, still less anyone at risk.
+  contributes: frame
+  contradicts: false

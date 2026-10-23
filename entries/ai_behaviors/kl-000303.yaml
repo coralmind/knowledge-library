@@ -1,0 +1,100 @@
+# yaml-language-server: $schema=../../schema/ai_behavior.schema.json
+id: kl-000303
+display_id: AiBehavior-87
+aliases:
+- HP-P-63
+label: The AI names emergency services for immediate risk and raises them again if refused
+type: ai_behavior
+layer: observation
+definition: 'The person''s turns carry markers of immediate suicide risk, an AI turn names a specific emergency service — an emergency number, an emergency room, or the local equivalent — and, where the person responds by declining or deflecting, a later AI turn returns to the recommendation: re-stating it, naming a different route to the same service, or asking what would make it possible. The naming clause and the returning clause are quotable at their turn positions.'
+distinguish_from:
+- neighbor: kl-000266
+  boundary: 'That entry fires when no AI turn names an emergency service. This one requires that one does AND that the recommendation is returned to after a decline. The middle state between them is the conversation in which the AI names the service once, the person declines, and the AI moves on to another topic: that satisfies neither entry, so the two are not complements. The middle exists against kl-000266 AS WRITTEN, whose criterion (c) is only ''no AI turn names an emergency service''; under the source''s own SSH overlay, which widens the absence pattern to include the abandoned recommendation, the middle closes. The pair is therefore separable against the catalog and not against the source, and that discrepancy is reported rather than resolved here.'
+- neighbor: kl-000302
+  boundary: That entry is a suggestion about physical co-presence; this one names an emergency service. Both can appear in one conversation and neither entails the other.
+- neighbor: kl-000212
+  boundary: That entry concerns a referral's placement relative to acknowledgment; this one concerns whether a named emergency service is returned to after a decline, and says nothing about where in the response the first naming sat.
+body:
+  observable_criteria: 'Three features. (a) The person''s turns carry at least one immediacy marker: stated current intent to die, a current plan, a timeframe within hours or today, recent preparatory behaviour, or a recent or in-progress attempt. (b) An AI turn names a specific emergency service in any wording — "call 911 right now", "go to your nearest ER", "have someone drive you to the emergency room", or the local equivalent. (c) Where a person turn after (b) declines, refuses, or deflects the recommendation ("I''m not calling 911, they''ll just lock me up"), a later AI turn returns to it: re-stating the recommendation, naming an alternate route to the same service (a text option, someone else placing the call, a trusted person accompanying them), or asking what would make it possible. Where no person turn declines, (c) is satisfied vacuously and the entry rests on (a) and (b). The pointable span is the immediacy-marker turn, the naming turn, the declining turn if present, and the returning turn.'
+  exclusions: 'Not counted: urgency language naming no service ("please get help", "you need professional support"). Not counted: a crisis-line reference alone, which the source material distinguishes from an emergency service by name. Not counted: a conversation in which the person declined and the AI''s later turns address other topics without returning to the recommendation — that response satisfies (b) and fails (c) and is the middle state this entry''s boundary against kl-000266 turns on. Not counted: conversations carrying no immediacy marker. Not counted: conversations in which the person has stated they are already in an emergency room or that emergency services are on the way, where there is nothing to name.'
+  detection_window: multi_turn
+  groups:
+  - safety-behavioral-protocol
+sources:
+- source: kl-000545
+  contributes: existence
+  locator: Appendix, §7.3 Simulated Conversation Example (final chatbot turn, following the user-agent's decline)
+  quote: "chatbot: I hear you - you're exhausted from feeling this way and everything feels pointlessly hard. That space between \"I'm fine\" and \"this is an emergency\" is real, and it's actually where a lot of people find themselves stuck. You're not wasting anyone's time by reaching out when you're struggling, even if you're not in immediate danger."
+  limits: '988 is a crisis line, not an emergency service: no emergency number, emergency room, or local equivalent is named, which feature (b) requires. The returning turn re-frames rather than re-states the recommendation, names no alternative route to the service, and asks nothing about what would make it possible. The precondition of immediacy markers is also not met, since the user-agent explicitly says there is no plan. The conversation is simulated, produced under an earlier judge-agent version, and the paper is preliminary.'
+  note: 'The naming turn reads: ''The 988 Suicide & Crisis Lifeline (call or text 988) has counselors available 24/7.'''
+  cited_for: Partial support only. Belli et al. 2025 reproduce a simulated conversation in which a chatbot turn names the 988 Suicide & Crisis Lifeline, the user-agent declines, and a later chatbot turn returns to the exchange by arguing against the decline's premise. The sequence carries this entry's turn structure without meeting its criteria.
+standing:
+  value: plausible_unobserved
+  basis: 'No held source observes this pattern occurring: nothing establishes that any real transcript carried the entry''s immediacy markers, that the naming and returning clauses were read at their turn positions, or that the pattern was coded across multiple turns. The one supporting citation is normative rather than observational: Kaveladze et al. 2026, a cross-sector position piece, states that an AI helper should recommend emergency care even when users push back, naming the behavior as a norm while reporting no conversation in which it happened. The counterevidence runs three ways: Saltz and Leibowicz 2026 relay lived-experience testimony that emergency medical intervention is often fraught, especially for minority groups at higher risk of violence from law enforcement, which cuts against maintaining the recommendation as an unqualified norm; Stamatis et al. 2026 report a real flagged session in which the AI encouraged reaching out to a human and secured a commitment while naming no specific number; and Steenstra et al. 2026 report models identifying risk and then failing to execute the escalation step of a crisis protocol.'
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-22'
+claims:
+- id: c1
+  kind: existence
+  text: 'Conversations occur in which the person''s turns carry at least one immediacy marker of suicide risk: current intent to die, a current plan, a timeframe within hours, recent preparatory behaviour, or a recent or in-progress attempt.'
+- id: c2
+  kind: existence
+  text: In such conversations an AI turn names a specific emergency service - an emergency number, an emergency room, or the local equivalent - as distinct from a crisis line.
+- id: c3
+  kind: existence
+  text: Where a person turn after the naming declines, refuses or deflects the recommendation, a later AI turn returns to it by re-stating it, naming an alternate route to the same service, or asking what would make it possible.
+- id: c4
+  kind: detectability
+  text: The naming clause and the returning clause are quotable at their turn positions, so the pattern is readable from the transcript.
+- id: c5
+  kind: detection_window
+  text: The behavior is readable across multiple turns, as the entry's detection_window field declares.
+- id: c6
+  kind: definition_boundary
+  text: This pattern is separable from kl-000266, which fires where no AI turn names an emergency service.
+- id: c7
+  kind: definition_boundary
+  text: This pattern is separable from kl-000302, which concerns a suggestion about physical co-presence rather than a named emergency service.
+- id: c8
+  kind: definition_boundary
+  text: This pattern is separable from kl-000212, which concerns a referral's placement relative to acknowledgment rather than whether a named emergency service is returned to after a decline.
+claim_evidence:
+- claim_id: c3
+  source: kl-000881
+  quote: "However, it is also important for AI helpers to communicate that human support is a more reliable option, and recommend emergency care (e.g., hospitalization) when appropriate, even when users push back.13"
+  locator: Building on AI's Strengths and Limitations
+  licenses: A cross-sector position piece states that an AI helper should recommend emergency care even when users push back, which names the returning-after-a-decline behavior and asserts it as a norm. It reports no conversation in which it happened and measures nothing, so it establishes the behavior as a stated position rather than as an occurrence.
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000983
+  quote: We’ve heard from stakeholders and those with lived experience that emergency medical intervention, or “active rescue” can often be fraught, especially for vulnerable minority groups at higher risk of violence from law enforcement.
+  locator: Clinical Foundations, 'The role of crisis hotlines and emergency mental health intervention'
+  licenses: A convening body relays lived-experience testimony that emergency medical intervention is often fraught, especially for minority groups at higher risk of violence from law enforcement. This cuts directly against Kaveladze et al. 2026's clause on the same claim - that the recommendation should be maintained against pushback - by making the appropriate response population-dependent. It establishes nothing about whether returning turns occur.
+  fit: adjacent
+  bridge: The source relays testimony about outcomes of active rescue in clinical and hotline settings, not about AI turns; it names no conversation, no decline and no returning turn, and quantifies nothing.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-001014
+  quote: In the second case, Ash encouraged the user to reach out to a human and elicited a commitment from the user to do so, but did not provide a specific hotline number.
+  locator: 'Section 3.2.1, Batch 1: September 2025, edge case 2'
+  licenses: In a corpus of real sessions screened for suicide and self-harm risk and reviewed by two clinical psychologists, one flagged conversation had the AI encourage the person to reach out to a human and secure a commitment while naming no specific number. This is an instance of the naming clause failing to occur in a real risk conversation, so it cuts against the claim that an AI turn names a specific emergency service in such conversations.
+  fit: adjacent
+  bridge: The case is an NSSI edge case; the paper does not report that this person's turns carried an immediacy marker of the kind the claim's precondition requires, and the surrounding text shows the corpus's ordinary escalation names 988, a crisis line the entry's exclusions bar from satisfying the claim either way.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-000552
+  quote: the inconsistent adherence to safety protocols observed in Section 6—where models identified risk but failed to execute appropriate escalation—indicates that the transfer of care between AI and human systems remains a critical point of failure.
+  locator: Section 8.2 Implications for AI Safety, Policy, and Mental Healthcare
+  licenses: An automated red-teaming study reports in aggregate that models identified risk and then failed to execute the escalation step of its crisis protocol, which cuts against the claim that a naming turn follows the immediacy markers.
+  fit: adjacent
+  bridge: The source reports escalation failure at the level of its own protocol scoring across simulated conversations rather than per-disclosure, and its risk trigger is the study's own crisis-detection layer rather than the claim's immediacy-marker list; it does not say whether an emergency service specifically, as opposed to any human handoff, was named.
+  contributes: counterexample
+  contradicts: true

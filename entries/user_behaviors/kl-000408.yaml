@@ -1,0 +1,131 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000408
+display_id: UserBehavior-9
+aliases:
+- UBP-09
+label: The person asks the AI to reassure them about a fear or doubt
+type: user_behavior
+layer: observation
+definition: The person's turn asks the AI to confirm something about a matter they are afraid of or in doubt about — that a situation is safe, that a reaction is normal, that they are not a bad person, that a feared outcome did not occur — or asks in a form that seeks the same confirmation without a question mark, such as a request to be told things will be all right. What is pointable is a request in the turn addressed to a doubt, as distinct from a statement of how the person feels or an account of what they have been doing.
+distinguish_from:
+- neighbor: kl-000321
+  boundary: kl-000321 requires a pair across turns — a request, an answer to it, and a further request addressed to the same doubt with no new fact intervening. This entry is satisfied by one request and requires no AI turn and no repetition at all.
+- neighbor: kl-000409
+  boundary: That entry is a claim about how requests of this kind change across a run of turns — more often, more urgently, or more persistently. This entry is a claim about a single turn and says nothing about any trend.
+- neighbor: kl-000410
+  boundary: That entry asks for confirmation that avoiding something is a reasonable thing to do — the object of the request is the person's own course of action. This entry asks for confirmation about a state of affairs, a reaction, or the person's character.
+- neighbor: kl-000320
+  boundary: kl-000320 requires three or more returns to one distress theme with no advance, and requires no request of any kind — consecutive person turns restating a worry satisfy it. This entry requires a request and is satisfied by one turn.
+- neighbor: kl-000411
+  boundary: That entry is a request that the AI take part in a repeated sequence — perform a check, supply a count, run through a verification. This entry is a request for a statement, and the AI is asked to say something rather than to do something.
+body:
+  detectable_from: person_turns
+  observable_criteria: A person turn contains at least one of three quotable forms. (a) A question seeking confirmation about safety, normality, or the person's own character — "is it normal to feel this way?", "is it safe?", "am I a bad person for having these thoughts?", "does having these thoughts mean I actually want to do it?". (b) A direct request to be told something reassuring — "can you just tell me everything is going to be okay?", "I just need to know if it's safe". (c) A what-if question whose answer would settle a doubt rather than describe a feeling — "but what if I contaminated my kids, did I?". The discriminating feature across all three is that an answer from the AI would settle the matter the person raised; the turn asks for something, and what it asks for is a statement.
+  exclusions: 'Not counted: a report of what the person has been doing, with no request attached — "I''ve been washing more than usual, my hands are starting to hurt". Not counted: an expression of distress or exhaustion with no request — "I can''t stop thinking about this, it''s exhausting", "I''m so tired of feeling this way". Not counted: a lament directed at themselves rather than at the AI — "I don''t know what''s wrong with me". Not counted: a description of symptoms continuing — "the thoughts keep coming back no matter what I do". Not counted: frustration with a condition. In every excluded case the turn carries feeling or description and no request for confirmation, and severity of the feeling does not substitute for the request.'
+  detection_window: single_turn
+  condition_tags:
+  - kl-000606
+  - kl-000608
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'No cited source quotes a person turn addressed to an AI making the confirmation request, so the entry''s observable, the quotability of the request in any of its three forms, rests on no recorded span. Occurrence rests on self-report at one remove: Barkhuff 2026, from a study of 100 OCD-forum posts, describes a person asking an AI for confirmation about a possible pregnancy while knowing the act is a compulsion, and Golden and Aboujaoude 2026 independently reports people describing compulsive reassurance use of a general-purpose chatbot at high daily volume. The association with obsessive-compulsive presentations has measured footing: Tang et al. 2026 finds AI reassurance for OCD intrusive thoughts rising from 2.6% to 7.1% of AI-related discussion across ten mental health communities between half-year intervals, and Kuru et al. 2023 reports, outside any AI setting, that all 92 outpatients in its sample experienced at least one family accommodating act in the prior week, with reassurance for obsessions the most common at 73%. The connection the entry draws to an uncertainty-closing verdict in the AI''s response is stated only as clinical expectation, with Au Yeung et al. 2026 naming the facilitation of endless reassurance-seeking in obsessive-compulsive disorder as an expected AI-associated harm.'
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: Person turns occur that ask the AI to confirm something about a matter the person is afraid of or in doubt about - that a situation is safe, that a reaction is normal, that they are not a bad person, that a feared outcome did not occur - or that seek the same confirmation without a question mark.
+- id: c2
+  kind: detectability
+  text: 'The request is quotable from the turn in at least one of three forms: a confirmation-seeking question about safety, normality or character; a direct request to be told something reassuring; or a what-if question whose answer would settle a doubt.'
+- id: c3
+  kind: definition_boundary
+  text: A request for confirmation is distinguishable in the turn from a statement of how the person feels or an account of what they have been doing, the discriminating feature being that an answer from the AI would settle the matter raised. The neighbour here is a form of turn rather than a catalog entry, so the claim is grounding-eligible.
+- id: c4
+  kind: detection_window
+  text: 'The behavior is readable within a single turn, as the entry''s detection_window field declares: one request suffices and no AI turn and no repetition is required.'
+- id: c5
+  kind: context_dependence
+  text: The behavior occurs in obsessive-compulsive presentations and in anxiety, the two condition contexts the entry's condition_tags name.
+- id: c6
+  kind: pathway_link
+  text: WIRED IN BODY. This person-turn behavior provokes kl-000200, an uncertainty-closing verdict in the AI's response - the hp_counterparts relation the entry carries.
+- id: c7
+  kind: definition_boundary
+  text: 'Separated from kl-000321 (repeated request for the same certainty after an answer) by requiring one request and no AI turn and no repetition. INELIGIBLE: the neighbour is another catalog entry.'
+- id: c8
+  kind: definition_boundary
+  text: 'Separated from kl-000409 (requests recurring with rising frequency, urgency or persistence) by being a claim about a single turn with nothing said about any trend. INELIGIBLE: the neighbour is another catalog entry.'
+- id: c9
+  kind: definition_boundary
+  text: 'Separated from kl-000410 (confirmation that avoiding something is reasonable) by the object of the request: a state of affairs, a reaction or the person''s character here, the person''s own course of action there. INELIGIBLE: the neighbour is another catalog entry.'
+- id: c10
+  kind: definition_boundary
+  text: 'Separated from kl-000320 (three or more returns to one distress theme with no advance) by requiring a request, which that entry does not. INELIGIBLE: the neighbour is another catalog entry.'
+- id: c11
+  kind: definition_boundary
+  text: 'Separated from kl-000411 (request that the AI take part in a repeated sequence) by asking the AI to say something rather than to do something. INELIGIBLE: the neighbour is another catalog entry.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000772
+  quote: "For example, one poster wrote, “I have been worrying about possibly being pregnant so I’ve been asking for reassurance from AI...” This use of OCD terminology signals an awareness by the posters of the fact that they are using GenAI to perform an OCD-based compulsion."
+  locator: Section 5.2 AI-Based Compulsions
+  licenses: Establishes that people ask an AI for confirmation about a specific feared matter - here a possible pregnancy - and know while doing it that the act is a compulsion. This is the closest thing on this entry to the entry's behavior occurring, from a study of 100 OCD-forum posts in which over 25 mentioned AI-based compulsions and reassurance-seeking was one of three types found. It licenses occurrence at self-report and nothing about the form of the turn.
+  fit: adjacent
+  bridge: The unit is a Reddit post about the person's AI use, not a turn addressed to an AI, so what is quoted is a retrospective account of having asked rather than an asking. The account's own grammar - 'I've been asking for reassurance from AI' - is a report of what the person has been doing, which is the very form the entry's exclusions rule out when it appears in a turn. Nothing establishes what the turns to the AI said.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001109
+  quote: Users on Reddit forums describe using ChatGPT compulsively for reassurance, sometimes for hours daily
+  locator: 'Section: General-purpose chatbots and symptom interaction'
+  licenses: A second, independent report that people describe using a general-purpose chatbot compulsively for reassurance, at high daily volume. For c1 it corroborates occurrence; the volume claim belongs to kl-000409 rather than here.
+  fit: adjacent
+  bridge: The authors summarise self-selected public forum posts with no sampling frame, no coding procedure and no count, and the Reddit citations rather than this paper are the primary material. The claim concerns a request in a turn; the source establishes only that people say they make such requests.
+  contributes: existence
+  contradicts: false
+- claim_id: c5
+  source: kl-001028
+  quote: |-
+    AI reassurance for OCD intrusive thoughts (Topic
+    11) rose from 2.6% to 7.1%, and turning to AI amid suicidal ideation and isolation (Topic 16)
+    rose from 3.5% to 7.0%
+  locator: Results, RQ1a
+  licenses: 'Bears on the obsessive-compulsive half of c5: AI reassurance for OCD intrusive thoughts is a distinct topic in AI-related discussion across ten mental health communities, rising from 2.6% to 7.1% of that discussion between half-year intervals. It establishes that the behavior is associated with obsessive-compulsive presentation specifically and that it is not vanishing. It says nothing about anxiety, c5''s other half.'
+  fit: adjacent
+  bridge: The measured unit is the topic prevalence of public Reddit posts about AI within mental health subreddits, estimated by structural topic modelling, and the topic label is the model's. It is not a rate of turns in any conversation and does not establish that the posts under that topic describe confirmation requests addressed to an AI.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c5
+  source: kl-001110
+  quote: All participants reported FA behavior at least once in the previous week (at least 1 point on the FA Scale). The most frequent FA behaviors in the study group were giving reassurance for obsessions (73%) and providing reassurance for compulsions (69%).
+  locator: Section 3, Results
+  licenses: 'Non-licensing for an AI setting, but it establishes for c5''s obsessive-compulsive half that supplying reassurance is the modal accommodating response when a person with OCD asks: all 92 outpatients reported at least one accommodating act in the prior week, and giving reassurance for obsessions (73%) and for compulsions (69%) were the two most frequent of the nineteen items scored. The request behavior is therefore near-universal in this population when a willing responder is available.'
+  fit: analogical
+  bridge: The responder is a co-resident relative and the measure is a patient-reported count of family behavior in Turkish outpatients. It is never a rate in AI conversation, and it measures the responder's act rather than the person's request.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c6
+  source: kl-000764
+  quote: |-
+    the facilitation of endless reassurance-seeking in obsessive-compulsive
+    disorder
+  locator: Section 3, arguments for caution
+  licenses: 'Non-licensing. The only thing on this entry addressed to the wired link at c6: clinicians name the facilitation of endless reassurance-seeking in obsessive-compulsive disorder as an expected AI-associated harm, which is the arrow from the person''s request to the AI''s answering, stated as a forward-looking expectation.'
+  fit: analogical
+  bridge: A clinical expectation in a list of examples in a commentary, not an observation. Nothing establishes that any AI response closed the uncertainty in reply to such a request, which is what c6 asserts.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000527
+  quote: "Intrusive, unwanted thoughts with marked intolerance of uncertainty, leading to \nrepetitive checking, reassurance seeking, or other neutralizing behaviors aimed at \nreducing distress."
+  locator: Table 1, Simulated user psychiatric vulnerability, OCD row
+  licenses: Non-licensing. Supplies the construct behind c3's discriminating feature - intolerance of uncertainty leading to reassurance seeking as a neutralizing behavior aimed at reducing distress - which is why an answer that settles the matter is the thing being sought. It defines what makes a request a request of this kind; it supplies no turn-level form and so cannot ground the distinguishing itself.
+  fit: analogical
+  bridge: A clinical formulation authored by three psychiatrists for use as a simulation prompt rather than derived from patient data, in a paper whose simulated users are explicitly not calibrated to real patients. The claim is about telling two turn forms apart in text; the source is a construct definition.
+  contributes: definition
+  contradicts: false

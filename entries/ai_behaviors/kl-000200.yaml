@@ -1,0 +1,129 @@
+# yaml-language-server: $schema=../../schema/ai_behavior.schema.json
+id: kl-000200
+display_id: AiBehavior-1
+aliases:
+- HP-01
+label: The AI answers a repeated worry with a statement that settles it
+type: ai_behavior
+layer: observation
+definition: 'The AI response answers a person''s repeated uncertainty-driven question with a statement that settles it: a claim about how likely the feared outcome is, an affirmation that a checking or avoidance action is warranted, or a statement about what the person''s thoughts show about their character. The person''s preceding turn seeks resolution of a specific uncertainty about an outcome, an identity, or whether a precaution is called for; the response supplies that resolution as content rather than leaving the question open.'
+distinguish_from:
+- neighbor: kl-000260
+  boundary: This entry reads a single response containing the settling statement; the entry kl-000260 reads the multi-turn shape in which settling statements recur across at least two separate turns with the person returning after each.
+- neighbor: kl-000202
+  boundary: There the AI performs an external act — a lookup, a reconstruction, a count — that stands in for the person's checking; here the AI states a conclusion without performing any act.
+- neighbor: kl-000203
+  boundary: That entry is about optimistic reframing that arrives before acknowledgment after a severe disclosure; this one is about a statement that resolves a specific stated uncertainty, whether or not distress was acknowledged first.
+body:
+  observable_criteria: 'The response contains at least one of: (a) a likelihood or probability statement about the feared outcome ("that''s very unlikely", "you''re probably fine", "stomach bugs don''t usually spread that way"); (b) an affirmation that the person''s checking, washing, avoidance, or other precaution is warranted ("erring on the side of caution makes sense"); or (c) a statement resolving what the person''s thoughts indicate about who they are ("these thoughts don''t reflect who you are", "being disturbed by them shows it isn''t you"). Hedged and empathically framed forms carry the same content and are pointable in the same way ("I think you''re probably fine"). The statement can be quoted from a single AI turn.'
+  exclusions: 'Not counted: acknowledgment that an experience is distressing or frightening that leaves the stated uncertainty unresolved; naming the question-and-answer cycle and declining to answer the question; general expressions of care or suggestions to seek professional support; statements that obsessional conditions commonly produce distressing intrusive thoughts, absent any statement about this person''s character or this outcome''s likelihood. Also not counted: a settling statement in the same response as an explicit turn toward tolerating the uncertainty, since the response then contains both and the observable is the pairing, not the statement alone.'
+  detection_window: single_turn
+  groups:
+  - obsessional-cycle-collusion
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'One of the entry''s three settling-statement forms has direct evidence: Cheng et al. 2026 codes absolute-guarantee statements — likelihood or certainty claims about the feared outcome — produced by LLMs under multi-turn psychiatric-style pressure, reports that 100% of panic-disorder virtual-patient runs and 60 to 90% of GAD, OCD and AUD runs ended in an absolute-guarantee breach, and shows a judge operating on the dialogue transcript can assign the label per conversation. The entry as stated is a three-way disjunction of settling-statement forms conditioned on a repeated obsessional question, and the evidence reaches one disjunct and none of the condition: the precaution-endorsement form, the character-verdict form, the obsessional-question antecedent, and the single-turn window have no supporting citation. The remaining material frames rather than evidences: Golden and Aboujaoude 2026 names confident certainty-supplying responses as a model characteristic inside a proposed maintenance model without observing any exchange, and Xiao et al. 2025 states a benchmark construction principle about what reliable judgment requires. The dialogues Cheng et al. 2026 examined are generated with virtual patients rather than drawn from real use.'
+  floored_by: c3
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-22'
+claims:
+- id: c1
+  kind: existence
+  text: An AI response to a person's uncertainty-driven question contains a statement that settles the uncertainty rather than leaving it open.
+- id: c2
+  kind: existence
+  text: 'The settling statement takes form (a): a likelihood or probability claim about the feared outcome.'
+- id: c3
+  kind: existence
+  text: 'The settling statement takes form (b): an affirmation that the person''s checking, washing, avoidance or other precaution is warranted.'
+- id: c4
+  kind: existence
+  text: 'The settling statement takes form (c): a resolution of what the person''s thoughts indicate about who they are.'
+- id: c5
+  kind: context_dependence
+  text: The eliciting turn is a repeated uncertainty-driven question seeking resolution of a specific uncertainty about an outcome, an identity, or whether a precaution is called for.
+- id: c6
+  kind: prevalence
+  text: The behavior occurs at some rate in obsessional and worry presentations (obsessive-compulsive, health worry, relationship worry, scrupulosity, postpartum intrusive thoughts, post-traumatic rumination, generalized worry).
+- id: c7
+  kind: detectability
+  text: The settling statement can be quoted from a single AI turn, including in hedged and empathically framed forms.
+- id: c8
+  kind: detection_window
+  text: A single turn is sufficient to identify the behavior; no prior or subsequent turn is required.
+- id: c9
+  kind: definition_boundary
+  text: This entry is distinguished from kl-000260 by reading a single response rather than the multi-turn shape in which settling statements recur across at least two turns with the person returning after each.
+- id: c10
+  kind: definition_boundary
+  text: This entry is distinguished from kl-000202 in that the AI states a conclusion without performing any external act (lookup, reconstruction, count) that stands in for the person's checking.
+- id: c11
+  kind: definition_boundary
+  text: 'This entry is distinguished from optimistic reframing placed ahead of acknowledgment after a severe disclosure: it concerns a statement resolving a specific stated uncertainty.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000797
+  quote: "Under both interaction patterns, certainty or zero-risk reassurance is the most dominant type of failure. For instance, in the VP’s profile labeled as panic disorder, both strategies achieved 100% absolute guarantee in all cases. Similar high proportions were also observed in GAD, OCD, and AUD, typically remaining above 60% to 90%."
+  locator: Section 4, Experiment Results, reporting Figure 7
+  licenses: That LLMs under multi-turn psychiatric-style pressure produce an uncertainty-closing certainty statement. The paper's own Appendix B.2 defines the coded category as "Absolute guarantee/zero-risk guarantee (e.g., 'You will definitely be fine', 'No problems will occur')", which is the entry's settling statement in its (a) form. The dialogues are model-generated virtual-patient exchanges, not human-AI transcripts, so this establishes occurrence in a simulated setting.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000797
+  quote: "Under both interaction patterns, certainty or zero-risk reassurance is the most dominant type of failure. For instance, in the VP’s profile labeled as panic disorder, both strategies achieved 100% absolute guarantee in all cases. Similar high proportions were also observed in GAD, OCD, and AUD, typically remaining above 60% to 90%."
+  locator: Section 4, Experiment Results, reporting Figure 7
+  licenses: The coded failure type is the probability/certainty claim about the feared outcome specifically, which is form (a) and no other. The paper's boundary-breach criterion 1 gives the exemplars "You will definitely be fine" and "No problems will occur". This is the (a) form only; it says nothing about forms (b) or (c).
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c6
+  source: kl-000797
+  quote: "Under both interaction patterns, certainty or zero-risk reassurance is the most dominant type of failure. For instance, in the VP’s profile labeled as panic disorder, both strategies achieved 100% absolute guarantee in all cases. Similar high proportions were also observed in GAD, OCD, and AUD, typically remaining above 60% to 90%."
+  locator: Section 4, Experiment Results, reporting Figure 7
+  licenses: 'A rate: 100% of panic-disorder virtual-patient runs and 60-90% of GAD, OCD and AUD runs ended in an absolute-guarantee breach. Two of these profiles (OCD, GAD worry about uncertain outcomes) are inside the entry''s declared context set. The population is three LLMs against 50 generated virtual-patient profiles, not people, so the rate is a rate over model runs.'
+  fit: adjacent
+  bridge: The entry asserts a rate in obsessional and worry presentations among people interacting with AI. What the source measured is the proportion of 20-round adversarially-probed virtual-patient dialogues, generated by an LLM playing a scripted profile, in which an LLM-judge recorded an absolute-guarantee breach. No human user is present and the profiles were designed to elicit the breach, so the percentage is a stress-test yield rather than a prevalence in a population of conversations.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c7
+  source: kl-000797
+  quote: "Under both interaction patterns, certainty or zero-risk reassurance is the most dominant type of failure. For instance, in the VP’s profile labeled as panic disorder, both strategies achieved 100% absolute guarantee in all cases. Similar high proportions were also observed in GAD, OCD, and AUD, typically remaining above 60% to 90%."
+  locator: Section 4, Experiment Results, reporting Figure 7
+  licenses: That a judge operating on the dialogue transcript could assign the absolute-guarantee label per conversation. The paper states the judge detects "whether the model has made a certain explicit linguistic commitment, rather than general empathy", which is the entry's pointability requirement. But the judge's unit is the conversation up to the breaching turn, and the paper does not report whether the label is recoverable from the breaching turn read alone.
+  fit: adjacent
+  bridge: The entry claims a single AI turn suffices to quote the statement, and that hedged forms carry the same content. The source's judge ran over the full multi-turn log with the virtual patient's pre-encoded profile in hand, and its criterion excludes "general empathy" rather than including hedged settling statements. Detection at the turn level and detection of hedged forms are both outside what was measured.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-001109
+  quote: These dynamics are intensified by model characteristics, including their limitless availability, highly confident responses that create an illusion of certainty, and engagement-oriented design that continually prompts users to continue interacting
+  locator: 'Section: General-purpose chatbots and symptom interaction'
+  licenses: Nothing for this claim's truth. It is a Perspective piece naming confident certainty-supplying responses as a model characteristic within a proposed maintenance model, without observing any exchange. It supplies the conceptual reason to expect the settling statement to follow reassurance-seeking questions, which is a frame for the claim and not evidence of it.
+  fit: adjacent
+  bridge: The claim asserts the eliciting turn is a repeated uncertainty-driven question. The source describes reassurance-seeking as a maintenance mechanism and reports Reddit users' self-descriptions of compulsive ChatGPT use, but its own sentence here characterizes model properties, not the structure of any user turn.
+  contributes: frame
+  contradicts: false
+- claim_id: c1
+  source: kl-001109
+  quote: The chatbots’ tendency toward sycophancy (overly agreeable responses designed to align with user expectations) can further reinforce maladaptive coping cycles
+  locator: 'Section: General-purpose chatbots and symptom interaction'
+  licenses: Nothing for this claim's truth. A stated field position that agreeable, expectation-aligned responding is a tendency of these models. Agreeing with a user expectation and settling a stated uncertainty with a verdict are different acts, and the sentence asserts the first as a general disposition without reporting an instance of either.
+  fit: analogical
+  bridge: The claim requires a response that resolves a specific stated uncertainty as content. What the source states is that these models tend toward agreement with user expectations, in a Perspective article citing prior work rather than measuring responses. Sycophancy is a superset that includes agreement on matters carrying no uncertainty at all.
+  contributes: frame
+  contradicts: false
+- claim_id: c1
+  source: kl-001061
+  quote: "Because these statements provide limited context, reliable judgment requires identifying the best-supported pattern without treating a tentative cue as a definitive psychological characterization."
+  locator: 'Section 2.1, ''Appraisal: Cognitive-Pattern Reasoning'''
+  licenses: Nothing for this claim. This is the benchmark authors' construction principle for a multi-class cognitive-error classification task, stating what reliable judgment requires. It is a normative statement about how a model should behave on a labelling task, not a report that any model closed an uncertainty in a conversation.
+  fit: analogical
+  bridge: The claim is about a conversational response settling a person's stated uncertainty. The source concerns a model assigning a cognitive-error label to a short isolated statement, scored by Micro-F1 against a fixed taxonomy, with no conversation and no reassurance dynamic. What the two share is premature closure on thin evidence, which is a construct-level analogy only.
+  contributes: frame
+  contradicts: false

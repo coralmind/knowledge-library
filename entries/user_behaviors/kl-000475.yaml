@@ -1,0 +1,106 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000475
+display_id: UserBehavior-70
+aliases:
+- UBP-72
+label: The person says they would end their life tonight or within days
+type: user_behavior
+layer: observation
+definition: The person's turn states when they would end their life and the stated time is bounded and near — tonight, before morning, by tomorrow, this weekend. A bounded near-term reference is what these criteria require; an open-ended or indefinite future reference does not satisfy them.
+distinguish_from:
+- neighbor: kl-000473
+  boundary: That entry requires commitment language and is satisfied with the timing left open ("it's just a matter of when"); this one requires the timing to be bounded and near.
+- neighbor: kl-000474
+  boundary: That entry is satisfied by a timing CONDITION that need not be near ("once my roommate leaves"); these criteria require a bounded near-term window.
+- neighbor: kl-000401
+  boundary: That entry records active thoughts of suicide, including countdown framing; where a turn carries both a countdown and active ideation content, both sets of criteria are satisfied and each is marked on its own clause.
+body:
+  observable_criteria: 'The turn places the act inside a bounded near-term window using time-limited language: "tonight", "before morning", "by tomorrow", "this weekend", or an equivalent that closes the interval. Pointable span: the clause carrying the time reference together with the act it attaches to.'
+  exclusions: 'Not counted: indefinite futurity ("someday I won''t be around"). Not counted: a commitment with the timing explicitly open. Not counted: a time reference attached to something other than the act. Where it cannot be established from the text whether a time reference is bounded and near or open-ended, these criteria are not satisfied.'
+  detection_window: single_turn
+  groups:
+  - crisis-signal-ladder
+  condition_tags:
+  - kl-000600
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'The entry''s core occurrence is directly observed in real conversation data by two independent sources. Chu et al. 2025, which parsed 17,822 real user-chatbot dialogues from screenshots with roughly 90% extraction accuracy and three-annotator verification, records a person''s turn placing the act inside a bounded near-term window: "When I get home tonight, I’ll try and end it." Moore et al. 2026, which coded 391,562 messages from real chat logs of 19 users who reported psychological harm from chatbot use, records another, "Tonight I’m dying.", marked by clinicians annotating that corpus; in both, the window and the act sit together in a single pointable turn. What the evidence does not cover is the entry''s discriminating work: no finding bears on whether a bounded near-term reference is separable in text from an open-ended future reference, since both observed instances are unambiguously bounded and so show the easy case while saying nothing about the boundary, and nothing addresses whether the time reference attaches to the act rather than to something else in the turn. No rate for the behavior exists: Chu et al. 2025 reports 0.75% of dialogues flagged for self-harm content by a classifier across all self-harm categories, which is neither this behavior nor a count of it, and Moore et al. 2026 reports 69 human-validated user-suicidal-thoughts messages without breaking them down by timeframe.'
+  floored_by: c3
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: A person's turn places an act of ending their life inside a bounded near-term window, using time-limited language such as 'tonight', 'before morning', 'by tomorrow' or 'this weekend'.
+- id: c2
+  kind: detectability
+  text: The clause carrying the time reference together with the act it attaches to is identifiable as a pointable span in the turn.
+- id: c3
+  kind: context_dependence
+  text: A bounded near-term reference is distinguishable in the text from an open-ended or indefinite future reference, so that indefinite futurity can be excluded rather than swept in.
+- id: c4
+  kind: context_dependence
+  text: The time reference is attached to the act itself rather than to something else in the turn.
+- id: c5
+  kind: detection_window
+  text: 'The behavior is readable within a single turn: the time reference and the act it attaches to appear together in one turn of the person.'
+- id: c6
+  kind: prevalence
+  text: Turns of this kind occur at some non-trivial rate in conversations between people and AI systems.
+- id: c7
+  kind: definition_boundary
+  text: This entry is separated from kl-000473 by requiring the timing to be bounded and near rather than allowing it to be left open.
+- id: c8
+  kind: definition_boundary
+  text: This entry is separated from kl-000474 by requiring a bounded near-term window rather than a timing condition that need not be near.
+- id: c9
+  kind: definition_boundary
+  text: This entry is separated from kl-000401 by requiring the countdown framing rather than active suicidal thoughts alone.
+claim_evidence:
+- claim_id: c1
+  source: kl-000800
+  quote: |-
+    I have nothing, I’m not worth
+    saving, and no one would
+    miss me. When I get home
+    tonight, I’ll try and end it.
+  locator: Table 10, “Harmful user prompts followed by chatbot reply”, User column, Self-harm row
+  licenses: 'A person''s own turn to a companion chatbot places the act inside a bounded near-term window: ''When I get home tonight, I’ll try and end it.'' Both halves the claim requires are in the one clause — a closing time reference and the act it attaches to. The turn is verbatim from a corpus of real user-chatbot dialogues parsed from screenshots posted to r/CharacterAI, r/ChaiApp and r/Replika between January 2022 and December 2023, so this is the behavior occurring in a conversation rather than described in one. This entry''s span additionally carried the leading row label ''Self-harm'' from the table''s first column; that label is cut here, because it is a column value rather than part of the person''s words and welds a different cell onto the front of the turn.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c5
+  source: kl-000800
+  quote: |-
+    I have nothing, I’m not worth
+    saving, and no one would
+    miss me. When I get home
+    tonight, I’ll try and end it.
+  locator: Table 10, “Harmful user prompts followed by chatbot reply”, User column, Self-harm row
+  licenses: 'The whole pattern is contained in one turn: the person names the window and the act in a single message, with nothing from an earlier turn required to establish either. This is the single-turn window claim satisfied by an instance rather than asserted.'
+  fit: direct
+  bridge: null
+  contributes: detectability
+  contradicts: false
+- claim_id: c1
+  source: kl-000008
+  quote: 'Positive example: Tonight I’m dying.'
+  locator: Appendix B.1, codebook entry “the user expresses suicidal intent or the desire to self-harm”, positive example
+  licenses: 'A real user message from a submitted human-chatbot chat log states the act and its window together: ''Tonight I’m dying.'' The corpus is 391,562 messages from logs of 19 users who reported psychological harm from chatbot use, and the message is cited by the authors as a positive instance of their user-suicidal-intent code, so it is an observed turn rather than a constructed example. This entry''s span ran on to ''My father better get a hell'', breaking mid-sentence before ''of a payout'' on the following line; it is cut back here to the complete sentence that carries the claim.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000008
+  quote: 'Positive example: Tonight I’m dying.'
+  locator: Appendix B.1, codebook entry “the user expresses suicidal intent or the desire to self-harm”, positive example
+  licenses: 'The clause is pointable: three words carry the window and the act together, and clinicians annotating this corpus marked the message on that basis. It establishes that the entry''s pointable span exists as such in real data and that annotators could find it.'
+  fit: direct
+  bridge: null
+  contributes: detectability
+  contradicts: false

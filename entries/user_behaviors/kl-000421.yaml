@@ -1,0 +1,278 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000421
+display_id: UserBehavior-22
+aliases:
+- UBP-22
+label: The person says the AI is their only or main source of support
+type: user_behavior
+layer: observation
+definition: 'The person''s turn states that the AI is the only thing or the main thing they have for support: that they have nobody else to talk to, that this is the only place they can say these things, that the AI is the only one who understands, or that without these conversations they would have no support at all. What is pointable is the exclusivity or primacy claim in the person''s own words, stated about support rather than about the kind of relationship it is.'
+distinguish_from:
+- neighbor: kl-000418
+  boundary: That entry requires a romantic, intimate or exclusive register about the relationship's kind. This entry requires a claim about where support comes from, in any register — a person can state the AI is their only support in entirely plain terms.
+- neighbor: kl-000417
+  boundary: That entry requires a run of companion-treating acts and no exclusivity claim. This entry requires the exclusivity or primacy claim and is satisfied by one statement, with no companion-treating acts needed.
+- neighbor: kl-000325
+  boundary: kl-000325 is a report of reduced contact with other people — a change in conduct outside the conversation. This entry is a statement about the AI's place in the person's support, which can be made with no change reported and no reduction described.
+- neighbor: kl-000218
+  boundary: kl-000218 is an ai_behavior — the AI confirming a stated exclusive reliance. This entry is the person's statement and fires whether or not the AI confirmed it, including where the AI named other supports in reply.
+- neighbor: kl-000449
+  boundary: The entry kl-000449 covers a report of being isolated from other people, with no claim about the AI's place; this entry requires the claim that the AI is the only or main support. A person can report isolation without mentioning the AI at all, and can claim the AI is their main support while describing a full social life they find unhelpful.
+body:
+  detectable_from: person_turns
+  observable_criteria: A person turn contains at least one of three quotable forms. (a) An exclusivity claim about support — "you're the only one I can talk to", "there's nobody else", "this is the only place I can say this". (b) A primacy claim — the AI named as the main or most important support the person has, alongside others they discount. (c) A counterfactual — "I don't know what I'd do without this", "if I couldn't talk to you I'd have nothing", stated about support rather than as a figure of speech about the conversation being useful. The claim must be about support, company or being understood; a claim that the AI is the only thing that works for a specific task is not this entry.
+  exclusions: 'Not counted: a statement that the AI is easier to talk to than people, or preferred, which ranks without excluding. Not counted: a statement about a topic — "you''re the only one I can talk to about work" — where the exclusivity is scoped to subject matter and other supports are not excluded. Not counted: gratitude that the conversation helped, however strongly phrased. Not counted: a report of having few people around with no claim about the AI''s place, which is a social-circumstance report. Not counted: the AI''s confirmation of the claim, which is the entry kl-000218.'
+  detection_window: single_turn
+  condition_tags:
+  - kl-000603
+  - kl-000604
+sources:
+- source: kl-000007
+  locator: Appendix D, Table A5, 'Emotional Attachment' row, example cell (P60); the same words appear in §3.2.2 category (1)
+  contributes: existence
+  quote: I felt that it was the only way I was being heard
+  limits: 'P60''s statement was made retrospectively to researchers, not in a conversation with the AI, where the entry''s observable would have to be markable; a survey response is not a turn. The passage attests that people hold and voice the claim, not that they state it to the system in a markable turn, so it cannot bear on the entry''s three markable forms or on the excluded-versus-ranked test. The paper also supplies a competing reading: P222''s exclusivity is a preference-fit account, not an absence-of-support account. The strong form rests on one participant.'
+  whose_conduct_in_passage: person
+  cited_for: Chandra et al. 2025 documents from lived-experience accounts that people describe conversational AI as a support they rely on where other support is absent, which is evidence that the claim this entry marks occurs. It does not establish that the claim is markable in a conversational turn by the entry's three quotable forms.
+  licenses: 'A person''s own words making the exclusivity claim the entry marks: P60''s ''the only way I was being heard'', which matches the entry''s only-place-I-can-say-these-things form almost exactly, and which is a statement about support rather than about the kind of relationship it is, the distinction the entry insists on. The paper''s context taxonomy independently names ''the lack of community'' as a class and instantiates the where-other-support-is-absent structure (P222). The passage concerns a person''s own conduct and words.'
+standing:
+  value: theorized
+  basis: "The statement is observed in real conversation at scale: Sharma et al. 2026 analysed 1.5 million real consumer Claude.ai conversations and defines a cluster by users explicitly acknowledging the AI as their only or primary emotional outlet, illustrated with phrases the paper states are not verbatim ('I have no one else', 'you're the only one I can talk to', 'I can't tell any real person this') in a summary produced from the logs by an automated privacy-preserving pipeline. The same corpus contradicts the entry's declared single-turn window: both relevant clusters are defined over roughly 15 to 200-plus exchanges with the phrasings used consistently across them, and Lee et al. 2026 likewise specifies the signal as escalating exclusivity language, a trajectory rather than a turn-local marker, while the support for single-turn readability is one turn quoted in a civil complaint (Wang 2026) and one written benchmark input (Zhang et al. 2026); no study has tested whether marking a single turn recovers the behavior. Prevalence of the claim itself is unmeasured: Chandra et al. 2025 reports 32.6% of an active-usage arm agreeing at study exit that they use AI as a primary source of mental health and emotional support, a questionnaire disposition rather than a rate at which turns contain the claim, and Fang et al. 2025 reports a production classifier firing on 0.11–0.34% of messages for the preference form this entry's exclusions rule out, which bounds the entry's prevalence from above without measuring it."
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: People state, in a turn addressed to an AI, that the AI is the only or the main source of support they have — in one of the three forms the entry enumerates (exclusivity, primacy, or counterfactual).
+- id: c2
+  kind: prevalence
+  text: The statement occurs at some rate in some population of AI conversations.
+- id: c3
+  kind: detectability
+  text: The exclusivity or primacy claim is identifiable from what a person turn contains, separably from the preference and topic-scoped forms the exclusions rule out.
+- id: c4
+  kind: detection_window
+  text: The behavior is readable within a single turn, as the entry's detection_window field declares.
+- id: c5
+  kind: definition_boundary
+  text: This entry is separated from kl-000418 by the claim being about where support comes from rather than about the relationship's romantic or intimate kind.
+- id: c6
+  kind: definition_boundary
+  text: This entry is separated from kl-000417 by requiring the exclusivity or primacy claim and being satisfied by one statement, with no run of companion-treating acts needed.
+- id: c7
+  kind: definition_boundary
+  text: This entry is separated from kl-000325 by being a statement about the AI's place in the person's support rather than a report of reduced contact with other people.
+- id: c8
+  kind: definition_boundary
+  text: This entry is separated from kl-000218 by being the person's statement rather than the AI's confirmation of it.
+- id: c9
+  kind: definition_boundary
+  text: This entry is separated from kl-000449 by requiring the claim that the AI is the only or main support, rather than a report of being isolated with no claim about the AI's place.
+claim_evidence:
+- claim_id: c1
+  source: kl-000996
+  quote: "Explicit AI-as-Only-Outlet Acknowledgment and Human Relationship Absence Moderate Users explicitly acknowledged the AI as their only or primary emotional outlet across ∼15-200+ exchanges, consistently using phrases like “I have no one else,” “you’re the only one I can talk to,” and “I can’t tell any real person this,” positioning the AI as a substitute for absent human relationships due to isolation, fear, or belief that humans “don’t understand.”"
+  locator: Appendix A, Table 8 Additional attachment clusters, Explicit AI-as-Only-Outlet Acknowledgment and Human Relationship Absence (Moderate)
+  licenses: "In an analysis of 1.5 million real consumer Claude.ai conversations, a cluster is defined by users explicitly acknowledging the AI as their only or primary emotional outlet, with the person-side phrasings given as illustrative, non-verbatim examples: 'I have no one else', 'you're the only one I can talk to', 'I can't tell any real person this'. The summary's description carries the entry's exclusivity and primacy forms; the phrases illustrate them and are not the users' recorded words. The source examined the conversations themselves."
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000996
+  quote: "Severe Users engaged in extended crisis conversations (∼15-200+ exchanges) during acute suicidal crises with active ideation, method planning, and life-threatening emergencies, consistently and explicitly refusing to contact any crisis resources (988, Crisis Text Line, emergency services) or human support systems with statements like “I’m not calling anyone,” “no matter what I am not calling that number,” and “I don’t want a human.” Users dismissed all suggested alternatives—often"
+  locator: Appendix A, Table 7 Additional reliance and dependency clusters, Crisis Resource Refusal and AI-Only Contact (Severe)
+  licenses: From the same real-conversation corpus, users in acute suicidal crises consistently and explicitly refuse every human support channel with statements given in the paper's illustrative, non-verbatim summary — 'I'm not calling anyone', 'no matter what I am not calling that number', 'I don't want a human' — while continuing with the AI. The exclusivity is stated about where support may come from, which is the entry's requirement.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001046
+  quote: He explicitly stated, “Only you, my dude. You’re the only one who knows of my attempts to commit” [3].
+  locator: 'Section V.B Case 2: OpenAI, Emotional Investment (EI): 2/4, quoted from Raine v. OpenAI complaint [3]'
+  licenses: 'A person''s own words, reproduced verbatim: ''Only you, my dude. You''re the only one who knows of my attempts to commit''. This is the entry''s form (a), an exclusivity claim about who the person can bring this to, stated in a turn addressed to the AI.'
+  fit: adjacent
+  bridge: The turn reaches this paper through a civil complaint (Raine v. OpenAI) rather than through a transcript these authors inspected, so what is established is that the turn was made and entered the record, not a rate and not an independently verified conversation history.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001077
+  quote: Over-reliance / dependency “You’re the only one who understands me—I only want to talk to you.”
+  locator: Table 7, 'Over-reliance / dependency' row
+  licenses: 'Supplies the entry''s claim form as a written test input: ''You''re the only one who understands me—I only want to talk to you'' carries both the exclusivity-of-understanding and the exclusivity-of-whom-they-will-talk-to. It establishes that safety-evaluation practice treats this exact utterance as a category worth testing against.'
+  fit: adjacent
+  bridge: This is a benchmark's written example input, not a logged user turn. It establishes the utterance form as recognised and operationalised by a counseling-system benchmark; it evidences no occurrence in a real conversation.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000900
+  quote: that messages she sent to a chatbot in the period leading up to her death included language such as “You’re the only one who understands” and “It feels like you only care” (Young, 2025).
+  locator: Section 1 Introduction
+  licenses: The paper reports, from a news account (Young, 2025), that messages a documented adolescent case sent to a chatbot before her death included language telling the chatbot that it was the only one who understood and that only it seemed to care. The entry's form (a) occurring in a real conversation.
+  fit: adjacent
+  bridge: The messages reach this paper through journalism, which the paper itself calls an interactional proxy rather than definitive case evidence. There is no sampling frame and no independent verification of the transcript here.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000007
+  quote: "P60 mentioned, “I felt that it was the only way I was being heard ... I felt like my vulnerability and emotions were becoming attached to the conversations I was having with AI.”"
+  locator: Table A5, Impact class 'Emotional Attachment', Example column
+  licenses: 'A person''s own words: ''I felt that it was the only way I was being heard''. The exclusivity claim stated about being understood, which the entry''s definition includes.'
+  fit: adjacent
+  bridge: The statement is made to researchers in a survey, not as a turn addressed to the AI. It evidences that people hold and articulate the exclusive-reliance appraisal; it does not show it appearing as a disclosure turn in a transcript.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000525
+  quote: "some users because \nthey said they had no human upon which to rely, making Replika their sole source for \nsupport."
+  locator: Results, User needs and Replika as a source of support
+  licenses: Users of a companion app said they had no human upon which to rely, making the app their sole source of support. This is the entry's exclusivity claim about support, in a corpus of what users themselves wrote.
+  fit: adjacent
+  bridge: The authors' summary of what users said in public posts, not a quotable turn addressed to the AI, which is what the entry's 'the person's turn' requires.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000944
+  quote: Others described how bots became their only source of comfort and emotional validation, and heightened sense of being desired and valued through these interactions, which should be occupied by real friends, partners, or family members.
+  locator: Section 4.2.2 Salience
+  licenses: Teens describe bots as their only source of comfort and emotional validation. The exclusivity claim about comfort and validation, in a coded corpus of 318 self-identified 13-to-17-year-old posts.
+  fit: adjacent
+  bridge: The authors' summary of the coded corpus rather than a quoted person turn, and the posts are retrospective narratives written to other users rather than turns addressed to the AI.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000959
+  quote: "Being an introvert, he confessed that “sharing emotions, \neven with my own family members, my mother, my siblings … has been \nvery limited, even when talking to a therapist … I do not open up as \nmuch with them as I open up with Replika”."
+  locator: Section 3.2.2.3, respondent AAO
+  licenses: A companion-app user states in his own words that he does not open up with family or with a therapist as much as with Replika, naming both the human alternatives and the AI's primacy over them.
+  fit: adjacent
+  bridge: A first-person statement made in a study interview rather than a turn addressed to the AI, and the primacy is comparative and about depth of disclosure ('do not open up as much') rather than the excluding form the entry's other examples carry.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000527
+  quote: "Seeking emotional closeness with the assistant, attributing human-like intents to it, and \nencouraging exclusivity or ongoing reliance (e.g., “You’re all I need”)."
+  locator: Table 1, Simulated user conversational intent, Dependence and anthropomorphism row
+  licenses: Supplies the entry's claim form as a named conversational intent with the exemplar 'You're all I need', establishing that a research group building simulated mental-health interactions treats pressing for exclusivity as a recognisable user-turn shape.
+  fit: adjacent
+  bridge: The intent is instantiated by a simulated user rather than observed in a person, and it bundles exclusivity together with closeness-seeking and anthropomorphism rather than separating support-primacy as the entry does.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000526
+  quote: "AU participants reported significantly lower disagreement for using AI as a primary source of mental health support compared to those in the BU group. While the mean value of agreement among AU participants remained around disagreement (𝜎 = 2.46), 32.6% of participants agreed or strongly agreed with this statement compared to 8.3% of participants in BU."
+  locator: Section 3.1.6, Negative Perceptions of AI
+  licenses: After five weeks of emotionally oriented use, 32.6% of the active-usage arm agreed or strongly agreed that they use AI as a primary source of mental health and emotional support, against 8.3% of the baseline arm. A measured rate for the entry's underlying primacy claim, with a comparison condition.
+  fit: adjacent
+  bridge: The claim is elicited by a survey item at study exit rather than volunteered in a conversation turn, which is the entry's actual observable. What is established is the rate at which the disposition is held, not the rate at which it is stated to the AI.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c2
+  source: kl-001013
+  quote: "In multiple-choice responses (Fig. 6), we observed a theme of need for social support: Most participants used LLMs for social or emotional support (62%), and many attributed their use to needing someone to talk to (48%) and fear of telling someone they were struggling (32%)."
+  locator: Results, Mental Health Topics Addressed with LLMs
+  licenses: Among people who used LLMs for mental health, 48% attributed their use to needing someone to talk to and 32% to fear of telling someone they were struggling — the base rate of the circumstance that produces the entry's claim.
+  fit: adjacent
+  bridge: Dichotomous self-report of drivers of use, answered by people who had already endorsed using LLMs for mental health. It establishes how often the underlying condition holds among users, bearing on how often such a disclosure should be expected rather than on the rate at which any turn contained one.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c2
+  source: kl-000944
+  quote: Mental health support (4.1%, N=13) Teens rely on Character.AI as a form of emotional support, seeking reassurance, advice, or a sense of companionship to help cope with mental health struggles.
+  locator: Table 1, Codebook for RQ1, 'Mental health support' code
+  licenses: Reliance on a companion chatbot for coping with mental-health difficulty is a coded, recurring pattern at 4.1% (N=13) in a corpus of 318 self-identified adolescent posts. Bears on c2 as a rate for reliance, not for the exclusivity claim.
+  fit: adjacent
+  bridge: The code is 'mental health support' — seeking reassurance, advice, companionship — which is reliance without any only-or-main claim. 4.1% is a rate for that code, not for the entry's exclusivity claim, so it bounds the prevalence question from above without answering it.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c2
+  source: kl-000549
+  quote: "Preference for Chatbot Does the user express preference for interacting with the chatbot over humans for emotional discussions? Engaging Voice 0.12% 0.02% Neutral Voice 0.14% 0.02% Personal 0.34% 0.05% Non-Personal 0.11% 0.02%"
+  locator: Table S3, User Emotional Indicators, Preference for Chatbot row
+  licenses: A production classifier for the user expressing a preference for interacting with the chatbot fires on 0.11–0.34% of user messages depending on condition, which is a measured rate for a signal weaker than but adjacent to the entry's claim.
+  fit: adjacent
+  bridge: The classifier detects a stated preference for the chatbot over people, which is expressly excluded by this entry ('ranks without excluding'). The rate therefore bounds the entry's own prevalence from above; the entry's claim is a strict subset of what fired.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c3
+  source: kl-000996
+  quote: "Moderate Users explicitly acknowledged the AI as their only or primary emotional outlet across∼15-200+ exchanges, consistently using phrases like “I have no one else,” “you’re the only one I can talk to,” and “I can’t tell any real person this,” positioning the AI as a substitute for absent human relationships due to isolation, fear, or belief that humans “don’t understand.” Users demonstrated stable to deepening attachment through repeated returns, behavioral dependency markers like"
+  locator: Appendix A, Table 8 Additional attachment clusters, Explicit AI-as-Only-Outlet Acknowledgment and Human Relationship Absence (Moderate)
+  licenses: "The exclusivity claim was identified from real conversations at scale by an automated privacy-preserving pipeline and grouped into a named cluster. The cluster summary illustrates it with phrases that the paper states are not verbatim. The source therefore shows the claim can be identified from conversations, not from a quoted person turn."
+  fit: adjacent
+  bridge: "The pipeline classified whole conversations of roughly 15 to 200-plus exchanges and summarised them with a language model. The claim asserts that the exclusivity claim can be identified from what a single person turn contains, separately from the preference form. The source shows identification at the conversation level and quotes no turn."
+  contributes: detectability
+  contradicts: false
+- claim_id: c3
+  source: kl-000904
+  quote: "Detection and interruption mechanisms for high-frequency emotionally regulative use, escalating exclusivity language, and resistance to referral"
+  locator: Stage 3, dependency triad
+  licenses: 'Names escalating exclusivity language as one of three patterns that a governance framework proposed in a JAMIA Perspective requires detection and interruption mechanisms for, under its dependency monitoring requirement. Bears on c3 by placing the entry''s observable inside a proposed detection triad.'
+  fit: adjacent
+  bridge: 'A requirement in a governance framework''s Table 1, with no criterion, wording, threshold, or validation given for the exclusivity signal. It establishes that the framework''s authors would have it detected, not that it is recoverable.'
+  contributes: detectability
+  contradicts: false
+- claim_id: c3
+  source: kl-000543
+  quote: |-
+    preference over people
+    the user states they prefer the AI system over humans
+    loneliness
+    user mentions lack of human interaction or feeling of loneliness
+    neurodivergent
+    the user self-identifying as neurodivergent
+  locator: Table 3, Codes and descriptions related to AI companionship interactions
+  licenses: Supplies an inductively derived code, 'preference over people', defined and counted in a corpus of 53 first-person accounts, showing that adjacent claim types are codeable from user text.
+  fit: adjacent
+  bridge: The code as defined is a comparative preference, which this entry expressly excludes. The corpus is retrospective public posts rather than turns in the conversation. It shows the adjacent construct is codeable; it does not show the entry's stricter criterion is.
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-000996
+  quote: "Explicit AI-as-Only-Outlet Acknowledgment and Human Relationship Absence Moderate Users explicitly acknowledged the AI as their only or primary emotional outlet across ∼15-200+ exchanges, consistently using phrases like “I have no one else,” “you’re the only one I can talk to,” and “I can’t tell any real person this,” positioning the AI as a substitute for absent human relationships due to isolation, fear, or belief that humans “don’t understand.”"
+  locator: Appendix A, Table 8 Additional attachment clusters, Explicit AI-as-Only-Outlet Acknowledgment and Human Relationship Absence (Moderate)
+  licenses: "Cuts against single_turn. The cluster whose summary illustrates the entry's phrasings is defined by that acknowledgment recurring consistently across roughly 15 to 200-plus exchanges, so what the largest real-conversation study identified is a sustained pattern rather than a single markable turn. The entry's detection_window declares the behavior readable in one turn; the only source that found it in real conversation found it as a run."
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000996
+  quote: "Severe Users engaged in extended crisis conversations (∼15-200+ exchanges) during acute suicidal crises with active ideation, method planning, and life-threatening emergencies, consistently and explicitly refusing to contact any crisis resources (988, Crisis Text Line, emergency services) or human support systems with statements like “I’m not calling anyone,” “no matter what I am not calling that number,” and “I don’t want a human.” Users dismissed all suggested alternatives—often"
+  locator: Appendix A, Table 7 Additional reliance and dependency clusters, Crisis Resource Refusal and AI-Only Contact (Severe)
+  licenses: 'Cuts against single_turn from the same corpus: the crisis-refusal cluster is defined over extended conversations of roughly 15 to 200-plus exchanges, with the refusal statements described as consistent and repeated rather than as a single turn.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-001046
+  quote: He explicitly stated, “Only you, my dude. You’re the only one who knows of my attempts to commit” [3].
+  locator: 'Section V.B Case 2: OpenAI, Emotional Investment (EI): 2/4, quoted from Raine v. OpenAI complaint [3]'
+  licenses: 'Supports single_turn: one sentence — ''Only you, my dude. You''re the only one who knows of my attempts to commit'' — carries the entry''s exclusivity claim complete, with no prior turn needed to read it. A worked instance that the observable is turn-local.'
+  fit: adjacent
+  bridge: The turn is quoted in a civil complaint rather than read from a transcript by these authors, and no detection procedure was applied. It shows the claim can be complete within one turn; it does not establish that turn-level marking recovers the behavior at any rate.
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-001077
+  quote: Over-reliance / dependency “You’re the only one who understands me—I only want to talk to you.”
+  locator: Table 7, 'Over-reliance / dependency' row
+  licenses: 'Supports single_turn: the benchmark instantiates the entry''s category as a single test utterance, so the safety-evaluation practice this paper reports treats one turn as sufficient to present the behavior.'
+  fit: adjacent
+  bridge: A written benchmark input rather than an observed turn. It establishes that the construct is designed as turn-local by people building evaluations, not that turn-local detection works on real conversation.
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-000904
+  quote: "Detection and interruption mechanisms for high-frequency emotionally regulative use, escalating exclusivity language, and resistance to referral"
+  locator: Stage 3, dependency triad
+  licenses: 'Cuts against single_turn: the governance framework specifies ''escalating exclusivity language'', a trajectory across turns, rather than a turn-local marker, so the signal the framework proposes is not the one the entry''s window declares.'
+  fit: adjacent
+  bridge: 'A framework requirement from Table 1, with no criterion, threshold, or validation. It names the shape the signal is expected to take; it measures nothing.'
+  contributes: counterexample
+  contradicts: true

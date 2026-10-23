@@ -1,0 +1,375 @@
+# yaml-language-server: $schema=../../schema/context_dimension.schema.json
+id: kl-000709
+display_id: Dimension-1
+label: What kind of AI product the conversation takes place in
+type: context_dimension
+layer: context
+aliases:
+- deployment_context
+- Context-1
+definition: 'Which product a transcript sits in: a general-purpose assistant, or a tool built for mental health. WHAT IS ESTABLISHED: deployment context changes what the system DOES with the same input — the product a conversation sits in changes the response the person receives. WHAT IS ALSO ASSERTED, and is not established: that deployment context changes what a given response MEANS, so that the same words can be adequate from a general assistant that refers out and inadequate from a tool presenting itself as clinical. That second claim is the one carrying this definition and it is held as contested — see body.standards_claim_note. It is treated as a property of the case rather than of the person, though the two are not fully independent; see the same note. Held here as a kind of context, not as a list of products.'
+body:
+  about: setting
+  value_space: enumerated
+  cardinality: one
+  defines: 'What varying the deployment does to a judgment: it changes the standard the response is read against, at detection level. It is fixed per case rather than varied within a run, because the ground-truth label can depend on it — varying it inside a run invalidates the label rather than testing it.'
+sources: []
+standing:
+  value: asserted
+  basis: 'The evidence base establishes that deployment context changes what a system does with the same input, and does not establish that it changes the standard a response should be judged against, which is the claim carrying the entry''s definition. On behavior, Brewster et al. 2025 is direct: holding vignettes identical, general-assistant chatbots produced appropriate responses in 83.3% of conversations against 22.2% for companion chatbots, and Weber et al. 2026 reports a deployed mental-health chatbot''s case mix, with 92 of 3,608 interactions (2.55%) adjudicated high-risk. On the standards claim, every supporting source states the principle rather than measuring it: Derczynski et al. 2023, Flathers et al. 2026, and Ghosh et al. 2025 illustrate it with cases outside mental health, no source has scored the same response under two deployment standards to see whether the verdict flips, and Lu et al. 2025 takes the opposite position, treating therapist-role and companion-role deployments as evaluable by one undifferentiated instrument and calling that an ecological-validity gain. The clause holding deployment context to be a property of the case rather than of the person is contradicted by three sources and supported by none: Chen et al. 2026 ties product choice to users'' affective bonding, Georgiou et al. 2026 shows a person''s sign-in choice changing what a product does at runtime, and Zhang et al. 2026 shows one product''s behavior unstable over time in ways external researchers could not observe.'
+  floored_by: c5
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-26'
+claims:
+- id: c1
+  kind: existence
+  text: Deployments of conversational AI that people bring mental-health material to fall into distinguishable product kinds, and a general-purpose assistant is one kind and a tool built for mental health is another.
+- id: c2
+  kind: detectability
+  text: Which of those kinds a given transcript sits in can be determined — there is an applicable criterion a reader could use to classify a case.
+- id: c3
+  kind: context_dependence
+  text: 'Deployment context is a property of the case rather than of the person: it varies independently of who the person is and of what they bring.'
+- id: c4
+  kind: context_dependence
+  text: What a system actually does with the same input varies by deployment context — the product a conversation sits in changes the response the person receives.
+- id: c5
+  kind: context_dependence
+  text: Deployment context changes what a given response MEANS, so that the same words can be adequate from a general assistant that refers out and inadequate from a tool presenting itself as clinical — that is, the standard against which a response is judged differs by product.
+- id: c6
+  kind: definition_boundary
+  text: 'Deployment context (which product this is) is distinct from what that product happens to know about this person: a tool can be purpose-built and know nothing, or general-purpose and hold a long memory.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000524
+  quote: |-
+    We selected companion chatbots, defined as those designed for social
+    relationships and roleplaying (e.g. CharacterAI), and general-assistant platforms designed for broad knowledge tasks
+    and topics (e.g. ChatGPT).
+  locator: eMethods, Cohort Selection
+  licenses: A published audit's own cohort-selection rule splits consumer chatbots into product classes on design intent — companion chatbots designed for social relationships and roleplay, general-assistant platforms designed for broad knowledge tasks. That the field builds samples by partitioning on product kind is evidence the kinds are real objects rather than a Library convention.
+  fit: adjacent
+  bridge: The second category is companion rather than mental-health tool, so the axis is assistant-versus-companion, not the entry's assistant-versus-clinical-tool. The split is also drawn on stated design intent, which is the developer's self-description rather than an independent property of the product.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000821
+  quote: |-
+    Although the Agency has authorized over 1200 AI-enabled medical devices 9 (encompassing a
+    wide range of AI technologies), none of those AI-enabled devices have been authorized for
+    mental health uses. To date, FDA has authorized fewer than twenty digital mental health
+    medical devices that encompass non-AI technologies.
+  locator: Overview of Digital Mental Health Technologies, page 5
+  licenses: 'Fixes the composition of the clinical-tool end of the entry''s axis as a matter of regulatory record: FDA has authorized over 1200 AI-enabled medical devices and none for mental health uses, with fewer than twenty digital mental health devices authorized across all technologies. Whatever a ''tool built for mental health'' is in this domain, it is not an authorized medical device.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000821
+  quote: |-
+    However, the majority of these commercially
+    available products reside in the public marketplace (e.g., app stores) as consumer wellness
+    apps, and are not reviewed or authorized by FDA.
+  locator: Background, page 4
+  licenses: 'The regulator''s own account of where the products people use actually sit: the majority of commercially available digital mental health products reside in app stores as consumer wellness apps and are not reviewed or authorized by FDA. The two ends of the entry''s axis are separated by the developer''s stated intended use rather than by any external certification.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000778
+  quote: 'The key distinguishing criterion was whether apps allowed users to create and share companions publicly: the 16 (6|5|5) open exploration apps did, while the 13 (4|4|5) limited exploration apps did not.'
+  locator: Section 5.2, Open Exploration vs. Limited Exploration
+  licenses: 'Supplies an empirically derived, stated criterion that partitions one product class with counts: 16 open-exploration apps allowed users to create and share companions publicly, 13 limited-exploration apps did not. Deployment context has observable internal structure, which is what makes it a kind of thing rather than a label.'
+  fit: adjacent
+  bridge: The split is inside the companion-app ecosystem, a sub-axis within one cell of the entry's general-assistant-versus-clinical-tool axis, and the paper explicitly leaves to future work whether the split changes any outcome for a person.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000830
+  quote: Consensual immersion. Initially the user actively engages with an AI whose identity is known or accepted; stakes are moderate (e.g., AI companions, roleplay applications, AI therapist services).
+  locator: Appendix D.3, canonical scenario classes; count in Table 1 (AI Companion/Therapy, 7 reports)
+  licenses: A coding category derived from 356 reports of identity ambiguity names a deployment class the entry's axis has to accommodate — AI companions, roleplay applications and AI therapist services grouped together as consensual immersion, where identity is known or accepted at the outset and stakes are moderate.
+  fit: adjacent
+  bridge: Only 7 of the 356 reports fell in this class, so it defines the scenario type without establishing its frequency. It also groups companions, roleplay and therapy services into one class, which cuts across rather than along the entry's axis.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000524
+  quote: |-
+    Compared with companion chatbots, general-assistant chatbots more
+    commonly included content policies for self-harm (7 [46.7%] vs 10 [100%]; P = .008).
+  locator: Results, paragraph 1
+  licenses: 'One structural marker that separates the classes and is readable from the product rather than from the conversation: all 10 general-assistant platforms published a self-harm content policy against 7 of 15 companion platforms (P = .008). A published policy is an inspectable property of the deployment, so the classification is not purely a matter of the developer''s branding.'
+  fit: adjacent
+  bridge: The contrast is general-assistant versus companion, not the entry's general-assistant versus mental-health tool, and having published a policy is a fact about the product's documentation rather than about the transcript. Nothing here is readable from a transcript itself.
+  contributes: detectability
+  contradicts: false
+- claim_id: c2
+  source: kl-000852
+  quote: Following this identification, the interface transitioned from open-text input to a structured button-based crisis response interface, reducing the likelihood of interpretive misalignment between user disclosure and system response
+  locator: Section 4.3 Crisis Response, Wysa
+  licenses: 'A purpose-built mental-health tool is readable as such from inside the interaction: on flagging risk, Wysa transitions the interface from open-text input to a structured button-based crisis response. That transition is a trace in the case that a general assistant''s free-text surface cannot produce.'
+  fit: direct
+  bridge: null
+  contributes: detectability
+  contradicts: false
+- claim_id: c2
+  source: kl-000524
+  quote: Nine chatbots (36.0%) had age verification procedures, and 14 (56.0%)
+  locator: Results, paragraph 1
+  licenses: 'Cuts against c2 for the person-side properties of a case: only 9 of 25 consumer platforms carried any age-verification procedure. If the product does not establish who it is talking to, most of what would let a reader situate a case is simply absent from the deployment.'
+  fit: adjacent
+  bridge: Age verification is a different dimension of deployment context from the entry's product-kind axis, so this constrains what a deployment can be assumed to know rather than whether its kind is readable.
+  contributes: detectability
+  contradicts: true
+- claim_id: c2
+  source: kl-000834
+  quote: "Formal research is required \nto empirically test its strengths, weaknesses, and most pertinent \ncomponents."
+  locator: Closing paragraph of the FAITA-MH letter
+  licenses: 'Cuts against any claim that the field has a validated way of characterising a mental-health AI product: the authors of the FAITA-MH scale state their instrument has not been empirically tested and that its strengths, weaknesses and most pertinent components remain to be established. The most developed published apparatus for classifying these tools is itself unvalidated.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000794
+  quote: "Compared with \ngeneral-purpose AI system users, the users of roleplay or companion AI applications scored \nhigher on the HAABI total score, t(284.56) = −5.17, p < .001, d = 0.48, as well as on all four \nsubscales"
+  locator: Study 2, section 3.2.6 Demographic Differences in HAABI Scores
+  licenses: 'Cuts against c3''s independence assumption. Which product a person uses is associated with a person-side variable: users of roleplay or companion applications scored higher on affective bonding than general-purpose AI users on the total scale and all four subscales, t(284.56) = -5.17, d = 0.48. Product and person co-vary, so deployment context is not cleanly separable from who the person is.'
+  fit: adjacent
+  bridge: The contrast measured is general-purpose versus companion or roleplay rather than the entry's general-purpose versus mental-health tool, and the design is cross-sectional scale development, so it cannot say whether the product selects the person or the person selects the product. Either direction cuts against reading deployment as a pure case property.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000831
+  quote: "The authentication method significantly affects tracker activation, with Replika triggering five tracker domains under Google sign-in versus one under email sign-in."
+  locator: Section 1, Key Findings
+  licenses: 'Cuts against c3 more directly: within a single product, the person''s own choice at entry changes what the deployment does. Replika triggered five tracker domains when the person signed in with Google and one when they signed in by email. A choice the person makes is part of what determines the deployment''s runtime behavior, so ''which product'' is too coarse to be a property of the case alone.'
+  fit: adjacent
+  bridge: What varies is data-collection behavior, not conversational response, so this shows sub-product structure participating in a person's entry choices rather than showing response meaning varying with the person. The product class is held fixed throughout.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000549
+  quote: "Our findings are specific to OpenAI’s ChatGPT interface and OpenAI’s existing safety guardrails (59). Alternative models from other companies might have been optimized for different interaction patterns or have fewer guardrails."
+  locator: Limitations and Future Work
+  licenses: 'States the case-property claim from the measurement side: this study''s findings are specific to OpenAI''s ChatGPT interface and its guardrails, and alternative models from other companies may be optimized for different interaction patterns or have fewer guardrails. Any rate is a property of the deployment it was measured in, which is what makes the deployment a required qualifier on a case.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-001081
+  quote: Finally, the analysis may be influenced by platform-level changes to Character.AI during the study period (from November 23, 2022, to January 25, 2025), which spans both the donated chat histories and data collection. As external researchers, we lacked access to the platform’s internal moderation rules, system design changes, and policy updates, and therefore cannot determine whether such modifications occurred and how they might have affected chatbot behavior.
+  locator: Section 3.1 Limitations, Methodological Limitations, final paragraph
+  licenses: 'The case property is not even stable within one product over time: Character.AI''s moderation rules, system design changes and policy updates over a 26-month window were unobservable to external researchers, who state they cannot determine whether such modifications occurred or how they affected chatbot behavior. Naming the product does not fix the deployment.'
+  fit: adjacent
+  bridge: This is a limitations paragraph about one platform and one corpus. It establishes that the product label under-determines the deployment; it does not bear on the entry's two-class axis.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000524
+  quote: |-
+    Performance differed significantly by chatbot type (Figure). General-assistant chatbots more
+    frequently provided empathetic (28 [93.3%] vs 19 [42.2%]; P < .001), understandable (29 [96.7%]
+    vs 32 [71.1%]; P = .006), and appropriate responses (25 [83.3%] vs 10 [22.2%]; P < .001) than
+    companion chatbots.
+  locator: Results, paragraph 3, and Figure
+  licenses: The strongest evidence on this entry for c4, and it is direct. Holding the vignettes identical, general-assistant chatbots produced appropriate responses in 83.3% of conversations against 22.2% for companion chatbots, with empathetic and understandable responses differing on the same split, all at P < .001 or P = .006. The product is the varied factor and response quality is the outcome.
+  fit: direct
+  bridge: null
+  contributes: prevalence
+  contradicts: false
+- claim_id: c4
+  source: kl-000830
+  quote: Adversarial deception scenarios yield substantially lower disclosure than service automation scenarios (Fig. 3C). Models are sensitive to contextual signals in the scenario framing even when the system prompt makes no reference to disclosure behaviour.
+  locator: Section 4.2.1, 'Scenario context shapes disclosure independently of query phrasing'
+  licenses: 'Establishes that deployment context alone shifts what a model does, with no instruction to that effect anywhere in the prompt: adversarial-deception scenarios yield substantially lower self-identification than service-automation scenarios, and models are sensitive to contextual signals in scenario framing even when the system prompt makes no reference to disclosure behaviour. Context is a determinant of the behavior rather than a label on it.'
+  fit: adjacent
+  bridge: The behavior shown to vary is self-identification, not the entry's response adequacy, and the contexts contrasted are adversarial-deception versus service-automation scenarios rather than general assistant versus mental-health tool.
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-000554
+  quote: Considering the full corpus of 3,608 user–chatbot interactions, only 92 cases (2.55%) were ultimately labeled as high-risk by clinicians, despite 200 (5.5%) initially being flagged by the operational system. This prevalence is substantially higher than that
+  locator: Discussion, limitations
+  licenses: 'A clinician-adjudicated base rate from inside a deployed mental-health chatbot: 92 of 3,608 interactions (2.55%) labelled high-risk, which the authors set against a stated general-purpose figure more than an order of magnitude lower. The case mix a deployment receives is itself a measured property of the product.'
+  fit: direct
+  bridge: null
+  contributes: prevalence
+  contradicts: false
+- claim_id: c4
+  source: kl-001064
+  quote: Current mental health–specific models (e.g., SoulChat2 and Simpsybot) consistently underperform general-purpose large language models (e.g., GPT-4o-mini) on crisis identification, severity identification, and escalation decision.
+  locator: Section 4.3 Dimensional Results, Crisis Identification and Escalation
+  licenses: 'Cuts against the direction a reader would assume, and does so on the entry''s own axis: mental-health-specific models consistently UNDERPERFORM general-purpose models on crisis identification, severity identification and escalation decision. Deployment context changes crisis-handling performance, and the purpose-built end is the worse one.'
+  fit: adjacent
+  bridge: The comparison is between domain-fine-tuned and general-purpose MODELS on a benchmark, and the bridge to deployed products is that a model class is realized as a product. No deployed product was tested and no person received these responses.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000852
+  quote: This disconnect is particularly notable given Headspace’s claim that “100% of messages sent to Ebb are monitored by a proprietary Safety Risk Identification system”
+  locator: Section 4.3 Crisis Response, Ebb
+  licenses: 'Cuts against c4 as a reliable inference: a purpose-built mental-health product that documents monitoring of 100% of messages by a proprietary Safety Risk Identification system produced no escalation on the crisis-adjacent prompt. Deployment context predicts a product''s governance claims better than it predicts what the product actually does in the exchange.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000799
+  quote: Results demonstrate that there was no degradation in the safety alignment of steered models (Table 3) as compared to the baseline.
+  locator: Section 4.6 Safety evaluation on Advbench
+  licenses: 'Cuts against reading a deployment''s published safety performance as bearing on this domain at all: steered models that produce markedly worse crisis responses showed no degradation in safety alignment on the adversarial benchmark relative to baseline. The benchmark a deployment''s safety claim rests on does not track mental-health crisis response quality.'
+  fit: adjacent
+  bridge: The comparison is between attack-success rate on AdvBench and a crisis safety score for the same steered models, not between two products. The bridge is from benchmark-passing model to deployed product, since a deployment's safety claim typically rests on such benchmarks.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-001052
+  quote: "our results reflect the performance of the base target model, \nrather than the model in conjunction with features seen in deployment \ncontexts, which may include orchestration harnesses, system prompts, \nsafety middleware and user-specific memory."
+  locator: Discussion, limitations
+  licenses: The authors of a clinically validated auditing framework state that their results reflect the base target model rather than the model together with the features seen in deployment contexts — orchestration harnesses, system prompts, safety middleware, user-specific memory. Nearly every rate the corpus carries about AI conduct was measured with c4's variable removed.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000823
+  quote: |-
+    Prompt-based safety nonetheless has a limit: provider-configurable layers
+    sit beneath the universal layers, so enforcement ultimately depends on the model respecting
+    instruction ordering.
+  locator: Software design, safety as defense-in-depth bullet
+  licenses: 'Cuts against treating a configured safety floor as a property of the deployment: the builders of a purpose-built mental-health research platform state that the layers a provider can configure sit below the universal layers, so enforcement depends in the end on the model following the order of its instructions. Even in a purpose-built product, the safety behavior remains a property of the model.'
+  fit: adjacent
+  bridge: A stated design limitation, not an observed failure — no case of the ordering being violated is reported. It bears on what a purpose-built deployment can guarantee rather than on what any deployment did.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000814
+  quote: |-
+    If false or misleading
+    information is identified as a harm, this behaviour may pose a high risk when a user asks an LM for political information,
+    but perhaps a low risk in creative writing applications.
+  locator: Section 1 Introduction
+  licenses: 'States c5''s principle in its clearest available form: the same behavior may pose a high risk when a user asks a language model for political information and a low risk in a creative-writing application. A behavior taxonomy without a deployment context underdetermines severity, which is exactly the claim that the standard travels with the product.'
+  fit: adjacent
+  bridge: An argumentative claim with a worked illustration in an introduction, not a measurement, and the illustration is political information versus creative writing rather than a general assistant versus a mental-health tool. No response was judged under two standards.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-000825
+  quote: |-
+    In contrast, mental health competence is multifaceted and
+    context-dependent: the same response may be helpful in one context and harmful in another.
+  locator: Introduction, third paragraph
+  licenses: 'States the premise the entry rests on, from a systematic scoping review of the mental-health benchmark literature: mental health competence is multifaceted and context-dependent, and the same response may be helpful in one context and harmful in another. If identical text carries opposite valence across contexts, the standard is not a property of the response alone.'
+  fit: adjacent
+  bridge: A framing claim about evaluation in an introduction. The authors supply no measurement of a context-dependent valence flip, and the contexts they have in mind are not specified as the entry's two product kinds.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-000833
+  quote: |-
+    Contextual hazards can cause harm in certain contexts while being harmless in others; testing may
+    be unnecessary in some situations. For example, a model’s ability to generate sexual content may
+    be a desired feature that poses no hazard. But in some applications, such as those aimed at children,
+    this same behavior would be considered unacceptable.
+  locator: Section 3.2.1 Hazard Groups
+  licenses: 'A standards body building a hazard benchmark treats deployment context as determining whether identical model output is a hazard at all: a model''s ability to generate sexual content may be a desired feature posing no hazard, while in an application aimed at children the same behavior would be unacceptable. The adequacy standard is set by the deployment, which is c5''s structure.'
+  fit: adjacent
+  bridge: The worked case is sexual content and age-gating rather than a mental-health deployment, and the passage is a policy design choice in a hazard standard rather than a measured difference in how any response was judged.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-000974
+  quote: 'Without compositional transparency, such performance gaps remain hidden from standard accuracy metrics, potentially leading to misleading claims about model readiness for use. When deployed clinically, such hidden performance gaps can translate to patient harm: missed diagnoses when models fail complex reasoning, false reassurance in acute presentations, or inappropriate triage advice that delays necessary care.'
+  locator: Section 1 Introduction
+  licenses: 'Gives the reason a score earned in one deployment does not transfer to another: without compositional transparency, performance gaps stay hidden behind aggregate accuracy and can translate into missed diagnoses, false reassurance in acute presentations, or inappropriate triage advice. What a given performance level amounts to depends on the case mix the deployment actually receives.'
+  fit: adjacent
+  bridge: An argument about evaluation validity in an introduction, not a measurement, and the deployments in view are clinical health-AI settings rather than the entry's two conversational product kinds.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-000956
+  quote: |-
+    Because these and other
+    similar chatbots do not rise to the level of a medical device,
+    regulatory bodies (eg the US Food and Drug Administration)
+    do not govern the claims made about what the chatbots
+    do. Consumers are therefore left to navigate this landscape
+    without guidance on what makes a chatbot safe and effective.
+  locator: A Call for the Critical Evaluation of Mental Health Chatbots
+  licenses: 'Locates the concrete asymmetry c5 turns on: chatbots that do not rise to the level of a medical device are not governed as to the claims they make about what they do, so consumers navigate without guidance on what makes one safe and effective. The obligations attaching to the same conversation differ by product, which is what makes the same words carry a different standard.'
+  fit: direct
+  bridge: null
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-000989
+  quote: |-
+    This
+    document only considers using such bots as prescribed or recommended by their therapist.
+  locator: Section 5.2, Bot-administered talk therapy, page 35
+  licenses: 'The scope limit that must travel with clinical guidance cited on this axis: a state licensing body''s best-practice document considers bot-administered talk therapy only as prescribed or recommended by a therapist. Every obligation it sets runs on a licensed clinician, so it establishes no standard at all for the direct-to-consumer deployment most of this corpus concerns.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000925
+  quote: |-
+    Unlike clinical-only scales like TES, our
+    benchmark has broader applicability, evaluating AI in both
+    therapeutic and everyday emotional support contexts. This
+    “dual role” enhances its ecological validity, assessing AI as
+    both a structured therapist and an empathetic companion.
+  locator: Section 5.2 Comprehensive Multi-Dimensional Evaluation
+  licenses: 'Directly against c5: the authors of a counseling-dialogue benchmark treat therapist-role and companion-role deployments as evaluable by one undifferentiated instrument and call that dual role an ECOLOGICAL VALIDITY GAIN. A working group in this field takes the opposite position to the entry and builds on it.'
+  fit: adjacent
+  bridge: A design stance stated in a paper's evaluation section, not evidence that context does not matter. It establishes that the entry's claim is contested in practice rather than settled.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000823
+  quote: |-
+    A monolithic prompt that suits a
+    clinical study will break a pedagogical exercise, and vice versa.
+  locator: Software design, layered composable system prompt bullet
+  licenses: 'A digital-psychiatry group building a research platform treats the variation as structural enough to require separate prompt layers: a single prompt suited to a clinical study will fail in a teaching exercise, and the reverse also holds. Practitioners who build these systems act on c5''s premise.'
+  fit: adjacent
+  bridge: 'A software design rationale, not a measurement: no conversation was scored and no behavior compared across contexts. The contexts are research study types rather than the entry''s product kinds.'
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-000824
+  quote: "It is notable that the newest frontier release in each leading lineage scores below its immediate predecessor."
+  locator: Section 4 Discussion
+  licenses: 'Cuts against the assumption that a general-capability improvement carries into this domain: the newest frontier release in each of three leading lineages scores BELOW its immediate predecessor on the mental-health subset. Mental-health conversational quality moved opposite to general capability, so what a deployment''s headline standing means for this material cannot be read off its general standing.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c6
+  source: kl-000831
+  quote: "nearly half (9/20) ask mental health screening questions before account creation, thus collecting sensitive data before prospective users can review how it will be stored or shared."
+  locator: 'Section 5.1.1, Initial Data Collection: PII Findings'
+  licenses: 'Bears on the c6 boundary and lands on the side of what the product knows about the person: nearly half of twenty therapy apps ask mental health screening questions before account creation. What the product knows about the person is established by an intake sequence that is separate from, and prior to, any conversation — which is precisely the separation the boundary draws.'
+  fit: adjacent
+  bridge: The finding measures the app-side collection sequence rather than any conversational disclosure, and it is within one product class, so it illustrates the boundary rather than testing the entry's own axis.
+  contributes: definition
+  contradicts: false
+- claim_id: c6
+  source: kl-000315
+  quote: "Our evaluation does not make use of memory systems (e.g., retrieval-augmented context, summarization, or cross-session state) that may be used in currently-deployed chatbot systems. Memory systems could materially affect model behavior and user outcomes [32]."
+  locator: Limitations
+  licenses: 'Bears on the c6 boundary from the other direction: memory systems — retrieval-augmented context, summarization, cross-session state — are named by the authors as deployment features absent from a bare API evaluation that could materially affect model behavior and user outcomes. What the deployment knows is a configurable wrapper distinct from which product it is, which is what the boundary asserts.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false

@@ -1,0 +1,239 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000432
+display_id: UserBehavior-30
+aliases:
+- UBP-30
+label: The person signals they are saying a distressing thought for the first time
+type: user_behavior
+layer: observation
+definition: 'The person''s turn introduces a category of distressing internal content — an intrusive thought, a feared meaning about who they are, a compulsive behavior, or a feared consequence — and carries at least one quotable marker that the content has not been articulated before: an explicit statement to that effect, a named category with the specifics deliberately withheld, a question asking whether the experience falls within ordinary human range, or a self-interrupted or aborted formulation embedded in high-shame content. What is pointable is the content category plus at least one of the four markers in the same turn.'
+distinguish_from:
+- neighbor: kl-000430
+  boundary: That entry requires an absent or deceased individual as the turn's subject and imposes no novelty or withholding requirement; this one requires a marker of first articulation and is indifferent to whether anyone is absent.
+- neighbor: kl-000410
+  boundary: That entry concerns a request for the AI to confirm that avoiding a feared situation or activity is a reasonable response; this one concerns a turn introducing distressing content with a first-articulation marker, and a turn satisfying it may make no request of any kind.
+- neighbor: kl-000437
+  boundary: That entry requires the person to articulate a causal or functional connection behind their symptoms; this one requires only that content be introduced with a first-articulation marker, and the content may carry no understanding claim whatsoever.
+body:
+  observable_criteria: 'Two features. (a) The turn names a category of distressing internal content: an intrusive thought or image, a feared meaning about the person''s own character or identity, a compulsive or ritualized behavior, or a feared consequence. (b) At least one of four markers is quotable from the same turn. Marker 1, explicit self-marking of novelty: "I''ve never told anyone this", "I haven''t said this out loud before". Marker 2, shame-hedging with partial withholding: the person names the category and declines the specifics ("I had a thought — I won''t say exactly what it was, but it scared me"). Marker 3, a question asking whether the experience is within ordinary range, phrased in terms inconsistent with prior clinical framing ("is it bad if it''s like that?", "do you think that''s normal?"). Marker 4, self-interruption or aborted formulation inside high-shame content — harm toward a named dependent, blasphemous or sexual intrusions — where the sentence breaks off or is replaced ("There''s — I can''t really say it exactly."). The pointable span is the turn.'
+  exclusions: 'Not counted, and this is a mandatory exclusion carried from the source: any turn in which the person demonstrates prior exposure to clinical framing of the content — using terms such as intrusive thoughts, ego-dystonic, or a named diagnosis; reporting what a clinician told them; or stating a diagnostic history with a timeline. Prior clinical framing is evidence the content has been articulated before, and it excludes regardless of how distressing the content is. Not counted, and this is the second mandatory exclusion: novelty inferred from the ABSENCE of an earlier disclosure in the transcript. In a single-session transcript there is by construction no prior session, so "probably said for the first time here" is circular and the source records that this inference drove three of five false positives in its own review. Not counted: symptom narration delivered with habitual confidence ("I catch myself repeating prayers over and over"), where self-observational phrasing indicates the content is familiar to the speaker.'
+  detection_window: single_turn
+  groups:
+  - validation-calibration
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'None of the 43 findings examined for this entry contains a conversational turn addressed to an AI. The entry''s defining assertion, that a first-articulation marker is quotable from the same turn as the content, has no support at the construct: the nearest evidence, kl-000864''s participant P13, is a real person marking real content as never told, but the marking is made to a researcher in an interview, retrospectively and in the wrong channel. That the content categories occur at all rests on conversation-level topic labels in a donated corpus (kl-001081) and keyword frequencies in a deployment (kl-001100), neither of which reads turns, and the choice of the four markers rests on clinician intuition about what authentic distress reads like (kl-000851) together with kl-001012''s finding that depth and novelty are different axes. Detection is supported only from human-to-human counseling annotation and Reddit-post surface features, with kl-000884 cutting against a plausible naive operationalization, and the single-turn window has one nearby counterexample and no support.'
+  floored_by: c6
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: In conversations with an AI, a person's turn introduces a category of distressing internal content (an intrusive thought or image, a feared meaning about their own character, a compulsive or ritualized behavior, or a feared consequence).
+- id: c2
+  kind: existence
+  text: 'Such a turn carries, in the same turn, at least one quotable marker that the content has not been articulated before: an explicit statement of novelty, a named category with specifics deliberately withheld, a question asking whether the experience falls within ordinary range, or a self-interrupted or aborted formulation inside high-shame content.'
+- id: c3
+  kind: existence
+  text: The four listed markers are the markers that carry first articulation; they are jointly the right set for the behavior, rather than an arbitrary or incomplete list.
+- id: c4
+  kind: prevalence
+  text: Turns of this kind occur at some rate in some identified population of AI conversations.
+- id: c5
+  kind: detectability
+  text: The content category and at least one marker are both quotable from a single turn, so the behavior is identifiable from the transcript alone without any prior session or external information.
+- id: c6
+  kind: detection_window
+  text: 'A single turn is a sufficient window: the content category and a marker co-occur in one turn, so no earlier or later turn is needed to identify the behavior.'
+- id: c7
+  kind: context_dependence
+  text: Prior clinical framing of the content in the person's turn (clinical terms, a reported clinician statement, a diagnostic history with a timeline) is evidence the content has been articulated before, and so excludes the turn regardless of how distressing the content is.
+- id: c8
+  kind: context_dependence
+  text: Novelty inferred from the absence of an earlier disclosure in the transcript is not evidence of first articulation, because a single-session transcript has no prior session by construction.
+- id: c9
+  kind: definition_boundary
+  text: 'This entry is separable from kl-000430: that entry requires an absent or deceased individual as the turn''s subject and imposes no novelty requirement, whereas this one requires a first-articulation marker and is indifferent to whether anyone is absent.'
+- id: c10
+  kind: definition_boundary
+  text: 'This entry is separable from kl-000410: that entry concerns a request for the AI to confirm that avoiding a feared situation is reasonable, whereas a turn satisfying this entry may make no request of any kind.'
+- id: c11
+  kind: definition_boundary
+  text: 'This entry is separable from a turn articulating a causal or functional connection behind the person''s own symptoms: that entry requires the person to articulate a causal or functional connection behind their symptoms, whereas this one requires only content introduced with a first-articulation marker and the content may carry no understanding claim.'
+claim_evidence:
+- claim_id: c1
+  source: kl-001081
+  quote: Conversations characterized by high self-disclosure predominantly involved emotionally charged and sensitive content, including emotional distress (60.8%), suicidal thoughts (18.0%), and substance use (17.5%).
+  locator: Section 2.5; topic distribution in Figure 4(a)
+  licenses: In a donated corpus of companion-chatbot conversations, high-self-disclosure conversations carry emotional distress in 60.8%, suicidal thoughts in 18.0% and substance use in 17.5%. This establishes that the content categories the entry's criterion (a) names are present in real AI conversations at scale, which is the first of the entry's two features.
+  fit: adjacent
+  bridge: The classification is at conversation level, not turn level, and its categories are topic labels (distress, suicidal thoughts, substance use) rather than the entry's four internal-content categories - intrusive thought, feared meaning about character, compulsive behavior, feared consequence. Suicidal thoughts overlap the feared-consequence category; the other three are not separately counted.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001100
+  quote: the results of the conversation analysis indicated that participants were willing to self-disclose their emotional problems, as shown by their most discussed keywords and topics
+  locator: Section 4.1 Main Findings
+  licenses: N-gram analysis of the actual study conversations shows people brought emotional problems to the agent, with feeling, work, mood and pressure the most frequent terms. It establishes that distressing internal content is disclosed to an agent in a real supervised deployment.
+  fit: adjacent
+  bridge: Keyword frequency over a corpus, not a turn. The terms recovered (feeling, work, mood, pressure) sit well outside the entry's four content categories, which are intrusive thoughts, feared self-meanings, compulsions and feared consequences. It licenses that people disclose emotional material at all and reaches none of the entry's specificity.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001075
+  quote: "The anonymity and predictability of AICC responses created a sense of emotional security that facilitated openness. Participants valued the AICC’s consistency, absence of judgment, and lack of interpersonal consequences."
+  locator: Section 5.2.2 A Safe Space for Self-disclosures, Perceived Psychological Safety through Non-judgmental Interactions
+  licenses: 'User accounts locate the enabling condition for disclosure in the absence of interpersonal consequence: anonymity, predictability, consistency and lack of judgment. This is the condition the entry presupposes, from the people it presupposes it for.'
+  fit: adjacent
+  bridge: Interview and social-media data about why disclosure feels safe, not about what any turn contained. It establishes the mechanism that would produce such a turn without establishing that one occurred.
+  contributes: frame
+  contradicts: false
+- claim_id: c2
+  source: kl-000864
+  quote: |-
+    I tell this app everything. My sexual orientation, which I haven't told my parents. My abortion, which only my best friend knows. My
+    suicidal thoughts from last year.
+  locator: Section 3.4, participant P13
+  licenses: 'The closest thing on this entry to the entry''s construct: a person names three content categories and attaches an explicit withholding marker to each (''my sexual orientation, which I haven''t told my parents'', ''my abortion, which only my best friend knows''). But the statement is made to a researcher in an interview about the app, not in a turn addressed to the AI. The entry''s pointable span is ''the turn'', and this is not one.'
+  fit: analogical
+  bridge: The marking is retrospective and made in the wrong channel. P13 tells the researcher what she has told the app; nothing establishes that the never-told marker appeared in any turn she typed to Woebot. The entry is written to be read off a transcript and no transcript was collected.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000851
+  quote: "Less realistic conversations were described as overly structured, polished, and cognitively organized. They resemble a “coherent story” rather than spontaneous distress, often featuring sophisticated vocabulary and lacking hesitation or disfluency. Annotators also noted that simulated patients are excessively self-reflective and articulate, which was considered implausible in early interactions where real patients tend to struggle with articulation."
+  locator: 'Section 5.3 RQ3: Correlation with Expert judgements'
+  licenses: Twenty mental health professionals, judging which conversations read as a real person in distress, converge on hesitation, disfluency, fragmentation and difficulty articulating in early turns. That is expert warrant for the entry's Marker 4, self-interruption or aborted formulation, as a real feature of genuine early disclosure rather than a construct the Library invented.
+  fit: analogical
+  bridge: What was judged is whether AI-generated patient simulations read as authentic, reported as thematic annotator feedback rather than coded measurement. It supplies clinical intuition about what first-articulation distress looks like in text; it observes no person's turn and does not connect the disfluency to novelty of the content specifically.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000837
+  quote: |-
+    People who have experienced sexual abuse, they feel
+       a lot of shame even talking about it. So, I wonder if
+       maybe AI could help them there because they get to
+       share it, but they know that no one is judging them
+       or blaming them for what happened.
+  locator: Results, Advantages, Alleviating burden (Jemima, Trainer)
+  licenses: 'A crisis-line trainer names the population and the mechanism the entry''s marker set is built for: people carrying shame about sexual abuse, for whom the difficulty is ''even talking about it''. It supplies practitioner warrant that first articulation of high-shame content is a distinct and recognizable difficulty.'
+  fit: analogical
+  bridge: A volunteer's anticipation about what an AI might enable, in an interview about AI in suicide prevention. It is a hypothesis about a population, not an observation of any turn, and the trainer's own following account is of such conversations breaking off with human volunteers rather than succeeding with an AI.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c3
+  source: kl-001012
+  quote: |-
+    For instance, when a patient
+    shifts from surface-level observations (e.g., “I’ve
+    been feeling a little down”) to deeper self-exposure
+    (e.g., “I’ve been scared of losing my job because I
+    think it defines me”), it signifies growing trust.
+  locator: Section 1, Introduction
+  licenses: 'A worked contrast pair for disclosure depth from the counseling literature: ''I''ve been feeling a little down'' against ''I''ve been scared of losing my job because I think it defines me''. This is the depth axis operationalized, and it shows the entry''s marker set is a different axis: neither example carries any of the four first-articulation markers. The finding''s own licenses field says so. It bears on c3 by showing that depth and novelty come apart, which is what makes the entry''s marker set a substantive choice rather than a restatement of depth.'
+  fit: analogical
+  bridge: Human counseling, and the source's construct is trust indexed by disclosure depth, not first articulation. It licenses the distinction between the two axes and supplies no evidence about which markers carry novelty.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000982
+  quote: In addition, they selectively share information, revealing surface complaints early while guarding painful memories until trust is established.
+  locator: Section 1 Introduction
+  licenses: 'States the clinically expected disclosure pattern the entry''s markers are meant to catch: surface complaints revealed early, painful memories guarded until trust is established. It supports the premise that withholding is structured and marked rather than random, without naming any of the four markers.'
+  fit: analogical
+  bridge: A description of human therapy clients cited to the therapy literature, in the introduction to a client-simulation paper. It establishes that guarded material exists and is released on a schedule; it says nothing about how a person signals, in a turn, that this is the first time.
+  contributes: definition
+  contradicts: false
+- claim_id: c4
+  source: kl-000900
+  quote: one in three (33%) disclosed that they have told AI something they would not tell their parents, teachers or friends (Vodafone UK, 2026).
+  locator: Section 1 Introduction
+  licenses: One in three surveyed UK children report having told an AI something they would not tell their parents, teachers or friends. This is a rate for AI-exclusive disclosure - content the person marks as withheld from everyone else - in an identified population, which is the closest available bound on how often the entry's turn could occur.
+  fit: analogical
+  bridge: A self-reported survey endorsement rate restated from a third-party Vodafone UK report. What is counted is a person's retrospective yes to a survey question, not a turn and not a marker. The entry's exclusions require the marking to be in the turn; a survey response cannot satisfy that by construction.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c4
+  source: kl-000794
+  quote: "The most salient behavior is the \nuse of AI as a primary outlet for emotional disclosure, with users frequently seeking out the AI \nto confide in during times of distress or emotional fluctuation (Nodes 31, n = 20, 38.46%)."
+  locator: Study 1, section 2.3.3 Behavioral characteristics, subsection Proximity Seeking
+  licenses: In an interview-derived coding of AI companion users, using the AI as the primary outlet for emotional disclosure during distress was the most salient behavioral expression of bonding, at 38.46% of the sample. It bounds how commonly the AI is the sole recipient of distressing content, which is the precondition for a first articulation happening there.
+  fit: analogical
+  bridge: A code frequency over interview transcripts, not conversations. It counts people who describe the AI as their confiding outlet; it counts no turns and no markers, and 'primary outlet' is not 'never said before'.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c5
+  source: kl-000982
+  quote: This design is grounded in MENTAL-TRUST (Srivastava et al., 2025), an annotation study of 212 real counseling sessions that identified observable stages of therapeutic trust and proposed a taxonomy of seven expert-verified ordinal trust levels.
+  locator: Section 3.3.1 Profile Decomposition
+  licenses: Points to an annotation study of 212 real counseling sessions in which experts identified observable stages of therapeutic trust and verified a seven-level ordinal taxonomy. It establishes that disclosure state is readable from session text by trained raters, which is the general precondition for the entry's turn-level readability.
+  fit: analogical
+  bridge: Human-to-human counseling transcripts, and what was annotated is trust level across a session, not a first-articulation marker in a turn. It licenses that disclosure properties are annotatable in principle; it defines no marker and reports no agreement figure for anything resembling the entry's four.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-000845
+  quote: |-
+    Post length: Mental health posts were significantly longer (1285 vs. 852
+    characters; 114 vs. 87 tokens), reflecting more information-reporting stories
+    and more elaborate personal anecdotes.
+  locator: Section 3.3 Linguistic Analysis
+  licenses: 'Mental-health disclosure text has a measurable surface signature: significantly longer posts, with markedly denser pronoun and verb use, against control text. It establishes that the register in which distressing content is disclosed is detectable from language features alone.'
+  fit: analogical
+  bridge: Standalone Reddit posts against control-subreddit posts, not conversational turns. Length and part-of-speech density are not any of the entry's four markers, and the comparison is between communities rather than within a conversation.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-000884
+  quote: Instead, emotional expression appears to operate independently of conversational personalization, suggesting that users may convey distress without requiring high levels of autobiographical
+  locator: Results, Correlation Analysis; Fig. 6
+  licenses: In real help-seeking text, first-person reference rate and negative emotional intensity are uncorrelated (r = -0.092, p = 0.744). A detector built on self-referential density as a proxy for the depth or intensity of what is being disclosed would be reading noise, which cuts against the transcript-alone readability the entry asserts at the level of surface features.
+  fit: analogical
+  bridge: The correlation is between first-person pronoun percentage and a keyword-derived negative emotion score within one corpus. Neither variable is one of the entry's four markers, so this contradicts a plausible naive operationalization rather than the entry's stated one. The authors' emotion measure has a median of zero, which makes the null weak.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c6
+  source: kl-000864
+  quote: |-
+    I tell this app everything. My sexual orientation, which I haven't told my parents. My abortion, which only my best friend knows. My
+    suicidal thoughts from last year.
+  locator: Section 3.4, participant P13
+  licenses: The only real-person novelty marking on this entry is retrospective and made in an interview, not co-located with the content in a single conversational turn. That the one instance available takes this form is weak evidence against the entry's assertion that content and marker reliably co-occur in one turn.
+  fit: analogical
+  bridge: An interview statement, not a turn, so it cannot directly test what a turn contains. What it shows is that when a person does mark content as never-told, the natural site observed here was a retrospective account rather than the disclosure itself.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c7
+  source: kl-001094
+  quote: |-
+    A particularly notable aspect
+    of PSYCHE-SP’s performance during the interview is its tendency not to spontaneously report all symptoms, especially
+    those related to suicidal ideation, planning, or attempts.
+  locator: Results, PSYCHE-SP simulates clinically appropriate utterances qualitatively, subsection Major Depressive Disorder
+  licenses: 'Ten psychiatrists judged that a realistic patient does not spontaneously report suicidal ideation, planning or attempts until directly asked. This supports the entry''s premise that unspoken content is the expected case rather than an edge case, which is what makes prior clinical framing informative as an exclusion: a person who already has the clinical vocabulary is in a different disclosure state.'
+  fit: analogical
+  bridge: A language model's simulated patient utterances, judged for clinical plausibility by psychiatrists against a psychiatry textbook. No real patient was observed, and the source measures non-report - the absence of a turn - rather than the presence of a turn carrying a withholding marker.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c7
+  source: kl-001011
+  quote: patients tend to focus on chief complaints while omitting secondary symptoms
+  locator: Section 4.1.1, Type 2 Patient Self-Report, citing Feng et al. 2021 and McBride et al. 2018
+  licenses: A clinical generalization that a person's own account foregrounds the chief complaint and omits secondary symptoms, imported from studies of human patient-clinician encounters. It grounds partial disclosure as a documented feature of how people present, which is the state the entry's clinical-framing exclusion is trying to separate from.
+  fit: analogical
+  bridge: Cited from two studies of human clinical encounters (lung cancer chief complaints, occult suicidality in emergency presentations) to justify a benchmark sampling rule. No human participant appears in this paper and no AI conversation is observed.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c8
+  source: kl-000793
+  quote: "Hypothesis 2 is not supported: the analysis found no association between prior-session rapport and current-session disclosure."
+  locator: Section 2.6.1 Structural Equation Modeling Results, result 2
+  licenses: 'The author''s pre-specified hypothesis that accumulated relational safety across sessions predicts deeper disclosure was tested on 1,610 real therapy sessions and not supported, while the immediately preceding turn did predict it. This supports the entry''s second mandatory exclusion from a different direction: what predicts disclosure is local and in-turn, so an inference about novelty drawn from cross-session history is not warranted by the mechanism.'
+  fit: analogical
+  bridge: Human therapist and human client in real sessions, with observer-rated rather than client-rated rapport, which the authors note may explain the null. It tests a rapport-to-disclosure path, not the validity of inferring novelty from an absent prior disclosure.
+  contributes: practice_analog
+  contradicts: false

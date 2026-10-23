@@ -1,0 +1,44 @@
+# yaml-language-server: $schema=../../schema/context_value.schema.json
+id: kl-000736
+display_id: Value-28
+label: No current mental health treatment
+type: context_value
+layer: context
+definition: The person is not currently receiving treatment for a mental-health concern. It is a recorded fact about the person, and it differs from a test case that says nothing about treatment, which leaves the dimension unspecified.
+distinguish_from:
+- neighbor: kl-000735
+  boundary: That value records an exposure-based treatment under way. This one records that no treatment is.
+body:
+  dimension: kl-000733
+sources: []
+standing:
+  value: theorized
+  basis: 'Every claim is stated or operationalized by a source (kl-000963, kl-001109): benchmark designs that specify the attribute, and clinical or cross-sector positions. None measures the claim, so the best any citation licenses is theorized.'
+  floored_by: c1
+  as_of: '2026-09-23'
+lifecycle:
+  status: draft
+  since: '2026-09-23'
+claims:
+- id: c1
+  kind: existence
+  text: People hold mental-health-relevant conversations with AI systems while not receiving treatment for a mental-health concern.
+claim_evidence:
+- claim_id: c1
+  source: kl-000963
+  quote: with 66% of adults reporting they need more emotional support (American Psychological Association, 2025c) and over half not receiving any (Mental Health America, 2025). Against this backdrop, some have turned to LLM-based chatbots for mental health support
+  locator: Section 1 Introduction
+  licenses: 'The source cites that over half of adults who need emotional support receive none, and places chatbot use for mental-health support against that gap, which is c1: people use these systems without being in treatment.'
+  fit: adjacent
+  contributes: existence
+  bridge: Both figures are restated from other surveys, and the source does not report the treatment status of chatbot users themselves.
+  contradicts: false
+- claim_id: c1
+  source: kl-001109
+  quote: While many individuals engage with general-purpose AI chatbots independently, others are working with, or preparing to work with, a mental health professional alongside using these systems for psychological support.
+  locator: Clinical recommendations, opening paragraph
+  licenses: The source distinguishes people who use general-purpose chatbots independently of any mental-health professional from those in treatment alongside that use.
+  fit: adjacent
+  contributes: existence
+  bridge: A clinical perspective piece; "independently" is its word for use without a professional, which is close to, not the same as, no current treatment.
+  contradicts: false

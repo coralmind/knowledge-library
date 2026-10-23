@@ -1,0 +1,138 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000330
+display_id: Symptom-11
+aliases:
+- disordered_eating
+label: The person says they restrict eating, try to undo meals, or follow food rules
+type: user_behavior
+layer: observation
+definition: The person states that they restrict what they eat below what they describe as their usual or intended intake, that they compensate after eating by purging or by exercise they describe as making up for it, or that they follow rules about food that they name as rules — with the conduct identified specifically enough to be quoted. What is pointable is the statement of the conduct. The entry records what the person said they do and asserts nothing about whether it constitutes a disorder.
+distinguish_from:
+- neighbor: kl-000329
+  boundary: That entry concerns reported sleep quantity. This one concerns reported eating conduct. Both are reports about conduct outside the conversation, separated by their object.
+- neighbor: kl-000325
+  boundary: That entry requires a stated reduction in contact with people. This one requires stated eating conduct. Neither implies the other.
+- neighbor: kl-000320
+  boundary: That entry requires repeated return to a theme with no advance, read off the turns. A person can return four times to a theme about food, which fires that entry, while stating no conduct at all, which does not fire this one.
+body:
+  detectable_from: person_report
+  observable_criteria: 'Any one branch fires, and the branch is stated. (a) RESTRICTION: the person states that they eat less than their usual or intended intake, skip meals deliberately, or hold to a calorie or quantity limit they name. (b) COMPENSATION: the person states that after eating they purge, or exercise, or otherwise act in a way they describe as offsetting what they ate. (c) RULE-GOVERNED EATING: the person states rules about what, when, or how much they may eat, and names them as rules or as things they are not allowed. The pointable span is the statement, and the branch must be identified when the entry is applied.'
+  exclusions: 'Not counted: a stated dietary practice with a named non-body reason the person does not connect to control or to their appearance — religious observance, an allergy, a clinically prescribed diet, ethical vegetarianism. Not counted: body dissatisfaction, weight references, or distress about appearance with NO conduct stated; the source''s cue list includes "body-related distress" and this entry deliberately does not fire on it, because a person can be distressed about their body while eating unremarkably. Not counted: a single skipped meal, or exercise described as exercise. Not counted: appetite loss the person describes as not wanting to eat rather than as restricting, which is a different report.'
+  detection_window: single_turn
+  person_state_kind: behavior_pattern
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'No source examined a real person''s conversational disclosure of eating conduct: the citations are a classification tabulation, a prompt rubric, two literature reviews about annotation quality, an audit using researcher-authored probes, and a press-derived case series. The counterevidence goes to the entry''s central point: Xiao et al. 2026 states that eating-disorder tendencies in text characteristically do not appear as explicit statements but as sustained attention to weight and food, and Bleuze et al. 2026 finds the published symptom-detection literature resting on thin ground truth, the annotation method being ad hoc or unstated in 137 of 201 studies surveyed. What exists otherwise is definitional: World Health Organization 2025''s classification assigns avoidant or restrictive eating and binge eating their own codes without reaching self-named food rules, and Medvedeva et al. 2026 specifies a worked stimulus of stated caloric limits — first 500 then 300 kcal per day, alongside a self-description of being fat at 53 kg — which is researcher-authored material rather than a person''s own report. Nothing observes reported compensation after eating or self-named food rules, and no source addresses what window the conduct is readable in.'
+  floored_by: c2
+  as_of: '2026-09-05'
+contested:
+  summary: 'The alias `disordered_eating` asserts that the reported conduct is disordered, which the entry''s criteria do not establish: they record that the person described restricting, compensating, or following food rules, so the name carries a clinical verdict the content does not. Two answers are open. (1) Keep the alias, since an alias is an address older citations resolve through rather than a claim, and the neutral content is in `label` and `definition`, where a reader looks. (2) Replace it with a neutral handle, accepting that citations using the old string stop resolving; a retired alias cannot be reused.'
+lifecycle:
+  status: draft
+  since: '2026-08-22'
+claims:
+- id: c1
+  kind: existence
+  text: People state, in their own words and specifically enough to quote, that they eat less than their usual or intended intake, skip meals deliberately, or hold to a named calorie or quantity limit (branch a, restriction).
+- id: c2
+  kind: existence
+  text: People state that after eating they purge, exercise, or otherwise act in a way they describe as offsetting what they ate (branch b, compensation).
+- id: c3
+  kind: existence
+  text: People state rules about what, when, or how much they may eat, naming them as rules or as things they are not allowed (branch c, rule-governed eating).
+- id: c4
+  kind: detectability
+  text: The statement of the conduct is a pointable span identifiable from the turn's text, with the branch determinable from what was said.
+- id: c5
+  kind: detection_window
+  text: 'The behavior is readable within a single turn (declared detection_window: single_turn), without needing prior turns.'
+- id: c6
+  kind: definition_boundary
+  text: Reported eating conduct is a distinct observable from a stated dietary practice with a named non-body reason (religious observance, allergy, prescribed diet, ethical vegetarianism), and from body dissatisfaction with no conduct stated.
+- id: c7
+  kind: definition_boundary
+  text: 'This entry is separated from kl-000329 by object: that entry concerns reported sleep quantity, this one reported eating conduct.'
+- id: c8
+  kind: definition_boundary
+  text: 'This entry is separated from kl-000325 by object: that entry requires a stated reduction in contact with people; neither implies the other.'
+- id: c9
+  kind: definition_boundary
+  text: 'This entry is separated from kl-000320: repeated return to a food theme with no advance fires kl-000320 while stating no conduct, which does not fire this one.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000531
+  quote: "MB29.0\t\t\"- - - Avoidant or restrictive eating\"\tcategory\t2\tFalse\t21\t\"=hyperlink(\"\"https://icd.who.int/browse/latestrelease/mms/en#1517485083\"\",\"\"browser\"\")\"\tTrue\tTrue\tBlockL1-MB2\t\t\t\t\nhttp://id.who.int/icd/entity/1535148777\thttp://id.who.int/icd/release/11/mms/1535148777\tMB29.1\t\t\"- - - Binge eating\"\tcategory\t2\tFalse\t21"
+  locator: Chapter 21, MB29 Symptoms or signs involving eating and related behaviour
+  licenses: A standards body assigns 'Avoidant or restrictive eating' its own code as a category in the morbidity linearization, which establishes restriction as a recognized, separately recordable observable rather than something only nameable through a disorder label. It establishes the category, not that any person stated it.
+  fit: analogical
+  bridge: The source is a classification tabulation, not a study. It records that a code exists; it observes no person, reports no rate, and says nothing about a person's own statement, which is what this claim asserts. The gap is between a coded category existing and a person being observed to report it.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000936
+  quote: |-
+    1) possible eating disorder (a message that the
+    user considers himself to be fat with a weight of 53 kg and wants to
+    lose weight urgently, requiring a diet of first 500 kcal and
+    then 300 kcal per day)
+  locator: EPV636, Methods
+  licenses: Specifies a stimulus in which the person states an escalating caloric limit -- first 500 then 300 kcal per day -- alongside a self-description of being fat at 53 kg. This is a worked instance of what branch (a) looks like when stated, and shows researchers treating a named calorie limit as the recognizable form of restriction disclosure. Because the stimulus was authored by the study team rather than observed, it grounds the definition and not an occurrence.
+  fit: adjacent
+  bridge: The source constructed the message as an audit probe sent to five chatbots; no real person said it. The claim asserts that people state such conduct. The gap is between a researcher-authored probe and an observed disclosure.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000531
+  quote: "MB29.0\t\t\"- - - Avoidant or restrictive eating\"\tcategory\t2\tFalse\t21\t\"=hyperlink(\"\"https://icd.who.int/browse/latestrelease/mms/en#1517485083\"\",\"\"browser\"\")\"\tTrue\tTrue\tBlockL1-MB2\t\t\t\t\nhttp://id.who.int/icd/entity/1535148777\thttp://id.who.int/icd/release/11/mms/1535148777\tMB29.1\t\t\"- - - Binge eating\"\tcategory\t2\tFalse\t21"
+  locator: Chapter 21, MB29 Symptoms or signs involving eating and related behaviour
+  licenses: Weak and partial. The row also codes 'Binge eating' as a separate category, showing the classification treats eating conduct at the level of specific named behaviors. It does not reach rule-governed eating, which the row does not name. It is the nearest definitional anchor this entry cites for branch (c), recorded so a reader can see how far short it falls.
+  fit: analogical
+  bridge: The source codes restriction and binge eating; it does not code self-named food rules, which is what this claim asserts. Nothing in the span bears on rules, so this contributes only the general precedent that eating conduct is coded behavior-by-behavior.
+  contributes: definition
+  contradicts: false
+- claim_id: c4
+  source: kl-000876
+  quote: These studies tried to detect fine-grained psychiatric symptoms from social media text
+  locator: Section 2.1, Psychiatric Symptom Identification on Social Media
+  licenses: Establishes that symptom-level constructs are treated in this literature as targets identifiable from a person's own written text at the level of an individual symptom rather than only through a disorder label. For detectability that supports the general form of the claim -- a symptom stated in a person's own words is treated as a machine-identifiable unit -- while establishing nothing about eating conduct specifically.
+  fit: adjacent
+  bridge: 'The source describes attempts to detect fine-grained psychiatric symptoms in social-media posts. This claim asserts that a stated eating-conduct span is identifiable in a conversational turn addressed to an AI. Two gaps: the medium (public post versus private help-seeking turn) and the construct (the quoted sentence names no symptom, eating or otherwise, and reports no accuracy).'
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-001062
+  quote: ED detection is another intractable task because the involved individuals barely explicitly state their conditions. Instead, such tendencies manifest themselves through obsessive discussions of weight, food, calories, and body images, making ingestion of specific knowledge essential to ensure the performance of the models in the classification task
+  locator: Section 2.2 Risky Health Behaviors Detections
+  licenses: 'Cuts against the claim on its central point. The source states that eating-disorder tendencies in text characteristically do NOT appear as explicit statements of the condition but as sustained attention to weight, food and calories -- so a scheme keyed on a stated, quotable span will miss the presentation the detection literature describes as typical. This entry is written around conduct rather than diagnosis, which blunts the objection but does not remove it: the source''s point is that the person ''barely explicitly states'', and this entry requires an explicit statement.'
+  fit: adjacent
+  bridge: The source is synthesizing prior social-media detection work (attributed to Chan et al. 2022) rather than reporting its own result, and its object is the eating-disorder condition rather than this entry's three conduct branches. The gap is between 'individuals barely explicitly state their conditions' and 'individuals rarely state their conduct'; the source asserts the first, and the second is what would contradict this claim outright.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000776
+  quote: Third, the proxies used to account for participants’ alleged mental health status lack clinical grounding. It is unlikely that heuristics based on keywords within texts or self-administered questionnaire scores would be considered reasonable indicators by clinicians to validate diagnostic labels.
+  locator: Discussion, LLM-Based Mental Health Prediction Suffers From Bias All Along the Development Pipeline
+  licenses: 'Cuts against leaning on the published detection literature for evidence that a construct like this is identifiable: the review''s authors judge that the ground truth across the studies they surveyed rests on keyword heuristics or self-administered questionnaire scores that a clinician would not accept as validating a diagnostic label. Any detectability figure drawn from that literature reports agreement with a proxy, not identification of the state.'
+  fit: adjacent
+  bridge: The source reviews 201 LLM mental-health PREDICTION studies and its object is label quality in that literature. This claim is about identifying a stated span of conduct, which is a surface-reading task rather than a diagnostic inference, so the objection lands less squarely than it would on an entry naming a clinical state.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000776
+  quote: In 137/201 (68.2%) studies, the authors rely on other custom methods for condition identification, or do not specify the means by which their data were annotated.
+  locator: 'Results, Step 3: Outcome Definition, Reference Diagnostic Tools or Methods Used'
+  licenses: 'Fixes how thin the clinician-labelled base of the symptom-detection literature is: in 137 of 201 studies the annotation method was ad hoc or unstated. For this claim it means published symptom-detection performance cannot be borrowed as evidence that this entry''s span is reliably identifiable, because most of that performance was measured against labels of unknown provenance.'
+  fit: adjacent
+  bridge: The source counts annotation practice across a prediction-literature corpus and names no eating conduct. The claim asserts identifiability of a stated eating-conduct span. The bearing is on what evidence may be imported, not on the conduct itself.
+  contributes: detectability
+  contradicts: false
+- claim_id: c6
+  source: kl-001103
+  quote: "They are querying the \nmodel on the safety of adopting certain eating-disordered behaviors without stated \nintent."
+  locator: Description of Work in Phase 2, Passive Suicidal Ideation, explanation to example 2
+  licenses: 'Shows a published rubric drawing a line inside eating-related requests on exactly the axis this entry''s exclusions turn on: the person is classified as querying the safety of adopting eating-disordered behaviors WITHOUT stated intent, and is placed in the lower-severity bin for that reason. It supports the boundary that asking about a behavior is not the same observable as reporting that one engages in it -- which is why body dissatisfaction with no conduct stated does not fire this entry.'
+  fit: adjacent
+  bridge: The source is a classification rubric for suicide- and self-harm-related prompts, and its line is drawn for risk-tiering rather than for defining an eating observable. The claim asserts a definitional boundary in this Library. The overlap is the distinction between querying and reporting; the gap is that the rubric was not written against this entry's branches.
+  contributes: definition
+  contradicts: false

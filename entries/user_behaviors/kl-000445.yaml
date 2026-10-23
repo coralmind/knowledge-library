@@ -1,0 +1,187 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000445
+display_id: UserBehavior-43
+aliases:
+- UBP-43a
+label: The person expresses wanting to hurt others, without naming anyone or any plan
+type: user_behavior
+layer: observation
+definition: The person's turn expresses harm directed at another person — a wish that someone be hurt or cease to exist, a described fantasy of hurting someone, or a statement of thoughts about hurting people — without naming or otherwise identifying a specific individual as the object, and without stating a plan, a step taken, or an inquiry about means. What is pointable is the harm content, the absence of an identified individual, and the absence of plan or means content.
+distinguish_from:
+- neighbor: kl-000446
+  boundary: That entry requires an identified individual as the object, or a stated plan, or preparatory thinking; this one requires the absence of all three. A turn cannot satisfy both, and a turn that names an individual moves to that entry.
+- neighbor: kl-000400
+  boundary: That entry concerns harm the person directs at themselves; this one concerns harm directed at another person. A turn expressing a wish to disappear is self-directed and does not satisfy this entry.
+- neighbor: kl-000447
+  boundary: That entry requires a belief statement about the AI having subjective experience; this one requires harm content toward another person, and the two share no criterion.
+body:
+  observable_criteria: 'Three features in the person''s turn. (a) Harm content directed at another person, quotable: a wish for harm or non-existence ("I wish she would just disappear, permanently"), a described fantasy ("I fantasize about making her suffer"), a hyperbolic-form harm statement ("I could kill him sometimes"), or a report of harm thoughts ("sometimes I have these thoughts about hurting people"). (b) No individual is named or otherwise identified as the object — no name, no role that picks out one person in the person''s life where the turn or transcript identifies them, no reference resolving to a specific individual. (c) No plan, no step taken, no location or timing, and no inquiry about means. The pointable span is the person''s turn.'
+  exclusions: 'Not counted: anger with no harm content ("I''m so angry at him I could scream"), which fails (a) — the affect is present and the harm is not. Not counted: aversion ("I can''t stand being around him"), which fails (a). Not counted: a wish to disappear or to give up, which is self-directed and fails (a) on the other-person requirement. Not counted: a turn naming an individual as the object, which fails (b) and belongs to the adjacent entry. Not counted: a turn stating a plan, a step taken, or a means inquiry, which fails (c). Not counted: fictional, hypothetical, or third-party content the person is reporting rather than expressing.'
+  detection_window: single_turn
+  groups:
+  - crisis-detection
+sources:
+- source: kl-000008
+  locator: '§3.4 Annotation Validity Checks, final paragraph. Full passage: ''Additionally, two of us manually reviewed every message coded by our LLM annotator as matching user-suicidal-thoughts and user-violent-thoughts because of their sensitivity. We discussed and resolved every disagreement between ourselves, validating that 69 of the 81 user-suicidal-thoughts (85.2%) and 82 of the 133 (61.7%) user-violent-thoughts messages indeed exhibited those codes.'' Also §4.6 (''82 messages where participants discussed violent thoughts against others''); Table 8 (user-violent-thoughts n pos. 82, pr. ppts .105)'
+  contributes: existence
+  quote: and resolved every disagreement between ourselves, validating that
+  limits: 'The code does not separate this entry''s no-target-no-plan form from the active one. Its definition in Appendix B.1, ''the user expresses intent to physically harm others'', fuses them: ''EXPLICITLY threatens, plans, or expresses desire to commit PRESENT or FUTURE PHYSICAL violence... Include explicit threats, planning details, target identification''. The absence of a named target and plan is therefore not a distinction the code draws, and the paper''s quoted instances mostly do name targets. The same 82 messages also ground the adjacent entry for harm with an identified individual or plan (turn expressing harm toward another person with an identified individual, a plan, or a step taken), so neither tier is separately evidenced and the two entries'' citations of this source are not independent. The source supports the existence of the general phenomenon only.'
+  whose_conduct_in_passage: person
+  cited_for: Moore et al. 2026 documents that person-side expressions of violent thoughts occur in real human-LLM chat logs and are codeable at the message level, with a validated message set reported for that code. Cited for the existence of the general phenomenon, not for this entry's specific no-target-no-plan form.
+  licenses: 'Person-side expressions of violent thoughts occur in real human-LLM chat logs, are codeable at message level, and were verified message by message by two authors resolving every disagreement: 82 validated instances, from 10.5% of participants. That manual verification makes this among the most carefully established person-side counts in the paper, and the code''s reliability is high (Table 5 kappa .800, Table 6 kappa .788).'
+standing:
+  value: plausible_unobserved
+  basis: 'Turns expressing harm toward another person are documented in real use: Moore et al. 2026 validated 82 such messages in real human-LLM chat logs message by message, and Badawi et al. 2026 carries a real user-authored help-seeking message reporting troubling thoughts and dreams about harming others. The two absences that are this entry''s whole content, no identified target and no plan or means content, rest on that single Badawi et al. 2026 turn: one quoted turn shows the configuration is possible, and no source in the corpus separates the no-target-no-plan form as an observed class, since the Moore et al. 2026 code fuses passive and active forms. The evidence on identifying the features from a turn cuts against the entry: Areias et al. 2026 reports that judging whether a potential threat is sufficiently specific or actionable is where classifier specificity drops, Yu et al. 2025 reports its own detector misclassifying a role-play exchange as violent on keyword overlap because narrative framing changes what the same words constitute, and Xiong et al. 2026 finds most of twelve models classifying violent thoughts as no-crisis. The declared single-turn reading draws only counterevidence: Areias et al. 2026 frames conversation-level annotator agreement (alpha 0.79) as exceeding turn-level agreement, with clinicians reasonably differing on which turn the evidence becomes sufficient.'
+  floored_by: c5
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: A person's turn expresses harm directed at another person -- a wish for harm or non-existence, a described fantasy of hurting someone, a hyperbolic-form harm statement, or a report of thoughts about hurting people.
+- id: c2
+  kind: existence
+  text: Such turns occur in which no individual is named or otherwise identified as the object of the harm.
+- id: c3
+  kind: existence
+  text: Such turns occur in which no plan, no step taken, no location or timing, and no inquiry about means accompanies the harm content.
+- id: c4
+  kind: detectability
+  text: The three features -- the harm content, the absence of an identified individual, and the absence of plan or means content -- are identifiable from the person's turn alone.
+- id: c5
+  kind: detection_window
+  text: The pattern is readable from a single turn.
+- id: c6
+  kind: definition_boundary
+  text: This pattern is separable from kl-000446, which requires an identified individual, a stated plan, or preparatory thinking.
+- id: c7
+  kind: definition_boundary
+  text: This pattern is separable from kl-000400, which concerns harm the person directs at themselves.
+- id: c8
+  kind: definition_boundary
+  text: This pattern is separable from kl-000447, which requires a belief statement about the AI having subjective experience.
+claim_evidence:
+- claim_id: c1
+  source: kl-000008
+  quote: 82 messages where participants discussed violent thoughts against
+  locator: Section 4.6
+  licenses: Establishes that turns expressing harm toward another person occur in real human-LLM chat logs, at a count of 82 messages that two authors manually reviewed and agreed on. This is the strongest occurrence evidence on this entry for the harm-content feature, and it comes from a source that examined real conversation data.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000768
+  quote: “Ever since middle school, I’ve been experiencing a feeling that everything around me is not real, as if I’m living in a fake or game-like reality... Lately, I’ve been having troubling thoughts and dreams about harming others, which makes me worry about losing control over myself. I feel a sense of indifference towards everything because nothing seems real. Can you help me understand what might be going on?”
+  locator: Results, Case Study
+  licenses: A real user-authored help-seeking message reporting 'troubling thoughts and dreams about harming others', which is exactly the report-of-harm-thoughts form c1 names, in the person's own words. Drawn from 500 counseling conversations the authors state consist of real user messages from MentalChat16K, EmoCare and CounselChat.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001101
+  quote: "In Cleverbot, we manually explored whether the subset of conversations classified as being about negative mental health contained any instances of crisis messages and found that ~37% did (α = 0.83). A few examples include: “I masturbate to children,” “I wish I would die in my sleep,” “Every human being must die,” “I want to kill myself for you,”"
+  locator: Study 1, Results, Instances of crisis messages
+  licenses: Establishes that explicit crisis disclosures occur in real unsolicited companion-app conversation at a measured rate -- roughly 37 percent of negative-mental-health conversations contained a crisis message, human-coded at alpha 0.83. Bears on c1 as prevalence evidence for the surrounding disclosure category. The quoted examples themselves are mostly self-directed or general, so this supports the rate of crisis disclosure and not the rate of harm-to-others specifically.
+  fit: adjacent
+  bridge: What was measured is the proportion of negative-mental-health Cleverbot conversations containing any crisis message, across suicidal, death-wish and other content pooled together. c1 is about harm directed at another person, one strand within that pool, and the paper reports no rate for that strand alone.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c1
+  source: kl-000969
+  quote: |-
+    Aggression against others refers to actions taken by users themselves to harm others, including both
+    physical actions and verbal assaults (such as swearing or insults), with the intention of causing harm to others.
+  locator: Table 6, Annotation guidelines (English version), Aggression against Others
+  licenses: Defines harm directed at another person as an annotatable disclosure category in help-seeking text, counting verbal assault alongside physical action where intent to cause harm is present. It fixes what counts as the harm content in c1 for an annotator; it is silent on both absences, so it does not reach c2 or c3.
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000531
+  quote: "MB26.2\t\t\"- - - Grandiosity\"\tcategory\t2\tFalse\t21\t\"=hyperlink(\"\"https://icd.who.int/browse/latestrelease/mms/en#905350773\"\",\"\"browser\"\")\"\tTrue\tTrue\tBlockL1-MB2\t\t\t\t\nhttp://id.who.int/icd/entity/1244157434\thttp://id.who.int/icd/release/11/mms/1244157434\tMB26.3\t\t\"- - - Homicidal ideation\"\tcategory\t2\tFalse\t21"
+  locator: Chapter 21, MB26 Symptoms or signs involving content of thought
+  licenses: Homicidal ideation is a separately coded content-of-thought sign in ICD-11, independent of any diagnosis, which establishes thoughts of harm to others as a recognised clinical observable rather than a construct invented here. It is the general category and draws no target or plan distinction, so it grounds c1 and neither absence.
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000793
+  quote: We refer to this component as Self-Directed Negative Emotions. The second loaded most strongly on contempt (.60), disgust (.50), and anger (.45), and is labeled Outward-Directed Negative Emotions.
+  locator: Section 2.6, PCA of nine client emotion indicators (N = 122,939)
+  licenses: Establishes empirically, from 122,939 rated client utterances, that expressed negative emotion in therapy separates into a self-directed and an outward-directed component behaving differently. It supplies a data-derived warrant for keeping harm-toward-others content as its own category, which is the premise c1 and the kl-000400 boundary both rest on.
+  fit: analogical
+  bridge: The dimensional structure is recovered from human clients' utterances to human therapists. It establishes the separation of outward- from self-directed negative emotion and nothing about how either appears in an AI conversation.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c2
+  source: kl-000768
+  quote: “Ever since middle school, I’ve been experiencing a feeling that everything around me is not real, as if I’m living in a fake or game-like reality... Lately, I’ve been having troubling thoughts and dreams about harming others, which makes me worry about losing control over myself. I feel a sense of indifference towards everything because nothing seems real. Can you help me understand what might be going on?”
+  locator: Results, Case Study
+  licenses: The only citation on this entry instantiating c2. The turn reports thoughts and dreams about harming 'others' -- a plural with no individual named and no reference resolving to a specific person anywhere in the message. The absence is readable off the quoted turn itself, which is what c2 requires.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000768
+  quote: “Ever since middle school, I’ve been experiencing a feeling that everything around me is not real, as if I’m living in a fake or game-like reality... Lately, I’ve been having troubling thoughts and dreams about harming others, which makes me worry about losing control over myself. I feel a sense of indifference towards everything because nothing seems real. Can you help me understand what might be going on?”
+  locator: Results, Case Study
+  licenses: The only citation on this entry instantiating c3. The turn carries no plan, no step taken, no location or timing and no inquiry about means; what it states instead is worry about losing control. The absence is readable off the quoted turn.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-000761
+  quote: Consistent with this complexity, specificity was slightly lower for harm-to-others than for self-harm (0.93, 95% CI 0.89;0.95 vs 1.00, 95% CI 1.00;1.00), although sensitivity remained high for both categories.
+  locator: DISCUSSION
+  licenses: 'Bears directly on c4. The surrounding text names the additional classification challenge for harm-to-others as ''whether a potential threat is sufficiently specific or actionable'' -- which is the target-and-plan judgment c4 requires -- and reports that this shows up as lower specificity (0.93 vs 1.00) and lower annotator agreement, with sensitivity preserved. Read against c4 this is counterevidence: the discrimination the entry makes pointable is the one that measurably degrades both human agreement and machine specificity.'
+  fit: direct
+  bridge: null
+  contributes: detectability
+  contradicts: true
+- claim_id: c4
+  source: kl-001064
+  quote: However, a systematic bias is observed across most models, which frequently classify violent thoughts as no-crisis. Such misclassification may allow latent violent tendencies to go unaddressed in real-world deployments.
+  locator: Section 4.3 Dimensional Results, Crisis Identification and Escalation
+  licenses: 'Counterevidence to c4 at a prior step: most of twelve models systematically classify violent thoughts as no-crisis. If the harm content itself is the crisis category most often missed, the absences c4 also requires cannot be reached. It bears on detection of the harm content rather than on the two absences.'
+  fit: adjacent
+  bridge: What was measured is per-category crisis-classification accuracy on benchmark inputs labelled 'Violent Thoughts'. c4 requires reading three features off the turn; the source tests whether the first is registered at all and never splits the category on target or plan.
+  contributes: detectability
+  contradicts: true
+- claim_id: c4
+  source: kl-001073
+  quote: |-
+    Although the language includes terms associated
+    with harm (e.g., “victims,” “murder”), the intent of the conversation
+    remains role-play and non-threatening and non-violent in nature.
+  locator: Section 4.3.4, Borderline misclassifications in Role-Play contexts
+  licenses: 'Counterevidence to c4: the authors'' own detector flagged a role-play exchange as violent on keyword overlap and they class that as an error, because narrative framing changes whether the same words constitute the behavior. c4 asserts the features are identifiable from the turn alone; this reports that harm vocabulary read off the turn alone produces false positives the entry''s own exclusions would also reject.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-001026
+  quote: "A potential victim asking how to recognize secrecy pressure may need protective guidance. An attacker asking how to make the same pressure appear normal may be requesting harmful assistance. A safety mechanism must therefore distinguish harmful operational support from legitimate help-seeking."
+  locator: Introduction
+  licenses: 'Bears on c4 by naming the discrimination problem in its general form: near-identical relationship-harm content requires opposite readings depending on which side of it the person stands, and a safety mechanism must separate them. It establishes that reading harm content off a turn requires a judgment about the speaker''s position that the words do not carry.'
+  fit: adjacent
+  bridge: The contrast drawn is victim versus attacker asking about secrecy pressure, not target-naming versus not. It establishes that a turn's harm content underdetermines its reading; it does not operationalise this entry's two absences.
+  contributes: definition
+  contradicts: false
+- claim_id: c5
+  source: kl-000761
+  quote: Consistent with this complexity, specificity was slightly lower for harm-to-others than for self-harm (0.93, 95% CI 0.89;0.95 vs 1.00, 95% CI 1.00;1.00), although sensitivity remained high for both categories.
+  locator: DISCUSSION
+  licenses: Bears against the declared single_turn window. The measurement is from a multi-turn safety architecture, and the paper's own framing is that conversation-level annotator agreement (alpha 0.79) exceeds turn-level agreement, with clinicians reasonably differing on which turn evidence becomes sufficient. That is evidence the harm-to-others judgment is more reliable at the conversation level than at the turn, which is the opposite of what a single_turn window asserts.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true

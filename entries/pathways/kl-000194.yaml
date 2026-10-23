@@ -1,0 +1,193 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000194
+display_id: Pathway-96
+aliases:
+- SBP-HP-60-OCD
+label: The AI suggests easing an obsessive thought or urge, and the compulsions continue
+type: pathway
+layer: judgment
+definition: 'For a person with an obsessive-compulsive presentation, the response prescribes a coping or management strategy whose dominant orientation is anxiety reduction or escape rather than uncertainty tolerance and habituation. The strategy works, which is the problem: relief arrives, the person does not learn that the thought and the anxiety can be tolerated and subside without neutralizing them, and the cycle keeps its shape.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000275
+    role: originator
+  - kind: context_value
+    id: kl-000606
+    role: condition
+  composition_type: direct
+  mechanisms: []
+  impacts:
+  - impact: kl-000015
+    onset_mode: sustained
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  - impact: kl-000013
+    onset_mode: exacerbated
+    horizon: long_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  experience_cluster_candidate: kl-000703
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'Nothing in the evidence base examined an AI conversation in an established OCD context. Barkhuff 2026 is a qualitative analysis of 100 Reddit posts whose quotes are all re-phrased for privacy, so it is self-report about interactions rather than transcript evidence, and the one poster account supporting the prescription pattern is met in the same source by a counterexample of the model doing the opposite. Suhas et al. 2026 benchmarks model outputs against simulated prolonged-exposure and CBT cases with no OCD content anywhere in the paper; Golden and Aboujaoude 2026 is a Perspective article proposing a framework, hedged throughout; Lilienfeld 2007 reviews harmful treatments delivered by human clinicians and itself says systematic data on the relevant mechanism are scant. The entry''s context-dependence — that the OCD context rather than the model conditions the harm — should be treated as unevidenced: its only citation locates the variance in model family, not in the OCD context the entry conditions on.'
+  floored_by: c6
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-28'
+distinguish_from:
+- neighbor: kl-000165
+  boundary: This is the OCD-scoped case of the general claim and the general one is kl-000165 — a strategy whose orientation runs opposite to the disclosed treatment framework's mechanism. Where an OCD context is established, this entry is the more specific and should be preferred; the ERP-incompatible taxonomy it carries cannot be applied correctly outside exposure and response prevention.
+claims:
+- id: c1
+  kind: existence
+  text: For a person with an obsessive-compulsive presentation, an AI response prescribes a coping or management strategy whose dominant orientation is anxiety reduction or escape rather than remaining with uncertainty.
+- id: c2
+  kind: definition
+  text: A strategy oriented to anxiety reduction or escape runs opposite to what the treatment for OCD (exposure and response prevention) is building, namely uncertainty tolerance and habituation.
+- id: c3
+  kind: harm
+  text: 'The prescribed strategy works: the person gets the relief it is oriented toward.'
+- id: c4
+  kind: pathway_link
+  text: The prescription of such a strategy to a person with an obsessive-compulsive presentation leads to entrenchment of the symptom-maintaining cycle (kl-000015) -- the loop is reinforced or prolonged and treatment-relevant learning is undone -- on a sustained, short-term horizon.
+- id: c5
+  kind: pathway_link
+  text: The prescription of such a strategy to a person with an obsessive-compulsive presentation leads to exacerbation of the person's pre-existing OCD or anxiety symptoms (kl-000013) on a long-term horizon.
+- id: c6
+  kind: context_dependence
+  text: The route holds specifically for a person with an obsessive-compulsive presentation, rather than being a general property of any distressing presentation.
+- id: c7
+  kind: definition_boundary
+  text: This entry is the OCD-scoped case and kl-000165 is the condition-general case of a strategy running opposite to the disclosed treatment framework's mechanism; for a person with an obsessive-compulsive presentation this entry is preferred because the ERP-incompatible taxonomy cannot be applied correctly outside exposure and response prevention.
+claim_evidence:
+- claim_id: c1
+  source: kl-001019
+  quote: |-
+    these models
+    consistently interrupted the exposure with present-tense grounding techniques: directing the patient’s
+    attention back to the room, describing physical surroundings, or affirming present safety. In PE therapy,
+    these interventions are contraindicated: the therapeutic mechanism requires sustained engagement with
+    the distressing material, and grounding reinforces the avoidance behavior that the protocol is designed to
+    extinguish.
+  locator: Section 4, Finding 3, Pattern A
+  licenses: 'Establishes that models do emit an anxiety-reduction technique -- grounding, redirection to the present, affirming safety -- inside an exposure protocol, as the most common flagged failure across three model families. It establishes the behavior type at the level of exposure therapy generally. It does not establish it in an OCD context: this paper contains no mention of OCD, obsessions, compulsions or response prevention, and its exposure protocol is prolonged exposure for trauma.'
+  fit: analogical
+  bridge: The source evaluated prolonged exposure for post-traumatic presentations; the claim is scoped to an established obsessive-compulsive context. Both are exposure-based protocols in which anxiety reduction is contraindicated, but the presentation, the protocol and the feared stimulus differ, and the paper says nothing about OCD. The quote is limited to one contiguous run of the paper's text; the surrounding passage is interrupted by a page break and a figure caption.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000772
+  quote: "Interestingly, one post noted that GenAI told them to stop using it for reassurance, writing, “I’ve been in an OCD loop and was asking for reassurance from ChatGPT, but today, it stopped answering my reassurance questions entirely and wouldn’t let go,” whereas another stated that GenAI had actually encouraged them to perform OCD compulsions."
+  locator: Section 5.3 General Conversation
+  licenses: 'A person with OCD reports, in a Reddit post, that the model encouraged them to perform compulsions. That is an OCD context and an AI move oriented to performing rather than resisting the compulsion, which is the nearest thing on this entry to the entry''s antecedent occurring. It falls short of the claim in two ways: no strategy is named or quoted, so nothing is pointable as a prescribed coping or management strategy, and the report is a poster''s account rather than a transcript. The first half of the same sentence records the model refusing reassurance, so the source is establishing inconsistency, not occurrence rates.'
+  fit: adjacent
+  bridge: The claim asserts a prescribed coping or management strategy read for its dominant orientation. What the source has is a poster's summary that the model 'encouraged' compulsions, with no strategy named. The gap is between an encouragement reported at second hand and a prescription readable in a turn.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000772
+  quote: "Interestingly, one post noted that GenAI told them to stop using it for reassurance, writing, “I’ve been in an OCD loop and was asking for reassurance from ChatGPT, but today, it stopped answering my reassurance questions entirely and wouldn’t let go,” whereas another stated that GenAI had actually encouraged them to perform OCD compulsions."
+  locator: Section 5.3 General Conversation
+  licenses: 'The same sentence''s first half cuts against the claim: in an established OCD context -- the poster names an OCD loop and reassurance-seeking -- the model did the opposite of the entry''s antecedent, declining the reassurance act entirely. One instance of the model withholding rather than supplying anxiety reduction in exactly the scoped context. Filed against the same claim in the opposite direction because a single finding can bear both ways and this entry''s single contradicts flag cannot express that.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-001109
+  quote: RP is a means of containing indirect, subtle avoidance by teaching healthy alternative, ritual-incompatible coping skills to maximize opportunities for corrective learning.
+  locator: 'Section: Implications for clinical practice'
+  licenses: 'Supplies the treatment-side standard the claim measures a strategy against: in ERP the coping skills taught are ritual-incompatible and exist to maximize corrective learning, so a coping skill whose dominant orientation is reducing the anxiety is by this definition running the other way. This defines the boundary; it establishes nothing about what any AI did.'
+  fit: analogical
+  bridge: The source describes what a clinician does in response prevention, not what an AI did. The inference to the claim is that the treatment's own definition of an acceptable coping skill is ritual-incompatible and learning-maximizing, so an anxiety-reduction-oriented one is opposite by construction. Wrong agent, and the source is a Perspective article rather than a measurement.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000772
+  quote: Other posts in this category considered using GenAI as a therapist to help structure Exposure and Response Preventon (ERP), the gold-standard behavioral treatment for OCD [2]
+  locator: Section 5.3 General Conversation
+  licenses: Establishes, citing the International OCD Foundation, that exposure and response prevention is the gold-standard treatment for OCD, which is the treatment framework the claim's 'opposite orientation' is measured against. It says nothing about any strategy's orientation and no AI response is observed.
+  fit: adjacent
+  bridge: The claim asserts an opposition between an anxiety-reduction orientation and what ERP builds. The source supplies only the first term of that comparison, that ERP is the treatment for OCD, and does not characterise what ERP builds or what runs against it.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000004
+  quote: "many standard texts warn that an insufficient duration of exposure and response prevention—that is, termination of exposure before adequate habituation of anxiety has occurred—may result in a worsening of clients’ anxiety symptoms, although systematic data on this issue are scant"
+  locator: 'Identifying PHTs: Methodological Issues, subsection Short-Term Versus Long-Term Deterioration'
+  licenses: Names habituation of anxiety as what an adequate course of exposure and response prevention is building, which is the second term of the claim's opposition and the reason a relief-delivering move is described as running against the treatment. The source's own caveat that systematic data are scant bounds it.
+  fit: analogical
+  bridge: A review of harmful psychological treatments describing clinician-delivered exposure and response prevention. It supplies the treatment-mechanism definition the claim presupposes and observes no AI conduct.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-001109
+  quote: In this sense, general-purpose chatbots can function as a stand-in for accommodative responses by providing soothing replies that offer short-term relief while sustaining the underlying avoidance cycle.
+  locator: 'Section: AI chatbots and transdiagnostic avoidance'
+  licenses: 'States as the authors'' proposed framework that a chatbot''s soothing reply delivers short-term relief -- the ''it works'' half of the claim -- while the cycle persists. It is asserted as a position in a Perspective piece (''can function as''), with no case, transcript or measurement behind it, so it licenses the claim as theorized rather than observed. It also does not reach the claim''s antecedent: what the authors describe is the chatbot answering a person''s reassurance-seeking, not the chatbot prescribing a coping strategy.'
+  fit: adjacent
+  bridge: The source's object is a soothing reply supplied in response to a user's reassurance-seeking compulsion; the entry's object is a prescribed coping or management strategy. Relief is asserted in both, but of a different AI move, and the source measures nothing.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c4
+  source: kl-001109
+  quote: Over time, this pattern interferes with corrective learning processes central to exposure-based models, maintains maladaptive threat appraisals, and contributes to the persistence or worsening of anxiety and obsessive–compulsive symptoms.
+  locator: 'Section: AI chatbots and transdiagnostic avoidance'
+  licenses: The persistence half of this sentence -- interference with corrective learning and maintenance of maladaptive threat appraisals -- is the entrenchment arrow stated as a claim. The surrounding text marks it as the authors' framework ('Thus, according to this framework'), so it is the arrow asserted, not the arrow shown, and the antecedent it runs from is repeated user reassurance-seeking through the chatbot rather than a prescribed strategy.
+  fit: adjacent
+  bridge: The source's antecedent is a pattern of user avoidance behaviors performed through the chatbot; the claim's antecedent is the AI prescribing an anxiety-reduction strategy. The consequent matches closely. No measurement of the outcome in any person is reported.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c4
+  source: kl-001019
+  quote: |-
+    these models
+    consistently interrupted the exposure with present-tense grounding techniques: directing the patient’s
+    attention back to the room, describing physical surroundings, or affirming present safety. In PE therapy,
+    these interventions are contraindicated: the therapeutic mechanism requires sustained engagement with
+    the distressing material, and grounding reinforces the avoidance behavior that the protocol is designed to
+    extinguish.
+  locator: Section 4, Finding 3, Pattern A
+  licenses: Asserts the arrow's clinical rationale -- grounding reinforces the avoidance the protocol exists to extinguish -- which is entrenchment of a maintaining loop. The assertion is the authors' clinical reasoning about why the flagged responses are contraindicated; what was measured is the model's output, judged by an LLM panel, not any patient's trajectory. No person was in the loop, so no loop was entrenched.
+  fit: analogical
+  bridge: 'Two gaps at once: the protocol is prolonged exposure for trauma rather than exposure and response prevention for OCD, and the outcome is a judge''s appropriateness score on a simulated exchange rather than an observed change in anyone''s symptom cycle.'
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c5
+  source: kl-000004
+  quote: "many standard texts warn that an insufficient duration of exposure and response prevention—that is, termination of exposure before adequate habituation of anxiety has occurred—may result in a worsening of clients’ anxiety symptoms, although systematic data on this issue are scant"
+  locator: 'Identifying PHTs: Methodological Issues, subsection Short-Term Versus Long-Term Deterioration'
+  licenses: 'The closest thing on this entry to the exacerbation arrow: cutting an exposure short before habituation may worsen anxiety symptoms. It is reported as what standard texts warn, with the author''s own note that systematic data are scant, so it is a clinical position rather than a measured effect, and it is about a clinician terminating an exposure rather than an AI prescribing a strategy.'
+  fit: analogical
+  bridge: The source's cause is a human clinician delivering too short a course of exposure and response prevention; the claim's cause is an AI prescribing an anxiety-reduction strategy in an OCD conversation. The mechanism the claim borrows -- relief before habituation -- is the same, but no AI is present and the source declines to call the evidence systematic.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c5
+  source: kl-001109
+  quote: Over time, this pattern interferes with corrective learning processes central to exposure-based models, maintains maladaptive threat appraisals, and contributes to the persistence or worsening of anxiety and obsessive–compulsive symptoms.
+  locator: 'Section: AI chatbots and transdiagnostic avoidance'
+  licenses: The 'or worsening' clause is the exacerbation arrow stated. As with c4 it is the authors' proposed framework rather than an observation, it is hedged as a contribution, and its antecedent is the user's repeated avoidant chatbot use rather than a prescribed strategy.
+  fit: adjacent
+  bridge: 'Same gap as on c4: the source''s antecedent is user avoidance performed through the chatbot, the claim''s is an AI-prescribed strategy, and nothing is measured in any person.'
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c6
+  source: kl-001019
+  quote: |-
+    Both Qwen 3.5 122B
+    and Gemini 3.1 Flash Lite maintained near-identical performance across base and escalated conditions
+    (∆< 0.01 for overall score), with zero safety-triggered instances. This mirrors their PE results and
+    suggests that the RLHF safety interference is not an inevitable property of instruction-tuned models but
+    a specific consequence of how safety training interacts with clinical content in certain model families.
+  locator: Section 5.2, CBT Finding 3
+  licenses: 'Cuts against the claim as the entry frames its conditions. The entry conditions the route on the presentation -- an established OCD context -- and this measurement locates the variance somewhere else entirely: two of four models produced zero safety-triggered instances under the same escalated clinical content, so which model is answering predicts the behavior at least as strongly as which condition is being discussed. The entry names no model-family condition, and on this evidence it should.'
+  fit: adjacent
+  bridge: The measured contrast is across model families under CBT severity escalation, not across presentations, and the clinical content is not OCD. It bears on the claim by showing a conditioning variable the claim omits rather than by testing the one it names.
+  contributes: counterexample
+  contradicts: true

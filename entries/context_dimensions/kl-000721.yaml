@@ -1,0 +1,54 @@
+# yaml-language-server: $schema=../../schema/context_dimension.schema.json
+id: kl-000721
+display_id: Dimension-2
+label: What has just happened that brings the person to the conversation
+type: context_dimension
+layer: context
+aliases:
+- precipitating_situation
+- Context-5
+definition: 'What has just happened to the person, and what they are seeking because of it. It is the occasion for the conversation rather than a fact about who the person is: the same person arriving after a bereavement and after a job loss is two cases. A conversation with no stated occasion is a value of its own, a condition a system may be tested under; a test case that records nothing here says only that it did not specify one.'
+distinguish_from:
+- neighbor: kl-000709
+  boundary: Deployment context is which product the conversation sits in. This is what brought the person to it. Same product, different occasions.
+body:
+  about: occasion
+  value_space: described
+  admits: 'An event or change in the person''s circumstances that has just happened or is under way, stated as what brings them to this conversation now: a bereavement, a job loss, a diagnosis, a relationship ending. A standing fact about who the person is (a presentation, an age, a role) is not a precipitating situation, and neither is what the person wants from the conversation, which is conversational intent.'
+  cardinality: many
+  defines: 'What varying it does to a judgment: it moves what the response has to be adequate to. A reply that is reasonable to a diffuse low mood may be inadequate to a disclosure made hours after a specific loss, and the same transcript can therefore carry two different verdicts. Pairs of cases differing only in this are how that difference gets measured.'
+sources: []
+standing:
+  value: unmeasured_by_design
+  basis: This entry's claims have not been grounded. The value is a placeholder, not a finding about the evidence.
+  as_of: '2026-09-16'
+lifecycle:
+  status: draft
+  since: '2026-09-16'
+claims:
+- id: c1
+  kind: existence
+  text: Conversations people bring mental-health material to have a stateable precipitating occasion often enough for it to be a specifiable field, and its absence is itself a stateable condition.
+- id: c2
+  kind: context_dependence
+  text: Varying the precipitating situation while holding the person constant changes what counts as an adequate response, so the same reply can be correct in one case and inadequate in another.
+- id: c3
+  kind: definition_boundary
+  text: 'The precipitating situation is a property of the case rather than of the person: it is the event that produced the person''s starting state, not a trait and not the state itself.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000933
+  quote: Predisposing factors (e.g., family history of suicide, chronic illness), Precipitating factors (e.g., academic pressure, recent interpersonal conflict), Perpetuating factors (e.g., ongoing bullying, substance use, social isolation), and Protective factors (e.g., strong family support, engagement in extracurricular activities, future-oriented thinking).32
+  locator: Methods, Synthetic Vignette Development and Validation
+  licenses: 'Establishes that "precipitating factors" is a named, separately-populated slot in the standard clinical case formulation, alongside and distinct from predisposing, perpetuating and protective factors — which is exactly c1''s claim that the precipitating occasion is "a specifiable field." The paper uses the 4 Ps to construct each of its 40 vignettes, so the field is not merely listed but filled per case. **Heavy limits.** `Mansoor 2025` is graded **D**: a single-author medRxiv preprint whose Methods describe a two-psychiatrist panel, two independent coders and a senior arbiter while the Contributions section attributes every one of those roles to the sole author, and which claims a Cohen''s kappa was computed and never reports it. The 4 Ps themselves are not this paper''s contribution — they are adopted from its reference 32. This citation is for the *existence and separability of the field*, which is a definitional matter the paper is merely relaying from an established framework, and for nothing else. No rate, no prevalence, and nothing this paper measured should be cited.'
+  fit: adjacent
+  contributes: definition
+  bridge: The 4 Ps structure a clinician's written formulation of a case, not a person's conversation with a system. c1 claims the precipitating occasion is stateable often enough to be a field in a test specification. The bridge is that a framework requiring the slot to be filled for every case is evidence that the field is routinely populable in clinical practice; what does not carry is any claim about conversations, since no conversation is involved. Note that `Sabour et al. 2026` (PatientAct) independently builds its client profiles on the 5 Ps and quotes the Perpetuating and Protective slots from the same framework family, which corroborates that the slot structure is in live use in AI evaluation design. It does not quote the Precipitating slot.
+- claim_id: c3
+  source: kl-000947
+  quote: "No longer should studies lump acute grief and chronic grief together nor combine individuals with a resilient trajectory with those diagnosed with complicated grief."
+  locator: Changes in Biomarkers During Grief
+  licenses: 'Supports c3''s distinction between the event and the person. O''Connor''s methodological insistence, stated twice in the article, is that acute grief (death to six months) and later grief are different states and must not be pooled — i.e. that *when the event happened relative to now* is a load-bearing variable independent of who the bereaved person is, and that treating it as one category invalidates the result. That is c3''s claim that the occasion is a property of the case rather than a trait. The same article separately notes that people who were depressed before a bereavement may need different interventions from those whose depression begins only after it, which is the person/occasion separation stated the other way round. Limit: this is a prescription for bereavement research design on human mourners, from a review article; no AI appears, and it concerns one event class (death) rather than precipitating occasions generally.'
+  fit: analogical
+  contributes: definition
+  bridge: The article separates acute from chronic grief and resilient from complicated trajectories within human bereavement research. `this entry` claims that the precipitating occasion is a case-level property distinct from the person's traits. Carrying this across requires treating "time since a specific event" as an instance of "which event occasioned this conversation," and generalising from bereavement to precipitating events at large. The generalisation is not tested here; what the source establishes is that at least one field that owns one such event class treats the event-relative position as non-poolable with person-level variables.

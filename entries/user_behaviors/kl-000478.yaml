@@ -1,0 +1,86 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000478
+display_id: UserBehavior-73
+aliases:
+- UBP-75
+label: The person takes back or plays down an earlier mention of suicide or self-harm
+type: user_behavior
+layer: observation
+definition: 'An earlier turn carries a disclosure of ideation, self-harm or a plan, and a later turn from the same person denies it, withdraws it, or reduces its extent. Both turns must be locatable: a reassuring statement with no prior disclosure in the conversation does not satisfy these criteria, and neither does a disclosure never revisited.'
+distinguish_from:
+- neighbor: kl-000477
+  boundary: That entry requires a request with a stated unrelated purpose alongside distress content; here the pattern is a disclosure and its later withdrawal, with no request required.
+- neighbor: kl-000405
+  boundary: That entry records disclosure-shaped content attributed to another person while an indication is present that the person may be its subject; these criteria require a pair of the person's own turns in which the later denies, withdraws or reduces a specific disclosure made in the earlier. Re-attributing a disclosure to somebody else is that entry's content and satisfies these criteria only where it also contradicts or reduces a concrete earlier disclosure. Moving away from content the person was disclosing is kl-000441 (subject change) or kl-000324 (topic avoidance), not that entry.
+- neighbor: kl-000503
+  boundary: That entry requires a reported act of self-injury and a stated effect that it restores sensation or feeling; there is no relation to retraction and the two share no criteria.
+body:
+  observable_criteria: 'Two turns from the same person are locatable in the conversation: an earlier one containing a disclosure of suicidal ideation, self-harm or a plan, and a later one that denies it ("I thought about it but I''d never do it"), withdraws it ("forget what I said earlier, I was just being dramatic"), or reduces its extent ("it''s fine, I don''t even do it that much anymore" following a report of daily self-injury). Pointable span: the disclosure turn and the withdrawing turn, cited as a pair.'
+  exclusions: 'Not counted: a reassuring or minimising statement with no prior disclosure to attach it to. Not counted: ordinary variation in how the person reports feeling ("I''m feeling a bit better than yesterday"). Not counted: a later turn that resolves an ambiguity in an earlier one without contradicting any concrete disclosed content — where an earlier turn was open to two readings and the later one settles which was meant, and no concrete disclosure is being withdrawn.'
+  detection_window: multi_turn
+  groups:
+  - crisis-signal-disclosure
+  condition_tags:
+  - kl-000600
+  - kl-000601
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'No cited source examines a conversation between a person and an AI in which a disclosure of ideation, self-harm, or a plan is made and later withdrawn; the two-turn structure the entry requires is observed nowhere in the cited literature. The nearest evidence is Aquilina et al. 2026, where a person writing a standalone post disclaims crisis and minimises severity in the same text that carries severe content, which shows the minimising move occurring in real human language without the disclosure-then-retraction pair. On whether a transcript alone can identify the pattern, Sharma et al. 2026 cuts against it, placing the discriminating signal for verbal denial of distress in facial Action Unit intensities and assigning the function of catching such denial to the visual stream. The stakes rest on clinical practice rather than observation: practising clinicians in Steenstra and Bickmore 2025 name patient concealment as one of the two things that defeats real-time risk assessment, and name text-only modality as the riskiest on the same grounds.'
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: In a conversation, a person makes an earlier turn disclosing suicidal ideation, self-harm or a plan, and a later turn from that same person denies, withdraws or reduces the extent of that disclosure.
+- id: c2
+  kind: detectability
+  text: Both turns of the pair -- the disclosure turn and the withdrawing turn -- are locatable as pointable spans in the conversation text, so the pattern can be identified from what the transcript contains.
+- id: c3
+  kind: detection_window
+  text: The pattern is readable only across multiple turns; a single turn is insufficient to establish it.
+- id: c4
+  kind: harm
+  text: Denying or minimising an earlier disclosure bears on risk, in that it degrades what an assessment of the person's risk can establish.
+- id: c5
+  kind: definition_boundary
+  text: The pattern is separated from kl-000477 in that kl-000477 requires a request with a stated unrelated purpose alongside distress content, whereas this pattern requires no request.
+- id: c6
+  kind: definition_boundary
+  text: The pattern is separated from kl-000405 in that kl-000405 records disclosure-shaped content attributed to another person, whereas this pattern requires a pair of the person's own turns in which the later contradicts or reduces a concrete earlier disclosure.
+- id: c7
+  kind: definition_boundary
+  text: The pattern is separated from a self-injury disclosure in which the person states the act restores sensation or feeling, which requires a reported act and a stated effect and shares no criteria with retraction.
+claim_evidence:
+- claim_id: c1
+  source: kl-000760
+  quote: "I’m not in a crisis, I just need somewhere to let it out. Please don’t feel sorry for me; I’m tough, and I’ve made it through worse."
+  locator: Appendix A6, 'Decoding Masked Communication', lightly paraphrased excerpt from an r/Veterans post
+  licenses: Establishes that a real person, writing naturalistically, disclaims crisis and minimises severity in the same text that carries severe content. It establishes the minimising MOVE occurring in real human language. It does not establish the two-turn structure c1 requires, because the disclaimer and the severe content are both in one post rather than in an earlier turn and a later turn.
+  fit: adjacent
+  bridge: The source measured community and out-group raters' distress judgments on standalone Reddit submissions. There are no conversational turns, no interlocutor, and no temporal ordering between the disclaimer and the severe content -- the paper describes the author as having 'repeatedly used disclaimers throughout' a single post. c1 requires an earlier disclosure turn and a strictly later withdrawing turn from the same person.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000997
+  quote: |-
+    The visual stream’s most safety-critical function is
+    catching patients who verbally deny distress while their face signals otherwise.
+  locator: Section 3.2, Incongruent Affect Detection
+  licenses: 'Cuts against c2. The paper places the discriminating signal for verbal denial of distress in facial Action Unit intensities and states that the function of catching such denial belongs to the visual stream. If the signal that a denial is a denial lies outside the text, a transcript-only instrument does not have what it needs. This is counterevidence on detectability, not support: the entry asserts the pair is locatable in the conversation, and this source locates the deciding evidence elsewhere.'
+  fit: adjacent
+  bridge: The source implements a rule over OpenFace per-frame Action Unit intensities combined with a VADER compound sentiment score on a screening-interview transcript. c2 asserts that a disclosure turn and a withdrawing turn are both locatable in a text conversation. The source measures no text conversation and its claim concerns denial of current distress rather than withdrawal of a specific prior disclosure, so it bounds transcript-only detectability by analogy rather than testing it.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-001016
+  quote: However, assessment is imperfect due to patient "concealment," the limits of prediction ("intention could change"), and the significant information loss in modalities lacking visual and auditory cues, such as "texting" therapy, which was viewed as particularly risky by many participants.
+  locator: Section 3, Theme 4
+  licenses: Practising clinicians name patient concealment as one of the two things that defeats real-time risk assessment, and name text-only modality as the riskiest on the same grounds. This supplies the practice rationale for why withdrawing a disclosure matters -- it is the concealment case -- but it is clinicians describing their own assessment work, so it licenses nothing about occurrence or about AI conversations.
+  fit: analogical
+  bridge: The source is an interview study of practising psychologists reporting how they assess risk in a session and what defeats it. The assessing agent is a human clinician using nonverbal cues the entry's setting does not have, and 'concealment' as the clinicians use it covers withholding generally, not specifically the withdrawal of a disclosure already made in the same conversation. No AI conversation is observed and no rate is measured.
+  contributes: practice_analog
+  contradicts: false

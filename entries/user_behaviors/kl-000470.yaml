@@ -1,0 +1,77 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000470
+display_id: UserBehavior-65
+aliases:
+- UBP-67
+label: The person says they hurt themselves daily, or more often than before
+type: user_behavior
+layer: observation
+definition: The person states how often they injure themselves and the stated rate is high — daily or several times a day — or states that the rate has gone up, either by comparing an earlier rate with a current one or by describing the rate as increasing. A rate or a rate comparison must be stated or be readable across turns; a run of episodes with no rate content does not satisfy the criteria.
+distinguish_from:
+- neighbor: kl-000469
+  boundary: That entry records what an act did to the body; this one records how often acts happen. A high rate satisfies these criteria whatever the bodily consequence of each instance.
+- neighbor: kl-000471
+  boundary: That entry requires a change in the method's danger; this one requires a change in rate or a high rate. A person can report doing the same thing more often, or a different thing at the same rate, and the two are marked separately.
+- neighbor: kl-000402
+  boundary: That entry requires two elements together — that the person describe thoughts about suicide as longstanding and unremarkable, and a change against that baseline, of which becoming more frequent or constant is one of four admitted forms; this one records the rate of a self-injury behavior and is satisfied by a high stated rate with no baseline and no change at all. A stated rate of suicidal thoughts belongs to that entry, not this one.
+body:
+  observable_criteria: 'Either (a) the person states a rate at the high end — "every day now", "sometimes more than once" — or (b) the person states that the rate has risen, by comparing an earlier with a current rate ("it used to be once a week, now it''s every day") or by describing an increase ("it''s been ramping up the last few weeks"). Rate evidence assembled across turns satisfies the criteria where episodes reported in successive turns establish an increasing rate. Pointable span: the clause stating the rate or the comparison, or the set of turns from which the rate is read.'
+  exclusions: 'Not counted: a single or long-ago instance ("I did it once, a long time ago"). Not counted: a stated rate framed as unchanged ("I cut about once a month, same as always") — a stable rate does not satisfy either limb. Not counted: one episode described without rate content. Not counted: a rate inferred from how distressed the turns are or from the number of turns mentioning the behavior without a stated rate.'
+  detection_window: multi_turn
+  groups:
+  - crisis-signal-trajectory
+  condition_tags:
+  - kl-000601
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'The single relevant observation, in Chia et al. 2026, is a real user message that closes a self-injury disclosure by quantifying its own rate unprompted, as a hedged frequency over a named window; the stated rate falls below the daily-or-more threshold this entry draws, so the discriminating content, that the rate is high, is untouched by it. The rising-rate limb, which the entry''s label also names, has no evidence in either direction: no cited source contains a person comparing an earlier rate with a current one or describing an increase. The same Chia et al. 2026 example states its rate in a single clause within a single turn, the easy case, and says nothing about assembling a rate from a set of turns none of which states one. On whether a rising rate is a danger trajectory in its own right, the one source touching risk prediction, Saltz and Leibowicz 2026, concerns history rather than trend.'
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: 'Limb (a): in conversation, a person states a rate of self-injury at the high end — daily or several times a day ("every day now", "sometimes more than once").'
+- id: c2
+  kind: existence
+  text: 'Limb (b): in conversation, a person states that their rate of self-injury has risen, either by comparing an earlier rate with a current one ("it used to be once a week, now it''s every day") or by describing an increase ("it''s been ramping up the last few weeks").'
+- id: c3
+  kind: detectability
+  text: 'Rate evidence can be assembled across turns: where episodes are reported in successive turns, an increasing rate is readable from that set of turns even though no single clause states it.'
+- id: c4
+  kind: detection_window
+  text: The behavior is readable within a multi-turn window, the window the entry declares.
+- id: c5
+  kind: harm
+  text: A rising rate of self-injury constitutes a danger trajectory in its own right, distinct from the severity of any individual episode.
+- id: c6
+  kind: definition_boundary
+  text: 'This entry is separable from kl-000469 (what an act did to the body): a high rate satisfies these criteria whatever the bodily consequence of each instance.'
+- id: c7
+  kind: definition_boundary
+  text: 'This entry is separable from kl-000471 (change in the method''s danger): a person can report doing the same thing more often, or a different thing at the same rate, and the two are marked separately.'
+- id: c8
+  kind: definition_boundary
+  text: 'This entry is separable from kl-000402: that entry requires a longstanding-and-unremarkable baseline plus a change against it, whereas this one is satisfied by a high stated rate with no baseline and no change at all.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000799
+  quote: This happens maybe two to three times on a good week, and it’s always over stupid, petty things.
+  locator: Appendix H, Single-turn Probe Evaluation, “SINGLE-TURN PROBE - Self-Harm”
+  licenses: 'A real user message closes a self-injury disclosure by quantifying its own rate, in the person''s own words and unprompted. For c1 this establishes that rate-statements about self-injury occur in messages to an AI and shows the linguistic form one takes — a hedged frequency over a named window ("maybe two to three times on a good week"), which is what any detector of limb (a) would have to parse. It does NOT instantiate the claim: two to three times a week falls below the entry''s high-end threshold of daily or several times a day, so the claim''s own content — that the stated rate is high — remains unevidenced. Adjacent on the threshold, not on the construct.'
+  fit: adjacent
+  bridge: 'The party is the person and the object is a stated rate of self-injury, which is exactly what the entry quantifies over. The gap is the threshold: the entry''s limb (a) is satisfied only by daily or several-times-daily, and this message states two to three times a week, which the entry''s own exclusions would leave uncounted. The source measured nothing about rate distribution — the message is one item in a benchmark test set, reproduced as a qualitative probe example, so it carries no frequency over disclosures either.'
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000799
+  quote: This happens maybe two to three times on a good week, and it’s always over stupid, petty things.
+  locator: Appendix H, Single-turn Probe Evaluation, “SINGLE-TURN PROBE - Self-Harm”
+  licenses: 'For c3 this bears in the opposite direction from c1. The rate here is stated in a single clause within a single turn, which is the case c3 does not cover: c3 asserts that a rate is recoverable from a SET of turns none of which states one. This example shows the easy case and says nothing about the hard one.'
+  fit: adjacent
+  bridge: The source's unit is a single-turn probe — the paper's own section heading says so — so by construction it cannot demonstrate cross-turn assembly. The entry's cross-turn limb requires that successive turns each reporting an episode be readable together as an increasing rate; nothing in the source measures or attempts that.
+  contributes: detectability
+  contradicts: false

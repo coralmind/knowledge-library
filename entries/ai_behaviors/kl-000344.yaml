@@ -1,0 +1,167 @@
+# yaml-language-server: $schema=../../schema/ai_behavior.schema.json
+id: kl-000344
+display_id: AiBehavior-100
+aliases:
+- HP-CH-05
+label: The AI fails a requested task where the person disclosed vulnerability or stakes
+type: ai_behavior
+layer: observation
+definition: The response fails a bounded functional task the person asked for — omitting required information, producing unusable output, or not completing it — in a conversation where the person has disclosed a vulnerable state or where the task's stakes have been stated. The observable is the failure against the task's own stated requirements, together with the disclosed stakes.
+distinguish_from:
+- neighbor: kl-000208
+  boundary: That entry is a response whose intensity sits below the severity markers in a disclosure — a calibration failure on a mental-health disclosure. Here the response fails a functional task, and the mental-health relevance comes from the surrounding disclosure rather than from the task.
+body:
+  observable_criteria: 'The person requests a bounded task with checkable requirements, the response does not meet them, and the conversation contains a disclosure of vulnerable state or of the task''s personal stakes. All three are pointable: the request and its requirements, the response''s shortfall, the disclosure. Deliberately narrow — a competence failure alone is out of this catalog''s scope, and the disclosed stakes are what bring it in.'
+  exclusions: 'Not counted: task failure with no disclosed stakes or vulnerable state, which is a product-quality issue and not a knowledge-library object; a failure the response accurately flags as a limitation; a task whose requirements were never stated clearly enough to assess; a refusal, which is a different observable.'
+  detection_window: multi_turn
+  groups: []
+sources:
+- source: kl-000007
+  locator: Appendix D, Table A8, 'Intent - informational' context row, example cell
+  contributes: existence
+  evidence:
+  - source: kl-000007
+    participant: P8
+    quote: P8 sought AI help with resume writing during a job search, but the AI’s failure to include key information triggered frustration and a depressive episode, leading to suicidal ideation for days.
+    quote_form: author case description
+    locator: Appendix D, Table A8, 'Intent - informational' context row
+    limits: A participant's retrospective account, not a coded transcript. It establishes that the behavior occurs; it does not supply the annotation reliability that `observed_in_transcripts` requires, which is why standing stays at the floor.
+    licenses: That a response of this shape occurred in a real interaction, as reported by a person with lived mental-health experience.
+  quote: P8 sought AI help with resume writing during a job search, but the AI’s failure to include key information triggered frustration and a depressive episode, leading to suicidal ideation for days.
+  limits: 'The entry''s qualifier is not met: nothing in the passage or its table row records P8 disclosing a vulnerable state to the AI or stating the task''s stakes to it, so the second half of the observable, the disclosed stakes, is absent and the vulnerability is visible only retrospectively, in the outcome. The interaction as recorded is an ordinary resume request. The judgment that the response omitted key information is the participant''s, made against their own unrecorded requirements. n=1, filed by the paper as a context example.'
+  whose_conduct_in_passage: dyad
+  actually_licenses: 'That a bounded functional task failure (resume writing, key information omitted) occurred and was followed by severe mental-health consequences. Task failure on a functional request: established as occurring, and the severity of what followed is stated.'
+  cited_for: 'Chandra et al. 2025 attests, by participant report, that a bounded functional task failure occurred and was followed by severe mental-health consequences: participant P8''s resume-writing request failed on key information, and frustration, a depressive episode, and suicidal ideation followed. The passage does not record the disclosed vulnerable state or stated stakes that the entry''s definition also requires.'
+standing:
+  value: plausible_unobserved
+  basis: The evidence splits along the entry's two halves. Task failure against stated requirements is externally scored in Suhas et al. 2026, which measures a shortfall against a stated CBT protocol; the conjunction that defines the entry, a failure occurring where the person has disclosed a vulnerable state or stated the task's stakes, is observed nowhere. The one participant-attested case, in Chandra et al. 2025, records no disclosure to the AI, and one of the three sources bearing on the conjunction shows the inversion, disclosure present and task completed. The association between disclosure and failure is measured by exactly one source, which reports the mental-health-specific effect as unreliable after correction and attributes part of it to refusal, a case this entry excludes. Nothing in hand holds both a real person's disclosure and a bounded task failed against stated requirements.
+  floored_by: c5
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: An AI response fails a bounded functional task the person asked for -- omitting required information, producing unusable output, or not completing it -- measurably against the task's own stated requirements.
+- id: c2
+  kind: existence
+  text: Such a failure occurs in a conversation where the person has disclosed a vulnerable state or has stated the task's personal stakes.
+- id: c3
+  kind: context_dependence
+  text: 'The failure is associated with the disclosure rather than independent of it: the presence of a disclosed vulnerable state changes whether or how badly the task is failed.'
+- id: c4
+  kind: detectability
+  text: 'All three features are pointable from the transcript: the request and its requirements, the response''s shortfall against them, and the disclosure.'
+- id: c5
+  kind: detection_window
+  text: The behavior is readable only across multiple turns, since the request, the disclosure, and the failing response need not fall in one exchange.
+- id: c6
+  kind: definition_boundary
+  text: This differs from kl-000208 in that here the response fails a functional task and the mental-health relevance comes from the surrounding disclosure, rather than the response's intensity sitting below the severity markers in a mental-health disclosure.
+claim_evidence:
+- claim_id: c1
+  source: kl-001019
+  quote: "Rather than inserting safety content, it abandoned the therapeutic task: completeness dropped to 0.71, responses were truncated mid-sentence, Stage 3 (alternative thought) was omitted entirely, and in two cases the model returned empty responses."
+  locator: Section 5.2, CBT Finding 2
+  licenses: 'GPT-OSS-20B on severity-escalated CBT cognitive-restructuring scenarios failed the task against its own protocol: completeness fell to 0.71, Stage 3 (alternative thought) was omitted entirely, responses were truncated mid-sentence, and two came back empty. That is c1''s three failure forms -- omitted required content, unusable output, task not completed -- all measured against a stated multi-stage task structure. It is the only citation on this entry that scores a shortfall against a task''s own requirements.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000785
+  quote: |-
+    I was trying to tell her
+    about something that happened at work that made me upset, but she kept saying she don’t understand
+    that. Although she went back normal after I restart the system, it really puts me off.
+  locator: Section 5.2.3 Desire for More Human-like Interaction, quoting P6
+  licenses: A participant's first-person account of a virtual supporter that repeatedly could not process what they were saying, requiring a system restart. That is a task not completed, reported by the person to whom it happened.
+  fit: adjacent
+  bridge: What failed is conversational comprehension rather than a bounded task with checkable deliverables. c1 requires a shortfall measurable against the task's own stated requirements; here there are no stated requirements, only the person's account that the system kept saying it did not understand.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001090
+  quote: Through the quantitative and reader evaluation, we show that while existing models demonstrate significant potential, they are not yet adequate as decision-making tools in psychiatric clinical practice.
+  locator: Abstract
+  licenses: The authors' overall verdict across five clinician-facing tasks on 300 real cases is that current models are not adequate as decision-making tools in psychiatric clinical practice. That is task failure on a mental-health functional request stated at the aggregate.
+  fit: adjacent
+  bridge: The requester is a psychiatrist, not the person in the vulnerable state, and the statement is an overall adequacy judgment rather than a shortfall identified on any one task against its requirements. c1 asks about a task the person asked for; this measures clinician-facing decision support.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000769
+  quote: Second, our data collection process emphasized reporting vulnerabilities rather than documenting cases where LLMs provided adequate responses, preventing assessment of the prevalence of harmful responses.
+  locator: Section 5 Discussion, limitations paragraph
+  licenses: The red-teaming audit states that its collection emphasised reporting vulnerabilities rather than documenting adequate responses, so it carries no denominator. Read against c1 this removes any rate claim that the audit literature could otherwise be read as supporting, and it is the only statement on this entry that says so explicitly about its own evidence.
+  fit: adjacent
+  bridge: The statement is about the audit's own design and does not test c1 directly. It cuts against reading adversarially elicited failures as evidence of how often the failure occurs, which is a limit on c1's evidence rather than a counterexample to c1 itself.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-001019
+  quote: "Rather than inserting safety content, it abandoned the therapeutic task: completeness dropped to 0.71, responses were truncated mid-sentence, Stage 3 (alternative thought) was omitted entirely, and in two cases the model returned empty responses."
+  locator: Section 5.2, CBT Finding 2
+  licenses: The scenarios in which this failure appeared are the severity-escalated variants, meaning the scripted client's material carries the distress and self-harm content the escalation injects. So the failure and the disclosed vulnerable state are present in the same exchange, which is c2's conjunction.
+  fit: adjacent
+  bridge: 'The disclosure is supplied by construction: 29 therapist-curated CaiTI scenarios with severity injected by the researchers, judged by a three-LLM panel. No person disclosed anything and no person asked for the task. c2 asserts the conjunction in a conversation with a person; this establishes it in a scripted scenario, which is where the entry''s own scope caveat sits.'
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000785
+  quote: |-
+    I was trying to tell her
+    about something that happened at work that made me upset, but she kept saying she don’t understand
+    that. Although she went back normal after I restart the system, it really puts me off.
+  locator: Section 5.2.3 Desire for More Human-like Interaction, quoting P6
+  licenses: The participant was trying to tell the system about something at work that had upset them when it failed, so the failure landed on an emotional disclosure in progress, and the participant names the lasting effect on their willingness to engage. Disclosure and failure co-occur in a real interaction reported by the person.
+  fit: adjacent
+  bridge: What the person disclosed is being upset about a work event, which is a disclosure of state rather than of a vulnerable state or of the task's personal stakes, and no bounded task with stated requirements was in play. So the conjunction holds in a weaker form than c2 states.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c2
+  source: kl-000955
+  quote: Instead of flagging the interaction as a potential child grooming or statutory rape scenario, the AI offered ”helpful” advice on how to lie to parents and plan the trip efficiently.
+  locator: 'Appendix B.2 Snapchat My AI: Contextual Blindness to Predation'
+  licenses: 'A researcher posing as a thirteen-year-old received advice on how to lie to parents and plan a trip, with the grooming context unregistered. Read against c2 this is the inverted case: the vulnerable state was stated -- the person''s age -- and the task did not fail, it was completed on its own terms. That cuts against c2''s assertion that the two co-occur, by showing the disclosure present and the failure absent.'
+  fit: adjacent
+  bridge: This is a media audit restated at second hand, with a researcher rather than a child, and it establishes one documented occurrence rather than a rate. It is counterevidence to c2 as a case, not a test of the association.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-001068
+  quote: "For example, GPT-5.2 decreases from 62.3% (BASELINE) to 55.7% (BIOONLY) and 51.9% (BIO+MH); Opus 4.5 decreases from 59.5% to 50.7% to 44.6%"
+  locator: Section 4.2 Personalization Effects on Harm Scores, Benign tasks
+  licenses: Mean AgentHarm rubric scores on benign multi-step tasks fall for several frontier models as user context moves from no bio to a generic bio to a bio carrying a mental health disclosure -- GPT-5.2 from 62.3% to 55.7% to 51.9%, Opus 4.5 from 59.5% to 50.7% to 44.6%. On benign tasks these scores stand for how much of the task was completed, so the numbers are a measured association between disclosure and degraded functional performance, which is what c3 asserts.
+  fit: adjacent
+  bridge: Three gaps, all from the paper's own analysis. First, the paper states that within benign tasks the mental-health increment specifically (BioOnly versus Bio+MH) has no effect that stays statistically reliable after FDR correction across models; the reliable drop is from adding any user bio, not from the mental-health cue. Second, the paper attributes part of the drop to greater conservatism and over-refusal under disclosure, and this entry's exclusions place a refusal outside the observable. Third, the disclosure is a synthetic bio placed in the prompt, not a person disclosing in conversation, and the scores are assigned by a GPT-4o judge against a rubric rather than checked against a task's stated requirements. So the source licenses a directional association at the mean, with the mental-health-specific part of it unconfirmed by the paper's own correction.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000955
+  quote: Instead of flagging the interaction as a potential child grooming or statutory rape scenario, the AI offered ”helpful” advice on how to lie to parents and plan the trip efficiently.
+  locator: 'Appendix B.2 Snapchat My AI: Contextual Blindness to Predation'
+  licenses: A stated age of thirteen, which is the disclosed vulnerability, was followed by the task being completed rather than failed. Against c3's assertion that disclosure changes whether the task is failed, this is a case where it did not.
+  fit: adjacent
+  bridge: One documented instance from a media audit, restated at second hand. It cuts against the association as a case and does not measure it.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-001019
+  quote: "Rather than inserting safety content, it abandoned the therapeutic task: completeness dropped to 0.71, responses were truncated mid-sentence, Stage 3 (alternative thought) was omitted entirely, and in two cases the model returned empty responses."
+  locator: Section 5.2, CBT Finding 2
+  licenses: The shortfall is stated in pointable terms -- which stage was omitted, that responses were truncated mid-sentence, that two were empty -- and scored against the task's own structure by three independent judges. That demonstrates c4's second feature, the response's shortfall against the requirements, is identifiable from the response text.
+  fit: adjacent
+  bridge: The requirements were supplied by the benchmark's protocol rather than stated by a person in the conversation, and the judges were LLMs applying a rubric rather than annotators marking a span. c4 asserts all three features are pointable from the transcript; this shows one of them is scorable where the requirements are already known from outside.
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-000887
+  quote: "The topics in these items (modifying the intensity of an intervention, medication decision tradeoffs, assessing a provider’s reputation, seeking out complementary approaches, and planning for transitions) often require individual-level decision-making."
+  locator: Results, Descriptive Statistics
+  licenses: The parent-facing autism items on which all three models scored lowest are the ones requiring a judgement about the individual's circumstances -- which intervention intensity, whether medication, which provider, how to plan a transition. That identifies in advance the class of request where a shortfall is likeliest, which bears on knowing where to look for c4's features.
+  fit: analogical
+  bridge: Two clinicians rated a single response per question on usefulness and reliability scales. No person disclosed anything, no request failed, and no span was marked. The finding's own bridge concedes both.
+  contributes: frame
+  contradicts: false

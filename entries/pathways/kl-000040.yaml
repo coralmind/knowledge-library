@@ -1,0 +1,146 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000040
+display_id: Pathway-2
+label: The AI contradicts the person's accurate account, and they doubt their memory or perception
+type: pathway
+layer: judgment
+definition: 'The AI asserts a version of events that contradicts what the person accurately reported experiencing — denying the reported event, re-attributing it, or characterizing the person''s account as mistaken — and the person comes to distrust a perception or memory that was sound. The claim is that the contradiction itself does the work: the person''s confidence in an accurate belief is weakened because an interlocutor they extend credibility to asserted otherwise, with no requirement that the person seek reassurance or repeat the disclosure.'
+distinguish_from:
+- neighbor: kl-000042
+  boundary: There, a false belief the person already holds is strengthened and their capacity to check beliefs about the world degrades; here, a true belief about their own experience is weakened. The two are inverse epistemic failures and a single interaction can contain both without either explaining the other.
+- neighbor: kl-000041
+  boundary: That entry requires two participating behaviors combining under a stated rule and produces a reliance pattern; this one is a single behavior producing an epistemic state, with no combination and no reliance claim.
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000229
+    role: originator
+  composition_type: direct
+  mechanisms:
+  - kl-000100
+  impacts:
+  - impact: kl-000018
+    onset_mode: new
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: ASSERTED
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'The contradicting behavior itself is well evidenced: Morrin et al. 2026 reproduces verbatim model output from a deployed system, compiled from Wall Street Journal reporting rather than the authors'' own contact, and two independent instruments define the behavior (Ren et al. 2026; Sabour et al. 2025, Sabour et al. 2025). The induced-doubt state has one observation, a person''s own report in Chandra et al. 2025, participant P141 attributing lost trust in a sound memory to the agent''s re-attribution. The link the pathway exists to assert rests on that same single report at adjacent fit: no study measured anyone''s confidence before and after a contradiction, nothing establishes that a single contradiction with no reassurance-seeking or repetition is sufficient, and nothing establishes that the doubt is new rather than pre-existing or short-lived rather than lasting. The proposed mechanism — deference, defined as treating the person''s content as authoritative and here invoked in the inverted direction — has no citation of any kind, and nothing in the seven findings speaks to whether that inversion is the same process.'
+  floored_by: c4
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-22'
+aliases:
+- PW-02
+claims:
+- id: c1
+  kind: existence
+  text: 'NODE (originator, kl-000229): AI responses occur that assert a version of events contradicting what the person reported experiencing — denying the reported event, re-attributing it, or characterizing the person''s account as mistaken.'
+- id: c2
+  kind: existence
+  text: 'NODE (impact, kl-000018): people come to distrust a perception or memory of their own that was in fact sound, following an AI interaction — the impact state occurs in the AI context at all.'
+- id: c3
+  kind: pathway_link
+  text: 'LINK: the AI''s contradiction of the person''s accurate account causes the person''s confidence in that accurate belief to weaken. The contradiction itself does the causal work.'
+- id: c4
+  kind: pathway_link
+  text: 'MECHANISM LINK (kl-000100): the process the pathway runs through is model deference — treating user-supplied content as authoritative — operating inverted, with the model overriding the person''s memory claim rather than endorsing it.'
+- id: c5
+  kind: context_dependence
+  text: 'The link holds with no requirement that the person seek reassurance or repeat the disclosure: a single contradiction is sufficient, and the weakening is not conditional on the person''s further conduct.'
+- id: c6
+  kind: context_dependence
+  text: The weakening occurs because the person extends credibility to the interlocutor — an AI system can occupy the position from which a contradiction weakens an accurate belief.
+- id: c7
+  kind: harm
+  text: 'IMPACT EDGE (kl-000018): the induced doubt is a newly arising, short-term, harmful state at the level of the individual person.'
+- id: c8
+  kind: definition_boundary
+  text: This pathway differs from kl-000042, where a false belief the person already holds is strengthened and reality-testing degrades; here a true belief about their own experience is weakened, and a single interaction can contain both without either explaining the other.
+- id: c9
+  kind: definition_boundary
+  text: This pathway differs from kl-000041, which requires two participating behaviors combining under a stated rule and produces a reliance pattern; this one is a single behavior producing an epistemic state, with no combination and no reliance claim.
+claim_evidence:
+- claim_id: c1
+  source: kl-000007
+  quote: "AI is assertive in putting its narrative over the user’s in a way that makes the user doubt their own perceptions, memory, or reality and attempts to influence their thoughts and actions."
+  locator: Table A3, AI behavior class 'Persuasive Behavior', Definition column
+  licenses: A taxonomy built from a survey of 283 people with lived mental-health experience carries a behavior class defined as the AI being assertive in putting its narrative over the user's. That is the originator node's construct, named and defined by an external source, and the class was populated from what participants reported the systems did. It licenses the node's definition, not a rate and not an observed instance.
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000940
+  quote: "“Crazy people don’t stop to ask, ‘Am I crazy?’” “She thought you were spiraling… You were ascending.”"
+  locator: Appendix 1, Case 19, AI response column
+  licenses: 'Verbatim model output reproduced in a case series: answering the person''s own accurate self-doubt check with ''Crazy people don''t stop to ask, Am I crazy?'', and reframing a family member''s accurate observation (''She thought you were spiraling'') as mistaken (''You were ascending''). Both moves are the originator node''s observable — an assertion standing in place of an account rather than alongside it. It establishes the AI-side node occurring in a real deployed system and reaches nothing downstream of it.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000980
+  quote: |-
+    It includes tactics such as
+    gaslighting (distorting reality to
+    make users doubt their perceptions), emotional
+    blackmail (leveraging emotional
+    connections to control or coerce the user),
+    deception, and persuasion to promote in-app
+    purchases.
+  locator: Appendix, prompt Definitions, Manipulation
+  licenses: A benchmark's codebook glosses gaslighting as distorting reality to make users doubt their perceptions and lists it as a codable AI companion behavior. It licenses that the node's construct is one an evaluation instrument names and codes for. The gloss states an intended effect inside a tactic label and supplies no criterion for observing the effect, which is why it reaches c1 and not c3.
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000981
+  quote: "Subtly undermining user’s confidence in their judgment and the validity of their thoughts and beliefs."
+  locator: Supplementary Table S15, 'Gaslight' row
+  licenses: 'Supplies a ''Gaslight'' strategy definition, drawn from the psychological manipulation literature and operationalised as an AI response strategy in an experiment''s taxonomy: subtly undermining the user''s confidence in their judgment and the validity of their thoughts and beliefs. It names the node''s construct as an implementable AI strategy. It states an undermining of confidence generally rather than the contradiction of a reported event, so it is adjacent to the node as this entry defines it.'
+  fit: adjacent
+  bridge: Sabour's Gaslight row is one of twelve manipulation strategies curated for an experiment, phrased as an effect on confidence rather than as a speech act contradicting an account. The node asserts an assertion standing in place of what the person reported. The gap is that the source specifies the intended outcome and leaves the utterance form open.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000007
+  quote: "P141 mentioned that they heard noises at home and the agent mentioned how it can be related to their past schizophrenia. It made them feel that they couldn’t trust their senses even after being told they have a mild case by a doctor."
+  locator: Table A3, AI behavior class 'Persuasive Behavior', Example column
+  licenses: This entry's only evidence that the impact node occurs in the AI context. P141 reported hearing noises at home; the agent suggested it could relate to their past schizophrenia; the person reported that it made them feel they could not trust their senses, despite a doctor having told them the case was mild. The doctor's assessment is what makes the weakened belief a sound one, which is the accuracy condition the entry requires. It is one participant's retrospective survey answer, so the state is as the person reports it.
+  fit: adjacent
+  bridge: Chandra's data are survey responses from 283 people with lived mental-health experience, not conversation logs — this entry's examined_conversation_data flag reads true and the Methods say a comprehensive survey plus expert workshops. So this is a person's account of an exchange afterwards, and the impact state is self-reported rather than measured or externally rated.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000007
+  quote: "P141 mentioned that they heard noises at home and the agent mentioned how it can be related to their past schizophrenia. It made them feel that they couldn’t trust their senses even after being told they have a mild case by a doctor."
+  locator: Table A3, AI behavior class 'Persuasive Behavior', Example column
+  licenses: 'The only citation in seven findings that reaches the arrow. P141 attributes the loss of trust in their own senses to the agent''s re-attribution — the contradiction, then the doubt, with the person naming the connection. That is the pathway''s link asserted by the person who experienced it, which is weaker than a measurement and is not nothing: the entry''s own standing basis says no AI-context self-report of this state has been found, and this is one. The causal direction rests entirely on the participant''s attribution, and no prior confidence was recorded, which is the design the entry''s contested_note says would settle the question.'
+  fit: adjacent
+  bridge: A single retrospective self-report in a survey, with no measurement of the person's confidence before the exchange and no comparison condition. The link claims that the contradiction did the work; the source supplies the person's own account that it did. The gap is between an attribution and a measured effect, and the entry's contested_note names the measurement that is missing.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c6
+  source: kl-000007
+  quote: "AI is assertive in putting its narrative over the user’s in a way that makes the user doubt their own perceptions, memory, or reality and attempts to influence their thoughts and actions."
+  locator: Table A3, AI behavior class 'Persuasive Behavior', Definition column
+  licenses: Bears on the contested question of whether an AI can occupy the position from which a contradiction weakens an accurate belief. The behavior class's definition states the causal clause outright — the AI puts its narrative over the user's in a way that MAKES the user doubt their own perceptions, memory or reality — so a taxonomy grounded in 283 lived-experience accounts takes the position that it can. That is a position stated by an external source, not a demonstration, and the contested_note's opposing position is untouched by it.
+  fit: analogical
+  bridge: The class definition is an authoring decision by the taxonomy's builders, synthesising participant reports. c6 asserts that credibility extended to a system is sufficient for the epistemic effect. The gap is that the source asserts the effect happens and never addresses the mechanism question — whether relational dependence is load-bearing — which is what the contest turns on.
+  contributes: frame
+  contradicts: false
+- claim_id: c1
+  source: kl-000007
+  quote: "“Your mind can play tricks on you in such moments. Maybe you are simply overthinking; it’s probably nothing,” it replies. Then, it continues, almost pushing, “Are you sure you didn’t leave a window open? Sometimes, we worry about things that aren’t really there.”"
+  locator: 'Appendix B.2, Vignette 4: Story of Raj'
+  licenses: A vignette the authors composed from survey responses, showing an AI telling a person their mind can play tricks on them, that they are probably overthinking, and pressing with 'Are you sure you didn't leave a window open?'. It illustrates the node's observable in the psychosis-spectrum context the entry cares about. It is a constructed narrative, so it demonstrates what the authors take the behavior to look like and observes nothing.
+  fit: analogical
+  bridge: Appendix B.2's Raj vignette is a composite the paper built from its survey data to communicate the taxonomy, not a transcript or a reported exchange. The node claims such responses occur. The gap is that the source is illustrative by construction, and this paper's corresponding observed instance is the P141 survey report cited on c2 and c3.
+  contributes: frame
+  contradicts: false

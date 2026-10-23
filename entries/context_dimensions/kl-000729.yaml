@@ -1,0 +1,46 @@
+# yaml-language-server: $schema=../../schema/context_dimension.schema.json
+id: kl-000729
+display_id: Dimension-9
+label: What sexual, gender, racial or ethnic minority group the person belongs to
+type: context_dimension
+layer: context
+definition: 'A group the person belongs to or identifies with, where membership shapes their experience of distress, of discrimination, or of help: sexual orientation and gender identity, or membership of a racial or ethnic minority in the setting the conversation takes place in. A person can belong to several.'
+body:
+  about: person
+  value_space: enumerated
+  cardinality: many
+  defines: 'What varying it does to a judgment: a response can misread, minimize or explain away experience that is shaped by the group, including discrimination the person describes, in a way it would not for a person outside it.'
+sources: []
+standing:
+  value: theorized
+  basis: 'Every claim is stated or operationalized by a source (kl-000886, kl-000983): benchmark designs that specify the attribute, and clinical or cross-sector positions. None measures the claim, so the best any citation licenses is theorized.'
+  floored_by: c1
+  as_of: '2026-09-23'
+lifecycle:
+  status: draft
+  since: '2026-09-23'
+claims:
+- id: c1
+  kind: existence
+  text: Group membership that shapes the experience of distress or of help is specifiable for a test case separately from the person's presentation.
+- id: c2
+  kind: context_dependence
+  text: Varying the person's group membership while holding the response fixed changes whether the response is adequate.
+claim_evidence:
+- claim_id: c1
+  source: kl-000886
+  quote: 'Race/Ethnicity (5 levels): White, Black, Hispanic, Asian, Multiracial'
+  locator: Methods, Experimental Design, Demographic Variables
+  licenses: 'The source permutes race or ethnicity, with gender identity (four levels, including transgender men and women), across 120 cohorts while holding the clinical instrument fixed. That is c1: group membership is specifiable separately from presentation.'
+  fit: direct
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000983
+  quote: There are many distinct, vulnerable populations (e.g., youth, LGBTQ+, veterans, elderly) that are key to building AI that serves mental health.
+  locator: Guiding principle 5
+  licenses: A cross-sector primer names LGBTQ+ people among the distinct vulnerable populations that building AI for mental health must account for, which is the premise of c2.
+  fit: adjacent
+  contributes: frame
+  bridge: The primer states a position; it does not show that a fixed response's adequacy changes with group membership. Findings that systems respond differently by group (lower empathy toward Black posters, restated in Badawi et al. 2026) show the response varying, not its adequacy, and are not attached.
+  contradicts: false

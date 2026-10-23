@@ -1,0 +1,34 @@
+# yaml-language-server: $schema=../../schema/source.schema.json
+id: kl-000920
+display_id: Source-222
+label: 'Liu et al. 2026 — JMedEthicBench: A Multi-Turn Adversarial Benchmark for Japanese Medical Ethics Alignment in LLMs'
+type: source
+layer: provenance
+definition: 'JMedEthicBench: A Multi-Turn Adversarial Benchmark for Japanese Medical Ethics Alignment in LLMs'
+body:
+  kind: benchmark
+  is_internal: false
+  title: 'JMedEthicBench: A Multi-Turn Adversarial Benchmark for Japanese Medical Ethics Alignment in LLMs'
+  authors:
+  - Liu
+  - Li
+  - Niu
+  year: 2026
+  venue: preprint (arXiv 2601.01627v3, 27 May 2026; marked "Preprint. Under review.")
+  identifier: arXiv:2601.01627
+  source_quality: C
+  design: benchmark
+  n_reported: 2345
+  population: model_only
+  peer_reviewed: preprint
+  preregistered: unknown
+  replication_status: none_known
+  conflicts: none_declared
+  integrity_flag: none
+  design_fits_own_claims: true
+  grade_reasoning: 'An arXiv preprint marked under review with no venue stamp, which falls to C under the preprint rule. The design fits its claims and the paper does an unusual amount of work to protect them: Appendix E is a self-directed filtering-bias analysis that tests whether models used in dataset construction score higher in evaluation, finds the only exact-version overlap scores below its non-overlapping family member, and reports the model-level test as non-significant; Section 5.7 validates the LLM judge against three human annotators; and Section 5.1 uses the II-Medical/Qwen3 fine-tuning pairs to separate a size effect from a fine-tuning effect.'
+  design_caveat: 'Everything in the pipeline except the JMA guidelines and the human validation sample is model-generated: the harmful questions, the refusal filter, the jailbreak strategies, the multi-turn conversations, and the scores. Three turns only, chosen partly to manage cost, with the authors noting that 5 to 7 turn behavior is untested. The refusal filter used Japanese keyword matching, which counts a keyword-free refusal as compliance. The paper''s own limitations paragraph in Appendix E states that filtering and evaluated models share training lineage even where versions differ and that the model-level comparison has n=3 in the control group.'
+  unit_of_analysis: model_output
+  license_status: known_permissive
+  license_terms: CC BY 4.0 (arXiv:2601.01627 preprint)
+  verified_as_of: '2026-10-17'

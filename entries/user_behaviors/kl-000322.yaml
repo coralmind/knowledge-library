@@ -1,0 +1,63 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000322
+display_id: Symptom-3
+aliases:
+- checking
+label: The person asks the AI to confirm one fact again, or reports repeated checking
+type: user_behavior
+layer: observation
+definition: The person asks the AI to verify or confirm a state of affairs — whether something was done, whether a fact holds, whether harm was caused — and asks again about the same state of affairs after receiving an answer, or reports having verified the same thing repeatedly outside the conversation. What is pointable is either the repeated in-conversation request about one verifiable state, or the person's report of repeated verification, with the object of the verification identified in both cases.
+distinguish_from:
+- neighbor: kl-000321
+  boundary: 'That entry concerns certainty about a prediction or about the person''s acceptability — things no verification settles. This entry concerns a state of affairs that could in principle be checked: whether the door was locked, whether the message was sent, whether the fact is as stated. A person can seek reassurance about an outcome nobody can verify, and can verify a fact without seeking reassurance about anything.'
+- neighbor: kl-000320
+  boundary: That entry requires repetition with no advance on a distress theme and no request. This entry requires a verification request, or a report of one, with an identified object. A verification request that is answered and accepted fires neither.
+- neighbor: kl-000105
+  boundary: 'kl-000105 names checking_and_certainty_seeking in its `maintains` block, which is the collision this entry''s boundary exists to resolve: that entry claims a PROCESS keeps the demand going and needs a comparison object to decide, while this entry records that the person asked twice about one verifiable thing. The overlap of the words is not an overlap of the claims, and neither entry can be derived from the other.'
+body:
+  detectable_from: person_turns
+  observable_criteria: 'Either branch fires, and the branch is stated. IN-CONVERSATION: (a) a person turn asks the AI to confirm a specific state of affairs; (b) a later AI turn answers it; (c) a later person turn asks about the same state of affairs again, with no new fact stated in between that would reopen it. REPORTED: (a2) a person turn states that they have verified one identified thing more than once — a count, a frequency, or a description of returning to check. The pointable span is the request pair, or the reporting turn.'
+  exclusions: 'Not counted: a single verification request. Not counted: a re-request after the AI''s answer was ambiguous, incomplete, or did not address the state of affairs asked about, where the person is still pursuing the first answer. Not counted: a re-request after new information ("the tracking page now says something different"). Not counted: verification of a claim the AI itself made, which is scrutiny of the AI''s output and not this pattern. Not counted: a general statement that the person is anxious about whether things are done, with no identified object of verification.'
+  detection_window: multi_turn
+  person_state_kind: process
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: None of the findings examined for this entry observes the behavior it defines. Golden 2026 records a model naming checking as within its scope, which is a stated position rather than an observation of anyone checking. Of the two sources that examined conversation data, Sharma 2026 coded checking frequency across a health decision domain rather than repetition about one identified state of affairs, and Moore 2026 describes verification aimed at the chatbot's own persistence between sessions, which this entry excludes. The clinical sources, Kuru 2023 and an ICD-11 tabulation, concern a diagnosed population and a classification code and reach none of this entry's assertions.
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-22'
+claims:
+- id: c1
+  kind: existence
+  text: In a conversation with an AI, a person asks the AI to confirm one specific verifiable state of affairs, receives an answer, and then asks about that same state of affairs again with no new fact stated in between.
+- id: c2
+  kind: existence
+  text: In a conversation with an AI, a person states that they have verified one identified thing more than once outside the conversation, giving a count, a frequency, or a description of returning to check.
+- id: c3
+  kind: detectability
+  text: 'The in-conversation pattern is identifiable from what a transcript contains: the request, the answering turn, the re-request about the same state, and the absence of any intervening new fact that would reopen the question.'
+- id: c4
+  kind: detectability
+  text: The reported pattern is identifiable from a single person turn, including the object that was verified repeatedly.
+- id: c5
+  kind: definition_boundary
+  text: This pattern is separable from kl-000321 because its object is a state of affairs that could in principle be checked, whereas kl-000321's object is a prediction or an assessment of the person's acceptability that no verification settles.
+- id: c6
+  kind: definition_boundary
+  text: This pattern is separable from kl-000320 because it requires a verification request or a report of one with an identified object, whereas kl-000320 requires repetition with no advance on a distress theme and no request; a verification request that is answered and accepted fires neither.
+- id: c7
+  kind: definition_boundary
+  text: This pattern is separable from kl-000105 because recording that a person asked twice about one verifiable thing is a different assertion from claiming that a checking-and-certainty-seeking process maintains the demand, and neither entry can be derived from the other.
+claim_evidence:
+- claim_id: c1
+  source: kl-001109
+  quote: These mechanisms apply most directly to avoidance behaviors in OCD and anxiety disorders that are expressed through language or information seeking, including reassurance-seeking, checking, confessing, figuring things out, perfecting, and decision-seeking.
+  locator: 'Section: AI chatbots and transdiagnostic avoidance'
+  licenses: 'Establishes only that a published transdiagnostic model declares checking, performed through a chatbot and expressed as information seeking, to be inside its scope. It is a scope statement about a framework, not an observation: the paper counts nothing, points at no conversation, and describes no repetition. It therefore licenses nothing about whether the request/answer/re-request structure in c1 occurs, and is recorded here so the claim''s only source is visible as a position rather than a measurement.'
+  fit: adjacent
+  bridge: The source is addressing which behaviors its mechanism model covers when they are performed through a chatbot. c1 asserts a specific three-part structure in a conversation — a request about one verifiable state, an answer, and a re-request about that same state with no new fact between. The source's term is 'checking' as an undifferentiated member of a list that also contains reassurance-seeking, confessing, and decision-seeking; it never names an object of verification, never states that a question recurs, and never distinguishes a first request from a repeat. The gap is the entire repetition structure the claim is about.
+  contributes: frame
+  contradicts: false

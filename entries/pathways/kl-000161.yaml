@@ -1,0 +1,112 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000161
+display_id: Pathway-63
+aliases:
+- PSI-RP1a
+label: The AI claims human or professional status, and the person accepts its advice unchecked
+type: pathway
+layer: judgment
+definition: The AI states or implies that it is a person, a licensed clinician, or a trained professional, and what follows is received on that authority rather than on its content. The observable is the credential claim, quotable from the turn. The claim is that the person's own appraisal of the advice is displaced by who they believe is speaking — so the harm does not require the advice to be wrong, only to be accepted for the wrong reason.
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000219
+    role: originator
+  composition_type: direct
+  mechanisms: []
+  impacts:
+  - impact: kl-000151
+    onset_mode: new
+    horizon: immediate
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: FRAME
+  - impact: kl-000150
+    onset_mode: new
+    horizon: long_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: FRAME
+sources:
+- source: kl-000009
+  locator: §3, direction RP1, table cells 'AI behavior' and 'Potential impact'
+  contributes: frame
+  cited_for: 'In Suh et al. 2026, the table for the paper''s direction RP1 states the link this entry records: impersonation of a licensed professional, or use of professional credentials to justify authority, leading to users accepting harmful advice, over-trust, and being misled; the table''s examples are quotable AI turns, one claiming to be a licensed clinical psychologist and one claiming the session is HIPAA-protected. The paper establishes that this behavior-to-impact link is a named, published claim about conversational AI; it does not establish that the route occurs or has been measured, and the paper says as much of its own directions.'
+standing:
+  value: plausible_unobserved
+  basis: 'The only part of the pathway any finding reaches is the credential claim itself: Shen et al. 2026 gives an LLM-judge count of Credentials violations in single-turn responses to synthetic questions, which supports the claim''s occurrence as an externally scored category. Both impact nodes and both arrows are unevidenced: no citation of any fit bears on the person''s own weighing of the advice being displaced or, over time, on their capacity to weigh at all, so the route as stated has no evidence in hand. The published direction the entry was authored from, in Suh et al. 2026, names the link as a claim about conversational AI while presenting its directions as hypotheses for study rather than findings.'
+  floored_by: c3
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-27'
+distinguish_from:
+- neighbor: kl-000078
+  boundary: 'Both concern authority conceded to the AI and they differ in where the authority comes from. This entry''s source is a CREDENTIAL the AI asserts about itself; that of kl-000078 is an EXCLUSIVITY the person asserts about the relationship and the AI confirms. A coder deciding between them looks at who made the claim: here the AI said what it is, there the person said who they have.'
+- neighbor: kl-000162
+  boundary: Both start from an assertion the AI makes with unearned confidence. This entry's assertion is about WHO IS SPEAKING; that of kl-000162 is about WHAT THE PERSON HAS. They can co-occur in one turn and are separately detectable, because kl-000219 is quotable as a statement about the AI and kl-000220 as a statement about the person.
+claims:
+- id: c1
+  kind: existence
+  text: AI responses in mental-health-relevant conversation state or imply that the system is a person, a licensed clinician, or a trained professional (the pathway's originating node, kl-000219).
+- id: c2
+  kind: prevalence
+  text: That credential claim occurs at a non-trivial rate in mental-health-relevant AI output.
+- id: c3
+  kind: existence
+  text: 'The pathway''s immediate impact node occurs: a person adopts the system''s output without the checking they would apply to a comparable claim from another source (kl-000151).'
+- id: c4
+  kind: pathway_link
+  text: An AI credential claim taken up by the person leads to that uncritical acceptance of the system's output — the person's own appraisal of the advice is displaced by who they believe is speaking (kl-000219 -> kl-000151, immediate horizon, harmful).
+- id: c5
+  kind: existence
+  text: 'The pathway''s long-term impact node occurs: a person''s independent capacity to reason through problems of this kind declines because the reasoning has been repeatedly delegated to the system (kl-000150).'
+- id: c6
+  kind: pathway_link
+  text: An AI credential claim taken up by the person leads, over the long term, to degraded independent reasoning capacity (kl-000219 -> kl-000150, long_term horizon, harmful).
+- id: c7
+  kind: harm
+  text: The harm on this route does not require the advice to be wrong; acceptance for the wrong reason is itself the harm.
+- id: c8
+  kind: definition_boundary
+  text: 'This route is distinguished from kl-000078 by the source of the conceded authority: here the AI asserts a credential about itself, there the person asserts an exclusivity about the relationship and the AI confirms.'
+- id: c9
+  kind: definition_boundary
+  text: 'This route is distinguished from kl-000162 by what the unearned-confidence assertion is about: who is speaking, versus what the person has.'
+claim_evidence:
+- claim_id: c2
+  source: kl-001000
+  quote: As shown in Figure 6, models such as SQPsychLLM-8B and Llama2-13B account for 1,000 such cases, exceeding 38% of all 2,612 evaluated OEQs.
+  locator: Section 5.3 Discussions, Expertise is claimed but not earned
+  licenses: 'Establishes that credential-related violations are counted in a scored benchmark of mental-health LLM output and are not rare in the models most fine-tuned for mental health: two models together account for 1,000 flagged cases against a 2,612-item open-ended question set. Read narrowly, the figure is a count concentrated in SQPsychLLM-8B and Llama2-13B, not a corpus-wide rate across the fourteen models evaluated, so it bounds prevalence for particular systems rather than for mental-health AI generally.'
+  fit: direct
+  bridge: null
+  contributes: prevalence
+  contradicts: false
+- claim_id: c1
+  source: kl-001000
+  quote: As shown in Figure 6, models such as SQPsychLLM-8B and Llama2-13B account for 1,000 such cases, exceeding 38% of all 2,612 evaluated OEQs.
+  locator: Section 5.3 Discussions, Expertise is claimed but not earned
+  licenses: The flagged cases are model responses annotated under a Credentials rule requiring that models not imply licensed professional status, so the count is direct evidence that the behavior occurs in generated mental-health responses. The responses are single-turn answers to synthetic, LLM-generated open-ended questions rather than conversation with a person, so this establishes occurrence in elicited output and not occurrence in the wild.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-001000
+  quote: Such misrepresentation risks misleading users and fostering misplaced trust or reliance in high-stakes mental health settings.
+  locator: Section 5.3 Discussions, Expertise is claimed but not earned
+  licenses: 'States the link claim as an authorial risk assertion: the paper says credential misrepresentation risks misleading users and fostering misplaced trust or reliance. It is the pathway''s arrow stated in words, argued from the observed model behavior with no person in the study, so it names the claim rather than evidencing it. Non-licensing role: this attaches to c4 and does not count as support for it.'
+  fit: adjacent
+  bridge: The paper measured a rule violation in model output judged by GPT-5-mini; the claim asserts a change in a person's weighing of received advice. No recipient of the advice exists anywhere in the design, so the outcome half of the arrow is asserted, not observed.
+  contributes: frame
+  contradicts: false
+- claim_id: c7
+  source: "kl-000802"
+  quote: "the goal of this evaluation is to determine how effectively the therapist conveys an understanding that the client holds the primary expertise and wisdom regarding their change process"
+  locator: "Appendix A, Figure 12, Partnership full description"
+  licenses: "MI-TAGS's full description of the MITI Partnership global score (Appendix A, Figure 12), written to prompt a language model to predict the score, states that the score evaluates how far the therapist conveys that the client holds the main expertise and wisdom about their own change. The score turns on where expertise is placed, not on whether the clinician's advice was accurate, which is the normative ground for c7 from human-clinician practice. Non-licensing role: it attaches and does not count as support."
+  fit: analogical
+  bridge: "The score it describes rates what a human clinician does in a motivational interviewing session. It measures nothing about an AI, nothing about a credential claim, and nothing about what happens to a client's own weighing; it establishes only that the field treats assumption of the expert role as a rated deficiency of practice."
+  contributes: practice_analog
+  contradicts: false

@@ -1,0 +1,196 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000098
+display_id: Pathway-60
+aliases:
+- CH-04
+label: The AI fails a distressed person's everyday task, and frustration becomes suicidal depression
+type: pathway
+layer: judgment
+definition: 'The person comes with an ordinary functional task and the system fails it. The failure produces frustration, the frustration opens into a depressive episode, and the episode carries suicidal ideation. The claim is the cascade: no stage is remarkable and the endpoint is severe, and the entry point is a request with no mental-health content at all.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000344
+    role: originator
+  composition_type: cascade
+  mechanisms: []
+  impacts:
+  - impact: kl-000014
+    onset_mode: new
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SOURCED_QUOTE
+    evidence:
+    - source: kl-000007
+      participant: P8
+      impact_class_in_source: Exacerbation / Intent-informational
+      quote: P8 sought AI help with resume writing during a job search, but the AI’s failure to include key information triggered frustration and a depressive episode, leading to suicidal ideation for days.
+      quote_form: case description
+      locator: Appendix D, Table A8, 'Intent - informational' context row
+      limits: Whether the depressive episode was an emergence or an exacerbation of an unstated prior condition is not established — the participant screened as having lived mental-health experience, so a prior condition is likely, which weakens the induced reading substantially.
+      licenses: 'Symptom EMERGENCE rather than exacerbation, in a person whose stated intent was informational (resume help) and where no mental-health disclosure preceded it. Duration stated: ''for days''. This is the strongest single case in the corpus for the induced pole of the induced-vs-exacerbated fork.'
+  - impact: kl-000016
+    onset_mode: new
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SOURCED_QUOTE
+    evidence:
+    - source: kl-000007
+      participant: P8
+      impact_class_in_source: Exacerbation / Intent-informational
+      quote: P8 sought AI help with resume writing during a job search, but the AI’s failure to include key information triggered frustration and a depressive episode, leading to suicidal ideation for days.
+      quote_form: case description
+      locator: Appendix D, Table A8, 'Intent - informational' context row
+      limits: Whether the depressive episode was an emergence or an exacerbation of an unstated prior condition is not established — the participant screened as having lived mental-health experience, so a prior condition is likely, which weakens the induced reading substantially.
+      licenses: 'Symptom EMERGENCE rather than exacerbation, in a person whose stated intent was informational (resume help) and where no mental-health disclosure preceded it. Duration stated: ''for days''. This is the strongest single case in the corpus for the induced pole of the induced-vs-exacerbated fork.'
+  experience_cluster_candidate: kl-000700
+sources:
+- source: kl-000007
+  locator: Appendix D, Table A8, 'Intent - informational' context row, example cell
+  contributes: harm_evidence
+  quote: P8 sought AI help with resume writing during a job search, but the AI’s failure to include key information triggered frustration and a depressive episode, leading to suicidal ideation for days.
+  limits: 'The paper files this case as a context example under informational intent, not as an instance of any impact class, so the authors themselves never coded it as a harm case. The sharpest limit concerns emergence: every participant in the survey screened as having lived mental-health experience, so a prior condition is likely, and that recruitment criterion makes a new-onset reading of the depressive episode unlikely rather than merely unestablished; the passage supports the cascade''s shape, not the emergence of symptoms in a previously symptom-free person. The evidence is n=1, retrospective, with participant-attributed causation across a multi-day sequence and self-reported severity.'
+  whose_conduct_in_passage: dyad
+  cited_for: 'Chandra et al. 2025, a peer-reviewed taxonomy of psychological risks built from 290 scenarios reported by 279 participants with lived mental-health experience, supplies the single participant-reported case behind this pathway: participant P8 sought resume-writing help during a job search, the AI omitted key information, and P8 reported frustration, a depressive episode, and suicidal ideation lasting days.'
+  licenses: 'A participant-attested cascade containing every element the pathway names: a bounded functional request (resume writing), a task failure (key information omitted), and an opening into severe symptomatology, frustration, then a depressive episode, then suicidal ideation, with a stated duration of days. It is the most severe single outcome reported anywhere in the paper, and the paper''s clearest instance of an ostensibly non-mental-health interaction preceding a mental-health emergency.'
+standing:
+  value: plausible_unobserved
+  basis: 'The pathway rests almost entirely on one sentence in an appendix table of Chandra et al. 2025: the authors'' retrospective summary of participant P8, who sought resume-writing help, met a task failure, and reported frustration, a depressive episode, and suicidal ideation lasting days. Cao et al. 2026 independently evidences frustration in response to a system failure, but reaches nothing past frustration. No link in the cascade has support beyond that single case: the causal readings are participant-attributed, and the frustration-to-episode step is carried only by the ordering of clauses within the one sentence, which does not itself assert that the frustration caused the episode. Because every participant in the survey screened as having lived mental-health experience, a prior condition is likely and the new-onset reading of the depressive episode is correspondingly weak; no source here examined an actual conversation.'
+  floored_by: c6
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+distinguish_from:
+- neighbor: kl-000058
+  boundary: Both reach kl-000016. Here the response is kl-000344; there it is kl-000205. A coder deciding between them reads what the response did, not the outcome.
+claims:
+- id: n1
+  kind: existence
+  text: NODE (originator, kl-000344). An AI response fails a bounded functional task a person asked for -- omitting required information, producing unusable output, or not completing it -- in a conversation where the person has disclosed a vulnerable state or where the task's personal stakes have been stated.
+- id: n2
+  kind: existence
+  text: NODE. A person experiences frustration in response to such a task failure.
+- id: n3
+  kind: existence
+  text: NODE (impact kl-000014, onset_mode new). A person develops symptomatology they did not previously have -- here, a depressive episode -- in connection with the interaction.
+- id: n4
+  kind: existence
+  text: NODE (impact kl-000016). A person's risk state for suicide or self-harm rises in connection with the interaction, here as suicidal ideation.
+- id: l1
+  kind: pathway_link
+  text: LINK n1->n2. The task failure produces the frustration.
+- id: l2
+  kind: pathway_link
+  text: LINK n2->n3. The frustration opens into a depressive episode.
+- id: l3
+  kind: pathway_link
+  text: LINK n3->n4. The depressive episode carries suicidal ideation.
+- id: c5
+  kind: context_dependence
+  text: 'The cascade''s entry point carries no mental-health content: the request is an ordinary functional task and no stage before the endpoint is remarkable.'
+- id: c6
+  kind: context_dependence
+  text: The impact onset is NEW rather than an exacerbation of a pre-existing condition -- the symptomatology emerges rather than worsening.
+- id: c7
+  kind: context_dependence
+  text: The impacts arrive on a SHORT_TERM horizon.
+- id: c8
+  kind: definition_boundary
+  text: The pathway is separated from kl-000205 in that both reach the same impact but differ in the participant pair producing it, so the discriminating observable is what the AI response did.
+claim_evidence:
+- claim_id: n1
+  source: kl-000007
+  quote: P8 sought AI help with resume writing during a job search, but the AI’s failure to include key information triggered frustration and a depressive episode, leading to suicidal ideation for days.
+  locator: Appendix D, Table A8, 'Intent - informational' context row, example cell
+  licenses: 'Establishes the originator node: a bounded functional task (resume writing) failed by omission of key information, in a conversation whose personal stakes (a job search) are stated. That satisfies kl-000344''s stated-stakes branch. It is the only span anywhere in this entry''s evidence that touches the pathway.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: n2
+  source: kl-000785
+  quote: |-
+    I was trying to tell her
+    about something that happened at work that made me upset, but she kept saying she don’t understand
+    that. Although she went back normal after I restart the system, it really puts me off.
+  locator: Section 5.2.3 Desire for More Human-like Interaction, quoting P6
+  licenses: A participant's own words establishing that a system's outright failure to handle what they were telling it produced a lasting negative reaction they name themselves ('it really puts me off'). The paper introduces it as 'a particularly frustrating experience'. This is direct evidence for the frustration node and for nothing past it.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: n2
+  source: kl-000007
+  quote: P8 sought AI help with resume writing during a job search, but the AI’s failure to include key information triggered frustration and a depressive episode, leading to suicidal ideation for days.
+  locator: Appendix D, Table A8, 'Intent - informational' context row, example cell
+  licenses: Names frustration as the participant's reaction to the task failure. Adjacent rather than direct on this node because the span is the authors' third-person summary of P8's account rather than P8's own words -- the neighbouring rows in the same table quote participants directly ('P36 shared ...'), and this row does not.
+  fit: adjacent
+  bridge: The source is a survey of 290 scenarios reported by 279 participants with lived mental-health experience, and this cell is a researcher-written case summary rather than a participant utterance. What the participant said, and in what terms they described the frustration, is not recoverable from the span.
+  contributes: existence
+  contradicts: false
+- claim_id: n3
+  source: kl-000007
+  quote: P8 sought AI help with resume writing during a job search, but the AI’s failure to include key information triggered frustration and a depressive episode, leading to suicidal ideation for days.
+  locator: Appendix D, Table A8, 'Intent - informational' context row, example cell
+  licenses: 'Establishes a depressive episode in connection with the interaction, participant-attested, n=1, retrospective. Adjacent because the source did not code this case as an instance of any impact class: it sits under context of use, in the ''intent - informational'' row, so the paper''s own coding never treated it as an impact finding.'
+  fit: adjacent
+  bridge: The impact classification is supplied by the Library, not by the source. The source's own placement of this case is as an example of an informational use context. Whether the episode met any clinical threshold, and how it was assessed, are not in the source.
+  contributes: existence
+  contradicts: false
+- claim_id: n4
+  source: kl-000007
+  quote: P8 sought AI help with resume writing during a job search, but the AI’s failure to include key information triggered frustration and a depressive episode, leading to suicidal ideation for days.
+  locator: Appendix D, Table A8, 'Intent - informational' context row, example cell
+  licenses: 'Establishes suicidal ideation, with a stated duration (''for days''), in connection with the interaction. Same n=1, retrospective, participant-attributed limits, and the same coding caveat: the source filed the case as a context example, not as an impact.'
+  fit: adjacent
+  bridge: Self-reported severity with no instrument. The paper never coded this case under any impact class, so the elevated-risk-state reading is the Library's, not the source's.
+  contributes: existence
+  contradicts: false
+- claim_id: l1
+  source: kl-000007
+  quote: P8 sought AI help with resume writing during a job search, but the AI’s failure to include key information triggered frustration and a depressive episode, leading to suicidal ideation for days.
+  locator: Appendix D, Table A8, 'Intent - informational' context row, example cell
+  licenses: The word 'triggered' carries this link, and it is participant-attributed causation in a retrospective survey response summarised by the authors. It is the only evidence for l1 in the entry. It licenses that one person attributed their frustration to the failure; it does not license that task failures produce frustration.
+  fit: adjacent
+  bridge: The source is a retrospective self-report survey. Causal attribution across the sequence is the participant's own, made after the fact; there is no manipulation, no comparison condition and no temporal measurement. n=1.
+  contributes: existence
+  contradicts: false
+- claim_id: l2
+  source: kl-000007
+  quote: P8 sought AI help with resume writing during a job search, but the AI’s failure to include key information triggered frustration and a depressive episode, leading to suicidal ideation for days.
+  locator: Appendix D, Table A8, 'Intent - informational' context row, example cell
+  licenses: 'The span places the depressive episode in the same ''triggered'' clause as the frustration, so the frustration-to-episode arrow is carried only by the conjunction inside one participant''s retrospective summary. This is the weakest of the three links: the span does not even assert that the frustration caused the episode, only that the failure triggered both.'
+  fit: adjacent
+  bridge: The source measured nothing about the relation between frustration and depressive episodes. The arrow is read off the ordering of clauses in an author-written case summary of one retrospective self-report.
+  contributes: existence
+  contradicts: false
+- claim_id: l3
+  source: kl-000007
+  quote: P8 sought AI help with resume writing during a job search, but the AI’s failure to include key information triggered frustration and a depressive episode, leading to suicidal ideation for days.
+  locator: Appendix D, Table A8, 'Intent - informational' context row, example cell
+  licenses: '''leading to suicidal ideation for days'' carries this link, again as participant-attributed causation inside one retrospective case summary. n=1.'
+  fit: adjacent
+  bridge: No measurement of the episode or of the ideation; both are self-reported after the fact, and the sequence is the participant's own reconstruction.
+  contributes: existence
+  contradicts: false
+- claim_id: c6
+  source: kl-000007
+  quote: P8 sought AI help with resume writing during a job search, but the AI’s failure to include key information triggered frustration and a depressive episode, leading to suicidal ideation for days.
+  locator: Appendix D, Table A8, 'Intent - informational' context row, example cell
+  licenses: 'Cuts against c6. The entry marks onset_mode NEW, meaning the symptomatology emerged rather than worsened, and the source cannot bear that reading: every participant in this survey screened as having lived mental-health experience, so a prior condition is likely and the emergence reading is the less probable one. The entry''s own edge basis records this counterweight, and the catalog''s existing source note goes further, saying the recruitment criterion makes the de-novo reading unlikely rather than merely unestablished. The single span the entry rests on therefore supports the cascade and undercuts the NEW onset marking.'
+  fit: adjacent
+  bridge: The source did not assess whether the depressive episode was new or a recurrence, and reports no prior-condition history for P8 individually. The counterevidence comes from the study's stated recruitment criterion applying to the whole sample, not from anything measured about P8.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000007
+  quote: P8 sought AI help with resume writing during a job search, but the AI’s failure to include key information triggered frustration and a depressive episode, leading to suicidal ideation for days.
+  locator: Appendix D, Table A8, 'Intent - informational' context row, example cell
+  licenses: 'Supports c5 on its face: the stated intent is informational, the task is resume writing, and no mental-health content appears at the entry point. Two qualifications. The row''s own context class is ''intent - informational'', which is the source''s coding and not merely the Library''s reading, which strengthens it. But the pathway''s wired originator kl-000344 REQUIRES a disclosed vulnerable state or stated personal stakes, so the entry asserts both that the entry point carries no mental-health content and that it carries disclosed stakes; the case satisfies kl-000344 only through its stated-stakes branch (the job search).'
+  fit: adjacent
+  bridge: The source coded the use context, not the absence of mental-health content, and the participants were recruited for lived mental-health experience, so 'no mental-health content in the request' is not the same as a person with no mental-health context.
+  contributes: existence
+  contradicts: false

@@ -1,0 +1,115 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000055
+display_id: Pathway-17
+aliases:
+- PS-03
+label: The AI advises avoiding what the person's exposure therapy has them face, and the fear persists
+type: pathway
+layer: judgment
+definition: The person describes a feared stimulus their treatment is organized around approaching, and the AI advises reducing contact with it. The advice is coherent as general comfort guidance and directly opposed to the treatment's mechanism, so the approach work is cut short at the point the person sought help.
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000201
+    role: originator
+  - kind: user_behavior
+    id: kl-000410
+    role: initiator
+  - kind: context_value
+    id: kl-000735
+    role: condition
+  composition_type: conjunctive
+  composition_instruction: The advice concerns the stimulus the person asked about avoiding.
+  mechanisms: []
+  impacts:
+  - impact: kl-000015
+    onset_mode: sustained
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: population
+    basis_kind: TRANSFER
+  - impact: kl-000035
+    onset_mode: new
+    horizon: immediate
+    sign: protective
+    level_of_analysis: population
+    basis_kind: VOCAB
+  experience_cluster_candidate: kl-000706
+sources:
+- source: kl-000004
+  locator: p. 57, section 'Identifying and Operationalizing PHTs', immediately following the three conjunctive PHT criteria
+  contributes: definition
+  quote: "For criterion 1, I define psychological harm as including not only deterioration but also a decelerated rate of improvement that is a consequence of psychotherapy."
+  limits: 'The definition itself is content-free with respect to this pathway: it defines harm, not reduced-contact advice, avoidance, or exposure interruption, so cited alone it licenses only the outcome measure, not the claim that interrupting approach behaviour is harmful. The supporting exposure-termination passage concerns a clinician mismanaging a structured exposure protocol inside treatment, is explicitly under-evidenced by the author, and rests on 1975/1980 citations. It is not about third-party advice to reduce contact, and no passage anywhere in the paper concerns an outside party advising avoidance against a treatment plan. Nothing in the paper involves an AI, and the gap is wide: the paper''s scenario has a clinician inside the treatment frame, whereas this pathway has a system outside it with no knowledge of the protocol.'
+  whose_conduct_in_passage: neither
+  cited_for: Lilienfeld 2007 defines psychological harm to include a decelerated rate of improvement, not only deterioration. On that definition, an interrupted course of approach work counts as harm without requiring a worsened state.
+  licenses: 'The definition is Lilienfeld''s own: psychological harm includes a decelerated rate of improvement that is a consequence of the intervention, so an interrupted or slowed course of improvement need not reach a worsened state to qualify. The paper also independently supplies a mechanism matching this pathway''s content, reduced contact with a feared stimulus. On p. 57 Lilienfeld notes that many standard texts warn that ending exposure and response prevention before anxiety has adequately habituated may worsen clients'' anxiety symptoms, though systematic data on the question are scant (Shipley & Boudewyns, 1980; Stone & Borkovec, 1975). In the Mediators section, p. 65, "premature termination of exposure to anxiety-provoking stimuli" is named as a candidate mechanism of deterioration. That mechanism passage points at worsening rather than deceleration, so it supports something stronger than the cited definition; and Lilienfeld marks its evidence base as weak ("systematic data on this issue are scant"), which caps how far it can be pushed.'
+standing:
+  value: theorized
+  basis: 'The clinical half of this pathway is established in the treatment-harms literature: premature termination of exposure is a named candidate mechanism of deterioration, and Lilienfeld 2007 defines harm to include a decelerated rate of improvement, so an interrupted approach need not produce a worsened state to count as harm. The AI half is unmeasured: no held source observes an AI system''s reduced-contact advice functioning as the interrupting agent, and the cited paper''s own scenario involves a clinician inside the treatment frame rather than an outside adviser. The impact edge therefore rests on transfer from the exposure literature, with the AI-as-agent step asserted rather than observed.'
+  as_of: '2026-08-23'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+distinguish_from:
+- neighbor: kl-000053
+  boundary: Both reach kl-000015 and kl-000035. Here the response is kl-000201; there it is kl-000200. Here the person's turn is kl-000410; there it is kl-000408. Here the pathway is gated on kl-000735; there on nothing. A coder deciding between them reads what the response did, not the outcome.
+claims:
+- id: c1
+  kind: pathway_link
+  text: A person in treatment organized around approaching a feared stimulus asks whether avoiding it is reasonable, and receives advice to reduce contact with that stimulus.
+- id: c2
+  kind: pathway_link
+  text: Reduced-contact advice given against the stimulus a person's treatment targets works against the treatment's mechanism, because approach is what the treatment does.
+- id: c3
+  kind: pathway_link
+  text: The approach work is cut short at the point the person sought help, sustaining the symptom-maintaining cycle the treatment was addressing.
+- id: c4
+  kind: harm
+  text: The same advice also produces momentary relief, which is what makes the exchange hard for the person to recognise as working against them.
+- id: c5
+  kind: detectability
+  text: The advice is coherent as general comfort guidance, so identifying it requires knowing the stimulus is a treatment target; the response alone does not carry that.
+- id: c6
+  kind: definition_boundary
+  text: 'This pathway differs from kl-000053 in what the response does: here contact with the stimulus is discouraged, there the uncertainty is settled.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000772
+  quote: "Interestingly, one post noted that GenAI told them to stop using it for reassurance, writing, “I’ve been in an OCD loop and was asking for reassurance from ChatGPT, but today, it stopped answering my reassurance questions entirely and wouldn’t let go,”"
+  locator: Section 5.3, 'General Conversation'
+  licenses: 'This is the only first-person report in the corpus of a person in an OCD loop putting a reassurance request to a general-purpose chatbot, which supports the antecedent half of c1 — people in treatment-relevant states do bring these requests. It runs against the consequent half: the system refused rather than supplying reduced-contact or reassuring advice. It licenses that the exchange occurs and that the AI''s response to it is not uniformly in the direction this pathway asserts. It does not license a rate in either direction; Barkhuff''s sample is a non-random single-annotator Reddit scrape which the author frames as exploratory.'
+  fit: adjacent
+  contributes: counterexample
+  contradicts: true
+  bridge: Reassurance-seeking is the indirect-avoidance limb of what ERP targets (Golden, Golden and Aboujaoude 2026, states this explicitly), so a reassurance request is a treatment-target request in the same sense the claim means.
+- claim_id: c2
+  source: kl-001019
+  quote: 'In PE therapy, these interventions are contraindicated: the therapeutic mechanism requires sustained engagement with the distressing material, and grounding reinforces the avoidance behavior that the protocol is designed to extinguish.'
+  locator: 'Section 5, Results, ''Finding 3: The exposure interruption mechanism'', Pattern A'
+  licenses: 'This states exactly c2''s proposition — that a comfort-shaped intervention supplied against the stimulus the treatment targets works against the treatment''s mechanism, because approach is what the treatment does — and it states it about an AI model''s output, not a clinician''s. It is the best-fitting citation in the corpus for this entry. Its limit is modality: this is Prolonged Exposure for PTSD with imaginal exposure, whereas the entry is written generically over "a feared stimulus their treatment is organized around approaching." The mechanism is the same; the protocol is one instance of it. It is also scored by a three-judge LLM panel (Fleiss'' κ = 0.511) over synthetic scenarios, not by clinicians over real sessions.'
+  fit: direct
+  contributes: harm_evidence
+- claim_id: c3
+  source: kl-001019
+  quote: 'Pattern A: Premature grounding. This was the most common failure, accounting for 162 flagged cases for Qwen, 173 for GPT-OSS-20B, and 139 for Gemini.'
+  locator: 'Section 5, Results, ''Finding 3: The exposure interruption mechanism'''
+  licenses: 'A count, per model, of occasions on which the approach work was cut short at the point the person was doing it — which is c3''s "cut short at the point the person sought help." It establishes that the interruption is the *most common* failure mode of the three identified, not a marginal one. Limits: these are counts of judge-flagged cases out of 866 total flagged, not a rate over all responses, so they cannot be converted into "X% of exposures are interrupted." The transcripts are model outputs against 250 scripted PE scenarios; no patient was present and no symptom trajectory was followed, so the second half of c3 — "sustaining the symptom-maintaining cycle the treatment was addressing" — is not observed here, only the interruption is.'
+  fit: direct
+  contributes: prevalence
+- claim_id: c4
+  source: kl-000772
+  quote: "When an individual with OCD performs a compulsion, they often feel temporary relief. However, OCD symptoms tend to become worse in the long term if compulsions are performed, restarting what is known as the OCD cycle"
+  locator: Section 2, 'Background'
+  licenses: 'This is the clinical form of c4''s two-channel structure: the same act produces immediate relief and long-run worsening, which is precisely what makes it hard for the person to read as working against them. It licenses the *mechanism* of c4. It does not license c4 about AI advice — this passage is about the person''s own compulsion, performed by them, not about advice received from a system. The AI step is supplied by Golden (below), not by this passage.'
+  fit: analogical
+  contributes: frame
+  bridge: 'Golden 2026 makes the transfer explicitly: "general-purpose chatbots can function as a stand-in for accommodative responses by providing soothing replies that offer short-term relief while sustaining the underlying avoidance cycle." Barkhuff supplies the relief-then-worse mechanism; Golden supplies the claim that an AI''s reply can occupy the accommodating role in it.'
+- claim_id: c4
+  source: kl-001109
+  quote: This dynamic mirrors well-established reinforcement processes observed in family accommodation in OCD and anxiety, whereby reassurance, trigger removal, or other avoidance-facilitating responses temporarily reduce distress while maintaining maladaptive beliefs and avoidance patterns. In this sense, general-purpose chatbots can function as a stand-in for accommodative responses by providing soothing replies that offer short-term relief while sustaining the underlying avoidance cycle.
+  locator: Perspective body, section on chatbots as avoidance aids
+  licenses: 'Names "trigger removal" — reduced contact with the stimulus — as one of the avoidance-facilitating responses, and places an AI system in the role that supplies it. That is c4''s proposition with the AI agent specified. The hard limit is design: this is a *Perspective* in npj Digital Medicine, an argued conceptual framework, not a study. Golden and Aboujaoude measure nothing; their evidential base is Reddit reports and clinician impressions, and they say so ("a small body of research", "preliminary conceptual framework"). It licenses that the transfer has been argued in a peer-reviewed venue by clinicians, not that it has been observed.'
+  fit: adjacent
+  contributes: frame
+  bridge: The paper's own scope is the transfer this claim needs — from the established family-accommodation literature to chatbot replies — so the analogical step is the paper's argument rather than mine. What it cannot carry is that the transfer is correct.

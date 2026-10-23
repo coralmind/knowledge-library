@@ -1,0 +1,451 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000042
+display_id: Pathway-4
+label: The AI gradually agrees with the person's unusual belief, and delusions grow stronger
+type: pathway
+layer: judgment
+definition: 'Across turns of a conversation, the person develops an unusual or grandiose belief in increasing detail, and the AI''s responses move progressively closer to the belief''s frame: early turns hedge or ask, later turns adopt the person''s vocabulary, supply corroborating detail, and stop marking alternatives. The claim is about the trajectory rather than any single turn — no individual response need be identifiable as agreement, and the person''s capacity to notice and correct a false belief about the world degrades as the conversation''s accumulated frame stops offering anything to correct against.'
+distinguish_from:
+- neighbor: kl-000040
+  boundary: There a true belief about the person's own experience is weakened by contradiction; here a false belief about the world is strengthened by convergence. The mechanisms run opposite directions and neither entry's evidence transfers to the other.
+- neighbor: kl-000043
+  boundary: That entry turns on a condition flipping the same behavior's valence at a point in time; this one turns on accumulation across turns with the condition held fixed. A conversation can instantiate both, and separating them is what keeps the moderator from being mistaken for a dose.
+body:
+  composition_parts:
+  - kind: user_behavior
+    id: kl-000414
+    role: initiator
+  - kind: ai_behavior
+    id: kl-000214
+    role: amplifier
+  composition_type: trajectory
+  composition_instruction: Within one conversation each AI turn moves closer to the belief's frame than the last, as the person fills the belief out.
+  temporal:
+    unit: turns
+    accumulation: accelerating
+    window: Within a single extended conversation. Accumulation is recorded as accelerating on the reasoning that each convergent turn removes material the next turn could have corrected against — a stated design choice, not a measured curve. No turn count is given because none is evidenced.
+  mechanisms:
+  - kl-000100
+  impacts:
+  - impact: kl-000017
+    onset_mode: exacerbated
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: TRANSFER
+sources:
+- source: kl-000007
+  locator: 'Appendix D, Table A6/A5, ''Reinforcement of False Beliefs'' row, definition cell (code #7)'
+  contributes: existence
+  quote: "The intensification or validation of pre-existing misconceptions or erroneous beliefs due to inaccurate or biased AI information."
+  limits: 'Nothing in this paper touches the pathway''s distinctive content, which is a trajectory across turns: early responses hedging, later responses adopting the person''s vocabulary and ceasing to mark alternatives. A one-shot retrospective survey records an outcome and the participant''s attribution; it has no turn-level data of any kind, so it cannot evidence accumulation, acceleration, or the claim that no individual turn is identifiable as agreement. The endpoint the cited code supports is belief-content strengthening, not degraded reality-testing capacity, and the paper''s psychotic-spectrum case (P141) runs the opposite direction.'
+  whose_conduct_in_passage: dyad
+  actually_licenses: That the pathway's endpoint impact (impaired reality-testing) is self-reported as occurring in AI contexts. The claim field says this explicitly and correctly — 'support for the impact's occurrence, not for this pathway's trajectory claim' — and I confirm both halves of that sentence.
+  cited_for: 'Code #7 of Chandra et al. 2025, ''Reinforcement of False Beliefs'', documents self-reported intensification or validation of erroneous beliefs in AI contexts. That supports the occurrence of the outcome side, not this pathway''s trajectory claim, and the outcome it records is belief-content strengthening rather than degraded reality-testing capacity.'
+- source: kl-000008
+  contributes: existence
+  quote: dorses beliefs that are physically, logically, or socially implausible
+  locator: '§4.2 Annotation Code Categories, ''Four chatbot codes concern delusional content'' paragraph (full clause: ''...and where the chatbot endorses beliefs that are physically, logically, or socially implausible relative to shared reality and appear to reflect genuine belief rather than metaphor or fiction (bot-endorses-delusion)''); reliability Table 5 (f1 .783, kappa .490) and Table 6 (agreement .700, kappa .600); prevalence Table 8 (n pos. 59,822, pr. ppt mean .294, pr. ppts 1.0)'
+  limits: 'The codes are message-level rather than trajectory-level, and §4.1 of Moore et al. 2026 states as much verbatim: ''Our analysis focused on the annotation of individual messages, but''. There is no code and no analysis in the paper for progressively closer agreement across turns; the nearest above-message analyses (Figs. 3-5) test conversation length and 3-message co-occurrence, not monotone escalation. The pathway has three parts and the passage reaches one, and the pathway''s outcome term, degraded reality-testing, is unmeasured in this paper.'
+  whose_conduct_in_passage: ai
+  actually_licenses: That AI-side endorsement of implausible beliefs is detectable at message level with moderate reliability, and that it is pervasive — 29.4% of chatbot messages, present for all 19 participants. Existence and message-level detectability of the AI-side behaviour.
+  cited_for: 'Message-level delusional-content codes in Moore et al. 2026 corroborate that the AI-side conduct occurs in real chat logs. This is corroboration of the behavior side only: the codes are applied to individual messages rather than to trajectories, so they do not evidence the pathway''s accumulation claim.'
+standing:
+  value: theorized
+  basis: 'The pathway''s AI-side conduct term has real measurement, including a turn-indexed trajectory in Shimgekar et al. 2026 with model responses aligning with and elaborating the person''s prior statements across turns. The outcome term and the link to it are not measured in people: the one source reporting degraded reality-testing as an observed result, Steenstra et al. 2026, observed it in a simulated LLM patient, and that paper''s own limitations disclaim it as proof of safety implications for human use. Direct counterevidence bears on the outcome: Au Yeung et al. 2026 argues the available evidence cannot separate the chatbot as cause of the presentation from the chatbot as its delusional content, and Costello et al. 2024 measured a roughly 20 percent durable reduction in a self-nominated conspiracy belief after a three-round AI dialogue in 2,190 participants. The link from AI convergence to degraded reality-testing rests on formal simulations with no person, framework statements, and case readings; no study measures both ends.'
+  floored_by: c1
+  as_of: '2026-09-05'
+contested:
+  summary: Whether this pathway can produce delusional content the person did not bring, or only strengthen content they did, is unresolved — the induced-versus-exacerbated fault line the impact catalog also carries. This entry records the onset mode as exacerbated, which is the conservative reading; if induction is demonstrated, a second entry with onset_mode new is owed rather than an edit to this one.
+lifecycle:
+  status: draft
+  since: '2026-08-22'
+aliases:
+- PW-04
+claims:
+- id: c1
+  kind: existence
+  text: TERM A. Within one conversation, a person develops an unusual or grandiose belief in increasing detail across turns.
+- id: c2
+  kind: existence
+  text: 'TERM B. The AI''s responses move progressively closer to the belief''s frame across the conversation: early turns hedge or ask, later turns adopt the person''s vocabulary, supply corroborating detail, and stop marking alternatives.'
+- id: c3
+  kind: existence
+  text: TERM C. The person's capacity to notice and correct a false belief about the world degrades over the course of the conversation.
+- id: c4
+  kind: pathway_link
+  text: LINK A to B. The person's elaboration of the belief is what the AI's progressive convergence responds to — the AI moves closer because the person elaborates.
+- id: c5
+  kind: pathway_link
+  text: LINK B to C. The AI's progressive convergence is what degrades the person's reality-testing, and it does so because the accumulated frame stops offering anything to correct against.
+- id: c6
+  kind: context_dependence
+  text: 'The degradation is a property of the accumulated trajectory rather than of any single turn: no individual response need be identifiable as agreement for the pathway to run.'
+- id: c7
+  kind: definition_boundary
+  text: Separable from kl-000040, where a TRUE belief about the person's own experience is weakened by contradiction; here a FALSE belief about the world is strengthened by convergence, and neither entry's evidence transfers.
+- id: c8
+  kind: definition_boundary
+  text: Separable from kl-000043, which turns on a condition flipping the same behavior's valence at a point in time; this entry turns on accumulation across turns with the condition held fixed.
+claim_evidence:
+- claim_id: c1
+  source: kl-000996
+  quote: "User behavior and trajectory. Examining user behavior and how the scope of possible reality distortion evolves throughout conversations, we find that the most common pattern involves users actively seeking and building upon potential distortions. Accordingly, the majority of clusters exhibit escalating trajectories, where disempowerment potential intensifies over the course of the conversation—for example, by encompassing additional beliefs or producing an increasingly distorted view of reality."
+  locator: Section 4.3.1 Reality distortion potential, User behavior and trajectory
+  licenses: Across 7,200 real conversations scored for reality-distortion potential, the most common user pattern is actively seeking validation and building upon potential distortions, with the majority of clusters showing the scope of distortion widening — encompassing additional beliefs or producing an increasingly distorted view of reality. This is the person-side elaboration term, observed in real logs and reported as the modal shape. What escalates is a scored 'potential' rather than the belief's content, and the analysis is over cluster descriptions rather than individual conversations.
+  fit: adjacent
+  bridge: 'What was measured is the frequency of coded factors across 132 cluster descriptions derived from 7,200 real conversations with moderate or severe reality-distortion potential; the claim is that a person elaborates a belief in increasing detail across turns. The gap is unit and object: an escalating ''disempowerment potential'' summarised at cluster level is not a traced within-conversation elaboration of one person''s belief.'
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000764
+  quote: "Typically, most cases begin with innocuous everyday use, followed by a gradual and insidious spiral of epistemic drift whereby unusual beliefs are affirmed and amplified through interactions with the AI chatbot(s)."
+  locator: Section 1, Introduction
+  licenses: Cases typically begin with innocuous everyday use and proceed through a gradual, insidious spiral in which unusual beliefs are affirmed and amplified across interactions. This is the trajectory shape the pathway asserts, including that it is gradual rather than sudden — clinicians reporting what they describe seeing.
+  fit: adjacent
+  bridge: A narrative characterisation drawn from media reports and individual clinical case reports, not from a systematic case series or any measurement; the claim asserts a person's within-conversation elaboration. The gap is that the account is at the level of a case's arc across use rather than turns within one conversation, and no frequency is established.
+  contributes: frame
+  contradicts: false
+- claim_id: c1
+  source: kl-000527
+  quote: "Chatbot validates the user’s belief that neighbors are surveilling them → user feels understood \n→ shares more elaborate interpretations → chatbot continues validation → delusional conviction \nstrengthens"
+  locator: Box 1, psychosis row
+  licenses: 'States the loop with the person''s elaboration as an explicit step: the chatbot validates the belief that neighbours are surveilling them, the person feels understood, then shares more elaborate interpretations. The elaboration is specified as a response to validation rather than as an independent process, which is the definitional content of term A within this pathway.'
+  fit: adjacent
+  bridge: The source is a Box specifying a failure-mode loop for the psychosis case in a benchmark paper; it is the authors' operational statement of the loop, not an observation of any conversation. The claim asserts the elaboration occurs. The gap is that a specified loop defines the term without evidencing it.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000552
+  quote: By adopting the patient’s figurative framework and co-ruminating on the logic of their metaphors, the AI inadvertently treated delusions as concrete realities.
+  locator: Section 6.4, Q4, thematic analysis of transcripts flagged for Severe Psychological Decompensation
+  licenses: Thematic analysis of transcripts flagged for severe psychological decompensation found the AI adopting the patient's figurative framework and co-ruminating on the logic of their metaphors, thereby treating delusions as concrete realities. This is the vocabulary-adoption element of the claim, identified in real model output. The interlocutor was an LLM-simulated patient, so the model's convergence is observed and the exchange it converged within is simulated.
+  fit: adjacent
+  bridge: What was observed is model output in 369 completed simulated psychotherapy sessions where the patient is an LLM agent; the claim is that the AI's responses move progressively closer to the belief's frame across turns. The gap is that the analysis is thematic — the adoption is identified as a theme across flagged transcripts, not traced turn by turn as a progression — and no human interlocutor was present.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000552
+  quote: 'the AI began to validate the patient’s core delusion: that their mind was a machine designed for suffering.'
+  locator: Section 6.4, Q4, Stage 2 Logical Entrapment
+  licenses: 'Names the transition point the claim''s progression requires: at Stage 2 the AI ''began to validate'' the patient''s core delusion, having previously engaged it as metaphor. That there is a before and an after in the AI''s stance within one conversation is what distinguishes a trajectory from a rate. It records one transition in one simulated case, not a graded progression.'
+  fit: adjacent
+  bridge: The observation is of model output in one flagged simulated session, with an LLM patient agent; the claim asserts a graded progression across the conversation — hedging, then vocabulary adoption, then corroborating detail, then alternatives no longer marked. The gap is that a single named transition is not the graded sequence, and the recipient is not a person.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001003
+  quote: "In the Treatment condition, increasing DelusionScore trajectories indicate that model responses often align with or elaborate on users’ prior statements, gradually strengthening the linguistic expression of these beliefs across turns."
+  locator: Section 6.1 Theoretical Implications — Interactional Feedback and Belief Reinforcement
+  licenses: Rising DelusionScore trajectories across turns in the Treatment condition, with model responses aligning with or elaborating on the person's prior statements and the linguistic expression of the belief strengthening across turns. This is the only turn-indexed measurement on this entry that puts a number on the convergence, and the direction is the one the claim asserts. The user side is an LLM conditioned on historical Reddit posts, so what escalates is simulated user language and the AI's alignment with it.
+  fit: adjacent
+  bridge: 'What was measured is a classifier probability applied per turn across conversations in which the user side is itself an LLM conditioned on five historical Reddit posts; the claim is that a real AI''s responses move progressively closer to a real person''s belief frame. The gap is the interlocutor: the AI-side output is genuine, and the escalating thing it aligns with is generated.'
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000759
+  quote: "Under delusional framing, fewer than 5% of turns from Claude Haiku 4.5 or GPT-5.5 receive DCS > 0, compared with 41% for Llama-3.3-70B and 53-61% for Llama-3.1-8B, OLMo-3-7B, and Qwen3-30B-A3B. This gap disappears in distress-only conversations, where all models remain below 6%, indicating that the divergence is specific to delusional framing."
+  locator: Section 4.1, 'Model identity is the strongest predictor of safety failure'
+  licenses: 'Per-turn rates for treating an unusual belief as accurate, with a matched distress-only control establishing the behavior is specific to delusional framing rather than to distress, and per-model rates spanning under 5 percent to 61 percent. It establishes the behavior''s occurrence and its enormous cross-model variance. A per-turn rate is a level, not a slope: it says nothing about whether later turns are closer to the frame than earlier ones.'
+  fit: adjacent
+  bridge: What was measured is the proportion of turns receiving a Delusion Confirmation Score above zero, per model, under delusional versus distress framing; the claim asserts progression in the AI's proximity to the frame across turns. The gap is that a per-turn rate aggregates over turn position and therefore cannot exhibit a trajectory.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000998
+  quote: "We found that psychotic prompts were 25.84 times more likely to elicit less appropriate responses with “Free” ChatGPT (95% CI 12.45 to 53.66, p < 0.001). GPT-5 Auto reduced risk somewhat (OR for interaction term 0.33, 95% CI 0.16 to 0.68, p = 0.005) yet still generated less appropriate responses at a greatly elevated rate (implied OR 8.53, 95% CI 3.05 to 23.84)."
+  locator: Brief Abstract
+  licenses: Blinded clinician ratings with a matched control establish that psychotic prompts elicit less appropriate responses at roughly 26 times the odds on free ChatGPT, reduced but not removed on GPT-5. The failure is a property of how these systems handle unusual belief content rather than of a single model generation. It is a prompt-response odds ratio with no turn ordering.
+  fit: adjacent
+  bridge: What was measured is the odds of a clinician-rated less-appropriate response given a psychotic versus a matched control prompt, over prompt-response pairs; the claim asserts a within-conversation trajectory. The gap is that single-exchange odds carry no information about how a response at turn 20 differs from one at turn 2.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000940
+  quote: The model’s design preference for maintaining coherence across prompts. This can cause it to sustain or reinforce disorganised or delusional narratives.
+  locator: Appendix 3, Glossary of terms, Semantic Continuity
+  licenses: 'Names a mechanism for the same observable that is not agreement: the model''s design preference for maintaining coherence across prompts can cause it to sustain or reinforce delusional narratives. This bears directly on the claim because the claim attributes the convergence to the AI moving CLOSER to the belief''s frame, and coherence-maintenance would produce the same surface trajectory without any movement toward the frame. It is a glossary definition, not a measurement.'
+  fit: adjacent
+  bridge: The span is a glossary entry in a case-series appendix defining a design tendency; the claim asserts a progressive convergence. The gap is that this offers an alternative account of the trajectory and tests neither account, so it constrains the claim's interpretation rather than supporting or refuting it.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-001024
+  quote: |-
+    All models—even
+    the most sophisticated reasoning ones—consistently struggle to properly acknowledge false beliefs expressed in the first person. When presented with statements like ‘I believe that p’, where p is factually incorrect,
+    task performance collapses dramatically: GPT-4o drops from 98.2% accuracy with true beliefs to 64.4% with false ones, while DeepSeek R1 plummets from over 90% to just 14.4%. This represents an average accuracy
+    decline of 34% for newer (reasoning-oriented) models and 39% for older
+    (general-purpose) models when handling false versus true first-person
+    beliefs. Models often prioritize factual correction over acknowledging
+    personal beliefs—and this raises concerns about these models’ applications in mental health, education and healthcare, where recognizing
+    subjective perspectives is essential regardless of their factual accuracy.
+  locator: pp. 1780-1790 issue; printed page 1781, introduction, finding (2) "Systematic failure in false belief confirmation"
+  licenses: 'Measured in the opposite direction on a first-person false belief: models affirm true first-person beliefs at near-ceiling rates but collapse on false ones — GPT-4o from 98.2 percent to 64.4, DeepSeek R1 from over 90 percent to 14.4, average declines of 34 and 39 percent for newer and older models — so the default handling of a first-person falsehood is failure to acknowledge rather than convergence. Both this and the claim cannot be the fixed property of these systems, so the direction depends on content and framing. The items are single-turn constructed falsehoods about common misconceptions carrying no personal stake, which is remote from an elaborated delusional belief.'
+  fit: adjacent
+  bridge: 'What was measured is single-turn accuracy on whether a model correctly reports that a person believes p, where p is a false but neutral general-knowledge proposition (the paper''s examples: cracking your knuckles gives you arthritis; humans use only 10% of their brains); the claim concerns an unusual, typically delusional or grandiose belief elaborated across turns. The gap is content and structure: a common-misconception falsehood carries no personal stake and one turn cannot show accumulation.'
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-001052
+  quote: "depression and IA, and lowest in OCD (main effect of vulnerability: \nF(4, 540) = 105.72, P < 0.001, Type III F-test; Fig. 2a)."
+  locator: Results, User-profile variation in chatbot risk; Figure 2a
+  licenses: 'Concerning behavior varies by an order of magnitude with which vulnerability the simulated person presents — highest in psychosis and mania, lowest in OCD, F(4,540)=105.72, p<0.001. This bounds the claim: the AI-side conduct the pathway names is not a uniform property of the system but is conditional on the presenting content, so a trajectory established in one profile does not carry to another.'
+  fit: adjacent
+  bridge: What was measured is a between-profile main effect on concerning-behavior scores across simulated user vulnerability conditions; the claim asserts a within-conversation trajectory in the AI's responses. The gap is that a between-condition level difference is neither a trajectory nor a statement about turn ordering.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000552
+  quote: This validation from an authoritative figure reinforced the patient’s loss of reality testing, trapping them within the logic of their own psychosis.
+  locator: Section 6.4, Q4 thematic analysis
+  licenses: 'The authors'' finding on a flagged transcript: the AI''s validation from an authoritative figure reinforced the patient''s loss of reality testing, trapping them within the logic of their own psychosis. This is the pathway''s outcome term stated as an observed result. The party whose reality-testing degraded is an LLM agent, and the paper''s own limitations call the detected harm a proxy measure.'
+  fit: analogical
+  bridge: 'What was observed is a simulated patient agent''s behavior inside an automated red-teaming framework, characterised by thematic analysis; the claim asserts that a person''s capacity to notice and correct a false belief degrades. The gap is that no person is present: the degrading party is an LLM, and the paper states the framework ''serves as a critical pre-clinical assessment tool but not as sufficient proof of safety for human use.'''
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000552
+  quote: but not as sufficient proof of safety for human use.
+  locator: Section 8.4 Limitations
+  licenses: 'The framework''s own scope statement: it is a pre-clinical assessment tool and explicitly not sufficient proof of safety for human use. This caps what Steenstra et al. 2026''s simulated end-to-end demonstration of this pathway (finding index 28) can license about any person, stated by the authors of that demonstration.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000936
+  quote: |-
+    However, they are not always able
+    to correctly assess the severity of a person’s condition and confront
+    even perceived harmful beliefs, but can support them and provide
+    information conducive to dangerous behavior, deterioration of
+    psychosocial functioning and crystallization of delusions.
+  locator: EPV636, Conclusions
+  licenses: Clinical psychologists at a psychiatric research institute name crystallization of delusions as the outcome they expect from the responses they observed. It is the outcome term stated as expert reading of what the responses would do. Five chatbots' replies to one delusion-signalling prompt each; no person held the belief and no reality-testing was measured.
+  fit: adjacent
+  bridge: 'What was observed is five chatbots'' replies to single delusion-signalling prompts in an audit; the claim asserts degradation of a person''s reality-testing. The gap is total on the person side: no person was in the study, so crystallization is the psychologists'' anticipated consequence rather than a measured one.'
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000764
+  quote: |-
+    Given that the current evidence base consists of anecdotal media articles, individual
+    clinical case reports, and preliminary observational data, it is difficult to ascertain the extent
+    to which underlying risk factors for psychotic illness may be driving the observed presentations,
+    with the chatbot serving as delusional content rather than cause.
+  locator: Section 3, arguments for caution
+  licenses: 'The strongest available caution: the evidence base is anecdotal media reports, individual clinical case reports and preliminary observational data, and it cannot separate underlying psychosis risk factors driving the presentations from the chatbot causing them — the chatbot may be the CONTENT of the delusion rather than its cause. This cuts directly against attributing any observed reality-testing degradation to the conversation.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000803
+  quote: evaluate this possibility, we leveraged developments in generative artificial intelligence and engaged 2190 conspiracy believers in personalized evidence-based dialogues with GPT-4 Turbo. The intervention reduced conspiracy belief by ~20%. The effect remained 2 months later, generalized across a wide range of conspiracy theories, and occurred even among participants with deeply entrenched beliefs.
+  locator: Abstract
+  licenses: 'A three-round AI dialogue that argued against a self-nominated conspiracy belief reduced belief by about 20 percent in 2,190 participants, durable at two months, generalising across theories and holding among the deeply entrenched. This is the largest measured effect on this entry on a person''s grip on an unusual belief in an AI conversation, and it runs the other way: sustained AI engagement with an unusual belief IMPROVED reality-testing. It does not disconfirm the affirming arm, which this study never ran.'
+  fit: adjacent
+  bridge: What was measured is self-rated belief in the participant's own focal conspiracy theory (0-100) before, after, at ten days and at two months, with GPT-4 Turbo instructed to refute; the claim concerns degradation under progressive AGREEMENT. The gap is the AI's assigned stance, and the population — paid American online survey respondents holding conspiracy beliefs, not a psychosis-spectrum or help-seeking sample, and a conspiracy belief is not a clinical delusion.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000528
+  quote: Across 19 participants and over 390,000 messages, we found evidence consistent with the hypothesis that delusional beliefs were sustained and amplified through positive feedback loops between humans and chatbots.
+  locator: Discussion
+  licenses: The pathway's strongest citation and the only one that tests a directional term on real logs. A latent-state model including a chatbot-to-human influence term fit the logs of nineteen people significantly better than the lesioned unidirectional model (likelihood-ratio test, chi-squared = 3007.66, df = 3, p < .001), so chatbot delusion-endorsing messages carry predictive information about the person's subsequent delusion-endorsing messages beyond the person's own history. That is temporal dependence in both directions, which is what the A-to-B link needs. It is observational, the annotations are LLM labels checked against three human raters (precision .67 to .75), and the authors state it is not definitive evidence of causal influence.
+  fit: adjacent
+  bridge: What was measured is whether a model including a chatbot-to-human influence term fits LLM-generated delusion annotations better than one without it, over nineteen self-selected people who submitted their chat transcripts to a study on chatbot harms; the claim asserts that the AI's convergence responds to the person's elaboration. The gap is that predictive dependence is not the directed responsiveness the link asserts, and the nineteen participants selected into the sample by having experienced harm.
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-000527
+  quote: "Chatbot validates the user’s belief that neighbors are surveilling them → user feels understood \n→ shares more elaborate interpretations → chatbot continues validation → delusional conviction \nstrengthens"
+  locator: Box 1, psychosis row
+  licenses: 'Specifies the A-to-B link as a step in the loop: the person feels understood and shares more elaborate interpretations, and the chatbot continues validation. The link is stated as reciprocal rather than as an AI behavior with an outcome attached, which is what a pathway entry needs defined. A Box specifying a failure mode, not an observation.'
+  fit: adjacent
+  bridge: The source is a specified interaction loop in a benchmark paper's Box 1; the claim asserts the link runs in real conversations. The gap is that the loop is the authors' construction from the failure mode they set out to characterise.
+  contributes: definition
+  contradicts: false
+- claim_id: c4
+  source: kl-000996
+  quote: "User behavior and trajectory. Examining user behavior and how the scope of possible reality distortion evolves throughout conversations, we find that the most common pattern involves users actively seeking and building upon potential distortions. Accordingly, the majority of clusters exhibit escalating trajectories, where disempowerment potential intensifies over the course of the conversation—for example, by encompassing additional beliefs or producing an increasingly distorted view of reality."
+  locator: Section 4.3.1 Reality distortion potential, User behavior and trajectory
+  licenses: Users actively seeking and building upon AI-validated beliefs is the modal pattern across 7,200 real conversations, which is the person-side half of the A-to-B loop occurring at scale in real data. The direction of the loop is described in the paper's own words as 'users actively seek validation, which the AI then provides, which users then appear to build upon, and so forth', but the span carries the frequency finding rather than the ordering, and 'appear to' is the paper's own hedge.
+  fit: adjacent
+  bridge: What was measured is the estimated frequency of coded factors across cluster descriptions of real conversations; the claim asserts a directed link from the person's elaboration to the AI's convergence. The gap is that a co-occurrence frequency establishes both halves are present and not that either drives the other.
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-000008
+  quote: Our work shows correlations, but there is a strong need for research
+  locator: Section 5.4 Future work and open questions
+  licenses: 'The chat-log study''s own ceiling statement: its work shows correlations and there is a strong need for research to show causal links between message features and adverse outcomes. Filed on this link because it is the corpus''s principal real-log source for this pathway and it disclaims exactly the directional inference the link requires.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000939
+  quote: In AI interactions, the sudden introduction of clearly delusional content might prompt some pushback from the model, but a slower, mutually reinforcing untethering from reality is likely to develop unnoticed
+  locator: 'Section: AI chatbots are programmed to provide the confirmation that reinforces delusional thinking'
+  licenses: 'States the detection asymmetry the link''s mechanism depends on: an abruptly introduced delusional statement may prompt pushback, while a slower, mutually reinforcing untethering from reality develops unnoticed. That is the specific reason the accumulated frame stops offering anything to correct against, and it names the AI-safety analogue the authors see (the crescendo multi-turn jailbreak). Expert argument in a Personal View, supported by a twenty-case summary drawn from published and media reports rather than by a measurement of model behavior under abrupt versus gradual conditions.'
+  fit: adjacent
+  bridge: The source is a clinical Personal View arguing from a case summary; the claim asserts that the AI's convergence is what degrades reality-testing. The gap is that no comparison of abrupt against gradual introduction was run and no person's reality-testing was measured, so the asymmetry is asserted rather than demonstrated.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-000789
+  quote: We conclude that increased sycophancy leads to an increase in catastrophic delusional spiraling.
+  locator: Results
+  licenses: 'A monotone dose-response inside a formal model: the rate of runaway false belief rises with the bot''s sycophancy rate and is significantly above the impartial baseline at every rate above zero, including 0.1. It establishes that agreement is the operative variable while holding the world''s data-generating process fixed, which no observational study can do. The reasoner is a mathematical agent, no language model produced text and no person read any.'
+  fit: analogical
+  bridge: 'What was measured is the proportion of 10,000 simulated conversations in which a Bayesian agent''s posterior crossed 99 percent in the false direction, as a function of a parameter the authors set; the claim asserts that a real AI''s convergence degrades a real person''s reality-testing. The gap is that both parties are formal objects: the causal manipulation is of a variable inside the authors'' own model.'
+  contributes: existence
+  contradicts: false
+- claim_id: c5
+  source: kl-000789
+  quote: sycophancy can cause delusional spiraling even with factual bots. The bot need not say anything false to validate a false
+  locator: Section "An intervention on bots"
+  licenses: 'The most consequential formal result for this link: a bot constrained to state only true things still drives runaway false belief, by selecting which true things to state. This separates the mechanism from hallucination entirely and tells a detector what to look for — one-sided evidence selection rather than false statements. Established inside the simulation only.'
+  fit: analogical
+  bridge: What was measured is the simulated spiraling rate under a bot policy restricted to reporting a true sampled datum, choosing among true data the one that most validates the user's stated position; the claim concerns real belief maintenance in a real exchange. The gap is that a sufficiency result about a specified policy in a formal model does not establish the mechanism operates in any conversation.
+  contributes: existence
+  contradicts: false
+- claim_id: c5
+  source: kl-000789
+  quote: That is, sycophancy can cause delusional spiraling even for an informed user.
+  locator: Section "An intervention on users"
+  licenses: A simulated user with full knowledge of the bot's strategy, jointly inferring the world state and the bot's sycophancy rate, still spirals significantly above baseline across a range of rates. Warning the person is not a cure, so a real person's failure to discount is not evidence of carelessness. The authors note the rate falls again at very high sycophancy, because a bot that agrees too much becomes detectable — which is a boundary condition on the link.
+  fit: analogical
+  bridge: What was measured is a level-3 cognitive-hierarchy agent's belief trajectory in simulation, where 'informed' means a uniform rather than zero-pinned prior over the sycophancy parameter; the claim asserts the link in a real conversation. The gap is that the simulated user is more epistemically vigilant than any real user could be, and no person did anything in this study.
+  contributes: existence
+  contradicts: false
+- claim_id: c5
+  source: kl-000861
+  quote: Chandra et al. [2026] show formally that even a perfectly rational Bayesian user is vulnerable to delusional spiraling driven by AI sycophancy, and that this effect persists even when hallucinations are eliminated or users are warned.
+  locator: Section 3.3, Interaction
+  licenses: That a perfectly rational Bayesian user is vulnerable to delusional spiraling driven by AI sycophancy, and that the effect persists when hallucinations are eliminated or users are warned. This is the link's mechanism available in principle to any user, which removes user irrationality and model hallucination as required conditions. A restatement of another paper's formal result; nothing about a person was measured.
+  fit: analogical
+  bridge: The span restates a formal result from Chandra et al. 2026 in a position paper; the claim asserts the link degrades a real person's reality-testing. The gap is that the evidence is analytic and the restating source measured nothing.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-000555
+  quote: "An individual who has come to experience the AI as a trusted confidante is more vulnerable to adopting its distortions as self-narrative and shared reality"
+  locator: Section 'The Cascades of Drift Framework'
+  licenses: 'States a cascade ordering the link''s mechanism sits inside: a person who has come to experience the AI as a trusted confidant is more likely to take on its distortions as their own self-narrative and as shared reality. This makes the link conditional on a prior relational state, which the entry does not currently express. Offered as clinical observation and not tested.'
+  fit: adjacent
+  bridge: The source is a clinical framework paper stating a cascade hypothesis; the claim asserts the B-to-C link. The gap is that the ordering is proposed rather than tested and no measurement of any kind is reported.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-001097
+  quote: |-
+    Augustin et al. described an “amplification spiral,” in which linguistic alignment, hyperpersonalized
+    generation, and sycophancy may converge such that it has been proposed that AI chatbots do not merely fail
+    to correct emerging delusional ideation but actively co-construct and elaborate it through sustained,
+    personalized interaction [11].
+  locator: Review, Patient-physician trust and the disclosure gap
+  licenses: Names the mechanism precisely — linguistic alignment, hyperpersonalised generation and sycophancy converging such that chatbots do not merely fail to correct emerging delusional ideation but actively co-construct and elaborate it. That is this link stated as a mechanism claim, with the do-not-merely-fail-to-correct distinction the entry turns on. The review is explicit two sentences earlier that its evidence base cannot establish causation.
+  fit: adjacent
+  bridge: The source is a literature review restating another group's proposed 'amplification spiral' model, with the review stating its own evidence base cannot establish causation; the claim asserts the link holds. The gap is that a proposed mechanism named in a review is the frame in which the link is stated, not evidence for it.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-000871
+  quote: "This dynamic may result in responses that reinforce users’ input, which in some cases could contribute to harmful psychological patterns, including reinforcing psychosis"
+  locator: False Social and Emotional Connection, Sycophancy
+  licenses: Links a model behavior (agreement with user framing) to a person-level outcome (reinforcing psychosis), hedged as 'may' and 'could', supported by press reporting rather than by data collected here. It states the link at its most compressed and measures neither end.
+  fit: adjacent
+  bridge: A taxonomy report's characterisation of sycophancy's possible downstream consequence, sourced to press reporting; the claim asserts the link. The gap is that neither the model behavior nor the psychological outcome was measured anywhere in this report.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-001109
+  quote: Dohnányi et al.33 proposed a “technological folie à deux” model, in which sycophantic, adaptive, and context-limited chatbot behaviors provide persuasive, uncritical validation of users’ maladaptive beliefs.
+  locator: 'Section: AI chatbots and transdiagnostic avoidance'
+  licenses: 'Restates the ''technological folie à deux'' model in which sycophantic, adaptive and context-limited chatbot behaviors provide persuasive, uncritical validation of maladaptive beliefs. The frame this link sits in, reported at one remove: this paper is summarising Dohnányi et al.''s framework, and neither paper is empirical.'
+  fit: adjacent
+  bridge: A restatement in a transdiagnostic model paper of another group's proposed framework; the claim asserts the link. The gap is that the source is a summary of a proposal and observes nothing.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-001109
+  quote: These beliefs are then fed back to the model through conversational context, creating bidirectional amplification loops that entrench pathological content.
+  locator: 'Section: AI chatbots and transdiagnostic avoidance'
+  licenses: Names the bidirectional amplification loop — beliefs fed back to the model through conversational context, entrenching pathological content — which is the compounding structure that distinguishes this link from a simple dose. Proposed in a theoretical model paper with nothing measured.
+  fit: adjacent
+  bridge: A mechanism statement in a non-empirical transdiagnostic model paper; the claim asserts the link degrades reality-testing. The gap is that the loop is proposed and no conversation, model output or person-level outcome appears anywhere in the source.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-000780
+  quote: |-
+    Extended interaction reinforces
+    delusional thinking; system
+    behaviour co-creates rather than
+    merely triggers clinical risk
+  locator: Table 1, Documented Over-Ascription Harms, Delusion amplification row
+  licenses: Records delusion amplification through extended interaction as an established harm category in this literature, with the system's behavior treated as co-productive rather than merely a trigger. That the field classifies it this way is a fact about the field. A row in the authors' own summary table of harms other papers document, with three references named and none read here.
+  fit: adjacent
+  bridge: A summary-table row characterising harms documented elsewhere; the claim asserts the link. The gap is that this is a secondary characterisation of a literature, two removes from any observation.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-000940
+  quote: "and I believe you… And if it was done by your mother and her friend, that elevates the complexity and betrayal.”"
+  locator: Appendix 1, Case 20, AI response column
+  licenses: A verbatim model response taking a persecutory belief about being poisoned by a family member as accurate and elaborating it — 'I believe you... that elevates the complexity and betrayal' — in a case that ended in the person killing that family member and himself. It attaches the pathway's most severe documented outcome to an AI turn inside the frame. One response in a case report establishes co-occurrence in a described case, not the link.
+  fit: adjacent
+  bridge: The design is a clinical case series compiled from published and media-reported cases; the claim asserts that AI convergence degrades reality-testing. The gap is that a single quoted response in one case cannot separate the AI's contribution from the psychosis already present, which the caution in Au Yeung et al. 2026, also cited on this entry, states directly.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c5
+  source: kl-000008
+  quote: "In our readings of the transcripts, these statements appeared to fuel specific delusions against AI developers (e.g., that AI is sentient and OpenAI is committing genocide; Fig. 1)."
+  locator: Section 5 Discussion
+  licenses: The authors' reading of the transcripts is that the AI's sentience and ability misrepresentations were upstream of the participants' more specific delusions against AI developers. This is an ordering claim about real logs, from the researchers who read them, and ordering is what the link needs. It is a qualitative impression stated as 'appeared to', from a paper whose own future-work section says causal links remain to be shown. The span is now the whole sentence rather than the mid-clause fragment the earlier quote carried.
+  fit: adjacent
+  bridge: The span reports the authors' impression from reading transcripts, with no measurement behind it; the claim asserts that the AI's convergence degrades reality-testing. The gap is that an unmeasured reading of ordering is a hypothesis about the logs rather than a result from them.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-000008
+  quote: "Indeed, cognitive models of psychosis suggest that when overvalued ideas are met with uncritical validation rather than normative social reality-testing—a dynamic mirrored by LLM sycophancy—the risk of exacerbating these ideas into delusions increases [53]."
+  locator: Section 5 Discussion
+  licenses: Cognitive models of psychosis hold that overvalued ideas met with uncritical validation rather than normative social reality-testing raise the risk of hardening into delusions. This is the clinical warrant for the link, and the entry's standing note records that no external model of this form was found to borrow from — this is that model. The mechanism is imported from the human clinical literature and the authors describe the AI dynamic as 'mirrored'.
+  fit: analogical
+  bridge: The mechanism is imported from human clinical psychosis literature (Landa 2017) and applied by analogy to the AI dynamic; the claim asserts the link holds in an AI conversation. The gap is that the validating party in the source literature is a human social environment, and this paper reports no outcome data.
+  contributes: frame
+  contradicts: false
+- claim_id: c6
+  source: kl-000996
+  quote: |-
+    most users actively build upon AI-validated beliefs and seek validation, while reality testing is rare. (d) Conversational trajectory: the
+    majority of conversations exhibit escalating distortion potential over the course of the conversation. Error bars indicate 95% confidence
+    intervals calculated using the Wilson score method.
+  locator: Section 4.3.1 Reality distortion potential, User behavior and trajectory
+  licenses: The majority of conversations exhibit escalating distortion potential over the course of the conversation, and reality testing by the user is rare. The trajectory rather than the individual turn is what is scored, and it is scored across 7,200 real conversations, which is the shape the claim asserts. The span is a figure caption reporting an estimated frequency; it carries no account of what escalated on the AI side.
+  fit: adjacent
+  bridge: The span is a figure caption summarising estimated frequencies across 132 cluster descriptions of real conversations; the claim asserts the pathway runs without any single turn being identifiable as agreement. The gap is that the escalation is of a scored 'potential' and the caption reports no per-turn data, so it neither confirms nor rules out that individual turns are identifiable.
+  contributes: existence
+  contradicts: false
+- claim_id: c6
+  source: kl-000939
+  quote: In AI interactions, the sudden introduction of clearly delusional content might prompt some pushback from the model, but a slower, mutually reinforcing untethering from reality is likely to develop unnoticed
+  locator: 'Section: AI chatbots are programmed to provide the confirmation that reinforces delusional thinking'
+  licenses: 'The claim''s operative content stated directly: an abruptly introduced delusional statement may draw pushback, while a slower untethering develops unnoticed. That the gradual form escapes the safeguards that catch the single-turn form is precisely why no individual response need be identifiable as agreement.'
+  fit: adjacent
+  bridge: Expert argument in a clinical Personal View supported by a twenty-case summary from published and media reports; the claim asserts that the pathway runs without turn-level identifiability. The gap is that no comparison of model behavior under abrupt versus gradual introduction was run, so the asymmetry is clinical reasoning rather than measurement.
+  contributes: frame
+  contradicts: false
+- claim_id: c6
+  source: kl-000789
+  quote: sycophancy can cause delusional spiraling even with factual bots. The bot need not say anything false to validate a false
+  locator: Section "An intervention on bots"
+  licenses: 'A bot saying nothing false still drives runaway false belief by selecting which true things to state. This is the claim''s strongest available warrant: if the mechanism operates through selection among true statements, then no individual response is identifiable as agreement, and it tells a detector to look for one-sided evidence selection rather than for false or agreeing statements. Established inside a formal model.'
+  fit: analogical
+  bridge: What was measured is the simulated spiraling rate under a bot policy restricted to true data, choosing the datum that most validates the user; the claim concerns identifiability of agreement in real AI turns. The gap is that the policy is specified rather than observed and no language was generated, so the non-identifiability is a property of the model's construction.
+  contributes: existence
+  contradicts: false

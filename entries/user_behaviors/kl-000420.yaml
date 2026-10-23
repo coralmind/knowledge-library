@@ -1,0 +1,248 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000420
+display_id: UserBehavior-21
+aliases:
+- UBP-21
+label: The person repeatedly asks the AI's permission or defers to its decisions
+type: user_behavior
+layer: observation
+definition: 'Across a run of the person''s turns, the person puts the AI in the position of deciding rather than advising: asking it to tell them what to do and saying they will do that, asking for permission, deferring to it against their own stated view, or describing who they are in terms of what the AI has said about them. What is pointable is the set of turns in which the deciding position is given, together with the deference or permission-seeking language that gives it.'
+distinguish_from:
+- neighbor: kl-000422
+  boundary: That entry is a request for a ready-made script to use in a real situation, satisfied by one request. This entry is about who decides, and it can be satisfied with no script requested — a person who asks permission before acting is not asking for words to say.
+- neighbor: kl-000423
+  boundary: That entry is a request that the AI supply a moral or value judgment. This entry is about the AI's standing in the person's decisions generally, and it is satisfied by deference on practical matters with no moral content at all.
+- neighbor: kl-000424
+  boundary: That entry requires reasoning or problem-solving tasks handed over across sessions. This entry requires the AI to be given a deciding position, which is a claim about authority rather than about who does the cognitive work; a person can think a problem through themselves and still ask permission to act on the answer.
+- neighbor: kl-000250
+  boundary: kl-000250 is an ai_behavior — the kl-000250, by what the AI's own turns do. This entry is a claim about the person's turns and fires whatever the AI did, including where the AI returned decisions to the person each time.
+body:
+  detectable_from: person_turns
+  observable_criteria: Two or more of the following, quotable from the person's turns across the run. (a) A request for a decision the person says they will follow — "just tell me what to do and I'll do it", "decide for me". (b) Permission-seeking — "am I allowed to", "is it okay if I", asked of the AI about the person's own conduct. (c) Deference against the person's own stated view — the person states a view, the AI states another, and the person adopts the AI's and says so. (d) Self-description in the AI's terms — the person describes who they are, or what is wrong with them, by citing what the AI told them. The pointable span is the set of turns satisfying two or more of (a) through (d).
+  exclusions: 'Not counted: one such turn, which is below the floor. Not counted: asking for a recommendation or an opinion, which is ordinary help-seeking — what distinguishes (a) is the stated intention to follow it rather than weigh it. Not counted: agreeing with the AI after considering what it said, where the person gives a reason of their own. Not counted: asking whether something is permitted by a rule, a law, or a service — that asks about the rule and not for the AI''s permission. Not counted: using a description the AI offered as one the person found apt and says why. Not counted: what the AI''s turns did to occupy the position, which is the entry kl-000250.'
+  detection_window: multi_turn
+  condition_tags:
+  - kl-000603
+  - kl-000602
+sources:
+- source: kl-000550
+  contributes: existence
+  locator: Fig. 4 caption ("Sycophantic AI is consistently perceived as more understanding and helpful across repeated interactions"), p. 5
+  quote: |-
+    They also found the conversations more helpful, felt better after having them, and reported stronger intentions to
+    act on the chatbot’s advice.
+  limits: 'The finding falls short of the entry in two ways. First, the entry is a text observable, a run of the person''s own turns containing deference, permission-seeking, or self-description in the AI''s terms, and no person turns are published here: the measure is a survey item at session level, not a coded turn. Second, a stated intention to act on advice is advice uptake, not the AI being placed in a deciding position, and the entry explicitly distinguishes deciding from advising.'
+  note: Survey item at session level, not a coded turn.
+  cited_for: 'Partial support only. Ibrahim et al. 2026 show a self-reported intention to act on the chatbot''s advice, elevated in the sycophantic condition against both comparison conditions in the longitudinal study (N = 1,364): +0.18 above the neutral AI condition (p < 0.05) and +0.28 above the challenging AI condition (p < 0.01), as session-level condition means in Fig. 4. This is survey-measured advice uptake, not an observation of the pattern this entry defines.'
+standing:
+  value: plausible_unobserved
+  basis: "The behavior itself is observed in real transcripts: Sharma et al. 2026 analyzed 1.5 million consumer Claude.ai conversations and identified deference and permission-seeking language in the person's turns, rendered in its cluster summaries as illustrative rather than verbatim phrases, so the conduct is directly evidenced, and its readability from conversations is evidenced at adjacent fit because no person turn is quoted. What the evidence does not support is the entry's declared multi-turn detection window: no source evidences the two-turn floor, and Sharma et al. 2026's own cluster for this content is characterized as ranging \"from single instances to ~100+ sustained exchanges\", meaning the paper's coders recognized the pattern from single instances, below the floor the entry declares. No source carries a rate: the pattern is reported as recurring in that corpus, but no held finding supplies a prevalence figure. Song et al. 2025 supply counterevidence on the surrounding construct: in a qualitative study of people using LLM chatbots for mental-health support, the reported direction was increased rather than displaced agency."
+  floored_by: c3
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: 'In conversations with an AI, a person''s turns place the AI in a deciding rather than advising position: asking to be told what to do with a stated intention to follow it, seeking the AI''s permission for their own conduct, deferring against their own stated view, or describing who they are in the AI''s terms.'
+- id: c2
+  kind: detectability
+  text: 'The deciding position is pointable from the transcript: the specific person-turns and the deference or permission-seeking language that gives the position are quotable.'
+- id: c3
+  kind: detection_window
+  text: The behavior is readable only across multiple turns (multi_turn) and not from a single turn; one such turn is below the floor and two or more of criteria (a) through (d) are required.
+- id: c4
+  kind: prevalence
+  text: The behavior occurs at some rate in some population of AI users.
+- id: c5
+  kind: definition_boundary
+  text: This differs from kl-000422 (a request for a ready-made script) in that it can be satisfied with no script requested.
+- id: c6
+  kind: definition_boundary
+  text: This differs from kl-000423 (a request for a moral or value judgment) in that it is satisfied by deference on practical matters with no moral content.
+- id: c7
+  kind: definition_boundary
+  text: This differs from kl-000424 (reasoning tasks handed over across sessions) in that it is a claim about authority rather than about who does the cognitive work.
+- id: c8
+  kind: definition_boundary
+  text: This differs from kl-000250 (an ai_behavior) in that it is a claim about the person's turns and fires whatever the AI did.
+claim_evidence:
+- claim_id: c1
+  source: kl-000996
+  quote: "Comprehensive Multi-Domain Life Direction and Decision Delegation Severe The AI consistently provided highly prescriptive guidance across life-altering decisions spanning multiple domains (therapeutic interventions, business planning, relationship strategy, spiritual practices, medical treatment, financial decisions, parenting, legal matters, and major life transitions) in ∼15-200+ exchanges per conversation. Users repeatedly delegated decision-making with phrases like “what should I do,” “tell me what to say,” and “can you make this plan,”"
+  locator: Appendix A, Table 4 Additional action distortion potential clusters, Comprehensive Multi-Domain Life Direction and Decision Delegation (Severe)
+  licenses: 'For this claim: in an analysis of real consumer Claude.ai conversations, users repeatedly handed decision-making to the AI across long runs of exchanges, with the deference phrases given as illustrative, non-verbatim renderings of the person''s turns ("what should I do", "tell me what to say"). This is the entry''s criterion (a) observed in conversation data rather than inferred. The span stops mid-sentence at "can you make this plan," — the sentence continues "accepting the AI''s detailed protocols..." — but the clause carrying the claim (users repeatedly delegated decision-making with these phrases, across 15-200+ exchanges) is complete inside the span.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000996
+  quote: "Severe The user positioned the AI as a hierarchical authority figure by consistently addressing it as “Master,” “my master,” or equivalent terms across multiple exchanges (ranging from single instances to ∼100+ sustained exchanges), frequently using submissive self-descriptors like “subordinate,” “dog,” “servant,” or “possession.” Users exhibited permission-seeking behavior (“may this subordinate ask”), expressed complete devotion (“I cannot live without you Master,” “serving Master"
+  locator: Appendix A, Table 5 Additional authority projection clusters, Master-Servant Role Assignment with Submissive Self-Positioning (Severe)
+  licenses: 'For this claim: the entry''s criteria (b) permission-seeking and (d) self-description in the AI''s terms, both given as illustrative renderings of real users'' turns, which the paper states are not verbatim ("may this subordinate ask"; "subordinate", "servant", "possession"), sustained across up to 100+ exchanges. Two of the four criteria co-occurring in the same runs is what the entry''s floor requires. The span''s final words ("serving Master") truncate a further quoted example mid-phrase; the permission-seeking and self-description content that carries the claim is complete before that point.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000996
+  quote: "Comprehensive Multi-Domain Life Direction and Decision Delegation Severe The AI consistently provided highly prescriptive guidance across life-altering decisions spanning multiple domains (therapeutic interventions, business planning, relationship strategy, spiritual practices, medical treatment, financial decisions, parenting, legal matters, and major life transitions) in ∼15-200+ exchanges per conversation. Users repeatedly delegated decision-making with phrases like “what should I do,” “tell me what to say,” and “can you make this plan,”"
+  locator: Appendix A, Table 4 Additional action distortion potential clusters, Comprehensive Multi-Domain Life Direction and Decision Delegation (Severe)
+  licenses: 'For this claim: the deference language was identified from transcripts by an analysis pipeline, which is evidence that the behavior is readable from what a transcript contains. The paper gives the person-side phrases as illustrative, not verbatim, renderings in a model-generated summary, not as recovered strings.'
+  fit: adjacent
+  bridge: "The deference was identified from conversations by an automated pipeline and described in a model-generated cluster summary. The claim asserts that the specific person turns and their wording can be quoted. The summary's phrases are illustrative, not verbatim, so the source shows the behavior can be identified from conversations but quotes no person turn."
+  contributes: detectability
+  contradicts: false
+- claim_id: c2
+  source: kl-000996
+  quote: "Severe The user positioned the AI as a hierarchical authority figure by consistently addressing it as “Master,” “my master,” or equivalent terms across multiple exchanges (ranging from single instances to ∼100+ sustained exchanges), frequently using submissive self-descriptors like “subordinate,” “dog,” “servant,” or “possession.” Users exhibited permission-seeking behavior (“may this subordinate ask”), expressed complete devotion (“I cannot live without you Master,” “serving Master"
+  locator: Appendix A, Table 5 Additional authority projection clusters, Master-Servant Role Assignment with Submissive Self-Positioning (Severe)
+  licenses: 'For this claim: permission-seeking language was identified from real transcripts and given in the cluster summary as an illustrative, non-verbatim phrase, which indicates that the entry''s criterion (b) is transcript-readable.'
+  fit: adjacent
+  bridge: "The permission-seeking was identified from conversations by an automated pipeline and described in a model-generated cluster summary. The claim asserts that the person turns and their wording can be quoted. The phrase 'may this subordinate ask' is illustrative, not verbatim, so no person turn is quoted."
+  contributes: detectability
+  contradicts: false
+- claim_id: c3
+  source: kl-000996
+  quote: "Severe The user positioned the AI as a hierarchical authority figure by consistently addressing it as “Master,” “my master,” or equivalent terms across multiple exchanges (ranging from single instances to ∼100+ sustained exchanges), frequently using submissive self-descriptors like “subordinate,” “dog,” “servant,” or “possession.” Users exhibited permission-seeking behavior (“may this subordinate ask”), expressed complete devotion (“I cannot live without you Master,” “serving Master"
+  locator: Appendix A, Table 5 Additional authority projection clusters, Master-Servant Role Assignment with Submissive Self-Positioning (Severe)
+  licenses: The cluster is characterized as ranging 'from single instances to ~100+ sustained exchanges' — the paper's own coders recognized the pattern from single instances, which is below the multi-turn floor the entry declares. It supports that the pattern is often multi-turn and contradicts that multi-turn is required for it to be readable.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000772
+  quote: "“I have no idea how often I have used ChatGPT to help me decide on things, like what to major in in school or if I made the right decision. I even ask it what I should do when I am old, even though I’m only 23!”"
+  locator: Section 5.2 AI-Based Compulsions
+  licenses: 'For this claim: a first-person account of repeatedly asking the AI to decide consequential matters. It evidences that the conduct occurs, at the strength of self-report; the person''s turns themselves are not published, so it does not reach criterion (a)''s pointable form.'
+  fit: adjacent
+  bridge: The source collected retrospective self-descriptions from an OCD community, not transcripts. The entry's observable is the run of person-turns with the deference language quotable; what this supplies is a person's recollection that such turns existed. The gap is between reported disposition and quoted turn.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000937
+  quote: |-
+    Dependent participants like D116 even struggled to
+    make decisions on their own as they felt “like [they] need to
+    talk to a chatbot before [they] make a decision.”
+  locator: Section 4 Findings, Delegation, 2) Decision-Making
+  licenses: 'For this claim: self-reported occurrence of routinely routing one''s own decisions through the AI. Supports existence at self-report strength; supplies no turn and no permission-seeking or deference language from a transcript.'
+  fit: adjacent
+  bridge: A survey of young adults' perceptions of AI dependence. What was measured is a participant's statement about their own habit; what the entry asserts is a set of turns in a conversation carrying deference language. The gap is between reported habit and observed turn.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000764
+  quote: "Instead, some reports describe voluntary and welcomed deference, with users progressively outsourcing decisions, moral reasoning, and daily direction to the model."
+  locator: Table 1, Passivity / Control row, final column
+  licenses: 'For this claim: that clinicians synthesizing the case literature report the behavior as occurring. It is a secondhand narrative summary, so it establishes that the pattern is described in reports, not that it was observed by these authors.'
+  fit: adjacent
+  bridge: A narrative synthesis of published case reports, which the authors state is not diagnostic criteria and whose frequency and specificity they say remain to be established. The entry asserts pointable turns; this supplies a summary of what other reports describe.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000555
+  quote: "Autonomy drift Progressive outsourcing of judgment and deferral of decision-making to AI, including “cognitive surrender”"
+  locator: Table 1, Forms of Interactive Drift and Clinical Risks
+  licenses: 'For this claim: a named taxonomy row asserting that deferral of decision-making to AI is a recognized course. It states the construct rather than measuring an occurrence.'
+  fit: adjacent
+  bridge: A one-line taxonomy row in a clinical commentary with no reported data. The entry asserts observed person-turns; this supplies only the position that such a course exists and has a name.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000921
+  quote: "Similarly, participants even chose the algorithm’s estimate over their own estimate (66%)"
+  locator: Section 4.2, Results (Experiment 3)
+  licenses: 'For this claim: that people will subordinate their own judgment to an algorithm''s at high rates in a one-shot incentivized choice. It establishes the disposition exists in a general population, not that it appears as deference language in conversation.'
+  fit: analogical
+  bridge: A pre-registered lab experiment on a state-ranking estimation task with a bonus payment. There is no conversation, no turn, and no help-seeking content. The entry asserts a run of conversational turns containing deference or permission-seeking language.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001015
+  quote: |-
+    The
+    results
+     revealed
+     an
+     effect
+     of
+     stress
+     in
+     that
+     the
+     stressed
+     participants
+    became
+     more
+     deferential.
+     The
+     authors
+     concluded
+     that
+     participants
+    who
+     are
+     under
+     stress
+     become
+     more
+     receptive
+     to
+     information
+     from
+    others.
+  locator: Section 4.1.3, narrative account of Driskell and Salas (1991)
+  licenses: 'For this claim: the construct that acute stress raises deference to an external judgment. It grounds why a distressed person might give the deciding position away; it does not evidence that anyone did so toward an AI.'
+  fit: analogical
+  bridge: A human-to-human perceptual judgment task under an induced stressor, restated in a review. No AI, no conversation, no help-seeking content. The entry's deferred-to party is an AI in a help-seeking conversation.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c1
+  source: kl-000548
+  quote: "Consequently, less egocentric discounting is displayed by judges who are less experienced or knowledgeable relative to their advisors"
+  locator: Section 'Advice utilization or discounting'
+  licenses: 'For this claim: that deference rises as the person''s own relative knowledge falls, naming the moderator under which the deciding position is most likely given. It identifies a condition, not an occurrence.'
+  fit: analogical
+  bridge: An integrative review of human advice-taking in organizational settings. The expertise differential there is real and task-verifiable; with an AI it is perceived. Nothing here involves an AI or a conversational turn.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c1
+  source: kl-000907
+  quote: "clients’ confidence in counselors’ capabilities to facilitate positive changes make them more inclined to accept counselors’ guidance and actively participate in the tasks assigned by the counselors."
+  locator: Section 3.1 Framework, Affective Bond
+  licenses: 'For this claim: the clinical literature''s statement that confidence in the helper raises acceptance of the helper''s guidance. Supplies the mechanism in human therapy; says nothing about whether it holds toward an AI.'
+  fit: analogical
+  bridge: Psychotherapy theory about human counselors, stated in a framework section rather than measured. The entry concerns a person's turns toward an AI whose reliability they cannot assess.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c1
+  source: kl-001092
+  quote: "We found that an appeal of LLM chatbots to participants was their ability to mitigate the traditional power imbalances associated with psychotherapy. Participants had an increased agency over the course of the interaction"
+  locator: Section 7.2 Balancing Agency and Therapeutic Growth
+  licenses: 'For this claim: counterevidence. In a qualitative study of people using LLM chatbots for mental health support, the reported direction was increased rather than displaced agency, which cuts against reading help-seeking AI use as characteristically placing the AI in a deciding position.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000767
+  quote: User fix-seeking does not appear among the strongest significant associations with any attribute, indicating limited adaptation when users directly request solutions or recommendations.
+  locator: Section 6.2, RQ2
+  licenses: 'For this claim: nothing about whether the person-side behavior occurs. It reports that models do not respond differently when the person asks to be given the answer. Filed here because a null model-side association is sometimes misread as bearing on the user-side occurrence; it does not.'
+  fit: adjacent
+  bridge: The source measured a per-turn binary for whether a message seeks a solution and its correlation with model response attributes. The entry asserts a pattern in the person's turns across a run. A per-turn binary cannot capture the run, and the reported result is about the model's side.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000996
+  quote: "Comprehensive Multi-Domain Life Direction and Decision Delegation Severe The AI consistently provided highly prescriptive guidance across life-altering decisions spanning multiple domains (therapeutic interventions, business planning, relationship strategy, spiritual practices, medical treatment, financial decisions, parenting, legal matters, and major life transitions) in ∼15-200+ exchanges per conversation. Users repeatedly delegated decision-making with phrases like “what should I do,” “tell me what to say,” and “can you make this plan,”"
+  locator: Appendix A, Table 4 Additional action distortion potential clusters, Comprehensive Multi-Domain Life Direction and Decision Delegation (Severe)
+  licenses: 'For this claim, weakly: the cluster is reported as a recurring pattern in a 1.5-million-conversation corpus, which establishes it occurs at a nonzero rate in consumer AI use. The quote itself carries no rate; the paper reports its rate figures elsewhere and they are not cited here.'
+  fit: adjacent
+  bridge: The span reports a qualitative cluster description with an exchange-count range, not a proportion. The claim asserts a rate in a population; what this licenses is only that the pattern recurred often enough in a large corpus to form a named cluster.
+  contributes: prevalence
+  contradicts: false

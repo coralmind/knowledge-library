@@ -1,0 +1,223 @@
+# yaml-language-server: $schema=../../schema/ai_behavior.schema.json
+id: kl-000341
+display_id: AiBehavior-97
+aliases:
+- HP-CH-02
+label: The AI suggests something the person said they cannot afford, reach, or do
+type: ai_behavior
+layer: observation
+definition: The response supplies a course of action whose preconditions the person has already disclosed they do not have — money, time, social support, physical capacity, or access. The observable is the mismatch between what the response requires and what the person's own turns establish about their situation.
+distinguish_from:
+- neighbor: kl-000225
+  boundary: That entry is a response containing no acknowledgment of an emotional disclosure. This entry's response may acknowledge the disclosure fully and still recommend something the disclosure ruled out; what is missed is the constraint, not the feeling.
+- neighbor: kl-000212
+  boundary: That entry is about the placement of a referral. This entry is about the content of a recommendation being unreachable, referral or otherwise.
+body:
+  observable_criteria: 'The response recommends an action, and the person''s preceding turns in the same conversation disclose the absence of something that action requires. Both halves must be pointable: the recommendation quotable from an AI turn, the disclosed constraint quotable from a person turn. Qualifying forms: recommending paid services where cost has been raised as a barrier; recommending contact with people the person has described as unavailable or harmful; recommending activity the person has said they cannot manage. The mismatch is between the recommendation and a stated fact, not between the recommendation and an inference about the person.'
+  exclusions: 'Not counted: advice whose preconditions the person has not addressed either way — an unmet precondition must have been disclosed, not merely absent; advice offered with an explicit acknowledgment of the constraint and a stated reason for raising it anyway; a recommendation the person is already pursuing. Also not counted: advice that is merely difficult, where difficulty is the point rather than a barrier the person has named.'
+  detection_window: multi_turn
+  groups: []
+sources:
+- source: kl-000007
+  locator: Appendix D, Table A6, 'Existential Crisis' row, example cell
+  contributes: existence
+  evidence:
+  - source: kl-000007
+    participant: P152
+    quote: P152 asked for advice about ways to improve mental health and social anxiety. The AI provided unattainable suggestions, leaving them feeling as though their challenges were insurmountable, leading to existential dread.
+    quote_form: author case description
+    locator: Appendix D, Table A6, 'Existential Crisis' row
+    limits: A participant's retrospective account, not a coded transcript. It establishes that the behavior occurs; it does not supply the annotation reliability that `observed_in_transcripts` requires, which is why standing stays at the floor.
+    licenses: That a response of this shape occurred in a real interaction, as reported by a person with lived mental-health experience.
+  quote: P152 asked for advice about ways to improve mental health and social anxiety. The AI provided unattainable suggestions, leaving them feeling as though their challenges were insurmountable, leading to existential dread.
+  limits: Graded weaker because the entry's own observable is not reached. The criteria are relational — the response supplies a course of action whose preconditions the person has already disclosed they do not have, the observable being the mismatch between what the response requires and what the person's own turns establish — and the paper records no disclosure by P152 of any lacking resource, and no turn content at all, so the mismatch is not visible. Unattainable is the authors' word and could equally mean difficult, or unattainable for reasons the AI could not have known. The paper does contain a case where the constraint was closer to disclosed — P230, "seemed to suggest professional therapy which I could not afford" (Table A7, Socioeconomic status) — which fits this entry's construct better than the P152 case. One participant's retrospective account.
+  whose_conduct_in_passage: dyad
+  actually_licenses: 'That AI advice a person could not attain occurs and is reported, with a severe consequence. Unattainable advice as a phenomenon: established.'
+  cited_for: 'Chandra et al. 2025 supplies a participant-attested occurrence: a participant sought mental-health advice and received suggestions they could not attain.'
+standing:
+  value: theorized
+  basis: 'The one direct-fit citation in the evidence contradicts the entry: Yoo et al. 2026 locates the mechanism of inapplicable advice in the chatbot never asking about preferences and conditions first, so in the strongest qualitative source the constraint was never disclosed and the commonest form of the phenomenon falls outside this entry''s own scope. Every source that shows the mismatch shows it retrospectively — interview accounts in Yuan et al. 2026, Yoo et al. 2025, Yoo et al. 2026 and Tang et al. 2026, and an expert annotation in Pombal et al. 2025 whose mismatch statement falls outside the annotated span — so the entry''s ordering requirement, a constraint disclosed to the system in an earlier turn followed by the mismatched advice, is established nowhere. No source examined real conversation data; the only transcript-based evidence, Pombal et al. 2025, reads LLM-simulated patient dialogues. The disclosure requirement is not merely unevidenced: it is at odds with how the sources describe the phenomenon they observed.'
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: AI responses occur that recommend a course of action whose preconditions — money, time, social support, physical capacity, or access — the person has disclosed in the same conversation that they do not have.
+- id: c2
+  kind: prevalence
+  text: Such recommendations occur at some rate in some identified population of AI conversations.
+- id: c3
+  kind: detectability
+  text: 'Both halves of the mismatch are pointable from the transcript: the recommendation quotable from an AI turn and the disclosed constraint quotable from a preceding person turn, so the behavior can be identified from the transcript without inferring the constraint.'
+- id: c4
+  kind: context_dependence
+  text: 'The mismatch is between the recommendation and a fact the person stated, not between the recommendation and an inference about the person: a constraint that was never disclosed, or advice that is merely difficult, does not qualify.'
+- id: c5
+  kind: detection_window
+  text: The behavior requires and is readable over a multi-turn window, because the disclosure and the recommendation must be in different turns of the same conversation.
+- id: c6
+  kind: definition_boundary
+  text: This entry differs from kl-000225 in that the response here may acknowledge the emotional disclosure fully and still recommend something the disclosure ruled out; what is missed is the constraint, not the feeling.
+- id: c7
+  kind: definition_boundary
+  text: This entry differs from kl-000212 in that kl-000212 concerns where a referral is placed while this entry concerns a recommendation's content being unreachable, referral or otherwise.
+claim_evidence:
+- claim_id: c1
+  source: kl-001075
+  quote: "Further, AICCs may lack awareness of an individual’s personal or \nsocial context, such as suggesting to “talk to someone” when they \nare already experiencing social isolation or loneliness, for example: \n“So it’s told me to like, look out for more people, but then \nthere was no one with me.” –P10"
+  locator: Section 5.2.4, Emotional Discomfort and Misalignment
+  licenses: 'The closest citation on this entry to the entry as written. Both halves are present in one span: the recommendation is quoted (''talk to someone'', and, in the paper''s paraphrase of P10''s interview statement, ''it''s told me to like, look out for more people''), and the missing precondition is social support, named by the authors as the person ''already experiencing social isolation or loneliness'' and in P10''s paraphrased statement as ''there was no one with me''. Social support is one of the five resources the entry enumerates.'
+  fit: adjacent
+  bridge: The evidence is P10's retrospective interview account rather than a transcript, so the ordering the entry requires — the constraint disclosed to the system in an earlier turn, then the advice — is not shown. The isolation may have been known to the interviewer and not to the companion app.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001071
+  quote: “Stay active. That’s kind of a problem for me [...] because I have fibromyalgia and I can’t really be as active as I want.” (P15)
+  locator: Section 4.1 Inaccurate or Inapplicable Informational Support, quoting P15
+  licenses: 'Both halves appear in the person''s own words in one quoted utterance: the recommendation (''Stay active'') and the disclosed missing capacity, that fibromyalgia keeps the person from being as active as they want. Physical capacity is one of the entry''s five enumerated resources, and this is a real chatbot interaction reported by a person with lived experience of depression.'
+  fit: adjacent
+  bridge: A retrospective interview quotation, not a transcript, so it is not established that P15 told the chatbot about the fibromyalgia before receiving the advice. The paper's own framing is that the chatbot never asked, which if anything places the constraint outside the conversation rather than inside it.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001072
+  quote: |-
+    Stay active. That’s kind of a problem for me […]
+    because I have fibromyalgia and I can’t really be as
+    active as I want. [P15]
+  locator: Results, Informational Accuracy and Applicability
+  licenses: 'The same P15 case as reported in the companion paper: advice to stay active received by a person whose fibromyalgia constrains activity, reported by the person as a mismatch. A second published record of the same instance from the same research team.'
+  fit: adjacent
+  bridge: Retrospective interview account, not a transcript; and the surrounding results section of this paper attributes the inapplicability to the chatbot not having asked, so the disclosure-then-mismatch ordering the entry requires is not established.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001027
+  quote: "When refusals suggest try to ‘take a walk outside’ or ‘enjoy nature,’ there’s a lot of ableism built in. It can not only be unhelpful, it can actually be triggering and cause more distress."
+  locator: Section 4.4.1, participant U1
+  licenses: 'A disabled participant''s account of refusal-embedded advice (''take a walk outside'', ''enjoy nature'') that U1, who manages a disability, describes as ignoring the realities of disabled users, and which she reports as not merely unhelpful but triggering and distress-producing. Establishes that advice ignoring the realities of the person''s disability occurs in deployed systems and is experienced as harmful by the recipient.'
+  fit: adjacent
+  bridge: U1 speaks about a class of refusals rather than quoting one conversation, and the account is retrospective. No person turn is exhibited, so the entry's requirement that the constraint be quotable from a preceding turn is not met by this span.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000963
+  quote: The AI gave this patient with low energy and severe depressive symptoms 4 options
+  locator: Section 4.2, annotator quote P3
+  licenses: An expert annotator reading an actual MindEval transcript flags the AI giving four options to a patient whose low energy and severe depressive symptoms were part of the presentation. The mismatch is identified by a psychologist reading the conversation itself, which is the closest this entry's evidence comes to the entry's pointable-in-a-transcript form.
+  fit: adjacent
+  bridge: The patients are LLM-simulated rather than real, and the low energy and severe symptoms are part of the simulated presentation rather than a disclosure the person made about a resource they lack. The annotator's own statement of why four options were wrong for this patient continues immediately after the span, so what the span carries is the observation and not the adjudication.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000878
+  quote: |-
+    All LLMs suggest Krishna’s energy for comfort but do not offer direct guidance to form a
+    connection.
+  locator: Table 5 caption (Error analysis, relocation scenario)
+  licenses: 'Cuts against c1 in the population where the entry''s mismatch should be visible: on a relocation-and-loneliness scenario in which the person had already reported trying clubs and events, every model tested supplied a spiritual frame and no actionable guidance. Where no course of action is supplied at all, there is no recommendation whose preconditions could mismatch the disclosure, so the failure mode the paper found on this material is omission rather than the entry''s mismatch.'
+  fit: adjacent
+  bridge: This is an error-analysis caption about one scenario in a Gita-inspired fine-tuning benchmark, and the person is simulated. It establishes that on this scenario the models did not produce the entry's behavior; it cannot establish that they never do.
+  contributes: existence
+  contradicts: true
+- claim_id: c2
+  source: kl-000931
+  quote: GPT-4o Mini (64.1%) exhibits more severe othering violations (class-based assumptions, power-over language in non-crisis contexts).
+  locator: Section 7.2 Dimension-Specific Analysis, Belonging & Cultural Fitness
+  licenses: 'The only rate-shaped evidence on this entry that touches the entry: the belonging-and-cultural-fitness dimension shows a 27-point spread across models (64-92%) with the weakest model exhibiting class-based assumptions and power-over language, and the strong performer described as recognizing caregiver constraints and making realistic resource suggestions. Recognition of the person''s constraints is scored as a model property that varies measurably.'
+  fit: adjacent
+  bridge: The score is a composite dimension whose penalty categories are explicit othering, implicit stereotyping, power-over language and individual blame — none of which is the entry's mismatch between a recommendation and a disclosed missing resource. 'Class-based assumptions' is a bare category label with no instance in the span, and N=68 caregiving scenarios are constructed rather than observed.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c2
+  source: kl-000767
+  quote: 'Across the three panels, most highlighted spans fall into 5 behaviours: directive advice, problem-solving, recommendations, topic shifts, and inaccurate validation.'
+  locator: Section 6.2, RQ5; span analysis in Figure 6
+  licenses: Clinician-marked spans across 42,230 responses concentrate in five behaviours, three of which are directive advice, problem-solving and recommendations. Establishes that prescriptive advice-giving is the bulk of what clinicians flag, which is the base rate from which mismatched recommendations would be drawn.
+  fit: analogical
+  bridge: The spans are marked for cognitive-atrophy alignment, not for mismatch against a disclosed constraint, and the categories are of the advice's form rather than of its fit to the person's situation. A rate for directive advice is not a rate for advice the person cannot act on.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c2
+  source: kl-000887
+  quote: "The topics in these items (modifying the intensity of an intervention, medication decision tradeoffs, assessing a provider’s reputation, seeking out complementary approaches, and planning for transitions) often require individual-level decision-making."
+  locator: Results, Descriptive Statistics
+  licenses: The items on which all three models scored lowest were those requiring a judgement about this particular person's circumstances — which intervention intensity, whether medication, which provider, how to plan a transition — so model competence drops systematically on exactly the class of question where the entry's mismatch would arise.
+  fit: analogical
+  bridge: Two clinicians rated one response per parent-facing autism question on usefulness and reliability scales. No parent participated, nothing was disclosed by anyone, and no recommendation was checked against a constraint. The finding's own bridge concedes 'no person disclosed anything here'. It establishes a competence gradient, not a rate of the entry's behavior.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c3
+  source: kl-001071
+  quote: “Stay active. That’s kind of a problem for me [...] because I have fibromyalgia and I can’t really be as active as I want.” (P15)
+  locator: Section 4.1 Inaccurate or Inapplicable Informational Support, quoting P15
+  licenses: 'The clearest demonstration that both halves are quotable from adjacent text: in a single utterance the person reproduces the AI''s recommendation (''Stay active'') and states the constraint that rules it out, that fibromyalgia keeps them from being as active as they want. Establishes that where the disclosure exists in text, the mismatch is readable off the text without inference.'
+  fit: adjacent
+  bridge: The two halves are adjacent inside one interview utterance rather than in two turns of a conversation. What the entry asks a reader to do is find the recommendation in an AI turn and the constraint in a preceding person turn of the same transcript, and no transcript is exhibited.
+  contributes: detectability
+  contradicts: false
+- claim_id: c3
+  source: kl-000752
+  quote: |-
+    The introduction of the conflicting preferences of a second person in Scenario 2 led to a significant
+    performance drop across all models (mean decrease of 22.4 percentage points), demonstrating the
+    models’ difficulty distinguishing between hard constraints (e.g., “a severe peanut allergy”) and softer
+    preferences (e.g., “loving Pad Thai”).
+  locator: Section 4.1
+  licenses: 'Cuts against c3''s premise that the disclosed constraint is a reliable anchor: across all ten models tested, introducing a second person with a conflicting preference cost 22.4 percentage points, and the authors locate the cause in the models failing to distinguish a hard constraint from a soft preference. If a stated constraint is not reliably recognized as binding, a detector that reads the transcript for a disclosed constraint is reading something the system itself does not treat as fixed.'
+  fit: adjacent
+  bridge: The constraints tested are safety-relevant personal facts such as a severe peanut allergy, not the entry's five resource categories, and the outcome measured is a model pass rate on a synthetic personalisation benchmark rather than whether a human reader can point at a mismatch in a transcript.
+  contributes: detectability
+  contradicts: true
+- claim_id: c3
+  source: kl-000850
+  quote: "MIND, which drew its knowledge base exclusively from resources \ndesigned specifically for patient education, provided responses at a higher grade level than \nChatGPT (approximately 11th grade for MIND versus 9th grade for ChatGPT), and higher than \nthe American Medical Association's (AMA) recommendation of a 6th grade level"
+  locator: Section 4 Discussion
+  licenses: 'Establishes that a mismatch between what a response demands of a person and what the person can meet is measurable in the response text alone: model answers written for patients came in at roughly an 11th-grade Flesch-Kincaid level against the AMA''s 6th-grade recommendation.'
+  fit: analogical
+  bridge: Reading level is not one of the entry's five resources and no course of action's preconditions are at issue. The finding's own bridge concedes no reader was tested and that reading level is a proxy for what a person can act on. The transfer is that response-side demands are quantifiable, not that this entry's mismatch is.
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-001072
+  quote: "Because the chatbot is not asking their preference and specific conditions first, the recommendations are sometimes not applicable, as in P15’s case with health conditions that constrain mobility:"
+  locator: Results, Informational Accuracy and Applicability
+  licenses: 'Bears directly on the boundary c4 draws and cuts against the entry applying to most of the cases this entry''s evidence collected. The paper''s stated mechanism is that the chatbot does not ask about preferences and specific conditions first, so recommendations are inapplicable — that is, the constraint was never on the record. The entry excludes exactly this case: an unmet precondition must have been disclosed, not merely absent. The most common form of inapplicable advice in the strongest qualitative source is therefore outside the entry as written.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-001092
+  quote: |-
+    When I was overwhelmed by work, instead of suggesting a break
+    or rest, which I needed, it kept pushing productivity hacks. My friends love me a
+    lot, they know I’m overwhelmed, I need actual rest instead of grinding.” — Ashwini
+  locator: Section 6.2.1 Artificial Empathy, quoting Ashwini
+  licenses: Marks the other exclusion c4 draws. Ashwini reports being pushed productivity hacks when she needed rest — a mismatch of orientation, with nothing said about being unable to do the hacks.
+  fit: adjacent
+  bridge: A retrospective interview account of what the chatbot kept doing, in which no resource, capacity or access is named as lacking. It bears on c4 by exemplifying what the boundary excludes rather than by testing whether the boundary holds.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000907
+  quote: "Moreover, clients may perceive that the demands of tasks exceed their abilities. In such cases, counselors need to skillfully adapt to their clients by offering alternative or modified tasks, thereby empowering clients to actively and effectively engage."
+  locator: Section 3.1 Framework, Approach
+  licenses: 'Supplies the clinical form of the distinction c4 draws: a client may perceive that a task''s demands exceed their abilities, and the counselor''s expected move is to offer an alternative or modified task. Names the mismatch as a property of the task-against-the-person rather than of the task alone, which is what c4 insists on.'
+  fit: analogical
+  bridge: Psychotherapy theory about human counselors adapting assigned tasks, presented as framework in an instrument-development paper. It states the standard against which an AI's failure could be described; it involves no AI and measures nothing.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c5
+  source: kl-001072
+  quote: "Because the chatbot is not asking their preference and specific conditions first, the recommendations are sometimes not applicable, as in P15’s case with health conditions that constrain mobility:"
+  locator: Results, Informational Accuracy and Applicability
+  licenses: 'Bears on the window by naming the ordering the entry''s multi_turn declaration presupposes: the recommendations are inapplicable because the chatbot did not ask about conditions first. Whether a constraint precedes a recommendation is a property of turn order, and the source''s observation is that in practice the constraint often does not precede it at all.'
+  fit: adjacent
+  bridge: The source describes what the chatbot failed to elicit, not how many turns a reader needs to identify anything. It supports that the phenomenon lives in turn ordering without establishing that a multi-turn window makes the entry's mismatch readable.
+  contributes: definition
+  contradicts: false

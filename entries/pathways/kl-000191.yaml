@@ -1,0 +1,88 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000191
+display_id: Pathway-93
+aliases:
+- SBP-HP-65
+label: The AI asks for a promise not to self-harm, and the person hides urges
+type: pathway
+layer: judgment
+definition: 'The AI asks the person to promise, commit, or contract not to harm themselves. The request is well-intentioned and its effects run the other way: what the person owes the exchange changes, and a later disclosure now means breaking something they agreed to.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000268
+    role: originator
+  composition_type: direct
+  mechanisms: []
+  impacts:
+  - impact: kl-000028
+    onset_mode: new
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  - impact: kl-000029
+    onset_mode: foregone
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  experience_cluster_candidate: kl-000700
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'Only the antecedent behavior has been observed: in Sobowale et al. 2025, in persona conversations the authors themselves conducted and rated, a consumer chatbot marketed as a psychologist requested a no-suicide contract from a youth persona disclosing suicidal thoughts. The same paper''s clinician authors classify the no-suicide contract request as non-evidence-based and potentially harmful, which is an expert appraisal rather than a measurement of effects. The pathway''s arrows — that the requested promise creates an obligation to the exchange, that a later disclosure of risk is then withheld because it would break the agreement, and that protection is foregone as a result — rest on a reviewed behavioral specification; no recorded source measures any of them, and no process for them has been claimed.'
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-28'
+distinguish_from:
+- neighbor: kl-000086
+  boundary: 'Both apply relational pressure against an intention the person holds and they differ in the lever. kl-000086 deploys a NAMED RELATIONSHIP OR VALUE the person disclosed — their child, their commitment — as the argument. This entry needs no such material: the lever is the promise itself and the obligation it creates to the exchange.'
+claims:
+- id: c1
+  kind: existence
+  text: An AI turn in a mental-health-shaped conversation asks the person to promise, commit, or give their word that they will not harm themselves.
+- id: c2
+  kind: pathway_link
+  text: 'Where that promise is requested, what the person owes the exchange changes: the request creates an obligation to the exchange that was not there before.'
+- id: c3
+  kind: pathway_link
+  text: That changed obligation leads to suppressed disclosure — a later disclosure of risk now means breaking something the person agreed to, so it is withheld or recanted.
+- id: c4
+  kind: pathway_link
+  text: That changed obligation leads to foregone protection — protection the person should have received does not occur because the disclosure that would have triggered it did not happen.
+- id: c5
+  kind: harm
+  text: The route is harmful in sign and its effects run counter to the request's well-intentioned aim.
+- id: c6
+  kind: definition_boundary
+  text: 'This route is distinguished from kl-000222 by its lever: the promise itself and the obligation it creates, requiring no named relationship or disclosed value as the argument.'
+claim_evidence:
+- claim_id: c1
+  source: kl-001010
+  quote: |-
+    Regarding suicidality, the AI Psychologist hosted on CHAI
+    requested a nonevidence-based, no-suicide contract and
+    suggested upgrading to a paid tier to discuss suicidal thoughts
+    more, which is potentially harmful.
+  locator: Discussion — Monitoring and Risk Evaluation
+  licenses: 'A named consumer chatbot marketed as a psychologist, in a persona conversation the authors themselves conducted and rated, requested a no-suicide contract from a youth persona disclosing suicidal thoughts. This establishes the antecedent behavior node (kl-000268) as occurring in a real deployed system, and the clinician authors'' judgment that it is non-evidence-based. It reaches c1 only: the request is observed, nothing about what the person then owed the exchange is.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c5
+  source: kl-001010
+  quote: |-
+    Regarding suicidality, the AI Psychologist hosted on CHAI
+    requested a nonevidence-based, no-suicide contract and
+    suggested upgrading to a paid tier to discuss suicidal thoughts
+    more, which is potentially harmful.
+  locator: Discussion — Monitoring and Risk Evaluation
+  licenses: 'Clinician authors classify the no-suicide contract request as non-evidence-based and potentially harmful, which supports the entry''s harmful sign as an expert appraisal. It is analogical against c5 because the appraisal is a judgment the authors render on the behavior, not a measured outcome in any person: no harm was observed to follow, and the entry''s specific harm (a later disclosure becomes a broken agreement) is not the harm the authors name.'
+  fit: analogical
+  bridge: What the source supplies is a clinical quality rating — the CAPE-II framework scores the behavior against evidence-based practice and the authors call it 'potentially harmful'. What c5 asserts is that a harm actually runs through this route in a person. The source measured chatbot conduct against a rubric; it did not follow any person past the request, and its 'potentially' is doing real work.
+  contributes: practice_analog
+  contradicts: false

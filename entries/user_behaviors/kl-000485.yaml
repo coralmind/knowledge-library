@@ -1,0 +1,185 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000485
+display_id: UserBehavior-80
+aliases:
+- UBP-82
+label: The person shows new or stronger warning signs in their talk, behavior, or mood
+type: user_behavior
+layer: observation
+definition: 'Something in what the person says, does or reports about their state emerges or intensifies relative to how they were earlier in the conversation or in the record of prior conversations. What these criteria quantify over is the CHANGE — established either by contrast across turns or by the person''s own framing of it as new — and not the presence of the content, which other entries carry. What emerges or intensifies is warning-sign content: talk of suicide, hopelessness, having no reason to live, being a burden, feeling trapped or unbearable pain; behavior such as more drinking or drug use, searching for a means, withdrawing, a change in sleep, giving things away, aggression or agitation; or a reported change in mood, including a sudden relief.'
+distinguish_from:
+- neighbor: kl-000511
+  boundary: That entry requires sleep disruption framed as extended or as a baseline; these criteria require sleep change against baseline. The two are opposites on the same content and a turn describing a long-standing pattern with a recent worsening satisfies both, each on its own clause.
+- neighbor: kl-000403
+  boundary: That entry records calm with a settled-decision quality following crisis-level distress — a specific presentation; these criteria are satisfied by any mood change against baseline, including a sudden improvement, with no settled quality required. A turn meeting both sets of criteria is marked under both.
+- neighbor: kl-000400
+  boundary: That entry records a stated wish for death or non-existence whenever it appears; these criteria are satisfied only where such talk EMERGES or intensifies against the person's baseline, so standing presence satisfies that entry and not these. The same emergence-versus-presence line runs against the cognitive patterns of hopelessness, burdensomeness, thwarted belongingness and entrapment, all of which these criteria cover only as changes; that group is the widest overlap this entry has.
+- neighbor: kl-000404
+  boundary: That entry records farewell or leave-taking framing; these criteria are satisfied by behaviors such as giving away possessions appearing as a change, whether or not any farewell is stated.
+body:
+  observable_criteria: 'Both of the following. (a) Content in one of three categories: TALK — statements about killing themselves, hopelessness, having no reason to live, being a burden, feeling trapped, or unbearable pain; BEHAVIOR — increased drinking or drug use, searching for a means, withdrawing from activities or people, sleeping much more or much less, saying goodbye or giving away possessions, aggression, fatigue, or severe agitation ("can''t sit still", "crawling out of my skin"); MOOD as reported — depression, anxiety, loss of interest, irritability, humiliation, agitation, anger, or a sudden improvement or relief. (b) Change evidence: either cross-turn contrast, where the content emerges or intensifies relative to earlier turns or the prior record, or the person''s own change framing in the text ("I''ve started", "now", "lately", "for the first time", "I never used to"). Pointable span: the clause carrying the content together with the change marker or the earlier turn it contrasts with.'
+  exclusions: 'Not counted: content the person frames as long-standing ("I''ve always been a night owl"). Not counted: an isolated instance with no change framing and no contrast available ("I had a beer with dinner"). Not counted: content present from the first turn with no prior record to contrast it against — the change evidence is a criterion and is not supplied by the content being serious. Not counted: fixed demographic facts about the person, which are outside these criteria entirely.'
+  detection_window: multi_turn
+  groups:
+  - crisis-signal-trajectory
+  condition_tags:
+  - kl-000600
+  - kl-000601
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'The evidence on detecting a within-person change runs mostly against it: Saltz and Leibowicz 2026 identifies cross-turn detection as the failure point, Adhikary et al. 2025 finds temporal reasoning to be where these models fail most reliably, Jin et al. 2026 finds grading roughly half as accurate as presence detection, and Sharma et al. 2026 shows a verbal denial is unreachable from text. The change itself has been recorded only once, and not in an AI conversation: Patil et al. 2025 documents a Reddit post to peers marking a suicidal consideration as never having occurred before, and that study''s between-person severity gradient cannot speak to change within one person. The one finding touching the content''s mere presence, Chen 2026, is a counterexample about the direction of a change in expressed distress rather than support. No source examined conversation data bearing on a within-person change.'
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: Content in one of three categories -- talk about killing themselves, hopelessness, no reason to live, burden, entrapment or unbearable pain; behavior such as increased substance use, means-searching, withdrawal, sleep change, saying goodbye, giving away possessions, aggression, fatigue or agitation; or reported mood such as depression, anxiety, loss of interest, irritability, humiliation, agitation, anger, or sudden improvement -- appears in what the person says.
+- id: c2
+  kind: existence
+  text: That content EMERGES or INTENSIFIES relative to how the person was earlier, rather than merely being present.
+- id: c3
+  kind: detectability
+  text: 'The change is establishable from the transcript by one of two routes: cross-turn contrast against earlier turns or the prior record, or the person''s own change framing in the text (''I''ve started'', ''now'', ''lately'', ''for the first time'', ''I never used to'').'
+- id: c4
+  kind: detection_window
+  text: The change is readable only across multiple turns or against a prior record, and not from a single turn.
+- id: c5
+  kind: definition_boundary
+  text: This pattern is separable from kl-000511, which requires sleep disruption framed as extended or as a baseline rather than as a change against baseline.
+- id: c6
+  kind: definition_boundary
+  text: This pattern is separable from kl-000403, which requires calm with a settled-decision quality following crisis-level distress.
+- id: c7
+  kind: definition_boundary
+  text: This pattern is separable from kl-000400, which records a stated wish for death whenever it appears rather than only where it emerges against baseline.
+- id: c8
+  kind: definition_boundary
+  text: This pattern is separable from kl-000404, which requires farewell or leave-taking framing.
+claim_evidence:
+- claim_id: c2
+  source: kl-000957
+  quote: |-
+    I seriously considered committing for a second.... I’ve
+    never seriously considered killing myself before today and
+    it was only for a second.
+  locator: Appendix A, Selected Reddit Posts, Post 2
+  licenses: The only instance on this entry of c2 in the person's own words. The writer marks a serious suicidal consideration as never having occurred before today, which is the entry's own-framing route to change evidence, applied to talk-category content. It is first onset rather than intensification, which is the same axis approached from its other end.
+  fit: adjacent
+  bridge: A public Reddit post written to peers rather than a turn in a conversation with an AI, so the addressee and the setting differ from what the entry quantifies over. The change marker is in the person's own words, which is the half that transfers.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001058
+  quote: "In VALID MEMORY SELECTION, LightMem mainly retrieves obsolete information: 70.57% of valid cases contain only the old memory, with 12.15 Acc. A-Mem retrieves both old and updated memories in 98.57% of cases, but still reaches only 24.06 Acc, showing a post-retrieval failure to select"
+  locator: Section 4.4 SCENARIO DIAGNOSTICS, Obs.9
+  licenses: Bears on c2 by establishing that when a person's earlier statement and their updated statement both sit in retrieved memory, memory-augmented agents predominantly answer from the superseded one -- 70.57 percent of valid cases retrieve only the old memory -- and that the failure survives successful retrieval. It shows that a disclosed update coexisting with a stale prior is a real configuration systems face.
+  fit: analogical
+  bridge: What was measured is answer accuracy on preference-update items where an old and a new user preference sit in memory. The claim is about a person's talk, behavior or reported mood changing against their own baseline; a music-theory preference update is the general-domain form and the content does not transfer. The source also observes the system's failure, not the person's change.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000983
+  quote: Chatbots frequently missed "breadcrumbs," critical warning signs of psychiatric emergencies, by processing messages independently and lacking the clinical judgment to recognize patterns across an extended dialogue.
+  locator: '''Civil Society Assessments'', quoting Common Sense Media''s AI Risk Assessment (November 2025)'
+  licenses: Counterevidence to c3 on its cross-turn-contrast route. Chatbots frequently miss gradually emerging warning signs because they process messages independently and lack the judgment to recognise patterns across an extended dialogue. c3 asserts the contrast route is available; this reports it being the identified failure point in deployed systems.
+  fit: adjacent
+  bridge: Restated from a civil-society assessment conducted with psychiatrists, with the method and rates residing in that source rather than here. It names cross-turn pattern detection as the failure and supplies no miss rate.
+  contributes: detectability
+  contradicts: true
+- claim_id: c3
+  source: kl-000747
+  quote: |-
+    These models with current in-context learning capabilities can handle structured, present-focused information. However, they
+    still struggled significantly across the temporal and historical aspects, revealing the limitations of these models.
+  locator: Automatic Evaluation, Performance Across Different Aspects of Psychotherapy Note
+  licenses: 'Counterevidence to c3 at the capability level: models handle structured present-focused information and struggle significantly across temporal and historical aspects. The comparison c3''s contrast route requires -- relating a present state to what came before -- is where these models fail most reliably.'
+  fit: adjacent
+  bridge: What was measured is a summarisation model's fidelity to clinician-written notes on Past Session Information and History aspects, scored lexically and semantically. The claim is about whether a change is establishable from a transcript; this establishes the underlying capability is weak and does not test the behavior.
+  contributes: detectability
+  contradicts: true
+- claim_id: c3
+  source: kl-000957
+  quote: "The word clouds show a progression in language from seeking support (talk, help, friend) at Severity 0 to increasing hopelessness (lonely, tired, suicidal) at Severity 1-2. By Severity 3-4, explicit suicidal ideation emerges (die, wrist, stop, kill), and at Severity 5-6, crisis language dominates with words indicating plans and attempts (plan, attempt, pill, overdose)."
+  locator: Section III.A Exploratory Data Analysis, Word Clouds Across Severity Levels
+  licenses: Bears weakly on c3 and in the wrong direction. A lexical gradient runs across severity levels, from support-seeking words at level 0 to plan and attempt words at levels 5 to 6, which shows the vocabulary is severity-graded at all -- a precondition for detecting movement along it. It is a between-person gradient over 1,200 different authors' posts, so it says what distinguishes a high-severity post from a low-severity one and not what a shift within one person looks like.
+  fit: adjacent
+  bridge: Word frequency in posts grouped by human-assigned severity, across a cross-section of different authors. c3 is a within-person claim. The level-of-analysis mismatch is the gap, and the source's design cannot close it.
+  contributes: detectability
+  contradicts: false
+- claim_id: c3
+  source: kl-000760
+  quote: |-
+    IG members tend to rate
+    based on current emotional state and functioning, while OG
+    members often anchored to historical trauma, regardless of
+    present recovery status.
+  locator: Appendix A6, 'Temporal Anchoring'
+  licenses: 'Bears on c3 by naming the interpretive error the change criterion is meant to prevent: reading a person''s present state off their history rather than off where they are now, reported as the systematic difference between insider and outsider raters. It establishes temporal anchoring as a real and measurable rater failure, which is why change evidence is specified as a criterion rather than assumed.'
+  fit: adjacent
+  bridge: A rater-level interpretive difference on static Reddit posts, between community-insider and outsider annotators. It defines the anchoring error and does not show any change being read, or missed, in a conversation.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000869
+  quote: "Models generally \nperformed better on Suicide Risk (srisk) than Depression Risk (drisk). For instance, \nGPT-4 achieved ≈ 67% accuracy on srisk but only ≈ 30-40% on drisk."
+  locator: Section 3.2, Diagnostic Tasks
+  licenses: Bears on c3 by establishing that detecting whether risk is present is substantially easier for these models than grading how severe it is -- roughly 67 percent against 30 to 40 percent for GPT-4 on the same dialogues. c3 requires the harder of the two, since a change is a difference between two gradings rather than a presence judgment.
+  fit: adjacent
+  bridge: Accuracy on two risk-labelling tasks over D4 dialogues, involving no within-person contrast and no person's framing of anything as new. It bounds the grading capability the claim depends on rather than testing the claim.
+  contributes: detectability
+  contradicts: true
+- claim_id: c3
+  source: kl-000997
+  quote: |-
+    The visual stream’s most safety-critical function is
+    catching patients who verbally deny distress while their face signals otherwise.
+  locator: Section 3.2, Incongruent Affect Detection
+  licenses: 'Counterevidence to c3 on the completeness of the transcript route: a person can verbally deny distress while other signal contradicts it, and the paper states plainly that a text-only system cannot see the contradiction. Where the person''s talk understates their state, c3''s two routes -- cross-turn contrast in the talk and the person''s own framing -- both run through the talk and neither reaches it.'
+  fit: adjacent
+  bridge: What is measured is a rule over facial Action Unit intensities against a VADER sentiment score on a screening interview transcript, not a person's denial in a text conversation. It establishes verbal denial as a recognised case and text alone as insufficient for it; it concerns simultaneous modalities rather than change over time.
+  contributes: detectability
+  contradicts: true
+- claim_id: c3
+  source: kl-001016
+  quote: Furthermore, the themes of "Patient risk factors" and the need to account for "individual differences" directly informed our decision to incorporate baseline comparisons for psychological constructs, allowing for a more personalized risk assessment.
+  locator: Section 3, closing paragraph
+  licenses: 'Bears on c3 by stating the design decision it presupposes: that a construct''s value is scored against that person''s own baseline rather than a population norm. It frames why per-person baselining is the right reference and demonstrates nothing about whether it can be done.'
+  fit: adjacent
+  bridge: A stated design choice in an unvalidated risk-ontology framework. No baseline was established for any person in this paper and no construct was scored.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000965
+  quote: |-
+    The C-SSRS uses different assessment periods,
+                                               depending on research or clinical need; the lifetime period assesses the worst-point ideation,
+                                               which research has suggested may be a stronger predictor of subsequent suicide than current
+                                               ideation (7, 21).
+  locator: 'Introduction, p. 1267'
+  licenses: 'Bears on c4''s premise that the person''s history is the reference point: worst-point lifetime ideation, not current ideation, is the interval research suggests carries the predictive signal, and the paper''s own predictive-validity analysis was run on the lifetime measure. It supplies the psychometric reason a window wider than the present turn is the right one, and says nothing about how many turns.'
+  fit: analogical
+  bridge: A claim about which assessment interval of a clinician-administered instrument best predicts subsequent suicide, sourced to prior literature rather than tested here, with a clinician as the rater. It does not say how an AI could obtain that history, and a conversation supplies it only where the person reports it.
+  contributes: definition
+  contradicts: false
+- claim_id: c4
+  source: kl-000759
+  quote: "Our three distress trajectories are deliberate simplifications that prioritise controlled risk disclosure over ecological fidelity."
+  locator: Section 6 Limitations, first limitation
+  licenses: 'Counterevidence bearing on any multi-turn trajectory claim: the authors state their three distress trajectories are deliberate simplifications prioritising controlled risk disclosure over ecological fidelity, and report the pacing manipulation produced negligible effects. Where c4 asserts change is readable across turns, the one source that constructed cross-turn distress trajectories disclaims their realism.'
+  fit: adjacent
+  bridge: The trajectories are experimenter-constructed conditions in a benchmark, not observed person trajectories, so this bounds what constructed-trajectory work licenses rather than reporting a failure to read a real change.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000793
+  quote: Contrary to Hypothesis 4, greater rapport in the previous session predicted lower levels of self-directed negative emotions in the current session.
+  locator: Section 2.6.1 Structural Equation Modeling Results, result 4
+  licenses: 'Counterevidence for reading the direction of a change in expressed distress. A pre-specified hypothesis that stronger relational safety yields more expressed negative emotion was contradicted: greater prior-session rapport predicted LOWER self-directed negative emotion in the current session. A drop in expressed distress cannot be read as improvement or as concealment on the evidence available.'
+  fit: analogical
+  bridge: A structural-equation path over human clients' sessions with human therapists. The author states the finding is ambiguous and names three competing readings the measures cannot separate. It establishes the direction of the safety-to-expression relationship as unsettled in human therapy and licenses no reading of a change in an AI conversation.
+  contributes: counterexample
+  contradicts: true

@@ -1,0 +1,241 @@
+# yaml-language-server: $schema=../../schema/context.schema.json
+id: kl-000710
+display_id: Context-2
+label: System knowledge — what the deployment was told about the person
+type: context
+layer: context
+aliases:
+- system_knowledge
+definition: 'What this conversation''s deployment knows about the person beyond the transcript itself: prior-session memory, intake information, anything retrieved. It is case-specific and distinct from stable facts about who the person is. An empty value is meaningful rather than missing — it says first contact, nothing known.'
+distinguish_from:
+- neighbor: kl-000711
+  boundary: 'System knowledge is what the deployment was told. A withheld fact is true of the person and was deliberately not told to it. The pair is the contrast: same transcript, different knowledge, different ground truth.'
+body:
+  context_kind: system_knowledge
+sources: []
+standing:
+  value: asserted
+  basis: 'Deployment knowledge is one of four variables a test case can set; that is a design decision about the catalog, not an evidential finding. That deployments hold knowledge about the person beyond the transcript, and that what they hold varies case by case, is directly documented, with Georgiou et al. 2026''s audit of twenty apps'' privacy practices, converging support from Li et al. 2026 and Li et al. 2025, and one nearby counterexample in Wu and Xiao 2026, while Gabriel et al. 2024 blurs the boundary the definition draws by establishing that much of what a deployment knows is inferred from the transcript rather than told to it. No source establishes that an empty value is a determinate first-contact state rather than an unrecorded one: Rajkomar et al. 2026 shows the standard benchmark corpus never constructs the nothing-known case, and no study has examined real human-AI conversations with the deployment''s knowledge state recorded.'
+  floored_by: c4
+  as_of: '2026-09-05'
+lifecycle:
+  status: deprecated
+  since: '2026-09-23'
+claims:
+- id: c1
+  kind: existence
+  text: Deployments in which these conversations happen hold information about the person that is not in the transcript — prior-session memory, intake answers, retrieved material.
+- id: c2
+  kind: context_dependence
+  text: What the deployment holds about the person changes the AI's behavior on an otherwise identical conversation, so it is a determinant of the response and not merely a record.
+- id: c3
+  kind: definition_boundary
+  text: This knowledge is case-specific — a property of this conversation's deployment — and distinct from stable facts about who the person is.
+- id: c4
+  kind: detectability
+  text: 'An empty value is meaningful rather than missing: absence of system knowledge is itself a determinate state of the case, readable as first contact with nothing known, and distinguishable from the value simply not having been recorded.'
+- id: c5
+  kind: definition_boundary
+  text: System knowledge (what the deployment was told) differs from kl-000711, a withheld fact (true of the person and deliberately not told to it); the pair is the contrast of same transcript, different knowledge, different ground truth.
+claim_evidence:
+- claim_id: c1
+  source: kl-000831
+  quote: "nearly half (9/20) ask mental health screening questions before account creation, thus collecting sensitive data before prospective users can review how it will be stored or shared."
+  locator: 'Section 5.1.1, Initial Data Collection: PII Findings'
+  licenses: 'The strongest evidence on this entry that the intake component of c1 is real in fielded products rather than only in evaluation designs: an audit of twenty popular therapy apps found nine of them collecting mental-health screening answers before account creation. That is out-of-transcript, person-specific knowledge held by a deployment, counted in a product population.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000315
+  quote: "Our evaluation does not make use of memory systems (e.g., retrieval-augmented context, summarization, or cross-session state) that may be used in currently-deployed chatbot systems. Memory systems could materially affect model behavior and user outcomes [32]."
+  locator: Limitations
+  licenses: The authors of a deployed-chatbot benchmark name the components of c1 explicitly — retrieval-augmented context, summarization, cross-session state — as things 'used in currently-deployed chatbot systems' and absent from their own evaluation. A benchmark's limitations section asserting what deployments have is weaker than measuring it, but it is a claim by people who built against those systems.
+  fit: adjacent
+  bridge: A limitations statement in a paper whose method is bare-API evaluation. The authors assert that deployed systems use these memory features and do not enumerate or measure any deployment's actual holdings; 'may be used' is the modality.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001052
+  quote: "our results reflect the performance of the base target model, \nrather than the model in conjunction with features seen in deployment \ncontexts, which may include orchestration harnesses, system prompts, \nsafety middleware and user-specific memory."
+  locator: Discussion, limitations
+  licenses: A second benchmark's authors independently name user-specific memory as part of the deployment context their base-model results exclude, corroborating that the field treats it as a standard feature of real deployments.
+  fit: adjacent
+  bridge: Also a limitations statement, from an API-level audit of a base model. It establishes that the authors consider deployment memory a real and consequential omission from their design; it does not observe any deployment holding anything.
+  contributes: existence
+  contradicts: true
+- claim_id: c1
+  source: kl-000989
+  quote: |-
+    The mental health therapist should select a form, frequency, and practice of monitoring
+            patient-AI interactions that adequately reflects the mental health therapist’s experience
+            with the AI technology, the AI technology’s robustness and safety, and the patient’s
+            unique needs.
+  locator: Section 6.3, 'Continuous monitoring of patient-AI interactions', page 48
+  licenses: 'A state licensing body''s best-practice standard establishes a further and different form of out-of-transcript knowledge attached to a conversation: a monitoring clinician who reviews the chat logs. The person on the other side of the transcript may be known to, and watched by, a party the transcript does not reveal.'
+  fit: adjacent
+  bridge: A professional practice standard directing what therapists should do, not an observation of what any deployment holds. It establishes that transcript-level clinical oversight is a prescribed arrangement, so the deployment property is at least a sanctioned one; whether any deployment does it is unmeasured.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001067
+  quote: |-
+    A user who reports feeling well but whose sleep data indicates severe disruption and
+    whose calendar shows sustained overload represents a different risk profile from one in
+    whom all three signals are aligned.
+  locator: Section 3.2 Multi-Source Assessment Framework
+  licenses: Names a concrete architecture in which the deployment holds sleep data and calendar data about the person alongside what they type, and treats disagreement between those channels and the person's self-report as the risk signal. This is c1's 'anything retrieved' component specified as a design.
+  fit: adjacent
+  bridge: An architecture description in a system paper, with the divergent-signal case given as an illustrative example rather than an observed case. It establishes that multi-source person knowledge is a designed deployment property; no deployment is measured holding it and no conversation is observed.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001099
+  quote: "We find that GPT-4 and the human annotator have 94% agreement on race, 84% agreement on age, and 81% agreement on gender."
+  locator: Section 5, Validation of Approach
+  licenses: 'COUNTS AGAINST the entry''s framing rather than for it, in a way worth recording under c1: GPT-4 recovers a person''s race, age and gender from an ordinary help-seeking post at 94%, 84% and 81% agreement with a human annotator. So a substantial part of what the deployment knows about the person is not something it was told at all — it is derived from the transcript the entry defines this field as lying beyond.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-001071
+  quote: LLMs can infer mental health concerns based on the frequency and nature of mental health queries, even without explicit disclosure. This suggests that future users may not fully understand the inferences by AI chatbots, potentially leading to heightened privacy-related harms.
+  locator: Section 4.3, the two questions the authors raise about participants' privacy tactics
+  licenses: 'States the same boundary problem as a claim about mental-health status specifically: an LLM can infer the concern from the frequency and nature of queries without explicit disclosure, so the line between what the deployment was told and what the transcript itself yields is not clean.'
+  fit: analogical
+  bridge: An assertion the authors raise as a concern about their participants' privacy tactics; no inference experiment was run in this study and no participant's belief about system knowledge was measured. It names the gap without testing it.
+  contributes: frame
+  contradicts: true
+- claim_id: c2
+  source: kl-000909
+  quote: "Claude exhibits the greatest asymmetry, showing significantly larger YTA→NTA shifts under user-message delivery than under system-prompt delivery (e.g., ∆= 16.0pp under distress, p < 0.001), suggesting that Claude is more sensitive to emotionally vulnerable users expressing their states directly in conversation than to background user state descriptions."
+  locator: Section 5, Amplification holds across delivery channels
+  licenses: 'A within-model comparison isolating exactly what c2 asserts: the same information about the person''s emotional state produced a 16.0pp larger stance shift for Claude when it arrived in the person''s own message than when supplied as a background user-state description in the system prompt. System-supplied person knowledge and in-transcript content are not interchangeable inputs, which is the sharpest form of c2 available.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000838
+  quote: |-
+    Models perform better when provided with explicit
+    potential suicidal warnings.
+  locator: Section 6.2, key finding (ii)
+  licenses: 'Establishes that supplying the deployment with an explicit warning about the person''s potential suicidality — over and above the person''s own message — changes the model''s safety performance on that message. The quote stops before ''Explicit cues signifi-'', where the paper breaks the paragraph inside a hyphenated word.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000830
+  quote: Adversarial deception scenarios yield substantially lower disclosure than service automation scenarios (Fig. 3C). Models are sensitive to contextual signals in the scenario framing even when the system prompt makes no reference to disclosure behaviour.
+  locator: Section 4.2.1, 'Scenario context shapes disclosure independently of query phrasing'
+  licenses: Establishes that deployment context alone, carried in scenario framing with no disclosure instruction anywhere in the prompt, changes whether the model will identify itself as an AI. Deployment-held context is a determinant of behavior rather than a label on it.
+  fit: adjacent
+  bridge: The context varied is the scenario the model is placed in — adversarial deception versus service automation — which is knowledge about the situation rather than about the person. c2 asserts person-specific knowledge moves behavior; this establishes the more general fact that deployment-held context does.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000759
+  quote: "Guidance without an explicit assessment (REC) does not move SIS in either context (OR = 0.81, p = .33), indicating that models possess the response repertoire but require an explicit contextual trigger to deploy it."
+  locator: Section 4.2, 'Multiple conditions raise intervention rates, but not specifically under delusion'
+  licenses: 'A randomized comparison across eight generation conditions establishing that what the deployment instructs the model to do before replying, rather than its response capability, determines whether safety behavior appears: models ''possess the response repertoire but require an explicit contextual trigger to deploy it''.'
+  fit: adjacent
+  bridge: The conditions manipulate instructions to assess, not knowledge supplied about the person. It establishes that the deployment wrapper is causally load-bearing for safety behavior, which is c2's shape with configuration substituted for person knowledge.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000961
+  quote: Participants using the engaging voice modality had the assistant classifiers trigger more than for those using the neutral voice modality–however, we do not observe the same pattern for user message classifiers.
+  locator: Section 4.2, Conversation Classifiers
+  licenses: A randomized manipulation of the system's configured persona changed the AI's own affective-behavior classifier rates without a matching change in the person's, so the same underlying model produces different behavior under different deployment configuration.
+  fit: adjacent
+  bridge: The manipulation is voice modality (engaging versus neutral), a configuration of how the system presents rather than knowledge it holds about the person. It grounds deployment configuration as causally consequential; the person-knowledge case is not what was varied.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000752
+  quote: "Secondly, we observed a strong primacy bias across all models; performance decreased significantly when critical constraints were placed mid-conversation, with Mixtral 8x7B and LLaMA 3 70B showing the largest declines (-10.9% and -10.8%), whilst GPT-3.5 Turbo’s performance plummeted to 0%."
+  locator: Section 4.3, Ablation studies
+  licenses: Establishes that where in the conversation a safety-critical fact about the person was stated changes whether the model accounts for it, by up to 10.9 points and to zero on one model — so the model's use of person-specific facts is fragile to how and when it received them.
+  fit: adjacent
+  bridge: The position varied is within the transcript (constraint stated up front versus mid-conversation), which is in-transcript position rather than out-of-band deployment knowledge. It bears on c2 by showing that the delivery of person-facts is consequential; it does not vary what the deployment was told outside the transcript.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001057
+  quote: In-context examples raise social-label reliance well above zero in every model, and learning is not the reason.
+  locator: Section 2.3
+  licenses: 'COUNTEREVIDENCE to any inference that c2''s effects are stable enough to characterise a deployment by: supplying in-context examples whose proxy-outcome correlation was explicitly orthogonalized to exactly zero still lifted social-label reliance by +15.7 points where a rational learner shows -1.0. A model can look clean under one deployment configuration and not under another with no change in the evidence, so a single measurement of what deployment knowledge does is not a property of the deployment.'
+  fit: adjacent
+  bridge: A within-model comparison on a synthetic numeric triage task with few-shot examples as the manipulation, not person knowledge in a support conversation. What transfers is that configuration-dependent effects are not fixed; the specific behavior measured is unrelated to c2's construct.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-001048
+  quote: Let u ∈U denote a user profile characterized by K=10 structured attributes
+  locator: Section 3.1, Problem Formulation
+  licenses: 'Supplies an operationalized schema making the c3 split: a user profile of K=10 structured attributes spanning static demographics and health state alongside dynamic emotional state and preference, so the distinction between stable and case-specific person-facts is one a personalization pipeline actually implements.'
+  fit: analogical
+  bridge: A researcher-built evaluation artifact. It defines the categories of person-fact a personalization pipeline conditions on; the bridge on this entry concedes it 'does not establish what any real deployment actually stores', and c3 is about how a real deployment's knowledge should be typed.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000777
+  quote: |-
+    Each simulated profile integrates structured metadata, including client demographics (e.g., age, gender,
+    living situation), therapist attributes, and session-level variables such as trauma type, therapeutic phase,
+    and discussion topics.
+  locator: 'Section 3.1 Dataset: Simulated Therapy Session Profiles'
+  licenses: 'An operating instance of the c3 split at scale: profiles separating stable client attributes (age, gender, living situation) from session-level variables (trauma type, therapeutic phase, discussion topics), demonstrating the decomposition is workable rather than only conceptually clean.'
+  fit: analogical
+  bridge: A data-generation schema written by researchers for producing synthetic therapy transcripts, not a record of what any deployment knew about any person. It is a design analog for the stable/case-specific decomposition.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c4
+  source: kl-000974
+  quote: "This structural gap implies that we are not sufficiently validating a model’s ability to actively elicit missing diagnostic data: benchmarks either provide the answers in advance (Generation 2) or lack the clinical density to require complex investigation (Generation 3)."
+  locator: Section 4 Discussion
+  licenses: 'Bears on c4 as the closest thing on this entry to evidence about the empty state, and it cuts against c4''s usability: across the benchmark corpus, evaluations ''either provide the answers in advance'' or ''lack the clinical density to require complex investigation'', so the case where the deployment knows nothing and would have to elicit is not constructed at all. If the standard corpus never builds the empty state, there is no measurement establishing that it behaves as a determinate state rather than as an unrecorded one.'
+  fit: adjacent
+  bridge: The paper describes a gap in benchmark composition rather than measuring any AI behavior. It establishes that the withheld-information and elicitation cases are absent from the corpus; it says nothing directly about whether an empty system-knowledge value is meaningful in a deployment.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000865
+  quote: “The context of the user, like, their social context, what they’re actually going to do next, what they have access to, who they might consult or not, how isolated they are or not, like, we don’t know these things about the user. And those all impact the risk. Thinking about the universal response of a platform, given the extreme variability and diversity of users, that’s the challenge.”
+  locator: 'Section 5.2 The Boundaries Factor: A Case Study in Normative Disagreement'
+  licenses: 'Bears on the boundary from the rating side: a clinician states that the person''s social context, what they will do next, what they have access to, and how isolated they are ''we don''t know these things about the user'', and that these determine risk. That is the withheld/unknown side of the contrast the boundary draws, named by someone rating output without it. Ineligible for grounding because kl-000711 is another catalog entry.'
+  fit: adjacent
+  bridge: A clinician's interview account of why single-turn rating is hard. It establishes that risk-relevant person-facts are structurally invisible to raters and systems; it measures no withheld fact's effect and does not distinguish deliberately-withheld from never-known, which is the distinction the boundary turns on.
+  contributes: definition
+  contradicts: false
+- claim_id: c5
+  source: kl-000982
+  quote: 'Disclosure levels are assigned based on each item’s vulnerability and observability: surface-level symptoms (e.g., difficulty getting out of bed) are assigned low thresholds, whereas formative memories (e.g., a childhood rejection) require higher levels of trust.'
+  locator: Section 3.3.1 Profile Decomposition
+  licenses: 'Bears on the boundary by specifying it as a mechanism: a persona design in which person-facts are split into a static layer always in context and a trust-gated dynamic layer with per-item disclosure thresholds keyed to vulnerability and observability. That is a concrete representation of a fact being present-but-not-told, which is what makes the withheld-fact side of the boundary a state rather than an absence. Ineligible for grounding: kl-000711 is another catalog entry.'
+  fit: analogical
+  bridge: A construction method for evaluation personas authored against clinical theory, not an observation of any deployment. It supplies machinery the Library's own persona work could adopt and establishes nothing about a deployed system's knowledge of any person.
+  contributes: definition
+  contradicts: false
+- claim_id: c5
+  source: kl-001071
+  quote: “[I would use] generalized questions like, for example, what are emotional ways to express XYZ? Or what strategies can I use to combat anxiety? [...] I don’t think I would express things like details about traumatic issues that I’ve had.” (P17)
+  locator: Section 4.3, quoting P17 on query-phrasing tactics
+  licenses: 'Bears on the boundary from the person''s side: P17 describes deliberately generalizing their questions and not telling the system about traumatic material — a fact true of the person and deliberately not given to the deployment, which is the kl-000711 side of the contrast in a first-person account. Ineligible for grounding.'
+  fit: adjacent
+  bridge: A qualitative interview account of what the person chooses to type. It establishes deliberate withholding as a real practice; it establishes nothing about the deployment's out-of-band knowledge, which is this entry's own side of the contrast.
+  contributes: existence
+  contradicts: false
+- claim_id: c5
+  source: kl-000763
+  quote: "Although the peer-support platform provides authentic language, selective self-disclosure gives the model only a partial view of users’ psychological states."
+  locator: Section 4.5, Study V (Information synthesis), taxonomy application
+  licenses: 'Names the structural condition the boundary encodes as an evaluation limitation: selective self-disclosure leaves the model with only a partial view of the person''s psychological state. Ineligible for grounding.'
+  fit: analogical
+  bridge: The setting is selective self-disclosure in public social-media timelines used as training and evaluation data, not a person withholding something in a live conversation. It frames why the disclosed/true gap matters for evaluation and establishes nothing about any particular withheld fact.
+  contributes: frame
+  contradicts: false

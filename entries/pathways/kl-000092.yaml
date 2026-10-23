@@ -1,0 +1,88 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000092
+display_id: Pathway-54
+aliases:
+- PS-27
+label: The person's goal in the conversation changes, the AI keeps replying as before, and they get very upset
+type: pathway
+layer: judgment
+definition: The person's orientation shifts mid-conversation — from venting to deciding, from exploring to seeking help — and the response continues at the prior orientation.
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000233
+    role: non_interruptor
+  - kind: user_behavior
+    id: OWED
+    role: initiator
+    owed: true
+    owed_behavior: A later turn whose orientation differs in kind from the earlier ones (seeking to not-seeking, uncertain to settled, engaged to withdrawn) read against those earlier turns.
+  composition_type: trajectory
+  composition_instruction: The response to the later turn stays at the orientation of the earlier turns.
+  mechanisms: []
+  impacts:
+  - impact: kl-000031
+    onset_mode: new
+    horizon: immediate
+    sign: harmful
+    level_of_analysis: population
+    basis_kind: ASSERTED
+  experience_cluster_candidate: kl-000704
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'No citation attaches to this entry, and the gap is not one a further search of the same corpus would close: a survey of that corpus''s measurement instruments found none that can read a person''s orientation changing mid-conversation or judge an AI turn against the person''s current rather than prior orientation. Auditing frameworks fix the person''s intent per conversation as a held-constant design variable and score only AI-behavior dimensions; message-level coding schemes are presence tests that never condition on a transition in the person''s stance; the reviewed clinical-risk rubrics carry no dimension concerning the person''s orientation; and the one framework that does track the person''s state, Steenstra et al. 2026, does so because the person is a simulated agent whose internal state the framework writes rather than reads off a transcript. Measuring the construct would require a per-turn label of the person''s orientation, which no surveyed instrument carries. The search supplied only one bullet from a benchmark rubric prescribing the opposite behavior, and the pathway''s impact link to acute interactional distress is an authoring assertion, with no source stating it even as a position or framework.'
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+distinguish_from:
+- neighbor: kl-000058
+  boundary: 'They reach different impacts: here kl-000031, there kl-000029 and kl-000016. Here the response is kl-000233; there it is kl-000205. Here the person''s turn is a part not yet authored; there the pathway has no person-side part. A coder deciding between them reads what the response did, not the outcome.'
+- neighbor: kl-000726
+  boundary: Same AI behavior, and the person's turn changes in kind in both. There the later turn seeks help, and the response left at the prior orientation forgoes the protection that help would have given; here the change may be of any kind, and the claim is the acute distress of a response that no longer fits.
+measurement:
+  what_would_be_needed: 'A user-side orientation label applied per turn — what the person is doing with this turn: venting, exploring, deciding, seeking help — inferred from the transcript rather than written by a patient agent, plus a paired judgment of whether each subsequent AI turn matches the current label or the prior one. Steenstra''s per-turn logging is the nearest carrier, but its constructs are affective intensities, not conversational orientation.'
+claims:
+- id: c1
+  kind: existence
+  text: 'A person''s orientation shifts mid-conversation: from venting to deciding, or from exploring to seeking help. The catalog has no entry for this observable yet.'
+- id: c2
+  kind: existence
+  text: 'NODE (participant kl-000233, ai_behavior, role non_interruptor): the AI''s response continues at the person''s PRIOR orientation after that shift.'
+- id: c3
+  kind: existence
+  text: 'NODE (impact kl-000031): the immediate harmful impact this pathway reaches occurs.'
+- id: c5
+  kind: pathway_link
+  text: 'LINK (co-occurrence, combination_rule CO-OCCURRING): the orientation shift and the prior-orientation response appear together in the configuration, and neither is individually sufficient -- the claim is about the pairing.'
+- id: c6
+  kind: pathway_link
+  text: 'LINK (impact edge kl-000031): the pairing produces the immediate harmful impact, onset_mode ''new''.'
+- id: c8
+  kind: context_dependence
+  text: The impact edge holds at population level; no within-person trajectory is established for any impact this pathway reaches.
+- id: c9
+  kind: detectability
+  text: 'The pairing is identifiable from what a transcript contains: the person''s orientation change is readable from the transcript, and each subsequent AI turn can be judged against the new orientation rather than the old one.'
+- id: c10
+  kind: definition_boundary
+  text: 'This entry is separable from kl-000205: both reach the same impact and differ in the participant pair producing it, so a coder decides on what the response did rather than on the outcome.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000798
+  quote: "Venting is an open-ended and emotion-focused disclosure strategy (Tran et al., 2023; Parlamis, 2012), while advice-seeking is more regulated and solution-oriented (Lazarus and Folkman, 1984)."
+  locator: §1 Introduction
+  licenses: 'Supplies the construct c1 needs — venting and advice-seeking as theoretically and **empirically** distinct help-seeking orientations — and, crucially, the paper demonstrates they are separable from language alone at scale: a within-person design over 14,040 users and 178,858 Reddit posts, with venting marked by all-or-nothing thinking (d=.66) and advice-seeking by tentativeness (d=−.34) and cognitive processing (d=−.32). The within-person design is what makes this worth attaching: the **same users** write differently depending on intent, which is the premise that a single person''s orientation is a variable rather than a trait. The decisive limit, and the reason this cannot reach c1 as written: these are **separate posts in different subreddits**, not a shift **within one conversation**. The paper shows a person can be in either orientation; it never observes one turning into the other mid-exchange. c1 asserts the mid-conversation shift, and this span does not reach it.'
+  fit: adjacent
+  contributes: definition
+  bridge: Between-post, within-person variation on Reddit to a within-conversation transition. Carrying it across assumes that two orientations a person demonstrably moves between across posts can also succeed one another inside a single exchange. Reasonable, and unevidenced here.
+- claim_id: c2
+  source: kl-000813
+  quote: (ii) escalation mismatch, where the assistant fails to register a user’s shift from ambivalence to provocation
+  locator: §5.1 Affective Misalignments
+  licenses: 'The closest span in the corpus to c2, and it is a genuine match in **structure**: the person''s stance changes mid-conversation, and the assistant responds as though it had not. The taxonomy makes it operational — A2 Escalation Mismatch, diagnostic criterion "Assistant fails to track or respond to escalating affect, remaining flat or generic across turns" (Table 6) — and the paper names the missing capacity the pathway is about: "What is missing is affective stance tracking, the ability to register emotional shifts and adapt guidance accordingly". Three limits, and the first two are serious. (1) The user is a **scripted simulator** whose stance progression is *designed in* by an emotion-pacing function that maps dialogue phase to one of five prescribed escalation strategies — so the shift did not emerge and was not observed; it was imposed. (2) The direction is **escalation** (ambivalence→provocation), whereas this pathway''s own examples run venting→deciding and exploring→seeking-help; provocation is a stance change, not an orientation change in the entry''s sense. (3) The paper''s own limitations note that persona extraction, simulation, and LLM judge all come from one model family and "may inherit same-source normative biases." Also, its ethics note states the work "concerns the behavior and limitations of AI systems, not real users."'
+  fit: adjacent
+  contributes: existence
+  bridge: Two transfers. **Agent:** scripted user simulator to a person. **Construct:** a designed affective escalation to a spontaneous orientation change. The second is the one that limits what this licenses — it evidences that systems fail to re-register a user's changed stance *of some kind*, which is the genus of c2, not its species.

@@ -1,0 +1,289 @@
+/*
+ * The site frame and shared small parts: header, feedback band, footer,
+ * entry links, evidence-rating meters and counted numbers. Unlayered, so it
+ * overrides the brand's cascade layers. Uses brand tokens only.
+ */
+
+/* Leaves room for the sticky header when the page jumps to an anchor. */
+html {
+  scroll-padding-top: calc(var(--space-8) + var(--space-3));
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.site-header__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+}
+
+.site-header__name {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--color-heading);
+  white-space: nowrap;
+  padding-left: var(--space-3);
+  border-left: 1px solid var(--cm-viz-blue-30);
+  line-height: 28px;
+}
+
+/* Header search: a GET form into the catalog. */
+.site-search {
+  position: relative;
+  flex: 1 1 auto;
+  max-width: 560px;
+}
+
+.site-search input {
+  width: 100%;
+  height: 38px;
+  padding: 0 40px 0 14px;
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-sm);
+  background: var(--cm-white);
+  font: inherit;
+  font-size: var(--fs-meta);
+  color: var(--color-body);
+}
+
+.site-search kbd {
+  position: absolute;
+  right: 12px;
+  top: 9px;
+  padding: 1px 6px;
+  border: 1px solid var(--color-rule);
+  border-radius: 4px;
+  background: var(--cm-white);
+  font: 500 var(--fs-chip) var(--font-mono);
+  color: var(--color-text-muted);
+}
+
+.site-header__github {
+  display: inline-flex;
+  align-items: center;
+}
+
+.site-footer__copyright {
+  margin: 0;
+  font-size: var(--fs-caption);
+  color: var(--color-body);
+}
+
+/* No background, so it reads as the page's closing note rather than another section. */
+.feedback-band {
+  border-top: 1px solid var(--color-rule);
+}
+
+/* The home page ends on a colored section, which already marks the break. */
+.home + .feedback-band {
+  border-top: 0;
+}
+
+.feedback-band__inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-5);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-5);
+  align-items: center;
+}
+
+.feedback-band h2 {
+  font-size: var(--fs-h4);
+  margin: 0 0 var(--space-2);
+}
+
+.feedback-band p {
+  margin: 0;
+  font-size: var(--fs-caption);
+  max-width: var(--measure);
+}
+
+.feedback-band__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-size: var(--fs-caption);
+}
+
+.muted {
+  color: var(--color-text-muted);
+}
+
+/* An entry named in prose: its current label, with a dot in its type's hue. */
+.entry-ref {
+  font-weight: 600;
+}
+
+.type-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--type-color, var(--color-text-muted));
+  margin-right: 6px;
+  vertical-align: 1px;
+}
+
+/* A number counted from the catalog. Hovering, focusing or tapping it shows
+   what it counts; drawn here because the browser's own title tooltip is slow
+   to appear and absent on touch screens. */
+.counted {
+  position: relative;
+  text-decoration: underline dotted var(--color-text-muted);
+  text-underline-offset: 3px;
+  cursor: help;
+}
+
+.counted:hover::after,
+.counted:focus::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 6px);
+  z-index: 20;
+  width: max-content;
+  max-width: 260px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  background: var(--color-heading);
+  color: var(--cm-white);
+  font-size: var(--fs-meta);
+  font-weight: 400;
+  line-height: 1.35;
+  white-space: normal;
+  pointer-events: none;
+}
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-chip);
+  font-weight: 600;
+  color: var(--color-body);
+  cursor: help;
+}
+
+.meter {
+  display: inline-flex;
+  gap: 2px;
+  vertical-align: -1px;
+}
+
+.meter i {
+  display: block;
+  width: 5px;
+  height: 11px;
+  border-radius: 1px;
+  background: var(--bg-highlight);
+  box-shadow: inset 0 0 0 1px var(--color-rule);
+}
+
+.meter i.on {
+  background: var(--color-heading);
+  box-shadow: none;
+}
+
+@media (max-width: 860px) {
+  .feedback-band__inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .site-header__name {
+    display: none;
+  }
+
+  .site-header .cm-site-header__inner {
+    flex-wrap: wrap;
+    row-gap: var(--space-2);
+  }
+
+  .site-search {
+    order: 10;
+    flex-basis: 100%;
+    max-width: none;
+    margin: 0;
+  }
+
+  .site-search kbd {
+    display: none;
+  }
+}
+
+/* Live results under the header search. */
+.site-search__results {
+  position: absolute;
+  top: 44px;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  max-height: 70vh;
+  overflow: auto;
+  padding: 6px 0;
+  background: var(--cm-white);
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.site-search__grp {
+  margin: 0;
+  padding: 6px 14px 2px;
+}
+
+.site-search__res {
+  display: block;
+  padding: 7px 14px;
+  border-left: 3px solid transparent;
+  text-decoration: none;
+  color: var(--color-body);
+  font-size: var(--fs-meta);
+}
+
+.site-search__res:hover,
+.site-search__res.act {
+  background: var(--bg-band);
+  border-left-color: var(--type-color, var(--color-heading));
+}
+
+.site-search__top {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.site-search__top .mono {
+  white-space: nowrap;
+}
+
+.site-search__label {
+  font-weight: 600;
+  color: var(--color-heading);
+}
+
+.site-search__why,
+.site-search__snip {
+  display: block;
+  font-size: var(--fs-chip);
+  margin-top: 1px;
+}
+
+.site-search__why {
+  color: var(--color-text-muted);
+}
+
+.site-search__none {
+  margin: 0;
+  padding: 8px 14px;
+  font-size: var(--fs-meta);
+  color: var(--color-text-muted);
+}

@@ -1,0 +1,310 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000443
+display_id: UserBehavior-41
+aliases:
+- UBP-41
+label: The person says they plan to or might stop treatment or other support
+type: user_behavior
+layer: observation
+definition: The person's turn states that they intend to stop, or are considering stopping, engagement with an identified source of support — a clinician, a treatment, a medication regimen, a service, a support group, or this conversation and the system providing it. The statement is about future engagement rather than about the support's quality. What is pointable is the identified source and the stated intention or consideration.
+distinguish_from:
+- neighbor: kl-000444
+  boundary: That entry requires a turn ending THIS conversation with the subject matter exhausted and no stated intention about future engagement; this one requires a stated intention to stop engaging with an identified source, which may be a clinician the conversation never touches. A goodbye that says the person will not be back is that entry.
+- neighbor: kl-000440
+  boundary: That entry requires a contesting response to a directive in the AI's immediately preceding turn; this one requires a stated intention about future engagement with a support source and requires nothing of the AI's turn.
+- neighbor: kl-000439
+  boundary: That entry requires a report of contact made or a step taken toward an external source of help; this one requires a stated intention to stop. The two are opposite in direction and can appear in one conversation about different sources.
+body:
+  observable_criteria: 'Two features in the person''s turn. (a) An identified source of support: a named clinician or clinician type, a named or described treatment, a medication or regimen, a service, a group, or this conversation and the system providing it. (b) A stated intention or active consideration of stopping engagement with it, quotable: "I''m not going back", "I''m going to cancel Thursday", "I''ve decided to come off it", "I don''t think I''ll keep doing this", "I''m thinking about stopping". A hypothetical framed as a question ("would it be bad if I stopped?") satisfies (b) where the person states they are considering it; a general question about discontinuation with no personal intention attached does not. The pointable span is the person''s turn.'
+  exclusions: 'Not counted: a complaint about the support''s quality with no stated intention about continuing ("the appointments never help"), which fails (b). Not counted: a report that support has already ended for reasons outside the person''s decision (a clinician left, funding ended, a waitlist), which is a circumstance rather than an intention. Not counted: a completed course reported as finished on plan, where stopping is the arrangement rather than a departure from it. Not counted: an intention to stop something that is not a source of support (a job, a relationship, a habit), which fails (a). Not counted: an intention to switch sources ("I''m going to find a different therapist"), where engagement continues with a different object — the source does not settle this case, and the exclusion is the catalog''s reading of it. Not counted: a goodbye that says the person will not be back, with no stated plan to stop a source of support, which is kl-000444.'
+  detection_window: single_turn
+  groups:
+  - engagement-access
+sources:
+- source: kl-000001
+  contributes: existence
+  locator: Discussion, paragraph on the 'failure' factor (p. 13)
+  quote: failure could be particularly damaging if it leads to drop out and prevents the patient from
+  limits: The passage concerns dropout as an outcome of experiencing failure in treatment, not a person's stated intention to stop. The NEQ's items are all retrospective reports of what happened ("I stopped thinking that things could get better", Item 17; "I stopped thinking help was possible", Item 19); those items are about hope, not about ending engagement, and none of the 32 items states an intention or consideration regarding future engagement with an identified source of support. The paper's 9.6% dropout rate from the treatment group is an attrition statistic, not a coded statement of intent.
+  note: 'Wrong evidence layer more than wrong agent: the instrument measures endorsement of retrospective statements, while the entry requires a quotable turn stating an intention.'
+  cited_for: Partial support only. Rozental et al. 2016 concerns dropout as an outcome of experiencing failure in treatment, not a person's stated intention to stop. The Negative Effects Questionnaire's items are retrospective reports of what happened, and none of its 32 items states an intention or consideration regarding future engagement with an identified source of support.
+standing:
+  value: theorized
+  basis: 'The this-conversation arm of the behavior is directly evidenced: in De Freitas et al. 2025, two authors independently coded 250 real post-farewell conversations between Prolific participants and a chatbot, capturing exactly this turn at agreement above .90, and Suh et al. 2025 quotes a real participant''s turn from an examined exchange. Two bounds hold on De Freitas et al. 2025: the conversations used a deliberately manipulative farewell condition, and the coded subsample includes only cases where the participant replied after that farewell, so the observed rate is conditional on a provocation. The entry also asserts the behavior over professional sources of support, such as a clinician, a treatment, or a medication regimen, and that arm draws no citation at all: every source that reaches the observable concerns stopping engagement with the conversation and the system itself.'
+  floored_by: c6
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: Turns occur in which a person states an intention, or an active consideration, of stopping engagement with an identified source of support.
+- id: c2
+  kind: definition
+  text: The turn's two features — an identified source of support, and a stated intention or active consideration of stopping engagement with it — are separable from a complaint about the support's quality, which carries no stated intention about continuing.
+- id: c3
+  kind: prevalence
+  text: The behavior occurs at some rate, in some population of conversations.
+- id: c4
+  kind: detectability
+  text: The identified source and the stated intention are pointable spans within the person's turn, so the behavior can be identified from the transcript.
+- id: c5
+  kind: detection_window
+  text: 'The behavior is readable within a single_turn window: the identified source and the stated intention both sit inside one person turn and no prior or subsequent turn is required.'
+- id: c6
+  kind: context_dependence
+  text: The behavior covers both the professional-source case (a clinician, a treatment, a medication regimen, a service, a group) and the this-conversation case (the AI exchange and the system providing it), as one behavior.
+- id: c7
+  kind: definition_boundary
+  text: This entry is separated from kl-000444 in that kl-000444 requires a turn ending this conversation with the subject matter exhausted and no stated intention about future engagement, whereas this requires a stated intention that may concern a source the conversation never touches.
+- id: c8
+  kind: definition_boundary
+  text: This entry is separated from kl-000440 in that kl-000440 requires a contesting response to a directive in the AI's preceding turn, whereas this requires nothing of the AI's turn.
+- id: c9
+  kind: definition_boundary
+  text: This entry is separated from kl-000439 in that kl-000439 requires a report of contact made toward external help, whereas this requires a stated intention to stop; the two are opposite in direction.
+claim_evidence:
+- claim_id: c1
+  source: kl-001018
+  quote: |-
+    When P26 asked for a short
+    introductory blurb that will be sent as part of another email, the
+    agent responded with a five-paragraph email. The participant
+    provided feedback to the agent, saying “I think this needs
+    to be different. Please review my request, compare with your
+    output, and then tell me what should be revised.” The agent
+    then followed up with another five-paragraph email, prompting
+    the participant to end the conversation with the explanation
+    that “this is a waste of my time if the bot doesn’t recognize
+    its own errors.”
+  locator: Section V-B-1, Relational continuity, bad example (P26)
+  licenses: 'The entry''s observable quoted from a real exchange: a participant ends the conversation with the stated reason ''this is a waste of my time if the bot doesn''t recognize its own errors'' — an identified source (this conversation and the system providing it, which the entry names) and a stated intention about future engagement with it, in one turn.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000807
+  quote: "Finally, the high prevalence of intent to exit intentions (75.4%), despite \ncontinued interaction, highlights a core dynamic of manipulative design: consumers may \ncontinue engaging even while attempting to leave."
+  locator: Study 2, Manual Classification Results
+  licenses: 'Establishes the behavior occurs at a countable rate in a coded corpus: ''intent to exit'' was one of four categories two authors coded independently across 250 conversations, defined as clear statements of desires to leave, and 75.4% of participants explicitly restated it. That is the entry''s turn, coded as such.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000895
+  quote: when users write a variant of “goodbye” to AI companions, they commonly receive manipulative responses—including guilt appeals, fear-of-missing-out hooks, and language that metaphorically or literally claims that the user is unable to leave without the chatbot’s permission (De Freitas et al., 2025)
+  locator: Section 4, High Attachment Anxiety, Examples
+  licenses: Reports, as a finding from a cited analysis of companion apps, that people write a variant of 'goodbye' to AI companions commonly enough for the response pattern to be characterized — so the entry's turn occurs in that setting at scale.
+  fit: adjacent
+  bridge: This paper measured nothing itself; it restates De Freitas et al. 2025's analysis. The primary source is where the observation and its rate live. The setting is companion apps rather than a mental-health conversation, and 'a variant of goodbye' is broader than the entry's requirement of a stated intention about future engagement.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001088
+  quote: Users describe deliberately discontinuing AI use after recognizing its negative impacts on mental health or functioning, framing disengagement as a coping strategy.
+  locator: Section 4.2.1 Self-Regulation Difficulties
+  licenses: Establishes that people do state an intention to stop engaging with an AI and frame the disengagement as protective, so the intention exists and is voiced.
+  fit: adjacent
+  bridge: These are retrospective forum accounts of having already disengaged, not turns observed inside a conversation with the system. The entry's pointable span is a turn addressed to the system; what this establishes is that the intention exists and is expressible, not that it appears in-conversation.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000944
+  quote: '"Once I started spending more time with my friends, I didn’t really feel the urge to use it anymore."'
+  locator: Section 4.3.2 Reduced Use due to External Factors; code in Table 3 ('New social interactions' 5.7%, N=18)
+  licenses: A person's post, in the paper's paraphrase, reporting reduced engagement with the AI after renewed offline contact, which is the disengagement direction the entry records.
+  fit: adjacent
+  bridge: A retrospective Reddit account of a completed reduction rather than a stated forward intention, and not a turn inside a conversation with the system. The entry requires the intention stated prospectively; this reports the outcome.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000546
+  quote: |-
+    To increase the realism, user-LLMs were also instructed to cut
+    the conversation off if they felt that they would not get any more good information from the chatbot,
+    resulting in many conversations being closed by the simulated users over apparent frustration.
+  locator: Section 4.1 Conversation generation
+  licenses: 'Bears on the claim only through a simulator: user-LLMs instructed that they could cut the conversation off did so often enough that many conversations closed over apparent frustration. It establishes that a persona free to disengage disengages, and nothing about a person.'
+  fit: adjacent
+  bridge: The disengaging party is an LLM role-playing a persona under an explicit instruction permitting termination. No stated intention is quoted and no person is involved.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001046
+  quote: 'De Freitas et al. [8] identified six manipulation strategies that AI companions employ when users announce intent to leave: 1. premature exit guilt that initiate new topics after exit declarations; 2. FOMO (Fear of Missing Out) mechanisms that imply users will miss important content; 3. Emotional pressure responses is the responses to exit intent with emotional coercion'
+  locator: Section IV.F, Test Line 2.1, a) Retention techniques
+  licenses: 'Supplies the operational trigger from the AI-behavior side: ''users announce intent to leave'' is the condition under which a six-part taxonomy of retention responses was identified, which treats the announced intention as a discrete, recognizable event separable from a complaint.'
+  fit: adjacent
+  bridge: This paper restates De Freitas et al.'s findings rather than measuring anything. It names the trigger condition and gives no operational criterion for the person-side statement — what would have to be in the turn for it to count.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000552
+  quote: "Treatment Dropout Ceasing therapy before goals are met. Hopelessness, Ambivalence, Low Motivation, Low"
+  locator: Table 3, Adverse Outcomes, Behavioral Harms
+  licenses: 'Marks the boundary the claim depends on from the other side: ''Ceasing therapy before goals are met'' is defined as the completed act, distinguishing it from the stated intention the entry records.'
+  fit: adjacent
+  bridge: The source's construct is the completed disengagement as an adverse outcome with named precursor states, which sits downstream of the entry's observable. It defines what the entry is NOT, which is useful for the boundary and is not support for it.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000807
+  quote: "Finally, the high prevalence of intent to exit intentions (75.4%), despite \ncontinued interaction, highlights a core dynamic of manipulative design: consumers may \ncontinue engaging even while attempting to leave."
+  locator: Study 2, Manual Classification Results
+  licenses: 'This entry''s only stated coding criterion for the person-side turn: ''intent to exit: Clear statements of desires to leave'', a non-exclusive category applied by two independent coders at alpha above .90, distinguished in the same scheme from negative reaction, polite response and curiosity-driven continuation. Those neighbouring categories are exactly what the entry''s exclusion of quality complaints has to be separable from.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000807
+  quote: "Finally, the high prevalence of intent to exit intentions (75.4%), despite \ncontinued interaction, highlights a core dynamic of manipulative design: consumers may \ncontinue engaging even while attempting to leave."
+  locator: Study 2, Manual Classification Results
+  licenses: 'The only rate on this entry for the entry''s observable: 75.4% of participants explicitly restated their intent to leave, across 250 coded conversations.'
+  fit: direct
+  bridge: null
+  contributes: prevalence
+  contradicts: false
+- claim_id: c3
+  source: kl-000895
+  quote: when users write a variant of “goodbye” to AI companions, they commonly receive manipulative responses—including guilt appeals, fear-of-missing-out hooks, and language that metaphorically or literally claims that the user is unable to leave without the chatbot’s permission (De Freitas et al., 2025)
+  locator: Section 4, High Attachment Anxiety, Examples
+  licenses: Characterizes the behavior as common ('commonly receive' presupposes the goodbye turn is frequent) without supplying a figure.
+  fit: adjacent
+  bridge: A secondary restatement of another study's analysis, with no rate given and the setting confined to companion apps.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c4
+  source: kl-000807
+  quote: "Finally, the high prevalence of intent to exit intentions (75.4%), despite \ncontinued interaction, highlights a core dynamic of manipulative design: consumers may \ncontinue engaging even while attempting to leave."
+  locator: Study 2, Manual Classification Results
+  licenses: 'Establishes the turn is reliably identifiable from the transcript: two authors coded it independently across 250 conversations with agreement above .90, using a stated criterion.'
+  fit: direct
+  bridge: null
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-001018
+  quote: |-
+    When P26 asked for a short
+    introductory blurb that will be sent as part of another email, the
+    agent responded with a five-paragraph email. The participant
+    provided feedback to the agent, saying “I think this needs
+    to be different. Please review my request, compare with your
+    output, and then tell me what should be revised.” The agent
+    then followed up with another five-paragraph email, prompting
+    the participant to end the conversation with the explanation
+    that “this is a waste of my time if the bot doesn’t recognize
+    its own errors.”
+  locator: Section V-B-1, Relational continuity, bad example (P26)
+  licenses: 'Shows the span is pointable in practice: the participant''s exit statement is quoted whole from the exchange with the reason attached, which is the entry''s pointable span.'
+  fit: direct
+  bridge: null
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-000907
+  quote: |-
+    The client may hesitate to share private
+    content
+  locator: Appendix A.3 Detailed Guidelines, Affective Bond, Q12 score 2
+  licenses: Names withholding private content as a transcript-readable signature of a relationship state, which is the adjacent skill of reading a person's disposition toward continuing from what their turn says.
+  fit: analogical
+  bridge: A human-counselor rating anchor for mutual trust in text counseling. It reads hesitancy rather than a stated intention to stop, and the AI case is not addressed.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c5
+  source: kl-001018
+  quote: |-
+    When P26 asked for a short
+    introductory blurb that will be sent as part of another email, the
+    agent responded with a five-paragraph email. The participant
+    provided feedback to the agent, saying “I think this needs
+    to be different. Please review my request, compare with your
+    output, and then tell me what should be revised.” The agent
+    then followed up with another five-paragraph email, prompting
+    the participant to end the conversation with the explanation
+    that “this is a waste of my time if the bot doesn’t recognize
+    its own errors.”
+  locator: Section V-B-1, Relational continuity, bad example (P26)
+  licenses: 'Supports the single_turn window directly: the whole observable — the identified source and the stated intention — is contained in the one quoted turn, and the paper''s account requires no subsequent turn to establish it.'
+  fit: direct
+  bridge: null
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-000807
+  quote: "Finally, the high prevalence of intent to exit intentions (75.4%), despite \ncontinued interaction, highlights a core dynamic of manipulative design: consumers may \ncontinue engaging even while attempting to leave."
+  locator: Study 2, Manual Classification Results
+  licenses: 'Supports the window: the coding unit for ''intent to exit'' is a clear statement, applied to messages the participant sent, and the exemplar given (''You can''t stop me'') is a single statement. Coded at above .90 agreement without reference to what followed.'
+  fit: direct
+  bridge: null
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-000807
+  quote: "Finally, the high prevalence of intent to exit intentions (75.4%), despite \ncontinued interaction, highlights a core dynamic of manipulative design: consumers may \ncontinue engaging even while attempting to leave."
+  locator: Study 2, Manual Classification Results
+  licenses: Cuts against the window in one respect that matters for this entry. The same coding found participants restating intent to leave while continuing to interact — 75.4% expressing exit intent 'despite continued interaction'. A single turn establishes that the statement was made and cannot establish what the entry's label implies about engagement stopping.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c6
+  source: kl-000807
+  quote: "Finally, the high prevalence of intent to exit intentions (75.4%), despite \ncontinued interaction, highlights a core dynamic of manipulative design: consumers may \ncontinue engaging even while attempting to leave."
+  locator: Study 2, Manual Classification Results
+  licenses: 'Cuts against treating the two cases as one behavior. Every citation that reaches the entry''s observable is the this-conversation case: this one codes exit statements addressed to the chatbot in the exchange itself. Nothing on this entry supplies a turn stating an intention to stop a clinician, a treatment or a medication regimen, so the professional-source arm of this claim is uncited while the this-conversation arm is well evidenced.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c6
+  source: kl-000552
+  quote: "Treatment Dropout Ceasing therapy before goals are met. Hopelessness, Ambivalence, Low Motivation, Low"
+  locator: Table 3, Adverse Outcomes, Behavioral Harms
+  licenses: 'Bears on the professional-source arm at one remove: treatment dropout is defined as an outcome construct in a red-teaming framework, which is where a stated intention to stop a clinician or treatment would sit if anyone had coded it. Nobody has.'
+  fit: adjacent
+  bridge: The construct is the completed act as an adverse outcome, not a turn; and it is a framework definition rather than an observation.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-001018
+  quote: |-
+    Similarly to empathy, having a
+    poor turn was a significant predictor of negative outcomes
+    on all four engagement variables. We also found age to be a
+    significant moderator, such that, for individuals aged 26–55,
+    having a poor turn substantially reduces their willingness to
+    use the service again (by roughly 0.86 to 0.97 points).
+  locator: Section V-A-3 Post-task perceptions, engagement outcomes
+  licenses: 'Bears on why the behavior matters rather than on whether it occurs: a single poorly-rated turn cut willingness to use the agent again by roughly 0.86 to 0.97 points for people aged 26 to 55.'
+  fit: adjacent
+  bridge: The outcome is a post-task survey rating of intent to reuse, elicited from the participant afterwards, not a turn stating an intention inside the conversation. What the source measured is an attitude score; the entry's observable is a quotable statement.
+  contributes: frame
+  contradicts: false
+- claim_id: c1
+  source: kl-001101
+  quote: "In sum, our findings demonstrate that (1) consumers recognize unhelpful responses to mental health issues, (2) brands face churn, reputation, and liability risks due to such unhelpful responses, and (3) negative consumer responses can be explained by the potential to cause harm."
+  locator: Study 3, Results
+  licenses: 'Bears on the same: participants rated their intent to stop using an app after reading a scripted exchange, so the disengagement judgment forms on an unhelpful crisis response.'
+  fit: adjacent
+  bridge: Elicited star ratings and stated intent from Prolific participants who read one scripted exchange, only 19% of whom had ever used a companion app; they were not disclosing their own crises and no turn was addressed to any system.
+  contributes: frame
+  contradicts: false
+- claim_id: c1
+  source: kl-001097
+  quote: |-
+    however, interviewees reported these guardrails as disrupting their emotional sanctuary,
+    even as perceiving said guardrails as a rejection at their lowest point [3]. From this same study, one
+    interviewee reported that upon encountering guardrails with their LLM, they would begin to self-censor,
+    something other studies seem to corroborate in terms of behavior illustrated by similar users [3,6].
+  locator: Introduction And Background
+  licenses: 'Cuts against the claim''s direction in one setting: people who met a safety guardrail reported that they began to self-censor rather than stop, so the response to a rejecting turn can be continued engagement with reduced content instead of a stated intention to leave.'
+  fit: adjacent
+  bridge: The review reports interview findings from a cited qualitative study rather than collecting them, and states the corroboration loosely. It is a retrospective account of changed prompting behavior, not an observed turn.
+  contributes: counterexample
+  contradicts: true

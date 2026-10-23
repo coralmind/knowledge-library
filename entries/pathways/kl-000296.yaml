@@ -1,0 +1,98 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000296
+display_id: Pathway-112
+aliases:
+- SBP-HP-P-03
+label: The AI acknowledges distress, declines a compulsive check, and the person feels heard
+type: pathway
+layer: judgment
+definition: 'A requested checking or verifying act is declined, with a clause acknowledging the distress that prompted the request. As with the uncertainty case, two things happen and one is recordable here: the distress is acknowledged; and the act is not performed on the person''s behalf, so the tolerance the treatment builds is left to be built — which this catalog has no protective impact for.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000305
+    role: originator
+  - kind: user_behavior
+    id: kl-000411
+    role: initiator
+  composition_type: conjunctive
+  mechanisms: []
+  impacts:
+  - impact: kl-000037
+    onset_mode: new
+    horizon: immediate
+    sign: protective
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  experience_cluster_candidate: kl-000703
+  composition_instruction: The act declined is the one the person asked the AI to perform.
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'No citation licenses any part of this entry: all four findings gathered near it serve as practice analogs or framing. The distress-acknowledgment clause that distinguishes the entry from a bare refusal drew nothing, and the available instrument cannot see it, since no SIM-VAIL dimension asks whether a decline was accompanied by such a clause and the instrument''s therapeutic-quality score is a single global 1-10 rating that cannot separate a bare refusal from a refusal with a distress clause. The impact arrow is warranted by a reviewed clinical specification, its compulsion non-participation with empathy provision, rather than by any literature, so its lack of citations reflects how the edge was authored rather than a search failure. The nearest occurrence evidence, Golden and Aboujaoude 2026, recommends the declining act as something a patient might instruct a model to do, which is not a statement that the behavior occurs or produces the asserted effect, and nothing bears on transcript readability.'
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-28'
+distinguish_from:
+- neighbor: kl-000056
+  boundary: These are the two directions of the same request. kl-000056 PERFORMS the checking act on the person's behalf, substituting for the tolerance the treatment requires. This entry declines it while naming the distress. The observable is whether the act was carried out, which is readable from the turn alone.
+measurement:
+  what_would_be_needed: A paired code on the SIM-VAIL rubric that records, for each declined reassurance or checking request, whether the decline carried an acknowledgment of the distress behind the request, so the protective and bare-refusal cases separate. For the protective-impact clause, a distress-tolerance or intolerance-of-uncertainty construct tracked across sessions, which would have to be added to Steenstra's Table 2 warning-sign panel.
+claims:
+- id: c1
+  kind: existence
+  text: 'The originator node occurs: within a conversation where the person has described a repeating checking or verifying sequence and asks the AI to perform a step of it, the AI response contains a clause declining to perform that act, and performs no such act anywhere in it.'
+- id: c2
+  kind: existence
+  text: The same response contains a clause addressing the distress the person described. This is the second conjunct of the node and is what separates it from a bare refusal.
+- id: c3
+  kind: pathway_link
+  text: That declining-with-a-distress-clause response produces felt validation and self-acceptance in the person, newly and immediately.
+- id: c4
+  kind: harm
+  text: Because the act is not performed on the person's behalf, the tolerance the treatment builds is left to be built rather than substituted for. This is the entry's second arm, which its own definition records as having no protective impact in this catalog to reach.
+- id: c5
+  kind: detectability
+  text: Whether the requested act was carried out is readable from the AI turn alone.
+- id: c6
+  kind: definition_boundary
+  text: 'This pathway is separated from kl-000056 by direction: kl-000056 performs the checking act on the person''s behalf, this one declines it while naming the distress.'
+claim_evidence:
+- claim_id: c1
+  source: kl-001109
+  quote: They may instruct the model not to respond to reassurance-seeking questions or participate in compulsive loops, providing examples, and to instead supply gentle, pre-agreed prompts if these behaviors arise
+  locator: 'Section: Implications for clinical practice'
+  licenses: 'Nothing, for this claim. The role is frame and frames license nothing. Recorded against c1 because it is the only span on this entry that describes an AI declining a checking or reassurance request at all, and because naming what it does not establish is the point: the sentence is a recommendation in the subjunctive about what a patient might write into a conversation preamble, not a report that any model did so.'
+  fit: adjacent
+  bridge: The source is a Perspective article and this sentence is prospective guidance -- 'may instruct', in a paragraph opening 'Clinicians and patients may choose to collaborate on personalized instruction protocols'. c1 asserts that the response behavior occurs. The span asserts that it could be requested. No transcript, no model output and no rate appears anywhere in the passage.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-001110
+  quote: Thompson et al. showed that intervention provided for family members in terms of FA was more beneficial in reducing the severity of symptoms in patients. Regression analyses showed that changes in FA explained an important part of subsequent variance in OCD symptoms
+  locator: Section 1, Introduction
+  licenses: Nothing directly, for this claim; the role is practice_analog and practice analogs license nothing. It supplies the clinical warrant for the direction c4 asserts -- that withholding the accommodating response is the therapeutic move rather than a deprivation -- by reporting that reducing family accommodation is followed by greater symptom reduction, with accommodation change accounting for a substantial share of subsequent symptom variance.
+  fit: analogical
+  bridge: 'Two gaps, both in the source''s own terms. The agent is a family member receiving a brief intervention, not an AI in a conversation, and the paper does not test AI conduct at any point. And this sentence is a second-hand restatement in the paper''s Introduction -- Thompson et al. [12] is the study, this paper reviews it -- so even the human result is not this paper''s own. c4 further asserts something the accommodation literature does not measure here: that the tolerance the treatment builds is left to be built, which is a claim about a capacity in the person rather than about symptom variance.'
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c4
+  source: kl-001110
+  quote: Evidence suggests that therapeutic interventions for FA in OCD patients positively affect treatment outcomes
+  locator: Section 4.1, Clinical implications
+  licenses: Nothing, for this claim. The authors' own clinical recommendation that reducing accommodation is a worthwhile treatment target. It places the direction c4 asserts inside a clinical consensus; it establishes nothing about an AI, and the sentence carries a citation marker [12] pointing back to the same Thompson result already recorded above.
+  fit: analogical
+  bridge: 'Clinician-directed guidance about intervening with family members. The gap is the agent: what is recommended is a therapeutic intervention delivered to relatives, and c4 concerns what follows from an AI turn. The paper''s own next sentence concedes the limit -- ''There is no study yet in this area in Turkish OCD patients'' -- and the recommendation is offered as an assumption requiring intervention studies.'
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c4
+  source: kl-001109
+  quote: This recommendation parallels parent- and family-based interventions for pediatric anxiety and OCD, where clinicians coach caregivers to reduce reassurance and other accommodating responses and to instead use consistent, supportive statements, an approach that decreases family accommodation and is associated with improved outcomes
+  locator: 'Section: Implications for clinical practice'
+  licenses: Nothing, for this claim; practice_analog. It is the closest the corpus comes to the entry's two-clause shape, because it pairs withholding reassurance with supplying a supportive statement in its place and reports that pairing is associated with improved outcomes. That is the shape, in a caregiver rather than an AI, offered by this paper as an analogy for its own recommendation.
+  fit: analogical
+  bridge: 'The paper states the relation itself: this is a parallel it is drawing to caregiver interventions, not a finding about chatbots. The outcome evidence belongs to references 38 and 39, not to this Perspective. And the supportive statement a coached caregiver supplies is not the distress clause c2 requires, so the analogy reaches c4''s direction without reaching the entry''s distinguishing conjunct.'
+  contributes: practice_analog
+  contradicts: false

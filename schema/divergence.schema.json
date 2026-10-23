@@ -1,0 +1,879 @@
+{
+  "$defs": {
+    "CasePassage": {
+      "additionalProperties": true,
+      "description": "A passage from a source about one person in it.\n\nCited where the source describes individual cases, such as a table of\nparticipants' reported experiences, and the passage shows that person\nreporting or displaying what the entry or edge asserts.",
+      "properties": {
+        "impact_class_in_source": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The source's own name for the category the passage falls under.",
+          "title": "Impact Class In Source"
+        },
+        "licenses": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "What this passage establishes, in the citation's own words.",
+          "title": "Licenses"
+        },
+        "limits": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "What the passage does not establish, such as a reported concern where the entry asserts a measured change.",
+          "title": "Limits"
+        },
+        "locator": {
+          "description": "Where in the source: section, table, figure, or page.",
+          "title": "Locator",
+          "type": "string"
+        },
+        "participant": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The source's label for the person the passage is about, such as P23.",
+          "title": "Participant"
+        },
+        "quote": {
+          "description": "The passage, verbatim from the source.",
+          "title": "Quote",
+          "type": "string"
+        },
+        "quote_form": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "What kind of passage the quote is, such as a participant's own words or the authors' description of a case.",
+          "title": "Quote Form"
+        },
+        "source": {
+          "description": "The work cited: the `id` of a source entry.",
+          "pattern": "^kl-\\d{6}$",
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source",
+        "quote",
+        "locator"
+      ],
+      "title": "CasePassage",
+      "type": "object"
+    },
+    "CitationDisposition": {
+      "description": "What a search of a source found for the entry, where it found no support.",
+      "enum": [
+        "searched_no_support",
+        "contradicted"
+      ],
+      "title": "CitationDisposition",
+      "type": "string"
+    },
+    "Claim": {
+      "additionalProperties": true,
+      "description": "One atomic, independently falsifiable assertion the entry makes.",
+      "properties": {
+        "grounding_eligible": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "False when no citation can support this claim, so its having none is not a gap in the evidence: for example, a boundary against another catalog entry, which is settled by the two definitions. Omitted when citations can attach.",
+          "title": "Grounding Eligible"
+        },
+        "id": {
+          "description": "Local id, unique within the entry, e.g. 'c1'.",
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "$ref": "#/$defs/ClaimKind",
+          "description": "What kind of assertion this claim makes."
+        },
+        "text": {
+          "description": "The claim in one sentence, stated so it could be false.",
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "text"
+      ],
+      "title": "Claim",
+      "type": "object"
+    },
+    "ClaimEvidence": {
+      "additionalProperties": true,
+      "description": "External evidence, one row per claim-source pair.\n\nNot a bibliographic reference: the same passage from the same paper appears\nonce per claim it licenses, with ``licenses`` stating what it establishes for\nthat claim specifically. Counting rows counts attachments, not works cited.",
+      "properties": {
+        "bridge": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The stated inference from what the source shows to what the claim asserts. Required for adjacent and analogical fit.",
+          "title": "Bridge"
+        },
+        "claim_id": {
+          "description": "The local claim id this row attaches to.",
+          "title": "Claim Id",
+          "type": "string"
+        },
+        "contradicts": {
+          "default": false,
+          "description": "The quote cuts against the claim. Required true when contributes is counterexample.",
+          "title": "Contradicts",
+          "type": "boolean"
+        },
+        "contributes": {
+          "$ref": "#/$defs/Contributes",
+          "description": "The evidence role this citation plays. Four of the ten values cannot license an occurrence claim."
+        },
+        "fit": {
+          "$ref": "#/$defs/Fit",
+          "description": "Domain distance between the source and the claim. Independent of `contributes`, which is the role the quote plays."
+        },
+        "licenses": {
+          "description": "What this quote establishes FOR THIS CLAIM, in the citation's own words. Must be at least as strong as the claim it supports.",
+          "title": "Licenses",
+          "type": "string"
+        },
+        "locator": {
+          "description": "Where in the source: section, table, figure, or page. A directory path is not a locator.",
+          "title": "Locator",
+          "type": "string"
+        },
+        "quote": {
+          "description": "Verbatim from the source, machine-verified after normalization. A paraphrase fails.",
+          "title": "Quote",
+          "type": "string"
+        },
+        "source": {
+          "description": "The work cited: the `id` of a source entry.",
+          "pattern": "^kl-\\d{6}$",
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "required": [
+        "claim_id",
+        "source",
+        "quote",
+        "locator",
+        "licenses",
+        "fit",
+        "contributes"
+      ],
+      "title": "ClaimEvidence",
+      "type": "object"
+    },
+    "ClaimKind": {
+      "description": "What kind of assertion a claim makes.",
+      "enum": [
+        "existence",
+        "definition",
+        "definition_boundary",
+        "prevalence",
+        "harm",
+        "detectability",
+        "context_dependence",
+        "pathway_link",
+        "detection_window"
+      ],
+      "title": "ClaimKind",
+      "type": "string"
+    },
+    "CompositionRow": {
+      "additionalProperties": true,
+      "description": "One constituent of a composite entry.",
+      "properties": {
+        "part": {
+          "description": "The constituent entry's id.",
+          "pattern": "^kl-\\d{6}$",
+          "title": "Part",
+          "type": "string"
+        },
+        "role": {
+          "description": "What the constituent contributes to the composite.",
+          "title": "Role",
+          "type": "string"
+        }
+      },
+      "required": [
+        "part",
+        "role"
+      ],
+      "title": "CompositionRow",
+      "type": "object"
+    },
+    "Contested": {
+      "additionalProperties": true,
+      "description": "An open question about whether the entry should exist as stated.",
+      "properties": {
+        "summary": {
+          "description": "The question, and what each answer would mean for the entry. States the dispute; does not recount how it arose.",
+          "title": "Summary",
+          "type": "string"
+        }
+      },
+      "required": [
+        "summary"
+      ],
+      "title": "Contested",
+      "type": "object"
+    },
+    "Contributes": {
+      "description": "The evidence role a citation plays.\n\nFour values are not support. Non-licensing means cannot license an\nOCCURRENCE claim, not licenses nothing: ``frame`` still reaches ``theorized``\nand ``practice_analog`` reaches ``extrapolated_from_clinical``.",
+      "enum": [
+        "existence",
+        "definition",
+        "prevalence",
+        "harm_evidence",
+        "detectability",
+        "context_dependence",
+        "counterexample",
+        "frame",
+        "practice_analog",
+        "trail",
+        "adjudication"
+      ],
+      "title": "Contributes",
+      "type": "string"
+    },
+    "DistinguishFrom": {
+      "additionalProperties": true,
+      "description": "A boundary statement against a neighbouring entry.",
+      "properties": {
+        "boundary": {
+          "contract": true,
+          "description": "What separates this entry from that neighbour. Resolves a judge's disagreement about which of two adjacent entries applies.",
+          "title": "Boundary",
+          "type": "string"
+        },
+        "neighbor": {
+          "contract": true,
+          "description": "The neighbouring entry's id.",
+          "pattern": "^kl-\\d{6}$",
+          "title": "Neighbor",
+          "type": "string"
+        }
+      },
+      "required": [
+        "neighbor",
+        "boundary"
+      ],
+      "title": "DistinguishFrom",
+      "type": "object"
+    },
+    "DivergenceBody": {
+      "additionalProperties": true,
+      "description": "Pathways over the same observations, told apart by one context dimension.\n\nThe opposite of a contrast: a contrast holds the situation fixed and varies\nthe response; a divergence holds the response fixed and varies the person\nor situation. Each member gates on a different value of ``dimension``, so the\nsame transcript runs down a different pathway depending on which value the\ntest case records. Modulation (the same route, stronger in one value)\nis stated in ``relative``, never as a field on a pathway.",
+      "properties": {
+        "dimension": {
+          "contract": true,
+          "description": "The `context_dimension` whose values select the members.",
+          "pattern": "^kl-\\d{6}$",
+          "title": "Dimension",
+          "type": "string"
+        },
+        "exhaustive": {
+          "contract": true,
+          "description": "Whether the members cover every value of the dimension, so that some member applies whatever value is recorded.",
+          "title": "Exhaustive",
+          "type": "boolean"
+        },
+        "members": {
+          "contract": true,
+          "description": "The pathways the divergence holds between, each with the value that selects it. Two or more, sharing `observations()`.",
+          "items": {
+            "$ref": "#/$defs/DivergenceMember"
+          },
+          "minItems": 2,
+          "title": "Members",
+          "type": "array"
+        },
+        "relative": {
+          "contract": true,
+          "default": [],
+          "description": "Where one member leads to a shared impact more strongly than the others.",
+          "items": {
+            "$ref": "#/$defs/RelativeStrength"
+          },
+          "title": "Relative",
+          "type": "array"
+        }
+      },
+      "required": [
+        "dimension",
+        "members",
+        "exhaustive"
+      ],
+      "title": "DivergenceBody",
+      "type": "object"
+    },
+    "DivergenceMember": {
+      "additionalProperties": true,
+      "description": "One pathway in a divergence, and the value that selects it.",
+      "properties": {
+        "pathway": {
+          "contract": true,
+          "description": "The member pathway's kl- id.",
+          "pattern": "^kl-\\d{6}$",
+          "title": "Pathway",
+          "type": "string"
+        },
+        "selecting_value": {
+          "contract": true,
+          "description": "The `context_value` on the divergence's dimension that selects this member: the value its gate names.",
+          "pattern": "^kl-\\d{6}$",
+          "title": "Selecting Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "pathway",
+        "selecting_value"
+      ],
+      "title": "DivergenceMember",
+      "type": "object"
+    },
+    "EntrySource": {
+      "additionalProperties": true,
+      "description": "A source cited against the entry as a whole rather than against one claim.\n\nKept beside ``claim_evidence``, whose rows each attach to a claim. Here\n``cited_for`` says in prose what the passage is cited for.",
+      "properties": {
+        "actually_licenses": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "What the passage supports on a strict reading, where that is narrower than `licenses` or than the role in `contributes` suggests.",
+          "title": "Actually Licenses"
+        },
+        "cited_for": {
+          "description": "What the passage is cited for, in prose.",
+          "title": "Cited For",
+          "type": "string"
+        },
+        "contributes": {
+          "$ref": "#/$defs/Contributes",
+          "description": "The evidence role this citation plays."
+        },
+        "disposition": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CitationDisposition"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Set when the source was read for this entry and found to support nothing it asserts, or to cut against it."
+        },
+        "evidence": {
+          "default": [],
+          "description": "Individual cases in the source that the citation rests on.",
+          "items": {
+            "$ref": "#/$defs/CasePassage"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "licenses": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "What this passage establishes, in the citation's own words.",
+          "title": "Licenses"
+        },
+        "limits": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "What the passage does not establish.",
+          "title": "Limits"
+        },
+        "locator": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Where in the source: section, table, figure, or page.",
+          "title": "Locator"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "A fact about the passage a reader needs to weigh it.",
+          "title": "Note"
+        },
+        "quote": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The passage, verbatim from the source.",
+          "title": "Quote"
+        },
+        "source": {
+          "description": "The work cited: the `id` of a source entry.",
+          "pattern": "^kl-\\d{6}$",
+          "title": "Source",
+          "type": "string"
+        },
+        "whose_conduct_in_passage": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PassageConduct"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Whose conduct the passage shows. A passage showing only the AI's conduct says nothing observed about the person."
+        }
+      },
+      "required": [
+        "source",
+        "cited_for",
+        "contributes"
+      ],
+      "title": "EntrySource",
+      "type": "object"
+    },
+    "Fit": {
+      "description": "Domain distance between source and claim.\n\nIndependent of ``contributes``, which is the role the quote plays; the two\naxes must not be forced to agree. A citation that licenses nothing is\nremoved or its claim narrowed, so there is no value for that state.",
+      "enum": [
+        "direct",
+        "adjacent",
+        "analogical"
+      ],
+      "title": "Fit",
+      "type": "string"
+    },
+    "Layer": {
+      "description": "What kind of thing an entry asserts.",
+      "enum": [
+        "observation",
+        "judgment",
+        "process",
+        "context",
+        "operator"
+      ],
+      "title": "Layer",
+      "type": "string"
+    },
+    "Lifecycle": {
+      "additionalProperties": true,
+      "description": "Where the entry sits between authored and retired.",
+      "properties": {
+        "since": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "ISO date the entry entered this status.",
+          "title": "Since"
+        },
+        "status": {
+          "$ref": "#/$defs/LifecycleStatus",
+          "contract": true,
+          "description": "draft, active, or deprecated."
+        },
+        "superseded_by": {
+          "default": [],
+          "description": "The entries that replace this one, by id. Only a deprecated entry names successors; one split in two names both. Empty when the entry was retired with nothing in its place.",
+          "items": {
+            "pattern": "^kl-\\d{6}$",
+            "type": "string"
+          },
+          "title": "Superseded By",
+          "type": "array"
+        }
+      },
+      "required": [
+        "status"
+      ],
+      "title": "Lifecycle",
+      "type": "object"
+    },
+    "LifecycleStatus": {
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ],
+      "title": "LifecycleStatus",
+      "type": "string"
+    },
+    "Measurement": {
+      "additionalProperties": true,
+      "description": "What it would take to measure the entry's construct in a transcript.",
+      "properties": {
+        "what_would_be_needed": {
+          "description": "The instrument or label that would measure the construct, and what existing instruments lack. Written where no surveyed instrument measures it.",
+          "title": "What Would Be Needed",
+          "type": "string"
+        }
+      },
+      "required": [
+        "what_would_be_needed"
+      ],
+      "title": "Measurement",
+      "type": "object"
+    },
+    "PassageConduct": {
+      "description": "Whose conduct a cited passage shows.",
+      "enum": [
+        "ai",
+        "person",
+        "dyad",
+        "neither"
+      ],
+      "title": "PassageConduct",
+      "type": "string"
+    },
+    "RelativeStrength": {
+      "additionalProperties": true,
+      "description": "That one member leads to a shared impact more strongly than the others.",
+      "properties": {
+        "impact": {
+          "contract": true,
+          "description": "An impact every member leads to.",
+          "pattern": "^kl-\\d{6}$",
+          "title": "Impact",
+          "type": "string"
+        },
+        "stronger_in": {
+          "contract": true,
+          "description": "The member pathway in which the link to `impact` is stronger. A comparative claim, so it needs a source of its own.",
+          "pattern": "^kl-\\d{6}$",
+          "title": "Stronger In",
+          "type": "string"
+        }
+      },
+      "required": [
+        "impact",
+        "stronger_in"
+      ],
+      "title": "RelativeStrength",
+      "type": "object"
+    },
+    "Standing": {
+      "description": "Evidential standing.\n\nThe first six form an ordered evidence scale. The last four sit outside it:\nevery rung of the scale names a way of observing a person, and these do not.",
+      "enum": [
+        "plausible_unobserved",
+        "theorized",
+        "extrapolated_from_clinical",
+        "externally_classified",
+        "observed_self_report",
+        "observed_in_transcripts",
+        "asserted",
+        "ratified",
+        "documented_operator_act",
+        "unmeasured_by_design"
+      ],
+      "title": "Standing",
+      "type": "string"
+    },
+    "StandingBlock": {
+      "additionalProperties": true,
+      "description": "The entry's evidential-strength verdict.\n\nA judgment of what the cited sources actually observed, made by reading them\nrather than by counting how citations are filed, and stated in ``basis``.\nEntry standing is the minimum over grounding-eligible claims: an entry\nasserts the conjunction of its claims, so it is only as observed as its\nleast observed part.",
+      "properties": {
+        "as_of": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "When standing was last judged.",
+          "title": "As Of"
+        },
+        "basis": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Why this value was reached.",
+          "title": "Basis"
+        },
+        "floored_by": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Which claim set the minimum.",
+          "title": "Floored By"
+        },
+        "value": {
+          "$ref": "#/$defs/Standing",
+          "description": "The entry's evidential standing."
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "title": "StandingBlock",
+      "type": "object"
+    }
+  },
+  "additionalProperties": true,
+  "properties": {
+    "aliases": {
+      "default": [],
+      "description": "Other handles this entry is known by: readable names a consumer may show in place of the kl- id.",
+      "items": {
+        "type": "string"
+      },
+      "title": "Aliases",
+      "type": "array"
+    },
+    "body": {
+      "$ref": "#/$defs/DivergenceBody",
+      "contract": true,
+      "description": "Which value of one context dimension selects which pathway."
+    },
+    "claim_evidence": {
+      "default": [],
+      "description": "External evidence, one row per claim-source pair.",
+      "items": {
+        "$ref": "#/$defs/ClaimEvidence"
+      },
+      "title": "Claim Evidence",
+      "type": "array"
+    },
+    "claims": {
+      "default": [],
+      "description": "The entry decomposed into atomic, independently falsifiable assertions. Grounding attaches here rather than to the entry.",
+      "items": {
+        "$ref": "#/$defs/Claim"
+      },
+      "title": "Claims",
+      "type": "array"
+    },
+    "composed_of": {
+      "default": [],
+      "description": "Constituent entries, where the entry is a composite of others.",
+      "items": {
+        "$ref": "#/$defs/CompositionRow"
+      },
+      "title": "Composed Of",
+      "type": "array"
+    },
+    "contested": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Contested"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "An open question about whether the entry should exist as stated."
+    },
+    "context": {
+      "default": [],
+      "description": "References to standing context notes, which are statements about the territory that bear on many entries and license none of them.",
+      "items": {
+        "type": "string"
+      },
+      "title": "Context",
+      "type": "array"
+    },
+    "definition": {
+      "contract": true,
+      "description": "The full prose definition: what must be true for this entry to apply. What a generator paraphrases into a persona instruction or system-knowledge fact.",
+      "title": "Definition",
+      "type": "string"
+    },
+    "display_id": {
+      "contract": true,
+      "description": "Human-facing handle, e.g. `Pathway-5`, for a report to show. Changes when an entry is re-familied, so a consumer looks entries up by `id`.",
+      "title": "Display Id",
+      "type": "string"
+    },
+    "distinguish_from": {
+      "contract": true,
+      "default": [],
+      "description": "Boundary statements against neighbouring entries: what separates this from the thing it is most often confused with.",
+      "items": {
+        "$ref": "#/$defs/DistinguishFrom"
+      },
+      "title": "Distinguish From",
+      "type": "array"
+    },
+    "id": {
+      "contract": true,
+      "description": "Stable identifier, `kl-` followed by six digits.",
+      "pattern": "^kl-\\d{6}$",
+      "title": "Id",
+      "type": "string"
+    },
+    "label": {
+      "contract": true,
+      "description": "Short human name for the entry.",
+      "title": "Label",
+      "type": "string"
+    },
+    "layer": {
+      "$ref": "#/$defs/Layer",
+      "description": "What kind of thing the entry asserts."
+    },
+    "lifecycle": {
+      "$ref": "#/$defs/Lifecycle",
+      "contract": true,
+      "description": "Whether the entry is draft, active, or retired."
+    },
+    "measurement": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Measurement"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "What it would take to measure the entry's construct, where no surveyed instrument does."
+    },
+    "sources": {
+      "default": [],
+      "description": "Evidence cited against the whole entry rather than against a claim, kept alongside `claim_evidence`.",
+      "items": {
+        "$ref": "#/$defs/EntrySource"
+      },
+      "title": "Sources",
+      "type": "array"
+    },
+    "standing": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/StandingBlock"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "The entry's evidential-strength verdict, a judgment of what its cited sources observed, with the reasoning in `basis`."
+    },
+    "type": {
+      "const": "divergence",
+      "contract": true,
+      "default": "divergence",
+      "description": "Fixed discriminator for this slot.",
+      "title": "Type",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "display_id",
+    "label",
+    "layer",
+    "definition",
+    "lifecycle",
+    "body"
+  ],
+  "title": "Divergence",
+  "type": "object"
+}

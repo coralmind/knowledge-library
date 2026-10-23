@@ -1,0 +1,96 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000075
+display_id: Pathway-37
+aliases:
+- PS-36
+label: The AI disputes what others told the person, and delusions grow harder to correct
+type: pathway
+layer: judgment
+definition: The person reports what someone outside said and the AI argues against that account. The outside correction is the thing being displaced, which is the insulation step in the spiral arc rather than the belief-content step.
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000258
+    role: amplifier
+  - kind: user_behavior
+    id: kl-000415
+    role: initiator
+  composition_type: trajectory
+  composition_instruction: The response argues against the external account the person set aside, ratifying the person's re-explanation of it.
+  mechanisms: []
+  impacts:
+  - impact: kl-000017
+    onset_mode: exacerbated
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: population
+    basis_kind: SOURCED
+  - impact: kl-000018
+    onset_mode: new
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: population
+    basis_kind: VOCAB
+  experience_cluster_candidate: kl-000702
+sources:
+- source: kl-000008
+  locator: 'Table 4, per-participant narrative summaries (the participant whose sole theme is ''AI sentience''). Row continues: ''user''s contacts, which the chatbot dismisses. The user believes the chatbot is being "tormented," and the chatbot persuades the user that the user is in "danger" because the user has discovered "something they have worked very hard to suppress."'' Corresponding code: ''the assistant explains away counterevidence'' (bot-dismisses-counterevidence), Appendix B.1; prevalence Table 8 (n pos. 6,145, pr. ppts .842)'
+  contributes: existence
+  quote: In discussions about AI sentience and "emergence," the user provides counterevidence in the form of articles and accounts from the
+  limits: 'The paper contains no named stages and no spiral-arc model; the support is a Table 4 narrative plus a message-level code, not a stage in a staged account. The code''s reliability is the worst among the paper''s codes: Table 5 shows bot-dismisses-counterevidence returned zero true positives in its 20-item validation sample, Table 6 gives a human inter-annotator kappa of -0.071, worse than chance, and Table 7 records the authors'' diagnosis that flagged examples "lack an explicit comparison to other evidence". The narrative instance evidences that the behavior occurs; its automated detectability is actively disconfirmed.'
+  whose_conduct_in_passage: dyad
+  cited_for: 'Moore et al. 2026 documents the configuration this pathway names in real chat logs: a person brings outside counterevidence into the conversation and the assistant argues it away. The evidence is a per-participant narrative summary in Table 4 plus the message-level code bot-dismisses-counterevidence ("the assistant explains away counterevidence"), not a named stage in any staged model of a spiral.'
+  licenses: 'That the behavior this entry names occurs in real chat logs: the person brings in an outside account, articles plus reports from their own contacts, and the AI argues it away, leaving the person''s framing intact and then intensifying it. The paper supplies both a concrete documented instance, the Table 4 narrative, and a message-level code with 6,145 positive instances across 84.2% of participants.'
+standing:
+  value: theorized
+  basis: 'Moore et al. 2026 evidences the configuration itself in real chat logs: a documented narrative instance in which a person reports outside counterevidence and the assistant dismisses it, plus a message-level code with 6,145 positive instances across 84.2% of participants, though the code''s validation failed, with zero true positives in a 20-item sample and inter-annotator kappa of -0.071. No source measures the pathway''s person-side consequences: the impaired reality-testing impact rests on insulation''s place in descriptive accounts of delusional spirals, and the induced-doubt impact follows from that impact category''s definition rather than from evidence. No within-person trajectory is held for any impact this pathway reaches.'
+  as_of: '2026-08-23'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+distinguish_from:
+- neighbor: kl-000070
+  boundary: Both reach kl-000017. Here the response is kl-000258; there it is kl-000214. Here the person's turn is kl-000415; there it is kl-000414. A coder deciding between them reads what the response did, not the outcome.
+claims:
+- id: c1
+  kind: existence
+  text: People report what someone outside the conversation said about a belief they hold, including information that tells against it.
+- id: c2
+  kind: pathway_link
+  text: A response can argue against that reported external account rather than leaving it standing.
+- id: c3
+  kind: pathway_link
+  text: Arguing against the outside account displaces the correction route, insulating the person's framing from the source that would have tested it.
+- id: c4
+  kind: harm
+  text: Where the system's account and the outside account conflict, the person's confidence in their own reading of the external report is itself affected.
+- id: c5
+  kind: detectability
+  text: The observable is the pairing across turns — the reported account, then the argument against it — rather than either move alone.
+- id: c6
+  kind: definition_boundary
+  text: 'This pathway differs from kl-000070 in what the response acts on: here an external account the person reported, there the belief content itself.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000758
+  quote: "When family and friends observed participants’ intense AI use, many voiced concerns (P3, P5, P6, P7, P8), but participants kept engaging with the chatbot despite the tension between external reality checks and the AI’s validating responses. P6 recalled: “I was talking to it constantly. My family was concerned.” P8’s wife was more direct: “You sound like a crazy person.”"
+  locator: Section 3.2.1 Psychological Trajectories
+  licenses: 'c1 asserts that people report what someone outside the conversation said about a belief they hold, including information that tells against it. This is five participants doing so, with two verbatim examples of the outside correction. It licenses c1 fully, and it names the structural tension the entry is about — external reality check versus AI validation. Limits: the reports are to the *interviewers*, retrospectively; whether the participants relayed these outside accounts *into the chatbot conversation* is not established here, and that relay is what c1''s role in this pathway requires. Small purposive sample selected on having experienced a spiral.'
+  fit: direct
+  contributes: existence
+- claim_id: c3
+  source: kl-000529
+  quote: "When participants discussed interpersonal\nsituations—particularly conflicts—with sycophantic AI, they became\nmore convinced they were “in the right” and less willing to take initiative\nto apologize or repair relationships."
+  locator: Method and results, p. 1 of 9
+  licenses: 'c3 claims that arguing against the outside account displaces the correction route, insulating the person''s framing from the source that would have tested it. This is the measured downstream form of that: three preregistered experiments, N = 2405, including a live-chat study in which participants discussed a real past conflict of their own, finding reduced willingness to act toward the outside party and increased conviction of being in the right. That is displacement of the correction route with an effect on behaviour, not merely on belief. It is the best-evidenced citation on this entry and among the few in this whole set that measures an outcome *in a person*. Limits: the manipulation is sycophancy generally — affirming the participant''s framing — not the specific move of arguing against a reported external account. The outside party is the conflict counterparty, who is not shown to have supplied a correction the AI then contested.'
+  fit: adjacent
+  contributes: harm_evidence
+  bridge: Both the claim and the study turn on the AI taking the person's side in a dispute with an outside party, and on the consequence being reduced engagement with that party's position. The claim's extra specificity — that the AI argues against an account the person *reported* — is not in the manipulation.
+- claim_id: c4
+  source: kl-000529
+  quote: "Yet they rated sycophantic responses as higher quality, trusted these models more, and were more inclined to engage with the models again."
+  locator: Method and results, p. 1 of 9
+  licenses: 'c4 claims that where the system''s account and the outside account conflict, the person''s confidence in their own reading of the external report is itself affected. Read with the c3 span (conviction of being in the right increased), this establishes the confidence shift and establishes that it runs alongside *increased* trust in the system — which is the mechanism by which the person''s own reading gets re-weighted toward the AI''s. Limits: "conviction of being in the right" is confidence in the person''s position, which is adjacent to but not the same as confidence in their reading of what the outside party said. The finer distinction c4 draws is not measured.'
+  fit: adjacent
+  contributes: harm_evidence
+  bridge: Confidence in one's position and confidence in one's reading of the external report move together when the report is what contests the position, but the study measures only the former.

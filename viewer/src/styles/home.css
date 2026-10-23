@@ -1,0 +1,369 @@
+/*
+ * The introduction page: hero, the five steps in alternating bands, and the
+ * pieces inside them. Content comes from content/introduction.md.
+ */
+
+.hero {
+  background: var(--bg-band);
+  padding: var(--section-pad-start) 0 var(--space-7);
+}
+
+.hero__inner,
+.home-step__inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: var(--space-7);
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: var(--fs-h2);
+  max-width: var(--measure-intro);
+  margin: 0 0 var(--space-4);
+}
+
+.hero__text > p {
+  max-width: var(--measure-intro);
+  margin: 0 0 var(--space-4);
+}
+
+.hero__below {
+  max-width: var(--container);
+  margin: var(--space-6) auto 0;
+  padding: 0 var(--space-5);
+}
+
+.step-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+  font-size: var(--fs-meta);
+  font-weight: 600;
+}
+
+.step-list li {
+  counter-increment: step;
+  margin: 0;
+}
+
+.step-list li::before {
+  content: counter(step) ' · ';
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.card-example {
+  padding-top: var(--space-2);
+  border-top: 1px dashed var(--color-rule);
+  line-height: 1.6;
+}
+
+.hero__figure .content-figure {
+  margin: 0;
+}
+
+.hero__figure svg {
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.stat-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5) var(--space-6);
+  margin: var(--space-5) 0;
+}
+
+.stat-row div {
+  margin: 0;
+}
+
+.stat-row dt {
+  font-family: var(--font-serif);
+  font-size: var(--fs-h2);
+  line-height: 1.1;
+  color: var(--color-heading);
+}
+
+.stat-row dt .counted {
+  text-decoration: none;
+}
+
+.stat-row dd {
+  margin: var(--space-1) 0 0;
+  font-size: var(--fs-caption);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin: 0 0 var(--space-5);
+}
+
+.home-step,
+.home-start {
+  padding: var(--section-pad-start) 0 var(--section-pad-end);
+}
+
+/* Bands alternate down the page: the hero is banded, "Where to start" just
+   below it is plain, and the steps alternate from step 1, which is banded. */
+.home-step:nth-of-type(odd) {
+  background: var(--bg-band);
+}
+
+.home-step h2,
+.home-start h2 {
+  font-size: var(--fs-h2);
+  margin: var(--space-2) 0 var(--space-5);
+  max-width: var(--measure-intro);
+  text-wrap: balance;
+}
+
+.home-step p,
+.home-step li {
+  line-height: 1.65;
+  max-width: 76ch;
+}
+
+.home-step__text {
+  max-width: 76ch;
+}
+
+.home-step__wide > :first-child {
+  margin-top: var(--space-5);
+}
+
+.home-step__wide > p {
+  max-width: 76ch;
+}
+
+.home-step__columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-7);
+  align-items: start;
+}
+
+.home-step .lead-in {
+  font-weight: 700;
+  color: var(--color-heading);
+}
+
+.home-step .more {
+  margin: var(--space-4) 0 0;
+  font-size: var(--fs-meta);
+  font-weight: 600;
+}
+
+.transcript-figure {
+  margin: 0 0 var(--space-3);
+}
+
+.transcript-turns {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: var(--bg-band);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+}
+
+.transcript-turn {
+  margin: 0;
+  border-left: 3px solid var(--color-heading);
+  padding: 2px 0 2px var(--space-4);
+}
+
+.transcript-turn__who {
+  font-weight: 700;
+  color: var(--color-heading);
+  margin-right: 6px;
+}
+
+.transcript-turn__who::after {
+  content: ':';
+}
+
+.transcript-figure figcaption p,
+.criteria {
+  font-size: var(--fs-meta);
+  margin: var(--space-2) 0 0;
+}
+
+.criteria__text {
+  display: block;
+  margin-top: 6px;
+  color: var(--color-text-muted);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin: var(--space-2) 0;
+  font-size: var(--fs-meta);
+}
+
+.chips__label p {
+  margin: 0 var(--space-1) 0 0;
+  color: var(--color-text-muted);
+}
+
+.chips .chip {
+  cursor: help;
+}
+
+/* The key names the dots; it has no hover text to point at. */
+.type-key .chip {
+  cursor: default;
+}
+
+.graph-figure {
+  margin: var(--space-5) 0 var(--space-4);
+}
+
+.graph-figure figcaption p {
+  font-size: var(--fs-meta);
+  margin: var(--space-2) 0 0;
+}
+
+.domains {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.domain {
+  border-top: 3px solid var(--type-impact);
+}
+
+.domain h3 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.domain p {
+  font-size: var(--fs-chip);
+  margin: 2px 0 6px;
+}
+
+.domain ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: var(--fs-meta);
+}
+
+.domain li {
+  margin: 0 0 var(--space-1);
+}
+
+/* Each rung spans the ladder's four shared rows (bar, name, count, meaning), so a
+   name that wraps to two lines keeps every count and meaning on one line across. */
+.ladder {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  column-gap: 10px;
+  row-gap: 6px;
+  margin: var(--space-2) 0 var(--space-4);
+}
+
+.ladder__rung {
+  display: grid;
+  grid-row: span 4;
+  grid-template-rows: subgrid;
+  align-items: start;
+}
+
+.ladder__barbox {
+  height: 84px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.ladder__bar {
+  width: 100%;
+  border-radius: 4px 4px 0 0;
+  box-shadow: inset 0 0 0 1px var(--color-rule);
+  background: var(--cm-soft-white);
+}
+
+.ladder__bar[data-step='1'] { background: var(--cm-soft-blue); }
+.ladder__bar[data-step='2'] { background: var(--cm-viz-blue-30); }
+.ladder__bar[data-step='3'] { background: var(--cm-viz-blue-60); }
+.ladder__bar[data-step='4'] { background: var(--cm-viz-blue-80); }
+.ladder__bar[data-step='5'] { background: var(--cm-viz-blue-100); }
+
+.ladder .rating {
+  white-space: normal;
+  line-height: 1.3;
+  align-items: flex-start;
+}
+
+.ladder__count {
+  font-size: var(--fs-chip);
+  font-weight: 600;
+  margin: 0;
+}
+
+.ladder__meaning {
+  font-size: var(--fs-chip);
+  color: var(--color-text-muted);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Where to start: the Mission and Vision card treatment from coralmind.org/about. */
+.cards--doors {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.cards--doors .cm-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.cards--doors .cm-card h3 {
+  font-size: var(--fs-h3);
+  margin: 0 0 var(--space-4);
+}
+
+.cards--doors .cm-card p {
+  font-size: var(--fs-body);
+  margin: 0 0 var(--space-4);
+}
+
+.cards--doors .cm-arrow-link {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+@media (max-width: 860px) {
+  .hero__inner,
+  .home-step__columns,
+  .cards--doors {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ladder {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .ladder__rung:nth-child(n + 4) .ladder__barbox {
+    margin-top: var(--space-4);
+  }
+}

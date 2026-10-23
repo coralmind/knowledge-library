@@ -1,0 +1,102 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000452
+display_id: UserBehavior-50
+aliases:
+- UBP-52
+label: The person says they faced abuse, neglect, or household violence as a child
+type: user_behavior
+layer: observation
+definition: The person's turn states that they experienced abuse, maltreatment, neglect, or household violence during childhood or early life — physical, sexual, or emotional — with the experience located in that period. The statement may also name that period as the onset point of a current difficulty. What is pointable is the person's statement of the experience and its location in childhood or early life.
+distinguish_from:
+- neighbor: kl-000451
+  boundary: That entry requires disclosure of self-directed harm the person performed; this one requires disclosure of harm done to the person by others in childhood. The two differ in who acted.
+- neighbor: kl-000463
+  boundary: That entry concerns a currently hostile environment or a recent stressor; this one requires the experience to be located in childhood or early life. The two are separated by when, not by what.
+- neighbor: kl-000453
+  boundary: That entry requires a statement that nothing will change; this one requires a statement about what happened in childhood, which makes no claim about the future.
+body:
+  observable_criteria: 'Two features in the person''s turn. (a) A statement of abuse, maltreatment, neglect, or household violence experienced by the person — physical, sexual, or emotional abuse; neglect; or violence in the household. (b) The experience is located in childhood or early life: a stated age or period ("growing up", "when I was a kid", "as a child"), a childhood-referring construction, or naming that period as the onset point of a current difficulty ("the self-harm started after what happened to me as a kid"). The pointable span is the person''s turn.'
+  exclusions: 'Not counted: a currently hostile environment or a recent stressor, which fails (b). Not counted: adult-onset hardship ("things only got hard in my twenties"), which fails (b). Not counted: a childhood described as difficult with no abuse, neglect, or violence content named ("my childhood wasn''t great"), which fails (a) — the criterion requires the content, not the evaluation. Not counted: inference from present symptoms or affect to a trauma history, which the source names as a mandatory exclusion and which this criterion requires positive statement against. Not counted: another person''s childhood experience.'
+  detection_window: single_turn
+  groups:
+  - risk-factor-historical
+  condition_tags:
+  - kl-000600
+  - kl-000601
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'That people state childhood abuse, maltreatment, neglect, or household violence in real conversations is evidenced by two citations from real conversation corpora, so the occurrence half of this entry has external footing. Detection is evidenced against rather than for: on real posts, automated readers systematically misapplied the abuse-content criterion. Whether the disclosure is readable from a single turn, the entry''s declared window, has evidence on neither side.'
+  floored_by: c4
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: People produce turns stating that they experienced abuse, maltreatment, neglect or household violence - physical, sexual or emotional - during childhood or early life.
+- id: c2
+  kind: detectability
+  text: The abuse, maltreatment, neglect or household-violence content of such a statement is identifiable from what the turn contains, without inferring it from present symptoms or affect and without admitting another person's experience.
+- id: c3
+  kind: detectability
+  text: The experience's location in childhood or early life is identifiable from what the turn contains - a stated age or period, a childhood-referring construction, or that period named as the onset point of a current difficulty.
+- id: c4
+  kind: detection_window
+  text: The disclosure is readable within a single turn; the pointable span is the person's turn and no longer window is required.
+- id: c5
+  kind: definition_boundary
+  text: This is distinct from kl-000451 in that the harm was done to the person by others rather than performed by the person on themselves - the two differ in who acted.
+- id: c6
+  kind: definition_boundary
+  text: This is distinct from kl-000463 in that the experience is located in childhood or early life rather than being a currently hostile environment or recent stressor - separated by when, not by what.
+- id: c7
+  kind: definition_boundary
+  text: This is distinct from kl-000453 in that it is a statement about what happened in childhood and makes no claim about the future.
+claim_evidence:
+- claim_id: c1
+  source: kl-000996
+  quote: "Severe The user disclosed across∼10–200+ exchanges severe and compounding vulnerabilities including histories of childhood sexual abuse (CSA), ongoing domestic violence, trafficking, grooming, incest, physical assault, and sexual coercion, often with pervasive suicidal ideation, active self-harm, dissociation, and statements like “I hope he grooms the fuck out of me,” “is Daddy going to kill Mommy,” “I’m holding mom’s gun,” and “if I die will all this be fixed.” Compounding"
+  locator: Appendix A, Table 6 Additional vulnerability clusters, Active Abuse with Severe Safety Crises (Severe)
+  licenses: 'In an analysis of 1.5 million real Claude.ai conversations, a behavioral cluster in which the person disclosed histories of childhood sexual abuse and incest, alongside ongoing domestic violence, trafficking, grooming, physical assault and sexual coercion, across roughly 10 to 200-plus exchanges. ''Histories of childhood sexual abuse'' is the entry''s construct exactly: the person''s own statement of abuse experienced, located in childhood by the label itself. Person-side disclosure in deployed traffic. The illustrative user fragments the cell carries (''is Daddy going to kill Mommy'', ''I''m holding mom''s gun'') are household-violence content; the paper states such fragments are not verbatim.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001081
+  quote: For example, some users described persistent anxiety about death without knowing where these feelings came from, or shared long-term experiences of mental health issues linked to childhood trauma. Others expressed feelings of rejection and a longing for care, such as recalling being called “bad” by foster parents and anxiously asking if the chatbot could become a “pretend parent”.
+  locator: Section 2.5, description of high-disclosure conversation content
+  licenses: From LLM topic modeling over donated chat histories of AI companion users, high-disclosure conversations are reported to contain users sharing 'long-term experiences of mental health issues linked to childhood trauma' - which is the entry's onset-point form, that period named as the origin of a current difficulty - and 'recalling being called "bad" by foster parents', which is emotional maltreatment in a foster placement located in early life. Real chat transcripts, person-side, both admitted forms of criterion (b) present in one span.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000781
+  quote: "Expert coders emphasize that incidents involving peers close in age (e.g., 14–16 vs. 11–12) are not categorized as child abuse. Instead, they should be annotated as sexual harassment or rape depending on the context. This shows that large models tend to overgeneralize any sexual incident involving minors as child abuse"
+  locator: Section 6 Analysis, item (1)
+  licenses: 'Cuts against c2. On real first-person crisis posts, models systematically over-applied the child-abuse label: precision consistently below recall (GPT-5 0.538 vs 0.778; Llama-3.3-70b 0.375 vs 0.667) because they did not carry the perpetrator-age and power-imbalance requirement that expert coders apply. The abuse-content criterion the entry says is identifiable from the turn was not reliably identifiable to automated readers, and the direction of the failure is over-attribution, which is the failure mode the entry''s inference exclusion is written against.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-000531
+  quote: "QE82.2\t\t\"- - - - Personal history of psychological abuse\"\tcategory\t2\tFalse\t24\t\"=hyperlink(\"\"https://icd.who.int/browse/latestrelease/mms/en#1334495652\"\",\"\"browser\"\")\"\tTrue\tTrue\tBlockL1-QD5\tBlockL2-QE8\t\t\t\nhttp://id.who.int/icd/entity/1172477528\thttp://id.who.int/icd/release/11/mms/1172477528\tQE82.3\t\t\"- - - - Personal history of neglect\"\tcategory\t2\tFalse\t24"
+  locator: Chapter 24, block QE8 Problems associated with harmful or traumatic events, QE82 Personal history of maltreatment
+  licenses: ICD-11 codes personal history of psychological abuse and personal history of neglect as separate categories under problems associated with harmful or traumatic events, which establishes that abuse type and neglect are treated as distinguishable recorded facts about a person rather than as one undifferentiated category. That the entry's (a) content types are separable categories in a standard classification is weak support for their being separable in a turn.
+  fit: analogical
+  bridge: 'The span is a row of a WHO linearization spreadsheet listing code titles. A code assigned by a clinician from a health record is not a statement made in a turn, and the classification supplies no criterion at all for reading the content off a person''s utterance - only that the categories exist and are distinct. It also carries no childhood qualifier: QE82 is personal history of maltreatment, not of childhood maltreatment.'
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000781
+  quote: "Each identified crisis is further annotated with a temporal dimension, distinguishing between ongoing cases, where the risk is current or persisting, and past cases, where the event is disclosed as historical. Temporal information is critical for crisis detection systems because it directly affects the urgency of intervention."
+  locator: Section 3.3.4 Temporal Dimensions of Crises
+  licenses: An operational annotation rule locating a disclosed crisis as past where the event is disclosed as historical versus ongoing where the risk is current or persisting, applied by four mental health professionals to real first-person Reddit crisis narratives. This supports the general proposition that a disclosure's temporal location is readable off the text by a trained reader, which is half of what c3 asserts.
+  fit: adjacent
+  bridge: The rule cuts past from ongoing; the entry's criterion cuts childhood or early life from every other period, including adult-onset hardship, which the exclusions name explicitly. A 'past' label spans any earlier period of any length, so CRADLE's demonstrated annotatability of the past-versus-current axis does not demonstrate the annotatability of the childhood-versus-later-past axis the entry actually turns on. The unit is also a whole Reddit post rather than a turn.
+  contributes: detectability
+  contradicts: false

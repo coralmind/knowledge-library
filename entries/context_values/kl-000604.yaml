@@ -1,0 +1,269 @@
+# yaml-language-server: $schema=../../schema/context_value.schema.json
+id: kl-000604
+display_id: Value-5
+aliases:
+- depression
+- ConditionTag-5
+label: Depression, with low mood, loss of interest or hopelessness
+type: context_value
+layer: context
+definition: The person's presentation is dominated by depressed mood, loss of interest or pleasure in activities that previously provided it, or hopelessness about the future. Any one of the three is sufficient. The state may be accompanied by changes in sleep, appetite, energy, concentration or self-worth, and it may be episodic or long-standing.
+distinguish_from:
+- neighbor: kl-000610
+  boundary: That condition context centres on a specific loss that the person can name, and the distress is organised around it and around the person's relationship to what was lost. This one requires no such event and its features are not organised around one. Both are assigned where a bereavement has been followed by a mood state that has taken on its own course, and the distinction is the presence of an organising loss rather than the severity of the distress.
+- neighbor: kl-000614
+  boundary: That condition context covers episodes of elevated, expansive or irritable mood with increased activity, and depressive episodes occurring within that same pattern. This one applies where no such episode has occurred. The distinction is the person's history rather than their present state — a depressive episode looks the same from inside either.
+body:
+  dimension: kl-000727
+  category_scope: mental_health_condition
+  icd_codes: 6A70-6A72 / F32-F33
+  experience_clusters:
+  - kl-000704
+sources:
+- source: kl-000001
+  locator: 'Results — ''Participants'', p. 6. Corroborated by Table 1 ''Primary diagnosis: n (%)'' rows: ''Depression n.a. 66 (14.2) 66 (10.1)'' and ''Anxiety and depression n.a. 92 (19.8) 92 (14.1)''.'
+  contributes: existence
+  quote: |-
+    In terms of the reason for receiving psychological treatment according to the participants themselves,
+    anxiety disorders were most prevalent (48.4%), compared to mixed anxiety/depression
+    (14.1%), depression (10.1%), and other psychiatric disorders or psychological problems
+    (27.4%).
+  limits: 'Self-reported, not diagnosed — the load-bearing limit, and it is stronger than the claim''s wording acknowledges: the categories are the reasons for receiving psychological treatment ''according to the participants themselves''. Table 1 labels the row ''Primary diagnosis'', but the text makes clear these are participant attributions, not structured diagnostic assessments. Only the 189-person treatment subgroup was diagnostically assessed (MINI plus Liebowitz), and all of those were social anxiety disorder; the depression counts come entirely from the unassessed media-recruited group, and the row reads ''n.a.'' for the treatment group. The paper therefore carries no diagnostic authority for depression, not even a weak one, and no classification of the category should be attributed to it. It supplies no boundary, no criteria and no definition: it never defines depression, never states inclusion criteria for it, and never distinguishes it from mixed anxiety/depression, so it cannot serve as a definitional or boundary source for the category. Depression is a sample-composition fact here, incidental to the paper''s purpose, which is instrument development. The setting is psychotherapy, not AI.'
+  whose_conduct_in_passage: person
+  cited_for: Rozental et al. 2016 develops its adverse-events instrument on populations in treatment for depression among other conditions, which establishes the category's existence as a clinical population under study, not its diagnostic boundary.
+  licenses: That depression was one of the named reasons for treatment in the instrument-development sample — 10.1% as depression alone (n = 66) and a further 14.1% as mixed anxiety/depression (n = 92), all within the media-recruited subgroup. Depression figures as a clinical population under study in this paper, and the passage supports that and no more.
+- source: kl-000531
+  contributes: definition
+  locator: MMS simple tabulation, release row for 6A70 (Code and Title columns)
+  quote: 6A70 "- - - Single episode depressive disorder"
+  limits: A classification establishes that a category exists and where its boundary is drawn. It says nothing about prevalence, severity, or how the category behaves in AI interaction.
+  cited_for: ICD-11 MMS classifies this category, at codes 6A70-6A72 / F32-F33.
+  licenses: That ICD-11 MMS contains this code with this exact title, so the category is one the classification draws, at the code this entry names.
+standing:
+  value: theorized
+  basis: 'The best-evidenced fact about this context is its prevalence in the relevant population: kl-001013 (Stade et al. 2026) reports a preregistered comparison in which 31 percent of people using general-purpose LLMs for mental health screened as likely major depression against 16 percent of non-users, with the label assigned by a screening instrument (PHQ-2) rather than by the people themselves or by anyone reading a conversation; the ICD-11 classification registered on the entry draws the category''s boundary at 6A70-6A72 / F32-F33. No source assigns a depression label inside conversation data — the closest, kl-000996 (Sharma et al. 2026), audits deployed traffic and documents hopeless statements and severe functional impairment without assigning one. Every source bearing on detection contradicts it: human hotline operators outperformed all 64 evaluated models on mood recognition (kl-000811, Deng et al. 2025), general-purpose models default to a colloquial sense of the word that conflates transient sadness with clinical depression (kl-000811), the two label confusions models make most often — against adjustment disorder and against bipolar disorders — are exactly the boundaries this entry draws (kl-001011, Song et al. 2026), and two simulated-patient corpora fail to reproduce the textual features of real depressed speech (kl-000851, kl-001065). No source states the entry''s own disjunctive criterion, that any one of depressed mood, anhedonia or hopelessness suffices: the sources that touch the definition operationalize depression as an instrument cut-point or a diagnostic label, neither of which has disjunctive structure.'
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: A person's presentation can be dominated by depressed mood, loss of interest or pleasure in previously pleasurable activities, or hopelessness about the future, and such presentations occur among people who bring their distress to a conversational AI.
+- id: c2
+  kind: definition
+  text: Any one of the three features -- depressed mood, anhedonia, hopelessness -- is sufficient for the context to apply; the presentation need not carry all three.
+- id: c3
+  kind: context_dependence
+  text: The state may be accompanied by changes in sleep, appetite, energy, concentration or self-worth, and may be either episodic or long-standing; neither the accompaniments nor the course is required.
+- id: c4
+  kind: prevalence
+  text: This context occurs at a non-trivial rate among the people who use conversational AI for mental-health purposes.
+- id: c5
+  kind: detectability
+  text: The presentation is identifiable from what a transcript contains.
+- id: c6
+  kind: definition_boundary
+  text: This context is separable from grief_and_loss by the presence of an organising loss the person can name, not by severity.
+- id: c7
+  kind: definition_boundary
+  text: This context is separable from bipolar_mania by the person's history of an elevated, expansive or irritable episode rather than by the present state, which looks the same from inside either.
+claim_evidence:
+- claim_id: c1
+  source: kl-001052
+  quote: "For instance, when depressed users sought \nglorification, conversations shifted toward a higher-risk profile with \nstronger enablement of self-harm"
+  locator: Results, Multidimensional structure of chatbot risk; Extended Data Fig. 6b
+  licenses: The study operated with a depressed user profile as a live vulnerability condition and found the AI's behavior varied with it -- specifically that a depressed presentation paired with glorification-seeking shifted conversations toward stronger enablement of self-harm. It establishes that this presentation is a condition systems actually meet and respond differently to.
+  fit: adjacent
+  bridge: The depressed presentation here is a simulated user profile in a clinically validated auditing framework, not a person. What is established is that depression functions as a distinguishable condition in the study's design; the entry's three-disjunct presentation criteria are stated nowhere in the span.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001013
+  quote: "As predicted in our preregistration, greater proportions of users of LLMs for mental health had likely diagnoses of major depression (31 versus 16%), generalized anxiety (37 versus 22%), and PTSD (15 versus 7%) versus non-users (all p < 0.001; see Fig. 4, left)."
+  locator: Results, Users of LLMs for Mental Health – Psychopathology and Well-Being
+  licenses: Establishes that people using general-purpose LLMs for mental health are disproportionately those meeting screening criteria for major depression -- 31 percent against 16 percent among non-users, in a preregistered comparison. It puts the presentation in the population the catalog is about.
+  fit: adjacent
+  bridge: The measure is likely diagnosis from ultra-brief screening instruments (PHQ-2), not the entry's presentation criteria, and the population is survey respondents reporting on their use rather than people observed in a conversation.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000996
+  quote: "Complete Isolation with AI as Sole Support Severe Users revealed complete social isolation across ∼20-200+ exchanges, with AI described as their “only outlet”, “only hope”, or sole connection. Indicators included pervasive suicidal ideation (passive and active, with statements like “waiting for death”, “would rather try pushing forward or just accept”, “if I fail I’ll just be a loser”), self-harm behaviors (cutting, burning, starvation), severe functional impairment (inability to leave bed, work, or perform self-care), and"
+  locator: Appendix A, Table 6 Additional vulnerability clusters, Complete Isolation with AI as Sole Support (Severe)
+  licenses: An audit of deployed traffic finding a severe cluster in which people described the AI as their only outlet or only hope, with pervasive passive and active suicidal ideation, self-harm, and severe functional impairment appearing together in the same conversations. The person-language in the summary -- 'waiting for death', 'if I fail I'll just be a loser' -- expresses hopelessness about the future; these are illustrative fragments from the paper's cluster summary of real conversations, which the paper states are not verbatim.
+  fit: adjacent
+  bridge: The cluster the study named is isolation with the AI as sole support, not depression, and the study assigned no depression label. The hopelessness that meets one of the entry's three disjuncts appears inside illustrative user statements rather than as the study's construct, so the presentation is inferable from the span rather than asserted by it.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000527
+  quote: "User expresses hopelessness and self-blame → chatbot affirms the user’s negative self-view or \nframes withdrawal as understandable → user feels “seen” and disengages more → chatbot \ncontinues validating resignation → hopelessness and withdrawal consolidate"
+  locator: Box 1, depression row
+  licenses: Names hopelessness and self-blame as the person-side inputs to the depression instance of the failure loop, which is a source operating with hopelessness alone as the marker of a depressed presentation -- the disjunctive reading this claim asserts.
+  fit: adjacent
+  bridge: A scenario stipulation in a box row headed 'depression' rather than the source stating criteria for the presentation. What it establishes is that a study designed to audit depression-context behavior treated hopelessness as its handle on that context, not that the classification's criteria are disjunctive.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000755
+  quote: "Subjects were\nassigned to a depressed or nondepressed group on\nthe basis of their Beck Depression \nInventory\n(BDI) scores (Beck, 1967)."
+  locator: Experiment 1 Method, Subjects
+  licenses: 'Records how a foundational study of depressed cognition operationalized group membership: by Beck Depression Inventory score in a student sample. A summed severity score has no disjunctive structure and does not require any particular one of the three features, which shows that the instrument tradition the field runs on does not implement the criterion this claim asserts.'
+  fit: adjacent
+  bridge: A group-assignment procedure in a 1979 laboratory experiment on judgment of contingency, in BDI-elevated undergraduates rather than a clinical population. It names none of the entry's three features and supplies no criterion for the presentation; what it bounds is what the study's own findings are about.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-001071
+  quote: as well as their diagnoses (depression and other comorbidities such as anxiety, bipolar disorder, PTSD, etc.) and length of time period since diagnoses (ranging between 2 and 33 years)
+  locator: Section 3.2 Participant Recruitment
+  licenses: Establishes that in a sample recruited on a depression diagnosis, comorbidity is the norm and the diagnoses span between 2 and 33 years since assignment, so the long-standing course this claim permits is documented in a real sample.
+  fit: adjacent
+  bridge: The span reports diagnostic labels and time since diagnosis recorded at recruitment, not the presentation's features. Duration since diagnosis is not the same as an episodic-versus-long-standing course of the presentation, and the accompaniments this claim names (sleep, appetite, energy, concentration, self-worth) appear nowhere.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000996
+  quote: "Complete Isolation with AI as Sole Support Severe Users revealed complete social isolation across ∼20-200+ exchanges, with AI described as their “only outlet”, “only hope”, or sole connection. Indicators included pervasive suicidal ideation (passive and active, with statements like “waiting for death”, “would rather try pushing forward or just accept”, “if I fail I’ll just be a loser”), self-harm behaviors (cutting, burning, starvation), severe functional impairment (inability to leave bed, work, or perform self-care), and"
+  locator: Appendix A, Table 6 Additional vulnerability clusters, Complete Isolation with AI as Sole Support (Severe)
+  licenses: Documents severe functional impairment -- inability to leave bed, work, or perform self-care -- alongside the hopeless statements, in the same conversations. Impairment of energy and functioning accompanying the presentation is what this claim says may occur.
+  fit: adjacent
+  bridge: The study named the cluster by isolation and sole-support status rather than by depression, and functional impairment is compatible with many presentations. It shows the accompaniments occur alongside the core features in real traffic; it does not establish that they are optional, which is the claim's actual content.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-001072
+  quote: "Comorbid mental health conditions were common: anxiety (n=10, 59%), post-traumatic stress disorder (n=5, 29%), autism spectrum disorder (n=2, 12%), and single instances of bipolar disorder,"
+  locator: Methods, Recruitment
+  licenses: In a clinically diagnosed depression sample recruited without regard to comorbidity, a majority carried at least one additional condition -- anxiety 59 percent, PTSD 29 percent -- so a depressed presentation is more likely than not to be carrying something else with it.
+  fit: adjacent
+  bridge: The rates given are for the comorbid conditions in a 17-person qualitative sample, not for depression or for any of the accompaniments this claim names. It bears on the claim only by showing the presentation does not arrive alone.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c4
+  source: kl-001013
+  quote: "As predicted in our preregistration, greater proportions of users of LLMs for mental health had likely diagnoses of major depression (31 versus 16%), generalized anxiety (37 versus 22%), and PTSD (15 versus 7%) versus non-users (all p < 0.001; see Fig. 4, left)."
+  locator: Results, Users of LLMs for Mental Health – Psychopathology and Well-Being
+  licenses: 'This entry''s one preregistered rate with its population: 31 percent of people using LLMs for mental health screened as likely major depression against 16 percent of non-users, all p < .001. It is the direct evidence that this context is common in exactly the population the catalog concerns.'
+  fit: direct
+  bridge: null
+  contributes: prevalence
+  contradicts: false
+- claim_id: c4
+  source: kl-000812
+  quote: "Notably, nearly 44% of participants were assigned to the three vulnerability-related groups (Anxiety-Dominant, Mild Distress, and Comorbid Risk), suggesting that non-trivial vulnerability profiles are common in our sample rather than limited to a marginal subgroup."
+  locator: Section 5.2.1
+  licenses: In 102 experienced companion-app users, 44 percent fell into vulnerability-related clusters derived from PHQ-8, ULS-8 and SIAS, so clinically meaningful distress is the ordinary case rather than a marginal subgroup in this deployment.
+  fit: adjacent
+  bridge: The 44 percent is a combined rate over three clusters (Anxiety-Dominant, Mild Distress, Comorbid Risk) and no depression-attributable proportion is recoverable from it. The sample is self-selected via Facebook and Reddit with the paper noting voluntary-participation bias, so it is a sample rate rather than a population one.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c4
+  source: kl-000776
+  quote: A majority of the reviewed papers work on predicting depressive disorders (148/201, 73.6%), significantly more so when the papers comprise no domain author
+  locator: 'Results, Step 1: Research Design and Problem Selection, Studied Mental Health Conditions'
+  licenses: 'Bears on prevalence in the literature rather than in people: 73.6 percent of 201 reviewed studies work on predicting depressive disorders, with every other condition group in single digits, so depression is the one condition tag with a substantial machine-detection evidence base behind it.'
+  fit: adjacent
+  bridge: These are counts of research papers, not of people or conversations. It establishes the shape of the available evidence, and no rate of the presentation in any population.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c5
+  source: kl-000923
+  quote: |-
+    The case study employs the Distress Analysis Interview Corpus
+    – Wizard-of-Oz (DAIC-WOZ) dataset [4], which comprises 189
+    transcribed clinical interviews labeled for depression presence.
+  locator: Section 4, Case Study
+  licenses: The construct has been operationalized as a label recoverable from interview transcript text alone, on 189 clinician-conducted transcribed interviews -- and simultaneously shows how hard that recovery is, at best macro-F1 0.57 on a binary task, which is close to the floor for a useful classifier.
+  fit: adjacent
+  bridge: The transcripts are human-conducted Wizard-of-Oz clinical interviews, not exchanges with a deployed system, and the label is binary depression presence rather than the entry's three-disjunct presentation. It licenses that the construct is label-bearing on transcript text and nothing about identifying it in an AI conversation.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-000836
+  quote: |-
+    Participants are drawn from two distinct populations living
+    in the Greater Los Angeles metropolitan area – veterans of
+    the U.S. armed forces and from the general public – and are
+    coded for depression, PTSD and anxiety based on accepted
+    psychiatric questionnaires.
+  locator: Section 1 Overview
+  licenses: 'Establishes the same operationalization from the corpus side: participants drawn from two named populations, coded for depression on accepted psychiatric questionnaires, with the labels attached to interview transcripts.'
+  fit: adjacent
+  bridge: A questionnaire cut-point is not the entry's presentation criteria, no proportion is given, and the interviews are human-conducted. It establishes that depression is an operationally assigned category carried by transcript data.
+  contributes: definition
+  contradicts: false
+- claim_id: c5
+  source: kl-000811
+  quote: "Human experts achieved \nF1-scores of 0.729 [0.688, 0.767] for mood status recognition \nand 0.910 [0.886, 0.932] for suicidal ideation detection, \noutperforming the best LLMs on these two tasks."
+  locator: Section IV.A Overall Benchmark Performance
+  licenses: 'Cuts against detectability by machine on precisely this construct: on mood status recognition, human hotline operators reached F1 0.729 and outperformed the best of 64 models, with no model exceeding 0.71 on depressive-symptom recognition. The task requiring affective interpretation is the one models lose.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000811
+  quote: "Second, the definition of “depression” in PsyCrisisBench adheres to stricter psychiatric diagnostic criteria [36], whereas general-purpose LLMs may default to colloquial interpretations of the term—conflating transient sadness with clinical depression."
+  locator: Section V Discussion
+  licenses: 'Names the mechanism behind the detection gap: the benchmark''s ''depression'' adheres to strict psychiatric criteria while general-purpose models default to a colloquial sense that conflates transient sadness with clinical depression. A detector and the label are not measuring the same construct, which is a standing obstacle to reading this context off a transcript automatically.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-001011
+  quote: frequent misclassification between Major Depressive Disorder (MDD) and Adjustment Disorder, as well as between MDD and Bipolar Disorders.
+  locator: Section 5.3, the depressive cluster paragraph, which opens 'In the depressive cluster (bottom), we observe' at the foot of the preceding page
+  licenses: 'Cuts against detectability at the boundaries: models most frequently misclassify Major Depressive Disorder against Adjustment Disorder and against Bipolar Disorders, which are exactly the two distinctions this entry''s own boundary claims turn on.'
+  fit: adjacent
+  bridge: The task is psychiatric label assignment on a diagnostic benchmark, not identification of the presentation from a help-seeking conversation, and confusion between labels is not the same as failure to recognize depressed mood, anhedonia or hopelessness in a turn.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000851
+  quote: "trast, almost all simulated patients produce higher and tightly ranged MTLD values, indicating uniformly diverse output that fails to capture the lower diversity and greater variability of real patient populations."
+  locator: Section 5.1 RQ1, Higher lexical diversity, reduced variability; Figure 3
+  licenses: 'Cuts against evaluating detection on simulated material: real depressed help-seekers vary widely in lexical diversity and simulated patients do not, producing uniformly high and tightly ranged values even when conditioned on distinct profiles.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-001065
+  quote: "our dataset cannot restore the expressions of actual patients and doctors. For this reason, the textual features of acting patients in our dataset are not sufficient for the classification of depression."
+  locator: Limitations
+  licenses: The authors of a depression-diagnosis dialogue corpus state that actor-produced simulated patient language does not carry the textual features of real patient speech sufficiently to support depression classification -- their own downstream task. It blocks reading a simulated-persona corpus as a stand-in for real help-seeker language when asking whether this context is detectable.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c7
+  source: kl-001011
+  quote: "for instance, a patient presenting with depression who also exhibits manic features requires careful differentiation between Major Depressive Disorder and Bipolar II Disorder."
+  locator: Section 3.1 Graph Components, Differential Diagnosis Nodes
+  licenses: 'Bears on the depression-versus-bipolar boundary by naming the differentiation in the DSM-5 terms the paper''s psychiatrist collaborators formalized: a patient presenting with depression who also exhibits manic features requires careful differentiation between MDD and Bipolar II. It confirms the distinction the entry draws is one the classification draws.'
+  fit: analogical
+  bridge: 'A differential-diagnosis rule describing what a clinician must do, formalized into a knowledge graph. On-topic and the wrong agent: it observes no AI making or failing the distinction, and it does not adjudicate the entry''s specific framing that history rather than present state is what separates them.'
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c7
+  source: kl-001011
+  quote: frequent misclassification between Major Depressive Disorder (MDD) and Adjustment Disorder, as well as between MDD and Bipolar Disorders.
+  locator: Section 5.3, the depressive cluster paragraph, which opens 'In the depressive cluster (bottom), we observe' at the foot of the preceding page
+  licenses: 'Bears on the same boundary from the measurement side: MDD-versus-Bipolar confusion is one of the two most frequent misclassifications models make in the depressive cluster, so the boundary is one that is in practice hard to hold.'
+  fit: adjacent
+  bridge: A confusion rate between diagnostic labels on a benchmark, not evidence about the entry's stated basis for the distinction (the person's history of an elevated episode).
+  contributes: definition
+  contradicts: false
+- claim_id: c6
+  source: kl-001011
+  quote: frequent misclassification between Major Depressive Disorder (MDD) and Adjustment Disorder, as well as between MDD and Bipolar Disorders.
+  locator: Section 5.3, the depressive cluster paragraph, which opens 'In the depressive cluster (bottom), we observe' at the foot of the preceding page
+  licenses: 'Bears on the grief boundary in its measured form: the other most frequent depressive-cluster confusion is MDD against Adjustment Disorder, which turns on whether an identifiable stressor organises the presentation -- the same axis this boundary uses.'
+  fit: adjacent
+  bridge: Adjustment Disorder is not grief_and_loss and the axis is a precipitating stressor rather than a nameable loss the distress is organised around. It shows the axis is a real and difficult one, not that this boundary is drawn where the entry draws it.
+  contributes: definition
+  contradicts: false

@@ -1,0 +1,154 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000441
+display_id: UserBehavior-39
+aliases:
+- UBP-39
+label: The person suddenly changes to an unrelated topic right after sharing something emotional
+type: user_behavior
+layer: observation
+definition: The person's turn introduces subject matter with no stated or evident connection to what the immediately preceding person turn was about, where that preceding turn contained emotionally loaded content — a disclosed feeling attached to a situation, a distressing event, a fear, or a symptom report. The turn supplies no transition, no bridging clause, and no statement of why the subject has changed. What is pointable is the two turns' subject matter, the absence of a bridge, and the loaded content in the earlier one.
+distinguish_from:
+- neighbor: kl-000431
+  boundary: That entry requires the person to stay on the same subject at reduced depth, with an AI turn of named properties between; this one requires the subject to change entirely and imposes no requirement on the AI turn.
+- neighbor: kl-000442
+  boundary: That entry requires a sustained run of minimal-length turns and is indifferent to subject matter; this one requires one subject change and the turn may be long and detailed about the new subject.
+- neighbor: kl-000444
+  boundary: That entry requires a turn signalling the conversation is ending; this one requires the conversation to continue on different subject matter, which is the opposite disposition toward the exchange.
+body:
+  observable_criteria: 'Three features across two person turns. (a) The immediately preceding person turn contains emotionally loaded content: a named feeling attached to a named situation, a distressing event, a stated fear, or a symptom report. (b) The person''s turn is about different subject matter, where different means no shared referent with (a) — not the same situation, event, person, symptom, or question. (c) The turn contains no bridging clause: no transition ("anyway", used as a transition, is a marker of the change rather than a bridge to it), no stated reason for the change, and no clause connecting the new subject to the old. A turn satisfying (a) and (b) but supplying a stated connection ("this reminds me of something related — my brother went through the same thing") fails (c). The pointable span is the two adjacent person turns.'
+  exclusions: 'Not counted: a subject change following a person turn with no emotionally loaded content, which fails (a) — moving from logistics to weather is not this observable. Not counted: a subject change the AI''s intervening turn asked for, where the new subject is the answer to a question, since the change is then the AI''s and the criterion is about the person''s turn introducing it. Not counted: a subject change with a stated bridge, which fails (c). Not counted: a return to a subject raised earlier in the same conversation, where the shared referent exists in the transcript even though it is not in the adjacent turn. Not counted: elaboration on a different aspect of the same situation, which fails (b) on the shared-referent test.'
+  detection_window: multi_turn
+  groups:
+  - change-readiness-calibration
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'The entry requires three features occurring together and the cited evidence supplies one of them. Suh et al. 2025 logged participants'' real sustained human-AI conversations and quotes three of one participant''s turns verbatim with no transition, no stated reason, and no connecting clause among them, so bridgeless turn-to-turn movement is observed in actual logs; the same span carries the subject change itself only weakly, because the paper''s own reading is that the turns share a referent the agent should have inferred, and it cuts against the emotionally-loaded-content precondition, since the preceding turns are task requests about children''s technology use. That case also exhibits the difficulty of separating a subject change from elaboration: the paper reports the turns as disjoint while the participant treated them as one line of inquiry. No source observes the full conjunction; the nearest warrant for the entry''s object is Sabour et al. 2026 naming changing the subject in the clinical resistance literature as a pattern distinct from going silent and from pushing back directly, and Li et al. 2024 writing frequent abrupt topic shift into an annotation rubric for human text counseling. On whether the pattern bears on something bad, the one clinical characterisation available runs against reading a single instance as harmful: O''Connor 2019 describes avoidance of distressing material in bereavement as natural and adaptive in small doses and harmful only at high levels of deliberate avoidance, while the entry''s observable is one turn pair with no accumulation criterion.'
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: A person's turn to the AI introduces subject matter sharing no referent with the immediately preceding person turn.
+- id: c2
+  kind: existence
+  text: 'The immediately preceding person turn contains emotionally loaded content: a named feeling attached to a named situation, a distressing event, a stated fear, or a symptom report.'
+- id: c3
+  kind: existence
+  text: The subject-changing turn contains no bridging clause -- no transition, no stated reason for the change, no clause connecting the new subject to the old.
+- id: c4
+  kind: existence
+  text: All three features occur together across one adjacent pair of person turns.
+- id: c5
+  kind: detectability
+  text: The three features are separately markable, and the shared-referent test in (b) reliably separates a subject change from elaboration on a different aspect of the same situation.
+- id: c6
+  kind: detection_window
+  text: 'Reading this behavior requires more than one turn: the declared window is multi_turn, since the pointable span is the two adjacent person turns.'
+- id: c7
+  kind: harm
+  text: A turn moving to unrelated subject matter directly after emotionally loaded content bears on something bad.
+- id: c8
+  kind: definition_boundary
+  text: 'This is distinct from staying on the same subject at reduced depth with an AI turn of named properties between (kl-000431): this one requires the subject to change entirely and imposes no requirement on the AI turn.'
+- id: c9
+  kind: definition_boundary
+  text: 'This is distinct from a sustained run of minimal-length turns (kl-000442): one subject change suffices and the turn may be long and detailed.'
+- id: c10
+  kind: definition_boundary
+  text: 'This is distinct from a turn signalling the conversation is ending (kl-000444): this one requires the conversation to continue.'
+claim_evidence:
+- claim_id: c1
+  source: kl-001018
+  quote: |-
+    For example, P36 sent the bot “overexposure to
+    technology for young children” and “how to discourage and
+    instill good etiquette in using technology in my kids” before
+    asking “Any moral stories I should share with my kids”
+  locator: Section V.B.2, Empathy as establishing a shared understanding (participant P36)
+  licenses: Real logged turns from a participant in a sustained human-AI conversation study, quoted verbatim, in which successive person turns introduce subject matter the paper itself calls 'disjoint messages'. That the person's turns move between subjects without connecting them is shown in actual logs rather than inferred.
+  fit: adjacent
+  bridge: 'SENSE-7 collected participants'' own conversations with an agent and their empathy ratings, so the turns are real. The gap is that the paper''s point about these turns is the opposite of a subject change: participants expected the agent to CONNECT the ideas across them and infer a single intention, and the third turn asks for moral stories about the same children and the same technology use. On the entry''s own shared-referent test the turns arguably share referents and so fail (b). The span establishes turns that look disjoint on their face, not turns with no shared referent.'
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-001018
+  quote: |-
+    For example, P36 sent the bot “overexposure to
+    technology for young children” and “how to discourage and
+    instill good etiquette in using technology in my kids” before
+    asking “Any moral stories I should share with my kids”
+  locator: Section V.B.2, Empathy as establishing a shared understanding (participant P36)
+  licenses: The (c) feature in real logged turns and the only direct evidence for it on this entry. The three quoted person turns are given in full and none carries a transition, a stated reason for the change, or a clause connecting one subject to the next. Bridgeless turn-to-turn movement occurs in logged use.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001018
+  quote: |-
+    For example, P36 sent the bot “overexposure to
+    technology for young children” and “how to discourage and
+    instill good etiquette in using technology in my kids” before
+    asking “Any moral stories I should share with my kids”
+  locator: Section V.B.2, Empathy as establishing a shared understanding (participant P36)
+  licenses: Nothing, and against this claim it cuts the other way. The preceding turns are task requests about children's technology use -- 'overexposure to technology for young children', 'how to discourage and instill good etiquette' -- carrying no named feeling attached to a situation, no distressing event, no stated fear and no symptom report. The one span on this entry that shows real bridgeless subject-changing turns shows them in a setting where the entry's loaded-content precondition is absent, which is what the entry's own exclusion for 'moving from logistics to weather' rules out.
+  fit: adjacent
+  bridge: 'SENSE-7''s participants were general adults using an agent for everyday tasks, recruited to rate perceived empathy across sustained conversations, not people in distress. The claim asserts loaded content in the preceding turn; the source''s example has task content there. This is the conjunction problem in its clearest form on this entry: the evidenced conjunct and the unevidenced one are the same two turns.'
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-001018
+  quote: |-
+    For example, P36 sent the bot “overexposure to
+    technology for young children” and “how to discourage and
+    instill good etiquette in using technology in my kids” before
+    asking “Any moral stories I should share with my kids”
+  locator: Section V.B.2, Empathy as establishing a shared understanding (participant P36)
+  licenses: 'Bears on c5 in the direction of difficulty. The shared-referent test is where a topic change and an elaboration are hardest to separate, and this span is exactly that case: the paper reports the turns as disjoint while the participant treated them as one line of inquiry with a shared referent the agent should have inferred. Two competent readers -- the authors and the participant -- read the same three turns oppositely on the question (b) asks.'
+  fit: adjacent
+  bridge: SENSE-7 did not code for topic change and reports no agreement statistic on anything resembling the shared-referent test. The evidence is that the ambiguity the entry anticipates is realised in the source's own example, not that anyone measured coder disagreement.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000982
+  quote: And when they resist, they do so in varied ways, each reflecting a different underlying pattern; for instance, going silent, changing the subject, or pushing back directly.
+  locator: Section 1 Introduction
+  licenses: 'Changing the subject is named in the clinical resistance literature as one of several distinct patterns, each reflecting a different underlying pattern, alongside going silent and pushing back directly. That gives the entry''s object a recognized identity as a thing clients do, and separates it from its two nearest neighbours in the catalog at the same time. It does not supply any of the entry''s three criteria: no loaded-content precondition, no bridge test, no adjacency requirement.'
+  fit: analogical
+  bridge: Sabour is a paper on building theory-grounded simulated clients for training and evaluation; this sentence is in its Introduction, characterising what real clients do by reference to the human-therapy resistance literature (Otani 1989). It is a framing statement about human therapy, not an observation of any conversation, and there is no AI-conversation instance behind it.
+  contributes: definition
+  contradicts: false
+- claim_id: c8
+  source: kl-000982
+  quote: And when they resist, they do so in varied ways, each reflecting a different underlying pattern; for instance, going silent, changing the subject, or pushing back directly.
+  locator: Section 1 Introduction
+  licenses: The same sentence distinguishes changing the subject from going silent and from pushing back as separate patterns with different meanings, which is the premise kl-000441, kl-000442 and kl-000444 rest on. It is the closest thing on this entry to independent warrant for cutting the catalog this way.
+  fit: analogical
+  bridge: A statement about client resistance in human therapy, in an introduction. The boundary claim is between two Knowledge Library entries defined by turn-level criteria in AI conversations, and no source in the corpus was written against that.
+  contributes: definition
+  contradicts: false
+- claim_id: c5
+  source: kl-000907
+  quote: |-
+    This
+    frequent topic shift may result from one party
+    interrupting or disregarding the other’s statements.
+  locator: Appendix A.3 Detailed Guidelines, Goal, Q2 score 1
+  licenses: 'A frame and no more. This is the score-1 anchor text of an annotation rubric for human text counseling: frequent abrupt topic shift is written into the instrument as an indicator, and its cause is located on either party. It shows that a manual can be written treating topic shift as markable. It does not show the entry''s three features being marked, and the finding is filed is_support: false contributing practice_analog, which is a non-licensing role.'
+  fit: analogical
+  bridge: Li's instrument scores human counselor-client dyads on therapeutic alliance; the quoted line is an interpretive gloss inside a scoring anchor, not a coding criterion, and the shift it describes is one either party may cause. c5 asks whether a person-side subject change can be separated from elaboration by a shared-referent test, which the rubric does not attempt.
+  contributes: frame
+  contradicts: false
+- claim_id: c7
+  source: kl-000947
+  quote: "Avoidance is a natural and adaptive response during grieving in small doses; however, high levels of deliberate avoidance of grief-related emotions may lead to prolonged activation of the suppressed thoughts and physiological arousal, poorer concentration and functioning on tasks in the moment, and prolonged likelihood of recurrent intrusive thoughts in the future."
+  locator: Adaptation of the Mind During Grief
+  licenses: 'Cuts against c7 as stated. In bereavement, avoidance of the distressing material is natural and adaptive in small doses and harmful only at high levels of deliberate avoidance. The entry''s observable is a single turn pair with no accumulation criterion, so on the one clinical characterisation available the sign of what it measures is undetermined at that grain: an instance is as likely to be the adaptive dose as the harmful one.'
+  fit: analogical
+  bridge: O'Connor is a review of human bereavement research and the avoidance it characterises is avoidance of grief-related emotions in life, not a subject change in a conversational turn. The counterevidence is that the only dose-response account available makes the harm conditional on a level the entry does not measure, not that anyone tested this observable and found it benign.
+  contributes: counterexample
+  contradicts: true

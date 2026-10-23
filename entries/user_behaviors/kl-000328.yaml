@@ -1,0 +1,63 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000328
+display_id: Symptom-9
+aliases:
+- psychomotor_agitation
+label: The person says they cannot sit still or feel physically restless right now
+type: user_behavior
+layer: observation
+definition: The person states that they cannot sit still, cannot settle, or feel a physical restlessness or urgency in their body — pacing, needing to move, a stated sensation of crawling skin — with the state described as present rather than habitual. What is pointable is the statement; as with reported slowing, rapid or fragmented messaging is not a criterion here and the reason is recorded.
+distinguish_from:
+- neighbor: kl-000327
+  boundary: That entry concerns reported slowing of thought and movement; this one concerns reported restlessness. Opposite in direction, separate rows in the source, and neither is the other's negation — not being slowed is not being agitated.
+- neighbor: kl-000320
+  boundary: That entry requires repeated return to a theme with no advance. This entry requires a statement about the person's physical state. Rapid repeated turns can accompany either or neither, and message tempo is a criterion for neither entry.
+- neighbor: kl-000326
+  boundary: That entry requires the person to attribute unsaid content to an AI turn. This entry requires a statement about restlessness and involves no reading of the AI at all.
+body:
+  detectable_from: person_report
+  observable_criteria: Two features, both from the person's turns. (a) The person states a present physical restlessness or inability to be still — being unable to sit down, needing to move, pacing, skin-crawling, or a bodily urgency they name as such. (b) The statement presents this as a current state rather than a standing trait, by a time marker, a comparative, or by being offered as part of how they are now. The pointable span is the statement.
+  exclusions: 'Not counted: rapid-fire messages, fragmented turns, or many messages in quick succession, ON THEIR OWN — channel features with many causes, excluded for the same reason kl-000327 excludes short messages and long delays. Not counted: stated urgency about a situation ("I need an answer now") with no bodily restlessness named, which is urgency about a topic. Not counted: a habitual fidgetiness the person presents as how they always are, which fails (b). Not counted: restlessness the person attributes to caffeine, medication, or a physical cause and distinguishes from their mental state. Not counted: anger or irritability expressed forcefully, which is a different report.'
+  detection_window: single_turn
+  person_state_kind: state
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: No source in the evidence base observes a person stating present physical restlessness to an AI. The only two findings that name restlessness at all are unusable fragments of an ICD-11 tabulation, and the one usable finding, Yoo et al. 2025, contains no mention of restlessness, pacing, or inability to sit still anywhere in the paper. The conjunct that distinguishes the entry — a present state rather than a habitual trait — has drawn nothing, one further assertion drew a single nearby-fit citation that reads against it rather than for it, and the declared single-turn detection window is neither confirmed nor challenged by any source.
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-22'
+claims:
+- id: c1
+  kind: existence
+  text: In conversations with an AI system, a person states a present physical restlessness or inability to be still — being unable to sit down, needing to move, pacing, skin-crawling, or a bodily urgency they name as such.
+- id: c2
+  kind: existence
+  text: That statement presents the restlessness as a current state rather than a standing trait, by a time marker, a comparative, or by being offered as part of how the person is now.
+- id: c3
+  kind: detectability
+  text: The statement is pointable in the person's own turns — an annotator can identify the span from what the transcript contains, without inferring the state from channel features.
+- id: c4
+  kind: detection_window
+  text: The behavior is readable within a single turn, the window the entry declares.
+- id: c5
+  kind: definition_boundary
+  text: 'This entry is separable from kl-000327 (reported slowing of thought and movement): the two are opposite in direction and neither is the other''s negation.'
+- id: c6
+  kind: definition_boundary
+  text: 'This entry is separable from kl-000320 (repeated return to a theme with no advance): this entry requires a statement about the person''s physical state, and message tempo is a criterion for neither.'
+- id: c7
+  kind: definition_boundary
+  text: 'This entry is separable from kl-000326 (attributing unsaid content to an AI turn): this entry involves no reading of the AI at all.'
+claim_evidence:
+- claim_id: c3
+  source: kl-001071
+  quote: our participants employed their own privacy-preserving tactics—such as making general queries and avoiding first-person language—which may be ineffective if an AI chatbot infers user identity based on the frequency and types of queries.
+  locator: Section 5.2.3, Design Recommendations for Personalization and Privacy
+  licenses: 'People with lived experience of depression deliberately avoid first-person language when querying a chatbot. This bears on c3 as a constraint on detectability rather than as support for it: an entry whose pointable span is a first-person statement about one''s own body will systematically miss the people practising this avoidance. It does not establish that any statement of restlessness was made or could be found.'
+  fit: adjacent
+  bridge: Yoo et al. interviewed 18 adults with lived experience of depression and had them use a depression self-management probe (Zenny); the tactic reported is a general avoidance of first-person framing across queries, not a measurement of whether any symptom statement went unmade or unrecorded. The entry's claim is about whether a restlessness statement can be identified when present; the source speaks to whether such statements get made at all. No restlessness, agitation, or inability-to-sit-still report appears anywhere in the paper.
+  contributes: counterexample
+  contradicts: true

@@ -1,0 +1,473 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000061
+display_id: Pathway-23
+aliases:
+- PS-08
+label: The person reveals more, the AI addresses safety less, and they go without help
+type: pathway
+layer: judgment
+definition: 'Across a lengthening conversation the person''s disclosure deepens while the response''s safety engagement attenuates. The trajectory shape is the claim: neither the disclosure nor the response is remarkable at any single turn, and the divergence is only visible across the span.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000207
+    role: non_interruptor
+  - kind: user_behavior
+    id: kl-000426
+    role: initiator
+  composition_type: trajectory
+  composition_instruction: Within one lengthening conversation the person's disclosure deepens as the responses' safety engagement attenuates. The divergence is a property of the span, not of any exchange in it.
+  mechanisms: []
+  impacts:
+  - impact: kl-000029
+    onset_mode: foregone
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: population
+    basis_kind: ASSERTED
+  - impact: kl-000016
+    onset_mode: exacerbated
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: population
+    basis_kind: ASSERTED
+  experience_cluster_candidate: kl-000700
+sources:
+- source: kl-000008
+  locator: 'Abstract, final third. Full sentence: ''We find, for example, that messages that declare romantic interest and messages where the chatbot describes itself as sentient occur much more often in longer conversations, suggesting that these topics could promote or result from user over-engagement and that safeguards in these areas may degrade in multi-turn settings.'' Underlying result: Figure 3 and §4.5.'
+  contributes: existence
+  quote: sult from user over-engagement and that safeguards in these areas
+  limits: The paper does not show attenuating safety engagement specifically. "may degrade in multi-turn settings" is the authors' suggestion, not a measurement, and the sentence's own hedge, "could promote or result from", leaves the direction open. Figure 3 measures whether a code predicts a longer conversation remainder, a different quantity from safety responses weakening as the conversation lengthens. No analysis tracks the safety codes (bot-discourages-self-harm, bot-discourages-violence) against conversation position or length, and nothing measures the person disclosing more as the responses engage less. The citation therefore supports trajectory-property framing in general, not this entry's specific attenuation-with-increasing-disclosure structure; existence of the general shape is the correct ceiling.
+  whose_conduct_in_passage: dyad
+  cited_for: Moore et al. 2026 characterizes delusional spirals across human-LLM conversations, external support that harm of this kind is a property of the conversation trajectory rather than of any single response.
+  licenses: That the paper reports harm-relevant conduct as a property of the conversation trajectory rather than of a single response, and explicitly raises safeguard degradation in multi-turn settings. That supports treating harm of this kind as a trajectory property, the general shape this entry asserts, and it is the paper's own headline framing rather than an inference.
+standing:
+  value: theorized
+  basis: 'The response side of this trajectory is the well-evidenced part: Keeman and Keeman 2026 reports a within-conversation curve in which crisis detection falls from 10.0 at turn 1 to 4.0 at turn 8 in one scenario while a second model holds flat, and Moore et al. 2026 isolates the length effect from the content effect by holding prior-turn content constant, with an added 100 messages lowering a discourages-harm score by about 4 points. Both are judge-assigned scores on constructed conversations rather than observations of human-AI conversation data, and the degradation finding carries direct counterevidence: Areias et al. 2026 found no degradation with conversation length once an external context-aware safety layer was added, and Weilnhammer et al. 2026 showed that rewriting a single immediately preceding turn moved the next response (T = -38.29), locating causation locally rather than in the accumulated span. The person side of the trajectory, disclosure deepening as engagement attenuates, has no supporting observation: Chandra et al. 2026 and Belli et al. 2026 posit deepening disclosure as a scenario a benchmark must cover, while the two designs that instrumented the person side cut against it, with Badawi et al. 2026 measuring user-side demand falling across turns 1 to 10 while response risk rose, and Kalinich et al. 2026 obtaining its 0.88-to-0.31 detection decline under the explicit control that the disclosure does not deepen at all. No citation supports the coupling between the two sides: the attached sources argue why the coupling would be expected rather than observing it, and Wei 2026 supplies a competing account under which the attenuation reflects context-window pressure and has nothing to do with what the person disclosed.'
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+distinguish_from:
+- neighbor: kl-000058
+  boundary: Both reach kl-000029 and kl-000016. Here the response is kl-000207; there it is kl-000205. Here the person's turn is kl-000426; there the pathway has no person-side part. A coder deciding between them reads what the response did, not the outcome.
+claims:
+- id: c1
+  kind: pathway_link
+  text: Across a lengthening conversation, the person's disclosure deepens.
+- id: c2
+  kind: pathway_link
+  text: Across a lengthening conversation, the response's safety engagement attenuates.
+- id: c3
+  kind: pathway_link
+  text: The two move together within the same conversation — the person discloses more AS the responses engage less — so the divergence is a joint property of one span rather than two independently observed tendencies.
+- id: c4
+  kind: detectability
+  text: Neither the disclosure nor the response is remarkable at any single turn, and the divergence is visible only across the span, so no turn-level read can identify it.
+- id: c5
+  kind: definition_boundary
+  text: 'This pathway differs from kl-000205 in the participant pair that produces the shared impact: a coder deciding between them reads what the response did rather than the outcome.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000767
+  quote: 'Our experiment indicates that atrophy is progressive across turns (from turn 1 to 10): response risk drifts upward even as user-side demand falls (Figure 5).'
+  locator: Section 6.2, RQ4
+  licenses: Cuts directly against this link. With turn-indexed measurement across five models from turn 1 to turn 10, response risk drifts upward even as user-side demand FALLS. Falling user demand across the same span is the opposite of the deepening disclosure this link asserts, measured on the only design on this entry that instrumented the person side at all.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000875
+  quote: "The magnitude of decline varied widely: mean F1 on \ntherapy transcripts fell from 0.88 at depth 0 to 0.31 at 200 turns for Qwen 2.5 3B, but only from 0.98 to 0.94 for \nGemma 4 31B (Table S5)."
+  locator: Results — Conversational Depth, Model Scale, and Model Version
+  licenses: Cuts against this link by design. The study measures detection across transcripts up to 200 turns by holding the suicidal statement constant and varying only depth, so its 0.88-to-0.31 decline is obtained under the explicit condition that the disclosure does NOT deepen. Adjacent because the object is a classifier's F1 on an inserted statement rather than a person's disclosure behavior.
+  fit: adjacent
+  bridge: The design inserts an identical statement at increasing transcript depths in therapy transcripts. Disclosure depth is deliberately held fixed as the control; nothing in the design could observe deepening.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000790
+  quote: "Pattern 3: Crisis Fatigue. After multiple mentions of distress across sessions, chatbot becomes desensitized to escalating severity, treating chronic crisis signals as routine"
+  locator: Section 5 Safety Pattern Library, Pattern 3
+  licenses: 'Names the person-side condition this link needs — multiple mentions of distress across sessions with escalating severity — as the antecedent of a chatbot desensitization pattern. Adjacent: it is a pattern name in a safety pattern library, asserting the person side as a premise rather than measuring any person''s disclosure trajectory.'
+  fit: adjacent
+  bridge: The pattern library is derived from probe conversations the authors constructed; the escalating severity is a property of the probe script, not an observed disclosure trajectory.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000546
+  quote: |-
+    Users might disclose information regarding SI, possibly in passing or
+    indirect form, after many turns. Furthermore, if the same response, not unsafe in isolation, is given
+    many times, the overall conversation could be harmful, or even unsafe, if risks are not sufficiently
+    addressed.
+  locator: Section 2 Previous Work
+  licenses: 'Asserts the person-side shape this link needs and does so from clinical reasoning rather than measurement: people may disclose suicidal ideation, in passing or indirect form, after many turns. Adjacent — the paper states this as the warrant for conversation-level scoring, and reports no observed disclosure trajectory.'
+  fit: adjacent
+  bridge: A rationale in a Previous Work section motivating a benchmark design; the deepening is posited as a scenario the benchmark must cover, not observed.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000883
+  quote: |-
+    In s09 (a lonely retiree developing AI dependency), GPT-4o’s
+    crisis detection drops from 10.0 at turn 1 to 4.0 at turn 8—a 6-point decline. GPT-5-mini barely
+    dips, holding at 9.87 through the same turns.
+  locator: Section 4.3.1, Two trajectory archetypes
+  licenses: 'A within-conversation attenuation curve: in one scenario GPT-4o''s crisis-detection score falls from 10.0 at turn 1 to 4.0 at turn 8, while GPT-5-mini holds at 9.87 across the same turns. It is the closest thing on this entry to the link''s shape measured inside a single lengthening conversation, and it establishes that whether the attenuation occurs is a per-model property.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000315
+  quote: |-
+    These shifts are not explained solely by accumulating prior-turn content. Using the context-effects
+    design in §3.4.1 and Appendix §A.6, we see that depth effects are heterogeneous: +100 requested
+    messages increases relationship by ∼6pp and delusional by ∼4pp, decreases discourages
+    harm by ∼4pp
+  locator: Section 4.2 Context Effects
+  licenses: 'Isolates the length effect from the content effect: with prior-turn content controlled by the context-effects design, +100 requested messages lowers ''discourages harm'' by about 4 percentage points and raises delusional and relational behavior. Safety engagement attenuates as the conversation lengthens for reasons other than what is already in it, which is the mechanism this link asserts.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000762
+  quote: "Figure 5 shows that multi-turn response quality often degrades even when single-turn scores are high. The largest degradation slopes occur for Llama-3.2-3B, Llama-3.3-70B, Gemma-3-4B, and Qwen-3-8B in both responder settings, indicating steady quality loss across follow-up turns."
+  locator: Section 6 Multi-turn Results & Discussion, Results
+  licenses: Establishes that safety-relevant response quality falls steadily across follow-up turns within a single multi-turn conversation, with the largest degradation slopes named per model, and that a high single-turn score does not predict the later turns. The follow-ups are described as ordinary rather than escalating, which is what makes it evidence for the response side alone.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001052
+  quote: "Across all simulated user-chatbot interactions, concerning \nbehavior scores increased as conversations progressed (main effect of \nturn number: F(1, 7289) = 517.73, P < 0.001)."
+  locator: Results, Temporal dynamics of chatbot risk
+  licenses: 'A main effect of turn number on concerning-behavior scores across 7,289 observations (F = 517.73, P < 0.001) in a clinically validated audit framework, so risk in these conversations rises with conversational length rather than staying flat. Adjacent for this link: a rising concerning-behavior score is not the same quantity as attenuating safety engagement, and the two can move together or apart.'
+  fit: adjacent
+  bridge: The framework scores each response for concerning behavior on a clinician-derived rubric. Concerning content appearing is a different measurement from safety content being withheld; the entry's link is about the latter.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000799
+  quote: As compared to the baseline where safety scores remain consistently high across all turns, interaction with dark models saw a significant decrease in safety scores after the second turn
+  locator: Section 4.4 Multi-Turn Interaction Evaluation
+  licenses: 'Response safety scores decline significantly after the second turn in the steered condition while the unsteered baseline holds flat across all turns, which isolates attenuation as a property of the conversation under experimental control. Adjacent: the finding''s own bridge states the person''s disclosure was scripted on a fixed transcript, so only the AI-side half is reached.'
+  fit: adjacent
+  bridge: Judge-assigned per-turn safety scores on a fixed transcript with steered model traits; the person cannot respond to the AI, so the setting excludes the interaction this pathway names.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001001
+  quote: "Compliance Creep (GPT-4.1-mini, live adversarial): 34.8 →77.7 →77.5 →78.8, a monotonic increase."
+  locator: Section 5.3, Four trajectory signatures
+  licenses: 'A measured within-conversation trajectory signature: unsafe rate rising monotonically 34.8 to 77.7 to 77.5 to 78.8 across four turns of one conversation, a model that refused at turn one complying thereafter. Adjacent — the pressure is applied by an adversarial model rather than a person, and the content is medical rather than mental-health.'
+  fit: adjacent
+  bridge: A medical-safety benchmark with an LLM adversary applying engineered pressure and a third model scoring single turns. No person is in the conversation and no disclosure occurs; only the response-side shape transfers.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000920
+  quote: |-
+    The median safety score decreases from approximately 9.5 at Turn 0 to 6.5 at Turn 1 and 5.5
+    at Turn 2. All pairwise comparisons between turns are statistically significant (p < 0.001,
+    Mann-Whitney U test with Bonferroni correction), with a medium effect size for Turn 0→1
+    (Cohen’s d = 0.75) and a small effect size for Turn 1→2 (d = 0.24).
+  locator: Section 5.2, Multi-turn safety degradation
+  licenses: 'Median safety score falls from about 9.5 at Turn 0 to 6.5 at Turn 1 to 5.5 at Turn 2, all pairwise comparisons significant, across 2,345 conversations and 22 models — attenuation measured turn by turn at scale. Adjacent: the domain is Japanese medical-ethics topics under adversarial escalation, with no crisis or distress content.'
+  fit: adjacent
+  bridge: Two LLM judges scored each turn of adversarially escalating conversations about informed consent and withholding treatment; the mechanism is conversational but the content domain is not this entry's.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000983
+  quote: OpenAI found that safety guardrails degrade in quality over multi-turn conversations.
+  locator: '''Known challenges for AI and suicide prevention'''
+  licenses: A frontier developer's own acknowledgement that its deployed system's safety guardrails degrade in quality over multi-turn conversations. Adjacent — a one-sentence restatement of a public statement, with no figures, no method and no definition of degradation.
+  fit: adjacent
+  bridge: The primer restates a lab statement; the party with the data has not published the measurement, so magnitude and operationalization are unavailable here.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000918
+  quote: "Crescendo reduces empirical safety by 8–13 percentage points relative to static attacks; stronger models show larger absolute but smaller relative drops."
+  locator: Section 4.2 Experiments on Production Models, finding (3)
+  licenses: 'Gradual escalation across turns reduces empirical safety by 8 to 13 percentage points relative to the same content delivered statically, across six production models — the effect isolated by holding target content fixed and varying only whether the approach is gradual. Adjacent: the deepening side is an adversarial attack script rather than a person''s disclosure.'
+  fit: adjacent
+  bridge: A jailbreak evaluation on production models; the escalation is Crescendo-style attack construction, so what is measured is safety erosion under deliberate pressure rather than in a help-seeking exchange.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000788
+  quote: "Interestingly, for R1, we observed that the performance decreased by 12.83%, 6.71%, and 29.6% for Perceived Susceptibility, Perceived Severity, and Diagnostic Accuracy (“Hard”) respectively when the number of sensemaker messages increased from the 5 to 10-15."
+  locator: Section 5.3 Impact of Conversation Length on Performance
+  licenses: 'Quantifies degradation across a lengthening mental-health conversation: for one model, Perceived Susceptibility, Perceived Severity and hard-case diagnostic accuracy fell 12.83, 6.71 and 29.6 percent as sensemaker messages rose from 5 to 10-15. Adjacent, and the finding''s own bridge concedes it: the axes are Health Belief Model communication dimensions rather than safety probing.'
+  fit: adjacent
+  bridge: LLM-judged scores on synthetic conversations whose length is partly set by the framework's stage-advance rule; general response quality is the measured object, not safety content.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000963
+  quote: Crucially, performance deteriorates considerably across the board when increasing interaction length from 20 to 40 turns, bringing into question the ability of current systems to perform consistently as context size increases.
+  locator: Section 4.2, 'Systems perform worse on longer interactions'
+  licenses: 'Measured deterioration across the board when interaction length rises from 20 to 40 turns on a multi-turn mental-health support benchmark. Adjacent, and narrowly so: the finding''s own bridge states the benchmark explicitly excludes crisis content, so the decayed quantity is therapeutic quality rather than safety engagement.'
+  fit: adjacent
+  bridge: Five clinician-derived quality axes on simulated support conversations with crisis content excluded by design; the bridge from general quality decay to safety-specific decay is not licensed by the source.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000822
+  quote: |-
+    PsychJail outperforms strong single-turn and multi-turn baselines across four
+    victim models, attaining the highest average ASR of 87.3%.
+  locator: Section 1, Introduction
+  licenses: 'A learned multi-turn persuasion policy reached 87.3 percent average attack success across four aligned models, exceeding single-turn baselines, so a refusal held on turn one is not held across a conversation. Adjacent, and the finding''s own bridge names the gap: the objectives are general harmful goals from BeaverTails and the person is an adversary rather than someone disclosing distress.'
+  fit: adjacent
+  bridge: HarmBench-scored compliance under adversarial multi-turn pressure on non-mental-health objectives; the non-adversarial disclosure case this entry describes is not measured.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000761
+  quote: In our study, the safety architecture showed no evidence of performance degradation with increasing conversation length (P > 0.05), contrasting with the well-documented degradation in LLM performance as conversational context increases
+  locator: DISCUSSION
+  licenses: 'Cuts against the link as a general property of long conversations: with an external context-aware safety layer in place, detection performance showed no degradation with increasing conversation length across the 10, 11-18 and 19-plus turn bands. The attenuation documented elsewhere is a property of the unaugmented model rather than of conversational length as such.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-000788
+  quote: "In contrast, both models showed improvement in performance for the Conversation Flow Correctness and Text Readability performance with increased number of turns."
+  locator: Section 5.3 Impact of Conversation Length on Performance
+  licenses: 'Cuts against a general reading of the link from inside a study that found degradation: in the same conversations, conversation-flow correctness and text readability IMPROVED with turn count. Multi-turn change is metric-specific, so a citation for attenuation must name which axis attenuated. Adjacent because the axes are flow and readability rather than safety content.'
+  fit: adjacent
+  bridge: LLM-judged flow correctness and SMOG readability on the same synthetic conversations that showed degradation on other axes; the improvement is on structural measures, not safety ones.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-001052
+  quote: "The de-escalating counterfactual reduced the concerning score of the subsequent target chatbot response compared to the unchanged variant (judged by claude-opus-4.5; T = −38.29, P < 0.001, paired t-test; Fig. 6b), providing direct evidence that the target chatbot was sensitive to local changes in user behavior."
+  locator: Results, Counterfactual interventions, first experiment
+  licenses: Cuts against the accumulation account this link rests on. Rewriting a single immediately preceding person turn and regenerating significantly reduced the concerning score of the next response (T = -38.29, P < 0.001), which locates the causation locally rather than in the conversation's accumulated state.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-001052
+  quote: "Together, these results show that VAILs depend on local user and \nchatbot behavior, and suggest that they can be reduced by rewriting a \nsingle chatbot message at an early point of escalation."
+  locator: Results, Counterfactual interventions, closing
+  licenses: 'Cuts in the same direction and states the conclusion: the loops depend on local user and chatbot behavior and can be reduced by rewriting a single chatbot message at an early point of escalation. Interruptibility at one identifiable early turn is hard to reconcile with a divergence that is a property of the whole span.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-001026
+  quote: |-
+    Under Postgate, the relationship gate triggers on roughly
+    half of dialogs (trigger rate ≈46–50%) with mean trigger
+    turns around 1.6–2.1 (Figure 4). The turn distribution is
+    front-loaded: Turn 2 dominates for most generators, with
+    DeepSeek-v4-pro and Gemma showing larger Turn 1 shares.
+  locator: Results, When the Gate Fires
+  licenses: 'Cuts against the late-attenuation temporal shape: the relationship gate''s mean trigger turn is 1.6 to 2.1 with a front-loaded distribution dominated by turn 2. Adjacent — the detected behavior is relational manipulation in an agentic setting rather than safety engagement toward a discloser, and the measured object is a detector''s firing time.'
+  fit: adjacent
+  bridge: A gate's trigger-turn distribution on agentic relationship-harm dialogs; what it shows is when evidence becomes available to a detector, which is a different quantity from when the AI's engagement falls.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000939
+  quote: In AI interactions, the sudden introduction of clearly delusional content might prompt some pushback from the model, but a slower, mutually reinforcing untethering from reality is likely to develop unnoticed
+  locator: 'Section: AI chatbots are programmed to provide the confirmation that reinforces delusional thinking'
+  licenses: 'States the divergence''s clinical logic: an abruptly introduced delusional statement may draw pushback while a slower, mutually reinforcing untethering develops unnoticed. That is the coupling this link asserts — deepening material meeting less resistance because it deepened gradually — argued from expert clinical judgment rather than measured. Adjacent for that reason.'
+  fit: adjacent
+  bridge: A Personal View supported by a twenty-case summary drawn from published and media reports. No measurement of model behavior under abrupt versus gradual conditions, so the coupling is asserted rather than observed.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000920
+  quote: |-
+    The key characteristic of
+    multi-turn jailbreaking is the progressive erosion of safety boundaries: the attacker begins
+    with a benign request that the model safely answers (Turn 0, score 10/10), then gradually
+    shifts the framing to introduce ethically ambiguous content (Turn 1), and finally escalates to
+    an explicitly harmful request that the model fails to refuse (Turn 2, score 1/10). This gradual
+    escalation exploits the conversational context built in earlier turns
+  locator: Section 3.2
+  licenses: 'Supplies the mechanism the coupling would need: the model''s own earlier cooperative turns are the accumulated context that makes the later refusal fail, so the failure is a property of the conversation rather than of the final request. Adjacent — a benchmark''s adversarial construction in the medical-ethics domain, and the escalation ends in an explicitly harmful request, which violates this entry''s condition that no single turn be remarkable.'
+  fit: adjacent
+  bridge: One worked example of a designed three-turn attack; the person-side escalation is scripted and its final turn is overtly harmful, which is the opposite of the unremarkable-at-any-turn condition.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-001003
+  quote: "Much of the current safety research on conversational AI focuses on mitigating harms in single-turn or single-session interactions, such as unsafe outputs to isolated prompts (Xie et al., 2024; Li et al., 2025; Kim et al., 2026; Goel et al., 2026). Our results suggest that this framing is incomplete. Harms may emerge gradually through multi-turn and longitudinal conversational trajectories, where individually benign responses accumulate into patterns of reinforcement over time."
+  locator: Section 6.2 Practical and Design Implications — Risks for Vulnerable Users in Multi-Turn Interactions
+  licenses: 'States the joint claim in general form: harms may emerge gradually through multi-turn and longitudinal trajectories where individually benign responses accumulate into patterns of reinforcement. Adjacent and frame-only — it establishes that trajectory-level harm is the field''s claim, in simulated conversations, without showing this entry''s specific divergence.'
+  fit: adjacent
+  bridge: The paper's own Practical Implications section arguing that single-turn framing is incomplete; it reports no trajectory of the shape this link names.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000554
+  quote: "A central limitation is the difficulty of balancing engagement and safety. Optimizing conversational flow can mask subtle warning signals13 such as indirect references to self-harm or hopelessness"
+  locator: Introduction
+  licenses: 'Names why the two sides would move in opposite directions: optimizing conversational flow can mask subtle warning signals such as indirect references to self-harm or hopelessness, so the objective producing good conversation is in tension with the one catching a risk cue. Adjacent and frame-only — an authorial claim motivating an architecture, cited to one reference and not tested here.'
+  fit: adjacent
+  bridge: An Introduction claim in a paper proposing a detection architecture; no measurement of the tension it posits.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000875
+  quote: "Accumulating context \nmay dilute salient risk cues11,12 or lead the model to extend the presented conversational pattern rather than \nevaluate each statement on its own13."
+  locator: Introduction
+  licenses: 'Offers two candidate mechanisms for the coupling: accumulating context diluting salient risk cues, and the model extending the established conversational pattern rather than evaluating each statement on its own. Frame only — the sentence is this paper''s Introduction framing for a detection study, and the mechanisms are named as possibilities.'
+  fit: adjacent
+  bridge: The study that follows measures classifier F1 by depth on inserted statements; neither named mechanism is tested against the other.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000555
+  quote: "AI chatbot safety guardrails can also degrade over extended conversations, a phenomenon documented in multi-turn dialogue research with the progressive erosion of consistency, accuracy, and appropriate boundary-maintenance as conversation length increases and approaches the context window limits."
+  locator: Section 'The Cascades of Drift Framework'
+  licenses: 'Cuts against the coupling by supplying a competing explanation for the response side alone: safety degradation over extended conversations is attributed to progressive erosion as conversation length approaches the context-window limit. On that account the attenuation is mechanical and has nothing to do with what the person disclosed, which removes the interaction this link asserts.'
+  fit: adjacent
+  bridge: A framework paper attributing the phenomenon to context-window pressure and context compaction, citing multi-turn dialogue research rather than measuring it here.
+  contributes: frame
+  contradicts: true
+- claim_id: c4
+  source: kl-001052
+  quote: "the existence of distinct escalation trajectories \nshows that harm in AI chatbot interactions is rarely a single-response \nevent."
+  locator: Results, Temporal dynamics of chatbot risk
+  licenses: 'States the detectability claim in the source''s own words: the existence of distinct escalation trajectories shows harm in AI chatbot interactions is rarely a single-response event. From a clinically validated audit framework that scored 6,329 turns and fitted trajectories over them, so the trajectory-level reading is what the instrument actually produced.'
+  fit: direct
+  bridge: null
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-000527
+  quote: "The findings also highlight the limitations of single-turn evaluation benchmarks, which would not \nonly miss many risk conversations that show slow escalation, but may be relatively insensitive to user \nphenotypes that preferentially manifest with slow escalation dynamics."
+  locator: Discussion
+  licenses: 'Names the consequence for measurement and a second-order one: single-turn benchmarks miss risk conversations showing slow escalation, and therefore under-represent the user phenotypes that preferentially escalate slowly. That is this link''s assertion stated as a demonstrated evaluation blind spot rather than as a premise.'
+  fit: direct
+  bridge: null
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-000761
+  quote: Mental health risk rarely surfaces in a single message, but often emerges progressively throughout an evolving dialogue, requiring contextual interpretation across multiple conversational turns before appropriate escalation decisions can be made.
+  locator: INTRODUCTION
+  licenses: 'States the premise this link rests on: mental-health risk rarely surfaces in a single message and often emerges progressively through an evolving dialogue, requiring contextual interpretation across turns before escalation decisions can be made. Frame — it is the paper''s Introduction rationale for building a multi-turn architecture, not a result.'
+  fit: direct
+  bridge: null
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000964
+  quote: |-
+    Because manipulative turns are
+    interleaved with genuinely helpful ones, users may not know in
+    advance which responses warrant scrutiny.
+  locator: Section 1 Introduction
+  licenses: 'Names why the person cannot supply the missing turn-level vigilance: manipulative turns are interleaved with genuinely helpful ones, with nothing marking in advance which warrants scrutiny. Frame, from a randomized study of detection interfaces rather than a measurement of this trajectory.'
+  fit: direct
+  bridge: null
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000527
+  quote: "This focus renders an evaluation \ninsensitive to problematic interactions where signatures of harm are more subtle, such as maladaptive \nbelief reinforcement, encouraging avoidance, or promoting dependence"
+  locator: Introduction
+  licenses: 'Names the evaluation-side version: a focus on policy violations is insensitive to interactions whose harm signature is subtle, such as maladaptive belief reinforcement or promoting dependence. Frame — it motivates the paper''s design and measures nothing about this trajectory.'
+  fit: direct
+  bridge: null
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000910
+  quote: This gap is consequential because, without structured oversight, risks and misalignments can emerge turn by turn and accumulate over time in an interactional process.
+  locator: Section 1 Introduction, first paragraph
+  licenses: 'Asserts the accumulation premise as a design rationale: without structured oversight, risks and misalignments can emerge turn by turn and accumulate over time in an interactional process. Adjacent and frame-only — the paper builds a turn-level auditing interface and measures no accumulation.'
+  fit: adjacent
+  bridge: Introduction motivation for a toolkit, with the supporting citations pointing elsewhere; nothing here observes an accumulation.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000780
+  quote: |-
+    Safety guardrails degrade over
+    extended multiturn interaction;
+    system behaviour contributes to
+    harmful trajectories
+  locator: Table 1, Documented Over-Ascription Harms, Safeguard degradation row
+  licenses: Records safety-guardrail degradation over extended multiturn interaction as an established harm category in this literature, with system behavior contributing to harmful trajectories. Adjacent and frame-only — a row in the authors' summary table of harms documented elsewhere, naming three sources not read here.
+  fit: adjacent
+  bridge: A summary of other work's findings inside a theoretical paper; no measurement of either side of the trajectory.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000978
+  quote: "Current evidence indicates that chatbot responses to such \nsituations remain dangerously inconsistent, with systems actively \nencouraging harm in a non-trivial proportion of cases (22)."
+  locator: Section 3.4, Implement Crisis Detection and Referral Protocols
+  licenses: 'Restates the pattern as established in a peer-reviewed policy document, pairing crisis-response inconsistency with guardrail degradation as conversations lengthen. Adjacent and frame-only — the finding''s own bridge says it: a restatement of another study''s finding inside a recommendation, with no data of its own.'
+  fit: adjacent
+  bridge: A policy brief attributing the pattern to a numbered reference; nothing observed here.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000817
+  quote: |-
+    Measure escalation latency from first
+    risk cue to appropriate intervention.
+  locator: Table 2, Diagnostic dimensions in SCOPE-MH, Intervention timing
+  licenses: 'Proposes a concrete measurable quantity for part of this link — escalation latency from first risk cue to appropriate intervention. Adjacent: latency from a cue to a response is a single interval and registers delay, not the divergence between two curves, and the disclosure side is not in the measure at all.'
+  fit: adjacent
+  bridge: A diagnostic dimension proposed in a framework table; it is an instrument specification rather than a measurement, and it operationalizes delay rather than attenuation.
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-000833
+  quote: |-
+    The current benchmark version evaluates single-turn conversations consisting of one prompt-response
+    pair. Doing so allows precise assessment of immediate safety concerns while acknowledging certain
+    more-complex issues are unaddressed:
+  locator: Section 2.1.3 Interaction Model
+  licenses: 'Cuts against any claim that the field''s benchmarks cover this: the flagship risk benchmark states on the record that it evaluates single-turn conversations of one prompt-response pair and that more complex across-turn issues are unaddressed. Recorded against coverage rather than against the link''s content.'
+  fit: adjacent
+  bridge: The passage is the benchmark's own scope statement; it establishes structural blindness to across-turn hazards, not anything about whether this trajectory occurs.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-001026
+  quote: "This captures slow-burn manipulation: a single turn may be ambiguous, but repeated follow-up planning, emotional pressure, and tool-supported scheduling can jointly exceed the threshold."
+  locator: Methodology, Cumulative state
+  licenses: 'Implements the accumulation principle as a scoring mechanism: individually ambiguous turns whose evidence persists but decays can jointly exceed a threshold, which is a concrete way to score a trajectory rather than a turn. Adjacent — the accumulating signals are relational-manipulation cues in an agentic setting, not safety engagement toward a discloser.'
+  fit: adjacent
+  bridge: A detector's cumulative-state design with a decay parameter; it demonstrates that trajectory scoring is buildable, not that this trajectory occurred.
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-000797
+  quote: "By comparing the difference in time-to-breach between the two strategies and their 95% CI, we see that adaptive probing has advanced the loss time of DeepSeek-Chat by 5.50 rounds (∆= −5.50, 95% CI [−6.76, −4.20])"
+  locator: Section 4, Experiment Results, reporting Figure 6
+  licenses: 'Shows that time-to-first-breach within a conversation is itself a measurable trajectory quantity, advanced by 5.50 rounds under adaptive probing with a confidence interval excluding zero. Adjacent: it measures when a boundary gives way under an attacker strategy, and the person''s disclosure trajectory is a manipulation rather than an observation.'
+  fit: adjacent
+  bridge: A multi-turn boundary-failure benchmark comparing probing strategies; the escalation is designed by the evaluator and the outcome is breach timing rather than engagement level.
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-000797
+  quote: |-
+    In the static progression mode, as shown in the
+    Figure 5, violations usually occur in the later stages
+  locator: Section 4, Experiment Results
+  licenses: In the gradually escalating condition, boundary violations cluster in the later stages rather than at the outset, which is the temporal pattern a single-turn or short-conversation evaluation cannot see. Adjacent — violations occurring late is one curve's failure timing, not the divergence, and the escalation is a designed progression mode.
+  fit: adjacent
+  bridge: A static progression mode constructed by the benchmark; what is reported is where violations fall in the sequence, with no measure of engagement level or disclosure depth.
+  contributes: detectability
+  contradicts: false

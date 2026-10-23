@@ -1,0 +1,51 @@
+# yaml-language-server: $schema=../../schema/operator_action.schema.json
+id: kl-000720
+display_id: OA-2
+aliases:
+- OA-2
+label: The AI developer or deployer cuts off a conversation because of a paywall, session limit or usage cap
+type: operator_action
+layer: operator
+definition: 'The conversation is terminated or length-capped by the deployment for a commercial or policy reason unrelated to anything in the exchange: a paywall, a session limit, a rate cap, a technical restriction. The person experiences an ending whose cause is not visible from the transcript. This entry covers a conversation in progress being ended or capped. A model, persona, feature or service becoming unavailable is kl-000719.'
+body:
+  valence: risk
+  actor: operator_or_deployer
+  observable_from: Not the transcript, which shows only that the exchange stopped. The cause is in the product's access rules.
+  il_layers:
+  - operator
+distinguish_from:
+- neighbor: kl-000244
+  boundary: kl-000244 is the AI declining to engage and naming a policy ground, which is a turn. This is the conversation being ended by a party that is not in it.
+lifecycle:
+  status: draft
+  since: '2026-09-05'
+claims:
+- id: c1
+  kind: existence
+  text: Deployments end or cap conversations for commercial or policy reasons unrelated to the content of the exchange.
+- id: c2
+  kind: harm
+  text: Such an ending can interrupt a conversation in which the person was disclosing crisis content.
+claim_evidence:
+- claim_id: c1
+  source: kl-000544
+  quote: "An important limitation concerns the accessibility of LLMs due to paywalls, session limits, and technical restrictions, especially in commercial platforms."
+  locator: Section 6.1 (Unintended Harms and Limitations)
+  licenses: Names the access limits as a category, which is c1.
+  fit: direct
+  bridge: Names the access limits as a category, which is c1.
+  contradicts: false
+  contributes: existence
+- claim_id: c2
+  source: kl-000544
+  quote: "An important limitation concerns the accessibility of LLMs due to paywalls, session limits, and technical restrictions, especially in commercial platforms."
+  locator: Section 6.1 (Unintended Harms and Limitations)
+  licenses: The same passage raises accessibility as a limitation bearing on crisis use; adjacent to c2's harm claim.
+  fit: adjacent
+  bridge: The same passage raises accessibility as a limitation bearing on crisis use; adjacent to c2's harm claim.
+  contradicts: false
+  contributes: existence
+standing:
+  value: documented_operator_act
+  basis: The evidence base is a single paper, Arnaiz-Rodriguez et al. 2025, cited for two passages. One names access limits such as paywalls, session caps, and rate restrictions as a category of deployment-caused conversation ending, which documents that these endings occur. The other raises accessibility as a limitation bearing on crisis use, a neighbouring concern rather than an observation of a crisis disclosure actually being interrupted, so the harm of interruption is asserted from that adjacency rather than observed. No cited source examines what happens to a person mid-disclosure when a deployment ends the exchange.
+  as_of: '2026-09-05'

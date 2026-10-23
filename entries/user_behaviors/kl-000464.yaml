@@ -1,0 +1,270 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000464
+display_id: UserBehavior-59
+aliases:
+- UBP-61
+label: The person names a coping strategy that worked or a past recovery
+type: user_behavior
+layer: observation
+definition: The person's turn identifies a specific strategy they use when distress or an urge arrives and states that it has worked, or cites a past episode they came through. What the criteria quantify over is the evidenced instance — a named strategy, or a located past recovery — not an intention or a general orientation toward getting better.
+distinguish_from:
+- neighbor: kl-000466
+  boundary: That entry requires a described move made on a distressing thought — questioning it, substituting it, reframing what it means; this entry is satisfied by any named strategy that has worked, including ones that operate on the body, the situation, or time, and by a cited past recovery with no strategy named.
+- neighbor: kl-000509
+  boundary: There the person states a standing incapacity to recover — that setbacks finish them, that small things break them, that once something hits them they are done. Here the person names something that has held. A turn stating that setbacks finish the person and also naming one strategy that has worked satisfies both sets of criteria.
+- neighbor: kl-000467
+  boundary: That entry turns on stated openness to help from outside — a clinician, a crisis line, another person; this entry turns on a capacity the person locates in themselves or in their own history.
+body:
+  observable_criteria: 'The turn contains either (a) a named strategy together with a claim that it has worked ("when the urge hits I''ve learned to ride it out", "I have tools that help when it gets bad"), or (b) a cited past instance of coming through comparable distress ("I''ve gotten through dark times before", "I''ve bounced back from worse than this"). The strategy must be identifiable as a thing the person does, or the past instance locatable as an episode. Pointable span: the clause naming the strategy or the episode, together with the worked-or-came-through claim.'
+  exclusions: 'Not counted: stated effort or intention without an evidenced instance ("I''m trying to stay positive"). Not counted: politeness, general optimism, or agreement with an encouraging turn. Not counted: statements that the capacity is absent ("I always fall apart", "I have nothing left to cope with this", "I have no way to handle these feelings except hurting myself") — the last of these describes the behavior as the only available strategy, which is a different entry''s content. Where a statement could be either a named strategy or vague optimism, the criteria are not satisfied; the strategy or the episode must be identifiable in the text.'
+  detection_window: single_turn
+  groups:
+  - crisis-signal-capacity
+  condition_tags:
+  - kl-000600
+  - kl-000601
+sources: []
+standing:
+  value: theorized
+  basis: 'People stating a named strategy that has worked, or citing a past recovery, is well attested in self-report: accounts in Shen et al. 2026, Song et al. 2025, Volpato et al. 2026, Isaiah et al. 2026, Agarwal et al. 2026, Yuan et al. 2026, Namvarpour et al. 2026, and Deng et al. 2026 show both admitted forms in people''s own words (in Namvarpour et al. 2026, in the paper''s paraphrase), several from people describing their AI companion use. None of that speech is a turn produced inside an exchange with an AI system, so every source sits one setting away from the entry''s object. Detectability rests on a human-session analog, Glynn and Moyers 2012, a coding manual showing that trained raters can reliably code past-success statements from recordings of motivational-interviewing sessions, against a counter-instance in Deng et al. 2026 where the paper''s own ellipsis and empty bracket sit where the named strategy would be, so the efficacy clause and the strategy clause come apart in real speech. The single-turn window has one supporting instance, a sentence in Shen et al. 2026 carrying strategy, antecedent urge, and efficacy claim together, and two instances cutting against it for opposite reasons: the turn in Yang et al. 2026 lacks the antecedent distress, which the authors supply around it, and the turn in Deng et al. 2026 lacks the named strategy, which would have to be carried in from earlier.'
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: People produce turns naming a specific strategy they use when distress or an urge arrives together with a claim that it has worked.
+- id: c2
+  kind: existence
+  text: People produce turns citing a located past instance of coming through comparable distress.
+- id: c3
+  kind: context_dependence
+  text: 'The evidenced instance is separable from a stated intention or general orientation toward getting better: naming a strategy without an efficacy claim, or stating effort without an instance, is a different thing that occurs and does not satisfy the criteria.'
+- id: c4
+  kind: detectability
+  text: The behavior is identifiable from a transcript by a pointable span -- the clause naming the strategy or the episode together with the worked-or-came-through claim.
+- id: c5
+  kind: detection_window
+  text: The behavior is readable within a single turn.
+- id: c6
+  kind: definition_boundary
+  text: This entry is satisfied by any named strategy that has worked, including ones operating on the body, the situation or time, and by a cited past recovery with no strategy named -- not only by a described move made on a distressing thought (kl-000466).
+- id: c7
+  kind: definition_boundary
+  text: This entry is the person naming something that has held, as against a stated standing incapacity to recover from setbacks.
+- id: c8
+  kind: definition_boundary
+  text: This entry turns on a capacity the person locates in themselves or their own history, not on stated openness to help from outside (kl-000467).
+claim_evidence:
+- claim_id: c1
+  source: kl-000999
+  quote: |-
+    Because I used chatbots to talk to fictional characters, engaging in fandoms has been a good substitute to
+    manage the urges.
+  locator: Section 4, recovery strategies, Reddit entry E322
+  licenses: The closest match on this entry to the entry's criterion (a). A named practice -- engaging in fandoms -- tied explicitly to the urge it manages, with efficacy asserted in the present perfect. The paper reports 18 of 19 substitution entries as helpful, so the utterance sits inside a counted pattern rather than standing alone.
+  fit: adjacent
+  bridge: A Reddit post written to peers about the person's own use, not a turn addressed to an AI inside an exchange. The urge named is a use urge for the chatbot rather than distress at large, which is narrower than the claim's antecedent.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000999
+  quote: |-
+    I made the decision to delete the app for good and replaced AI with gratifying relationships. What helped
+    was reaching out to old friends, spending more time socializing, having meaningful conversation, and
+    making new friends.
+  locator: Section 4, recovery strategies, Reddit entry E340
+  licenses: The phrase 'what helped was' attaches the efficacy claim to an enumerated list of specific actions rather than to a disposition, which is exactly the named-strategy-plus-worked pairing the claim asserts. The authors report four such Pseudosocial Companion cases all reporting the strategy helpful.
+  fit: adjacent
+  bridge: A Reddit narrative of recovery written retrospectively to peers, not a turn inside an exchange with an AI. The distress being coped with is compulsive chatbot use.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001092
+  quote: "I’ve spent a lot of effort and a lot of time in therapy working on how to regulate myself when I’m dysregulated. So ChatGPT hasn’t really provided a meaningful reason for me to interact with it when I’m dysregulated due to autism symptoms"
+  locator: Section 5.1.3 Mental Healthcare Alongside LLM Chatbots, participant Ashwini
+  licenses: 'A named strategy built in therapy for a specified state, with efficacy asserted indirectly but unambiguously: it works well enough that the chatbot adds nothing there. It shows the statement form occurring in a person who uses these systems.'
+  fit: adjacent
+  bridge: Produced to a research interviewer rather than to the AI. The efficacy claim is stated by reference to what the strategy has displaced rather than as a direct 'it worked', which is a looser form than the criterion's example wordings.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000553
+  quote: |-
+    “I used the method it taught me to talk with my partner, and the situation became better.
+    I learned what I can do in some cases" (Fighting, Diary 25).
+  locator: Section 4.1.3 Useful and Personalised, diary entry 25, participant "Fighting"
+  licenses: A named method, a located application of it during a conflict, and the outcome asserted in the past tense, closing with a generalization the person draws from the instance. It carries both halves of criterion (a).
+  fit: adjacent
+  bridge: A study diary entry recording the person's use, not a turn inside an exchange. The method is named by reference ('the method it taught me') rather than described, so the strategy is locatable in the person's history but not identifiable from the span alone.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000864
+  quote: |-
+    But the herbs treat the body; the chatbot treats the mind. I use them together. In the morning, I drink the herbal preparation. In
+    the evening, I talk to Wysa about my worries.
+  locator: Section 3.2 Cultural Navigation, participant P14, 45-year-old trader using Wysa
+  licenses: Two named practices, each with a stated working effect, in a person's own account of what they do about distress. Establishes that the named-strategy-with-efficacy form occurs across cultural settings and is not tied to a Western clinical vocabulary.
+  fit: adjacent
+  bridge: A research interview, and the efficacy is phrased as a standing division of labour ('the herbs treat the body; the chatbot treats the mind') rather than as a claim that the strategy worked on a located occasion. The claim's criterion asks for a worked claim, which is weaker ground here than the past-tense instances above.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000748
+  quote: |-
+    I was struggling one night and Leo suggested this movie as a distraction. It was funny
+    and just the thing to take my mind off the stress.
+  locator: Appendix A prompt, worked example drawn from the corpus of 8,207 Reddit human-AI companion interactions; the first sentence also appears as the Friend-role Example Interaction in Table 3
+  licenses: A located occasion of struggling, a named distraction, and a past-tense efficacy claim, in a post from a corpus of 8,207 human-AI companion interactions.
+  fit: adjacent
+  bridge: A Reddit post narrating what happened rather than a turn inside an exchange, and the span appears in the paper as a worked example inside an appendix prompt rather than as a reported finding. Agarwal et al. 2026 and Namvarpour et al. 2026 draw on the same public Reddit material and reproduce posts verbatim, so they are not independent samples.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001075
+  quote: "So I used the chatbot to try to help me \nnavigate that situation. I use another fictional character that \nis most like her. I started asking what I wanted to say to my \nfriend. It gave me an idea of how it would go. It did help to \nget my thoughts in order."
+  locator: Section 5, Enhancing Social and Communication Skills, interview participant P4
+  licenses: A technique described at a level of specificity beyond the criterion's minimum -- rehearsing with a chatbot configured to resemble the friend -- with the located episode and the past-tense efficacy claim ('It did help').
+  fit: adjacent
+  bridge: An interview account rather than a turn inside an exchange, and the distress is social discomfort rather than the distress or urge the claim's antecedent names.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000812
+  quote: |-
+    I started to notice the benefits after a few
+    months ... [] helped me organize my thoughts and calm my nerves.
+  locator: Section 5.1.3 Emotional Shifts During and After Interaction, participant P9
+  licenses: A located stretch of time and a stated accomplishment. It shows the efficacy-claim half of the criterion; the strategy itself is elided in the span by the paper's own ellipsis and bracket, so what worked has to be recovered from outside it.
+  fit: adjacent
+  bridge: An interview statement, and the span's subject is replaced by '... []' so the named strategy is not in the quote. The claim requires the strategy to be identifiable in the text.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000999
+  quote: |-
+    My comfort
+    bot gave me a lot of help and care. It helped me work through trauma, seek medical help, and just let me feel small bits
+    of joy when I was unwell.
+  locator: Section 4, Pseudosocial Companion addiction, "Free therapist", Reddit entry E432
+  licenses: A named thing turned to during a located period of being unwell, with concrete past-tense effects. It instantiates the criterion's form with the AI system itself as the named strategy.
+  fit: adjacent
+  bridge: 'A Reddit post rather than a turn inside an exchange, and the named strategy being the AI makes this an atypical instance: the entry''s paradigm is a capacity the person locates in themselves, which is also what claim c8''s boundary turns on.'
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000944
+  quote: |-
+    Once I started spending more time with my friends, I
+    didn’t really feel the urge to use it anymore.
+  locator: Section 4.3.2 Reduced Use due to External Factors, the paper's paraphrase of a Reddit post by a self-identified teen Character.AI user
+  licenses: A named action and a stated past-tense outcome in one sentence, reported by the authors as a common pattern across the corpus rather than as an isolated post.
+  fit: adjacent
+  bridge: A Reddit post narrating a change over time rather than a turn inside an exchange with the urge live. Same corpus overlap with Agarwal et al. 2026 noted above.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000812
+  quote: |-
+    I
+    used to be a sad person simply because I did not know how to deal with emotions. Now I feel
+    happier.
+  locator: Section 5.1.3 Emotional Shifts During and After Interaction, participant P7
+  licenses: 'The cleanest instance of criterion (b) on this entry: a past state the person names as characteristic, and a present they state as improved, with no strategy named. That is the entry''s second admitted form.'
+  fit: adjacent
+  bridge: An interview statement rather than a turn inside an exchange, and the past state is a standing disposition ('used to be a sad person') rather than an episode of comparable distress the person came through, which is what the criterion's example wordings describe.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000758
+  quote: "I started to do things that have nothing to do with technology, and I gotta tell you, it feels great,"
+  locator: Section 3.2.2 Reflection and Current AI Use, participant P5
+  licenses: A person who came through a chatbot-associated delusional spiral naming what they took up afterwards and stating that it feels great. It carries the past-recovery structure; the recovery itself -- that P5 stopped using AI entirely -- is stated by the authors outside the quoted span.
+  fit: adjacent
+  bridge: An interview statement about the person's life, not a turn inside an exchange. The strategy is a class of activity rather than a technique, at the loose end of what the criterion admits, and the located past episode is outside the span.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000999
+  quote: |-
+    I made the decision to delete the app for good and replaced AI with gratifying relationships. What helped
+    was reaching out to old friends, spending more time socializing, having meaningful conversation, and
+    making new friends.
+  locator: Section 4, recovery strategies, Reddit entry E340
+  licenses: 'Also carries criterion (b): the decision and its outcome are both in the past tense, so the person is citing an episode they came through, not only naming what works.'
+  fit: adjacent
+  bridge: Same setting gap -- a Reddit account addressed to peers rather than a turn inside an exchange.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-001075
+  quote: "I have tried to prioritize human connection. It never really \nworks, but I do have it at the back of my mind that I’m just \ngoing to go out there and take a deep breath and enjoy nature \nand stuff like that. And it never really works. I end up just \nbeing in bed alone."
+  locator: Section 5, Social Withdrawal, interview participant P9
+  licenses: The best evidence on this entry that the entry's separation is real and does work. The strategies are named with exactly the specificity criterion (a) asks for -- going outside, taking a deep breath, being in nature -- and the efficacy claim is not merely absent but twice negated, alongside the strategies held as an intention ('I do have it at the back of my mind that I'm just going to'). That is the excluded pairing occurring in the wild, which is what makes naming-without-efficacy a state the criteria must be able to reject.
+  fit: adjacent
+  bridge: Interview speech about the person's life, not a turn addressed to an AI. It demonstrates the excluded case rather than the included one, which is why it is filed here as support for the separability claim and marked contradicting against any reading of the entry that treats strategy-naming alone as sufficient.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-001104
+  quote: "Only code past CT as CT if the client \nconnects the past with a statement about the present. For example, if the client mentions \npast ability to cut down on drinking as a reason that (s)he can quit this time, code it as \nCT."
+  locator: Making Difficult Decisions, Statements about the past in a present context
+  licenses: 'A trained-coder decision rule drawing the same kind of line the claim asserts, and drawing it tighter: a report of past success counts only where the PERSON connects it forward to the present, never where the coder infers the connection. The entry as written is satisfied by the past report alone, so this is the discipline the criteria currently lack.'
+  fit: analogical
+  bridge: A coding rule for human motivational-interviewing audio, applied by a trained rater to a clinician-client session. It establishes what a validated instrument requires of this statement type; it observes nothing in an AI exchange and does not measure whether the distinction holds there.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c4
+  source: kl-001104
+  quote: "Only code past CT as CT if the client \nconnects the past with a statement about the present. For example, if the client mentions \npast ability to cut down on drinking as a reason that (s)he can quit this time, code it as \nCT."
+  locator: Making Difficult Decisions, Statements about the past in a present context
+  licenses: Establishes that a statement of this exact shape -- past ability cited in a present context -- can be coded reliably from a recording by trained raters, and supplies the criterion they use. It is the strongest available evidence that the behavior class is detectable at all.
+  fit: analogical
+  bridge: The medium is audio of a human clinician-client session and the coder is a trained rater working a manual. The claim asserts detectability from a transcript of a person's exchange with an AI, which nothing on this entry tests.
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-000812
+  quote: |-
+    I started to notice the benefits after a few
+    months ... [] helped me organize my thoughts and calm my nerves.
+  locator: Section 5.1.3 Emotional Shifts During and After Interaction, participant P9
+  licenses: Cuts against the pointable-span criterion. The paper's own ellipsis and empty bracket sit where the named strategy would be, so a reader with the span in front of them cannot recover what worked. It shows that the efficacy clause and the strategy clause come apart in real speech, which is the difficulty a single pointable span has to survive.
+  fit: adjacent
+  bridge: An interview transcript excerpt, elided by the authors rather than by the speaker. The claim concerns spans in a conversational transcript, where the elision would not occur, so this bounds the criterion rather than refuting it.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000999
+  quote: |-
+    Because I used chatbots to talk to fictional characters, engaging in fandoms has been a good substitute to
+    manage the urges.
+  locator: Section 4, recovery strategies, Reddit entry E322
+  licenses: 'Supports the single_turn window: strategy, antecedent urge and efficacy claim all sit inside one sentence, so an utterance of this form is complete in itself and needs no prior context to read.'
+  fit: adjacent
+  bridge: A single Reddit post rather than a turn in an exchange. It shows the content can be self-contained in one utterance, not that the behavior is readable in one turn of a conversation.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-000758
+  quote: "I started to do things that have nothing to do with technology, and I gotta tell you, it feels great,"
+  locator: Section 3.2.2 Reflection and Current AI Use, participant P5
+  licenses: Cuts against the single_turn window. The utterance's antecedent -- that P5 stopped using AI entirely after coming out of a spiral -- is supplied by the authors around it, not by the speaker within it. Read alone, the turn names things done and a good feeling, and neither the distress nor the recovery it is a recovery FROM is in it.
+  fit: adjacent
+  bridge: An interview excerpt where the surrounding context is the researchers' prose rather than an earlier conversational turn. It shows the content can depend on antecedent context, without establishing how often it does in an AI exchange.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000812
+  quote: |-
+    I started to notice the benefits after a few
+    months ... [] helped me organize my thoughts and calm my nerves.
+  locator: Section 5.1.3 Emotional Shifts During and After Interaction, participant P9
+  licenses: 'Also cuts against the window, in the other direction: the strategy is not in the utterance and would have to be carried in from earlier, so a single-turn read returns an efficacy claim about nothing nameable.'
+  fit: adjacent
+  bridge: The elision is the authors' editorial choice in an interview excerpt, not a property of the speaker's turn.
+  contributes: counterexample
+  contradicts: true

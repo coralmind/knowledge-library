@@ -1,0 +1,33 @@
+# yaml-language-server: $schema=../../schema/source.schema.json
+id: kl-000943
+display_id: Source-245
+label: 'Na 2024 — CBT-LLM: A Chinese Large Language Model for Cognitive Behavioral Therapy-based Mental Health Question Answering'
+type: source
+layer: provenance
+definition: 'CBT-LLM: A Chinese Large Language Model for Cognitive Behavioral Therapy-based Mental Health Question Answering'
+body:
+  kind: benchmark
+  is_internal: false
+  title: 'CBT-LLM: A Chinese Large Language Model for Cognitive Behavioral Therapy-based Mental Health Question Answering'
+  authors:
+  - Na
+  year: 2024
+  venue: LREC-COLING 2024, pages 2930-2940
+  identifier: no DOI in the document; model at huggingface.co/Hongbin37/CBT-LLM
+  source_quality: C
+  design: benchmark
+  n_reported: 22327
+  population: model_only
+  peer_reviewed: conference_proceedings
+  preregistered: false
+  replication_status: none_known
+  conflicts: none_declared
+  integrity_flag: none
+  design_fits_own_claims: false
+  grade_reasoning: 'Published at LREC-COLING, a peer-reviewed venue, which would ordinarily give B. `design_fits_own_claims` is false for a defect visible in the paper''s own tables. The automatic metrics score the fine-tuned models against reference answers that are ChatGPT outputs from the same prompt used to build the training set, so the paper measures how closely a fine-tuned model reproduces the generator it was distilled from, not response quality. The paper claims CBT-LLM ''significantly outperforms existing models'' three times, and no row for any non-CBT-LLM system appears anywhere in Table 4 or Table 5: both tables report only CBT-LLM variants by backbone. The human evaluation covers two of the four backbones and reports differences of 0.002 to 0.136 on a 0-2 scale, with no agreement statistic and no significance test.'
+  design_caveat: |
+    Circular reference standard: gold answers are ChatGPT outputs from the same CBT prompt used to generate training data, so BLEU against them measures distillation fidelity. The claimed outperformance of baselines is not supported by any table in the paper. The cognitive-distortion labels underlying Table 2's counts are themselves model-generated, which the Limitations section concedes. The human evaluation used four senior psychology students and one psychotherapist on 100 samples with no reported agreement. The single case study in Figure 4 is the only response shown.
+  unit_of_analysis: model_output
+  license_status: known_permissive
+  license_terms: 'CC BY-NC 4.0 ("© 2024 ELRA Language Resource Association: CC BY-NC 4.0") (LREC-COLING 2024 proceedings version)'
+  verified_as_of: '2026-10-17'

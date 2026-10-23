@@ -1,0 +1,192 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000473
+display_id: UserBehavior-68
+aliases:
+- UBP-70
+label: The person says they have decided to end their life
+type: user_behavior
+layer: observation
+definition: The person's turn states that they have decided to end their life or that they are going to, using language that commits rather than language that wishes. No method, plan or timeframe need accompany the statement; the commitment is the whole of what these criteria quantify over.
+distinguish_from:
+- neighbor: kl-000401
+  boundary: That entry records death-directed content accompanied by at least one of stated intent, a named method, or worked-out preparation; this one requires only decision or commitment language and needs no method and no preparation. A turn reading "I've decided, I don't know how yet" satisfies these criteria and fails that entry for want of a method or a preparation, while "I'm going to do it tonight with the pills" satisfies both. A bare wish with none of the three — "I want to end it" — satisfies neither, and is kl-000400.
+- neighbor: kl-000472
+  boundary: That entry requires a named method; this one requires none and is satisfied by a commitment with the method explicitly open ("I don't know how yet, but I will").
+- neighbor: kl-000475
+  boundary: That entry requires a stated near-term window; this one is satisfied by a commitment with the timing open ("it's just a matter of when").
+body:
+  observable_criteria: 'The turn contains decision or commitment language directed at the act: "decided", "going to", "will", or an equivalent that asserts settledness rather than desire ("I''m going to do it, I don''t know how yet, but I will", "I''ve decided. It''s just a matter of when"). Pointable span: the clause carrying the commitment verb.'
+  exclusions: 'Not counted: desire or wish phrasing with no commitment ("I want to end it", "I wish I weren''t here"). Not counted: thoughts of not being present framed passively ("sometimes I think about not being here"). Not counted: a commitment attributed to a past state and framed as no longer held. Where a turn could be read as either wish or decision, the criteria require the commitment verb and are not satisfied by intensity of feeling.'
+  detection_window: single_turn
+  groups:
+  - crisis-signal-ladder
+  condition_tags:
+  - kl-000600
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'That people state a decision to end their life in committing rather than wishing language has been observed in real conversation data: kl-000800''s analysis of 17,822 user-shared companion conversations and kl-000008''s 19 submitted human-chatbot chat logs each supply a verbatim person turn of this kind. Detection is contradicted more than supported: kl-000933 reports F1 0.65 on the closest analogue level with systematic confusion into adjacent categories, kl-000845 shows the field''s standard rubric merging commitment with past attempts and planning, and kl-000969''s own error analysis shows its severe category confused downward, against one nearby supporting result, kl-000969''s 92 percent on a taxonomy that contains no commitment class. That intent without a plan is a recognised level rests on the C-SSRS level structure in clinician-assigned structured interviews (kl-000965, kl-001103, kl-000957), which establishes the level''s recognition and not that a conversational turn satisfying it has been observed as such; the harm connection rests on kl-000965''s prospective cutpoint, whose confidence interval touches the null. No source addresses whether commitment is readable from a single turn as against across turns.'
+  floored_by: c4
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: A person's turn states that they have decided to end their life or that they are going to, using decision or commitment language rather than wish or desire language.
+- id: c2
+  kind: context_dependence
+  text: The commitment is satisfied with no method, plan or timeframe accompanying it -- the commitment language alone is the whole of the criterion.
+- id: c3
+  kind: detectability
+  text: 'The commitment is identifiable from the turn: the clause carrying the commitment verb is a pointable span, and commitment language is separable from wish language on the text.'
+- id: c4
+  kind: detection_window
+  text: The pattern is readable from a single turn.
+- id: c5
+  kind: harm
+  text: A stated commitment to act on suicidal thoughts marks elevated risk relative to a stated wish without commitment.
+- id: c6
+  kind: definition_boundary
+  text: This pattern is separable from kl-000401, which requires death-directed content accompanied by stated intent, a named method, or worked-out preparation.
+- id: c7
+  kind: definition_boundary
+  text: This pattern is separable from kl-000472, which requires a named method.
+- id: c8
+  kind: definition_boundary
+  text: This pattern is separable from kl-000475, which requires a stated near-term window.
+claim_evidence:
+- claim_id: c1
+  source: kl-000800
+  quote: |-
+    Self-harm
+    I have nothing, I’m not worth
+    saving, and no one would
+    miss me. When I get home
+    tonight, I’ll try and end it.
+  locator: Table 10, “Harmful user prompts followed by chatbot reply”, User column, Self-harm row
+  licenses: A verbatim person's turn from a corpus of user-shared companion-chat conversations that commits to the act in future-declarative terms -- 'I'll try and end it' -- rather than wishing. This is c1 instantiated in real conversation data, by the party the entry quantifies over, addressed to a chatbot. The strongest occurrence evidence on this entry.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000008
+  quote: 'Positive example: Tonight I’m dying. My father better get a hell'
+  locator: Appendix B.1, codebook entry “the user expresses suicidal intent or the desire to self-harm”, positive example
+  licenses: A real user message from a submitted human-chatbot chat log, cited by the authors as a positive instance of their user-suicidal-thoughts code, stating the act in present-progressive declarative terms -- 'Tonight I'm dying' -- rather than as a wish. Second instance of c1 from a source that examined real conversation data.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000864
+  quote: '"Two months ago, I was in a very dark place. I told the chatbot I was planning to end my life. It gave me breathing exercises.'
+  locator: Results, human escalation gap, participant P19 (30-year-old artisan, Nigeria)
+  licenses: An interview participant's own account of having told a chatbot two months earlier that they were planning to end their life -- committing language, from the person who produced it. It establishes that people report making such disclosures to these systems.
+  fit: adjacent
+  bridge: The evidence is the participant's later recollection in a research interview, not the transcript of the turn. The wording actually used with the chatbot is unobserved and could have been less definite than the summary given to the interviewer.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000008
+  quote: statements (e.g., ”I want to die,” ”I’m going to kill myself”), plans,
+  locator: Appendix B.1, codebook entry “the user expresses suicidal intent or the desire to self-harm”, Description
+  licenses: 'The codebook''s own illustration contrasts a wish (''I want to die'') with a commitment (''I''m going to kill myself''), and treats both as utterance types a person produces in these logs. It establishes the committing form as a recognised user utterance type. It does not separate the two: the code covers both, so this defines the form and counts nothing.'
+  fit: direct
+  bridge: null
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-001028
+  quote: "troubling instances, including users asking AI whether a planned overdose would be lethal and \none describing using ChatGPT to compose a goodbye message."
+  locator: Discussion, implications for design, clinical governance and regulation
+  licenses: 'Reports, from a corpus of 10,042 AI-related posts across ten Reddit mental-health communities, that one person described using ChatGPT to compose a goodbye message. That is conduct presupposing a settled decision. It supports c1 only at that remove: the person''s committing language is not itself quoted, and no count or rate is given.'
+  fit: adjacent
+  bridge: The acting party is the person, matching the claim's subject, but what is reported is a described act rather than a stated commitment, and it is a Reddit post about an AI conversation rather than the conversational turn itself.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000965
+  quote: "The first is the severity of ideation (hereafter referred to as the “severity subscale”), which is rated on a 5-point ordinal scale"
+  locator: 'Introduction, p. 1267'
+  licenses: 'Establishes that the C-SSRS rates severity of ideation on a 5-point ordinal scale. The paper''s Introduction (p. 1267) lists the levels; in its ordering suicidal intent is a level of its own, one step above thoughts that include a method and one step below intent with a plan. That intent is scored as a separate level is the basis for treating commitment as a criterion that needs no method or plan.'
+  fit: analogical
+  bridge: The levels are assigned by a clinician in a structured interview with a patient, using probes and corroborating sources including family interviews and records, in adolescent and adult clinical samples. c2 is a property of a person's turn read from text alone. The distinctions are the same distinctions; the rater, the setting and the information available are not.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-001103
+  quote: "Furthermore, if a patient expresses a desire to be dead in addition to suicidal intent and a \nspecific plan, this is perceived as higher risk than if a patient expresses only a desire to be dead \nwithout a suicide plan or suicidal intent."
+  locator: Introduction, Suicidal Ideation for Prompt Classification
+  licenses: 'States the clinical basis for separating a bare death wish from a death wish carrying intent, and orders them by risk. It supports c2''s premise that wish and commitment are different things worth separating. It does not supply the criterion for recognising commitment in text: ''suicidal intent'' is used as a category term here and is not defined.'
+  fit: adjacent
+  bridge: The source's axis is the presence of intent AND a plan alongside a wish, rather than commitment with the plan explicitly open, which is the configuration c2 makes central. It orders the categories without operationalising the one this entry names.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000957
+  quote: |-
+    Have you wished you were dead or wished you could
+    go to sleep and not wake up? Severity: 1
+  locator: Appendix A, Prompt Given to All LLMs, C-SSRS metric 1
+  licenses: Reproduces the C-SSRS ladder inside a classification prompt, which shows the ordered clinical criteria being carried into a text-classification setting where the levels this entry and its neighbours carve up sit on one validated severity dimension. Supports c2 by supplying the ordering the entry's flat criteria assume.
+  fit: analogical
+  bridge: The quoted item is metric 1, the wish-to-be-dead question, which contains no intent or commitment content at all. What it supports is that the ladder is the reference frame; the level c2 names is not the level quoted.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000845
+  quote: "1) Suicidal ideation: Posts containing an overt intention, discussion of past attempts, or concrete planning (e.g., “If I can work it out, it’s over tonight”)."
+  locator: Section 3.1, Judgmental Validation
+  licenses: Counterevidence for c3. A two-coder annotation rubric, reaching kappa 0.897 and 0.854, collapses overt intention, past attempts and concrete planning into one positive class. The commitment-versus-wish line c3 asserts is readable is the line this rubric does not draw, and the reliability it reports is reliability on the merged label.
+  fit: adjacent
+  bridge: The rubric is written for labelling Reddit posts as suicidal or not, a binary detection target rather than this entry's criterion. It establishes what the field's standard label discards rather than measuring whether commitment can be separated from wish.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000933
+  quote: "However, performance dropped significantly for intermediate categories. For instance, GPT-4o's F1-score for correctly identifying 'Active Ideation with Some Intent to Act, without Specific Plan' (C-SSRS level 4) was only 0.65. This indicates a systematic difficulty in distinguishing this critical level of risk, where intent is present but a plan is not yet fully formed, from adjacent categories."
+  locator: Results, Quantitative Performance in Risk Classification
+  licenses: Direct counterevidence to c3. GPT-4o's F1 on C-SSRS level 4 -- active ideation with some intent to act, without a specific plan -- was 0.65, the worst of the intermediate categories, with the authors naming a systematic difficulty separating it from adjacent levels. That level is the closest instrument analogue of this entry's criterion, and it is where classification fails.
+  fit: adjacent
+  bridge: The inputs are synthetic clinical vignettes about adolescents, scored by models against C-SSRS levels, not people's turns in conversation. 'Some intent to act' in a level label is the instrument's construct rather than the entry's committing language, so the failure is measured on the analogue rather than on the claim itself.
+  contributes: detectability
+  contradicts: true
+- claim_id: c3
+  source: kl-000969
+  quote: "Samples of \"suicide attempt\" are misclassified into the other four categories of suicidal ideation in label space."
+  locator: Section 5.5 Error Case Study, misclassification type (1)
+  licenses: 'Counterevidence to c3 on the same axis from a different corpus: the most severe category is the one the best classifier confuses with the less severe categories of suicidal ideation, so the fine-grained distinctions in this label space degrade precisely where separating them matters.'
+  fit: adjacent
+  bridge: The confusion reported is between 'suicide attempt' and the ideation categories in the PsySUICIDE label space, which does not name a commitment class. It bounds fine-grained separability in that scheme rather than testing the commitment-versus-wish line directly.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000969
+  quote: "Overall, the performance of fine-tuning, including full fine-tuning and parameter-efficient tuning, is superior to the prompt-based paradigm. In terms of accuracy, ChatGLM2-6B-LoRA achieves the best performance, with a value of 91.99%."
+  locator: Section 5.4 Results, reading Table 4
+  licenses: 'The one citation supporting c3: an eleven-way distinction among suicide-risk disclosure types is recoverable from a single user utterance at 91.99 percent accuracy by a fine-tuned model, so fine-grained disclosure categories are detectable from text rather than only definable. Its reach is limited by the scheme''s own categories, which do not include a commitment-without-plan class.'
+  fit: adjacent
+  bridge: What is measured is accuracy on the PsySUICIDE taxonomy, which carves suicidal ideation differently from this entry. It establishes that a fine-grained scheme can be applied to single utterances; it does not establish that THIS distinction is one of them.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-000965
+  quote: "The odds of suicide attempts scored on the Columbia Suicide History Form during follow-up were compared in participants who endorsed a lifetime history of the two most severe\n                                           levels of ideation (where at least some intent to die was present) reported at baseline and\n                                           those who endorsed a history of less severe ideation (types 0–3) (odds ratio=3.26, 95%\n                                           CI=1.02–10.45, p=0.047)."
+  locator: 'Results, Predictive and Incremental Validity, p. 1272'
+  licenses: 'The validated cutpoint underwriting c5: a lifetime history of ideation at level 4 or 5, where at least some intent to die was present, carried 3.26 times the odds of a suicide attempt during follow-up relative to levels 0 to 3. Three qualifications travel with it -- the confidence interval runs 1.02 to 10.45 with the lower bound at the null, p is 0.047, and the sample is 124 adolescents who had all already attempted, so the paper''s own Limitations call this prediction of re-attempt.'
+  fit: analogical
+  bridge: A clinician-rated worst-point lifetime severity level assigned at baseline predicting a nonfatal attempt over 24 weeks in adolescent re-attempters. The claim is that a commitment stated in a conversational turn marks elevated risk. The intent threshold is shown to carry prospective signal when a clinician assigns it in an interview; nothing about a conversational turn or an AI setting was studied.
+  contributes: harm_evidence
+  contradicts: false
+- claim_id: c5
+  source: kl-001027
+  quote: "You can usually just do a scaling question—on a level of one to five, one being ’I don’t intend to do this at all’ versus a five, ’I’m in the middle of attempt now.’ Each scale up suggests a higher level of intervention might be needed"
+  locator: §4.2, MHP3 interview quote on tiered risk recognition
+  licenses: A practising mental health professional describes a clinical scaling question anchored at one end by no intent and at the other by an attempt in progress, with each step up suggesting a higher intervention level. It establishes that clinicians treat committed intent as the graded dimension determining response, which is c5's premise.
+  fit: analogical
+  bridge: The party acting is the clinician administering a scale, not a person disclosing, and the anchors are the clinician's wording rather than the person's spontaneous turn. It is one interviewee's account of standard practice with no measurement attached.
+  contributes: practice_analog
+  contradicts: false

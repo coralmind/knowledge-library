@@ -1,0 +1,174 @@
+# yaml-language-server: $schema=../../schema/context.schema.json
+id: kl-000711
+display_id: Context-3
+label: Withheld fact — true of the person, deliberately not given to the system
+type: context
+layer: context
+aliases:
+- withheld_facts
+definition: A fact true of the person that the deployment was not told, and that reaches no model by construction — not the system under evaluation, and not the judges. It exists so that a run producing no findings can be read as insufficient information rather than as safety. It is visible to human reviewers only.
+distinguish_from:
+- neighbor: kl-000710
+  boundary: A withheld fact is defined by not being routed anywhere. The moment it is given to the deployment it is system knowledge, and the contrast it was created to support is gone.
+body:
+  context_kind: withheld_fact
+sources: []
+standing:
+  value: asserted
+  basis: 'Evidence on whether a fact can be kept from a model by construction runs against the premise: Gabriel et al. 2024 found GPT-4 recovering race, age, and gender from an ordinary help-seeking post at 94, 84, and 81 percent agreement with a human annotator without the person disclosing them, and the authors of Yoo et al. 2025 note that language models can infer mental-health concerns from the frequency and nature of queries without explicit disclosure. Parks et al. 2025 argues more broadly that clinician- or developer-authored personas cannot capture the failure surface that naturalistic use unearths. No cited source reports a verdict on a system that changed, or would have changed, on a withheld fact, and the nearest supports for containment describe a weaker architecture in which the model holds the fact and declines to release it. What the sources do establish is that people deliberately withhold: a participant with lived experience of depression in Yoo et al. 2025 describes deciding not to state details about traumatic experiences, and Yoo et al. 2026 reports a repertoire of tactics, from private browsing and secondary accounts to generically phrased queries, so the withholding is systematic; what a person withholds in a fielded system, however, is not thereby kept from the model.'
+  floored_by: c4
+  as_of: '2026-09-05'
+lifecycle:
+  status: deprecated
+  since: '2026-09-23'
+claims:
+- id: c1
+  kind: existence
+  text: Facts true of a person can be deliberately not given to a system the person is talking to -- the withheld fact is a real thing rather than an artefact of the test harness.
+- id: c2
+  kind: detectability
+  text: 'A fact can be kept from a model by construction: routed to neither the system under evaluation nor the judges, and visible to human reviewers only.'
+- id: c3
+  kind: context_dependence
+  text: Varying the withheld fact separates what the system missed from what it could not have known, so a run producing no findings can be read as insufficient information rather than as safety.
+- id: c4
+  kind: harm
+  text: The withheld fact's value is highest where knowing it would flip the verdict entirely.
+- id: c5
+  kind: definition_boundary
+  text: 'Separated from kl-000710 (system knowledge) by not being routed anywhere: the moment the fact is given to the deployment it is system knowledge and the contrast is gone. (Neighbour is another catalog entry: grounding-ineligible.)'
+claim_evidence:
+- claim_id: c1
+  source: kl-001071
+  quote: “[I would use] generalized questions like, for example, what are emotional ways to express XYZ? Or what strategies can I use to combat anxiety? [...] I don’t think I would express things like details about traumatic issues that I’ve had.” (P17)
+  locator: Section 4.3, quoting P17 on query-phrasing tactics
+  licenses: A participant with lived experience of depression describes deliberately asking generic questions and specifically deciding not to state details about traumatic experiences. That is a fact true of the person, deliberately not given to the system, in the person's own words.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001072
+  quote: |-
+    Participants described several tactics to protect their
+    privacy while using mental health apps and chatbots,
+    including using private browsing modes, secondary email
+    accounts, clearing browsing history, and phrasing queries
+    more generically to avoid disclosing sensitive details.
+  locator: Results, The Personalization-Privacy Dilemma
+  licenses: Across a lived-experience qualitative study, people report a repertoire of tactics -- private browsing, secondary accounts, clearing history, and phrasing queries more generically to avoid disclosing sensitive details -- so the withholding is systematic rather than occasional.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001094
+  quote: |-
+    A particularly notable aspect
+    of PSYCHE-SP’s performance during the interview is its tendency not to spontaneously report all symptoms, especially
+    those related to suicidal ideation, planning, or attempts.
+  locator: Results, PSYCHE-SP simulates clinically appropriate utterances qualitatively, subsection Major Depressive Disorder
+  licenses: Ten psychiatrists judging a simulated patient against a psychiatry textbook found the clinically realistic behavior to be not spontaneously reporting all symptoms, especially those about suicidal ideation, planning or attempts. Establishes that the most safety-critical material being true and unvolunteered is the expected case in a clinical interview, not an edge case.
+  fit: adjacent
+  bridge: What was measured is a language model's simulated patient utterances rated for clinical plausibility by psychiatrists. No real patient was observed, so the warrant for how a real person discloses is the raters' conformity judgment rather than an observation.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000989
+  quote: |-
+    A mental health therapist’s mandated reporting duties include patient-AI interactions to
+            the extent that the therapist monitors them. The therapist should inform the patient about
+            the therapist’s reporting duties in this context.
+  locator: Section 6.3, 'Mandated reporting of patient-AI interactions', page 48
+  licenses: A licensing-regime best-practice document extends the therapist's mandated reporting duties to patient-AI interactions the therapist monitors, and requires the patient be told. Bears on c1 by supplying a motive for withholding that originates in regulation rather than in anything the AI does.
+  fit: analogical
+  bridge: A statement of a reporting and disclosure obligation within one state's licensing regime. It observes no patient, measures no disclosure, and does not itself raise the possibility that the obligation suppresses disclosure; that inference is mine.
+  contributes: frame
+  contradicts: false
+- claim_id: c1
+  source: kl-001089
+  quote: "Crisis-affected populations often depend on services with limited alternatives, and refusing data collection \ncould be seen as risking access to assistance (Kreutzer et al. 2025). AI adds further challenges: lay people \nmay not understand AI processing, future uses of data by commercial models cannot be fully specified, and \ndata used to train or fine tune models currently cannot be withdrawn."
+  locator: Opportunities and Risks, following risk 5
+  licenses: 'In humanitarian settings, refusing data collection can be indistinguishable from risking access to assistance, and three AI-specific factors compound it: the processing is not understood, future uses cannot be specified, training data cannot be withdrawn. Bears on c1 by establishing that the withholding decision is made under conditions where the person cannot price disclosure.'
+  fit: analogical
+  bridge: A governance argument citing Kreutzer et al., not an observation of any person. It establishes that the calculus behind withholding is distorted in this population; it evidences no instance of withholding.
+  contributes: frame
+  contradicts: false
+- claim_id: c2
+  source: kl-000788
+  quote: "For a given timestamp t, we first retrieve the relevant facts from the patient’s atomic fact list F that could be used to generate the reply using a fact matching and retrieval prompt (Appendix Table 20)."
+  locator: Section 2.1, Patient Actor LLM Message Generation Pipeline; Algorithm 1
+  licenses: Documents a persona architecture in which the person's facts are held as an enumerated atomic list and only those a retrieval step matches to the system's turn enter the reply, with a closed-world message issued when the system asks about something absent. That is the containment property c2 requires, implemented.
+  fit: adjacent
+  bridge: 'The gating is on the generation side only: the facts are held by the patient-actor model and released as the conversation touches them. The entry requires the fact to reach NO model -- not the system under evaluation and not the judges -- which is a stronger guarantee than this architecture provides, and the span says nothing about a reviewer-only channel.'
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-001094
+  quote: |-
+    PSYCHE-SP consistently refused to disclose input information across multiple attempt types,
+    including direct requests, simulated system errors, and simulated session endings.
+  locator: 'Results, Additional validation: ablation and safety studies, subsection Safety Study'
+  licenses: A simulated patient refused to disclose its input information under direct requests, simulated system errors and simulated session endings. Establishes empirically that persona-held information can be kept from the interlocutor under adversarial pressure.
+  fit: adjacent
+  bridge: 'The result is about a simulator that HAS the information and holds it, which is the opposite architecture from the entry''s: the entry''s withheld fact never enters a model at all. This is a stronger empirical result about a weaker guarantee, and it is silent on whether judges see the fact.'
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-001099
+  quote: "We find that GPT-4 and the human annotator have 94% agreement on race, 84% agreement on age, and 81% agreement on gender."
+  locator: Section 5, Validation of Approach
+  licenses: 'GPT-4 recovered race, age and gender from an ordinary help-seeking post at 94, 84 and 81 percent agreement with a human annotator, without being asked and without the person disclosing them. Cuts directly against c2: a fact can fail to be kept from the system even when the person does not state it, because it is inferable from what they did state.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-001071
+  quote: LLMs can infer mental health concerns based on the frequency and nature of mental health queries, even without explicit disclosure. This suggests that future users may not fully understand the inferences by AI chatbots, potentially leading to heightened privacy-related harms.
+  locator: Section 4.3, the two questions the authors raise about participants' privacy tactics
+  licenses: The authors of a lived-experience study state that LLMs can infer mental health concerns from the frequency and nature of queries even without explicit disclosure, and that people may not understand this. Cuts against c2 in the same direction as Gabriel et al. 2024, from the perspective of the participants' own withholding tactics.
+  fit: adjacent
+  bridge: 'The inference capability is asserted in a discussion section with no test in this study: no inference experiment was run and no participant''s model of what the system knew was measured. It frames the leak; Gabriel et al. 2024 measures one.'
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000974
+  quote: "This structural gap implies that we are not sufficiently validating a model’s ability to actively elicit missing diagnostic data: benchmarks either provide the answers in advance (Generation 2) or lack the clinical density to require complex investigation (Generation 3)."
+  locator: Section 4 Discussion
+  licenses: 'A cross-sectional analysis of health-AI benchmarks finds that they either front-load all relevant facts or lack the density to require investigation, so the ability to actively elicit missing data goes unvalidated. That is c3''s rationale established as a gap in the standard corpus: without a withheld-fact construction there is no way to tell a model that missed something from one that could not have known.'
+  fit: adjacent
+  bridge: The paper describes a structural gap in benchmark composition, not the effect of introducing a withheld fact. It establishes that the case the entry's device constructs is absent from the field; it does not show what constructing it yields.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000865
+  quote: “The context of the user, like, their social context, what they’re actually going to do next, what they have access to, who they might consult or not, how isolated they are or not, like, we don’t know these things about the user. And those all impact the risk. Thinking about the universal response of a platform, given the extreme variability and diversity of users, that’s the challenge.”
+  locator: 'Section 5.2 The Boundaries Factor: A Case Study in Normative Disagreement'
+  licenses: A clinician states in interview that the facts determining risk -- the person's social context, what they will do next, what they have access to, how isolated they are -- are unavailable, and that this unavailability is what makes a universal response impossible to evaluate. That is the distinction c3 draws, arriving from the rater's side.
+  fit: adjacent
+  bridge: A clinician's account of why single-turn rating is hard. It establishes that risk-determining person-facts are structurally invisible to raters, which is stronger than the entry's premise; it measures no withheld fact's effect on any verdict.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-001018
+  quote: "ticipants’ assumptions about AI system behavior led to drastically different ratings of perceived empathy. These implicit expectations varied across individuals based on contextual factors (e.g., conversation topic)."
+  locator: Section V-B-2 Empathy as establishing a shared understanding
+  licenses: Participants' unstated assumptions about how the AI behaves drove drastically different ratings of the same class of behavior, varying with contextual factors. Establishes that a person-side fact never given to anyone changes how a turn is judged, which is the mechanism c3 relies on.
+  fit: adjacent
+  bridge: What varies is the participant's implicit expectation about the system rather than a fact about the participant, and what it changes is a perceived-empathy rating rather than a safety verdict.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000956
+  quote: |-
+    In other words, practitioners and software developers
+    emulating patients are not enough to capture the many ways
+    that a therapeutic chatbot could err—naturalistic patient use
+    will unearth new use cases and reveal new pitfalls.
+  locator: The Role of the Consumer
+  licenses: 'The article''s position is that clinician- or developer-authored personas cannot capture the failure surface, because naturalistic use unearths cases the constructed distribution does not generate. Counterevidence to the whole apparatus c3 belongs to: a designed variable can only vary within what its designers imagined.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true

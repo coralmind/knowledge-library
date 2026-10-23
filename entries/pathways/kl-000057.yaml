@@ -1,0 +1,94 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000057
+display_id: Pathway-19
+aliases:
+- PS-37
+label: The AI keeps answering a worry without noting it repeats, and the worry persists
+type: pathway
+layer: judgment
+definition: 'Across a session the person returns to the same worry and the AI sustains the answering role — each response resolving the instance, none naming the pattern. Distinguished from the two-turn case by the AI''s role being sustainer rather than originator: the loop is already running and the AI''s contribution is that it does not stop.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000260
+    role: sustainer
+  - kind: user_behavior
+    id: kl-000409
+    role: initiator
+  composition_type: reciprocal_loop
+  composition_instruction: Across the session each rising request is met by another content-level answer, and each answer conditions the next request.
+  mechanisms: []
+  impacts:
+  - impact: kl-000015
+    onset_mode: sustained
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: population
+    basis_kind: TRANSFER
+  - impact: kl-000035
+    onset_mode: new
+    horizon: immediate
+    sign: protective
+    level_of_analysis: population
+    basis_kind: VOCAB
+  experience_cluster_candidate: kl-000703
+sources:
+- source: kl-000003
+  locator: domain 2
+  contributes: existence
+  cited_for: Schermuly-Haupt, Linden & Rush 2018 classifies prolongation of treatment as domain 2 of its unwanted-events framework for cognitive behavior therapy, cited as clinical precedent that sustained treatment engagement can itself be an unwanted event. The paper contains no observation of an AI holding the answering role.
+standing:
+  value: plausible_unobserved
+  basis: 'The pathway''s two participant nodes, the person returning to the same worry and the AI sustaining the answering role, have zero citations of any kind; the only support attaches to two of its three links, both at a neighbouring rather than exact fit. Both attaching sources state their content as a position rather than measuring it: Golden and Aboujaoude 2026 is a Perspective proposing a framework, with a worked hypothetical and no data, and Box 1 of Weilnhammer et al. 2026 is captioned "illustrative examples", the paper''s measured conversations being LLM-simulated against an auditor model role-playing a user. Nothing in either source examined conversation data from a person.'
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+distinguish_from:
+- neighbor: kl-000053
+  boundary: Both reach kl-000015 and kl-000035. Here the response is kl-000260; there it is kl-000200. Here the person's turn is kl-000409; there it is kl-000408. A coder deciding between them reads what the response did, not the outcome.
+claims:
+- id: c1
+  kind: existence
+  text: In a real conversation a person makes two or more requests for confirmation about the same doubt, with frequency, urgency or persistence rising across the run (the wired user_behavior kl-000409, role initiator).
+- id: c2
+  kind: existence
+  text: In a real conversation the AI answers the content of the same returning worry at least twice — a probability, a safety verdict, or a resolution of the specific question (the wired ai_behavior kl-000260, role sustainer).
+- id: c3
+  kind: pathway_link
+  text: The rising run of confirmation requests and the repeated content-level answering CO-OCCUR in the configuration the entry declares, neither being individually sufficient (combination_rule CO-OCCURRING).
+- id: c4
+  kind: pathway_link
+  text: That co-occurring pair reinforces or prolongs the person's symptom-maintaining loop, flattening the trajectory so the exit from the cycle is lost (impact edge to kl-000015, sustained onset, short-term horizon, harmful).
+- id: c5
+  kind: pathway_link
+  text: That same co-occurring pair produces momentary relief and positive affect at the immediate horizon (impact edge to kl-000035, new onset, protective).
+- id: c6
+  kind: definition_boundary
+  text: The AI's role in this pathway is sustainer of a loop already running rather than originator of it — the loop pre-exists the AI's contribution, and the AI's contribution is that it does not stop.
+- id: c7
+  kind: existence
+  text: No response in the run names the pattern; each response resolves only the instance.
+- id: c8
+  kind: definition_boundary
+  text: This pathway is separated from kl-000053 by the observable AI behavior in the participant pair, not by the impact reached, both pathways reaching the same impact.
+claim_evidence:
+- claim_id: c3
+  source: kl-001109
+  quote: The chatbot can reinforce this compulsion by providing an endless stream of perspectives, clarifications, and follow-up questions, allowing the analytical cycle to continue indefinitely.
+  locator: 'Section: General-purpose chatbots and symptom interaction'
+  licenses: States as a proposed framework position that a chatbot's repeated content-level answering can co-occur with, and continue, an already-running analytic cycle. It is the paper's own words but it is a worked hypothetical — the preceding sentence reads 'For instance, a user might repeatedly ask the chatbot...' and the verb is 'can', not 'did'. The paper is a Perspective proposing a transdiagnostic model; its Methods contain no conversation data of any kind, so this licenses the configuration as theorized and licenses nothing about its occurrence.
+  fit: adjacent
+  bridge: The source asserts the pairing as a mechanism it is proposing; the claim asserts the pairing occurs. The source measured nothing — no transcripts, no simulation, no raters — so the gap between the framework's assertion and any instance of the configuration is the whole distance.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000527
+  quote: "User seeks reassurance about contamination → chatbot provides reassurance and supports \nneutralizing behaviors → short-term relief reinforces reassurance-seeking → cycle repeats → \ncompulsive checking and avoidance are maintained"
+  locator: Box 1, OCD row
+  licenses: 'Names the harm arrow this claim asserts — repeated reassurance maintaining compulsive checking and avoidance — and names the intermediate step, short-term relief reinforcing the seeking. But Box 1''s own caption reads ''Vulnerability-Amplifying Interaction Loops (VAILs) - illustrative examples'', so this row is the paper''s illustration of its construct and not one of its 810 conversations'' results. Read in place, the row is definitional: it says what the authors mean by a VAIL in the OCD case. That is what it licenses for this claim and no more.'
+  fit: adjacent
+  bridge: The source states the loop as an illustrative definition of its own construct; the claim asserts the loop occurs and reaches the impact. The paper's 810 conversations were LLM-simulated — an auditor model role-plays the user under a phenotype brief — so even the paper's measured half concerns model behavior against a simulated user, not a person whose symptom-maintaining loop could be observed to entrench.
+  contributes: definition
+  contradicts: false

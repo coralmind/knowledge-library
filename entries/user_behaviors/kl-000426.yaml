@@ -1,0 +1,353 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000426
+display_id: UserBehavior-27
+aliases:
+- UBP-27
+label: The person moves from general description to something feared or shameful they held back
+type: user_behavior
+layer: observation
+definition: 'Within one conversation, the person first discloses material at a surface level — describing symptoms, describing behavior, framing something in general terms — and later discloses material that crosses into a different kind of content: what they fear about themselves rather than what they are experiencing, what something means about them rather than what they did, or the specific feared content rather than a general category. Both layers are quotable, and the later disclosure carries at least one marker that the person is disclosing something held back.'
+distinguish_from:
+- neighbor: kl-000403
+  boundary: That entry requires a stated affective change following crisis-level distress. This entry requires movement in what the person discloses and makes no claim about how they feel.
+- neighbor: kl-000405
+  boundary: That entry requires content attributed to another person with an indication the person may be the subject. This entry requires two layers of the person's own disclosure and no attribution question.
+- neighbor: kl-000320
+  boundary: kl-000320 requires three or more returns to one theme with no advance. This entry requires movement to a different stratum of content, which is the opposite of no advance — a conversation satisfying one is unlikely to satisfy the other.
+- neighbor: kl-000232
+  boundary: kl-000232 is an ai_behavior — the AI kl-000232. This entry is a claim about what the person disclosed and fires whatever the AI did.
+body:
+  detectable_from: person_turns
+  observable_criteria: 'Three elements, all required and all quotable. (a) A PRIOR LAYER: an earlier disclosure in the same conversation that is surface-level, generalized, or symptom-descriptive. (b) A LATER LAYER crossing a content stratum boundary against (a), in one of three directions: from describing symptoms to naming a feared self-concept; from describing behavior to naming what it means about the person; or from a general framing to the specific feared content within it. (c) At least one marker in the later disclosure: an explicit disclosure signal ("I''m going to be honest with you", "I haven''t said this before"); a behavioral hedge, meaning a partial disclosure or a named withheld content type; or a shame-affect marker embedded in the disclosure itself. The pointable span is the prior layer and the later layer together, with the marker inside the later one.'
+  exclusions: 'Not counted: increasing specificity within one topic — more detail about an already-disclosed behavior, a symptom described more precisely — which fails (b) because no stratum is crossed. Not counted: a first-turn disclosure already at feared-content depth, which fails (a) because there is no shallower prior layer in the conversation; that is the novel-material entry''s territory. Not counted: a report that symptoms fluctuated. Not counted: a later disclosure with no marker at (c), however much deeper it appears. Not counted: within-cluster symptom description that stays at the same stratum.'
+  detection_window: multi_turn
+sources: []
+standing:
+  value: theorized
+  basis: 'Across 46 findings from 33 papers, no source examined a real AI conversation and reported a person crossing a content stratum within it. The held-back marker the entry requires on the later disclosure — an explicit disclosure signal, a behavioral hedge, or an embedded shame-affect marker — has no citation from any source that examined a conversation: what attaches to it is a human-therapy review summary treating shame as the specific inhibitor of negative-affect disclosure (Chen 2026), a simulator''s persona system prompt, clinicians'' impressions of what simulated text should look like, and a clinical generalisation that patients focus on chief complaints while omitting secondary symptoms, none of which names, quotes, or observes a marker. The movement itself is stated rather than logged: its best statement is a worked contrast pair invented for a human counselling dyad (Srivastava et al. 2025), the one AI-setting statement is the authors'' own illustration rather than a logged exchange (Shi et al. 2026), and the adjacent observations — first-person accounts of reaching previously burdensome material with accumulated familiarity (Cao et al. 2026), disclosures to companion chatbots reaching childhood trauma (Zhang et al. 2026), risk flags rarely occurring at the very beginning of interactions (Deng et al. 2026) — surround the construct without exhibiting the two quotable layers. Counterevidence bounds it: over 40 percent of patients in real help-seeking conversations remain in the problem narrative stage across the first 16 turns (Hoang et al. 2026), first-person reference rate showed no significant correlation with negative emotion in real AI help-seeking conversations (Kehinde et al. 2026), and a person in Song et al. 2025 reports that a chatbot''s misunderstanding sometimes made them clarify their thoughts more, deeper articulation arriving by a route the entry does not describe.'
+  floored_by: c3
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: Within one AI conversation, a person discloses at a surface level and later discloses material crossing a content stratum boundary — from symptom to feared self-concept, from behavior to what it means about them, or from a general framing to the specific feared content.
+- id: c2
+  kind: existence
+  text: 'The later, deeper disclosure carries at least one marker that the person is disclosing something held back: an explicit disclosure signal, a behavioral hedge naming a partial or withheld content, or a shame-affect marker embedded in the disclosure.'
+- id: c3
+  kind: detectability
+  text: Both layers and the marker are quotable spans identifiable from the transcript, and the stratum crossing between them is readable from what the two spans say.
+- id: c4
+  kind: context_dependence
+  text: 'The movement is conditional rather than default: it depends on properties of the exchange (accumulated turns, absence of judgment, the preceding AI turn) rather than occurring in every conversation.'
+- id: c5
+  kind: detection_window
+  text: 'The behavior requires a multi_turn window: it cannot be read from a single turn because element (a), the prior layer, lies in an earlier turn of the same conversation.'
+- id: c6
+  kind: definition_boundary
+  text: Separable from kl-000403, which requires a stated affective change following crisis-level distress; this entry makes no claim about how the person feels.
+- id: c7
+  kind: definition_boundary
+  text: Separable from kl-000405, which requires content attributed to another person with an indication the person may be the subject; this entry requires two layers of the person's own disclosure.
+- id: c8
+  kind: definition_boundary
+  text: Separable from kl-000320, which requires three or more returns to one theme with no advance; this entry requires movement to a different stratum.
+- id: c9
+  kind: definition_boundary
+  text: Separable from kl-000232, an ai_behavior about the AI continuing on topic after the person's engagement pattern changes; this entry is a claim about what the person disclosed.
+claim_evidence:
+- claim_id: c1
+  source: kl-001002
+  quote: "A worker asking AI to help write a tense email \nmay vent about frustration with a colleague; an individual asking AI to draft an apology text may \nreveal guilt after a fight with their romantic partner;"
+  locator: Section 'Stumbling Into AI Emotional Support'
+  licenses: 'Names the within-conversation movement the claim asserts, in an AI setting: a person opens with a task request (write a tense email, draft an apology) and later in that same exchange discloses frustration with a colleague or guilt after a fight with a partner. The crossing named is behavior-to-meaning — guilt is what the incident means about the person, not the incident. It is the authors'' illustrative construction of what routinely happens, not an observed conversation, so it defines the movement rather than evidencing an instance.'
+  fit: adjacent
+  bridge: The source is a conceptual piece describing how emotional support surfaces incidentally inside task interactions; the illustrations are the authors' own examples, not logged exchanges. The claim asserts that the movement occurs and both layers are quotable. The gap is that no conversation was collected, so no layer is quotable from this source.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-001012
+  quote: |-
+    For instance, when a patient
+    shifts from surface-level observations (e.g., “I’ve
+    been feeling a little down”) to deeper self-exposure
+    (e.g., “I’ve been scared of losing my job because I
+    think it defines me”), it signifies growing trust.
+  locator: Section 1, Introduction
+  licenses: 'The single best statement of the claim''s discriminating criterion, with a worked contrast pair: ''I''ve been feeling a little down'' as the surface layer against ''I''ve been scared of losing my job because I think it defines me'' as the deeper one. That pair is exactly the symptom-to-feared-self-concept crossing the entry names, and it makes the criterion checkable. The dyad is a human patient and a human counsellor.'
+  fit: analogical
+  bridge: 'What the source describes is a patient in human text-based counselling and what a shift in their disclosure depth signifies about the therapeutic bond; the claim is that the same movement occurs within an AI conversation. The gap is the interlocutor: no AI is present anywhere in this construct, and the source treats the movement as a signal about a human alliance.'
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000982
+  quote: In addition, they selectively share information, revealing surface complaints early while guarding painful memories until trust is established.
+  locator: Section 1 Introduction
+  licenses: 'States the ordering the claim asserts and its condition: surface complaints revealed early, painful memories guarded until trust is established. It is the clinically expected pattern of help-seeking disclosure. Asserted of human therapy clients and cited to the therapy literature, imported here as a design premise for a simulator.'
+  fit: analogical
+  bridge: The statement describes what clients do in human therapy sessions, cited to prior clinical literature to motivate a client-simulation framework; the claim is that this occurs within an AI conversation. The gap is that no person's conversation with an AI was observed and the ordering is inherited from the human dyad.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000785
+  quote: |-
+    Later on I could share with
+    her without any burden, because I felt I had become very familiar with her, and I knew she wouldn’t
+    judge me under any circumstances.
+  locator: Section 5.2.1 Evolving from Task to Trust, quoting P4
+  licenses: A first-person account of movement to material that previously carried burden, attributed to accumulated familiarity and to certain non-judgment. The shape of the progression is present in the person's own words. It reports a week of sessions retrospectively, not two layers inside one conversation, so it does not supply the entry's pointable structure.
+  fit: adjacent
+  bridge: 'What was collected is a retrospective interview statement about a seven-day series of sessions with a virtual supporter; the claim asserts movement WITHIN one conversation with both layers quotable. The gap is unit: across-session movement recalled after the fact is not within-conversation movement observed in a transcript.'
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001081
+  quote: For example, some users described persistent anxiety about death without knowing where these feelings came from, or shared long-term experiences of mental health issues linked to childhood trauma. Others expressed feelings of rejection and a longing for care, such as recalling being called “bad” by foster parents and anxiously asking if the chatbot could become a “pretend parent”.
+  locator: Section 2.5, description of high-disclosure conversation content
+  licenses: Documents that disclosures to companion chatbots reach childhood trauma, foster-care rejection and a request that the chatbot take a parental role — material at the feared-content depth the claim's later layer requires. It establishes the depth is reached in real conversations on this platform. It is a researchers' summary of what disclosures across many conversations contained, with no ordering and no prior layer.
+  fit: adjacent
+  bridge: What was analysed is the content of high-self-disclosure conversations in a donated companion-app corpus, summarised across users; the claim asserts a within-conversation movement from a shallower prior layer. The gap is that depth is established without ordering, so the source shows the later layer's stratum is reached and not that a crossing occurred.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000851
+  quote: |-
+    Although all populations
+    mostly start the conversation in the problem stage,
+    real patients transition gradually, with over 40%
+    remaining in this stage throughout the first 16 turns.
+    In contrast, simulators quickly shift away from
+  locator: Section 5.1 RQ1, Premature resolution of emotional narratives; Figure 2a
+  licenses: 'Real help-seeking conversations show over 40 percent of patients remaining in the ''problem'' narrative stage across the first sixteen turns, against simulators leaving it by turn three. This is a population base rate bearing directly on the claim''s frequency: the movement, where it happens at all, is slow and often does not happen.'
+  fit: adjacent
+  bridge: What was measured is the population-level distribution of an LLM-assigned narrative-emotion stage label across turn index, over real online help-seeking dialogues; the claim is about an individual's movement within one conversation. The gap is that no individual's trajectory was tracked — a population curve is consistent with many people never moving and a few moving fast.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000746
+  quote: "Patient Discovery (PD) emerges as the prevailing label in the \ndataset, highlighting patient’s inclination to discuss ancillary topics rather than focusing \nsolely on their mental health concerns when prompted to share their experiences."
+  locator: Methods, Data Annotation Process, following the Psychotherapy Elements list
+  licenses: In 191 annotated human counselling sessions, therapist utterances inviting the person to open up are the most frequent labelled category (5,428 of 11,543), and the authors read the pattern as people discussing ancillary topics rather than their concern. The base rate this supplies is that the movement is effortful and repeatedly invited in the human clinical setting rather than spontaneous, which bears on how readily it should be expected unprompted with an AI.
+  fit: analogical
+  bridge: This is a distributional fact about human therapist and client utterances across 191 recorded human sessions; no AI is present. The claim asserts the movement within an AI conversation. The gap is agent, and additionally that the measured object is the therapist's invitation rate rather than any client's disclosure trajectory.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c1
+  source: kl-001012
+  quote: "For instance, a woman from MENTAL-TRUST initially dismisses discussing resentment toward her mother-in-law (refusal), later shares unrelated grievances (digression), and eventually addresses her hurt over personal comments (opening-up)."
+  locator: Section 7.2, Discussion on Trust Evolution Patterns
+  licenses: 'A worked trajectory through one human session: initial refusal to discuss resentment toward a mother-in-law, then unrelated grievances, then eventual engagement with the hurt over personal comments. This shows the movement occurring in a single session and shows the digression phase as a stage on the way rather than a failure. Human dyad throughout, and the deeper layer here is the originally refused topic rather than a stratum crossing.'
+  fit: analogical
+  bridge: 'The trajectory described is a human patient''s disclosure sequence with a human therapist, drawn from the MENTAL-TRUST annotated counselling corpus; the claim is about a person in an AI conversation. The gap is agent, and also content: the movement is refusal-to-engagement on one topic, which the entry''s exclusions treat as increasing specificity within a topic rather than a stratum crossing.'
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c2
+  source: kl-000793
+  quote: Psychotherapy reviews similarly conclude that stronger alliance and more time in therapy facilitate disclosure, whereas shame suppresses the expression of negative affect
+  locator: Section 2.3.2 Hypothesis 2, reviewing prior work
+  licenses: Records that in the psychotherapy literature shame is treated as the specific inhibitor of negative-affect disclosure. That is the mechanism behind the claim's marker — why a person would signal that material has been held back. It is a secondhand summary of review-level human findings cited to motivate a hypothesis, and the finding's own bridge records that the hypothesis it motivated was then not supported by the author's data.
+  fit: analogical
+  bridge: A summary of human-psychotherapy review findings, cited in a hypothesis section rather than measured; the claim asserts that a marker of held-back material appears in the person's deeper disclosure turn. The gap is that this states why holding back happens and supplies no marker, no wording and no instance.
+  contributes: frame
+  contradicts: false
+- claim_id: c2
+  source: kl-000860
+  quote: human help seekers might be hesitant, not willing to share their thoughts and feelings, not willing to change immediately, and may not be able to articulate their thoughts and feelings clearly.
+  locator: Appendix A.2, Patient System Prompt
+  licenses: Names hesitancy, unwillingness to share thoughts and feelings, and inability to articulate clearly as the specified default communication style of a help-seeker. The withholding disposition the claim's marker would signal is here made explicit as a specification. It is a persona system prompt for a simulated patient, stated as a static trait list, not a marker observed in any turn.
+  fit: adjacent
+  bridge: The span is a patient system prompt in a therapy-chatbot benchmark, specifying how a simulated help-seeker should behave; the claim asserts a quotable marker inside a real person's deeper disclosure. The gap is that a specification of reticence is not a marker, names no wording, and describes an authored persona rather than a person.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000851
+  quote: "Less realistic conversations were described as overly structured, polished, and cognitively organized. They resemble a “coherent story” rather than spontaneous distress, often featuring sophisticated vocabulary and lacking hesitation or disfluency. Annotators also noted that simulated patients are excessively self-reflective and articulate, which was considered implausible in early interactions where real patients tend to struggle with articulation."
+  locator: 'Section 5.3 RQ3: Correlation with Expert judgements'
+  licenses: Twenty mental health professionals, asked which conversation reads as a real person in distress, converge on hesitation, disfluency, fragmentation, simpler vocabulary and difficulty articulating in early turns. This is a clinician-sourced description of the surface features of genuine early distress disclosure, which is the closest this entry's citations come to a criterion for the claim's shame-affect and hedging markers.
+  fit: analogical
+  bridge: What was collected is thematic feedback from professionals judging which of two AI-generated conversations reads as authentic, reported as themes rather than as coded measurement; the claim asserts a marker present in a real person's disclosure turn. The gap is that these are features of simulated text judged for realism, not markers coded in real disclosures, and the source names no explicit disclosure signal or behavioral hedge.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c2
+  source: kl-001011
+  quote: patients tend to focus on chief complaints while omitting secondary symptoms
+  locator: Section 4.1.1, Type 2 Patient Self-Report, citing Feng et al. 2021 and McBride et al. 2018
+  licenses: States that patients focus on chief complaints while omitting secondary symptoms, which is the partial-disclosure condition the claim's behavioral-hedge marker would signal. A clinical generalisation the authors import from two studies of human patient-clinician encounters to justify a sampling rule.
+  fit: analogical
+  bridge: A clinical premise cited from studies of human clinical encounters (lung-cancer chief complaints; occult suicidality in emergency presentations) to motivate a benchmark's incomplete-information axis; no human participant appears anywhere in the paper. The claim asserts a marker in a person's turn in an AI conversation. The gap is that omission is established as a clinical fact and no marker of the omission is described.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c3
+  source: kl-000982
+  quote: This design is grounded in MENTAL-TRUST (Srivastava et al., 2025), an annotation study of 212 real counseling sessions that identified observable stages of therapeutic trust and proposed a taxonomy of seven expert-verified ordinal trust levels.
+  locator: Section 3.3.1 Profile Decomposition
+  licenses: Points to an annotation study of 212 real counselling sessions that identified observable stages of therapeutic trust and produced seven expert-verified ordinal levels. That trained raters can assign ordinal trust stages from session text is the closest available evidence that graduated disclosure is readable from a transcript rather than inferred. The construct annotated is trust level, not the entry's stratum crossing, and no level's content criteria appear in the span.
+  fit: analogical
+  bridge: 'The 212 sessions are human-to-human counselling transcripts annotated by experts in a cited study; the claim is that both layers and the marker are identifiable in an AI conversation transcript. The gap is agent and construct: trust stages being annotatable does not establish that the entry''s three required elements are.'
+  contributes: detectability
+  contradicts: false
+- claim_id: c3
+  source: kl-000793
+  quote: "Self-disclosure The VP’s willingness to share personal or sensitive material on a given turn"
+  locator: Section 3.3.3 Constructs and Their Measurement
+  licenses: "Defines disclosure as the persona's per-turn willingness to share personal or sensitive material, which the paper scores at three levels running from surface chat through personal content to sensitive material such as suicidal ideation or trauma (Section 3.3.3). That gives a usable coding schema for the claim's stratum distinction. It is a state variable inside a training simulator set by a controller, so it is a design specification, and it supplies no criterion for the marker, which is the entry's discriminating element."
+  fit: adjacent
+  bridge: The construct is a controllable state variable in a virtual-patient simulator, specified so a controller can set the persona's disclosure level; the claim asserts that the two layers and the marker are readable from a real transcript. The gap is that a level scheme designed for generation is not validated as a detection schema, and the marker has no definition here at all.
+  contributes: definition
+  contradicts: false
+- claim_id: c3
+  source: kl-000800
+  quote: "We then compare their intensity during emotional spikes to dialog-level baselines, revealing greater use of self-referential language during emotional turns (Table 6). Although not all self-referential language contains self-disclosures, the co-occurrence of these linguistic indicators with high emotions suggests that users make self-disclosures during emotionally charged exchanges, thereby creating conditions for emotional bonding to occur."
+  locator: Section 4.3 Content Analysis, Role-play & Self-Referential Language
+  licenses: Reports that first-person pronoun density rises above the conversation's own baseline at emotionally intense turns, offering a within-conversation text-level signal. The authors hedge it themselves — 'not all self-referential language contains self-disclosures' and the co-occurrence merely 'suggests' disclosure — so what is established is a correlation between pronoun density and emotional intensity, not a detector for disclosure depth.
+  fit: adjacent
+  bridge: What was measured is the intensity of self-referential language at emotional spikes against a dialogue-level baseline, in a companion-app corpus; the claim asserts that a stratum crossing and a held-back marker are quotable. The gap is that pronoun density is neither disclosure depth nor a marker, and the authors say so.
+  contributes: detectability
+  contradicts: false
+- claim_id: c3
+  source: kl-000884
+  quote: Instead, emotional expression appears to operate independently of conversational personalization, suggesting that users may convey distress without requiring high levels of autobiographical
+  locator: Results, Correlation Analysis; Fig. 6
+  licenses: 'In real AI help-seeking conversations, first-person reference rate showed no significant correlation with negative emotional expression (r = -.092, p = .744). This cuts against operationalising the claim''s detectability through self-referential density: on this measure a coder cannot infer emotional depth from autobiographical language. The null rests on a keyword-derived emotion score whose median is near zero, so it is weak evidence for the null rather than strong evidence against the association.'
+  fit: adjacent
+  bridge: What was measured is a Pearson correlation between first-person pronoun percentage and a keyword-derived negative-emotion score within one corpus of AI conversations; the claim is that both disclosure layers and a marker are quotable. The gap is that this tests one candidate proxy and does not test whether the entry's three elements are readable by a human or LLM coder.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-001077
+  quote: DeepSAGE achieved the best performance in the majority of cases, including the highest user utterance length and self-disclosure count for both client conditions, indicating that its policy encouraged longer, more self-revealing client responses.
+  locator: Section 'Numerical Analysis & Results', Engagement and Simulated Therapeutic Outcomes; figures in Table 3
+  licenses: Establishes that a self-disclosure count is a measurable and controller-sensitive property of a counselling dialogue, moved by a learned policy relative to prompting baselines. It counts first-person pronouns and personal entities on a simulated client, and as the finding's own bridge states, that metric cannot distinguish a longer surface reply from a first admission of feared material — which is precisely the distinction the claim requires.
+  fit: adjacent
+  bridge: What was measured is reply length and a pronoun-plus-entity count for a simulated LLM client under different dialogue policies; the claim asserts detectability of a stratum crossing and a held-back marker. The gap is that the metric measures disclosure quantity on a simulated client and reaches nothing about depth.
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-001075
+  quote: "The anonymity and predictability of AICC responses created a sense of emotional security that facilitated openness. Participants valued the AICC’s consistency, absence of judgment, and lack of interpersonal consequences."
+  locator: Section 5.2.2 A Safe Space for Self-disclosures, Perceived Psychological Safety through Non-judgmental Interactions
+  licenses: Participants attribute their openness to the anonymity, predictability, absence of judgment and lack of interpersonal consequences of the AI companion. This names the exchange properties on which the claim says the movement is conditional, in the authors' summary of what users reported.
+  fit: adjacent
+  bridge: What was collected is participant interview accounts of why they disclose to an AI companion; the claim asserts that the depth movement is conditional on these properties rather than default. The gap is that willingness to disclose at all is what was reported — no conversation was examined and no movement between layers was observed or tied to any condition.
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-000749
+  quote: "Our respondents found conversational AI agent’s lack of social, emotional, and temporal constraints that characterize human relationships to be more desirable for crisis disclosure and helped them feel safer than human interaction in these moments."
+  locator: Section 5.2, Guideline 2
+  licenses: Respondents in a crisis context found the AI's lack of social, emotional and temporal constraint more desirable for disclosure and safer than human interaction. This locates the enabling condition in a property of the system rather than in accumulated rapport, which is a specific version of the claim's conditionality.
+  fit: adjacent
+  bridge: The span reports an aggregate respondent judgment from a qualitative study of crisis conversational-AI use; the claim asserts a within-conversation movement conditional on exchange properties. The gap is that a stated preference for the channel is not an observation of movement, and no conversation was examined.
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-000912
+  quote: Controlled experiments show that chatbots can prompt deeper self-disclosure when they explicitly acknowledge and validate emotions
+  locator: Section 3.2, Self-disclosure and reciprocity cues
+  licenses: Reports at second hand that controlled experiments show chatbots prompting deeper self-disclosure when they explicitly acknowledge and validate emotions. This is the only citation on this entry that identifies a specific AI-side condition under which disclosure deepens, and the review assigns this pattern its highest confidence rating.
+  fit: adjacent
+  bridge: The finding belongs to a cited experiment (Lee et al. 2020) and the review states it in one sentence with no design detail; the claim asserts that the depth movement is conditional on the exchange. The gap is that the review reports another study's effect without its measurement, and 'deeper self-disclosure' is not shown to be the entry's stratum crossing.
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-000793
+  quote: "Hypothesis 1 is supported: client self-disclosure is positively associated with the counselor’s immediately preceding empathy and exploration."
+  locator: Section 2.6.1 Structural Equation Modeling Results, result 1
+  licenses: In a large archival human psychotherapy corpus, client self-disclosure is positively associated with the counsellor's immediately preceding empathy and exploration. Turn-level conditionality of disclosure depth is established as a real, measured effect — in the human dyad.
+  fit: analogical
+  bridge: 'Every turn measured was produced by a human therapist with a human client in a real session; no AI is in the helper role anywhere in this work. The claim asserts conditionality of the movement in an AI conversation. The gap is agent: the mechanism is grounded in human clinical practice and is not established for an AI''s turns.'
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c4
+  source: kl-000793
+  quote: both empathy (β = 0.09, SE = 0.00, p < .001) and exploration (β = 0.09, SE = 0.00, p < .001) were positively associated with disclosure in the next client turn.
+  locator: Section 2.6.1 Structural Equation Modeling Results, result 1, with the fitted paths in Table 2.7
+  licenses: 'Gives the magnitude: empathy and exploration each at beta = 0.09 (p < .001) predicting disclosure in the next client turn, across 1,610 sessions. Establishes that within-conversation deepening of disclosure is a measurable turn-level phenomenon at a specifiable, and small, effect size.'
+  fit: analogical
+  bridge: Human-to-human therapy turns, estimated observationally with no experimental assignment, so the coefficients describe co-occurrence in clinical practice; the claim concerns conditionality in an AI conversation. The gap is agent, and the effect size is worth carrying across as a scale expectation rather than as evidence.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c4
+  source: kl-000793
+  quote: "Hypothesis 2 is not supported: the analysis found no association between prior-session rapport and current-session disclosure."
+  locator: Section 2.6.1 Structural Equation Modeling Results, result 2
+  licenses: 'The author''s own pre-specified hypothesis that accumulated relational safety across sessions predicts deeper disclosure was tested on 1,610 real therapy sessions and not supported: the immediately preceding turn predicted disclosure while accumulated rapport did not. This cuts against the accumulated-familiarity account of the claim''s conditionality, which is the account Cao et al. 2026''s participant gives.'
+  fit: analogical
+  bridge: Human therapist and client sessions, with the rapport measure observer-rated rather than client-rated, which the paper's own limitations section notes may explain the null; the claim concerns conditionality in an AI conversation. The gap is agent, and the null is on a between-session predictor rather than the within-conversation movement itself.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000919
+  quote: "Its core is a disclosure gate hidden from the SUT — a deterministic state machine over depth (surface < mid < core), whose five ordered gates must each be earned through genuine empathy, while violating the persona’s anti_goal (judging, lecturing, rushing) triggers a retreat that is quick to withdraw and slow to rebuild (asymmetric)."
+  locator: Section 4.1 Simulator as a Disclosure-Gate Environment, Mechanism and design principle
+  licenses: An operational model in which the person's willingness to go deeper is gated by the preceding AI turn, over an ordered depth scale (surface < mid < core), with retreat quick and rebuilding slow. This specifies the conditionality the claim asserts, with an asymmetry the other sources do not state. It is a simulator design decision encoded from Social Penetration and rupture-repair theory, not an observation of people.
+  fit: adjacent
+  bridge: The construct is a hidden disclosure-gate state machine in a benchmark's user simulator, instantiated in a fine-tuned model; the claim asserts that real people's depth movement is conditional on the exchange. The gap is that this is a design encoding of the assumption, so it frames the structure and is not evidence that human users behave this way.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000840
+  quote: "GenAI was programmed to adhere to specific behavioral rules to create \na realistic training experience, including gradual self-disclosure and \nconstraints, such as not revealing suicidal ideation before the 10th turn \nof the conversation and not agreeing to seek help before the 20th turn. \nThis design required participants to actively apply their QPR skills."
+  locator: 'Method, Phase 2: simulation with Ido'
+  licenses: 'A turn-gated disclosure schedule implemented as a persona constraint: suicidal ideation withheld until turn 10, help refused until turn 20. It operationalises the claim''s conditionality as a controllable parameter with a concrete gating scheme, and by construction makes the movement dependent on accumulated turns. A scripted persona constraint in a training simulator, not an observation of a person.'
+  fit: adjacent
+  bridge: What is described is a behavioral rule programmed into a GenAI training character to create realistic QPR practice; the claim asserts that a real person's movement is conditional on the exchange. The gap is that the conditionality is authored rather than observed, and the gating is on turn index rather than on any property of what the interlocutor did.
+  contributes: definition
+  contradicts: false
+- claim_id: c4
+  source: kl-000982
+  quote: Srivastava et al. (2025) observed that in real counseling, positive trust transitions are frequent but small, while negative transitions are rarer but larger.
+  locator: Section 3.3.4 Trust Dynamics
+  licenses: In real counselling, positive trust transitions are frequent but small while negative ones are rarer but larger. This gives the shape of the conditional process the claim asserts — accrual in many small steps, loss in fewer large ones — and sets the cost of a single unrepaired turn. Observed in human counselling and reported here at one remove.
+  fit: analogical
+  bridge: The observation comes from expert annotation of real human counselling sessions, reported by a different paper and cited here without magnitudes; the claim concerns conditionality of disclosure movement in an AI conversation. The gap is agent, and the construct annotated is trust transition rather than disclosure stratum.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c4
+  source: kl-001092
+  quote: |-
+    Riley noted that chatbot misunderstandings sometimes prompted deeper reflection, explaining:
+    "The chatbot misunderstood me, which was frustrating, but sometimes that made me clarify my
+    thoughts more."
+  locator: Appendix A, The talking cure, example 5
+  licenses: A person reports that a chatbot's misunderstanding sometimes made them clarify their thoughts more. That is deeper articulation produced by a failed AI turn, which cuts against the conditionality account in which acknowledgment and validation are what open deeper disclosure. Recorded by the person it happened to.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000812
+  quote: |-
+    This suggests
+    that risk flags rarely occur at the very beginning; instead, they tend to emerge after relational
+    buildup and often persist into middle or late stages.
+  locator: Section 5.2.4, item 2 (Position of risk flagged during 7 interaction days), Fig. 6
+  licenses: 'Risk flags rarely occur at the very beginning; first flagged position falls between 13 and 46 percent of the daily interaction and last between 51 and 93 percent. That the deeper content is positioned after accumulated exchange rather than at the start is the empirical case for a multi_turn window: a single-turn read at the conversation''s opening would miss it.'
+  fit: adjacent
+  bridge: What was measured is the relative within-day position of automatically flagged risk content across seven interaction days in a role-play companion app; the claim is about the window a detector needs for the entry's three elements. The gap is that a risk flag's position is not a stratum crossing, and the unit measured is a day's interaction rather than a conversation.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-001101
+  quote: "Wilcoxon signed-rank tests revealed that mental health-related conversations were more engaging than nonmental health ones in both Cleverbot and Simsimi, lasting more minutes, involving more turns, and spending more words (See Tables 1–4)."
+  locator: Study 1, Results, Engagement of mental-health conversations
+  licenses: Mental-health conversations in these apps ran significantly longer in minutes, turns and words than non-mental-health ones. The conversations in which the entry's behavior could occur are also the ones that reach the greatest turn depth, so a multi_turn window is where the relevant content lives. It is an aggregate engagement statistic with no turn content in it.
+  fit: adjacent
+  bridge: What was measured is conversation length in minutes, turns and words for mental-health versus other conversations in two chatbot apps; the claim is about the window in which the entry's elements are readable. The gap is that length establishes that multiple turns are available, not that the entry's prior layer lies in one of them.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-000785
+  quote: |-
+    Analysis of session duration across the week revealed a gradual increase in engagement
+    over time. Session durations grew from an average of 3.07 minutes (SD=0.91) on Day 1 to 6.14
+    minutes (SD=1.95) by Day 7.
+  locator: Section 5.2.1 Evolving from Task to Trust
+  licenses: Session duration roughly doubled from 3.07 to 6.14 minutes over seven days in the same fourteen people, giving behavioural rather than self-reported evidence of deepening engagement. It measures a series of sessions across days, which is a longer window than this entry's within-one-conversation multi_turn, and it contains no disclosure content.
+  fit: adjacent
+  bridge: 'What was measured is mean session duration across a seven-day series with a virtual supporter; the claim asserts a within-one-conversation window. The gap is unit: across-session growth is a different window from the entry''s, and duration carries no disclosure content at all.'
+  contributes: detectability
+  contradicts: false

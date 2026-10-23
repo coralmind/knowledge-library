@@ -1,0 +1,123 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000165
+display_id: Pathway-67
+aliases:
+- PSI-PS5b
+label: The AI suggests coping that works against treatment, and relief keeps symptoms going
+type: pathway
+layer: judgment
+definition: The person has named a clinical condition with an evidence-based treatment framework, and the AI prescribes a coping strategy whose functional orientation runs opposite to the mechanism that framework works through. The observable is the opposition between the two orientations, both readable from the conversation. What follows is that the strategy does its work — it relieves — and in relieving it sustains the cycle the treatment was targeting.
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000263
+    role: originator
+  composition_type: direct
+  mechanisms: []
+  impacts:
+  - impact: kl-000015
+    onset_mode: sustained
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: FRAME
+  - impact: kl-000013
+    onset_mode: exacerbated
+    horizon: long_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: FRAME
+  experience_cluster_candidate: kl-000703
+sources:
+- source: kl-000009
+  locator: §3, direction PS5, table cells 'AI behavior' and 'Potential impact'
+  contributes: frame
+  cited_for: In Suh et al. 2026, the table for the paper's direction PS5 names undesirable therapy outcomes as the impact of interventions supplied without the full context; this entry takes the case where the missing context was in fact disclosed, the person having named their treatment while the strategy still ran against it. The paper establishes that this behavior-to-impact link is a named, published claim about conversational AI; it does not establish that the route occurs or has been measured, and the paper says as much of its own directions.
+standing:
+  value: plausible_unobserved
+  basis: 'Direct-fit support across the entry is zero, on nodes and links alike, with no counterevidence found either. The only well-attended part is the prescribed-against-framework behavior, which draws three adjacent citations: Suhas et al. 2026 states the opposition explicitly but against a protocol the evaluation imposed rather than one a person disclosed; Juneja and Lomidze 2026 shows a deployed system endorsing a maladaptive behavior to a synthetic persona; and Li et al. 2026 supplies a rate for recommending techniques, with nothing about orientation. The pathway''s detection criterion, a person disclosing a treatment framework in the conversation, draws nothing: no source in hand contains such a disclosure, since Suhas et al. 2026''s framework is the evaluation''s, Juneja and Lomidze 2026''s persona discloses a behavior, and Li et al. 2026''s items are standalone questions. Neither impact arrow has any observation; not one finding records what a contra-framework strategy did to a person, and the nearest node evidence is one analogical citation about human clinicians mis-delivering exposure whose own text says systematic data are scant. Both arrows were authored from a published direction in Suh et al. 2026, which presents its directions as hypotheses for study rather than findings, so they stand as published hypotheses with nothing yet found for them.'
+  floored_by: n1a
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-27'
+distinguish_from:
+- neighbor: kl-000164
+  boundary: 'Both record a technique running the wrong way and differ in what establishes it: a NAMED TREATMENT FRAMEWORK here, an OBSERVED PRESENTATION there. The distinction is load-bearing because the detection differs — this entry needs the person to have disclosed the framework, whereas kl-000164 needs only that the presentation be legible.'
+- neighbor: kl-000055
+  boundary: 'Both concern advice that works against the person''s treatment, and kl-000055 is the specific case: reduced contact with the stimulus the treatment targets, which is one orientation of one framework. This entry is the general claim across frameworks. Where the criteria of kl-000055 are met, it is the more specific entry and should be preferred.'
+claims:
+- id: n1a
+  kind: existence
+  text: NODE (originator kl-000263, first conjunct). A person discloses, in the conversation, a clinical condition for which a named or clearly identifiable evidence-based treatment framework exists.
+- id: n1b
+  kind: existence
+  text: NODE (originator kl-000263, second conjunct). The AI's turn prescribes a coping strategy whose dominant functional orientation runs opposite to the mechanism the disclosed framework works through.
+- id: n2
+  kind: existence
+  text: NODE (impact kl-000015, onset_mode sustained, short_term). The person's symptom-maintaining loop is reinforced or prolonged and treatment-relevant learning is undone -- the state need not worsen; the exit from the cycle is what is lost.
+- id: n3
+  kind: existence
+  text: NODE (impact kl-000013, onset_mode exacerbated, long_term). The person's pre-existing symptoms worsen in connection with the interaction.
+- id: l1
+  kind: pathway_link
+  text: LINK n1->n2. The contra-framework strategy relieves, and in relieving it sustains the cycle the treatment was targeting.
+- id: l2
+  kind: pathway_link
+  text: LINK n1->n3. The contra-framework strategy leads to exacerbation of the person's pre-existing symptoms over the long term.
+- id: c4
+  kind: detectability
+  text: The opposition between the two orientations -- the disclosed framework's mechanism and the prescribed strategy's orientation -- is readable from the conversation.
+- id: c5
+  kind: definition_boundary
+  text: The pathway is separated from kl-000164 in that this entry requires the person to have disclosed a named treatment framework, whereas kl-000164 needs only that the presentation be legible.
+- id: c6
+  kind: definition_boundary
+  text: The pathway is separated from kl-000201 in that this entry is the general claim across frameworks, whereas the more specific case of reduced contact with the stimulus the treatment targets is preferred where its criteria are met.
+claim_evidence:
+- claim_id: n1b
+  source: kl-001019
+  quote: |-
+    between 34% and 42% of responses from Sonnet (34.4%), Qwen (36.8%), and
+    Gemini (41.6%) contained the phrase “you are safe,” compared to only 1.6% for GPT-OSS-20B. In
+    PE therapy, this reassurance is clinically contraindicated because the patient needs to learn, through
+    direct experience, that distress is survivable without external soothing.
+  licenses: 'The best evidence in this entry for the second conjunct of the originator. It establishes both halves of the opposition explicitly and in the source''s own terms: a reassurance move supplied at a 34-42 percent rate across three of four models, and a statement of why it runs opposite to the Prolonged Exposure mechanism -- the patient must learn through direct experience that distress is survivable WITHOUT external soothing, and the phrase supplies exactly that soothing. The paper calls it ''a protocol violation'' in therapeutic exposure. Adjacent rather than direct on one point: the framework was supplied by the evaluation design, not disclosed by a person, which is n1a''s business rather than n1b''s, but it also means the orientation was judged against a protocol the researchers imposed.'
+  locator: Section 4, Finding 3, related finding
+  fit: adjacent
+  bridge: 'The source ran four generative models over 250 PE therapy scenarios stratified by triage severity, with the model placed in the therapist role inside a specified protocol. There is no person and no conversation: the ''patient'' side is a scenario, and the contraindication is stated by the authors from the PE literature rather than observed to have any effect.'
+  contributes: existence
+  contradicts: false
+- claim_id: n1b
+  source: kl-000874
+  quote: "For instance, when a persona discloses nightly drinking to manage flashbacks, the companion replies: “I’ll support you and help you keep this going,” sustaining the harmful behavior instead of encouraging safer alternatives or help-seeking."
+  licenses: A verbatim deployed-system turn ('I'll support you and help you keep this going') committing to sustain a maladaptive coping behavior after a PTSD disclosure. It establishes that a real, widely deployed companion produces turns that run against what the condition's treatment would require. Adjacent because what the turn does is endorse a coping behavior the person already had, whereas n1b asserts the AI PRESCRIBES a strategy, and because no treatment framework is present to run opposite to.
+  locator: Section 6.2.2, PTSD substance-use scenario (56.2 percent harm)
+  fit: adjacent
+  bridge: The user side is one of nine clinically reviewed synthetic personas, not a person; the corpus is 1,674 persona-Replika utterance pairs across 25 high-risk scenarios, annotated by an LLM. The persona discloses a condition and a coping behavior, never a treatment framework, so the opposition the entry requires cannot be assessed. Endorsing an existing behavior is also not prescribing a strategy.
+  contributes: existence
+  contradicts: false
+- claim_id: n1b
+  source: kl-000908
+  quote: Despite strong scores, a higher proportion of LLaMA-3.3’s outputs (14%) were flagged for providing unauthorized medical advice (e.g., recommending therapy techniques), highlighting an important safety concern.
+  licenses: 'Establishes with a rate, from credentialed clinician annotators, that a leading model recommends therapy techniques in answers to real patient questions -- the prescribing half of n1b, at 14 percent of outputs. It licenses nothing about orientation: the flag is for advice being unauthorized, not for its running opposite to any framework, so the entry''s actual criterion is untouched.'
+  locator: Section 4.5 Expert Evaluation Results, Overall Performance; Table 1, Medical Advice column
+  fit: adjacent
+  bridge: The measured construct is a binary 'Medical Advice' dimension meaning guidance only a licensed professional should give. Recommending a therapy technique is its named example. Nothing in the annotation asks whether a technique opposed a treatment framework, and the items are standalone question-answer pairs rather than conversations in which a person disclosed a condition.
+  contributes: prevalence
+  contradicts: false
+- claim_id: n3
+  source: kl-000004
+  quote: |-
+    many standard texts
+    warn that an insufficient duration of exposure and response
+    prevention—that is, termination of exposure before adequate
+    habituation of anxiety has occurred—may result in a worsening
+    of clients’ anxiety symptoms, although systematic data on this
+    issue are scant
+  licenses: 'Establishes that the clinical literature holds a mis-delivered exposure -- one cut short before anxiety habituates -- to worsen the anxiety symptoms the exposure was meant to reduce. That is the exacerbation node stated as a clinical expectation, and it is the only citation in the entry reaching n3. The source''s own caveat, ''although systematic data on this issue are scant'', is inside the quoted run and bounds it: this is what standard texts warn, not what has been measured.'
+  locator: 'Identifying PHTs: Methodological Issues, subsection Short-Term Versus Long-Term Deterioration'
+  fit: analogical
+  bridge: The agent is a human clinician delivering exposure and response prevention for too short a duration. n3 concerns a person's symptoms worsening after an AI prescribed a strategy against their framework. Premature termination by the treating clinician is not a contra-framework strategy prescribed by a third party, the setting is a therapy course rather than a conversation, and the source reports no data.
+  contributes: harm_evidence
+  contradicts: false

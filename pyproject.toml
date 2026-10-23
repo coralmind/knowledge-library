@@ -1,0 +1,240 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "coralmap"
+version = "0.0.0"
+description = "The CoralMind Knowledge Library: how a conversation with an AI can help or harm a person's mental health, with a loader, query, and validation API."
+readme = "README.md"
+requires-python = ">=3.11"
+# The wheel bundles entries/ and schema/, so the content license applies to
+# it as well as the code license.
+license = "MIT AND CC-BY-NC-4.0"
+license-files = ["LICENSE.md", "CONTENT_LICENSE.md"]
+authors = [{ name = "CoralMind" }]
+maintainers = [{ name = "CoralMind" }]
+keywords = ["mental-health", "ai-safety", "evaluation", "ontology", "harm-taxonomy"]
+classifiers = [
+  "Development Status :: 2 - Pre-Alpha",
+  "Intended Audience :: Science/Research",
+  "Intended Audience :: Healthcare Industry",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Scientific/Engineering",
+  "Typing :: Typed",
+]
+# Keep to these two: CI fails if the runtime dependency set changes.
+dependencies = [
+  "pydantic>=2.7",
+  "pyyaml>=6.0",
+]
+
+[project.urls]
+Homepage = "https://map.coralmind.org"
+Repository = "https://github.com/coralmind/knowledge-library"
+Issues = "https://github.com/coralmind/knowledge-library/issues"
+
+# Used by CI's plain-pip job. Keep in sync with [dependency-groups] below;
+# pixi merges both into its `dev` feature.
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.8",
+  "mypy>=1.13",
+  "types-pyyaml>=6.0",
+  "pre-commit>=4.0",
+  "build>=1.2",
+]
+
+[dependency-groups]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.8",
+  "mypy>=1.13",
+  "types-pyyaml>=6.0",
+  "pre-commit>=4.0",
+  "build>=1.2",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/coralmap"]
+
+# Bundles the catalog so `load()` works after `pip install` with no checkout.
+# CORALMIND_KL_PATH overrides it.
+[tool.hatch.build.targets.wheel.force-include]
+"entries" = "coralmap/_bundled/entries"
+"schema" = "coralmap/_bundled/schema"
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "/src",
+  "/entries",
+  "/schema",
+  "/scripts",
+  "/tests",
+  "/README.md",
+  "/LICENSE.md",
+  "/CONTENT_LICENSE.md",
+  "/CHANGELOG.md",
+  "/CITATION.cff",
+]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "scripts", "tests"]
+
+[tool.ruff.lint]
+select = [
+  "E",     # pycodestyle errors
+  "F",     # pyflakes
+  "I",     # isort
+  "W",     # pycodestyle warnings
+  "UP",    # pyupgrade
+  "B",     # flake8-bugbear
+  "RUF",   # ruff-specific
+  "SIM",   # flake8-simplify
+  "PIE",   # flake8-pie
+  "T20",   # flake8-print (use logging, not print)
+  "PT",    # flake8-pytest-style
+  "LOG",   # flake8-logging
+  "C4",    # flake8-comprehensions
+  "PERF",  # perflint
+]
+
+[tool.ruff.lint.per-file-ignores]
+# A CLI whose output is printed problems.
+"scripts/library_report.py" = ["T201"]
+# Tutorial notebooks show results by printing them.
+"notebooks/*.ipynb" = ["T201"]
+
+[tool.ruff.format]
+# Ruff would also format Python fenced in Markdown and collapse the aligned
+# inline comments in the README and docs examples.
+exclude = ["*.md"]
+
+[tool.mypy]
+python_version = "3.11"
+mypy_path = "src"
+packages = ["coralmap"]
+plugins = ["pydantic.mypy"]
+strict = true
+warn_unreachable = true
+enable_error_code = ["ignore-without-code", "redundant-expr", "truthy-bool"]
+
+[tool.pyright]
+extraPaths = ["scripts"]
+
+[tool.pytest.ini_options]
+minversion = "8"
+testpaths = ["tests"]
+addopts = "-ra --strict-markers --strict-config -m 'not slow'"
+markers = ["slow: loads the real library from entries/"]
+log_level = "INFO"
+xfail_strict = true
+filterwarnings = ["error"]
+# Lets tests/scripts/ import the scripts, which are not part of the package.
+pythonpath = ["scripts"]
+
+# React component identifiers are camelCase, which codespell splits into words.
+# The viewer is type-checked on its own.
+[tool.codespell]
+skip = "*.tsx"
+
+# ── Pixi: the development environment ─────────────────────────────────────
+# Everything under [tool.pixi.*] is ignored by pip; `pip install coralmap`
+# does not need pixi. CI tests both install paths.
+
+[tool.pixi.workspace]
+channels = ["conda-forge"]
+# No win-64: nobody has built or tested the lockfile on Windows.
+platforms = ["osx-arm64", "osx-64", "linux-64"]
+
+[tool.pixi.dependencies]
+python = ">=3.11,<3.14"
+
+[tool.pixi.pypi-dependencies]
+coralmap = { path = ".", editable = true }
+
+# `viewer` adds Node to the dev environment. JupyterLab and ipykernel are
+# conda packages on `dev`, so the default environment can run the notebooks.
+[tool.pixi.environments]
+default = { features = ["dev"], solve-group = "default" }
+viewer = { features = ["dev", "viewer"], solve-group = "default" }
+
+# Extends the `dev` feature that Pixi builds from [dependency-groups].
+# Installed from conda-forge into the default environment.
+[tool.pixi.feature.dev.dependencies]
+jupyterlab = ">=4.2,<5"
+ipykernel = ">=6.5"
+
+# ── Tasks ─────────────────────────────────────────────────────────────────
+
+[tool.pixi.tasks]
+test = { cmd = "pytest", description = "Run the test suite" }
+test-all = { cmd = "pytest -m ''", description = "Run every test including the slow real-library load" }
+
+lint = { cmd = "ruff check .", description = "Lint" }
+lint-fix = { cmd = "ruff check . --fix", description = "Lint and auto-fix what is safe to fix" }
+format = { cmd = "ruff format .", description = "Format" }
+format-check = { cmd = "ruff format --check .", description = "Check formatting without writing" }
+typecheck = { cmd = "mypy", description = "Type-check src, scripts and tests" }
+
+generate-json-schemas = { cmd = "python scripts/generate_json_schemas.py", description = "Regenerate schema/ from the Pydantic models" }
+check-json-schemas = { cmd = "python scripts/generate_json_schemas.py --check", description = "Fail if schema/ has drifted from the models" }
+
+library-report = { cmd = "python scripts/library_report.py", description = "Print every parse and graph problem in the library" }
+
+hooks-install = { cmd = "pre-commit install", description = "Install the git pre-commit hooks (once per clone)" }
+hooks = { cmd = "pre-commit run --all-files", description = "Run every pre-commit hook over the whole tree" }
+
+# Checks entries only, so it does not fail on unrelated code problems.
+check-entry-syntax = { cmd = "pre-commit run check-yaml --all-files", description = "Fail on YAML that does not parse" }
+check-entry-indent = { cmd = "pre-commit run yamllint --all-files", description = "Require 2-space indentation in entries/" }
+check-entries = { depends-on = ["check-entry-syntax", "check-entry-indent"], description = "Check authored entries (see docs/AUTHORING.md)" }
+
+check-notebooks = { cmd = "python scripts/check_notebooks.py --check", description = "Fail if tutorial notebooks have saved output" }
+notebooks-clear = { cmd = "python scripts/check_notebooks.py --clear", description = "Remove saved outputs from the tutorial notebooks" }
+notebooks = { cmd = "python scripts/check_notebooks.py", description = "Fail if tutorial notebooks have saved output, then execute every cell" }
+
+# The CI `check` job. Notebook execution is the separate `notebooks` job.
+check = { depends-on = [
+  "lint",
+  "format-check",
+  "typecheck",
+  "check-json-schemas",
+  "check-entry-indent",
+  "check-notebooks",
+  "test",
+], description = "Lint, format, types, schema drift, entry indentation, notebook outputs, tests" }
+
+build = { cmd = "python -m build", description = "Build the wheel and sdist" }
+
+lab = { cmd = "jupyter lab --notebook-dir=notebooks", description = "Launch JupyterLab on the tutorial notebooks" }
+
+nuke = { cmd = "rm -rf .pixi && pixi install", description = "Clean reinstall of the pixi environment" }
+
+# ── Viewer environment ────────────────────────────────────────────────────
+# Provisions Node from conda-forge, so the viewer builds without a system Node.
+# Matches `engines.node` in viewer/package.json and @coralmind/brand; change
+# all three together.
+
+[tool.pixi.feature.viewer.dependencies]
+nodejs = ">=22.12,<23"
+
+[tool.pixi.feature.viewer.tasks]
+viewer-install = { cmd = "npm ci", cwd = "viewer", description = "Install viewer dependencies from the lockfile" }
+viewer-dev = { cmd = "npm run dev", cwd = "viewer", depends-on = [
+  "viewer-install",
+], description = "Viewer dev server at http://localhost:3000" }
+viewer-build = { cmd = "npm run build", cwd = "viewer", depends-on = [
+  "viewer-install",
+], description = "Build the viewer against current entries (what CI runs)" }
+viewer-check = { cmd = "npm run check", cwd = "viewer", depends-on = [
+  "viewer-install",
+], description = "Type-check the viewer" }
+viewer-test = { cmd = "npm run test", cwd = "viewer", depends-on = [
+  "viewer-install",
+], description = "Run the viewer unit tests" }

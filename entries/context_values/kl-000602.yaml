@@ -1,0 +1,230 @@
+# yaml-language-server: $schema=../../schema/context_value.schema.json
+id: kl-000602
+display_id: Value-3
+aliases:
+- general_mental_health
+- ConditionTag-3
+- General mental health, no specific condition
+label: No specific mental health condition
+type: context_value
+layer: context
+definition: 'The person''s situation is mental-health relevant and no specific presentation is present: what they bring falls below the threshold at which any other presentation value would apply. It is a fact about the person, and the value a matched test case records when a presentation is taken away. What the person wants from the conversation, such as information about mental health, is recorded on kl-000724, not here.'
+distinguish_from:
+- neighbor: kl-000604
+  boundary: That condition context requires depressed mood, anhedonia or hopelessness to be what the person is presenting with, at any severity and without needing a diagnosis. This one applies when nothing at that level of specificity is present — a person asking how sleep affects mood, or discussing stress management in general terms.
+- neighbor: kl-000608
+  boundary: That condition context requires excessive worry, fear, panic or phobic avoidance to be the presenting feature. Ordinary situational concern discussed in a wellbeing conversation is this entry, not that one; the difference is whether the worry is itself what the person is presenting with.
+body:
+  dimension: kl-000727
+  icd_codes: null
+  experience_clusters: []
+sources:
+- source: kl-000525
+  contributes: existence
+  locator: Methods, Analysis subsection (final paragraph, immediately before Results), p. 5929
+  quote: "Replika for support with loneliness, anxiety, depression, \nand suicidality, as well as unspecified mental health conditions."
+  limits: 'The entry is a vocabulary-coverage statement: the residual value applies when a situation is in scope and none of the specific values fits, so what would change its evidential position is a design decision about whether the vocabulary keeps a residual, not any empirical finding, and no paper can supply that. The paper''s own sampling also narrows what the quoted phrase can show: the corpus was built from an explicit keyword list of specific conditions, so unspecified there means unspecified in the post, not below a diagnostic threshold.'
+  note: 'Index note applies: harms here are self-reported, retrospective, from an enthusiast Reddit community — no prevalence, no causality. Nothing was claimed as harm_evidence for this entry.'
+  cited_for: 'Partial support only. Laestadius et al. 2022 shows that a residual category, mental-health-relevant presentations with no specific condition assignable, occurs in real help-seeking material: the study''s Reddit posters described seeking support from Replika for loneliness, anxiety, depression, suicidality, and mental health conditions left unspecified. That is the closest external evidence available for a residual tag, and it falls well short of the entry itself, which is a statement about this vocabulary''s coverage.'
+standing:
+  value: asserted
+  basis: 'Two independent corpora of real help-seeking text support the value''s occurrence: kl-001021 (Sun et al. 2021), whose help-seekers organised their own posts under nine topics of which six name no condition, and kl-000907 (Li et al. 2024), a counselling corpus screened on the SCL-90 to exclude severe depressive, anxious and psychiatric symptoms, which makes the whole corpus this value by construction and the screening itself an instance of the below-threshold limb. Neither corpus is conversation data with an AI system, and in both the no-specific-condition status was fixed by an instrument or a self-applied topic label rather than read from the material. The psychoeducational limb has exactly one citation and it is analogical: kl-000974 (Rajkomar et al. 2026) reports general health education at 29.3% of a general-health benchmark, not a mental-health one. The claim that the value''s application depends on the coverage of the rest of the vocabulary is one no corpus can address, since none-of-the-above is defined by this vocabulary''s own list; the sources bearing on it (kl-000776, kl-000009, kl-000760) each settle part of the in-scope test and none settles the residual. Direct-fit counterevidence exists against the value''s prevalence: kl-001013 (Stade et al. 2026) finds that among LLM mental-health users, likely diagnoses of major depression, generalized anxiety and PTSD run at roughly double the non-user rate, so specific-condition presentations are enriched in exactly this population and the residual''s share is correspondingly smaller.'
+  floored_by: c3
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: Situations occur that are mental-health relevant while no single condition is the presenting concern.
+- id: c2
+  kind: existence
+  text: Conversations about wellbeing in general, with no condition presenting, occur and fall under this value.
+- id: c4
+  kind: existence
+  text: Presentations occur whose features fall below the threshold at which a specific condition would be assigned.
+- id: c5
+  kind: prevalence
+  text: The no-specific-condition case is common enough in the material this vocabulary tags to warrant its own value rather than being absorbed elsewhere.
+- id: c7
+  kind: definition_boundary
+  text: This value differs from condition_tag_other in recording that no specific condition is present to name, where that value records a specific condition present but absent from the vocabulary.
+- id: c8
+  kind: definition_boundary
+  text: This value differs from depression in that depressed mood, anhedonia or hopelessness is not what the person is presenting with.
+- id: c9
+  kind: definition_boundary
+  text: This value differs from anxiety in that excessive worry, fear, panic or phobic avoidance is not itself what the person is presenting with.
+claim_evidence:
+- claim_id: c1
+  source: kl-001021
+  quote: "PsyQA contains all sorts of general mental health disorders, concerning nine topics labeled by help-seekers including self-growth, emotion, love problem, relationships, behaviors, family, treatment, marriage, and career."
+  locator: Section 2.3 Text-based Mental Health-Related Datasets
+  licenses: Establishes that a large help-seeking corpus is organised around nine topics the help-seekers themselves labelled - self-growth, emotion, love problems, relationships, behaviors, family, treatment, marriage, career - which are life domains rather than conditions. Six of the nine name no condition at all, so a substantial share of real help-seeking arrives framed by situation rather than by a presenting condition.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001021
+  quote: "PsyQA contains all sorts of general mental health disorders, concerning nine topics labeled by help-seekers including self-growth, emotion, love problem, relationships, behaviors, family, treatment, marriage, and career."
+  locator: Section 2.3 Text-based Mental Health-Related Datasets
+  licenses: 'The self-labelled topics self-growth, love problem, relationships, family, marriage and career are wellbeing conversations in the entry''s sense: mental-health relevant, brought to a support channel, with no condition named by the person bringing them.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000907
+  quote: "all these clients were assessed using the self-report symptom inventory (SCL-90)(Wang et al., 1999) to ensure they did not exhibit severe depressive, anxious, or psychiatric symptoms."
+  locator: Section 4.1 Data Source
+  licenses: Establishes an entire counselling corpus drawn from clients screened on the SCL-90 to exclude severe depressive, anxious or psychiatric symptoms - so every conversation in it is by construction mental-health relevant with no specific condition at presenting severity. This is the entry's case type instantiated as a whole sample rather than as scattered examples.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-000907
+  quote: "all these clients were assessed using the self-report symptom inventory (SCL-90)(Wang et al., 1999) to ensure they did not exhibit severe depressive, anxious, or psychiatric symptoms."
+  locator: Section 4.1 Data Source
+  licenses: 'The screening criterion is a threshold operation of exactly the kind the entry''s fourth limb names: clients are retained where symptoms fall below the level at which a condition would be assigned, and the resulting sample is still doing text-based counselling.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001061
+  quote: "When people ask LLMs about mental health, they rarely ask a clean question with a checkable answer. They bring a story and ask the model to help decide what it means, whether a thought should worry them, whether a feeling suggests risk, what response would help, or whether a piece of advice should be trusted"
+  locator: Section 1 Introduction, opening
+  licenses: Characterizes the general mental-health turn as a person bringing a story and asking what it means, whether a thought is cause for worry, or whether a feeling signals risk, which is the wellbeing-conversation form of this value stated as what people actually bring rather than as a residual.
+  fit: analogical
+  bridge: The paper's framing sentence, supported by citation rather than by data it collected; its own benchmark is built from Reddit posts, Twitter text, counseling transcripts and exam items rather than from logs of people asking an LLM.
+  contributes: frame
+  contradicts: false
+- claim_id: c2
+  source: kl-001038
+  quote: The growing use of conversational artificial intelligence (AI) for emotional and psychological support raises questions about how people appropriate non-clinical technologies to meet psychological and relational needs.
+  locator: Abstract
+  licenses: 'Names the framing this value sits in: a non-clinical general-purpose system appropriated to meet psychological and relational needs, so what arrives is not a clinical presentation arriving at a clinical tool.'
+  fit: analogical
+  bridge: The paper's opening framing statement rather than a result. It establishes the frame in which distress without a diagnostic home is the expected case and supplies no rate and no instance.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-001013
+  quote: "Under these conditions, a striking near-quarter of participants (24%, n = \n449) endorsed use of LLMs for mental health."
+  locator: Results, Use of LLMs for General and Mental Health Purposes
+  licenses: 'Establishes that the material this vocabulary tags exists at scale: 24% of a demographically stratified 2024 US adult sample endorsed using LLMs for mental health, measured under a masked screening design intended to reduce demand characteristics.'
+  fit: adjacent
+  bridge: The screening item does not separate presentations with an assignable condition from those without, which is this entry's actual criterion. It establishes the denominator the residual would be a share of, not the share.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c5
+  source: kl-001101
+  quote: "In both apps, a sizable percentage of conversations contained mental health terms (Cleverbot ~4.9%; Simsimi ~3.2%)."
+  locator: Study 1, Results, Proportion of mental health conversations
+  licenses: 'Supplies a field base rate from deployed logs rather than from solicited scenarios: roughly 3-5% of all conversations in two large general-purpose companion apps contain mental-health terms.'
+  fit: adjacent
+  bridge: Term presence is a coarse proxy for mental-health relevance and carries no information about whether a specific condition was the presenting concern. It bounds how often the vocabulary would be invoked at all, not how often the residual value fires.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c5
+  source: kl-000825
+  quote: |-
+    Recent data suggest approximately 1 in 3 AI users have used AI for mental health
+    support, and clinicians report observing similar usage among their patients.4,5
+  locator: Introduction, first paragraph
+  licenses: 'A second independent scale figure: approximately one in three AI users have used AI for mental health support, with clinicians reporting similar usage among their patients.'
+  fit: adjacent
+  bridge: A secondary report of a KFF poll and a clinician survey, not this review's own measurement, and it says nothing about whether a specific condition was the presenting concern.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c5
+  source: kl-000824
+  quote: "the existing mental-health evaluation literature clusters narrowly on suicide-risk detection and diagnostic classification (Flathers et al., 2026), and risk classification and board-style diagnostic reasoning are poor proxies for the open-ended, ambiguous, multi-turn help-seeking that likely constitutes most real usage"
+  locator: Section 1 Introduction
+  licenses: 'Bears on c5 from the coverage side: the authors'' own scoping review finds the mental-health evaluation literature clusters on suicide-risk detection and diagnostic classification, while open-ended ambiguous multi-turn help-seeking likely constitutes most real usage. If the modal case is the open-ended one, the residual is not a marginal value.'
+  fit: adjacent
+  bridge: A characterisation of the evaluation literature citing a companion scoping review, not a result of this study, and 'likely constitutes' is the authors' estimate rather than a measurement. It establishes what the field tests, not what real usage consists of.
+  contributes: frame
+  contradicts: false
+- claim_id: c5
+  source: kl-001013
+  quote: "As predicted in our preregistration, greater proportions of users of LLMs for mental health had likely diagnoses of major depression (31 versus 16%), generalized anxiety (37 versus 22%), and PTSD (15 versus 7%) versus non-users (all p < 0.001; see Fig. 4, left)."
+  locator: Results, Users of LLMs for Mental Health – Psychopathology and Well-Being
+  licenses: 'Cuts against c5''s premise from the composition side: among LLM mental-health users, likely diagnoses of major depression, generalized anxiety and PTSD run at roughly double the non-user rate. If specific-condition presentations are enriched in exactly this population, the residual''s share is smaller than a general-use rate would suggest.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000824
+  quote: |-
+    perinatal mental health is
+    largest (112; 18.4%), followed by anxiety (84),
+    psychiatric medication (69), mood disorders (57),
+    sleep (43), cognitive–neurocognitive (41), ADHD
+    (36), substance use (31), and suicidality/self-harm
+    (19)
+  locator: Section 3.1
+  licenses: 'Cuts against c5 in the one corpus where mental-health content was categorized case by case: every one of the nine largest categories is a specific topic - perinatal mental health, anxiety, psychiatric medication, mood disorders, sleep, cognitive, ADHD, substance use, suicidality - and no residual or unspecified category appears in the enumeration at all.'
+  fit: adjacent
+  bridge: The counts are modal clinician categories assigned to conversations authored for a synthetic benchmark rather than observed in a deployment, and the list is explicitly partial. It shows that a clinician-assigned scheme found a specific category for the top categories, not that no case was unassignable.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000812
+  quote: "Notably, nearly 44% of participants were assigned to the three vulnerability-related groups (Anxiety-Dominant, Mild Distress, and Comorbid Risk), suggesting that non-trivial vulnerability profiles are common in our sample rather than limited to a marginal subgroup."
+  locator: Section 5.2.1
+  licenses: 'Cuts against c5 in a companion-app sample: 44% of participants were assigned to three vulnerability groups every one of which is named for a specific construct - Anxiety-Dominant, Mild Distress, Comorbid Risk - so the common case in this deployment is a specific profile rather than the residual.'
+  fit: adjacent
+  bridge: Baseline clustering on PHQ-8, ULS-8 and SIAS in a self-selected sample of Australian companion-app users recruited via Facebook and Reddit, with voluntary-participation bias noted by the paper. 'Mild Distress' is arguably the residual under a different name, which the span does not settle.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-001072
+  quote: "Comorbid mental health conditions were common: anxiety (n=10, 59%), post-traumatic stress disorder (n=5, 29%), autism spectrum disorder (n=2, 12%), and single instances of bipolar disorder,"
+  locator: Methods, Recruitment
+  licenses: 'Cuts against c5 by showing how rarely a presentation is single or unspecified in a clinical sample: in a diagnosed-depression cohort recruited without regard to comorbidity, anxiety was present in 59%, PTSD in 29%, and further specific conditions in single instances. The common case there is several named conditions, not none.'
+  fit: adjacent
+  bridge: A clinical sample recruited on a depression diagnosis, so specific conditions are present by construction; it bounds what a clinically recruited population looks like, not what arrives unselected at a general-purpose system.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c7
+  source: kl-001079
+  quote: "we further summarized the case types into 9 representative topics based on common scenarios of psychological counseling."
+  locator: Section 3.2, Data analysis
+  licenses: 'Bears on the condition_tag_other boundary from outside: the authors summarised 3,134 real counselling case reports into nine representative topics, one of which is ''Mental Disease'' as a single undifferentiated bucket alongside eight life-domain topics. A scheme that puts every diagnosable condition in one category and life domains in the rest is drawing the boundary this pair of values draws, from the opposite direction.'
+  fit: analogical
+  bridge: The span states only that case types were summarized into nine representative topics; it carries no topic list, no count and no proportion, so the composition is not established from the span itself. The setting is paid human counselling in China with counsellor-written write-ups, not AI conversation.
+  contributes: frame
+  contradicts: false
+- claim_id: c8
+  source: kl-000836
+  quote: |-
+    Participants are drawn from two distinct populations living
+    in the Greater Los Angeles metropolitan area – veterans of
+    the U.S. armed forces and from the general public – and are
+    coded for depression, PTSD and anxiety based on accepted
+    psychiatric questionnaires.
+  locator: Section 1 Overview
+  licenses: 'Bears on the depression boundary: the corpus codes participants for depression, PTSD and anxiety on accepted psychiatric questionnaires, which is what assigning the specific value requires - an instrument placing the person above a threshold on the named condition.'
+  fit: adjacent
+  bridge: A corpus description establishing that instrument-scored condition assignment is how the specific values get made. It says nothing about participants scoring below threshold on all three, which is where this entry's cases would sit.
+  contributes: definition
+  contradicts: false
+- claim_id: c9
+  source: kl-000836
+  quote: |-
+    Participants are drawn from two distinct populations living
+    in the Greater Los Angeles metropolitan area – veterans of
+    the U.S. armed forces and from the general public – and are
+    coded for depression, PTSD and anxiety based on accepted
+    psychiatric questionnaires.
+  locator: Section 1 Overview
+  licenses: 'Bears on the anxiety boundary in the same way: anxiety is assigned by an instrument score (the STAI) rather than by the presence of worry in the text, which is the discrimination the boundary asserts between ordinary situational concern and worry as the presenting feature.'
+  fit: adjacent
+  bridge: A corpus description of how labels were made, not a criterion for reading a conversational turn. Whether a turn's worry is 'itself what the person is presenting with' is not something an instrument score decides.
+  contributes: definition
+  contradicts: false

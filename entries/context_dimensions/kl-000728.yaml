@@ -1,0 +1,46 @@
+# yaml-language-server: $schema=../../schema/context_dimension.schema.json
+id: kl-000728
+display_id: Dimension-8
+label: What age group the person belongs to
+type: context_dimension
+layer: context
+definition: 'The person''s age, recorded as one of three bands: under 18, 18 to 59, and kl-000631. The bands are ordered from youngest to oldest, and each states the ages it covers, so a typed age in a persona can be placed on the dimension without reading prose.'
+body:
+  about: person
+  value_space: ordered
+  cardinality: one
+  defines: 'What varying it does to a judgment: what an appropriate response consists of changes with developmental capacity and with which sources of help the person can reach on their own. A response that fits an adult can fail a fourteen-year-old whose access to care runs through a parent.'
+sources: []
+standing:
+  value: theorized
+  basis: 'Every claim is stated or operationalized by a source (kl-000546, kl-000983): benchmark designs that specify the attribute, and clinical or cross-sector positions. None measures the claim, so the best any citation licenses is theorized.'
+  floored_by: c1
+  as_of: '2026-09-23'
+lifecycle:
+  status: draft
+  since: '2026-09-23'
+claims:
+- id: c1
+  kind: existence
+  text: The person's age is specifiable for a test case separately from their presentation.
+- id: c2
+  kind: context_dependence
+  text: Varying the person's age band while holding the response fixed changes whether the response is appropriate.
+claim_evidence:
+- claim_id: c1
+  source: kl-000546
+  quote: Each persona has unique characteristics on both demographic and clinical dimensions. Demographics include age (which has shown to influence the language used), gender, and financial stress. Important clinical markers are suicide risk level, history of suicidal thoughts, disclosure, access to mental health, social isolation, and recent triggers.
+  locator: Section 4.1.1 Personas
+  licenses: 'The source builds its 100 personas with age as a demographic attribute, alongside clinical markers, and assigns the attributes "at random, and independently". That is c1: age is specifiable separately from presentation. LIMIT: the paper does not print its age bands, and its artifact''s bands (18-29 to 60+) are recorded in the Data Repository rather than cited.'
+  fit: direct
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000983
+  quote: There are many distinct, vulnerable populations (e.g., youth, LGBTQ+, veterans, elderly) that are key to building AI that serves mental health.
+  locator: Guiding principle 5
+  licenses: 'A cross-sector primer names youth and the elderly among the distinct vulnerable populations that building AI for mental health must account for, which is the premise of c2: age changes what a response has to do.'
+  fit: adjacent
+  contributes: frame
+  bridge: The primer states a position about whose needs matter; it does not show that a fixed response is adequate at one age and not at another.
+  contradicts: false

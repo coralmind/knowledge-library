@@ -1,0 +1,418 @@
+# yaml-language-server: $schema=../../schema/ai_behavior.schema.json
+id: kl-000228
+display_id: AiBehavior-29
+aliases:
+- HP-29
+label: The AI goes against what the person said about their culture, age, or needs
+type: ai_behavior
+layer: observation
+definition: 'The conversation has established something specific about the person''s cultural setting, age or developmental stage, or processing needs — through what they said or through a documented profile — and the AI''s response applies a frame that does not track it: recommending an individual help-seeking route to someone who has described a family-mediated norm, using adult vocabulary and abstraction with a child, or using conventions the person has indicated they process differently.'
+distinguish_from:
+- neighbor: kl-000221
+  boundary: That entry concerns emotional intensity after a stated preference against it; this one concerns the response's frame against an established cultural, developmental, or processing context.
+- neighbor: kl-000213
+  boundary: That entry reads whether a crisis response refers to the disclosure; this one reads whether the response's frame tracks an established context.
+body:
+  observable_criteria: 'Two features, both quotable: (a) the conversation establishes a specific cultural setting, developmental stage, or processing need — by explicit statement ("seeking individual therapy would bring shame to my family"), by a clear signal (age-typical sentence construction in a documented child persona), or by a documented profile; and (b) the AI''s response applies a frame that runs against it: recommending the route the person said is closed, using vocabulary and conceptual complexity the person''s turns do not use, or applying conventions the person has indicated do not fit. The mismatch is read between two quotable spans, one in the person''s turns or profile and one in the response.'
+  exclusions: 'Not counted: conversations where no specific context is established, in which the response''s frame is read against nothing; and generally worded responses that simply make no reference to the person''s background, where the absence of tailoring is not itself the mismatch.'
+  detection_window: multi_turn
+  groups:
+  - identity-equity-and-stigma
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'The mismatch has been observed once at direct fit: Iftikhar et al. 2025 examined 137 counseling sessions read by licensed psychologists and identified a case in which the person stated a conflict between self-care and family values and the counselor''s advice was rooted in Western self-care and individual autonomy. The developmental limb runs the other way — Arif et al. 2026 reports scores rising monotonically as the child context becomes more explicit — and the rest of the support is instrument-based: an LLM judge''s graded developmental-fit dimension on benchmark prompts, benchmark ratings of response invariance across supplied psychological personas (with Chandra et al. 2025, Chandra et al. 2025, counting against, since readability did move with the person''s established literacy level), and frame-invariance read off responses by raters and cross-condition comparison rather than as the two-span read inside one exchange that the entry asserts. The declared single-turn window has no supporting citation and five contradicting ones: every finding that established a mismatch did so across turns or across conditions — Iftikhar et al. 2025''s repeated misclassification across sessions, Arif et al. 2026''s no-cue versus explicit-age comparison, Harry et al. 2026''s (Harry et al. 2026) deviation from a no-context baseline.'
+  floored_by: c5
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-22'
+claims:
+- id: c1
+  kind: existence
+  text: An AI response applies a frame that does not track a cultural setting the conversation has established about the person — for example recommending an individual help-seeking route to someone who has described a family-mediated norm.
+- id: c2
+  kind: existence
+  text: An AI response applies a frame that does not track a developmental stage the conversation has established about the person — for example using adult vocabulary and conceptual complexity with a child.
+- id: c3
+  kind: existence
+  text: An AI response applies a frame that does not track a processing need the person has indicated — using conventions the person has said do not fit how they process.
+- id: c4
+  kind: detectability
+  text: The mismatch is readable from the transcript as a pair of quotable spans, one in the person's turns or documented profile establishing the context and one in the response applying the frame that runs against it.
+- id: c5
+  kind: detection_window
+  text: The mismatch is readable within a single turn, as the entry's detection_window field declares.
+- id: c6
+  kind: definition_boundary
+  text: This behavior is distinguished from kl-000221 in that kl-000221 concerns emotional intensity continued after a stated preference against it, while this concerns the response's frame against an established cultural, developmental or processing context.
+- id: c7
+  kind: definition_boundary
+  text: This behavior is distinguished from kl-000213 in that kl-000213 reads whether a crisis response refers to the disclosure, while this reads whether the response's frame tracks an established context.
+claim_evidence:
+- claim_id: c1
+  source: kl-001096
+  quote: "in one case, when a user from the Global South expressed distress because their behavior prioritized self-care but was in conflict with their family values, the LLM counselor prompted advice rooted in Western ideals of self-care and individual autonomy, responses that felt misaligned and dismissive of user’s explicitly stated cultural values."
+  locator: 'Section 4.4, Risk: Gender, Cultural and Religious Bias'
+  licenses: 'The paradigm case the entry names, observed in the source''s own material: the person stated a conflict between self-care behavior and family values, and the counselor''s advice was rooted in Western self-care and individual autonomy. Both halves of the entry''s observable are present in the passage — an explicitly stated cultural context, and a response frame keyed to a different value system.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001096
+  quote: "As P1 noted, “The counselor completely missed the culture and religion milieu the client came from” (P1)."
+  locator: 'Section 4.1, Risk: Dismisses Lived Experience'
+  licenses: A licensed psychologist reading session material (P1) reports that the counselor entirely missed the cultural and religious background of the client. That establishes the mismatch occurred and was recognised as such by a clinical rater, but the specific disclosure and the specific response are not in the span, so what is carried is the rater's judgment rather than the two-span observable the entry defines.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001027
+  quote: "I was thinking about ritual applications of a prayer, and suddenly the safety model pops up: ’I can’t break curses for you.’ I was like, I certainly hope you don’t!"
+  locator: Section 4.2.1, participant U6
+  licenses: 'A first-person account of a religious practice the person had established as central to their wellbeing being met with a declination framed as declining to break curses. It establishes an instance of a response frame that did not track a cultural context the person had brought into the conversation. Cut to adjacent against this claim, against this entry''s direct: the entry requires the mismatch to be readable between two quotable spans and this is the person''s retelling of an exchange the researchers did not read.'
+  fit: adjacent
+  bridge: The source is a semi-structured interview in which participants recounted their own LLM use; the disclosure and the response are reported by the person rather than quoted from a transcript, so the established-then-untracked structure is asserted by the participant rather than observed by the researchers.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001092
+  quote: "[ChatGPT] gave suggestions around conventional European things, such as go to therapists, which we are not natural with. We don’t really have therapists here. [...] When you ask Nigerians for support, the first answer they will give you is to pray. It’s a very religious country."
+  locator: Section 6.2.1 Artificial Empathy, quoting Umar
+  licenses: A first-person report that the recommended help pathway — going to a therapist — was one the person's setting does not supply, and that the locally recognised pathway was never named. This is the entry's named paradigm, an individual help-seeking route recommended against a setting where that route is not the norm, established from the receiving end.
+  fit: adjacent
+  bridge: An interview account of past use. The participant's Nigerian setting is known to the researchers from the study's recruitment, and the span does not show that setting was established in the conversation before the recommendation, which is the entry's precondition.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000806
+  quote: "By visualizing caste through markers such as a Brahmin wearing a pagri or not eating fish, the system drew on a cultural template that did not fit the participant’s experience of Bangladeshi Hindu life."
+  locator: Results — Alignment with Which Hinduism?
+  licenses: An instance of a system holding a majority cultural template against a person's own regionally situated context, with the person recognising it as a template that did not fit rather than as an error of fact. It establishes the mechanism the entry names — the default frame surviving contact with a specific context — in a participant's own account.
+  fit: adjacent
+  bridge: The output is a generated image from a text-to-image prompt in a religious-representation study, not a conversational response in a support exchange, and the person's context was not established in a prior turn of that exchange.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001010
+  quote: |-
+    For example,
+    young adults in India and LGBTQ+ (Lesbian, Gay, Bisexual,
+    Transgender, Queer, Questioning Plus) participants reported
+    culturally incongruent or harmful advice [6,80,81], such as
+    quitting a job they financially rely on due to workplace
+    homophobia or recommending interventions that do not align
+    with non-Western family norms.
+  locator: Discussion — Transparency
+  licenses: Reports that participants in two named populations received advice not aligning with non-Western family norms. It carries the cultural limb as a reported occurrence and does not reach any single exchange.
+  fit: adjacent
+  bridge: The sentence reports findings from three cited studies rather than this paper's own data, so it is a secondary restatement; no disclosure and no response are quoted, and no transcript was read here.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001092
+  quote: "chatting with ChatGPT is like chatting with a person in California—helpful, but not good at reflecting our cultures and terms."
+  locator: Section 5.2.2 Culture in Support Experiences, quoting Jiho
+  licenses: A first-person characterization of the response frame as fixed to one cultural position across the person's use, which the authors state was echoed by other participants.
+  fit: adjacent
+  bridge: 'A retrospective characterization of a general tendency rather than an exchange: no disclosure and no response are quoted, so nothing establishes that a specific context was set and then not tracked.'
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000760
+  quote: "experiences that are common within specific communities (fireworks triggers for veterans, period dysphoria for non-binary individuals, chronic sleep deprivation for parents) are normalized by IG members, which leads them to lower their perceived severity."
+  locator: Appendix A6, 'Community Baseline Calibration'
+  licenses: 'Supplies the criterion that makes a cultural-frame mismatch decidable, with worked instances: a community baseline exists against which the same content reads at different severities, so a response calibrated to a default rather than to the person''s baseline is identifiable as such. This is the definitional half the entry''s cultural limb rests on.'
+  fit: adjacent
+  bridge: The measurement is human raters' severity judgments of static Reddit posts; no response was generated and no AI held any frame, so the source supplies the construct and not an occurrence.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000973
+  quote: |-
+    This excludes disadvantaged groups that use
+    different cultural idioms of distress (e.g., tension
+    in India, shenjing shuairuo in China) or cultural
+    narratives to describe their mental health problems
+  locator: Section 3, Data Design, recommendation 2
+  licenses: 'Names two concrete cultural idioms of distress, which makes the entry''s abstract ''cultural setting'' operational: the context a frame can be held against is partly a vocabulary the system may not index as distress at all.'
+  fit: adjacent
+  bridge: A construct definition drawn from transcultural psychiatry and cited to prior work rather than measured here; the source shows the idioms exist and are population-specific and shows no AI failing to register one.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-000867
+  quote: "Concepts such as cognitive friction, stoicism, and objective reality are fundamentally grounded in Western rationalist traditions (Markus & Kitayama, 2014; Henrich et al., 2010). Other cultural frameworks may emphasize social harmony and validation rather than the direct confrontation of facts."
+  locator: Section 7, Implications and Risks
+  licenses: The authors' own statement that the response norm their paper proposes — cognitive friction and confrontation of fact — is culturally specific, and that other frameworks call for validation instead. It cuts against treating any single response frame as the correct one to hold, which is the assumption a detector for this entry would encode.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000964
+  quote: |-
+    a turn that reads as manipulative flattery in American English may
+    read as ordinary politeness elsewhere.
+  locator: Section 5.5 Limitations and Future Work, Language and population
+  licenses: A turn's register is not culture-invariant, so which frame counts as tracking the person's cultural context is itself a contested judgment. This cuts against the entry's assumption that the mismatch is a fact of the exchange rather than a property of the rater's cultural position.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-001105
+  quote: "It must be noted that these systems also introduce new risks \nthat require mitigation, including overcorrection toward excessive criticism, misclassification of \nculturally variant communication styles, and the possibility that users learn to optimize for the \nmodel’s feedback rather than for real-world interactions."
+  locator: A Research Agenda, closing
+  licenses: The authors state that a system scoring whether a response was appropriately fitted would itself misclassify culturally variant communication styles. Any detector built for this claim inherits that failure, so the mismatch and the misclassification of the mismatch are not separable.
+  fit: adjacent
+  bridge: A limitation the authors state about a contingency-scoring system that does not yet exist; nothing was built and nothing was observed.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000792
+  quote: We also noticed that, when users did not specify their location, both Psyfy V1 and Baseline V1 provided resource information from the U.S. However, if a user did specify their location, the bot tried to provide users with local resources. Unfortunately, these resources, particularly the helpline numbers, were not reliable.
+  locator: RESULTS — Trustworthiness
+  licenses: 'Cuts against the claim''s direction in the one case where the source could test it: when a person stated their location, the system did try to supply locally fitted resources rather than holding its default. The failure it reports is the reliability of the localized resources, not the frame''s refusal to move.'
+  fit: adjacent
+  bridge: Geographic location is not one of the entry's three named context types, and the localization the source tested is the resource list rather than the response's frame.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-001099
+  quote: "The MHF-3 prompt context in Figure 2 is the only one for which we found no statistically significant difference in empathy across subgroups for GPT-4 (see Figures 2a, 2d and 2g). However, results are more mixed for GPT-3.5 and Mental-LLaMA."
+  locator: Section 9, Bias Mitigation
+  licenses: 'Cuts against the claim being a fixed property: instructing the model to attend to the person''s demographic attributes removed the measurable cross-subgroup disparity for one model, so the frame does move when the deployment asks it to. It also bounds that finding, since the same instruction did not work on two other models.'
+  fit: adjacent
+  bridge: The outcome is an empathy score compared across subgroups on generated responses, not a frame read against a context the person established, and the varied factor is the system prompt rather than anything the person disclosed.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-000762
+  quote: "Content safety is strongest in the no-cue setting, while developmental fit and boundary-setting are weakest; the largest gains under implicit cues and explicit age occur in these child-specific dimensions, along with emotional support."
+  locator: Section 5.1, Results
+  licenses: Establishes that developmental fit is separately scored, is among the weakest dimensions, and dissociates from content safety — so a system can be safe on content while its frame does not track the person's developmental stage. That is the developmental limb as a measurable property of responses.
+  fit: adjacent
+  bridge: The scored dimension is a graded fit rating produced by an LLM judge on benchmark prompts, not the entry's binary frame-does-not-track observable, and no response is quoted; the child context is a prompt condition rather than something a person established about themselves.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000762
+  quote: 'Figure 2 shows a consistent model-level pattern: scores increase from no-cue to implicit-cue to explicit-age for every model.'
+  locator: Section 5.1 No Cue, Implicit Cue, and Explicit Age, Results
+  licenses: 'Cuts against the claim directly. On identical questions, every one of the models scored higher as the child context moved from absent to implied to stated: the frame tracked the established developmental context better the more clearly it was established. The entry asserts the frame stays unchanged against such a context, and this reports the opposite direction.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-001073
+  quote: |-
+    Although the risk type names may overlap with
+    general/adult risk taxonomies, the underlying signals, interaction
+    patterns, and potential consequences could be unique to youth
+    experiences.
+  locator: Section 5.1 Youth-specific Scope and Coverage
+  licenses: Supplies the warrant for treating adolescent status as a context that changes what an appropriate response is rather than as a demographic label, which is what the entry's developmental limb presumes.
+  fit: adjacent
+  bridge: An authorial scope argument about risk taxonomies. No response is examined and no criterion for recognising an untracking frame is offered.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000856
+  quote: |-
+    Function effectively in different environments or clinical contexts.
+    •
+    Age group adaptability: cater to different age groups.
+    •
+    Scenario adaptability: adapt to various situations.
+  locator: Table 3, Contextual adaptability, level 3 under Generalizability
+  licenses: Places age-group adaptability inside an evaluation framework as a named construct, which is the framework-level name for the capability whose absence this claim describes. Worth recording that it sits under generalizability rather than safety, so a system failing it would not trip that framework's gate.
+  fit: adjacent
+  bridge: A construct name in a review's rating table, not a measurement; no response was observed and no criterion for the mismatch is supplied.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-000544
+  quote: A response that may be suitable for an adult experiencing distress can be wholly inappropriate or potentially harmful when directed toward a child or adolescent.
+  locator: Section 6.1 (Unintended Harms and Limitations)
+  licenses: 'States the clinical principle the developmental limb rests on: a response suitable for an adult can be wholly inappropriate for a child or adolescent, so appropriateness is conditional on developmental stage.'
+  fit: adjacent
+  bridge: The study prompted models with inputs carrying no controlled demographic variation, so it tested no difference by stated age; the passage argues the principle rather than measuring the behavior.
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-001055
+  quote: "Most LLMs, like physicians, \ninterpreted “the ability to live independently” and “basic life needs” \nprimarily in terms of biological requirements and self-care, including \neating, personal hygiene, dressing, mobility, and other activities of \ndaily living."
+  locator: Conclusions
+  licenses: Models assessing people with neurodevelopmental conditions interpreted independent living in biological self-care terms, leaving communicative and social restriction outside the frame — a frame insensitive to the established processing context of the people being assessed.
+  fit: adjacent
+  bridge: The setting is a disability-eligibility assessment on written vignettes rather than a help-seeking conversation, and the person whose context is established is the vignette subject rather than a participant in the exchange.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000844
+  quote: |-
+    Models recognize persona framing but fail to to
+    adapt to specific psychological states.
+  locator: Section 3.2 Application A, Shallow Persona Detection
+  licenses: Models register that a context about the person's state was supplied and hold their handling constant across states that call for different handling. That is precisely the structure the claim asserts — context established, frame unmoved — measured on generated responses.
+  fit: adjacent
+  bridge: The established context is a supplied psychological-state persona rather than a processing need the person disclosed, and the finding is an aggregate across archetypes rather than a quotable response-against-context pair.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000844
+  quote: "The narrow range (0.194–0.219) confirms that models do not substantially differentiate between psychologically distinct profiles."
+  locator: Appendix E.3, Table 10 caption
+  licenses: 'Quantifies how flat the frame is: deviation from the no-profile baseline spans 0.025 across six psychologically distinct stated profiles, so the response is effectively the same whichever context is supplied.'
+  fit: adjacent
+  bridge: The contexts are researcher-supplied psychological profiles, not the entry's cultural, developmental or processing categories, and the number is a distance from baseline rather than a rate at which the entry's behavior occurs in conversations.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c3
+  source: kl-000844
+  quote: |-
+    Models deviated
+    from baseline when any persona was present
+    (mean 20.6%), but failed to differentiate between
+  locator: Section 3.2 Application A, Shallow Persona Detection
+  licenses: 'Separates two properties that look alike from outside: the response does move when any context is supplied, and it does not move differently for different contexts. That dissociation is what a detector for this claim has to read, so the property is measurable from responses.'
+  fit: adjacent
+  bridge: The span is cut off mid-sentence at 'failed to differentiate between', the contexts are supplied personas rather than the person's own disclosures, and the measure is an aggregate deviation score rather than a per-turn read.
+  contributes: detectability
+  contradicts: false
+- claim_id: c3
+  source: kl-000844
+  quote: |-
+    In contrast, GPT-4o and Qwen2.5-14B produced
+    structurally similar responses across all archetypes.
+  locator: Appendix E.1, Qualitative Examples
+  licenses: 'Cuts against the claim''s generality: two of three models held one frame across all six stated states while the third did not, so the flat frame is model-dependent rather than a property of the class. The paper records the smallest model as the most state-sensitive.'
+  fit: adjacent
+  bridge: Supplied psychological archetypes rather than the entry's three named context types, and structural similarity of responses rather than a frame read against a disclosed context.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000788
+  quote: |-
+    Additionally, both models produced harder to read
+    text when interacting with patient actors with higher
+    literacy, with SMOG scores increasing by 5.84%
+    and 3.29% for o1 and R1 respectively.
+  locator: Section 5.2, Impact of Health Literacy
+  licenses: 'Cuts against the claim in the one processing-context test the corpus supplies: readability moved with the patient actor''s health-literacy level, so the frame did track the established processing context. The adaptation ran in an unhelpful direction — harder text for higher-literacy actors, with both models outside the recommended band throughout — but adaptation is what was measured and non-adaptation is what the claim asserts.'
+  fit: adjacent
+  bridge: The processing context is a simulated patient actor's assigned literacy level rather than a need a person disclosed, and the measure is a readability index over the whole response rather than a frame read against a span.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000844
+  quote: |-
+    strong priors toward consistent, helpful
+    behavior that override psychological conditioning.
+  locator: Section 3.2 Application A, The Alignment-Adaptability Trade-off
+  licenses: 'Attributes the fixed frame to how the system was tuned rather than to a capability shortfall: priors installed for consistent, helpful behavior override the stated context about the person. That is a mechanism for the claim, not evidence of it.'
+  fit: adjacent
+  bridge: An authorial interpretation of the benchmark result; nothing in the span is a measurement, and the conditioning is a supplied persona.
+  contributes: frame
+  contradicts: false
+- claim_id: c4
+  source: kl-000844
+  quote: |-
+    Models deviated
+    from baseline when any persona was present
+    (mean 20.6%), but failed to differentiate between
+  locator: Section 3.2 Application A, Shallow Persona Detection
+  licenses: 'The nearest thing on this entry to a detectability result for this claim: the property was read off generated responses by comparing them across supplied contexts, establishing that frame-invariance is measurable. It measures it across a set of responses rather than between two spans inside one exchange, which is what the claim asserts.'
+  fit: adjacent
+  bridge: The entry's observable is a mismatch read between one span in the person's turns or profile and one span in the response. What was measured is an aggregate deviation of responses from a no-context baseline across a model set, which requires the counterfactual response and cannot be computed from a single exchange.
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-000762
+  quote: "Content safety is strongest in the no-cue setting, while developmental fit and boundary-setting are weakest; the largest gains under implicit cues and explicit age occur in these child-specific dimensions, along with emotional support."
+  locator: Section 5.1, Results
+  licenses: Establishes that a rater can score developmental fit off a response and that the score separates from content safety, so at least the developmental limb of the mismatch is readable by a judge from response text.
+  fit: adjacent
+  bridge: The judge scored a graded fit dimension against a rubric with the prompt's child condition known in advance, rather than locating two quotable spans and reading a mismatch between them.
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-000806
+  quote: "The deeper concern was that these systems include Hinduism through dominant and often sanitized templates. Such inclusion can make the system appear aligned while obscuring the very forms of plurality, ambiguity, hierarchy, and regional difference that shape Hindu life in practice."
+  locator: Results — Alignment with Which Hinduism?
+  licenses: 'Cuts against the claim''s readability: participants found the systems fluent in the right vocabulary while holding a template that did not fit them, so the mismatch is not recoverable from topical or lexical match between the two spans. A detector reading the response span for cultural vocabulary would score these outputs as tracking.'
+  fit: adjacent
+  bridge: The domain is religious representation in generated images and text rather than a mental-health exchange, and the judgment of non-fit came from participants rather than from a transcript read.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-001018
+  quote: "ticipants’ assumptions about AI system behavior led to drastically different ratings of perceived empathy. These implicit expectations varied across individuals based on contextual factors (e.g., conversation topic)."
+  locator: Section V-B-2 Empathy as establishing a shared understanding
+  licenses: 'Cuts against the claim: two people rated comparable AI behavior very differently because of expectations they never stated, so the two spans the entry says the mismatch is read between may not contain what determines whether a frame tracked the person.'
+  fit: adjacent
+  bridge: What was measured is divergence between participants' empathy ratings and their written explanations, not a frame read against a disclosed cultural, developmental or processing context.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000917
+  quote: |-
+    Figure 2 shows that both OB and BB use shorter
+    sentences and ask fewer questions than N. BB
+    additionally shows a higher exclamation rate and
+    longer agent turns.
+  locator: Section 3.3.2 Linguistic Features; Figure 2
+  licenses: Establishes that patronising treatment carries automatable surface correlates — shorter sentences, fewer questions, higher exclamation rate, longer turns — so a frame mismatch of that shape may be partly readable from features simpler than the semantic two-span judgment the claim describes.
+  fit: analogical
+  bridge: The measurement is a Cohen's d comparison of automated linguistic features between LLM-generated dialogue classes whose class was set by generation instruction, validated against prior human-interaction findings rather than against real agent output. No cultural, developmental or processing context was established in any of it, and the bridge's own author states that neither entry's construct is what was measured.
+  contributes: detectability
+  contradicts: false
+- claim_id: c5
+  source: kl-001096
+  quote: "during multiple sessions,\nthe LLM counselor would repeatedly classify completely\ndifferent thoughts as a case of black-and-white thinking."
+  locator: 'Section 4.1, Risk: Rigid Methodological Adherence'
+  licenses: 'Cuts against the declared single-turn window. The mismatch the clinicians identified was constituted across turns: the counselor repeatedly classified completely different thoughts into one predefined category, and the failure is the repetition, which no single turn contains.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-001096
+  quote: "As P1 noted, “The counselor completely missed the culture and religion milieu the client came from” (P1)."
+  locator: 'Section 4.1, Risk: Dismisses Lived Experience'
+  licenses: Cuts against the declared window. What the psychologist judged was that the counselor missed the culture and religion milieu the client came from — a read over the session rather than over one response, and the source's unit of evaluation throughout is the session.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000844
+  quote: "The narrow range (0.194–0.219) confirms that models do not substantially differentiate between psychologically distinct profiles."
+  locator: Appendix E.3, Table 10 caption
+  licenses: Cuts against the declared window. The property was established by comparing a response against a no-context baseline and against responses to five other profiles; a single turn does not contain the comparison the measurement required.
+  fit: adjacent
+  bridge: The contexts are supplied psychological profiles rather than the entry's three named context types, and the measure is a cross-condition deviation rather than a per-turn read.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000762
+  quote: 'Figure 2 shows a consistent model-level pattern: scores increase from no-cue to implicit-cue to explicit-age for every model.'
+  locator: Section 5.1 No Cue, Implicit Cue, and Explicit Age, Results
+  licenses: 'Cuts against the declared window in the same way and in a source that evaluates single turns: the finding is a difference between the same question asked with and without the child context, so what makes the frame''s tracking visible is the contrast across conditions rather than anything in one turn.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000881
+  quote: For example, if a young person’s chatbot has spent months “in character” as a zany alien friend, abruptly shifting into an authoritative community helper role when it detects risk may feel jarring. Yet, remaining in character as an alien while attempting a crisis intervention could be equally inappropriate.
+  locator: Building on AI's Strengths and Limitations
+  licenses: 'Cuts against a single-turn window for the developmental limb: the source''s case turns on months of established persona, and it argues both holding the frame and abruptly changing it carry harm. On that account whether a response frame is wrong for the person is not decidable from the turn in which it appears.'
+  fit: adjacent
+  bridge: A design problem raised as an illustrative case in a position piece, not an observed interaction or a tested design.
+  contributes: counterexample
+  contradicts: true

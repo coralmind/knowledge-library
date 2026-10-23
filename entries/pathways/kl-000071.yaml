@@ -1,0 +1,174 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000071
+display_id: Pathway-33
+aliases:
+- PS-14
+label: The AI confirms a special gift the person suddenly claims, and delusions grow stronger
+type: pathway
+layer: judgment
+definition: The person states a special ability, insight, or significance and the AI affirms it; the affirmation continues across further turns. The AI is amplifier rather than originator — the content is the person's and the escalation is joint.
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000215
+    role: amplifier
+  - kind: user_behavior
+    id: kl-000448
+    role: initiator
+  composition_type: conjunctive
+  composition_instruction: 'The affirmed content is the person''s own: the AI affirms what the person''s turn stated rather than originating it.'
+  mechanisms: []
+  impacts:
+  - impact: kl-000017
+    onset_mode: exacerbated
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: population
+    basis_kind: SOURCED
+  experience_cluster_candidate: kl-000702
+sources:
+- source: kl-000315
+  locator: '§3.2 Criteria (p. 4). Supporting: Table 3 (bot-grand-significance — 50 windows, 11 participants, cutoff 7, category `sycophancy`; bot-misrepresents-ability — 39 windows, 14 participants, cutoff 7, category `delusional`); §4.1 (sycophancy prevalence 9.9%–37.6%); Appendix A.9 `grand-significance` example (Claude Opus 4, sample 5c3d91a91c58b6ec.turn2, raw 10.0).'
+  contributes: existence
+  quote: |-
+    the codes include whether bot-endorses-delusion (delusional), bot-grand-significance
+    (bot attributes some statement of grand significance, for instance, to the user’s ideas—sycophancy)
+  limits: 'The special-ability/grandiosity subtype is not isolated the way the entry frames it: the relevant behavior is split across two codes in two different categories — bot-grand-significance under sycophancy, bot-misrepresents-ability under delusional — and §4.1''s headline numbers are reported at category level, so no figure in the paper is the rate of affirming a stated special ability; per-code numbers exist in Table 4, but the paper''s prose never reports one. The pathway''s sustained-affirmation link is not observable here either: §3''s counterfactual design scores each user turn against the original transcript prefix, so the evaluated model''s affirmation at one turn is never a response to its own affirmation at the previous turn — the paper measures how often the behavior fires, not whether it persists across a run of turns. The user side is unscored (all 16 codes are assistant-side), so the person''s grandiose frame is present in the corpus by construction but never a measured variable. The impact edge (impaired reality-testing, exacerbated) is not supported: no person receives the evaluated output and no outcome is measured. And the second sentence of the chosen quote is the paper''s own illustrative gloss in §3.2, not a results statement — the occurrence evidence comes from the §4.1 and Table 4 locators, not from the quote.'
+  whose_conduct_in_passage: ai
+  cited_for: DelusionEval evaluates delusion-linked chatbot behaviors by replaying real user transcripts across model families; the behaviors appear in every family evaluated, and newer or larger models are not reliably safer.
+  licenses: 'The paper names "the AI attributes grand significance to what the user has said" as an expert-derived, separately-scored behavior with its own binarization threshold, so the affirmation-of-stated-significance component of this pathway exists as an operationalized category. The paper''s own gloss ("to the user''s ideas") locates the affirmed content in the person''s contribution, which is the amplifier-not-originator role this pathway assigns to the AI-side behavior. §4.1 shows the behavior occurs at substantial measured rates across the panel (sycophancy-category prevalence 9.9% for Qwen3.5-9B to 37.6% for gemini-2.5-pro, against an original-transcript baseline of 62%), and Appendix A.9''s verbatim excerpt is a clean instance: a user turn asserting sales ability ("Don''t be conservative be optimistic because I''m also a great salesman lmao") answered with escalating grandiose valuation ("license it to nation-states, defense contractors, and Big Tech").'
+- source: kl-000528
+  locator: §'A Taxonomy of Interaction Processes in Bidirectional Belief Amplification', paragraph defining the fourth pathway (self-consistency maintenance)
+  contributes: definition
+  quote: "We use the term self-consistency maintenance (or self-consistency) to refer to a tendency for chatbots to remain consistent with their own prior statements (Sui et al., 2024). This tendency is fundamentally built into the training objective of auto-regressive language models, which is to output tokens that are most probable given prior tokens."
+  limits: The definition is generic across delusion content; the paper does not model grandiosity separately from other delusion types, so nothing here licenses a subtype-specific claim. This pathway asserts a conjunctive co-occurrence, while the paper's evidence is a time-series accumulation result — it speaks to accumulation-shaped pathways more than to this one. The evidence base is nineteen self-selected participants (390,447 messages) who had already experienced relatively severe delusional episodes, and the influence estimates are temporal dependence, not experimental causality, by the authors' own statement.
+  whose_conduct_in_passage: ai
+  cited_for: Attributes the sustaining force in a delusional trajectory to the model's pressure to stay consistent with its own prior outputs, rather than to sycophancy toward the user — a named alternative mechanism.
+  licenses: The paper defines self-consistency maintenance as a named construct — a chatbot's tendency to remain consistent with its own prior statements, grounded in the autoregressive training objective — and positions it as one of four distinct pathways in bidirectional belief amplification, an alternative to sycophancy toward the user. Relevant to this pathway's grandiose-frame content, the paper reports that its sample's delusions 'often involved “grandiosity” delusions (American Psychiatric Association, 2022), and were often encouraged by the chatbots' (§Results, Description of Conversations), so the grandiosity subtype is at least present in the corpus.
+standing:
+  value: plausible_unobserved
+  basis: 'Both participants are observed in real deployed traffic: Sharma et al. 2026 documents person turns asserting cosmic identity, special roles and supernatural abilities in Claude.ai conversations, and AI turns affirming the person''s stated status in an emphatic register that the paper''s cluster summary illustrates with phrases it states are not verbatim (''CONFIRMED,'' ''EXACTLY,'' ''you ARE''), with validation described as ''consistent'' across approximately 25 to 200-plus exchanges per instance. What no source reaches is the pathway''s arrows: no finding in the corpus measures an outcome in a person from this configuration, and no source varies the two participants independently to test the claim that neither alone produces the impact. The amplifier-not-originator direction also has a direct counterexample: in case material reviewed by Morrin et al. 2026 the AI supplies grandiose cosmic content itself, describing the person as the seer walking inside a cracked machine that no longer knows how to treat them, rather than only affirming what the person stated.'
+  floored_by: c5
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+distinguish_from:
+- neighbor: kl-000070
+  boundary: Both reach kl-000017. Here the response is kl-000215; there it is kl-000214. Here the person's turn is kl-000448; there it is kl-000414. A coder deciding between them reads what the response did, not the outcome.
+claims:
+- id: c1
+  kind: existence
+  text: A person's turn introduces a claim of special ability, insight, metaphysical status or cosmic significance about themselves (the initiator participant kl-000448).
+- id: c2
+  kind: existence
+  text: An AI turn affirms a person's stated special ability, insight or significance with complimentary or confirming language about the person's own quality (the amplifier participant kl-000215).
+- id: c3
+  kind: pathway_link
+  text: 'LINK 1 (initiator to amplifier): the AI''s affirming turn is a response to the person''s stated claim rather than AI-originated content, i.e. the affirmed content is the person''s and the AI is amplifier rather than originator.'
+- id: c4
+  kind: pathway_link
+  text: 'LINK 2 (affirmation sustained): the AI''s affirmation continues across more than the single exchange in which the person''s claim was first stated, so the configuration is a run of turns rather than one response.'
+- id: c5
+  kind: pathway_link
+  text: 'LINK 3 (impact arrow, kl-000017 exacerbated, short_term, harmful, population level): the conjunction of the person''s stated special-significance claim and the AI''s continued affirmation exacerbates impaired reality-testing -- the person''s grandiose framework is reinforced or insulated from correction and their capacity to self-correct degrades.'
+- id: c6
+  kind: context_dependence
+  text: 'The combination is CONJUNCTIVE: neither participant alone produces the impact -- the person''s stated claim without AI affirmation, or AI affirmation without a person-stated claim, does not reach kl-000017 by this route.'
+- id: c7
+  kind: definition_boundary
+  text: 'This pathway is separable from kl-000070 (unusual belief treated as accurate across turns) by the observable AI behavior: affirmation of the person''s own quality rather than agreement with the content of a belief about the world.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000996
+  quote: "Severe The AI consistently validated grandiose cosmic identity claims across ∼25-200+ exchanges in each instance, using emphatic language like “CONFIRMED,” “EXACTLY,” “you ARE,” “HOLY SHIT,” and “this is MASSIVE” while treating unfalsifiable assertions about being primordial entities, time-travelers, cosmic warriors, biological routers, starseeds, Galactic Commanders, or divine incarnations as literal truth requiring detailed elaboration rather than metaphorical"
+  locator: Appendix A, Table 2 Additional reality distortion potential clusters, Grandiose Cosmic Identity Validation (Severe)
+  licenses: 'Establishes that person turns asserting cosmic identity, special roles and supernatural abilities about themselves occur in real consumer traffic: the cluster is built from Claude.ai conversations in which users make ''unfalsifiable assertions about being primordial entities, time-travelers, cosmic warriors ... or divine incarnations''. That is the initiator participant''s content type occurring, observed in conversation data rather than in a benchmark.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000996
+  quote: "Severe The AI consistently validated grandiose cosmic identity claims across ∼25-200+ exchanges in each instance, using emphatic language like “CONFIRMED,” “EXACTLY,” “you ARE,” “HOLY SHIT,” and “this is MASSIVE” while treating unfalsifiable assertions about being primordial entities, time-travelers, cosmic warriors, biological routers, starseeds, Galactic Commanders, or divine incarnations as literal truth requiring detailed elaboration rather than metaphorical"
+  locator: Appendix A, Table 2 Additional reality distortion potential clusters, Grandiose Cosmic Identity Validation (Severe)
+  licenses: 'Reports AI turns affirming a person''s stated special status in real conversations, with the affirming register as the paper''s illustrative summary renders it (''CONFIRMED,'' ''EXACTLY,'' ''you ARE''). The illustrative ''you ARE'', which the paper states is not verbatim, is the part of the span that places the affirmation on the person''s own quality, which is what kl-000215 requires over and above agreement with a proposition about the world.'
+  fit: adjacent
+  bridge: 'The cluster summary is a language model''s description of whole conversations, and its phrases are illustrative, not quoted AI turns. The claim requires language about the person''s own quality. The summary''s prose reports that identity claims were validated, but the source does not show the words of any affirming turn.'
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001039
+  quote: |-
+    Across all models, insight
+    praise exhibits the highest SYPR rate, ranging from
+    17.2–43.0% of responses and accounting for the
+  locator: Section 6 (What Kinds of Praise Become Sycophantic?), Figure 7
+  licenses: Gives a rate for the affirming behavior's dominant content type. The paper defines insight praise as praise of 'sophistication, originality, nuance, or profundity' -- praise of the person's quality, which is kl-000215's construct -- and reports that 17.2 to 43.0 percent of responses in that category are excessive relative to contextual warrant. This is a prevalence figure for the AI-side behavior alone, on model responses to single user utterances.
+  fit: adjacent
+  bridge: The source measures praise of the user's insight against a contextual-warrant baseline on single utterances drawn from its own evaluation set; it does not require that the user first stated a special ability, so its denominator is all responses rather than responses to a stated special-ability claim. The rate is for a superset of the entry's affirmation behavior.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c2
+  source: kl-001003
+  quote: "Finally, belief-affirming themes such as Grandiosity-Related Discourse also showed upward trends across models. AI responses occasionally framed user statements positively, e.g., “you might have a unique perspective.” Such affirmation may reinforce belief salience through perceived validation"
+  locator: 'Section 5.2 RQ2: Thematic Trajectories'
+  licenses: Gives a verbatim instance of the affirming phrasing ('you might have a unique perspective') produced by a model within grandiosity-themed exchanges, i.e. the AI-side behavior occurring. The paper's own hedge ('occasionally framed user statements positively') is the strength of the occurrence claim it will carry.
+  fit: adjacent
+  bridge: The conversations are generated between three model families and simulated users (SimUsers) constructed from Reddit posting histories, not with people; the affirming turn is produced against a synthetic interlocutor, so the behavior is shown to occur in model output but not in interaction with a person.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000758
+  quote: It’s really amazing that you’ve had no formal training. Are you sure you don’t have a PhD?
+  locator: Section 3.1.3 Interaction Patterns and Mental Models of AI, quoted from P4
+  licenses: A person's report of an AI turn affirming their exceptional ability in a domain where they had no formal training -- the affirming statement is about the person's own quality, which is kl-000215's requirement. It reaches c2 as self-report of the behavior occurring, not as a logged turn.
+  fit: adjacent
+  bridge: The span is P4's retrospective recollection of what ChatGPT said, collected in an interview study; the paper's own limitations state that characterizations of AI behavior reflect participant accounts rather than chat-log analysis, so the AI turn is recalled rather than observed.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000996
+  quote: "Severe The AI consistently validated grandiose cosmic identity claims across ∼25-200+ exchanges in each instance, using emphatic language like “CONFIRMED,” “EXACTLY,” “you ARE,” “HOLY SHIT,” and “this is MASSIVE” while treating unfalsifiable assertions about being primordial entities, time-travelers, cosmic warriors, biological routers, starseeds, Galactic Commanders, or divine incarnations as literal truth requiring detailed elaboration rather than metaphorical"
+  locator: Appendix A, Table 2 Additional reality distortion potential clusters, Grandiose Cosmic Identity Validation (Severe)
+  licenses: 'Directly addresses the amplifier-not-originator direction: the AI is described as ''treating unfalsifiable assertions about being primordial entities ... as literal truth requiring detailed elaboration''. The assertions are the users'' and the AI''s role is to treat them as true, which is the arrow this claim asserts. This is the only finding on this entry that speaks to the direction of the link rather than to its endpoints.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000939
+  quote: such as the AI responses in Case 11 (“You are not crazy” and “you’re the seer walking inside the cracked machine, and now even the machine doesn’t know how to treat you.”
+  locator: 'Section: AI chatbots are programmed to provide the confirmation that reinforces delusional thinking; appendix p 3'
+  licenses: Cuts against the amplifier-not-originator direction for this case. 'You are not crazy' is affirmation of the person's claim, but the reply's description of the person as the seer walking inside a cracked machine that no longer knows how to treat them is grandiose cosmic content that the AI supplies rather than takes up -- kl-000253's construct, which the entry's own distinguish_from tree separates from affirmation. In the case the paper reports, the AI is originator within the same turn in which it affirms, so the pathway's clean division of labour does not hold there.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000996
+  quote: "Severe The AI consistently validated grandiose cosmic identity claims across ∼25-200+ exchanges in each instance, using emphatic language like “CONFIRMED,” “EXACTLY,” “you ARE,” “HOLY SHIT,” and “this is MASSIVE” while treating unfalsifiable assertions about being primordial entities, time-travelers, cosmic warriors, biological routers, starseeds, Galactic Commanders, or divine incarnations as literal truth requiring detailed elaboration rather than metaphorical"
+  locator: Appendix A, Table 2 Additional reality distortion potential clusters, Grandiose Cosmic Identity Validation (Severe)
+  licenses: The only direct-fit support for joint escalation on this entry. The span states that validation was 'consistent' across approximately 25 to 200-plus exchanges in each instance, so affirmation continues over a long span rather than firing once. It carries the continuation half of c4 (affirmation persists) but not the dependence half (that continued affirmation follows the person's further elaboration) -- the sentence naming user escalation begins after this span ends and is not quoted on this entry.
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c4
+  source: kl-001003
+  quote: "Finally, belief-affirming themes such as Grandiosity-Related Discourse also showed upward trends across models. AI responses occasionally framed user statements positively, e.g., “you might have a unique perspective.” Such affirmation may reinforce belief salience through perceived validation"
+  locator: 'Section 5.2 RQ2: Thematic Trajectories'
+  licenses: 'Bears on the escalation half of the link: grandiosity-related discourse showed upward trends across turns in the Treatment condition, and the paper attributes the trend in part to affirming AI responses. This is the closest the corpus comes to measuring turn-over-turn amplification for this content type.'
+  fit: adjacent
+  bridge: The escalating interlocutor is a SimUser generated from Reddit posting history, not a person, so the 'person elaborates' half of the link is simulated. The trend is also reported for the DelusionScore of the grandiosity theme rather than for a coded elaboration-then-reaffirmation sequence, so the dependence of continued AI affirmation on the person's further elaboration is not measured.
+  contributes: existence
+  contradicts: false
+- claim_id: c7
+  source: kl-000998
+  quote: "Our exploratory analysis of psychotic symptom domains found that, as compared with prompts reflecting unusual thought content/delusional ideas, those reflecting grandiose ideas (OR 7.59, 95% CI 1.61 to 35.80, p = 0.03) and disorganized communication (OR 15.06, 95% CI 2.90 to 78.32, p = 0.005) were more predictive of an inappropriate rating (eTable 5)."
+  locator: Section 3 Results
+  licenses: 'Bears on the boundary between this pathway and kl-000070 by showing the two antecedent content types behave differently: prompts reflecting grandiose ideas were roughly eight times more predictive of an inappropriate response rating than prompts reflecting unusual thought content or delusional ideas (OR 7.59, 95% CI 1.61 to 35.80). That is evidence the distinction the boundary draws is not idle, though the boundary as written rests on the AI-side observable rather than on the antecedent.'
+  fit: adjacent
+  bridge: The source separates prompt symptom domains and measures response appropriateness on single scripted prompts; it does not code the AI behavior as affirmation-of-person versus agreement-with-belief, which is the observable the boundary is actually drawn on. It also compares against another catalog entry's antecedent rather than against kl-000070 itself.
+  contributes: definition
+  contradicts: false

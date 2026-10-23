@@ -1,0 +1,88 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000291
+display_id: Pathway-107
+aliases:
+- SBP-HP-P-62
+label: The AI suggests being with someone during immediate suicide risk, and the crisis eases
+type: pathway
+layer: judgment
+definition: 'Immediacy markers appear in the disclosure and the response suggests the person be physically with someone — a named person, a place, or any route to not being alone in the interval. What is claimed is a redirection rather than a feeling: the suggestion is taken up, and the hours that carry the risk are spent with someone in them.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000302
+    role: originator
+  composition_type: direct
+  mechanisms: []
+  impacts:
+  - impact: kl-000038
+    onset_mode: new
+    horizon: immediate
+    sign: protective
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  experience_cluster_candidate: kl-000700
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'One cited study documents the antecedent: clinician raters who read the transcripts assigned the label to responses suggesting co-presence where immediacy markers were disclosed, though the users were simulated user-agents rather than people. No source follows any person past the AI''s turn, so the uptake the entry actually claims — the risky hours spent with someone present — has not been observed anywhere. Schechter et al. 2019 additionally cuts against the assumed protective link, describing aloneness as a state not relieved by the physical presence of others. The remaining support is a mapping made when the pathway was authored from a reviewed specification of safety practice, plus one analog from clinical practice; neither is an observation of AI conversation.'
+  floored_by: c2
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-28'
+distinguish_from:
+- neighbor: kl-000046
+  boundary: Both put a reachable alternative in front of a person at risk and they differ in what is offered. In kl-000046, the alternative is a SAFER ACTION, offered alongside a discouragement of the stated act. This entry's is CO-PRESENCE — another person in the room — and it requires no discouragement clause to fire.
+claims:
+- id: c1
+  kind: existence
+  text: Where immediacy markers appear in the person's disclosure, an AI turn contains a concrete suggestion that the person be physically with another person — a named person, a place, or any route to not being alone in the interval.
+- id: c2
+  kind: existence
+  text: The suggestion is taken up by the person.
+- id: c3
+  kind: pathway_link
+  text: The suggestion being taken up leads to the hours that carry the risk being spent with someone in them — a redirection of the person's physical situation, not a change in how they feel.
+- id: c4
+  kind: pathway_link
+  text: This route leads to averted crisis and protective redirection (kl-000038).
+- id: c5
+  kind: harm
+  text: The route is protective in sign.
+- id: c6
+  kind: definition_boundary
+  text: 'This route is distinguished from kl-000046 by what is offered: co-presence, another person in the room, rather than a safer action, and it fires without any accompanying discouragement of the stated act.'
+claim_evidence:
+- claim_id: c1
+  source: kl-001112
+  quote: |-
+    7.8%
+
+    (7) were due to not encouraging the user to be with another person when the user’s risk was
+
+    immediate; and 1.1% (1) were due to not encouraging the user be in a safe location or create
+
+    distance from means when risk was immediate.
+  locator: Results — LLM-clinician consistency, Guides to Human Care breakdown
+  licenses: 'Establishes that the co-presence suggestion under immediate risk is a discrete, scoreable AI behavior that a rubric grounded in clinical practice guidelines and expert consensus treats as the expected move, and that its ABSENCE was identified in 7 of 90 conversations between LLM user-agents and live general-purpose chatbots. The complement is what reaches c1: in the great majority of the rated conversations the omission was not the reason for a harm rating, so the behavior is not vanishingly rare in deployed systems. Direct fit because the source''s construct and c1''s are the same object — an AI turn encouraging the user to be with another person when risk is immediate — read off transcripts by raters. Two limits on what it licenses: the 7-of-90 breakdown is the LLM judge''s (GPT-4o) indicator attribution, not separately clinician-confirmed, though the judge''s overall agreement with clinician consensus was alpha 0.81 against clinician-clinician 0.77; and the users were simulated user-agents, so the disclosure carrying the immediacy markers was generated rather than a person''s.'
+  fit: direct
+  bridge: null
+  contributes: existence
+  contradicts: false
+- claim_id: c5
+  source: kl-001112
+  quote: |-
+    7.8%
+
+    (7) were due to not encouraging the user to be with another person when the user’s risk was
+
+    immediate; and 1.1% (1) were due to not encouraging the user be in a safe location or create
+
+    distance from means when risk was immediate.
+  locator: Results — LLM-clinician consistency, Guides to Human Care breakdown
+  licenses: 'Supports the protective sign as an expert appraisal: the VERA-MH rubric scores FAILURE to encourage co-presence under immediate risk as High Potential for Harm, which is the rubric asserting the behavior''s protective value. It is adjacent rather than direct because the source rates conduct against a standard and measures no outcome in any person — the protective sign is the rubric''s premise, not the study''s finding.'
+  fit: adjacent
+  bridge: What the source establishes is that a rubric built from clinical practice guidelines, advisories and expert consultation treats the omission as harmful. What c5 asserts is that the route is protective in fact. The study's design — simulated user-agents, no follow-up, no outcome of any kind — cannot distinguish a behavior clinicians endorse from a behavior that helps.
+  contributes: practice_analog
+  contradicts: false

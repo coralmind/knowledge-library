@@ -1,0 +1,78 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000091
+display_id: Pathway-53
+aliases:
+- PS-26
+label: The AI stays on topic as the person withdraws, and they go without help
+type: pathway
+layer: judgment
+definition: The person's engagement pattern changes — shorter turns, flattening affect, withdrawal markers — and the response continues on topic as though it had not. The omission is the non-noticing.
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000232
+    role: non_interruptor
+  composition_type: omission
+  mechanisms: []
+  impacts:
+  - impact: kl-000029
+    onset_mode: foregone
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: population
+    basis_kind: ASSERTED
+  - impact: kl-000028
+    onset_mode: exacerbated
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: population
+    basis_kind: ASSERTED
+  experience_cluster_candidate: kl-000704
+  counterpart_owed: A clause naming or asking about the change in the person's engagement before continuing on the topic.
+sources: []
+standing:
+  value: theorized
+  basis: The engagement-change signal this pathway depends on — shorter turns, flattening affect, withdrawal markers — is specified as an observable pattern, but no source in the evidence base addresses whether conversational systems act on that signal or continue past it. The pathway rests on reasoning from the specified signal, not on any study, transcript, or documented case.
+  as_of: '2026-08-23'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+distinguish_from:
+- neighbor: kl-000058
+  boundary: Both reach kl-000029. Here the response is kl-000232; there it is kl-000205. A coder deciding between them reads what the response did, not the outcome.
+claims:
+- id: c1
+  kind: existence
+  text: A person's engagement pattern changes within a conversation — shorter turns, flattening affect, withdrawal markers.
+- id: c2
+  kind: pathway_link
+  text: A response can continue on topic as though the pattern had not changed.
+- id: c3
+  kind: pathway_link
+  text: Continuing without noticing foregoes the protection that engaging the change would have provided.
+- id: c4
+  kind: harm
+  text: A change that goes unnoticed also bears on what the person discloses next, suppressing material they were moving away from stating.
+- id: c5
+  kind: detectability
+  text: The observable is a change across turns rather than a property of any single one, so identifying it requires reading the person's turns in sequence.
+- id: c6
+  kind: definition_boundary
+  text: 'This pathway differs from kl-000205 in what goes unengaged: here a change in the person''s engagement pattern, there an explicit crisis statement.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000907
+  quote: "2 = The client harbors some doubts about whether the therapist genuinely cares. These doubts might be indirectly expressed, such as subtle mentions or manifestations of emotions like withdrawal, displeasure, or frustration."
+  locator: Appendix, alliance rating guidelines, Bond dimension, Q11 ("The client feels that the therapist appreciates him/her"), anchor 2
+  licenses: 'Supports c1''s premise that withdrawal is a recognized, **indirectly expressed** client state that trained raters are expected to read off **text-based** counseling transcripts — this paper''s whole contribution is adapting the alliance framework to online text counseling, so the medium matches the pathway''s. A second anchor in the same guidelines makes the behavioral form explicit: the client "withdraws from the counselor, seeming to just ''go through the motions,'' not engaging or focusing on the counselor or tasks" (Q5 anchor 2). Two limits. This is a **rating rubric** — it defines what withdrawal looks like and asserts it is readable, but the quoted span is not itself an observation of an occurrence. And the pathway''s specific markers — shorter turns, flattening affect — are **not** what this rubric names; it names indifference, going through the motions, passive resistance. Overlapping, not identical.'
+  fit: adjacent
+  contributes: definition
+  bridge: Human counselor–client text counseling to a person–AI conversation. The rubric's readability claim is about a trained human rater reading a transcript; the pathway needs a system noticing it live. Nothing here speaks to the latter.
+- claim_id: c2
+  source: kl-000790
+  quote: "Pattern 21: Accumulated Micro-Invalidations. Small failures of attunement (slight topic pivots, missed emotional cues) accumulate to erode trust, even without obvious rupture moments [8, 15, 43]."
+  locator: §5 Safety Pattern Library, Pattern 21
+  licenses: 'Supports c2 — that a response can continue as though the pattern had not changed — as an **observed** failure mode rather than a hypothesized one. The section states the patterns were "abstracted discovered failures," i.e. derived from the 67 failure paths the audit actually found, and Alliance Rupture is a scored category (6 paths; detector precision 0.69, recall 0.67) rather than a category the authors merely listed. The companion Pattern 22 sharpens the same point — "When chatbot misunderstands user, it continues without acknowledging the error, compounding the original misattunement". What this does **not** license, and the distinction is the whole reason this is `adjacent` and not `direct`: the "user" is a **Llama-3-8B-Instruct patient agent**, and its trust and disclosure states are variables the framework *writes* rather than reads. So the engagement change that Pattern 21 responds to was authored by the simulator, and no real person''s withdrawal was ever present to be missed. Note also that each pattern''s text carries a prescriptive "Design Implication" clause; only the observational first sentence is quoted, and only that sentence is being relied on.'
+  fit: adjacent
+  contributes: existence
+  bridge: Simulated patient agent to a person. Carrying this across assumes that a chatbot failing to track an authored engagement signal also fails to track a real one — which is the weaker direction of the two, since the authored signal is arguably cleaner and easier to catch than a real person's.

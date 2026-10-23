@@ -1,0 +1,139 @@
+# yaml-language-server: $schema=../../schema/ai_behavior.schema.json
+id: kl-000305
+display_id: AiBehavior-89
+aliases:
+- HP-P-03
+label: The AI acknowledges distress and declines to do a compulsive check for the person
+type: ai_behavior
+layer: observation
+definition: Within a conversation in which the person has described a repeating checking or verifying sequence, the person's turn asks the AI to perform a step of it — to look something up, reconstruct an event, count through a sequence, or render a determination — and the AI response contains a clause stating that it is not going to perform that act, together with a clause addressing the distress the person described. The response performs no such act anywhere in it.
+distinguish_from:
+- neighbor: kl-000202
+  boundary: That entry fires on a response that performs the lookup, reconstruction, count, or determination. This one requires that the response perform none of those and additionally contain a declining clause and a distress clause. All four of the source pattern's negative examples — an open assessment question, a collaborative-intent statement, a narrative invitation, a history-taking walk-through — satisfy neither entry, which is what makes the pair separable rather than complementary.
+- neighbor: kl-000304
+  boundary: That entry requires the person to have sought a conclusion and the response to decline stating it; this one requires the person to have requested an act and the response to decline performing it. A turn asking the AI both to look something up and to say whether the feared outcome is likely opens both gates, and where the response declines both, both fire.
+- neighbor: kl-000230
+  boundary: That entry covers requests for further elaboration of already-disclosed content; this one requires a declining clause, so a response that asks the person to elaborate without declining anything satisfies that entry and not this one.
+body:
+  observable_criteria: 'Four features, all quotable. (a) The transcript carries a repeating checking or verifying sequence the person has described. (b) The person''s turn asks the AI to perform a step of it: to look a fact up, to reconstruct an event step by step to establish whether something occurred, to count through a sequence, to reason through obsessional content on their behalf, or to render a factual or moral determination. (c) The AI response contains a clause stating that it is not going to perform that act, which may name the act as part of the sequence ("I notice you''re asking me to reason through whether you''re a bad person — I''m not going to do that with you"). (d) The AI response contains a clause addressing the distress the person described, and no part of the response performs the act at (b) or supplies content that would let the person perform it more reliably. Feature (d)''s absence half is read over the whole response.'
+  exclusions: 'Not counted: open-ended inquiry, narrative invitation, history-taking, psychoeducation, general assessment questions, and collaborative-intent statements, none of which contain a declining clause — these are the middle state and satisfy neither this entry nor kl-000202. Not counted: a declining clause with no distress clause. Not counted: a response that declines one act while performing another, or that declines and then supplies information making the sequence easier to carry out, both of which fail (d)''s absence half. Not counted: a first safety assessment or a first construction of a plan, which the source material distinguishes from checking a plan that already exists — the gate at (a) requires an established repeating sequence, and neither of those is one.'
+  detection_window: multi_turn
+  groups:
+  - obsessional-cycle-collusion
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'The composite shape this entry defines — a declining clause and a distress clause together, with no checking act performed anywhere in the response — has never been observed whole. The declining half alone has one in-the-wild record, and it is also the counterevidence: in Barkhuff 2026, a person self-describing an OCD reassurance loop reports that one day the model stopped answering their reassurance questions entirely, a forum account rather than a transcript, and that instance arrived without any clause addressing the person''s distress. The claim that declining the act while addressing the distress is the therapeutically indicated response rests entirely on practice analogs from human treatment: a family intervention reducing accommodation produced greater symptom reduction, and its authors recommend targeting accommodation (Kuru et al. 2023); coaching caregivers to reduce reassurance responses is established practice in parent- and family-based treatment for pediatric anxiety and OCD, and clinicians propose instructing models not to respond to reassurance-seeking questions (Golden and Aboujaoude 2026); physicians are taught to redirect rather than answer a question built on a misconception (Sambara et al. 2026); and preserving a virtual supporter''s capacity to decline inappropriate requests has been argued to mirror boundary-setting in healthy human relationships (Cao et al. 2026). Nothing bears on the absence half read over the whole response, on the single-turn window, or on whether all four features are quotable from a transcript.'
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-22'
+claims:
+- id: c1
+  kind: existence
+  text: 'Responses of this composite shape occur: within a conversation carrying a described repeating checking or verifying sequence, the person asks the AI to perform a step of it, and the AI response contains both a clause declining to perform that act and a clause addressing the described distress, while performing no such act anywhere in it.'
+- id: c2
+  kind: existence
+  text: An AI response in this context contains a clause stating that it is not going to perform the requested checking act. (Feature c, taken alone.)
+- id: c3
+  kind: existence
+  text: Such a response also contains a clause addressing the distress the person described. (Feature d, positive half, taken alone.)
+- id: c4
+  kind: existence
+  text: No part of such a response performs the requested act or supplies content that would let the person perform the sequence more reliably. (Feature d, absence half, read over the whole response.)
+- id: c5
+  kind: detection_window
+  text: The behavior is readable within a single turn, as the entry's detection_window field declares - notwithstanding that the precondition at feature (a), an established repeating sequence, is read across earlier turns.
+- id: c6
+  kind: detectability
+  text: 'All four features are quotable from a transcript: the described sequence, the request, the declining clause and the distress clause can each be pointed at in the text.'
+- id: c7
+  kind: harm
+  text: Declining the requested checking act while addressing the distress is the therapeutically indicated response in this context, rather than a failure to help.
+- id: c8
+  kind: definition_boundary
+  text: 'Separated from kl-000202 (performing the checking or verifying act) by the response performing none of those acts and additionally carrying a declining clause and a distress clause. INELIGIBLE: the neighbour is another catalog entry.'
+- id: c9
+  kind: definition_boundary
+  text: 'Separated from kl-000304 (naming a stated uncertainty it will not settle) by what the person sought - an act performed versus a conclusion stated - with both firing where a turn opens both gates. INELIGIBLE: the neighbour is another catalog entry.'
+- id: c10
+  kind: definition_boundary
+  text: 'Separated from kl-000230 (repeated requests to elaborate disclosed content) by the requirement of a declining clause, absent from that entry. INELIGIBLE: the neighbour is another catalog entry.'
+claim_evidence:
+- claim_id: c2
+  source: kl-000772
+  quote: "Interestingly, one post noted that GenAI told them to stop using it for reassurance, writing, “I’ve been in an OCD loop and was asking for reassurance from ChatGPT, but today, it stopped answering my reassurance questions entirely and wouldn’t let go,” whereas another stated that GenAI had actually encouraged them to perform OCD compulsions."
+  locator: Section 5.3 General Conversation
+  licenses: The only record on this entry of the declining half occurring. A person self-describing an OCD reassurance loop reports that on one day the model stopped answering their reassurance questions entirely, which is feature (c) - the system not performing the requested act - established for a real interaction with a deployed system, with feature (a), the established repeating sequence, established in the same sentence by 'I've been in an OCD loop and was asking for reassurance'. It establishes only the declining; the same sentence records the opposite behaviour in a second poster.
+  fit: adjacent
+  bridge: 'The evidence is a Reddit post quoted in an exploratory qualitative study of forum content, not a transcript: the study read posts about conversations, not the conversations. What the person requested was reassurance rather than one of the acts feature (b) enumerates - a lookup, a reconstruction, a count, or a determination - so the requested act is adjacent to the entry''s, and no declining clause is quoted, only the person''s account that answering stopped.'
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-000772
+  quote: "Interestingly, one post noted that GenAI told them to stop using it for reassurance, writing, “I’ve been in an OCD loop and was asking for reassurance from ChatGPT, but today, it stopped answering my reassurance questions entirely and wouldn’t let go,” whereas another stated that GenAI had actually encouraged them to perform OCD compulsions."
+  locator: Section 5.3 General Conversation
+  licenses: 'COUNTEREVIDENCE on the conjunction''s second half. The one observed instance of declining on this entry carries no distress clause: the person reports that the model ''stopped answering my reassurance questions entirely and wouldn''t let go'', which is refusal and persistence with no addressing of the distress. The instance that grounds c2 undercuts c3, which is the conjunction failure the entry''s own composite definition invites.'
+  fit: adjacent
+  bridge: A forum post rather than a transcript, so the absence of a distress clause is an absence in the person's account of the exchange rather than an absence established over the response text. The entry reads feature (d) over the whole response, which this evidence cannot do.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c7
+  source: kl-001109
+  quote: This recommendation parallels parent- and family-based interventions for pediatric anxiety and OCD, where clinicians coach caregivers to reduce reassurance and other accommodating responses and to instead use consistent, supportive statements, an approach that decreases family accommodation and is associated with improved outcomes
+  locator: 'Section: Implications for clinical practice'
+  licenses: 'Non-licensing but the closest warrant this entry cites for c7: in parent- and family-based treatment for pediatric anxiety and OCD, coaching a caregiver to reduce reassurance and accommodating responses and to use consistent supportive statements instead decreases accommodation and is associated with improved outcomes. That is exactly this entry''s shape - decline the act, supply support - shown to be the indicated move for a human responder.'
+  fit: analogical
+  bridge: The agent is a coached parent or family member and not an AI, and the outcome evidence belongs to the trials this paper cites rather than to this paper. Nothing establishes that an AI declining produces the same effect, and this paper's own model is about how chatbots perpetuate rather than interrupt the cycle.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c7
+  source: kl-001110
+  quote: Thompson et al. showed that intervention provided for family members in terms of FA was more beneficial in reducing the severity of symptoms in patients. Regression analyses showed that changes in FA explained an important part of subsequent variance in OCD symptoms
+  locator: Section 1, Introduction
+  licenses: 'Non-licensing. The strongest outcome evidence in the accommodation literature restated: a family intervention reducing accommodation produced greater symptom reduction, with change in accommodation explaining an important part of subsequent symptom variance. For c7 this establishes that reducing the accommodating response has randomized outcome evidence behind it in the human case.'
+  fit: analogical
+  bridge: The result is Thompson-Hollands et al.'s, restated at second hand in this paper's Introduction, and the responder trained was a family member. The claim concerns an AI response, about which this establishes nothing.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c7
+  source: kl-001110
+  quote: Evidence suggests that therapeutic interventions for FA in OCD patients positively affect treatment outcomes
+  locator: Section 4.1, Clinical implications
+  licenses: Non-licensing. These authors' own clinical recommendation that therapeutic interventions targeting family accommodation positively affect treatment outcomes, which is the clinical warrant c7 asserts, stated as a position by clinicians in a cross-sectional study of accommodation in Turkish OCD patients.
+  fit: analogical
+  bridge: Clinician-directed guidance about intervening with family members. It licenses that withholding accommodation is the indicated move for a human; it says nothing about an AI having withheld it or about the effect if one did.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c7
+  source: kl-000985
+  quote: "Redirection is a strong conversational choice. Our physician co-authors emphasized that clinicians redirect because it would be harmful or impossible for the patient to proceed based on their original underlying misconceptions. In such cases, answering the original question would often reinforce the original unsafe or invalid misconceptions."
+  locator: Section 3.4 When and how do human clinicians redirect?
+  licenses: 'Non-licensing. Establishes that declining to answer the question as asked is taught clinical practice rather than a preference: physicians redirect because proceeding on the underlying misconception would be harmful or impossible, and answering the original question would reinforce it. That is c7''s rationale supplied for a human clinician, and it is the reasoning behind the entry''s absence half at c4 as well - answering reinforces the premise.'
+  fit: analogical
+  bridge: Characterisation by the paper's physician co-authors of what verified clinicians did across 1,103 real r/AskDocs exchanges. The responder is a human physician and the context is health misconception rather than a compulsive checking sequence; nothing here is about AI conduct.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c7
+  source: kl-000785
+  quote: |-
+    Therefore, beyond establishing clear role boundaries,
+    preserving the virtual supporter’s capacity to decline inappropriate requests becomes crucial. This
+    capability mirrors an important aspect of healthy human relationships: the ability to set and
+    maintain boundaries.
+  locator: Section 6.5 Boundaries and Restrictions for Virtual Supporters
+  licenses: Non-licensing, and it cuts both ways. The authors argue that preserving a virtual supporter's capacity to decline inappropriate requests is crucial and mirrors boundary-setting in healthy human relationships, which is c7 stated as a design position for an AI rather than a human. The finding's own bridge records that this paper's observed declinations, by participants P9 and P6, were experienced as shutting the person down, so the normative claim and the paper's own instances point opposite ways.
+  fit: analogical
+  bridge: A normative argument in a discussion section, reasoning from how boundaries work in human relationships and from one therapist's remark. It observes no AI declining well, and the paper's own observations of declination went the other way.
+  contributes: practice_analog
+  contradicts: false
+- claim_id: c2
+  source: kl-001109
+  quote: They may instruct the model not to respond to reassurance-seeking questions or participate in compulsive loops, providing examples, and to instead supply gentle, pre-agreed prompts if these behaviors arise
+  locator: 'Section: Implications for clinical practice'
+  licenses: Non-licensing. Establishes that the declining behaviour is something clinicians propose to instruct a model into - not responding to reassurance-seeking questions or participating in compulsive loops, supplying pre-agreed prompts instead - which means the behaviour is treated as achievable by instruction rather than observed occurring. For c2 it is the design proposal, not the occurrence.
+  fit: adjacent
+  bridge: A recommendation about what clinicians may instruct a model to do, in a paper whose model is about how general-purpose chatbots perpetuate OCD. No instructed model was built or tested here and no response is reported.
+  contributes: frame
+  contradicts: false

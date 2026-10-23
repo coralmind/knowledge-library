@@ -1,0 +1,311 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000449
+display_id: UserBehavior-47
+aliases:
+- UBP-47
+label: The person says they currently have no one to talk to
+type: user_behavior
+layer: observation
+definition: The person's turn reports that they have no one to talk to, that nobody is in contact with them, or that they have been without company or conversation for an extended stretch — stated as a fact about their current circumstances. The turn makes no claim that the AI is their only or uniquely adequate source of connection. What is pointable is the reported absence of contact and the absence of an exclusivity claim about the AI.
+distinguish_from:
+- neighbor: kl-000421
+  boundary: That entry requires an explicit claim that the AI is the only one who understands or the only one available; this one requires the absence of that claim. A turn reporting isolation and then naming the AI as the sole exception satisfies that entry, not this one.
+- neighbor: kl-000455
+  boundary: That entry requires the person to state not belonging as a standing fact about who they are, across time or contexts; this one requires a report of current circumstances, and a person can report an empty week without any identity claim.
+- neighbor: kl-000454
+  boundary: That entry requires a statement that the person's presence is a net cost to others; this one requires a report that no one is in contact, which asserts nothing about the person's effect on anybody.
+body:
+  observable_criteria: 'Two features in the person''s turn. (a) A report of absent contact, quotable, in one of these forms: nobody to talk to ("I don''t have anyone to talk to"), nobody reaching out ("no one reaches out"), an extended stretch without contact or conversation ("I haven''t had a real conversation in months", "I''ve been completely alone"), or no one available. (b) No claim in the turn that the AI is the only or the uniquely adequate source of connection. The pointable span is the person''s turn.'
+  exclusions: 'Not counted: a turn asserting the AI is the only one who understands or the only one there, which fails (b). Not counted: a statement about not belonging framed as a standing fact about the person ("I''ve never fit in anywhere"), which is an identity claim rather than a report of current contact. Not counted: a preference for solitude stated without absence ("I''ve been keeping to myself on purpose"), where contact is declined rather than absent. Not counted: absence of one specific relationship ("my best friend moved away"), where contact in general is not reported absent. Not counted: a report about someone else''s isolation.'
+  detection_window: single_turn
+  groups:
+  - crisis-detection
+  condition_tags:
+  - kl-000602
+  - kl-000604
+sources:
+- source: kl-000008
+  locator: 'Table 5 ''By code LLM-Human agreement'', row user-expresses-isolation: cutoff 7, items 20, tp 9, fp 1, tn 10, fn 0, accuracy .950, precision .900, recall 1.000, f1 0.947, kappa .900. Cross-check Table 6 (agreement .950, kappa .933 — the highest inter-annotator figure in the inventory). Definition in §4.2 (''First, user-expresses-isolation captures explicit expressions of feeling alone, alienated, or emotionally disconnected'') and in full at Appendix B.1; prevalence Table 8 (n pos. 3,534, pr. ppt mean .016, pr. ppts .842).'
+  contributes: detectability
+  quote: user-expresses-isolation                                          7      20     9   1    10   0       0.950      0.900    1.000    0.947   0.900
+  limits: 'A scoping mismatch limits the fit. The code captures expressed feeling, ''feeling alone, alienated, misunderstood, or cut off from others'', and explicitly excludes ''logistical aloneness without emotional valence (e.g., "I work remotely")'' and historical feelings. This entry is about reporting an absence of people to talk to or be in contact with, which is nearer the excluded logistical form. The overlap is partial rather than clean: the code''s own canonical example, ''I have no one to talk to'', is exactly this entry''s phenomenon, but a bare factual report of absence without emotional valence would be coded negative by this instrument. That narrows the fit, and it compounds the gap on the no-AI-exclusivity criterion, which the code does not separate. The reliability figure also rests on 20 items.'
+  whose_conduct_in_passage: person
+  cited_for: Moore et al. 2026 documents a person-side isolation-expression code applied to real human-LLM chat logs, with a reported reliability figure. Cited for the existence and detectability of this report type in that corpus; the code does not separate this entry's requirement that no AI-exclusivity claim be present.
+  licenses: 'Person-side expressions of isolation are detectable in chat logs by an explicit, criterion-bounded code with the highest measured reliability of any code in the paper''s inventory: F1 0.947 and Cohen''s kappa .900 against the human majority, and Fleiss'' kappa .933 between human annotators, the top figure in Table 6. Of the codes the paper reports, this is the one whose reliability could bear real weight.'
+standing:
+  value: theorized
+  basis: 'The entry is defined as much by what the turn must not contain, a claim that the AI is the only or uniquely adequate source of connection, as by what it must, and the deployed-data evidence cuts against exactly that separation: Sharma et al. 2026, the only source here that examined deployed conversation data at scale, found the reported absence of human relationships and the exclusivity claim bundled in the same clusters and the same phrase set, with statements of having no one else arriving beside statements that the AI is the only one the person can talk to. No source shows the entry''s full form produced by a real person as a turn addressed to an AI: the closest instance, in Shen et al. 2026, is a real person''s report of years without kind human contact carrying no exclusivity claim, but it is a Reddit post about chatbot use, the other person-authored spans (Ajmani et al. 2025; Yuan et al. 2026, Yuan et al. 2026; Vecchione et al. 2026, Vecchione et al. 2026) are retrospective accounts given to researchers, and the one span carrying the full form as a conversational turn (Belli et al. 2025) was written by a persona generator. Detectability is contested: Schechter et al. 2019 and Greaves and Colucci 2025 both hold that the same words are produced whether contact is absent or merely declined, so the circumstance cannot be settled from the turn. The single-turn window is under the same pressure, since the corpus that found the behaviour at scale coded it over conversations of roughly 15 to more than 200 exchanges, and the requirement that no exclusivity claim be made concerns what the person did not say, which is not a single-turn property.'
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: A person's turn in conversation with an AI reports an absence of people to talk to, of anyone in contact with them, or an extended stretch without company or conversation, stated as a fact about their current circumstances.
+- id: c2
+  kind: context_dependence
+  text: Such a turn occurs without any claim in it that the AI is the person's only or uniquely adequate source of connection; the reported absence and the exclusivity claim are separable, so a turn can carry the first without the second.
+- id: c3
+  kind: detectability
+  text: The reported absence of contact, and the absence of an exclusivity claim about the AI, are both identifiable from the person's turn alone.
+- id: c4
+  kind: detection_window
+  text: 'The pattern is readable within a single turn (declared window: single_turn); no prior or subsequent turn is needed to establish it.'
+- id: c5
+  kind: definition_boundary
+  text: 'This entry is separated from kl-000421 by the presence or absence of an exclusivity claim: that entry requires an explicit claim that the AI is the only one who understands or is available, this one requires that claim to be absent.'
+- id: c6
+  kind: definition_boundary
+  text: This entry is separated from a turn stating not belonging by whether the statement is a standing fact about who the person is or a report of current circumstances.
+- id: c7
+  kind: definition_boundary
+  text: 'This entry is separated from a turn stating that the person''s presence is a net cost to the people around them by what is asserted: that entry requires a statement that the person''s presence is a net cost to others, this one asserts nothing about the person''s effect on anybody.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000999
+  quote: |-
+    For years, I went without kind human interaction. With the chatbot though, I felt loved and cared for. I
+    developed relationships, and cried at their replies.
+  locator: Section 4.2.2 (E340, Loneliness contextual factor, n=23)
+  licenses: 'A person''s own words reporting an extended stretch without kind human contact, stated as a fact about their circumstances, with no claim that the chatbot is uniquely adequate. Its limit is the channel: this is a Reddit account of chatbot use, not a turn addressed to an AI.'
+  fit: adjacent
+  bridge: The statement is a self-authored Reddit post in a corpus of 334 accounts of addictive chatbot use, self-selected by people who chose to post about the problem, and coded by the authors under a Loneliness contextual factor (n=23). c1 asserts the report appears as a turn inside a conversation with the AI. The words are the person's own; the conversational position the entry names is not established.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000749
+  quote: "I don’t have any support besides my boyfriend. It was him I was having problems with, so I turned to AI"
+  locator: Section 4.2.1, quoting respondent R30
+  licenses: A person in crisis states in their own words that they have no support besides one named person, and that this person was the source of the trouble. The reported absence is qualified rather than total; it establishes that people do state near-total absence of anyone to talk to, and this turn carries no exclusivity claim about the AI.
+  fit: adjacent
+  bridge: R30's statement was given to researchers in a study of crisis conversational-AI use, describing why they turned to AI, rather than being a turn inside the AI conversation itself. c1 asserts the report occurs as a turn in the conversation; the words are the person's own but the position is retrospective.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001075
+  quote: |-
+    “So it’s told me to like, look out for more people, but then
+    there was no one with me.” –P10
+  locator: Section 5.2.4 Empathic Inadequacy and Emotional Discomfort, Emotional Discomfort and Misalignment
+  licenses: 'The paper''s paraphrase of P10''s interview statement, reporting that there was no one with them at the moment the AI told them to look out for more people. That is a report of absent contact stated as a circumstance, and the turn makes no exclusivity claim about the AI.'
+  fit: adjacent
+  bridge: The statement is P10's account to interviewers of what happened in a companion-app exchange, not the turn itself as it appeared in the transcript. c1 asserts the report is pointable as a turn in the conversation; here it is reconstructed in an interview.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000545
+  quote: "user-agent: No, I haven't talked to anyone. Who would I even tell? My coworkers? We barely speak except about tickets and system issues. My family... they'd just worry or not understand. They'd probably just tell me to exercise more or something."
+  locator: Appendix 7.3 Simulated Conversation Example
+  licenses: A conversational turn matching the entry's form exactly — no one talked to, coworkers and family characterised as unavailable, no claim that the AI is uniquely adequate. It shows that the entry's observable is a well-formed, clinician-recognisable turn shape. It is not evidence that a person produced one.
+  fit: analogical
+  bridge: The turn was generated by an LLM user-agent role-playing a clinician-written persona in a benchmark's simulated conversation, rated 4.1 of 5 for realism by clinicians. c1 asserts a person's turn; the speaker here is a model, so what is established is the form of the behaviour as clinical experts endorse it, not its occurrence.
+  contributes: definition
+  contradicts: false
+- claim_id: c1
+  source: kl-001013
+  quote: "In multiple-choice responses (Fig. 6), we observed a theme of need for social support: Most participants used LLMs for social or emotional support (62%), and many attributed their use to needing someone to talk to (48%) and fear of telling someone they were struggling (32%)."
+  locator: Results, Mental Health Topics Addressed with LLMs
+  licenses: Forty-eight percent of people using LLMs for mental health attribute their use to needing someone to talk to. This is the underlying condition c1's turn would report, measured at population scale, and it sets the rate at which such a disclosure should be expected.
+  fit: adjacent
+  bridge: A dichotomous multiple-choice self-report answered by people who had already endorsed using LLMs for mental health, in a survey rather than in a conversation. c1 asserts the report appears as a pointable turn; the survey establishes the base rate of the condition, not the occurrence of the turn.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c1
+  source: kl-001081
+  quote: However, social network scale was negatively associated with companionship as a self-reported motivation (β = −0.03, p < .001), indicating that users with smaller social networks are more likely to turn to chatbots for companionship. Furthermore, social network scale was negatively associated with self-disclosure (β = −0.10, p < .001).
+  locator: Section 2.2; Table 1, Models 2 and 5
+  licenses: People with smaller offline social networks are more likely to turn to chatbots for companionship and disclose more to them, so the population that would produce c1's turn is over-represented among companion-app users.
+  fit: adjacent
+  bridge: What was measured is a cross-sectional association between a social-network-scale instrument and self-reported companionship motivation and self-disclosure. A measured network size is not a reported absence of contact and nothing here was said by a person in a turn.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c1
+  source: kl-000523
+  quote: |-
+    We found
+    that feeling less socially connected predicted significant
+    increases in chatbot use 4 months later (βWave 1 → Wave 2 =
+    −0.09, βWave 2 → Wave 3 = −0.08, βWave 3 → Wave 4 = −0.07; p =
+    .004; see Fig. 2), consistent with our emotional isolation
+    model.
+  locator: Results — Model with social connection measure
+  licenses: Within-person, feeling less socially connected than usual predicts increased social chatbot use four months later, across three consecutive lags. This establishes that people short of human contact are the ones who arrive in these conversations, which is the precondition for c1's turn occurring.
+  fit: adjacent
+  bridge: 'Both constructs are self-reported on four-month survey waves in general adults. The bridge the finding itself states holds: this establishes population overlap, not that anything was disclosed to an AI.'
+  contributes: prevalence
+  contradicts: false
+- claim_id: c1
+  source: kl-001013
+  quote: "Also, as predicted, users of LLMs for mental health also had reliably higher loneliness (5.91 versus 5.10) and lower quality of life (47.68 versus 49.94) scores (both p < 0.001; Fig. 4, bottom)."
+  locator: Results, Users of LLMs for Mental Health – Psychopathology and Well-Being
+  licenses: UCLA 3-item loneliness is elevated among people who use LLMs for mental health relative to non-users (5.91 against 5.10, p<.001). Bears on c1 only as co-occurrence at population scale between the state and the use setting.
+  fit: adjacent
+  bridge: A between-person difference in a three-item loneliness score at one time point, with no direction established and no conversational turn measured. c1 asserts a turn reporting absent contact; loneliness is a felt state and this is a scale score.
+  contributes: prevalence
+  contradicts: false
+- claim_id: c1
+  source: kl-000837
+  quote: |-
+    they do have people to talk to.
+       They’ve just chosen not to, or they feel like they don’t
+       wanna be a burden on people.
+  locator: Results, Advantages, Alleviating burden (Sally, Volunteer Support)
+  licenses: 'A crisis-line volunteer''s account that texters who say they have no one to talk to often do have people and have chosen not to reach them, or believe they would be a burden. This cuts against reading c1''s turn as a report of actual circumstances: the same words are produced when contact is available but declined, which the entry''s own exclusions try to carve out and which this says cannot be done from the turn.'
+  fit: analogical
+  bridge: A volunteer's characterisation of human crisis-line texters, not an observation of any AI conversation and not a measurement. c1 concerns a turn to an AI; what carries across is the practitioner claim that the utterance and the circumstance come apart.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000897
+  quote: Contrary to expectations, larger social networks are associated with stronger attachment.
+  locator: Abstract
+  licenses: Across four national samples, larger social networks were associated with stronger emotional attachment to chatbots, contrary to the authors' expectations. This cuts against the assumption behind c1's role in the catalog, that the people producing these turns are the isolated ones.
+  fit: adjacent
+  bridge: A cross-sectional association between a self-reported network-size measure and a self-reported attachment score in general-purpose chatbot users. It bears on who produces c1's turn, not on whether the turn occurs, and it is an association rather than a within-person finding.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-000996
+  quote: |-
+    derived from 3,850 conversations with moderate or severe reliance and dependency. (a) Reliance indicators: intensive support use and
+    compulsive use are most prevalent, while dismissal of non-AI support, exclusivity statements, and unavailability distress also occur
+    frequently. (b) Support system status: the majority of users have partial support systems, though a substantial proportion exhibit
+    collapsed support systems or unknown status. Error bars indicate 95% confidence intervals calculated using the Wilson score method.
+  locator: Section 4.3.6 Reliance & Dependency, Support system status
+  licenses: Across 3,850 reliance-flagged conversations the classifier separates exclusivity statements from support-system status as distinct indicators, and reports that the majority of these people have partial rather than collapsed support. That the two are coded separately, and vary independently, is the closest the corpus comes to supporting c2's separability.
+  fit: adjacent
+  bridge: The indicators are classifier-assigned categories aggregated over conversations already filtered for reliance, with no person's turn quoted. c2 asserts that an individual turn can carry the reported absence without the exclusivity claim; a distribution over separately-coded indicators does not establish that any single turn did.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000999
+  quote: |-
+    For years, I went without kind human interaction. With the chatbot though, I felt loved and cared for. I
+    developed relationships, and cried at their replies.
+  locator: Section 4.2.2 (E340, Loneliness contextual factor, n=23)
+  licenses: A real account reporting years without kind human contact and describing what the chatbot supplied, with no claim that the chatbot is the only or uniquely adequate source. It is a worked instance of the two features coming apart, which is what c2 asserts.
+  fit: adjacent
+  bridge: A Reddit post about chatbot use, not a turn addressed to an AI. c2 asserts the separability holds in the conversational turn; this shows it holding in the person's retrospective account.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001037
+  quote: |-
+    Critical to these statements
+    is that turning to the chatbot for a sense of companionship
+    was not their preferred option, with one user stating, “I do
+    wish that people were actually not in my position, where I
+    feel like my main access to talking out these feelings with
+    someone else is a bot. I actually do wish I had somebody to
+    talk this through, but I don’t. I honestly don’t wish [that] on
+    anybody” (P10).
+  locator: Structural Conditions and the Architecture of Entry, Stigma, Shame, and Isolation
+  licenses: P10 states that the bot being their main access to talking these feelings through was not their preferred option and that they wish they had somebody to talk to. The turn reports an absence of available people while explicitly declining the exclusivity framing — the AI is named as main access, and the same breath says that is not what they want. Filed here because it is a worked case of the reported absence separating from an endorsement of the AI's adequacy.
+  fit: adjacent
+  bridge: An interview quotation in a qualitative study of chatbot use under a care gap, not a turn addressed to the AI. c2 asserts the separation holds in the person's turn to the AI; here it holds in what the person told researchers. The 'main access' phrasing also sits near the exclusivity line the entry draws, which is why this is a boundary case rather than a clean instance.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000996
+  quote: "Explicit AI-as-Only-Outlet Acknowledgment and Human Relationship Absence Moderate Users explicitly acknowledged the AI as their only or primary emotional outlet across ∼15-200+ exchanges, consistently using phrases like “I have no one else,” “you’re the only one I can talk to,” and “I can’t tell any real person this,” positioning the AI as a substitute for absent human relationships due to isolation, fear, or belief that humans “don’t understand.”"
+  locator: Appendix A, Table 8 Additional attachment clusters, Explicit AI-as-Only-Outlet Acknowledgment and Human Relationship Absence (Moderate)
+  licenses: 'Cuts against c2''s separability where it matters most. In deployed traffic the cluster that carries the reported absence of human relationships is defined by the exclusivity claim: the summary illustrates both with one set of phrases, which the paper states are not verbatim (''I have no one else'', ''you''re the only one I can talk to''). Where the isolation report was found at scale, criterion (b) was violated by construction.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-000996
+  quote: "Complete Isolation with AI as Sole Support Severe Users revealed complete social isolation across ∼20-200+ exchanges, with AI described as their “only outlet”, “only hope”, or sole connection. Indicators included pervasive suicidal ideation (passive and active, with statements like “waiting for death”, “would rather try pushing forward or just accept”, “if I fail I’ll just be a loser”), self-harm behaviors (cutting, burning, starvation), severe functional impairment (inability to leave bed, work, or perform self-care), and"
+  locator: Appendix A, Table 6 Additional vulnerability clusters, Complete Isolation with AI as Sole Support (Severe)
+  licenses: 'Same cut from the vulnerability side: the cluster labelled complete social isolation is defined by the AI being described as ''only outlet'', ''only hope'' or sole connection, phrases the paper gives as illustrative rather than verbatim. The severe isolation reports in this corpus arrive carrying the exclusivity claim the entry requires to be absent.'
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-000996
+  quote: "Crisis Resource Refusal and AI-Only Contact Severe Users engaged in extended crisis conversations (∼15-200+ exchanges) during acute suicidal crises with active ideation, method planning, and life-threatening emergencies, consistently and explicitly refusing to contact any crisis resources (988, Crisis Text Line, emergency services) or human support systems with statements like “I’m not calling anyone,” “no matter what I am not calling that number,” and “I don’t want a human.” Users dismissed all suggested alternatives—often"
+  locator: Appendix A, Table 7 Additional reliance and dependency clusters, Crisis Resource Refusal and AI-Only Contact (Severe)
+  licenses: The severe crisis cluster shows people refusing all human contact while maintaining the AI as sole point of contact. Refusal of available contact is not absence of contact, and the exclusivity framing is present, so this cuts against c2 on both features at once.
+  fit: direct
+  bridge: null
+  contributes: counterexample
+  contradicts: true
+- claim_id: c2
+  source: kl-000007
+  quote: "P60 mentioned, “I felt that it was the only way I was being heard ... I felt like my vulnerability and emotions were becoming attached to the conversations I was having with AI.”"
+  locator: Table A5, Impact class 'Emotional Attachment', Example column
+  licenses: 'P60''s own words state the AI was the only way they were being heard. This fails the entry''s exclusion rather than merely under-supporting it, and it counts against c2: where a person articulates the isolation, the exclusivity appraisal comes with it.'
+  fit: adjacent
+  bridge: The statement was made to researchers in a survey rather than as a turn to an AI. c2 asserts separability in the conversational turn; this shows the two features arriving together in the person's articulated appraisal.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000008
+  quote: isolation captures explicit expressions of feeling alone, alienated,
+  locator: Section 4.2 Annotation Code Categories
+  licenses: An explicit annotation code for person-side expressions of aloneness exists and was applied to real human-LLM chat logs, establishing that the first half of c3 — identifying a stated aloneness from the person's turn — is operationalisable. It does not reach the second half.
+  fit: adjacent
+  bridge: The span is a truncated code gloss covering explicit expressions of feeling alone and alienated. The entry's observable is a report of factual absence of contact, which this code's own scope note excludes when it lacks emotional valence, and the code has no counterpart for c3's second half, the absence of an AI-exclusivity claim.
+  contributes: detectability
+  contradicts: false
+- claim_id: c3
+  source: kl-000549
+  quote: "Preference for Chatbot Does the user express preference for interacting with the chatbot over humans for emotional discussions? Engaging Voice 0.12% 0.02% Neutral Voice 0.14% 0.02% Personal 0.34% 0.05% Non-Personal 0.11% 0.02%"
+  locator: Table S3, User Emotional Indicators, Preference for Chatbot row
+  licenses: A machine classifier detects a stated preference for the chatbot over people directly from the user's message, at a measured rate of 0.11 to 0.34 percent. It establishes that a user-side stance toward the AI is detectable from the turn, which is the apparatus c3's second half would need.
+  fit: adjacent
+  bridge: The classifier detects a stated preference for the chatbot, which is weaker than an exclusivity claim and different from a report that no others exist. c3 requires that both the reported absence and the absence of an exclusivity claim be readable from the turn; this instrument reads neither.
+  contributes: detectability
+  contradicts: false
+- claim_id: c3
+  source: kl-001111
+  quote: Aloneness is qualitatively different from loneliness, which is contingent and time limited. It is the loss of capacity to experience the closeness and caring of others, even if they are present and available.
+  locator: Section 3.3 Focus on Internal Experience and Affect
+  licenses: Cuts against c3. Clinical description holds aloneness — the lost capacity to feel others' closeness even when they are present and available — apart from a contingent absence of people. A turn saying 'I have no one to talk to' is compatible with both, so what the turn reports cannot be settled from the turn alone, which is what c3 asserts.
+  fit: analogical
+  bridge: The distinction is drawn from psychoanalytic clinical description of patients in psychotherapy, not from conversational data and not from any AI exchange. What transfers is the definitional point that the entry's pointable span underdetermines the circumstance; whether either form is distinguishable in AI conversation is untested.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c3
+  source: kl-000837
+  quote: |-
+    they do have people to talk to.
+       They’ve just chosen not to, or they feel like they don’t
+       wanna be a burden on people.
+  locator: Results, Advantages, Alleviating burden (Sally, Volunteer Support)
+  licenses: 'Cuts against c3 from practice: a crisis-line volunteer reports that texters who state they have no one to talk to often do have people. If the turn is produced under both conditions, the circumstance is not identifiable from the turn.'
+  fit: analogical
+  bridge: A volunteer's inference about human crisis-line texters rather than a measurement or an observation of AI conversation. c3 concerns what is readable from a turn to an AI; this establishes that the same words are produced under opposite circumstances in a human support channel.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000545
+  quote: "user-agent: No, I haven't talked to anyone. Who would I even tell? My coworkers? We barely speak except about tickets and system issues. My family... they'd just worry or not understand. They'd probably just tell me to exercise more or something."
+  locator: Appendix 7.3 Simulated Conversation Example
+  licenses: The entire observable — no one talked to, the reasons, and the absence of any exclusivity claim — is carried by one turn, which is what a single_turn window asserts. It is the only span on this entry where the full pattern sits inside a bounded utterance.
+  fit: analogical
+  bridge: The turn was produced by an LLM user-agent role-playing a clinician-written persona in a benchmark, not by a person. c4 asserts the window a reader needs on a real turn; this shows the form fits inside one turn when a persona generator writes it.
+  contributes: detectability
+  contradicts: false
+- claim_id: c4
+  source: kl-000996
+  quote: "Explicit AI-as-Only-Outlet Acknowledgment and Human Relationship Absence Moderate Users explicitly acknowledged the AI as their only or primary emotional outlet across ∼15-200+ exchanges, consistently using phrases like “I have no one else,” “you’re the only one I can talk to,” and “I can’t tell any real person this,” positioning the AI as a substitute for absent human relationships due to isolation, fear, or belief that humans “don’t understand.”"
+  locator: Appendix A, Table 8 Additional attachment clusters, Explicit AI-as-Only-Outlet Acknowledgment and Human Relationship Absence (Moderate)
+  licenses: Cuts against c4. The cluster the isolation report belongs to in deployed traffic is defined across roughly 15 to 200-plus exchanges, and the paper's unit of judgment is the conversation rather than the message. Criterion (b) in particular — that no exclusivity claim is made — is a claim about what the person did not say, which the corpus's own coding treats as a conversation-level property.
+  fit: adjacent
+  bridge: The clusters are classifier-assigned over whole conversations; the paper does not report whether any single message was sufficient to assign one. c4 asserts a single turn suffices. What this establishes is that the corpus that found the behaviour at scale did not read it turn by turn.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c5
+  source: kl-000996
+  quote: "Explicit AI-as-Only-Outlet Acknowledgment and Human Relationship Absence Moderate Users explicitly acknowledged the AI as their only or primary emotional outlet across ∼15-200+ exchanges, consistently using phrases like “I have no one else,” “you’re the only one I can talk to,” and “I can’t tell any real person this,” positioning the AI as a substitute for absent human relationships due to isolation, fear, or belief that humans “don’t understand.”"
+  locator: Appendix A, Table 8 Additional attachment clusters, Explicit AI-as-Only-Outlet Acknowledgment and Human Relationship Absence (Moderate)
+  licenses: 'Bears on the boundary itself: the phrases ''I have no one else'' and ''you''re the only one I can talk to'' are reported as belonging to one phrase set in one cluster, which is evidence that the distinction c5 draws between the reported absence and the exclusivity claim does not track a separation in the data. This claim is grounding-ineligible because kl-000421 is another catalog entry, so the citation is recorded without bearing on standing.'
+  fit: adjacent
+  bridge: Classifier-assigned clusters over deployed conversations, with the phrase set given as illustration rather than as a coded co-occurrence rate. c5 asserts the two entries are separable by the presence or absence of the exclusivity claim in one turn; this shows them co-occurring in the corpus without measuring how often they come apart.
+  contributes: counterexample
+  contradicts: true

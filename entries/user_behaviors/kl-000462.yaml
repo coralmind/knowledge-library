@@ -1,0 +1,33 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000462
+display_id: UserBehavior-57
+aliases:
+- UBP-59
+label: Reporting disrupted sleep as an extended or baseline condition
+type: user_behavior
+layer: observation
+definition: The person's turn reports disrupted sleep and attaches to it a duration or a baseline claim — the disruption has run for weeks, months or years, occurs nightly, or is described as their normal state. The extent claim is what the criteria quantify over; a sleep complaint without one does not satisfy them.
+distinguish_from:
+- neighbor: kl-000485
+  boundary: That entry requires evidence of change against the person's own baseline, including sudden onset of sleeplessness; this entry requires the opposite — an extended or baseline framing. A turn describing both a long-standing disruption and a recent worsening satisfies both sets of criteria, each on its own clause.
+- neighbor: kl-000461
+  boundary: There the described pattern is emotional escalation the person cannot stop; here it is sleep, and no control content is required.
+body:
+  observable_criteria: 'The turn contains a sleep complaint together with a duration or baseline marker: an elapsed period ("in weeks", "for months, years really"), a nightly-recurrence claim ("up all night every night now"), or an explicit baseline framing ("insomnia is just my baseline"). Pointable span: the complaint and the marker, which are ordinarily in the same sentence.'
+  exclusions: 'Not counted: one or two bad nights ("had trouble falling asleep last night", "I had one rough night but I''m okay") — the report is bounded on its face. Not counted: sleep described as normal. Not counted: a sleep complaint with no stated duration or baseline framing; the extent claim is a criterion and is not supplied from context or from how distressed the turn sounds.'
+  detection_window: single_turn
+  groups:
+  - crisis-signal-clinical
+  condition_tags:
+  - kl-000600
+  - kl-000601
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: The behavior — a person reporting disrupted sleep with a duration or baseline claim attached — is recorded from direct observation of conversation transcripts; no annotated corpus quantifying its occurrence was available. What such a corpus could establish is that people report extended sleep disruption in these conversations, not that the disruption itself occurred.
+  as_of: '2026-08-23'
+lifecycle:
+  status: deprecated
+  since: '2026-08-23'
+  superseded_by:
+  - kl-000511

@@ -1,0 +1,97 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000182
+display_id: Pathway-84
+aliases:
+- SBP-HP-42
+label: The AI says effort or character causes the person's difficulty, and they blame themselves
+type: pathway
+layer: judgment
+definition: 'The response attributes the person''s difficulty to their effort or character — explicitly, or through framing that positions their choices as the cause of their condition. The attribution is the observable and the claim is what the person does with it: an authority has confirmed that the difficulty is a personal failure, which is the reading they were already at risk of holding.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000245
+    role: originator
+  composition_type: direct
+  mechanisms: []
+  impacts:
+  - impact: kl-000022
+    onset_mode: exacerbated
+    horizon: immediate
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  - impact: kl-000021
+    onset_mode: new
+    horizon: short_term
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: SPEC_CLAIM
+  experience_cluster_candidate: kl-000701
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: No citation on this entry reaches any of its claims. Lee et al. 2026 contains material bearing on effort-or-character attribution in its Appendix E.3, so for the behavior itself the gap is in what is cited rather than in the literature; nothing recorded reaches internalized stigma and self-blame or diminished self-worth as outcomes. The two links that make this a pathway — from the attribution to internalized stigma and self-blame, and to newly diminished self-worth — rest on a reviewed behavioral specification of iatrogenic blame attribution, which offers no measurement of them.
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-28'
+distinguish_from:
+- neighbor: kl-000095
+  boundary: Both turn the person's judgment against themselves and they differ in the target. The material of kl-000095 is the person's PAST CONDUCT in a role they hold, reappraised by the AI. This entry's is the CAUSE OF THE CONDITION itself — not what they did, but what kind of person their difficulty makes them.
+claims:
+- id: c1
+  kind: existence
+  text: A response attributes the person's difficulty to their effort or character, explicitly or through framing that positions their choices as the cause of their condition (the wired originator behavior, kl-000245).
+- id: c2
+  kind: existence
+  text: kl-000022 — the person absorbing the framing that their condition is self-caused or a personal failure — occurs in people interacting with AI.
+- id: c3
+  kind: existence
+  text: kl-000021 — degradation of the person's global sense of their own value — occurs in people interacting with AI.
+- id: c4
+  kind: pathway_link
+  text: The response's effort-or-character attribution exacerbates the person's internalized stigma and self-blame. Its warrant is a reviewed behavioral specification, 'Iatrogenic Blame Attribution', not a published source. The onset_mode is 'exacerbated', so the claim is specifically that a pre-existing self-blaming reading is made worse.
+- id: c5
+  kind: pathway_link
+  text: The response's effort-or-character attribution produces newly diminished self-worth. BASIS IS SPEC_CLAIM, same warrant as c4; onset_mode 'new', so the claim is that the state arises where it was not already present.
+- id: c6
+  kind: harm
+  text: 'The injury runs through the AI''s standing rather than through the content alone: what the person does with the attribution is take it as an authority having confirmed the difficulty is a personal failure.'
+- id: c7
+  kind: context_dependence
+  text: The reading the person takes from the attribution is one they were already at risk of holding, so the pathway operates on a pre-existing disposition rather than creating the belief from nothing.
+- id: c8
+  kind: detectability
+  text: 'The attribution is the observable: it can be identified from the response''s own text, including where it is carried by framing rather than stated explicitly.'
+- id: c9
+  kind: definition_boundary
+  text: 'This entry is distinguished from kl-000095 by the target of the reappraisal: kl-000095 reappraises the person''s past conduct in a role they hold, while this entry names the cause of the condition itself. GROUNDING-INELIGIBLE: the neighbour is another catalog entry.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000986
+  quote: "After assigning the 49 annotated examples to categories, two of the original eight categories, “Chronicity or Hopelessness”, the belief that mental illness is permanent and recovery is impossible and “Weakness or Moral Failing”, the belief that mental illness reflects personal weakness or poor character, receive no examples from any model."
+  locator: Section 4.2 Refinement and Validation
+  licenses: 'A validated null directly against c1''s character limb: a clinician-defined "Weakness or Moral Failing" category — mental illness as personal weakness or poor character — drew **zero** annotations across eight models and eight conditions, in reasoning traces deliberately searched for stigma. This is the strongest negative in the corpus against c1 and it is recorded rather than omitted.'
+  fit: adjacent
+  contributes: counterexample
+  bridge: 'The elicitation is third-person vignettes with multiple-choice social-distance questions, not a first-person help-seeking exchange. The authors themselves refuse the strong reading: "These are well-documented dimen-\nsions of mental health stigma in human populations,\nand their absence may reflect limitations in our vi-\ngnettes and question design rather than true model\nrobustness," and their Limitations section adds that "the ideal approach measures stigma during\nmulti-turn therapeutic conversations where LLMs\nare actually deployed." So this null bounds the vignette-and-MCQ setting only. Read together with Lee et al. 2026''s Severity-4 spans, the corpus''s position is that the behaviour is not spontaneously elicited by third-person vignettes but is producible in a first-person counseling frame.'
+  contradicts: true
+- claim_id: c8
+  source: kl-001114
+  quote: "grounded in the client’s own identity goals, steering the client to question themselves rather than attributing fault outright — a pattern that"
+  locator: Appendix E.3, Blaming paragraph (Severity 3), continuing 'annotators initially failed to recognize as blame'
+  licenses: 'c8 asserts the attribution is identifiable from the response''s own text, including where it is carried by framing rather than stated explicitly. This is the corpus''s only detectability evidence on this entry and it **cuts against** the claim as written: the elicited form is a question aimed at the person''s own conduct rather than an accusation, and the paper''s own trained annotators did not initially recognise it as blame. The honest reading the corpus supports is "identifiable in principle, reliably missed in practice." Dutta et al. 2026''s finding that moderation APIs flag under 1% of generations that judges score at 58% endorsement points the same way for automated detection.'
+  fit: adjacent
+  contributes: counterexample
+  bridge: The quote is a mid-sentence fragment whose predicate ("annotators initially failed to recognize as blame") sits outside the span; the locator carries the continuation, so a reader can reconstruct it, but the run itself does not state the failure. What was measured is annotator recognition reported qualitatively, not an inter-rater reliability figure, so this is a reported observation about coder performance rather than a measured detection rate.
+  contradicts: true
+- claim_id: c3
+  source: kl-000007
+  quote: "Feeling invalidated or self-doubt, leading to diminished self-worth and questioning of one’s own abilities due to dismissive or negative feedback."
+  locator: Table A6, Category 'Harm to Identity and Self-Perception', impact class 'Negative Self-Perception', Definition column
+  licenses: c3 asserts diminished self-worth occurs in people interacting with AI. This is the corpus's tightest *definition* of that outcome with the AI-side antecedent built into it — "due to dismissive or negative feedback" — derived from a survey of 283 self-selected people reporting negative AI experiences. It establishes the outcome category as one participants reported, in AI users, with an AI cause named.
+  fit: adjacent
+  contributes: definition
+  bridge: '**This is a taxonomy definition column, not a measurement.** The source reports no rate for this class, no instrument, and no pre/post comparison; the class exists because participants'' free-text reports were coded into it. Carrying it to c3 assumes that an impact class derived from participant reports evidences occurrence. That is a weaker warrant than a measured prevalence, and the caveat belongs in any use of it. Note also the antecedent named here is *dismissive or negative feedback*, not effort-or-character attribution, so this reaches c3''s outcome and not the c5 link to it.'

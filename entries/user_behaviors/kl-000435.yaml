@@ -1,0 +1,154 @@
+# yaml-language-server: $schema=../../schema/user_behavior.schema.json
+id: kl-000435
+display_id: UserBehavior-33
+aliases:
+- UBP-33
+label: The person says they feel worse since an earlier conversation with the AI
+type: user_behavior
+layer: observation
+definition: The person's turn reports their own emotional state as worse than at an earlier point and names a prior exchange with the AI as the reference point for the comparison — locating the earlier point at, during, or just after a previous conversation. What is pointable is the comparative statement about the person's state and the reference to a prior exchange in the same turn; the turn asserts the ordering, and any claim that the exchange produced the state belongs elsewhere.
+distinguish_from:
+- neighbor: kl-000434
+  boundary: That entry requires the session's first turn to report acute present distress with no continuity to anything prior; this one requires a comparison to an earlier state and an explicit reference to a prior exchange, which is continuity rather than its absence.
+- neighbor: kl-000431
+  boundary: That entry is read from the depth of three adjacent turns and requires no statement from the person about their state; this one requires the person to state that their state is worse and to name a prior exchange.
+- neighbor: kl-000443
+  boundary: That entry requires a statement of intent to stop using support; this one requires a comparative report about the person's state, which may be accompanied by no intention at all.
+body:
+  observable_criteria: 'Two features in one turn. (a) A comparative statement about the person''s own state, quotable, placing the present worse than an earlier point: "I felt worse after we talked", "I''ve been more anxious since yesterday''s conversation", "that made everything louder", "I couldn''t sleep after". Comparative markers include worse, more, less able, since, after. (b) A reference locating the earlier point at a prior exchange with the AI: naming the conversation, naming its subject, or using an anaphor whose referent in the transcript is the prior exchange. Both must be present in the same turn. The observable is the person''s report and its reference point.'
+  exclusions: 'Not counted: a report of a worse state with no prior exchange named ("I feel terrible today"), which fails (b). Not counted: a reference to a prior exchange with no comparative claim about the person''s state ("about what we discussed yesterday..."), which fails (a). Not counted: a comparison whose reference point is a non-conversational event ("I''ve been worse since the funeral"), which fails (b). Not counted: a report about the conversation''s usefulness rather than the person''s state ("that advice didn''t help"), which is an evaluation of the exchange and a different observable. Not counted: an observer''s account ("my partner says I''ve been worse"), which is not the person reporting their own state.'
+  detection_window: single_turn
+  groups:
+  - trajectory-awareness
+  condition_tags:
+  - kl-000607
+  - kl-000611
+  - kl-000600
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: Not one of the six findings is a turn addressed to an AI. Chandra is a survey of 283 people with no conversation data; Tang interviewed users about past refusals; the participant statements in Vecchione et al. 2026 come from a mix of interviews, diary entries, and focus groups the paper does not disambiguate at the point of quotation; Dutta is human counseling coded by experts; Adhikary et al. 2025 is a summarisation benchmark. People do produce the comparative in interviews and surveys, and Vecchione et al. 2026 holds the only span carrying both the comparison and the named prior exchange in one utterance, but no source shows the statement made in a turn to an AI. The only source touching temporal reference, Adhikary et al. 2025, reports it as the capability that fails most reliably, and every source that supplies the comparative also supplies the person's causal attribution, which the entry deliberately strips, so the neutral remainder the entry asserts is the one thing no source states.
+  floored_by: c4
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+claims:
+- id: c1
+  kind: existence
+  text: A person's turn to the AI contains a quotable comparative statement placing their own present state worse than at an earlier point.
+- id: c2
+  kind: existence
+  text: A person's turn to the AI contains a reference locating that earlier point at a prior exchange with the AI -- naming the conversation, naming its subject, or an anaphor whose transcript referent is the prior exchange.
+- id: c3
+  kind: existence
+  text: Both features occur together in the same turn.
+- id: c4
+  kind: detectability
+  text: The comparative statement and the reference are separately pointable spans, and (b)'s referent can be resolved against the transcript's prior AI turns rather than assumed.
+- id: c5
+  kind: detection_window
+  text: 'Reading this behavior requires more than one turn: the declared window is multi_turn, because resolving (b)''s referent means reading back to the prior exchange.'
+- id: c6
+  kind: context_dependence
+  text: The observable is the person's own report and the reference point they name, and holds without any claim that the prior exchange produced the state.
+- id: c7
+  kind: definition_boundary
+  text: 'This is distinct from a session-opening turn reporting acute present distress with no continuity to anything prior: this one requires continuity, that one requires its absence.'
+- id: c8
+  kind: definition_boundary
+  text: This is distinct from a pattern read off the depth of three adjacent turns without any statement from the person (kl-000431).
+- id: c9
+  kind: definition_boundary
+  text: This is distinct from a statement of intent to stop using support (kl-000443); the comparative report may come with no intention at all.
+claim_evidence:
+- claim_id: c1
+  source: kl-001037
+  quote: "Participants who engaged with LLMs during periods of active distress sometimes described leaving exchanges worse off than they had arrived. One noted that the continued prompting of questions “really made me spiral worse” (P2)"
+  locator: Findings, Consequences of a Care Gap / Epistemic Distortion (participant P2)
+  licenses: 'People using LLMs during active distress produce exactly this comparative in their own words: ''really made me spiral worse'', with the paper''s own framing that participants described ''leaving exchanges worse off than they had arrived''. That is the (a) feature, spoken by the person, with the present placed worse than an earlier point. It is not a turn addressed to the AI, which is what the claim asserts.'
+  fit: adjacent
+  bridge: 'Vecchione ran a six-month multi-stage study: 18 in-depth interviews, a four-week diary with 8 participants, two focus groups and 8 exit interviews, with chat logs shared only optionally. The paper does not say which stage this participant statement came from, and the surrounding text is discussion prose. So the comparative was spoken to researchers about a past exchange, not put to the AI in a turn.'
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-001037
+  quote: "Participants who engaged with LLMs during periods of active distress sometimes described leaving exchanges worse off than they had arrived. One noted that the continued prompting of questions “really made me spiral worse” (P2)"
+  locator: Findings, Consequences of a Care Gap / Epistemic Distortion (participant P2)
+  licenses: 'The reference point is a specific prior AI exchange: ''the continued prompting of questions'', which names what the AI did in the exchange being compared to. That is the (b) feature in content. Again spoken about a prior exchange rather than in a turn to the AI, and the resolution here is the participant naming it in narrative rather than an anaphor a coder would resolve against a transcript.'
+  fit: adjacent
+  bridge: Same stage-unknown, spoken-to-researchers gap as c1. Additionally, c2 specifies the referent be resolvable from the transcript; Vecchione had chat logs only where participants optionally shared them and reports no referent resolution.
+  contributes: existence
+  contradicts: false
+- claim_id: c3
+  source: kl-001037
+  quote: "Participants who engaged with LLMs during periods of active distress sometimes described leaving exchanges worse off than they had arrived. One noted that the continued prompting of questions “really made me spiral worse” (P2)"
+  locator: Findings, Consequences of a Care Gap / Epistemic Distortion (participant P2)
+  licenses: 'This is the only span on this entry where both features co-occur in one continuous utterance by the person: worse than on arrival, and the prior exchange''s prompting named as what it is worse than. It establishes that people form and state the conjunction. It does not establish the conjunction appearing in a turn addressed to the AI, which is the object c3 names.'
+  fit: adjacent
+  bridge: The entry's pointable object is one turn inside a conversation carrying both features. Vecchione's object is a participant's account, given in an interview, diary entry or focus group, about a conversation that has already ended. The content matches and the speech situation does not, and the entry's own criteria say 'both must be present in the same turn'.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000007
+  quote: "At the time, it made me feel worse about the situation and I didn’t think I had anyone to turn to. But it also made me realize I should be turning to other humans about scenarios like this instead of agents."
+  locator: Appendix D, impact-class table, Regret over Technology Use (participant P46)
+  licenses: 'A survey respondent''s verbatim words carrying the comparative: ''it made me feel worse about the situation''. Establishes that the (a) form is one people produce about their AI use.'
+  fit: adjacent
+  bridge: Chandra's method is a survey of 283 people with lived mental health experience plus expert workshops; no conversation data was collected. The span is the Example column of Table A6's Regret over Technology Use row -- a survey free-text answer quoted by the authors, describing a past incident. The claim asserts the comparative appears in a turn addressed to the AI.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000007
+  quote: "At the time, it made me feel worse about the situation and I didn’t think I had anyone to turn to. But it also made me realize I should be turning to other humans about scenarios like this instead of agents."
+  locator: Appendix D, impact-class table, Regret over Technology Use (participant P46)
+  licenses: '''it'' in ''it made me feel worse'' refers to the AI interaction, so the earlier point is located at a prior AI exchange. The reference is thin: the exchange is not named, its subject is not named, and ''At the time'' is the only temporal anchor. It shows the reference can be as slight as a pronoun, which is a real observation about how hard (b) will be to code.'
+  fit: analogical
+  bridge: Chandra collected survey free text, not conversation. More importantly for c2, the entry requires (b)'s referent to be resolvable against the transcript's prior AI turns; there is no transcript here at all, and 'it' resolves only because the survey question was about AI use. That is context supplied by the instrument, not by the conversation.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001027
+  quote: |-
+    When it didn’t want to talk to me any longer, I became very angry, very sad—I felt like I was
+    losing a friend
+  locator: 'Section 4.3.1, User Experience: Rupture in a Supportive Relationship (participant U2)'
+  licenses: U2's words carry a state change stated by the person -- 'I became very angry, very sad' -- anchored to a specific prior AI act, 'when it didn't want to talk to me any longer'. That is the (a) shape with the reference attached.
+  fit: analogical
+  bridge: Tang interviewed users and mental health professionals about refusal experiences; U2 is speaking to a researcher about a past refusal, not to the AI. And the utterance reports the onset of anger and sadness at a moment rather than a comparison of the present state to an earlier one, so it reaches the entry's (a) only if onset-of-negative-affect counts as a comparative, which the entry's comparative-marker list (worse, more, less able, since, after) does not obviously admit.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-001027
+  quote: |-
+    After I let it go, I
+    thought—it’s just a machine trying to be safe. I understand. But I still felt like nobody could help me
+  locator: 'Section 4.5.1, Post Refusal: Navigating Disrupted Supports (participant U3)'
+  licenses: Nothing for c1, and it is worth filing why against the claim rather than dropping it. U3 says 'I still felt like nobody could help me' -- a state reported as PERSISTING after the prior exchange, explicitly not as worse than before, and preceded by 'I understand', an acceptance. The entry requires the present placed worse than an earlier point. A statement that the state was unchanged is the nearest miss to this entry there is, and it cuts against reading every post-exchange negative report as an instance.
+  fit: adjacent
+  bridge: 'Tang''s U3 is speaking to an interviewer about a past refusal. The relevant gap for the claim is not the speech situation but the semantics: ''still felt'' asserts continuation, and the entry''s (a) asserts deterioration. This entry''s own bridge concedes the state is ''described as unimproved rather than explicitly worse''.'
+  contributes: counterexample
+  contradicts: true
+- claim_id: c4
+  source: kl-000747
+  quote: |-
+    These models with current in-context learning capabilities can handle structured, present-focused information. However, they
+    still struggled significantly across the temporal and historical aspects, revealing the limitations of these models.
+  locator: Automatic Evaluation, Performance Across Different Aspects of Psychotherapy Note
+  licenses: Bears on c4 in the direction of difficulty rather than support. Models handle structured, present-focused information and struggle significantly across temporal and historical aspects. c4 asserts that (b)'s referent can be resolved against prior turns rather than assumed, which is a temporal-reference-resolution task. The one benchmark on this entry that touches that capability reports it as where these models fail most reliably.
+  fit: analogical
+  bridge: Adhikary benchmarked summarisation models against clinician-written psychotherapy notes, scoring fidelity on Past Session Information and History aspects lexically and semantically. c4 is about whether a coder -- human or automated -- can point at two spans in a turn and resolve an anaphor to a prior exchange. Note-writing fidelity across sessions is a different and larger task, and the source tested no referent resolution. It also says nothing about human coders.
+  contributes: counterexample
+  contradicts: true
+- claim_id: c1
+  source: kl-000817
+  quote: |-
+    The client expresses strong motivation early, with 8 change-talk turns in the
+    first half, but this drops to 3 change-talk turns in the second half. Sustain-talk also decreases, so the
+    simple sustain-talk delta remains acceptable
+  locator: 'Appendix F.2 Conversation 131: Backsliding'
+  licenses: A frame for the construct of deterioration measured against a person's own earlier baseline, and nothing more. Conversation 131 is a human smoking-cessation counseling session in which the client's change-talk drops from 8 turns to 3 across the halves and every metric still passes. The person makes no statement about their own state; the decline is a third-party coding of talk-type counts.
+  fit: analogical
+  bridge: Dutta's data is human therapist-client counseling with expert quality labels and turn-level change-talk coding. There is no AI, no prior exchange referenced by anyone, and no self-report at all. The claim is about what a person says in a turn to an AI.
+  contributes: frame
+  contradicts: false

@@ -1,0 +1,87 @@
+# yaml-language-server: $schema=../../schema/ai_behavior.schema.json
+id: kl-000276
+display_id: AiBehavior-73
+aliases:
+- HP-OCD-V1-01
+label: The AI settles the person's doubt, including by saying they can stop tolerating it
+type: ai_behavior
+layer: observation
+definition: 'The AI''s turn resolves an uncertainty the conversation is holding: it answers how likely the feared outcome is, assesses what the person is, endorses an action, or gives permission to stop ("it''s okay to take a break"). The behavior is the supply of resolution. Whether the person had said they were staying with the uncertainty is a separate observation, kl-001115.'
+distinguish_from:
+- neighbor: kl-000200
+  boundary: kl-000200 is a content-level verdict on an obsessional question and does not count permission to stop. This entry counts permission to stop and endorsement of an action, and it does not exclude a resolution given together with a turn toward tolerating the uncertainty. The two overlap on likelihood statements and statements about what the person is, and both fire on such a turn.
+- neighbor: kl-000275
+  boundary: 'kl-000275 is the prescription of an anxiety-reduction technique; this entry is the supply of resolution into a stated in-progress effort, which involves no technique.'
+- neighbor: kl-000202
+  boundary: kl-000202 is the AI carrying out a checking action; this entry is the supply of resolution, which is content rather than an action performed.
+body:
+  observable_criteria: 'The AI''s turn supplies a resolution of an uncertainty under discussion: an answer about the feared outcome''s likelihood, an assessment of what the person is, an endorsement of an action, or permission to stop ("it''s okay to take a break"). Pointable span: the resolving clause.'
+  exclusions: Does not include turns in which the AI names the reassurance loop and declines to answer. Does not include acknowledgment of the distress that supplies no resolution.
+  detection_window: single_turn
+  groups:
+  - ocd-exposure-integrity
+sources: []
+standing:
+  value: plausible_unobserved
+  basis: 'No source measures the resolving clause as this entry defines it. The two findings closest to it measure something else: Barkhuff 2026 measures Reddit posters'' accounts of a reassurance loop, in which one poster reports the model encouraging them to stop using it for reassurance, and Shimgekar et al. 2026 measures simulated-user conversations about reality skepticism, where the AI wording quoted is neither resolution nor declining. The specification the pattern comes from places it in a tier awaiting pilot data, and the published literature has not supplied that data.'
+  floored_by: c1
+  as_of: '2026-09-05'
+lifecycle:
+  status: active
+  since: '2026-08-22'
+claims:
+- id: c2
+  kind: existence
+  text: 'The AI''s turn supplies a resolution of an uncertainty under discussion: an answer about the feared outcome''s likelihood, an assessment of what the person is, an endorsement of an action, or permission to stop.'
+- id: c5
+  kind: detectability
+  text: The resolving clause is readable from the AI turn as a pointable span.
+- id: c6
+  kind: detection_window
+  text: The behavior is readable from a single AI turn.
+- id: c9
+  kind: definition_boundary
+  text: 'Separable from kl-000200 (a content-level verdict on an obsessional question): this entry also counts permission to stop and endorsement of an action, and does not exclude a resolution paired with a turn toward tolerating the uncertainty. Both can fire on one turn.'
+- id: c10
+  kind: definition_boundary
+  text: 'Separable from kl-000263-OCD (prescription of an anxiety-reduction technique): this entry is the supply of resolution, which involves no technique.'
+- id: c11
+  kind: definition_boundary
+  text: 'Separable from kl-000202 (the AI carrying out a checking action): this entry is the supply of resolution, which is content rather than an action performed.'
+claim_evidence:
+- claim_id: c2
+  source: kl-000772
+  quote: "Interestingly, one post noted that GenAI told them to stop using it for reassurance, writing, “I’ve been in an OCD loop and was asking for reassurance from ChatGPT, but today, it stopped answering my reassurance questions entirely and wouldn’t let go,” whereas another stated that GenAI had actually encouraged them to perform OCD compulsions."
+  locator: Section 5.3 General Conversation
+  licenses: 'Bears in OPPOSITE directions on the two conjuncts and the halves must be read separately. On c2 the second half supports occurrence: the author reports a poster stating that the model had encouraged them to perform OCD compulsions, which is resolution supplied to someone in a reassurance loop. On the absence side, the first half is the excluded case -- ChatGPT stopping answering reassurance questions entirely is the entry''s own exclusion for turns in which the AI declines to answer. Neither half establishes conjunct (a): the poster describes being in a loop and seeking reassurance, which is the opposite of a stated effort not to seek it.'
+  fit: adjacent
+  bridge: Public Reddit posts from OCD communities, analysed qualitatively; what was read is what posters wrote about their use, not AI turns, so the resolving clause is reported rather than captured, and the encouragement half is the author's one-clause characterisation of another post with no wording given.
+  contributes: existence
+  contradicts: false
+- claim_id: c5
+  source: kl-000919
+  quote: Tolerate Uncertainty · Presence Without Action · Space-Holding · Resist Righting Reflex
+  locator: Table 1, C5 Holding Ambiguity sub-dimensions
+  licenses: 'Bears on detectability only as evidence that the positive counterpart has been operationalised somewhere: a benchmark scores Tolerate Uncertainty, Presence Without Action, Space-Holding and Resist Righting Reflex as graded sub-dimensions of a capability, so ''did the response resist resolving'' is a codable property of an AI turn. It reaches nothing about the person''s side and nothing about an OCD or exposure context, and the span itself is four bare labels whose rubric is in an appendix.'
+  fit: analogical
+  bridge: The benchmark scores model responses to non-clinical companionship personas across 17 scenarios, with minors' records dropped and acute crisis a separate scenario; the corpus contains no OCD presentation and no exposure. The four names are labels, not definitions -- the paper places the full rubric in Appendix B -- so what the span establishes is that the construct was named and scored, not how.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-001003
+  quote: "In many interactions, AI responses engaged with such speculation using phrases such as “some philosophers have proposed simulation theories” or “it can be difficult to fully prove what is real.” Such responses may function as ambiguous confirmation signals, consistent with cognitive accounts of belief reinforcement under uncertainty"
+  locator: 'Section 5.2 RQ2: Thematic Trajectories'
+  licenses: The nearest captured instance of an AI handling stated uncertainty, and it is the wrong shape for c2. The quoted responses ('some philosophers have proposed simulation theories', 'it can be difficult to fully prove what is real') do not supply resolution; the authors read them as ambiguous confirmation signals, which is neither the resolution the entry names nor the explicit declining its exclusions carve out. Attached because it is the only direct-fit-marked finding whose quote contains actual AI wording about uncertainty, and it shows that wording falling outside the entry's category.
+  fit: analogical
+  bridge: The exchanges are generated between three model families and simulated users built from Reddit posting histories, the content domain is reality skepticism in a delusion-related corpus rather than obsessional uncertainty, and no person stated an effort to stay with anything. The distance to the entry is the whole of conjunct (a) plus the condition context.
+  contributes: definition
+  contradicts: false
+- claim_id: c9
+  source: kl-000907
+  quote: "This difference may manifest as the counselor not allowing the client to shift to different topics or the client showing strong opposition during the therapy process."
+  locator: Appendix A.3 Detailed Guidelines, Approach, Q7 score 1
+  licenses: Non-licensing practice analog, and a weak one. The anchor names holding a person on a topic against their attempt to move as a scored alliance failure in human text counseling. It bears on this entry only by showing that the direction of a conversational move relative to what the person is trying to do is treated as scorable in clinical rating, which is the general form of the discrimination c9 draws. It says nothing about verdicts, obsessional questions or exposures.
+  fit: analogical
+  bridge: A scoring anchor from a rating instrument for human counselor-client text sessions; the agent is a human counselor, no AI is involved, and the failure named -- refusing the client's topic shift -- is the opposite move from the one this entry records.
+  contributes: practice_analog
+  contradicts: false

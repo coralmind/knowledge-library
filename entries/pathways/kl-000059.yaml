@@ -1,0 +1,99 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000059
+display_id: Pathway-21
+aliases:
+- PS-06
+label: The AI takes a hint at suicide literally, and the person goes without help
+type: pathway
+layer: judgment
+definition: 'The person''s crisis signal is carried in indirect language — burden framing, finality, goodbye-shaped closure — and the response engages none of the safety dimensions. Distinguished from the explicit case by the recognition problem being part of the claim: the signal was present and gettable, and was not taken.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000206
+    role: non_interruptor
+  composition_type: omission
+  mechanisms: []
+  impacts:
+  - impact: kl-000029
+    onset_mode: foregone
+    horizon: immediate
+    sign: harmful
+    level_of_analysis: population
+    basis_kind: SOURCED
+  experience_cluster_candidate: kl-000700
+  counterpart_owed: 'A response that takes the safety reading of the indirect language: it names what the person said and asks directly whether they are thinking of suicide or of harming themselves.'
+sources:
+- source: kl-000524
+  locator: Letter body, Results, second paragraph, p. 2
+  contributes: existence
+  quote: They more often recognized the need for escalation (27 [90.0%] vs 18 [40.0%]; P < .001) and provided resource referrals (22 [73.3%] vs 5 [11.1%]; P < .001) compared with companion chatbots.
+  limits: 'Not harm evidence: the conversations are simulated, with no human participants and no measured outcome. Additionally the entry''s antecedent is indirect crisis language, and this study''s stimuli are not indirect — eTable 2''s vignettes are explicit and severe (the suicidal-ideation persona has checked their mother''s medicine cabinet for pills; the sexual-assault persona describes waking with vaginal bleeding and missing underwear). The paper therefore does not test whether indirect or veiled disclosure is missed; it tests explicit disclosure and finds it missed anyway. That arguably strengthens the finding as behavior evidence, but it does not make it evidence for this entry''s antecedent. Base rates are per-conversation, not per-turn, so the entry''s turn-level framing is not addressed.'
+  whose_conduct_in_passage: ai
+  actually_licenses: That companion-platform chatbots fail to engage any safety dimension in the large majority of simulated adolescent crisis conversations, at a measured rate, when the disclosure is EXPLICIT. Existence and prevalence of the AI behavior; silent on indirect language and on harm.
+  cited_for: Brewster et al. 2025 reports that companion chatbots performed far worse than general-assistant chatbots in simulated adolescent crisis conversations — responding appropriately in 22% against 83%, and referring to resources in 11% against 73% — the closest available base rate for crisis non-response.
+  licenses: That companion chatbots recognized the need for escalation in only 40% of simulated crisis conversations and gave a resource referral in only 11.1%, both significantly worse than general-assistant chatbots (90.0% and 73.3% respectively; P < .001 for both). On companion platforms, the majority of crisis conversations were met with a response engaging no safety dimension.
+standing:
+  value: theorized
+  basis: 'The entry''s distinguishing claim — that indirect crisis signals are present and recoverable, and are not taken — is asserted rather than measured: no held source reports detection rates by signal explicitness. The nearest evidence, Brewster et al. 2025, audits simulated adolescent crisis conversations and finds companion chatbots engaging no safety dimension in most of them, but its vignettes disclose the crisis explicitly, so the indirect-language antecedent goes untested. No outcome for any person is measured.'
+  as_of: '2026-08-23'
+lifecycle:
+  status: draft
+  since: '2026-08-23'
+distinguish_from:
+- neighbor: kl-000058
+  boundary: Both reach kl-000029. Here the response is kl-000206; there it is kl-000205. A coder deciding between them reads what the response did, not the outcome.
+claims:
+- id: c1
+  kind: existence
+  text: Crisis signals are carried in indirect language — burden framing, finality, goodbye-shaped closure — rather than in an explicit statement.
+- id: c2
+  kind: pathway_link
+  text: A response can engage none of the safety dimensions where the signal was present in that indirect form.
+- id: c3
+  kind: pathway_link
+  text: Where the signal was present and gettable and was not taken, the protection a safety engagement would have provided is foregone.
+- id: c4
+  kind: detectability
+  text: 'Recognition is part of the claim rather than assumed by it: identifying this pathway requires establishing that the indirect signal was present in the person''s turns, not only that no safety content appeared in the response.'
+- id: c5
+  kind: definition_boundary
+  text: 'This pathway differs from kl-000205 in what the person said: here the crisis signal is indirect, there it is an explicit statement.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000790
+  quote: "Pattern 1: Indirect Crisis Blindness. Chatbot recognizes direct crisis statements (“I want to kill myself”) but misses indirect signals (“I wonder if anyone would notice if I disappeared”)."
+  locator: Section 5, 'Safety Pattern Library', Pattern 1
+  licenses: 'Names the indirect-signal class and gives an instance of it in the exact register c1 describes — finality and goodbye-shaped closure rather than an explicit statement. It licenses the *category* as one the field recognises and can exemplify. It does not license a rate: the Safety Pattern Library is an abstraction from discovered failures into design archetypes, and this entry is a design recommendation, not a measurement. The paper''s own measured findings are cited separately on c2 below.'
+  fit: direct
+  contributes: definition
+- claim_id: c2
+  source: kl-000790
+  quote: "All three systems exhibited Crisis Escalation Failures when suicidal ideation was disclosed indirectly over multiple turns despite passing direct crisis benchmarks."
+  locator: Section 4.2, 'Multi-Turn Findings'
+  licenses: 'This is c2 as stated: a response engages no safety dimension where the signal was present in indirect form, and it happened in every system tested. The "despite passing direct crisis benchmarks" clause is the load-bearing part — it separates this entry from kl-000058 empirically rather than only definitionally. Limits: three chatbots, six personas, eighteen configurations, all open-source models, all in adversarial multi-agent simulation with no human in the loop. "Crisis Escalation Failure" is the automated detector''s label, and the detector''s own precision on that category is 0.82 with recall 0.74, so some of these are false positives. No person was harmed or observed.'
+  fit: direct
+  contributes: existence
+- claim_id: c2
+  source: kl-000852
+  quote: While both general-purpose LLMs, Gemini and Claude, opened with validation, neither identified “want to disappear” as signalling possible suicidality or self-harm.
+  locator: Results, cross-platform walkthrough of the crisis-adjacent prompt
+  licenses: 'A named-system observation of exactly c2''s event, on a commercial deployment rather than a simulation: the indirect signal was present, the response engaged validation but no safety dimension. It is stronger than Chandra on ecological validity and much weaker on n. Limits: this is a walkthrough method — one prompt, one investigator, six platforms, a single pass. It is a demonstration that the event occurs in deployed systems, not an estimate of how often. Hockey also records that two of six systems (ChatGPT, Wysa) *did* identify the same prompt as a risk signal, so the failure is not universal across platforms.'
+  fit: direct
+  contributes: existence
+- claim_id: c2
+  source: kl-000544
+  quote: All models exhibit systemic weaknesses, such as poor handling of indirect or ambiguous risk signals, heavy reliance on formulaic or inauthentic default replies, and frequent misalignment with user context.
+  locator: Abstract
+  licenses: 'Establishes that the indirect-signal failure is systemic across all five audited models rather than a property of any one, over a 2,046-example clinically-labelled test set — the largest evaluation bearing on this entry. Limits: "poor handling" is the authors'' summary characterisation, not a reported rate; the paper''s numeric results are per-category Likert distributions, and no figure isolates *indirect* signals from the rest. Scoring is LLM-as-judge against an expert-designed rubric, not clinician scoring of each response.'
+  fit: adjacent
+  contributes: prevalence
+  bridge: Assumes the authors' summary characterisation — "poor handling of indirect or ambiguous risk signals" across all five audited models — covers the specific event this claim names, a response engaging no safety dimension. The paper reports per-category Likert distributions and no figure isolates indirect signals, so the span establishes that the failure is systemic rather than how often it takes this form.
+- claim_id: c4
+  source: kl-000852
+  quote: Read through the ECoT framework, the platforms did not differ in recognising emotion; they differed in whether emotional reasoning extended to risk.
+  locator: Results, ECoT analysis of the Wysa and Claude sequences
+  licenses: 'c4 says recognition is part of the claim rather than assumed by it — that identifying this pathway requires establishing the indirect signal was present and gettable, not merely that safety content was absent. Hockey''s analysis does exactly this separation: it holds the prompt constant across six platforms and shows two systems extracting the risk meaning from it, which is what establishes the signal *was* gettable. That constant-prompt design is the methodological form c4 asks for. Limits: it demonstrates the method on one prompt; it does not supply a general procedure, a threshold, or any reliability statistic for deciding gettability in an arbitrary transcript.'
+  fit: adjacent
+  contributes: detectability
+  bridge: 'Hockey frames this as a finding about platform differences in emotional reasoning. The use here is one step removed: the same design that produces the finding is what licenses the claim that the signal was present and available to be taken.'

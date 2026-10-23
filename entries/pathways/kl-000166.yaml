@@ -1,0 +1,164 @@
+# yaml-language-server: $schema=../../schema/pathway.schema.json
+id: kl-000166
+display_id: Pathway-68
+aliases:
+- PSI-PS6a
+label: The AI stays emotionally intense after the person asks for less, and they feel less in control
+type: pathway
+layer: judgment
+definition: 'The person has indicated a preference for lower emotional intensity and the AI''s subsequent turns continue at the same register. Both halves are quotable — the preference in the person''s turns, the register in the AI''s. What is harmed is not the content but the person''s control over how they are addressed: a stated preference was available and the exchange did not move.'
+body:
+  composition_parts:
+  - kind: ai_behavior
+    id: kl-000221
+    role: originator
+  composition_type: direct
+  mechanisms: []
+  impacts:
+  - impact: kl-000032
+    onset_mode: new
+    horizon: immediate
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: FRAME
+  - impact: kl-000031
+    onset_mode: new
+    horizon: immediate
+    sign: harmful
+    level_of_analysis: individual
+    basis_kind: FRAME
+  experience_cluster_candidate: kl-000704
+sources:
+- source: kl-000009
+  locator: §3, direction PS6, table cells 'AI behavior' and 'Potential impact'
+  contributes: frame
+  cited_for: 'Direction PS6 of Suh et al. 2026 states the link: inability to adjust or cease ongoing therapeutic strategies when they distress the user, leading to escalating or induced distress. This entry takes the register arm of that inability, where the adjustment was explicitly requested. The citation is a frame: the paper establishes the behavior-to-impact link as a named, published claim about conversational AI, and does not establish that the route occurs or has been measured, a limit the paper itself states of its own directions.'
+standing:
+  value: plausible_unobserved
+  basis: 'The pathway''s endpoints are far better evidenced than its links. The AI-side behavior of continuing at the same register is supported by 90,000 human-calibrated judge scores, and the person''s stated preference for lower intensity is attested in one interview remark. All three links are unevidenced: two draw zero citations, and the pairing of the continued register with the stated preference draws no support and one direct counterexample; the nearest source to that pairing states in its own limitations that it did not test it. Direction PS6 of Suh et al. 2026 names the underlying inability-to-adjust link, but that paper states its directions as hypotheses, and no other source states the pathway''s links even as a position.'
+  floored_by: c3
+  as_of: '2026-09-05'
+lifecycle:
+  status: draft
+  since: '2026-08-27'
+distinguish_from:
+- neighbor: kl-000092
+  boundary: Both record the AI failing to move with the person and they differ in what did not move. kl-000092 is about ORIENTATION — venting to deciding, exploring to seeking help — and the mismatch is in what kind of response is called for. This entry is about REGISTER, the emotional pitch of the phrasing, with the orientation possibly correct throughout.
+- neighbor: kl-000091
+  boundary: 'Both turn on a signal from the person that the response does not take up. The signal of kl-000232 is IMPLICIT — shortening turns, flattening affect — and the failure is one of noticing. Here the signal is a STATED preference, so noticing is not at issue: it was said and the register held.'
+claims:
+- id: c1
+  kind: existence
+  text: 'NODE (person side): a person indicates in their turns a preference for lower emotional intensity, and the preference is quotable from those turns.'
+- id: c2
+  kind: existence
+  text: 'NODE (AI behavior, kl-000221): the AI''s subsequent turns continue at the same high-intensity emotional register, quotable from those turns.'
+- id: c3
+  kind: pathway_link
+  text: 'LINK A (the pairing): the AI''s continued register FOLLOWS the person''s stated preference in turn order — the preference was available in the exchange and the register did not move in response to it.'
+- id: c4
+  kind: pathway_link
+  text: 'LINK B (impact arrow to kl-000032): the continuation newly produces reduced felt safety and control — specifically, loss of the person''s control over how they are addressed — on an immediate horizon.'
+- id: c5
+  kind: pathway_link
+  text: 'LINK C (impact arrow to kl-000031): the continuation newly produces acute interactional distress on an immediate horizon.'
+- id: c6
+  kind: definition_boundary
+  text: 'This pathway is separable from kl-000092 by what did not move: there the AI fails to follow a shift in ORIENTATION, here in REGISTER, with the orientation possibly correct throughout.'
+- id: c7
+  kind: definition_boundary
+  text: 'This pathway is separable from kl-000232 by the signal: there it is IMPLICIT and the failure is one of noticing, here it is a STATED preference and noticing is not at issue.'
+claim_evidence:
+- claim_id: c1
+  source: kl-000812
+  quote: |-
+    P8
+    reported that RACs sometimes became “too sexual or suggestive when I was not looking for
+    that,” indicating that the system could push conversations beyond users’ intended boundaries.
+  licenses: That a real user holds and articulates a preference about the register they want from the system, and reports the system exceeding it. It is the only material in nine findings in which a real person's own preference about how they are addressed appears. It does not establish that the preference was stated TO the system in the conversation, which is what the node requires.
+  locator: Section 5.1.4 (Unwanted boundary crossing)
+  fit: adjacent
+  bridge: 'P8''s remark is made retrospectively to an interviewer — ''when I was not looking for that'' is a report of what P8 wanted, not a turn P8 typed. The node requires the preference quotable from the person''s turns. The register at issue is also sexual or suggestive content rather than emotional intensity, which is a neighbouring dimension: a response can be too suggestive without being high-intensity emotional phrasing and the reverse.'
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000798
+  quote: Venting responses showed elevated feeling language (d = 0.66), negative tone (d = 0.54), and present-moment focus (d = 0.50), with unigrams including sounds, feel, listen, yeah and burden-intensifying language (really, lot, carry, heavy, incredibly; Table 2).
+  locator: Section 5, first result paragraph, and Table 2
+  licenses: That the AI-side register this node names is a measurable and reliably present property of model responses to distress, with effect sizes and the specific intensifying vocabulary named. It establishes the register exists in the output and is quantifiable, which is the precondition the node's second half needs.
+  fit: adjacent
+  bridge: What was measured is intensifying-language density in FIRST-TURN model responses to Reddit distress posts, scored by lexicon and rubric. The node requires the register to continue in turns SUBSEQUENT to a preference, and no preference was in the prompt, so there is nothing for the register to be continuing against. The gap is the whole 'subsequent' condition.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000975
+  quote: "Thus, style drift was observed in both non-default runnable \npersonas: sarcastic prompts became less adversarial over \ntime, especially for DeepSeek and GPT, while cold \nprompts became warmer and more anthropomorphic across \nall three models."
+  locator: Analysis and Results, Style drift and default convergence (RQ2)
+  licenses: 'That a standing instruction for emotionally distant style does not hold: models instructed to be cold produced measurably more empathic and anthropomorphic language as the conversation lengthened, scored on a human-calibrated 7-point judge across 90,000 assistant turns. Against this node it is the strongest evidence on this entry that the register persists — and returns — against an explicit instruction against it.'
+  fit: adjacent
+  bridge: The instruction is a system-side persona configuration, not a turn. The node's register is 'continued at the same register' after a preference; what is measured here is drift back TOWARD warmth from a cold starting point, which is a related but not identical shape — a register that returns rather than one that never moved. The paper's own limitations section says the study relies on synthetic user-only dialogues and not on real human conversations.
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000975
+  quote: "cold, \nemotionally neutral personas eroded across all three models, \nbecoming warmer and more anthropomorphic as dialogue \nprogressed."
+  locator: Discussion
+  licenses: That the erosion held in every model tested, so the AI-side behavior is not a property of one system. It generalizes the finding above across three generator models.
+  fit: adjacent
+  bridge: 'Same gap as the finding above: a system-prompted persona rather than a person''s stated preference, and synthetic user turns. This span adds generality across models and nothing on the person''s side.'
+  contributes: existence
+  contradicts: false
+- claim_id: c2
+  source: kl-000975
+  quote: "Adversarial-style convergence is mainly distinguished by the contrast between entertainment and the higher-stakes domains, whereas affective-distance convergence is especially pronounced in mental health and medicine."
+  locator: Discussion
+  licenses: 'That the erosion of requested affective distance is strongest in mental health and medicine — the settings this catalog covers. It is a context_dependence result on the AI-side node: the behavior is not uniform across domains and is most pronounced where the catalog looks.'
+  fit: adjacent
+  bridge: A comparison of convergence magnitude between domains under system-prompted personas with synthetic user turns. It says where the behavior is worst and nothing about a person's stated preference or what a person then experienced.
+  contributes: existence
+  contradicts: false
+- claim_id: c1
+  source: kl-000975
+  quote: "Third, the study uses synthetic user-only dialogues rather than real human conversations."
+  locator: Discussion, limitations
+  licenses: 'The authors'' own statement that no real person appears anywhere in the corpus. Against the person-side node this is direct counterevidence to reading their three drift results as evidence for it: nothing in 90,000 turns establishes that a real person stated a preference against emotional phrasing.'
+  fit: direct
+  bridge: null
+  contributes: frame
+  contradicts: false
+- claim_id: c3
+  source: kl-000975
+  quote: "Third, the study uses synthetic user-only dialogues rather than real human conversations."
+  locator: Discussion, limitations
+  licenses: The same statement, against the pairing link. So the paper's own framing is that the configuration stands in for a user preference and is a BEST case for it — which means the drift result cannot be read as showing what happens when a person asks, and the authors say a person asking would fare no better than this.
+  fit: direct
+  bridge: null
+  contributes: frame
+  contradicts: false
+- claim_id: c2
+  source: kl-000895
+  quote: 'This trait might be part of sycophancy but can be present without it: unconditional amiability does not require agreement or flattery, and the warmth persists even when the system corrects facts or declines harmful requests.'
+  locator: Section 3, Other Harmful Traits - Miscellaneous, on unconditional amiability
+  licenses: 'The construct distinction this node depends on: warmth that does not vary is separable from agreement, so a system can be accurate and still hold a register the situation does not warrant. Without it the node collapses into sycophancy and the entry loses its subject.'
+  fit: analogical
+  bridge: A conceptual definition of a system property — warmth that never varies — offered without observation of any system. The node specifies phrasing continued after a preference against it, which is a behavior in an exchange rather than a standing property. It supplies the distinction and evidences nothing.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-001066
+  quote: "In the Person-Emotions/Implicit cell, models may soften feedback, avoid confrontation, or prioritize comfort through warmth and reassurance in ways that preserve the user’s emotional state without directly validating it."
+  locator: A Taxonomy of AI Sycophancy, Person Sycophancy paragraph
+  licenses: 'That the behavior class this node sits inside — output shaped to preserve the person''s emotional state rather than to say what is true — is named and separated from explicit validation in a review of the literature, and is recorded there as the least-studied cell. The ''least studied'' part is what bears on the entry: the review''s own map says this is where the evidence is thinnest.'
+  fit: analogical
+  bridge: A taxonomy cell defined from reviewed literature rather than from measurement of any conversation. It carries no preference signal, no register comparison and no instance, so it defines the class and observes nothing in it.
+  contributes: definition
+  contradicts: false
+- claim_id: c2
+  source: kl-001070
+  quote: "In pursuit of safety and harmlessness, RLHF tends to compress the distribution of model outputs towards neutrality, often manifesting as responses that rely on generic reassurance phrases, excessive hedging, or well-documented sycophantic behaviors that prioritize agreement over context-sensitive expression"
+  locator: Section 1 Introduction
+  licenses: Nothing measured. It states the standing account of WHY aligned models hold a generic reassurance register — that alignment training compresses the output distribution — which frames the register as a training artefact rather than a response to the person. Attached so a reader can see the node's mechanism has a named explanation in the literature and no measurement behind it here.
+  fit: analogical
+  bridge: A literature-grounded characterization of post-RLHF output distributions, cited to other work rather than measured in this paper, which is about steering affect with latent vectors. The node concerns intensity persisting after a person asks for less, and this paper never presents a preference to a model.
+  contributes: frame
+  contradicts: false
