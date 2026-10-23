@@ -81,4 +81,4 @@ __all__ = [
 ]
 
 #: Distribution version, reported as ``kl.version``. Release Please updates it.
-__version__ = "0.0.0"
+__version__ = "0.1.0"
